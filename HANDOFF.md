@@ -61,3 +61,8 @@
 
 - 同一大题先核查小题依赖：彼此独立的小题可按各自章节分别放置；共用结果、连续推导或相互依赖的小题不得拆开，整题放在所涉及知识的**最晚章节**。
 - 真题记录必须保存 `split_mode`（`independent_subquestions` 或 `linked_whole_question`）、`required_chapters` 及相应的唯一或分小题 `placement_chapter`；前章不得留下因缺少后续知识无法完成的残缺题。
+
+## Latest exam-page audit milestone — 2026-07-18
+
+- 真题正文已按原 PDF 第 5–59 页完成页级人工审阅：共 55 页，51 页含 DSP 内容，4 页（2004-P11、2020-P42、2023-P49、2024-P53）明确范围外。
+- `full/source/exam_page_review.json` 与对应测试保证正文页无遗漏；多章内容页仍必须进入题号级依赖判断，不能直接按整页放入某一章。

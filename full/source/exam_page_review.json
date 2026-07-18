@@ -1,0 +1,615 @@
+[
+  {
+    "id": "2002-p5",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样与离散系统稳定性"
+  },
+  {
+    "id": "2002-p6",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "连续信号采样与恢复"
+  },
+  {
+    "id": "2002-p7",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样谱与DFT频谱分析"
+  },
+  {
+    "id": "2003-p8",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、差分方程与系统频域"
+  },
+  {
+    "id": "2003-p9",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样恢复与DFT谱分析"
+  },
+  {
+    "id": "2003-p10",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2,
+      3,
+      5
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "z域稳定性、DFT性质与IIR"
+  },
+  {
+    "id": "2004-p11",
+    "manual_reviewed": true,
+    "scope_status": "out_of_scope",
+    "page_chapter_evidence": [],
+    "question_level_placement": "not_applicable",
+    "review_note": "连续时间信号与系统题"
+  },
+  {
+    "id": "2004-p12",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2,
+      5
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统函数、零极点与结构"
+  },
+  {
+    "id": "2004-p13",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散LTI、DFT分析、FFT卷积与滤波器"
+  },
+  {
+    "id": "2005-p14",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "z反变换"
+  },
+  {
+    "id": "2005-p15",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "差分方程、离散化与DFT卷积"
+  },
+  {
+    "id": "2005-p16",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      6
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、DTFT与IIR设计"
+  },
+  {
+    "id": "2006-p17",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "连续信号的周期采样"
+  },
+  {
+    "id": "2006-p18",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "z反变换"
+  },
+  {
+    "id": "2006-p19",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2,
+      3,
+      5,
+      6
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散结构、DFT、DTFT与IIR映射"
+  },
+  {
+    "id": "2006-p20",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      3
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "重叠保留法"
+  },
+  {
+    "id": "2007-p21",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "DTFT与采样"
+  },
+  {
+    "id": "2007-p22",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "采样链与离散差分方程"
+  },
+  {
+    "id": "2007-p23",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散卷积、DFT、FFT、FIR与IIR"
+  },
+  {
+    "id": "2007-p24",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      3,
+      4,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "DFT谱分析、FFT与FIR频率采样"
+  },
+  {
+    "id": "2013-p25",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、DFS、离散LTI与z变换"
+  },
+  {
+    "id": "2013-p26",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2,
+      5
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统函数与滤波器结构"
+  },
+  {
+    "id": "2013-p27",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2,
+      8
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "数字频谱处理与多采样率"
+  },
+  {
+    "id": "2014-p28",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统、采样、卷积、DFS和DTFT"
+  },
+  {
+    "id": "2014-p29",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "离散LTI系统函数"
+  },
+  {
+    "id": "2015-p30",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3,
+      4,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、DTFT、DFT、FFT和FIR"
+  },
+  {
+    "id": "2015-p31",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2,
+      8
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统频域与多采样率"
+  },
+  {
+    "id": "2015-p32",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "理想滤波器变换"
+  },
+  {
+    "id": "2016-p33",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散卷积与变换关系"
+  },
+  {
+    "id": "2016-p34",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样和DSP综合题"
+  },
+  {
+    "id": "2016-p35",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      7
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "FIR频率采样设计"
+  },
+  {
+    "id": "2017-p36",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统与LT/ZT关系"
+  },
+  {
+    "id": "2017-p37",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      3
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "DFT与循环卷积"
+  },
+  {
+    "id": "2017-p38",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3,
+      4,
+      6,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "频谱分辨率、FFT、FIR和IIR"
+  },
+  {
+    "id": "2019-p39",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统、卷积与栅栏效应"
+  },
+  {
+    "id": "2019-p40",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "FIR与采样"
+  },
+  {
+    "id": "2020-p41",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、DTFT、DFT、FFT和IIR结构"
+  },
+  {
+    "id": "2020-p42",
+    "manual_reviewed": true,
+    "scope_status": "out_of_scope",
+    "page_chapter_evidence": [],
+    "question_level_placement": "not_applicable",
+    "review_note": "连续时间信号与系统题"
+  },
+  {
+    "id": "2021-p43",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "采样"
+  },
+  {
+    "id": "2021-p44",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      2
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "离散时间调制与DTFT"
+  },
+  {
+    "id": "2021-p45",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      3,
+      6,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "DFT、IIR设计与FIR"
+  },
+  {
+    "id": "2022-p46",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "周期采样"
+  },
+  {
+    "id": "2022-p47",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      4,
+      6
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、FFT与巴特沃斯设计"
+  },
+  {
+    "id": "2022-p48",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样链、离散系统与窗函数设计"
+  },
+  {
+    "id": "2023-p49",
+    "manual_reviewed": true,
+    "scope_status": "out_of_scope",
+    "page_chapter_evidence": [],
+    "question_level_placement": "not_applicable",
+    "review_note": "连续时间信号与系统题"
+  },
+  {
+    "id": "2023-p50",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样和离散LTI"
+  },
+  {
+    "id": "2023-p51",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3,
+      4,
+      6
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "DFT、FFT、离散系统和IIR映射"
+  },
+  {
+    "id": "2024-p52",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样与DTFT"
+  },
+  {
+    "id": "2024-p53",
+    "manual_reviewed": true,
+    "scope_status": "out_of_scope",
+    "page_chapter_evidence": [],
+    "question_level_placement": "not_applicable",
+    "review_note": "连续时间信号与系统题"
+  },
+  {
+    "id": "2024-p54",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      3,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样、DTFT、DFT和线性相位FIR"
+  },
+  {
+    "id": "2024-p55",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3,
+      4,
+      7
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统、DFT/FFT和FIR"
+  },
+  {
+    "id": "2025-p56",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "离散系统和DTFT"
+  },
+  {
+    "id": "2025-p57",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      3
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样与DFT"
+  },
+  {
+    "id": "2025-p58",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      1,
+      2,
+      6
+    ],
+    "question_level_placement": "requires_split_mode_review",
+    "review_note": "采样链、离散系统与IIR映射"
+  },
+  {
+    "id": "2025-p59",
+    "manual_reviewed": true,
+    "scope_status": "assigned",
+    "page_chapter_evidence": [
+      7
+    ],
+    "question_level_placement": "single_chapter_or_whole_question_review",
+    "review_note": "窗函数FIR设计"
+  }
+]
