@@ -12,6 +12,7 @@
 - 已生成 8 份课件章节底稿，完整覆盖 1056 个来源页；18 组动画候选已逐对视觉审核，全部保留。每组均含新增推导、图示、例题或小节过渡，不能以文本相似为由合并。
 - 真题逐题准备完成第一层：`full/artifacts/exam_question_sections.json` 从 51 页 DSP 正文提取 177 个原文段落（126 个题号起点、51 个续接段），并排除 4 页明确范围外页面；该清单尚未完成题组关联和最终章节归属。
 - 已将 51 个跨页续接段按原文顺序并回前一题号，形成 `full/artifacts/exam_question_candidates.json` 中的 144 个完整原文题组候选；题组仍全部为 `pending_dependency_review`，尚未进行独立小题拆分或最终分章。
+- 已生成 `full/artifacts/exam_question_candidates_annotated.json`：为 144 个题组附上可审查的自动章节候选。因原 PDF 的公式字体与图形文字提取限制，68 个题组没有自动结论，不能由关键词猜测，均保留给人工依赖审核。
 
 ## 下一步
 

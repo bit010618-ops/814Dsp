@@ -96,3 +96,8 @@
 
 - 通过 `group_sections_into_question_candidates`，51 个跨页续接段已按原文顺序归并到前一题号；`full/artifacts/exam_question_candidates.json` 现含 144 个原文题组候选。
 - 此归并仅解决跨页连续性，全部候选仍为 `pending_dependency_review`。下一步必须逐题判断独立小题与关联题组，不能将候选题组直接等同于最终章末训练或讲义题目。
+
+## Latest exam-auto-annotation milestone — 2026-07-18
+
+- `full/tools/annotate_exam_candidates.py` 为 144 个原文题组保存章节候选至 `full/artifacts/exam_question_candidates_annotated.json`；这是便于人工审核的索引，绝非最终归属。
+- 68 个题组因原 PDF 提取不到关键公式或图形文字而无自动章节结论，必须查看原页后手动判定；不准用关键词或年份缺失来编造归属。
