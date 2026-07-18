@@ -7,6 +7,27 @@ from pathlib import Path
 from pypdf import PdfReader
 
 
+def outline_tree(reader: PdfReader, entries: list | None = None) -> list[dict]:
+    nodes = []
+    for entry in (reader.outline if entries is None else entries):
+        if isinstance(entry, list):
+            if nodes:
+                nodes[-1]["children"] = outline_tree(reader, entry)
+            continue
+        try:
+            page = reader.get_destination_page_number(entry) + 1
+        except Exception:
+            page = None
+        nodes.append(
+            {
+                "title": str(entry.get("/Title", "")),
+                "page": page,
+                "children": [],
+            }
+        )
+    return nodes
+
+
 def scan_pdf(path: Path, max_pages: int | None = None) -> dict:
     reader = PdfReader(str(path))
     limit = len(reader.pages) if max_pages is None else min(max_pages, len(reader.pages))
@@ -20,7 +41,12 @@ def scan_pdf(path: Path, max_pages: int | None = None) -> dict:
                 "text": text[:1200],
             }
         )
-    return {"path": str(path), "page_count": len(reader.pages), "pages": pages}
+    return {
+        "path": str(path),
+        "page_count": len(reader.pages),
+        "outline": outline_tree(reader),
+        "pages": pages,
+    }
 
 
 def find_incremental_runs(pages: list[dict]) -> list[dict]:

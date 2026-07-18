@@ -1,0 +1,16 @@
+{
+  "course_source": "C:/Users/HP/Desktop/MOOC课件-合并版.pdf",
+  "source_page_count": 1056,
+  "chapters": [
+    {"number": 1, "title": "离散时间信号与系统", "start_page": 1, "end_page": 185, "bookmark_prefix": "MC1"},
+    {"number": 2, "title": "z 变换与LSI系统频域分析", "start_page": 186, "end_page": 387, "bookmark_prefix": "MC2"},
+    {"number": 3, "title": "离散傅里叶变换", "start_page": 388, "end_page": 559, "bookmark_prefix": "MC3"},
+    {"number": 4, "title": "快速傅里叶变换", "start_page": 560, "end_page": 655, "bookmark_prefix": "MC4"},
+    {"number": 5, "title": "数字滤波器结构", "start_page": 656, "end_page": 741, "bookmark_prefix": "MC5"},
+    {"number": 6, "title": "IIR数字滤波器设计", "start_page": 742, "end_page": 865, "bookmark_prefix": "MC6"},
+    {"number": 7, "title": "FIR数字滤波器设计", "start_page": 866, "end_page": 1009, "bookmark_prefix": "MC7"},
+    {"number": 8, "title": "多采样率数字信号处理", "start_page": 1010, "end_page": 1056, "bookmark_prefix": "MC8"}
+  ],
+  "incremental_candidate_count": 18,
+  "inventory_path": "full/artifacts/course_inventory.json"
+}
