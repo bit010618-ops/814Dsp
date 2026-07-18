@@ -187,3 +187,8 @@
 
 - `full/source/exam_question_review_2025.json` 覆盖 2025 年 9 个原文题组：离散系统与采样归第 1 章，采样后的 DTFT、离散 LSI 和 A/D—D/A 链归第 2 章，DFT 归第 3 章，IIR 方法归第 6 章，线性相位高通 FIR 归第 7 章。
 - 至此，2002–2007、2013–2017、2019–2025 全部可用年份均已完成题号级人工依赖审核；下一步汇总最终题库、章节训练和末尾详解索引。
+
+## Latest final exam-bank milestone — 2026-07-18
+
+- `full/tools/build_exam_bank.py` 将所有人工审核记录统一生成 `full/source/exam_question_bank.json`。该题库含 156 个可纳入讲义的题目单元：第 1–8 章分别为 41、38、36、12、1、13、11、4 个，并保留年份、原始页码、来源段、依赖章节、落点章节与题图处置。
+- 53 个明确连续时间范围外题组保留在 `out_of_scope_candidate_ids` 供审计，但不会进入 DSP 章节训练或末尾详解。测试保证 144 个原始候选均被恰好人工处置，无遗漏。
