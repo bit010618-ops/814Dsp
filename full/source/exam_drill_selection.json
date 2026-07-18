@@ -1,0 +1,13 @@
+{
+  "selection_policy": "每章优先选取覆盖核心计算、图形/频谱分析和综合应用的 2–3 道真题；若历年真题仅有一题直接对应该章，则不虚构真题，以课内例题补足训练。",
+  "chapters": [
+    {"chapter": 1, "priority_question_ids": ["2006-q七-whole", "2002-q七-whole", "2019-q二-whole"]},
+    {"chapter": 2, "priority_question_ids": ["2015-q七-whole", "2021-q六-whole", "2025-q八-whole"]},
+    {"chapter": 3, "priority_question_ids": ["2003-q七-whole", "2021-q七-whole", "2023-dsp-p4"]},
+    {"chapter": 4, "priority_question_ids": ["2017-q六-p5", "2022-q五-p3", "2024-dsp-p5"]},
+    {"chapter": 5, "priority_question_ids": ["2020-qintro-brief2"]},
+    {"chapter": 6, "priority_question_ids": ["2007-q八-whole", "2021-q八-whole", "2023-iir"]},
+    {"chapter": 7, "priority_question_ids": ["2022-q九-whole", "2024-dsp-p4", "2025-q九-whole"]},
+    {"chapter": 8, "priority_question_ids": ["2013-q九-whole", "2015-q八-whole", "2016-qintro-brief2"]}
+  ]
+}
