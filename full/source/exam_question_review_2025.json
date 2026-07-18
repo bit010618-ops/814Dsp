@@ -1,0 +1,22 @@
+{
+  "year": 2025,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [56,57,58,59], "watermark_present": true, "finding": "原卷每页有推广页眉页脚和中央水印；采样图及 A/D—D/A 系统图须以无水印教材图重绘。"},
+  "candidate_reviews": [
+    {"candidate_id":"2025-qintro-01","decision":"split_independent_parts","included_parts":[{"id":"2025-qintro-p4","source_locator":"填空第4小题：离散系统可逆性与逆系统","required_chapters":[1],"placement_chapter":1}],"excluded_parts":["连续系统、拉普拉斯和连续傅里叶变换题"]},
+    {"candidate_id":"2025-q二-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间相关函数的傅里叶变换"},
+    {"candidate_id":"2025-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数与傅里叶变换"},
+    {"candidate_id":"2025-q四-01","decision":"whole_question","included_parts":[{"id":"2025-q四-whole","source_locator":"第四题：连续脉冲采样所得序列的 DTFT 与幅度谱","required_chapters":[1,2],"placement_chapter":2}]},
+    {"candidate_id":"2025-q五-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间微分方程系统"},
+    {"candidate_id":"2025-q六-01","decision":"whole_question","included_parts":[{"id":"2025-q六-whole","source_locator":"第六题：周期脉冲采样、采样定理、非理想/冲激采样频谱对比","required_chapters":[1],"placement_chapter":1}],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"方波幅值与周期、采样脉冲宽度与周期、x(t)、s(t)、xs(t) 及频谱坐标标注"}},
+    {"candidate_id":"2025-q七-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2025-q七-p1","source_locator":"简答第1小题：4 点 DFT 及共轭对称/反对称分量","required_chapters":[3],"placement_chapter":3},
+      {"id":"2025-q七-p2","source_locator":"简答第2小题：DTFT 等间隔取样与 4 点 DFT 反变换","required_chapters":[3],"placement_chapter":3},
+      {"id":"2025-q七-p3","source_locator":"简答第3小题：偶/奇对称有限序列的 DFT 特性","required_chapters":[3],"placement_chapter":3},
+      {"id":"2025-q七-p4","source_locator":"简答第4小题：A/D、调制、数字滤波、D/A 级联频谱","required_chapters":[1,2],"placement_chapter":2},
+      {"id":"2025-q七-p5","source_locator":"简答第5小题：脉冲响应不变法与双线性变换法的线性/级联性质","required_chapters":[6],"placement_chapter":6}
+    ],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标"}},
+    {"candidate_id":"2025-q八-01","decision":"whole_question","included_parts":[{"id":"2025-q八-whole","source_locator":"第八题：离散 LSI 频响、单位脉冲响应、幅相响应与滤波特性","required_chapters":[1,2],"placement_chapter":2}]},
+    {"candidate_id":"2025-q九-01","decision":"whole_question","included_parts":[{"id":"2025-q九-whole","source_locator":"第九题：窗函数法设计因果稳定线性相位高通 FIR","required_chapters":[2,7],"placement_chapter":7}]}
+  ]
+}
