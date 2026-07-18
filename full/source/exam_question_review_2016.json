@@ -11,7 +11,7 @@
     {"candidate_id":"2016-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间正弦稳态响应"},
     {"candidate_id":"2016-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数"},
     {"candidate_id":"2016-q五-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间微分方程系统"},
-    {"candidate_id":"2016-q六-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间冲激采样"},
+    {"candidate_id":"2016-q六-01","decision":"whole_question","included_parts":[{"id":"2016-q六-whole","source_locator":"第六题：冲激采样、奈奎斯特频率、采样频谱与采样保持恢复","required_chapters":[1],"placement_chapter":1}]},
     {"candidate_id":"2016-q七-01","decision":"split_independent_parts","included_parts":[
       {"id":"2016-q七-p1","source_locator":"DSP 第1小题：由单位阶跃响应求有限序列输出","required_chapters":[1],"placement_chapter":1},
       {"id":"2016-q七-p2","source_locator":"DSP 第2小题：有限序列的偶、奇分解及运算","required_chapters":[1],"placement_chapter":1},

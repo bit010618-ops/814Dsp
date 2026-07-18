@@ -1,0 +1,14 @@
+{
+  "year": 2019,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [39, 40], "watermark_present": true, "finding": "原卷带推广页眉页脚和中央水印；离散序列卷积图须重绘。"},
+  "candidate_reviews": [
+    {"candidate_id":"2019-qintro-01","decision":"split_independent_parts","included_parts":[{"id":"2019-qintro-p3","source_locator":"填空第3小题：离散系统线性、时变与因果性","required_chapters":[1],"placement_chapter":1}],"excluded_parts":["连续时间冲激积分与连续傅里叶反变换"]},
+    {"candidate_id":"2019-q二-01","decision":"whole_question","included_parts":[{"id":"2019-q二-whole","source_locator":"第二题：两离散序列图形卷积","required_chapters":[1],"placement_chapter":1}],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"f1(n)、f2(n) 抽样位置、幅值、坐标轴及 n=0 标注"}},
+    {"candidate_id":"2019-q三-01","decision":"whole_question","included_parts":[{"id":"2019-q三-whole","source_locator":"第三题：栅栏效应原因与解决方法","required_chapters":[3],"placement_chapter":3}]},
+    {"candidate_id":"2019-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数"},
+    {"candidate_id":"2019-q五-01","decision":"whole_question","included_parts":[{"id":"2019-q五-whole","source_locator":"第五题：FIR 零极点、直接型与线性相位","required_chapters":[2,5,7],"placement_chapter":7}]},
+    {"candidate_id":"2019-q六-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间频率响应与正弦稳态输出"},
+    {"candidate_id":"2019-q七-01","decision":"whole_question","included_parts":[{"id":"2019-q七-whole","source_locator":"第七题：冲激采样、奈奎斯特频率、采样频谱与采样保持恢复","required_chapters":[1],"placement_chapter":1}]}
+  ]
+}
