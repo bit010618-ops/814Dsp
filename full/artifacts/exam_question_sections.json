@@ -1,0 +1,1949 @@
+[
+  {
+    "id": "2002-p5-continuation-01",
+    "year": 2002,
+    "source_pages": [
+      5
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  4  页 \n2002  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.∫ 훿(푡 + 4) ⋅ (cos(2푡) + 1)d푡 =\n￿\n￿ ￿ ________。 \n \n2.[푢(푡) − 푢(푡 − 1)] ∗ [sin(휋푡) ⋅ 푢(푡)] =________。 \n \n3.连续时间系统稳定要求系统函数퐻(푠)的极点________，离散时间系统稳定要求\n其系统函数퐻(푧)的收敛域________。 \n \n4.已知푥(푡) = cos￿ (50푡)，对其进行时域采样，要求能从采样信号中恢复出原始信\n号，则奈奎斯特频率为________Hz，奈奎斯特抽样周期为________秒。 \n \n5.若푓(푡)的频谱为퐹(휔)，则푓(5 − 3푡)的频谱为________。 \n \n6.cos(3휋푡) ⋅ [푢(푡 + 1) − 푢(푡 − 1)]的频谱函数=________。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p5-q二",
+    "year": 2002,
+    "source_pages": [
+      5
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知푓￿ (푡)和푓￿ (푡)的波形图，求卷积푠(푡) = 푓￿ (푡) ∗ 푓￿ (푡) ∗ 푓￿ (푡)，画出푠(푡)的波\n形图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p5-q三",
+    "year": 2002,
+    "source_pages": [
+      5
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知信号푓(푡)如下图所示，求其频谱函数。 \nt\nf(t)\n2\n0-2 -1 1 2\n1",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p5-q四",
+    "year": 2002,
+    "source_pages": [
+      5
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、某 LIT 系统，以下三种激励情况下的初始状态相同，当 \n激励푓￿ (푡) = 훿(푡)时，其全响应为푦￿ (푡) = 훿(푡) + 푒￿ ￿ 푢(푡) \n激励푓￿ (푡) = 푢(푡)时，其全响应为푦￿ (푡) = 3푒￿ ￿ 푢(푡)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p6-continuation-01",
+    "year": 2002,
+    "source_pages": [
+      6
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  5  页 \n求当激励为푓￿ (푡) = ￿\n0, 푡 < 0\n푡, 0 < 푡 ≤ 1\n1, 푡 > 1\n时系统的全响应。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p6-q五",
+    "year": 2002,
+    "source_pages": [
+      6
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、如图示系统，图中퐾 > 0，若系统具有푦(푡) = 2푥(푡)的特性，求： \n（1）퐻￿ (푠)； \n（2）若使퐻￿ (푠)是稳定系统的系统函数，求퐾的取值范围。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p6-q六",
+    "year": 2002,
+    "source_pages": [
+      6
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、说明下图（a）所示系统实现什么功能？已知푔(푡)的频谱示意图如左下图（b），\n휔￿ < 휔￿ ，퐻(휔) = −푗sgn(휔)，试求输出信号푣(푡)的频谱푉(휔)的图形及各子系统\n输出信号的频谱波形。 \n移相π/2\nH(ω)\nΣg(t)\ncosω0t\n-sinω0t +\n+\nv(t)\nω\nG(ω)\nωM-ωM\n1\n0",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p6-q七",
+    "year": 2002,
+    "source_pages": [
+      6
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、如图系统，푓(푡) = 푆푎(1000휋푡)，푝(푡) = ∑ 훿(푡 − 푛푇)￿\n￿ ￿ ￿ ￿ 问： \n（1）要从푓￿ (푡)中无失真的恢复푓(푡)，求最大抽样间隔푇￿ ￿ ￿  \n（2）若抽样间隔푇 = 0.0008푠，计算푓￿ (푡)的频谱函数，并画出示意图。 \n（3）试设计一矩形滤波器퐻(휔)，使푦(푡)能无失真的反映푓(푡)。 \nH(ω) y(t)f(t)\np(t)\nfs(t)乘法器",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p7-continuation-01",
+    "year": 2002,
+    "source_pages": [
+      7
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  6  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p7-q八",
+    "year": 2002,
+    "source_pages": [
+      7
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、有一信号푥(푡) = 3 cos(2휋푡) + 2 sin(3휋푡) + cos(5휋푡)，现以훺￿ = 8휋的频率对\n其采样得到离散信号푥(푛)，试画出푥(푡)和푥(푛)的幅度谱|푋(푗훺)|和￿푋￿ 푒￿ ￿ ￿ ￿，问\n푥(푛)的频谱是否存在混叠失真？若存在混叠失真应如何避免？画出不失真的\n푥(푛)的频谱￿푋￿ 푒￿ ￿ ￿ ￿。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p7-q九",
+    "year": 2002,
+    "source_pages": [
+      7
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、已知푥￿ (푛) = ￿\n￿\n￿ ￿\n￿\n，0 ≤ 푛 ≤ 4，푥￿ (푛) = 1，0 ≤ 푛 ≤ 2 \n且푋￿ (퐾) = 퐷퐹푇[푥￿ (푛)]，푋￿ (퐾) = 퐷퐹푇[푥￿ (푛)] \n求푥￿ (푛) = 퐼퐷퐹푇[푋￿ (퐾) ⋅ 푋￿ (퐾)]",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2002-p7-q十",
+    "year": 2002,
+    "source_pages": [
+      7
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、已知序列ℎ(푛)是ℎ(푡)的 9 点取样0 ≤ 푛 ≤ 8，取样间隔푇 = 0.15푠，问如何用\n퐷퐹푇计算其频谱，使频谱分辨率高于2rad/푠？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p8-continuation-01",
+    "year": 2003,
+    "source_pages": [
+      8
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  7  页 \n2003  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.求푓(푡) = cos(푡) ⋅ 푢(푡)的傅里叶变换 \n \n \n \n2.求푓(푡) = ∑ 훿(푡 − 2푛) − ∑ 훿(푡 − 2푛 − 1)￿ ￿\n￿ ￿ ￿ ￿\n￿ ￿\n￿ ￿ ￿ ￿ 的傅里叶变换 \n \n \n \n3.若信号푓(푡)的频谱为퐹(휔) = 8푆푎(2휔) cos(2휔)，求푓(푡) \n \n \n \n4.已知푥(푡) = 1 + cos￿ (200푡) + sin(300푡)，对其进行时域采样，要求能从抽样信\n号中恢复出原始信号，则푁푦푞푢푖푠푡频率为________퐻푧，푁푦푞푢푖푠푡周期为________\n秒。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p8-q二",
+    "year": 2003,
+    "source_pages": [
+      8
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知系统差分方程为 \n푟(푛) − 6푟(푛 − 1) + 8푟(푛 − 2) = 푒(푛 − 1) + 2푒(푛 − 2) \n求单位样值响应。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p8-q三",
+    "year": 2003,
+    "source_pages": [
+      8
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三 、 设 一 个 LTI 系 统 对 输 入푥(푡) = (푒￿ ￿ + 푒￿ ￿ ￿ )푢(푡) 的 零 状 态 响应为 푦(푡) =\n(2푒￿ ￿ − 2푒￿ ￿ ￿ )푢(푡)，求： \n（1）求这个系统的频率响应 \n（2）系统的冲激响应 \n（3）系统的微分方程，并用积分器、加法器和乘法器构成此系统。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p8-q四",
+    "year": 2003,
+    "source_pages": [
+      8
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、图示系统中，互联的 4 个 LTI 子系统分别为：ℎ￿ (푡) =\n￿\n￿ ￿ ￿\n￿ ￿￿ ￿ ￿ ￿\n￿ ￿ ￿ ￿， \n퐻￿ (휔) = 푒\n￿ ￿ ￿ ￿ ￿\n￿ ￿ ，ℎ￿ (푡) =\n￿ ￿￿ (￿ ￿ ￿ ￿ )\n￿ ￿ ，ℎ￿ (푡) = 푢(푡)： \nh1(t) Σ h3(t) h4(t)\nH2(ω)\nx(t) y(t)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p9-continuation-01",
+    "year": 2003,
+    "source_pages": [
+      9
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  8  页 \n（1）퐻￿ (휔)并画出幅频响应 \n（2）求整个系统的冲激响应 \n（3）求系统对激励为푥(푡) = cos(3휔￿ 푡) + 2 cos ￿\n￿ ￿\n￿ 푡￿ 时的响应푦(푡)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p9-q五",
+    "year": 2003,
+    "source_pages": [
+      9
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、图示带通滤波器，휔￿ ≫ 휔￿ ，求 \nω-(ω0+ωC)\n|H(jω)|\n0\n1\n-(ω0-ωC) ω0-ωC ω0+ωC-ω0 ω0\n \nω\n-(ω+ω0)t0\nφ(ω)\n-(ω-ω0)t0\nω0-ω0\n \n（1）该系统的单位冲激响应； \n（2）若激励为푓(푡) = 푆푎(휔￿ 푡) ⋅ cos(휔￿ 푡)，求其通过该理想带通滤波器的输出\n푓￿ (푡)； \n（3）并判断푓(푡)经传输后是否失真。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p9-q六",
+    "year": 2003,
+    "source_pages": [
+      9
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、如下图系统，为信号经过理想冲激串采样后，经过一增益为푇的低通滤波器，\n试证明：在低通滤波器截止频率휔￿ = 휔￿ /2时，对任意푇，푓￿ (푡)与푓(푡)在采样时刻\n始终相等。 \nf(t)\nω\nH(ω)\nωC-ωC\nfp(t)\np(t)\nf0(t)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p9-q七",
+    "year": 2003,
+    "source_pages": [
+      9
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、用 DFT 对模拟信号进行谱分析，设模拟信号푥￿ (푡)的最高频率为 200 Hz，以\nNyquist 频率采样得到时域离散序列푥(푛) = 푥￿ (푛푇)，要求频率分辨率为 10 Hz，\n求序列푥(푛)的离散傅里叶变换푋(푘)各푘点对应的数字频率휔￿ （弧）和模拟频率\n푓￿ (퐻푍)的值。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p10-continuation-01",
+    "year": 2003,
+    "source_pages": [
+      10
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  9  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p10-q八",
+    "year": 2003,
+    "source_pages": [
+      10
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、已知时域离散线性非移变系统的系统函数퐻(푧)： \n퐻(푧) = 1\n(푧 − 푎)(푧 − 푏) \n푎, 푏为常数 \n（1）要求系统稳定，确定푎和푏的取值域 \n（2）要求系统因果、稳定，确定푎和푏的取值域",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2003-p10-q九",
+    "year": 2003,
+    "source_pages": [
+      10
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、电路题（10 年以后没再考过，22 年也没考） \n \n \n \n \n（1）如果푋(푘) = 퐷퐹푇[푥(푛)]，푘 = 0,1, . . .7；푦(푛) = 푥￿ (푛 + 5)￿ ￿ 푅￿ (푛) \n푌(푘) = 퐷퐹푇[푦(푛)]，푘 = 0,1. . .7 \n则|푌(푘)| = |푋(푘)|，푘 = 0,1. . .7 \na）正确   b）不正确 \n \n（2）令푥(푛) = 푎|￿ |，0 < |푎| < 1，−∞ ≤ 푛 ≤ ∞ \n푋(푧) = ￿ 푥(푛)푧￿ ￿\n￿\n￿ ￿ ￿ ￿\n \n则푋(푧)的收敛域为푎 < |푧| < 푎￿ ￿  \na）正确   b）不正确 \n \n（3）设一个稳定퐼퐼푅滤波器的系统函数和脉冲响应分别用퐻(푧)和ℎ(푛)表示 \n令퐻(푘) = 퐻(푧)|\n￿ ￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ ，푘 = 0,1. . . 푁 − 1 \nℎ￿ (푛) = 퐼퐷퐹푇[퐻(푘)] \n则ℎ(푛) = ℎ￿ (푛) \na）正确     b）不正确",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p12-continuation-01",
+    "year": 2004,
+    "source_pages": [
+      12
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  11  页 \n（3）若激励푓(푡)如图所示，系统输出푦(푡)。 \nt\nf(t)\n1\n…\n0 421 3",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p12-q五",
+    "year": 2004,
+    "source_pages": [
+      12
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、已知某离散系统方框图如下：求 \n（1）该系统的系统函数퐻(푧)； \n（2）描述该系统的差分方程； \n（3）分析该系统的因果、稳定性，画出零极点及收敛域； \n（4）求系统稳定时的冲激响应。 \nΣ Σ\ny(n)x(n)\nZ-1\nZ-1\n3/4\n-1 -1",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p12-q六",
+    "year": 2004,
+    "source_pages": [
+      12
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、试问 \n（1）下图系统中信号传输到퐴处实现什么功能？写出该处信号表达式及其频谱。 \n（2）构造一理想滤波器퐻￿ (휔)以实现单边带调制，并求퐻￿ (휔)的冲激响应ℎ￿ (푡)； \n（3）若要对（2）中已调信号푦￿ (푡)实现同步解调，试构造框图，给出滤波器及各\n部分信号频谱计算公式，并求得解调输出푦(푡)及其频谱。 \nΣ H1(ω)\n2\nA y1(t)x(t)=cost+cos10t\ns(t)=cos1000t",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p12-q七",
+    "year": 2004,
+    "source_pages": [
+      12
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、证明 \n（ 1 ） 冲 激 响 应 分 别 为 ℎ￿ (푡) = 푢(푡) ， ℎ￿ (푡) = −2훿(푡) + 5푒￿ ￿ ￿ 푢(푡) ， ℎ￿ (푡) =\n−2푡푒￿ ￿ 푢(푡)的三个 LTI 系统都对푥(푡) = 푐표푠(푡)具有同一响应。 \n（2）问什么信号可以用来完全说明不同的 LTI 系统。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p13-continuation-01",
+    "year": 2004,
+    "source_pages": [
+      13
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  12  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p13-q八",
+    "year": 2004,
+    "source_pages": [
+      13
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、线性时不变系统的输入为：푥(푛) = 푢(푛)，输出푦(푛) = ￿4 ￿\n￿\n￿ ￿\n￿\n− 3 ￿ −\n￿\n￿ ￿\n￿\n￿ 푢(푛) \n（1）求系统的单位冲激响应； \n（2）判断系统的稳定性和因果性，并说明理由。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p13-q九",
+    "year": 2004,
+    "source_pages": [
+      13
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、四阶梳状滤波器的系统函数为： \n퐻(푧) = 퐴 1 + 푧￿ ￿\n1 + 0. 3￿ 푧￿ ￿  \n（1）画出퐻(푧)的零极点分布图； \n（2）求使滤波器的增益等于 2 时的퐴值。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p13-q十",
+    "year": 2004,
+    "source_pages": [
+      13
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、设푥(푡)的最高频率푓￿ 不超过 3 Hz，现用푓￿ = 100 Hz对푥(푡)取样 256 点，得到\n푥(푛) \n（1）对푥(푛)做 DFT 时，所能得到的最大分辨率； \n（2）如果信号下푥(푡)由三个正弦组成，其分辨率分别是푓￿ = 2퐻푍，푓￿ = 2.02퐻푍，\n푓￿ = 2.07퐻푍，即푥(푡) = 푠푖푛(2휋푓￿ 푡) + 푠푖푛(2휋푓￿ 푡) + 푠푖푛(2휋푓￿ 푡)，求取样后的푥(푛)\n的 DFT 简图",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p13-q十一",
+    "year": 2004,
+    "source_pages": [
+      13
+    ],
+    "source_label": "十一",
+    "section_kind": "question_start",
+    "text": "十一、一个 300 点的序列与单位取样长度为 60 点的线性非移变滤波器作线性卷\n积，为提高计算效率，该滤波器用 128 点的 FFT 和 IFFT 实现。 \n若采用重叠相加法，为完成此滤波计算，需调用多少次 FFT 运算和 IFFT 运算。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2004-p13-q十二",
+    "year": 2004,
+    "source_pages": [
+      13
+    ],
+    "source_label": "十二",
+    "section_kind": "question_start",
+    "text": "十二、什么类型的滤波器具有单位取样响应： \nℎ(푛) = 훿(푛) − 푠푖푛(푛휋/3)\n푛휋\n \n并画出该滤波器的频率响应幅度频谱",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p14-continuation-01",
+    "year": 2005,
+    "source_pages": [
+      14
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  13  页 \n2005  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.求∫ 훿(푡) ⋅\n￿ ￿￿ ￿ ￿\n￿\n￿\n￿ ￿ 푑푡的值。 \n \n \n \n2.信号푦(푡) = 푥(3푡)是否线性，是否时变，为什么？ \n \n \n \n3.求푒￿ ￿ ￿ [푢(푡) − 푢(푡 − 2)]的单边拉氏变换퐹(푠)。 \n \n \n \n4.求퐹(푧) =\n￿ ￿\n￿ ￿ ￿ ￿ ￿ ￿ ￿ 在收敛域为1 < |푧| < 3时的原序列푓(푛)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p14-q二",
+    "year": 2005,
+    "source_pages": [
+      14
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、求两信号的卷积 \n푥(푡) = 2훿(푡 − 1) − 3훿(푡 − 2) − 2훿(푡 − 5)，ℎ(푡) = 푢(−2 − 푡)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p14-q三",
+    "year": 2005,
+    "source_pages": [
+      14
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、求图示信号的频谱函数 \nt\nf(t)\n1\n20-1",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p14-q四",
+    "year": 2005,
+    "source_pages": [
+      14
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、已知ℎ(푡)的波形如图所示，求下式的积分值 \n￿ 4푠푖푛 4휔\n휔\n￿ ￿\n￿ ￿\n푒￿ ￿ ￿ ￿￿ ℎ(푡)\n￿ ￿\n￿ ￿\n푒￿ ￿ ￿ ￿ 푑푡￿ 푑휔",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p15-continuation-01",
+    "year": 2005,
+    "source_pages": [
+      15
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  14  页 \nt\nh(t)\n2\n2-2",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p15-q五",
+    "year": 2005,
+    "source_pages": [
+      15
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、对图示系统，输入信号푓(푡) =\n￿ ￿￿ ￿ ￿ ￿ ￿\n￿\n￿ ￿\n，푝(푡) = 푐표푠(휔￿ 푡) + 3 푐표푠(10휔￿ 푡) +\n6 푐표푠(16휔￿ 푡)，ℎ(푡) = ∑ (0.9)￿ 푒￿ ￿ ￿ ￿ ￿￿\n￿ ￿ ￿ ￿ ，求输出信号푦(푡)的傅里叶级数及其复\n系数 \nf(t)\np(t)\nh(t) y(t)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p15-q六",
+    "year": 2005,
+    "source_pages": [
+      15
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、电路题（不考）",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p15-q七",
+    "year": 2005,
+    "source_pages": [
+      15
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、某离散系统可由二阶常系数线性差分方程描述，且已知该系统单位阶跃响应\n序列为푦(푛) = [2￿ + 3(5)￿ + 10]푢(푛). \n（1）求此二阶差分方程； \n（2）若激励为푓(푛) = 3푢(푛) + 3푢(푛 − 7)，求响应푦(푛)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p15-q八",
+    "year": 2005,
+    "source_pages": [
+      15
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、已知一线性系统的传递函数为 \n퐻(푠) = 5푠 + 6\n푠￿ + 5푠￿ + 6푠 \n（1）求该系统的单位冲激响应ℎ(푡)； \n（2）求该系统的频域传递函数퐻(푗휔)； \n（3）粗略画出该系统的频率特性图，并判定其性质为高通、低通、还是带通？ \n（4）若将该系统离散化（以周期푇均匀抽样），写出抽样后系统的传递函数퐻￿(푠)\n和原传递函数퐻(푠)的关系； \n（5）设푇￿ = 0.2，写出该系统的离散传递函数퐻(푧)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p15-q九",
+    "year": 2005,
+    "source_pages": [
+      15
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、已知两个序列： \n푥(푛) = 훿(푛) + 3훿(푛 − 1) + 3훿(푛 − 2) + 2훿(푛 − 3) \nℎ(푛) = 훿(푛) + 훿(푛 − 1) + 훿(푛 − 2) + 훿(푛 − 3) \n若푌(퐾) = 푋(퐾)퐻(퐾)，其中푋(퐾)，퐻(퐾)分别是푥(푛)和ℎ(푛)的 5 点 DFT，对푌(퐾)\n做 IDFT，得到序列푦(푛)，求푦(푛)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p16-continuation-01",
+    "year": 2005,
+    "source_pages": [
+      16
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  15  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p16-q十",
+    "year": 2005,
+    "source_pages": [
+      16
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、对连续时间信号푥￿ (푡)滤波，以出去5푘퐻푧 < 퐹 < 10푘퐻푧的频率成分，푥￿ (푡)中\n的最大频率是20푘퐻푧。滤波是通过采样푥￿ (푡)、滤波彩采样信号，然后用一个理想\n퐷/퐴转换器重构模拟信号来完成的。求可用来避免混叠的最小采样频率，并对该\n最小采样频率求从푥￿ (푡)中滤除5푘퐻푧~10푘퐻푧的理想带阻滤波器的퐻￿ 푒￿ ￿ ￿ 的频率\n响应幅度频谱。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p16-q十一",
+    "year": 2005,
+    "source_pages": [
+      16
+    ],
+    "source_label": "十一",
+    "section_kind": "question_start",
+    "text": "十一、设푥(푛)是一个实因果序列，它的离散时间傅里叶变换为： \n푋￿ 푒￿ ￿ ￿ = 푋￿ ￿ 푒￿ ￿ ￿ + 푗푋￿ ￿ 푒￿ ￿ ￿ \n如果푋￿ ￿ 푒￿ ￿ ￿ = 1 + 퐴 푐표푠 휔，求푥(푛)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2005-p16-q十二",
+    "year": 2005,
+    "source_pages": [
+      16
+    ],
+    "source_label": "十二",
+    "section_kind": "question_start",
+    "text": "十二、一个数字滤波器的系统函数为： \n퐻(푧) = 2\n1 − 0.5푧￿ ￿ − 1\n1 − 0.25푧￿ ￿  \n（1）假设该滤波器用脉冲响应不变法设计，푇￿ = 2，求可作为模拟滤波器的模拟\n滤波器的一个系统函数； \n（2）假设该滤波器用双线性变换法设计，푇￿ = 2，求可作为原型的模拟滤波器的\n一个系统函数；",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p17-continuation-01",
+    "year": 2006,
+    "source_pages": [
+      17
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  16  页 \n2006  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.计算∫ 훿(푡 − 푡￿ ) ⋅ 푢 ￿ 푡 −\n￿ ￿\n￿ ￿ 푑푡\n￿\n￿ ￿ ，(푡￿ < 0)； \n \n \n \n2.计算∫ 훿\n￿\n￿ ￿ (푡￿ − 4)푑푡； \n \n \n \n3.计算：∫ 푒￿ ￿ ￿￿\n￿ ￿ [훿￿(푡) − 훿(푡)]푑푡； \n \n \n \n4.计算：∫ 푒￿ ￿ ￿￿\n￿ ￿ [훿￿(휏) − 훿(휏)]푑휏； \n \n \n \n5.已知푓(푡) ↔ 퐹(휔)，试求푥(푡) = 푡푓(푡/2)对应的傅里叶变换푋(휔)； \n \n \n \n6.已知푓(푡) ↔ 퐹(휔)，试求푥(푡) = 푓(4 − 2푡)对应的傅里叶变换푋(휔)； \n \n \n \n7.已知푓(푡) ↔ 퐹(휔)，试求퐹(휔) = 휔￿ 对应的傅里叶逆变换푓(푡)； \n \n \n \n8.已知푓(푡) ↔ 퐹(휔)，试求퐹(휔) =\n￿\n￿ ￿ 对应的傅里叶逆变换푓(푡)； \n \n \n \n9.已知一信号的拉氏变换为퐹￿ (푠)，求该信号与周期单位抽样信号훿￿ (푡)乘积\n푓(푡) = 푓￿ (푡) ⋅ 훿￿ (푡)的拉氏变换。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p18-continuation-01",
+    "year": 2006,
+    "source_pages": [
+      18
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  17  页 \n10.已知퐹(푧) =\n￿ ￿ ￿\n￿ ￿ ￿ ￿\n￿ ￿\n￿\n(￿ ￿ ￿ )\n，求在\n￿\n￿ < |푧| < 1时对应的原序列； \n \n \n \n11.某系统的系统函数퐻(푠) =\n￿\n￿ (￿ ￿ ￿ ￿ ￿ ￿ )(￿ ￿ ￿ )￿ ￿ ，试确定使系统稳定的푘值范围。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p18-q二",
+    "year": 2006,
+    "source_pages": [
+      18
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知某 LTI 系统的冲激响应ℎ(푡) = 푢(푡 − 1) − 훿(푡 − 2)，试求当其输入激励\n푒(푡) = 푒￿ ￿ 푢(푡)时的零状态输出响应푟(푡)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p18-q三",
+    "year": 2006,
+    "source_pages": [
+      18
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知某 LTI 系统当初始状态푥￿ (0) = 1、激励푒￿ (푡) = 푢(푡)时，其全响应푦￿ (푡) =\n4푒￿ ￿ 푢(푡) + 2푢(푡)；而当初始状态푥￿ (0) = 2、激励푒￿ (푡) = −푢(푡)时，其全响应\n푦￿ (푡) = 2푒￿ ￿ 푢(푡) − 2푢(푡)。试求푦￿ (푡)中的零输入响应푦￿ ￿ ￿(푡)和零状态响应푦￿ ￿ ￿ (푡)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p18-q四",
+    "year": 2006,
+    "source_pages": [
+      18
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、已知푓(푡)如图所示，它对应的傅里叶变换为퐹(휔)，试求： \n（1）퐹(0) \n（2）∫ 퐹(휔)푑휔\n￿\n￿ ￿  \nt0\nf(t)\n4\n2-2",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p18-q五",
+    "year": 2006,
+    "source_pages": [
+      18
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、某系统如图所示： \nh1(t) h3(t)\nh2(t)\nh4(t)\nr(t)e(t)\n-  \n已知ℎ￿ (푡) =\n￿\n￿ ￿ [푆푎(휔￿ (푡))]，퐻￿ (휔) = 푒\n￿ ￿ ￿ ￿ ￿\n￿ ￿ ，ℎ￿ (푡) =\n￿ ￿ ￿\n￿ [푆푎(2휔￿ (푡))]，ℎ￿ (푡) =\n푢(푡)，试求该系统的下列参数： \n（1）퐻￿ (휔)； \n（2）系统函数퐻(휔)； \n（3）系统单位冲激响应ℎ(푡)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p19-continuation-01",
+    "year": 2006,
+    "source_pages": [
+      19
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  18  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p19-q六",
+    "year": 2006,
+    "source_pages": [
+      19
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、电路题（不考）",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p19-q七",
+    "year": 2006,
+    "source_pages": [
+      19
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、一离散系统如图所示： \nΣ z-1 Σ\nz-1\nΣ\n0.20.4\n0.3\n0.20.5\n0.25\nx(n)\ny(n)\n \n试求： \n（1）系统的传递函数； \n（2）描述系统的差分方程； \n（3）系统的单位阶跃函数响应。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p19-q九",
+    "year": 2006,
+    "source_pages": [
+      19
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、一有限长序列为：푥(푛) = 훿(푛) + 2훿(푛 − 5) \n（1）求序列푥(푛)的 10 点离散傅里叶变换 DFT \n（2）若序列푦(푛)的 DFT 为푌(푘) = 푒￿ ￿ ￿ ￿ ￿\n￿ ￿ 푋(푘)，其中푋(푘)是푥(푛)的 10 点 DFT，\n求序列푦(푛) \n（3）若 10 点序列푦(푛)的 DFT 为푌(푘) = 푋(푘)푊(푘)，其中푋(푘)是푥(푛)的 10 点的\nDFT，푊(푘)是푤(푛)的 10 点 DFT，푤(푛) = ￿\n1,0 ≤ 푛 ≤ 6\n0, ，求序列푦(푛)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p19-q十",
+    "year": 2006,
+    "source_pages": [
+      19
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、求如下图所示的푋￿ 푒￿ ￿ ￿ 所对应的序列푥(푛) \nω\nX(ejω)\n1\n2\n4\n3\n4\n 4\n 3\n4\n",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p19-q十一",
+    "year": 2006,
+    "source_pages": [
+      19
+    ],
+    "source_label": "十一",
+    "section_kind": "question_start",
+    "text": "十一、如果一个模拟滤波器的所有极点和零点都在푠左平面内，那么这个模拟滤\n波器具有最小相位，一个数字滤波器的所有极点和零点都在单位圆内，那么这个\n数字滤波器具有最小相位。设模拟滤波器的系统函数为：퐻(푠) = ∑ ￿ ￿\n￿ ￿ ￿ ￿\n￿\n￿ ￿ ￿  \n（1）请用脉冲响应不变法把模拟滤波器퐻(푠)映射为数字滤波器퐻(푧)。请问脉冲",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p20-continuation-01",
+    "year": 2006,
+    "source_pages": [
+      20
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  19  页 \n响应不变法能否保证最小相位模拟滤波器映射为最小相位数字滤波器？为什么？ \n（2）请用双线性变换法把模拟滤波器퐻(푠)映射为数字滤波器퐻(푧)。请问双线性\n变换法能否保证将最小相位模拟滤波器映射为最小相位数字滤波器？为什么？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2006-p20-q十二",
+    "year": 2006,
+    "source_pages": [
+      20
+    ],
+    "source_label": "十二",
+    "section_kind": "question_start",
+    "text": "十二、假设以8푘퐻푧速率对一段长为10푠的语音信号采样，现用一长度为퐿 = 64的\n퐹푇푅滤波器ℎ(푛)对其进行滤波，若采用퐷퐹푇为 1024 点的重叠保留法，那么共需\n多少次퐷퐹푇变换和多少次퐼퐷퐹푇变换来进行卷积？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p21-continuation-01",
+    "year": 2007,
+    "source_pages": [
+      21
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  20  页 \n2007  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.画出函数波形푓(푡) = ∑ 푐표푠[휋푡] [푢(푡 − 2푛) − 푢(푡 − 2푛 − 1)]￿\n￿ ￿ ￿ ； \n \n \n \n2.若信号푥(푛) = 푘，푘为常数，求其离散时间傅里叶变换； \n \n \n \n3.已知푥(푡) = 푐표푠(1000휋푡) ￿ ￿￿ ￿ ￿ ￿ ￿\n￿ ￿ ，对其进行时域抽样； \n \n \n \n4.简述\n￿ ￿ ￿\n(￿ ￿ ￿ )(￿ ￿ ￿ ) ⋅\n￿ ￿ ￿\n￿ ￿ ￿ ￿ ￿ 和\n￿ ￿ ￿\n(￿ ￿ ￿ )(￿ ￿ ￿ ￿ ￿ )的区别； \n \n \n \n5.已知푋(푠) =\n￿\n(￿ ￿ ￿ )(￿ ￿ ￿ )，求−2 < 푅푒[푠] < − 1时的푥(푡)；",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p21-q二",
+    "year": 2007,
+    "source_pages": [
+      21
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知一周期方波信号为푓(푡) = ∑ ￿\n￿ ￿ 푐표푠 ￿ 푛\n￿\n￿ 푡 −\n￿\n￿ ￿￿\n￿ ￿ ￿ (￿ ￿ ￿ ) ，周期为푇 = 12푠，\n푓(푡)经过一种冲激响应为퐻(휔) = ￿1, |휔| < 2rad/푠\n0, 표푡ℎ푒푟푠 的 LTI 系统，求输出信号푦(푡)，\n并计算푓(푡)和푦(푡)的平均功率푃￿ 和푃￿ 。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p21-q三",
+    "year": 2007,
+    "source_pages": [
+      21
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、一周期三角波푥(푡)如图所示： \n（1）试确定其傅里叶级数푎￿ 的表达式； \n（2）若푥(푡)经过一 LTI 系统，该系统可描述为 \n푑￿ 푦(푡)\n푑푡￿ + 4휋 푑푦(푡)\n푑푡 + 4휋￿ 푦(푡) = 4휋￿ 푥(푡) \n若푏￿ 为对应的输出푦(푡)的傅里叶级数，求푏￿ ，푏￿ ￿",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p22-continuation-01",
+    "year": 2007,
+    "source_pages": [
+      22
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  21  页 \nt1-3/4\nx(t)\n1\n1-1\n-1\n-1/4\n1/4\n3/4",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p22-q四",
+    "year": 2007,
+    "source_pages": [
+      22
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、一 LTI 系统的冲击响应ℎ(푡)和激励푓(푡)如下图所示，试确定其输出푦(3)和푦(4)。 \n1\n0 1 2 3 4 t\nf(t)\n-1\n1\n0 1 2 3 4 t\nh(t)\n-1",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p22-q五",
+    "year": 2007,
+    "source_pages": [
+      22
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、图示系统，푥(푡) =\n￿ ￿￿ ￿ (￿ ×￿ ￿ ￿ ￿)\n(￿ ×￿ ￿ ￿ ￿ )￿ ，푇 = 0.5 × 10￿ ￿ 秒， \n序列生成x(t) x(n)xp(t)\nk\np t t kT\n\n\n \n \n（1）计算푥(푡)，푥￿ (푡)，푥(푛)所对应的频谱푋(푗휔)，푋￿ (푗휔)，푋￿ 푒￿ ￿ ￿ ，并画出频谱\n图。 \n（2）∫ 푥(푡)푑푡\n￿\n￿ ￿ 和∑ 푥(푛)￿￿ ￿ ￿ ￿",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p22-q六",
+    "year": 2007,
+    "source_pages": [
+      22
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、已知一离散系统如图所示： \nD D 0.2x(n) y(n)\ng1(n) +\n+\n+\n0.40.5\n+\n\ng2(n)\n+\n+\n \n（1）写出描述该系统的差分方程； \n（2）求解该系统的单位冲激响应。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p23-continuation-01",
+    "year": 2007,
+    "source_pages": [
+      23
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  22  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p23-q七",
+    "year": 2007,
+    "source_pages": [
+      23
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、已知一时间连续系统的微分方程为 \n푦￿￿(푡) + 3푦￿(푡) + 2푦(푡) = 푢￿(푡) + 푢(푡) \n且系统的初始条件为：푦￿(0) = 1，푦(0) = 1，푢(0) = 0 \n（1）写出该系统的传递函数； \n（2）将描述该系统的微分方程转换为状态方程； \n（3）将系统的初始条件转换为状态变量的初始条件。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p23-q八",
+    "year": 2007,
+    "source_pages": [
+      23
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、证明：时间连续的稳定系统经双线性变换后得到的离散系统仍然是稳定系统；\n反之亦真。（设定双线性变换为푠 =\n￿\n￿ ·\n￿ ￿ ￿\n￿ ￿ ￿ ） \n \n \n \n \n（1）已知一个线性时不变系统的单位冲激响应除区间푁￿ < 푛 < 푁￿ 之外皆为零，\n又 已 知 输 入 序 列 푥(푛) 除 区 间 푁￿ < 푛 < 푁￿ 之 外 皆 为 零 ， 则 该 系 统 的 输 出 除\n________区间之外皆为零。 \n \n（2）序列푥(푛)为 100 点有限长的序列，除푧变换푋(푧)在单位圆上至少进行\n________点取样，才能通过同样点数的 IDFT 恢复出原序列。 \n \n（3）若某稳定系统的系统函数在单位圆外有极点，则系统一定是________系统。 \n \n（4）设序列푥(푛) = 푅￿ ￿ ￿ (푛)，ℎ(푛) = 푅￿ ￿ (푛)，푦(푛) = 푥(푛) ○80ℎ(푛)，问푦(푛)在哪\n些点上的值等于푥(푛)和ℎ(푛)线性卷积的结果？答________ \n \n \n（1）用窗函数法设计 FIR 滤波器时，窗函数的长短的形状对滤波器性能产生什\n么样的影响？ \n \n \n \n（2）频谱泄露产生的主要原因是什么？可以用什么方法加以改善？ \n \n \n \n（3）脉冲响应不变法和双线性变换法在频率转换的线性关系方面有什么区别？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p23-q十一",
+    "year": 2007,
+    "source_pages": [
+      23
+    ],
+    "source_label": "十一",
+    "section_kind": "question_start",
+    "text": "十一、请简略推导采用按时间抽取的 2-FFT 算法将 8 点 DFT 计算分解为两个 4\n点 DFT 计算的过程，并画出分解后的算法流图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p24-continuation-01",
+    "year": 2007,
+    "source_pages": [
+      24
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  23  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p24-q十二",
+    "year": 2007,
+    "source_pages": [
+      24
+    ],
+    "source_label": "十二",
+    "section_kind": "question_start",
+    "text": "十二、用频率采样法设计一类线性相位 FIR 滤波器퐻(푧)，采样点数푁 = 20，滤\n波器理想频率响应表示为：퐻￿ ￿ 푒￿ ￿ ￿ = 퐻￿ (휔)푒￿ ￿ (￿ )，其幅度特性如图所示： \n0\n1\nπ/5 3π/10 π ω\nHd(ω)\n \n（1）若频率采样值为퐻(푘) = 퐻￿ (푘)푒￿ ￿ (￿ )，求퐻￿ (푘)和휃(푘)； \n（2）根据频域内插公式写出퐻(푧)的表达式，并用频域采样结构实现。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2007-p24-q十三",
+    "year": 2007,
+    "source_pages": [
+      24
+    ],
+    "source_label": "十三",
+    "section_kind": "question_start",
+    "text": "十三、对一个连续时间信号푥(푡)进行采样，采样频率为8192퐻푍，共采样 500 点，\n得到一有限长序列푥(푛)。 \n（1）通过 DFT 方法来分析序列在800퐻푧频率处的频率特性，应如何做？ \n（2）如果只能进行一次 256 点数值的 FFT 运算，用什么办法能实现信号푥(푛)的\n谱分析？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p25-continuation-01",
+    "year": 2013,
+    "source_pages": [
+      25
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  24  页 \n2013  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.信号푥(푡) = 푒￿ ￿ |￿ |的拉氏变换푋(푠)为________，收敛域为________。 \n \n2.已知某系统的输入输出关系为푦(푡) = 푡￿ 푥(푡) +\n￿ ￿ (￿ )\n￿ ￿ + 3푥(0)，其中푥(0)为系统\n的初始状态，푥(푡)为外部激励，则系统是否为线性系统？是否为时不变系统？ \n \n3.已知信号푥(푡)是带限信号，其频谱函数的截止频率휔￿ = 1500휋푟푎푑/푠，对信号\n푦(푡) = 푥(푡) ⋅ 푥(2푡)进行时域采样，满足采样定理的最大采样间隔푇￿ ￿ ￿ ________。 \n \n4.已知一个线性时不变系统的单位阶跃响应푠(푡) = 푢(푡) − 푢(푡 − 3)，求系统对输\n入푥(푡) =\n￿ ￿￿ ￿\n￿ ￿ 的响应푦(푡) =________。 \n \n5.푥[푛]为实偶的周期信号，푁 = 4，其傅里叶级数为푎￿ ，已知푎￿ = 3，푎￿ = 5，求\n푎￿ ￿ =________，푎￿ ￿ =________，푎￿ ￿ =________。 \n \n \n1.求信号푥(푡) = 푒￿ 的奇、偶分量。 \n \n \n \n2.求信号푥(푡) = 푒￿ ￿ |￿ |的傅里叶变换푋(푗휔)。 \n \n \n \n3.设离散时间 LTI 系统的冲激响应ℎ(푛) = 푎￿ 푢[푛]，试判断系统的因果稳定性。 \n \n \n \n4.已知푋(푠) =\n￿ ￿ ￿ ￿\n￿ ￿ ￿ ￿ ￿ ￿ ￿ ，求不同收敛域下的反拉氏变换푥(푡)； \n \n \n \n \n5.已知푥[푛] = ￿\n￿\n￿ ￿\n￿\n푢[푛] + ￿\n￿\n￿ ￿\n￿\n푢(−푛 − 1)，求푥[푛]的푧变换푋(푧)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-continuation-01",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  25  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-q三",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频\n率。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-q四",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、已知某 LTI 的系统函数퐻(푠) =\n￿ ￿ ￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ ￿ ￿ ￿ ￿ ￿ ，画出系统直接型、级联型、并联型\n的方框图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-q五",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、某离散系统如图所示： \n（1）求出系统函数퐻(푧)，并求出收敛域； \n（2）求出系统的单位脉冲响应； \n（3）写出一个满足稳定、非因果的单位脉冲响应函数。 \nz-1\nz-1\nΣ\nx[n] y[n]\n-1\n5\n2",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-q六",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、离散系统的单位脉冲响应ℎ(푛) = 훿(푛) − 0.98훿(푛 − 6)，求系统函数퐻(푧)，画\n出零极点图和该系统的幅频特性。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-q七",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、某理想低通滤波器的频率特性 \n퐻(푗휔) = ￿1, |휔| < 휔￿\n0, |휔| > 휔￿\n \n输入信号 \n푥(푡) = 푠푖푛 푎 푡\n휋푡  \n（1）求푎 < 휔￿ 时，滤波器的输出； \n（2）求푎 > 휔￿ 时，滤波器的输出； \n（3）哪种情况下有失真？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p26-q八",
+    "year": 2013,
+    "source_pages": [
+      26
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、离散因果 LTI 系统的系统函数퐻(푧)的零极点图如图所示，其中ℎ[0] = 2 \n（1）求系统函数퐻(푧)及收敛域； \n（2）判断是否稳定； \n（3）求单位脉冲响应ℎ(푛)； \n（4）求出系统的差分方程。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p27-continuation-01",
+    "year": 2013,
+    "source_pages": [
+      27
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  26  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p27-q九",
+    "year": 2013,
+    "source_pages": [
+      27
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、已知某푥[푛]的频谱函数푋￿ 푒￿ ￿ ￿ 如图所示，零点插入系统在每个푥[푛]值之间插\n入一个零值，数字理想低通滤波器퐻￿ 푒￿ ￿ ￿ 的截止频率휔￿ =\n￿\n￿ ，相位为零相位，对\n휔[푛]进行周期 N=3 的采样后得到 y(n)，请画出 y(n)的频谱푌￿ 푒￿ ￿ ￿ 其中 \n휔[푛] = ￿\n푔[푛], 푛 = 0, ±3, ±6, ±9\n0, 푛 =  \n \n零值插入 H(ejω) 采样\ny[n]x[n] ω[n]g[n]  \nπ0\nx(ejω)\n-π 1\n2  1\n2  ω",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p27-q十",
+    "year": 2013,
+    "source_pages": [
+      27
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、已知ℎ￿ (푡) =\n￿ ￿￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ 是理想低通滤波器，设计一个系统，从给定的低通滤波\n器获得一个퐻￿ ￿ (푗휔) = ￿1, |휔| > 100휋\n0, |휔| < 100휋的理想高通滤波器，并画出系统示意图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2013-p27-q十一",
+    "year": 2013,
+    "source_pages": [
+      27
+    ],
+    "source_label": "十一",
+    "section_kind": "question_start",
+    "text": "十一、画出푥(푡) = 푠푔푛(푠푖푛 휋 푡)的波形。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p28-continuation-01",
+    "year": 2014,
+    "source_pages": [
+      28
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  27  页 \n2014  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.푥(푡) = 푒￿ ￿ |￿ |的傅里叶变换为________。 \n \n2.已知系统푦[푛] = 푥[푛]{푔[푛] + 푔[푛 − 1]}，若푔[푛] = 1 + (−1)￿ ，则系统是否时变\n系统？________ \n \n3.已知一个连续信号푡푥(푡)的拉氏变换收敛域为푅푒(푠) > −3，则信号푥(푡)的拉氏变\n换收敛域为________。 \n \n4.푥(푡)是一连续周期时间信号，其基波频率为휔￿ ，傅里叶级数푎￿ ，现在已知푦(푡) =\n푥(1 − 푡) + 푥(푡 − 1)，问푦(푡)的基本频率휔￿ 和휔￿ 是什么关系？________；푦(푡)的傅\n里叶级数为푏￿ 和푎￿ 的关系是什么？________。 \n \n5.设푓￿ [푛] = 2￿ {푢[푛] − 푢[푛 − 3]}，푓￿ [푛] = 2훿[푛 + 1] + 5훿[푛 − 1]，则푓￿ [푛]和푓￿ [푛]\n的卷积结果为________。 \n \n6.如果푥(푡)的最高频率휔￿ ，若对푥 ￿\n￿\n￿ ￿ ⋅ 푥 ￿\n￿\n￿ ￿ 采样，则频谱不混叠的最大采样时间\n间隔是________。 \n \n7.已知푥(푛)为一实偶周期信号，푁 = 6，其傅里叶级数为푎￿ ，且푎￿ ￿ = 2，푎￿ = 1，\n∑ 푥(푛) = 2￿\n￿ ￿ ￿ ， ∑ 푥[푛](−1)￿ = 1￿\n￿ ￿ ￿ ， 求 푎￿ ￿ = ________ ， 푎￿ ￿ = ________ ，\n푎￿ ￿ =________，푎￿ =________。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p28-q二",
+    "year": 2014,
+    "source_pages": [
+      28
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知系统푥[푛]的傅里叶变换푋￿ 푒￿ ￿ ￿ 在−휋 ≤ 휔 ≤ 휋的区间上幅频和相频图如\n图，试确定푥[푛]是否是周期的，实信号，偶信号及有限能量的？ \nω0\n[X(ejω)]\n2\nπ-π\n1\n2\n 2\n\n \n  \nω\nθ(ω)\nπ\nπ-π\n-π",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p29-continuation-01",
+    "year": 2014,
+    "source_pages": [
+      29
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  28  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p29-q三",
+    "year": 2014,
+    "source_pages": [
+      29
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、考虑一个理想低通滤波器，其频率响应 \n퐻(푗휔) = ￿\n1, |휔| ≤ 휔￿\n0,  \n（1）如何利用该低通滤波器实现具有相同截止频率휔￿ 的高通滤波器ℎ￿ (푡)？画出\n实现该高通滤波器的框图； \n（2）求该高通滤波器的单位冲激响应ℎ￿ (푡)； \n（3）增大휔￿ 时，ℎ￿ (푡)如何变化？说明原因。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p29-q四",
+    "year": 2014,
+    "source_pages": [
+      29
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、假设关于一个单位冲激响应ℎ(푡)和有理系统函数퐻(푠)的因果稳定的 LTI 系统，\n给出下列信息： \n（1）퐻(1) = 0.2； \n（2）当输入为푢(푡)，输出是绝对可积的； \n（3）当输入为푡 ⋅ 푢(푡)，输出不是绝对可积的； \n（4）信号푓(푡) =\n￿ ￿ ￿ (￿ )\n￿ ￿ ￿ + 2\n￿ ￿ (￿ )\n￿ ￿ + 2ℎ(푡)是有限长的； \n（5）퐻(푠)在无限远点只有一个零点。 \n试确定퐻(푠)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p29-q五",
+    "year": 2014,
+    "source_pages": [
+      29
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、某离散 LTI 系统如图所示： \nz-1\n0.5\ny[n]x[n]\n \n（1）写出系统的差分方程； \n（2）求系统函数퐻(푧)； \n（3）画出퐻(푧)的零极点分布图及收敛域； \n（4）写出系统的单位脉冲响应； \n（5）写出系统的频率响应。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2014-p29-q六",
+    "year": 2014,
+    "source_pages": [
+      29
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、已知 LTI 系统如图所示，求系统的单位冲激响应。其中ℎ￿ (푡) = 푢(푡 − 1)，\nℎ￿ (푡) = 푒￿ ￿ ￿ 푢(푡 − 2)，ℎ￿ (푡) = 푒￿ ￿ 푢(푡)。 \nh1(t) h2(t)\nh3(t)\nx(t) y(t)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p30-continuation-01",
+    "year": 2015,
+    "source_pages": [
+      30
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  29  页 \n2015  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.对模拟信号进行采样，得到的是________信号； \n \n2.已知퐹푇[푥(푛)] = 푋￿푒￿ ￿ ￿，由푥(푛)求出푅푒￿푋￿ 푒￿ ￿ ￿ ￿对应的序列为________； \n \n3.序列푥(푛)的푁点 DFT 是푥(푛)的푧变换在________的푁点等间隔取样； \n \n4.若푋￿ (푛) = 푅￿ (푛)，푋￿ (푛) = 푅￿ (푛)，只有当循环卷积长度퐿 ________的时候，二\n者的循环卷积等于线性卷积； \n \n5.直接计算푁 = 16的 DFT，需要进行________次复数乘法，________次复数加法。\n使用 2FFT 算法，需要________次复数乘法； \n \n6.FFT 是利用________来减小计算量的； \n \n7.数字信号处理的三种基本运算是________、________、________。 \n \n8.FIR 滤波器的单位采样响应ℎ(푛)是偶对称的푁 = 6，ℎ(0) = ℎ(5) = 1.5，ℎ(1) =\nℎ(4) = 2，ℎ(2) = ℎ(3) = 3，其幅度特性有什么特性？________；相位有什么特\n性？________。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p30-q二",
+    "year": 2015,
+    "source_pages": [
+      30
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频\n率。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p30-q三",
+    "year": 2015,
+    "source_pages": [
+      30
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知某 LTI 的系统函数퐻(푠) =\n￿ ￿ ￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ ￿ ￿ ￿ ￿ ￿ ，画出系统直接型、级联型、并联型\n的方框图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p30-q四",
+    "year": 2015,
+    "source_pages": [
+      30
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、某离散系统如图所示： \n（1）求出系统函数퐻(푧)，并求出收敛域； \n（2）求出系统的单位脉冲响应； \n（3）写出一个满足稳定、非因果的单位脉冲响应函数。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p31-continuation-01",
+    "year": 2015,
+    "source_pages": [
+      31
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  30  页 \nz-1\nz-1\nΣ\nx[n] y[n]\n-1\n5\n2",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p31-q五",
+    "year": 2015,
+    "source_pages": [
+      31
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、离散系统的单位脉冲响应ℎ[푛] = 훿(푛) − 0.98훿(푛 − 6)，求系统函数퐻(푧)，画\n出零极点图和该系统的幅频特性。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p31-q六",
+    "year": 2015,
+    "source_pages": [
+      31
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、某理想低通滤波器的频率特性퐻(푗휔) = ￿1, |휔| < 휔￿ ,\n0, |휔| > 휔￿\n，输入信号푥(푡) =\n￿ ￿￿ ￿ ￿\n￿ ￿ 。 \n（1）求푎 < 휔￿ 时，滤波器的输出； \n（2）求푎 > 휔￿ 时，滤波器的输出； \n（3）哪种情况下有失真？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p31-q七",
+    "year": 2015,
+    "source_pages": [
+      31
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、离散因果 LTI 系统的系统函数퐻(푧)的零极点图如图所示，其中ℎ[0] = 2 \n（1）求系统函数퐻(푧)及收敛域； \n（2）判断是否稳定； \n（3）求单位脉冲响应ℎ(푛)； \n（4）求出系统的差分方程。 \n0 Re\nIm\n1 2",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p31-q八",
+    "year": 2015,
+    "source_pages": [
+      31
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、已知某푥[푛]的频谱函数푋￿ 푒￿ ￿ ￿ 如图所示，零点插入系统在每个푥[푛]值之间插\n入一个零值，数字理想低通滤波器퐻￿ 푒￿ ￿ ￿ 的截止频率휔￿ =\n￿\n￿ ，相位 2 为零相位，\n对于휔[푛] = ￿\n푔[푛], 푛 = 0, ±3, ±6, ±9\n0, 푛 =  \n零值插入 H(ejω) 采样\ny[n]x[n] ω[n]g[n]",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p32-continuation-01",
+    "year": 2015,
+    "source_pages": [
+      32
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  31  页 \nπ0\nx(ejω)\n-π 1\n2  1\n2  ω",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p32-q九",
+    "year": 2015,
+    "source_pages": [
+      32
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、通知ℎ(푡) =\n￿ ￿￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ 是理想低通滤波器，设计一个系统，从给定的低通滤波器\n获得一个퐻￿ ￿ (푗휔) = ￿1, |휔| > 100휋\n0, |휔| < 100휋的理想高通滤波器，并画出系统示意图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2015-p32-q十",
+    "year": 2015,
+    "source_pages": [
+      32
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、画出푥(푡) = 푠푔푛(푠푖푛 휋 푡)的波形。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p33-continuation-01",
+    "year": 2016,
+    "source_pages": [
+      33
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  32  页 \n2016  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.已知푦(푡) = (2 + 푠푖푛 푡)푥(푡)，判断线性、因果性、时不变性； \n \n \n \n2.系统如图所示，求푓(푛) = 푓￿ (푛) ∗ 푓￿ (푛)； \nn2-2\nf1(n)\n1\n1-1\n1 111\n0 n2\nf2(n)\n1\n1\n-1\n1\n0\n-1\n3\n \n \n \n \n3.已知푓(푡) = 푒￿ |￿ | 푐표푠(2푡)，求퐹(휔)； \n \n \n \n4.已知푓(푡) = [1 − (1 − 푡)푒￿ ￿ ￿ ]푢(푡)，求퐹(푠)； \n \n \n \n5.已知퐹(휔) = 휋[(휔 + 2)푢(휔 + 2) − 2휔푢(휔) + (휔 − 2)푢(휔 − 2)]，求푓(푡)，并画\n出푓(푡)、퐹(휔)的波形。 \n \n \n \n \n1.说明퐹푇，퐿푇，푍푇的关系； \n \n \n \n2.说明时分复用工作原理并举例。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-continuation-01",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  33  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-q三",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知系统푓￿ (푡) = 3푘 푐표푠(휔￿ 푡)的零状态输出为푦￿ (푡) = 5푘푐표푠 ￿휔￿ 푡 −\n￿\n￿ ￿，试求\n푓￿ (푡) = 2푘 푠푖푛(휔￿ 푡) + 0.5푘 푠푖푛(2휔￿ 푡)的输出푦￿ (푡)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-q四",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、已知푓(푡) = 푓(푡 + 푇)，푓(푡) = ￿\n−퐴, [−푇/2, −푇/4]\n0, [−푇/4, 푇/4]\n−퐴, [푇/4, 푇/2]\n \n1.画出푓(푡)在￿−\n￿ ￿\n￿ ,\n￿ ￿\n￿ ￿的波形； \n2.求出三角级数，并说明其特点； \n3.设计一个滤波器，使五次谐波可以通过。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-q五",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、已知 \n푦￿ (푡) + 푎￿ 푦￿(푡) + 푎￿ 푦(푡) = 푏￿ 푓￿(푡) + 푏￿ 푓(푡) \n1.画出框图； \n2.求퐻(푠)； \n3.当푎￿ 、푎￿ 分别为何值时系统稳定？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-q六",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、已知푓(푡) = 푆푎(2푡)，用훿￿ (푡) = ∑ 훿(푡 − 푛푇￿ )￿\n￿ ￿ 进行取样 \n1.求麦奎斯特频率； \n2.如果휔￿ = 6휔￿ ，求푓￿ (푡) = 푓(푡) ⋅ 훿￿ (푡)，并画出波形； \n3.若퐹￿ (휔) = 퐹[푓￿ (푡)]，画出其频谱图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-q七",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、DSP 题目 \n1.푇[푢(푛) = 푔(푛)]，那么푥(푛) = (푛 + 1)푅￿ (푛)，则푦(푛) =? \n2.已知푥(푛) = 푅￿ (푛) \n（1）求푋￿ (푛)； \n（2）푋￿ (푛)￿ 푅￿ (푛)。 \n3.已知푥(푛) = 훿(푛) + 훿(푛 − 1) + 훿(푛 − 2) + 훿(푛 − 3)，푋(푘)是푥(푛)的 6 点的 DFT，\n若푌(푘) = 푋(2푘)，求푌(푘)的三点 DFT 反变换푦(푛)的值。 \n4.若푥(푛) = 2 + 2 푐표푠 ￿\n￿ ￿ ￿\n￿ ￿ ，设푋(푘)是푥(푛)的푁点 DFT，求푋(푘)。 \n5.栅栏效应是什么？简述减小方法。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p34-q八",
+    "year": 2016,
+    "source_pages": [
+      34
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、푁点푥￿ (푛)，푥￿ (푛)，用一次푁点 DFT，其中푥￿ (푛)，푥￿ (푛)各自的푁点 DFT 的\n值为푋￿ (푘)和푋￿ (푘)，应如何设计？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p35-continuation-01",
+    "year": 2016,
+    "source_pages": [
+      35
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  34  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2016-p35-q九",
+    "year": 2016,
+    "source_pages": [
+      35
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、已知 \n￿퐻￿ ￿ 푒￿ ￿ ￿ ￿ = ￿ 1, 휋\n2 < |휔| < 3휋\n2\n0,\n \n用푁 = 15设计一类 FIR \n1.求퐻(푘)； \n2.利用푁点퐻(푘)，求퐻(푧)； \n3.画出频域采样型结构。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p36-continuation-01",
+    "year": 2017,
+    "source_pages": [
+      36
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  35  页 \n2017  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.信号푓(푡)的波形如图，求\n￿\n￿ ￿ 푓(−2푡 + 1)푢(푡)的图形； \n6\n-2 0 t\nf(t)\n \n \n \n \n2.试判断下列各方程描述的系统的线性、时不变性、因果性。 \n푦(푛) = ∑ 푥(푚)￿\n￿ ￿ ￿ ；푦(푡) =\n￿\n￿ ￿ 푓(푡)；푦(푡) = 푚푎푥(푓￿ (푡), 푓￿ (푡), 푓￿ (푡). . . ) \n \n \n \n3.求单边拉普拉斯变换퐹(푆) =\n￿ ￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ ￿ ￿ 的原函数； \n \n \n \n4.已知冲激序列푦(푡) = ∑ 훿(푡 − 푛푇)￿\n￿ ￿ ￿ ￿ ，求三角函数形式的傅里叶级数； \n \n \n \n5.已知푓￿ (푡)为周期矩形脉冲信号，若푓￿ (푡)的矩形宽度휏 = 1휇푠，周期为2휇푠，幅度\n为 1，试问该信号的谱线间隔是多少，带宽是多少？ \n \n \n \n \n1.在信号与系统里面，拉氏变换和푧变换的对应关系是怎样的？ \n \n \n2.从频谱上看 DSB、SSB 的主要区别是什么？请阐述。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p37-continuation-01",
+    "year": 2017,
+    "source_pages": [
+      37
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  36  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p37-q三",
+    "year": 2017,
+    "source_pages": [
+      37
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知푓￿ (푡)和푓￿ (푡)的图形如下图所示，画出푓￿ (푡) ∗ 푓￿ (푡)的图像。 \nt\nf1(t)\n1\n1-1 t\nf2(t)\n1\n1-1",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p37-q四",
+    "year": 2017,
+    "source_pages": [
+      37
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、已知某因果系统ℎ(푡)的输入信号为푓(푡) = 1，0 ≤ 푡 ≤ 2，而在푡 < 0和푡 > 2时\n全为零；输出信号푦(푡) = 푠푖푛 휋 푡，0 < 푡 < 1，而在푡 < 0和푡 > 1时全为零，求ℎ(푡)\n并画出部分波形；",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p37-q五",
+    "year": 2017,
+    "source_pages": [
+      37
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、已知一因果系统的푠域模拟图如图，求出下列各问题： \nF(s)\nΣ s-1 s-1 Σ\nY(s)3\n-3\n-2\n1\n \n1.求系统函数퐻(푠)，单位冲激函数ℎ(푡)，判断系统的稳定性； \n2.若푓(푡) = 푒￿ ￿ ￿ 푢(푡)，求푦(푡)，푡 > 0。（若给出初始状态需求出零输入响应）",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p37-q六",
+    "year": 2017,
+    "source_pages": [
+      37
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、通信调制有关题目，画出设计框图。 \n \n \n \n \n1.已知一个有限长序列푥(푛) = 훿(푛) + 2훿(푛 − 5)； \n（1）若序列푦(푛)的 10 点离散傅里叶变换为푌(푘) = 푊￿ ￿\n￿ ￿ 푋(푘)，求序列푦(푛)； \n（2）若序列푚(푛)的 10 点离散傅里叶变为푀(푘) = 푋(푘)푌(푘)，求序列푚(푛)。 \n \n \n \n2.已知푥(푛) = {1,2,3, }，푘 = 0,1,2,3，ℎ(푛) = {1,0,1, −1,0; 푘 = 0,1,2,3,4}，求푥(푛)和\nℎ(푛)的点循环卷积；",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p38-continuation-01",
+    "year": 2017,
+    "source_pages": [
+      38
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  37  页 \n3.一频谱分信号处理器，抽样点数必须为 2 的整数幂，假定没有任何特殊数据处\n理措施，要求频率分辨率퐹￿ ≤ 10퐻푍如果采时间间隔为0.1푚푠，试确定 \n（1）最小记录时间； \n（2）所允许处理的最高频率； \n（3）在一个记录中的最少点数。 \n \n \n \n4.实现一个 10000 点的序列与一个 100 点长的 FIR 单位脉冲响应的线性卷积，要\n求利用重叠相加法并通过 256 点 FFT 和 IFFT 来实现，问至少需要多少次 FFT 和\nIFFT？ \n \n \n \n5.画出 8 点按时间抽样的基-2FFT 算法的流程运动图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p38-q八",
+    "year": 2017,
+    "source_pages": [
+      38
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、用矩形窗设计一个低通滤波器，已知 \n퐻￿ ￿ 푒￿ ￿ ￿ = ￿푒￿ ￿ ￿ ￿ , 0 ≤ |휔| ≤ 휔￿\n0, 휔￿ < |휔| ≤ 휋  \n1.求ℎ(푛)的表达式，确定푎与푁的关系； \n2.有几种类型？分别属于哪一种线性相位滤波器？ \n3.若该用余弦窗设计，求出ℎ(푛)的表达式。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p38-q九",
+    "year": 2017,
+    "source_pages": [
+      38
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、设计低通数字滤波器，要求频次低于0.2휋푟푎푑时，容许幅度误差在2dB以内；\n要求频率0.3휋到휋之间的阻带最大衰减大于15dB，计算下列参数（只要求写出表\n达式，不用计算）： \n1.取푇 = 1 s，用双线性变换法计算相应低通的技术指标훺￿ ，훺￿ ； \n2.计算阶数푁.",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2017-p38-q十",
+    "year": 2017,
+    "source_pages": [
+      38
+    ],
+    "source_label": "十",
+    "section_kind": "question_start",
+    "text": "十、某因果线性时不变系统，其输入푥(푛)和输出푦(푛)满足差分方程： \n푦(푛) = 푦(푛 − 1) + 푦(푛 − 2) + 푥(푛 − 1) \n1.求系统函数，画出零极图； \n2.求系统的单位样值响应； \n3.判断系统是否稳定，若稳定，求一个满足该方程的稳定的单位样值响应。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p39-continuation-01",
+    "year": 2019,
+    "source_pages": [
+      39
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  38  页 \n2019  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.计算∫ 훿\n￿\n￿ ￿ ￿\n￿\n￿ ￿ (푡 − 1)푑푡的值； \n \n \n \n2.已知퐹(푗휔) =\n￿\n￿ ￿ ￿ (￿ ￿ ￿ )，求对应的푓(푡)； \n \n \n \n3.设푥(푛) = 푛푥(푛 − 1) + 푥(푛 − 2)，判断该系统是否线性、时变、因果。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p39-q二",
+    "year": 2019,
+    "source_pages": [
+      39
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知푓￿ (푛)和푓￿ (푛)波形如图所示，求푓￿ (푛)和푓￿ (푛)的卷积。 \nn2-2\nf1(n)\n1\n1-1\n1 111\n0 n2\nf2(n)\n2\n1-1\n-1\n2\n0\n-1\n3",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p39-q三",
+    "year": 2019,
+    "source_pages": [
+      39
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、简述栅栏效应的原因及解决方法。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p39-q四",
+    "year": 2019,
+    "source_pages": [
+      39
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、设푥(푡) = 푥(푡 + 푇) \n푥(푡) = ￿\n푀, −0.5푇 ≤ 푡 < −0.25푇\n0, −0.25푇 ≤ 푡 < 0\n2푀, 0 ≤ 푡 < 0.25푇\n푀, 0.25푇 ≤ 푡 < 0.5푇\n \n1.画出−1.5푇 ≤ 푥 ≤ 1.5푇的图像； \n2.求푥(푡)的傅里叶级数； \n3.设计一个滤波器，仅允许五次以下谐波通过。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p40-continuation-01",
+    "year": 2019,
+    "source_pages": [
+      40
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  39  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p40-q五",
+    "year": 2019,
+    "source_pages": [
+      40
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、设计 FIR 滤波器，퐻(푧) = 1 − 2푎 푐표푠 휃 푧￿ ￿ + 푎￿ 푧￿ ￿  \n1.求零极点； \n2.画出直接型； \n3.푎为何值时，满足线性相位。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p40-q六",
+    "year": 2019,
+    "source_pages": [
+      40
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、已知퐻(푗휔)的幅度相位图如图所示，设输入푓(푡) = 2 + 2 푐표푠 푡 + 4 푐표푠 2 푡，求\n该输入通过该系统的输出。 \nω\n|H(jω)|\n2\n2-2\nπ\n-π",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2019-p40-q七",
+    "year": 2019,
+    "source_pages": [
+      40
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、已知푓(푡) = 푆푎(2푡)，훿￿ (푡) = ∑ 훿(푡 − 푛푇￿ )￿ ￿\n￿ ￿ ￿ ￿ ： \n1.求奈奎斯特频率； \n2.若휔￿ = 6휔￿ ，求푓￿ (푡) = 푓(푡)훿￿ (푡)，并画波形； \n3.设퐹￿ (푗휔)是푓￿ (푡)的傅里叶变换，画出푓￿ (푡)的频谱图； \n4.用一采样保持器使其在输出端恢复原信号。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2020-p41-continuation-01",
+    "year": 2020,
+    "source_pages": [
+      41
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  40  页 \n2020  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.计算 256 点的按时间抽取基-2FFT，在每一级有________个蝶形运算。 \n \n2.序列实部的傅里叶变换等于傅里叶变换的________分量； \n \n3.一个线性时不变离散系统稳定的充要条件是系统函数的收敛域包含________； \n \n4.已知频带宽度有限信号푥(푡)，푦(푡)的最高频率分别为푓￿ 和푓￿ ，其中푓￿ < 푓￿ ，则对\n信号2푥(푡) + 5푦(푡)进行无失真抽样频率为________； \n \n5.直接计算푁点 DFT 需要进行________次复数乘法运算。 \n \n \n1.什么是栅栏效应？ \n \n \n \n2.IIR 滤波器的级联型和并联型结构特点； \n \n \n \n3.什么是多路复用。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2020-p41-q三",
+    "year": 2020,
+    "source_pages": [
+      41
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知푥[푛] = 4훿[푛] + 7훿[푛 − 1] + 3훿[푛 − 2] + 훿[푛 − 3] + 2훿[푛 − 4]，其 6 点\nDFT 是푋(푘)， 푌(푘) = 푋(3푘) (푘 = 0,1)，求푌(푘)的 2 点 IDFT。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2020-p41-q四",
+    "year": 2020,
+    "source_pages": [
+      41
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、设 LTI 系统的频率响应为퐻￿ 푒￿ ￿ ￿ =\n￿ ￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ ￿ .￿ ￿ ￿ ￿ ￿ ￿ ，输入信号为푥[푛] = 푐표푠 ￿\n￿ ￿\n￿ ￿ ，\n求系统的输出信号。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2020-p41-q五",
+    "year": 2020,
+    "source_pages": [
+      41
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、已知序列푥[푛] = 4훿[푛] + 3훿[푛 − 1] + 2훿[푛 − 2] + 훿[푛 − 3]，其 6 点离散傅里\n叶变换（DFT）用푋(푘)表示，试解下列问题： \n1.若序列푦[푛]的长度为 6，其 6 点离散傅里叶变换为푌(푘) = 푊￿\n￿ ￿ 푋(푘)，求푦[푛]； \n2.求푥[푛] ∗ 푥[푛]；",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p43-continuation-01",
+    "year": 2021,
+    "source_pages": [
+      43
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  42  页 \n2021  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.信号푦(푡) = [1 + 푡￿ 푥(푡)] 푠푖푛 푡,判断其线性、时变、因果性； \n \n2.信号푓(푡)如图所示,画出푓(1 − 0.5푡)和\n￿ ￿ (￿ )\n￿ ￿ 的波形； \nt\nf(t)\n1\n10\n \n \n3.信号푓(푡) = 푡 푠푖푛 푡，ℎ(푡) = 훿￿(푡)，求푦(푡) = 푓(푡) ∗ ℎ(푡)的表达式； \n \n4.已知푓￿ (푡)和푓￿ (푡)的波形如图所示,求푓￿ (푡)和푓￿ (푡)的卷积； \nn2-2\nf1(n)\n1\n1-1\n1 111\n0 n2\nf2(n)\n2\n1-1\n-1\n2\n0\n-1\n3\n \n \n5.求信号−푒￿ (￿ ￿ ￿ )푢(−푡 + 1)的拉氏变换和收敛域。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p43-q二",
+    "year": 2021,
+    "source_pages": [
+      43
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知信号푥(푡) = 10 푐표푠(20휋푡) 푐표푠(200휋푡),抽样频率푓￿ = 250Hz: \n1.求抽样信号푥￿ (푡)的频谱； \n2.要无失真恢复푥(푡),试求出对푥￿ (푡)采用的低通滤波器的截止频率。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p43-q三",
+    "year": 2021,
+    "source_pages": [
+      43
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、某线性时不变系统对激励信号푓(푡) = 푐표푠 휀 (푡)的零状态响应푦￿ ￿ (푡)如图所示,\n试求该系统的冲激响应ℎ(푡)。 \nt\nyzs(t)\n1 20\n1",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p44-continuation-01",
+    "year": 2021,
+    "source_pages": [
+      44
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  43  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p44-q四",
+    "year": 2021,
+    "source_pages": [
+      44
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、如图示系统,图中퐾 > 0,若系统具有푦(푡) = 2푥(푡)的特性,求: \n1.퐻￿ (푠)； \n2.若使퐻￿ (푠)是稳定系统的系统函数,求퐾的取值范围。 \nH2(S)\n1\n3S  -K ΣΣX(S) Y(S)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p44-q五",
+    "year": 2021,
+    "source_pages": [
+      44
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、已知푓(푡) = ∑￿ ￿ ￿ ￿￿ 푒jnt，퐹(휔) = |퐹(휔)|푒￿ ￿ (￿ ),计算휑(휔)，퐹(휔),∫￿ ￿\n￿\n푓(푡)푑푡",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p44-q六",
+    "year": 2021,
+    "source_pages": [
+      44
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、（AM 调制）已知离散时间信号푥(푛),其傅里叶变换푋￿ 푒￿ ￿ ￿ 如图（a）所示,该\n信号被一个正弦序列调制,如图（b）所示： \nx(n) y(n)\ncos(ωcn)\n \n（a） \n1\nX(ejω)\n2ππ-2π ω\n… …\nω0π-ω0\n \n（b） \nH(ejω)y(n)\nˆx n\ncos(ωcn+θc)\n \n（c） \n1.写出푦(푛)的傅里叶变换푌￿ 푒￿ ￿ ￿ ，并画出其频谱图； \n2.图（c）是一个解调系统，其中 \n퐻(푒￿ ￿ ) = ￿\n퐺 |휔| < 휔cp\n0    \n若使푥￿ (푛) = 푥(푛)，G 应取何值？ \n3.为保证从푦(푛)中恢复出푥(푛)，휔￿ 和휔cp应满足什么关系？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p45-continuation-01",
+    "year": 2021,
+    "source_pages": [
+      45
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  44  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p45-q七",
+    "year": 2021,
+    "source_pages": [
+      45
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、DFT 变换 \n1．已知푥(푛) = (푛 + 1)푅￿ (푛)，X（k）是 x（n）的 6 点 DFT，求 X（k）； \n2．又已知 h（n）＝｛1,1,1,1｝，，Y（k）＝X（k）∙ H(K)R￿ ￿ (K)，求 y（n）= IDFT(Y(K)) \n3. 已 知 푥(푛) = 푎￿ 푅￿ (푛), 푥(푛) 的 푧 变 换 在 单 位 圆 上 采 样 6 个 点 , 푋(푘) =\n푋(푧)|￿ ￿ ￿ ￿ ￿ ￿\n￿ ￿ ￿ 푘 = 0,1,2,3,4,5,求其 6 点 DFT 反变换푥(푛)； \n4.什么是频谱泄露,怎么抑制?",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p45-q八",
+    "year": 2021,
+    "source_pages": [
+      45
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、采用双线性变换法设计一个巴特沃斯低通滤波器,技术指标为:通带下限频率\n为푓￿ 퐻푧 ,阻带上限为푓￿ 퐻푧 ,通带最大衰减为훼￿ 푑퐵 ,阻带最小衰减为훼￿ 푑퐵 ,取样周期\n为푇,试写出设计的具体步骤。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2021-p45-q九",
+    "year": 2021,
+    "source_pages": [
+      45
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、FIR 滤波器。给出퐻(푧) = 1 − 2푎cos휃푧￿ ￿ + 푎￿ 푧￿ ￿  \n1.求零极点； \n2.画出直接型； \n3.푎何值时,满足线性相位； \n4.若有一窄带干扰,主频率分量等于\n￿\n￿ 弧度,要滤去这个干扰,滤波器的频率特性该\n如何设计？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p46-continuation-01",
+    "year": 2022,
+    "source_pages": [
+      46
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  45  页 \n2022  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n5 20  \n1、对于以输入输出关系为푓(푡) = ∫ 푥(휏 + 2) + 푥(휏) + 푥(휏 − 2)\n￿ ￿\n￿ ￿ 푑휏所描述的系统，\n试判断其线性、时不变性、因果性和记忆性。 \n \n \n \n2、求信号푓(푡) =\nd[￿ ￿￿ (￿ ￿ )⋅￿ ￿ ￿ ￿ ⋅￿ (￿ )]\nd￿ 的傅里叶变换。 \n \n \n \n3、已知拉氏变换퐹(푠) =\n￿ ￿ ￿ ￿ ￿ ￿ ￿ ￿ ￿\n￿ (￿ ￿ ￿ )￿ ，−2 < Re[푠] < 0，求其对应的时域信号푓(푡)。 \n \n \n \n4、已知信号푓(푡) = 푒￿ ￿ ￿ 푢(푡)，其经过周期为 T 的理想采样信号采样后得到푓￿ (푡)，\n求采样后信号的拉氏变换퐹￿ (푠)。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p46-q二",
+    "year": 2022,
+    "source_pages": [
+      46
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、合成诸如三角波、矩形波等连续信号波形时，不同频率的谐波叠加会在跳变\n点处产生过冲现象，请解释这一现象及其原因。（10 分）",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p46-q三",
+    "year": 2022,
+    "source_pages": [
+      46
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知周期函数在一个周期内 \n푓(푡) =\n⎩\n⎪\n⎨\n⎪\n⎧− 퐴\n4 − 푇\n2 < 푡 < − 푇\n8\n3퐴\n4 − 푇\n8 < 푡 < 푇\n8\n− 퐴\n4\n푇\n8 < 푡 < 푇\n2\n  \n周期为 T，试回答下列问题 \n（1）画出−2푇 ≪ 푡 ≪ 2푇 区间内푓(푡)的波形； \n（2）写出푓(푡)的三角函数形式的傅里叶级数，并说明其特点； \n（3）画出其单边幅度谱，并写出其幅频响应首次为 0 的谐波次数。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p47-continuation-01",
+    "year": 2022,
+    "source_pages": [
+      47
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  46  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p47-q四",
+    "year": 2022,
+    "source_pages": [
+      47
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、已知描述连续时间 LTI 系统的微分方程为 \nd￿ 푦(푡)\nd푡￿ + 2 d￿ 푦(푡)\nd푡￿ + 5 d푦(푡)\nd푡 = 푓(푡) \n试回答下列问题： \n（1）写出该系统的系统函数퐻(푠)； \n（2）求该系统的单位冲激响应ℎ(푡)； \n（3）判断系统的频率响应퐻(푗휔)是否存在，如果存在请写出其表达式。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p47-q五",
+    "year": 2022,
+    "source_pages": [
+      47
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、试回答下列各题，写出解答过程，每小题 10 分，共 30 分 \n1、一连续时间信号处理系统如下图所示，其中푥(푡) = 2cos(휋푡) + cos(2휋푡)，\nℎ(푡) =\n￿ ￿￿ ￿ (￿ ￿ ￿ ￿ ￿ ￿ )\n￿ ￿ ￿ ， \nh(t) y(t)x(t) xc(t)\ncos(2000 )t  \n试求： \n（1）푥(푡)和ℎ(푡)的傅里叶变换푋(푗휔)和퐻(푗휔)； \n（2）系统的输出푦(푡)； \n（3）构造一个系统，使输入푦(푡)时输出为푥(푡)。 \n \n \n \n2、已知信号푥(푡) = 2 + ￿ cos(푘휔￿ 푡)\n￿\n￿ ￿ ￿  ，现对其进行采样，试回答以下问题： \n（1）求出对该信号采样的奈奎斯特频率； \n（2）当휔￿ =\n￿\n￿ 时，采样周期为 1.2s，求采样后信号的频谱函数； \n（3）当휔￿ =\n￿\n￿ 时，采样周期为 0.5s，求采样后信号的频谱函数。 \n \n \n \n3、现有一长度为 N 的序列푥[푛]，试用一次\n￿\n￿ 点的 FFT 计算其 N 点 DFT，写出其\n计算过程。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p47-q六",
+    "year": 2022,
+    "source_pages": [
+      47
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、利用双线性变换法设计二阶巴特沃斯低通滤波器，已知二阶巴特沃斯归一化\n传输函数为퐻(푝) =\n￿\n￿ ￿ ￿ √￿ ￿ ￿ ￿ ，푁 = 2，휔￿ = 0.5휋，푇 = 2，试求： \n（1）훺￿  \n（2）퐻￿ (푠) \n（3）퐻(푧)",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p48-continuation-01",
+    "year": 2022,
+    "source_pages": [
+      48
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  47  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p48-q七",
+    "year": 2022,
+    "source_pages": [
+      48
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、一连续信号푥(푡)，经过 T 周期采样与 A/D 转换后得到离散信号푥(푛)，再通过\n一理想低通滤波器ℎ(푛)，其截止频率为휔￿ =\n￿\n￿ ，得到信号푥￿ (푛)，最后 D／A 转\n换得到信号푦￿ (푡)。 \nA/D h(n) D/A ya(t)x(t) x1(n)x(n)\nT  \n1\n-1 10\nx(jf)\nf(kHz)\n \n（1）当푇 = 0.05푚푠时，画出푦￿ (푡)的频谱图； \n（2）当푇 = 0.25푚푠时，画出푦￿ (푡)的频谱图。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p48-q八",
+    "year": 2022,
+    "source_pages": [
+      48
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、一离散时间 LTI 系统流图如下图所示 \nx(n) y(n)\n-1\nZ-N\n \n试求： \n（1）该系统的系统函数퐻(푧)； \n（2）当푁 = 8时，画出该系统的零极点图及幅频响应曲线。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2022-p48-q九",
+    "year": 2022,
+    "source_pages": [
+      48
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、利用窗函数法设计数字带阻滤波器，滤波器技术指标如下： \n푓￿ ￿ = 2.8푘퐻푧 푓￿ ￿ = 5.8푘퐻푧， \n푓￿ ￿ = 2.2푘퐻푧 푓￿ ￿ = 6.4푘퐻푧， \n        푓￿ = 20푘퐻푧 \n采用海明窗进行设计，试求： \n（1）滤波器的数字指标휔￿ ￿ 、휔￿ ￿ 、휔￿ ￿ 、휔￿ ￿ ； \n（2）求出滤波器阶数 N，写出휃(휔)的表达式； \n（3）写出ℎ(푛)的表达式。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2023-p50-continuation-01",
+    "year": 2023,
+    "source_pages": [
+      50
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  49  页 \n已知某周期信号푓(푡) = 푓(푡 + 푇)，其主值区间信号 \n푓￿ (푡) =\n⎩\n⎪\n⎨\n⎪\n⎧−2퐴 , ￿− 푇\n2 , − 푇\n4￿\n0 , ￿− 푇\n4 , 푇\n4￿\n2퐴 , ￿푇\n4 , 푇\n2￿\n \n(1)画푓(푡)在￿−\n￿ ￿\n￿ ,\n￿ ￿\n￿ ￿ 的波形 \n(2)求该周期信号的傅里叶级数并说明特点 \n(3)设计一个理想滤波器，给出主要参数，使得该周期信号五次谐波以内信号成\n分通过，其他频率成分截止。 \n \n \n \n已知某 LTI 系统的零极点分布为零点푍 = 0，极点푃 = −1 ± √￿\n￿ ，若该系统\n冲激响应初始值ℎ(0￿ ) = 2，激励信号푥(푡) = sin √￿\n￿ 푡 ⋅ 푢(푡)，求稳态响应 \n \n \n \n知某 LTI 系统方程푦″(푡) + 5푦′(푡) + 6푦(푡) = 푓′(푡) + 푓(푡) \n(1)求系统函数퐻(푠)，画出零极点图。 \n(2)求系统频响，几何法绘制幅频响应|퐻(푗휔)|曲线，判断是什么类型滤波器？ \n(3)若初始条件 푦(0￿ ) = 0，푦′(0￿ ) = 2，푦(푡) = (푒￿ ￿ + 푒￿ ￿ ￿ − 푒￿ ￿ ￿ )푢(푡)，求激    \n励푓(푡)。 \n(4)画系统的简化框图。 \n \n \n \n已知信号푓(푡) = 퐴sin(휔￿ 푡)，对其进行半波整流，得到푓￿ (푡) \n(1)给出푓(푡) → 푓￿ (푡) 的计算模型参数并绘制波形。 \n(2)求푓￿ (푡)的傅里叶变换。 \n(3)若对原信号푓(푡)进行采样传输，满足采样定理要求，试给出合理的采样频率\n和采样周期。 \n \n \n \nDSP  \n1. 푥(푛) = ￿\n￿\n￿ ￿\n￿\n푢(푛)，系统的输出为푔(푛)，求系统单位脉冲ℎ(푛)。 \n \n \n \n2.对푥￿ (푡) = cos 100휋푡进行理想采样，得到푥(푛)，画出以下采样频率下的序列傅\n里叶变换푋￿ 푒￿ ￿ ￿ 在휔 ∈ [0,2휋]内的示意图。 \n(1)푓￿ = 100Hz",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2023-p51-continuation-01",
+    "year": 2023,
+    "source_pages": [
+      51
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  50  页 \n(2)푓￿ = 150Hz \n \n \n \n3.푥(푛) = 푛푅￿ (푛), 푋(푘)是푥(푛)的 10 点 DFT，设序列푦(푛)的 10 点 DFT 为푌(푘)，\n假设有푌(푘) = 푋(푘) cos ￿\n￿ ￿\n￿ 푘￿ ，求푦(푛)。 \n \n \n \n4.对于 80 点长序列푥(푛)，0 ≤ 푛 ≤ 79，以及长度为 3 的序列ℎ(푛)，0 ≤ 푛 ≤ 2，\n用重叠保留法计算线性卷积，设每段长度为 5，且长度包含重叠保留部分（重\n叠保留部分长度为 2） \n(1)计算出全部的线性卷积结果，需要多少段？ \n(2)写出首段和末段的内容（用푥(푛)表示，푛中填序号） \n \n \n \n5.已知序列푥(푛) = (푛 + 1)푅￿ (푛)，利用基 2-DIT-FFT 算法，画出푥(푛)的 8 点离\n散 FT 的蝶形运算流图，输入序列的值需标在图中。  \n \n \n \n设某 LSTI 系统的差分方程푦(푛) = 푥(푛) − 푥(푛 − 2)，试求 \n(1)该系统函数퐻(푧)和单位脉冲响应ℎ(푛)。 \n(2)判断系统是否因果性和稳定性。  \n(3)画出系统幅频响应和相频响应，该系统是否具有线性相位？  \n(4)若系统输入푥(푛) = 1 + 2(−1)￿ + cos(0.5휋푛)，求系统输出푦(푛)。 \n \n \n \n已知某模拟滤波器传递函数퐻(푠) =\n￿\n￿ ￿ ￿ ￿ ￿ ￿ ￿  \n(1)用脉冲响应不变法将其转化为数字滤波器，写出系统函数퐻(푧)表达式，并画\n出 IIR 数字滤波器的并联型结构图（采样间隔取푇 = 1）。 \n(2)用双线性变换法将其转化为数字滤波器，写出퐻(푧)表达式，并画出 IIR 数字\n滤波器的直接Ⅱ型结构图（采样间隔取푇 = 1）。 \n(3)简述脉冲响应不变法和双线性变换法各自的特点。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2024-p52-continuation-01",
+    "year": 2024,
+    "source_pages": [
+      52
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  51  页 \n2024  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试科目代码：814   考试科目：信号与系统（含数字信号处理） \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.求푒￿ ￿ 푢(푡) ∗ 훿′(푡) ∗ 푢(푡)  \n \n \n \n2.已知某系统的输入输出关系为푦(푡) = 푓(2푡) + 푓(푡 − 1)，判断该系统是否是线\n性、时不变、因果、无记忆性、稳定系统。 \n \n \n \n3.求单边拉普拉斯逆变换 \n퐹(푠) = 3 − 3푠\n(푠 + 2)￿  \n \n \n \n4.已知 LTI 系统阶跃响应푔(푡) = (2 − 푒￿ ￿ − 푒￿ ￿ ￿ )푢(푡) \n(1) 求系统的冲激响应，并判断系统是否稳定？ \n(2) 求出频率响应，具有什么滤波特性？ \n \n \n \n5.矩形脉冲信号푓(푡)如图所示，以采样角频率2휋 rad/s对其采样，试说明采样\n后能否恢复原信号？计算以该采样率获得的离散时间序列的离散时间傅里叶变\n换。 \n20\n1\n−2\n푓(푡) \n푡\n \n \n \n \n满足 Hilbert 变换的滤波器是物理可实现的，试说明 Hilbert 变换的含义并证\n明之。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2024-p54-continuation-01",
+    "year": 2024,
+    "source_pages": [
+      54
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  53  页 \n已知信号푓(푡) = 10￿ 푆푎(10￿ 푡)，采样序列푠(푡)周期为40μs，脉冲宽度为\n10μs，幅度为1V，波形如图 \n1V\n푠(푡) \n푡\n15−15 0  \n푓(푡) \n푠(푡) \n푓푠(푡) \n \n(1)求푓(푡)的频谱并绘制出频谱图，计算该信号的带宽； \n(2)试计算푓￿ (푡)的频谱； \n(3)若已知一系统퐻￿ (푓)的频率响应如图所示，试构造一个系统，使得与系统\n퐻￿ (푓)串联后的输出为푓(푡)。 \n−12 12\n퐻1(푓)\n푓(푘Hz)37−25 0−37 25\n1\n \n \n \n \n \n1.计算序列푥(푛) = (−1)￿ + 1 ,0 ≤ 푛 ≤ 3的 4 点离散傅里叶变换푋(푘)，要求写出\n每一点的值以及푋￿ ￿ (푘)的值。 \n \n \n \n2.已知某线性移不变系统的系统函数是퐻 \n(푧) = 0.18 (1 − 푧￿ ￿ )\n(1 + 0.64푧￿ ￿ ) \n请画出系统函数퐻(푧)的零极点图，并粗略画出휔 ∈ [0,2휋]的系统幅频响应\n￿퐻￿ 푒￿ ￿ ￿ ￿。 \n \n \n \n3.序列푥(푛)在0 ≤ 푛 ≤ 푁 − 1以外为零，且푥(푛) = 푥(푁 − 1 − 푛)，푛 = 0,1,2 \n… 푁 − 1，푁是偶数，其푁点 DFT 是푋(푘)，则푋 ￿\n￿\n￿ ￿ 值是多少。 \n \n \n \n4.一个线性相位因果 FIR 数字滤波器单位脉冲响应ℎ(푛)均为实数，其系统函数\n有以下零点： \n푧￿ = −1, 푧￿ = 푒￿ ￿ ￿ ￿\n￿ , 푧￿ = 0.5푒￿ ￿ ￿\n￿",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2024-p55-continuation-01",
+    "year": 2024,
+    "source_pages": [
+      55
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  54  页 \n(1)写出该系统可能的其他零点； \n(2)试确定该滤波器的最低阶数以及最小群延迟的值。 \n \n \n \n5.一个 8000 点的序列与线性时不变波器线性卷积，滤波器的单位脉冲响应长度\n为 50 点，为了利用快速傅里叶变换算法的计算效率，该滤波器用 128 点的 FFT\n和 IFFT 实现，如果采用重叠保留法，为了完成滤波运算，需要至少进行多少次\nFFT 运算和 IFFT 运算？请写出推算过程。 \n \n \n \n已知某 2 阶 FIR 数字滤波器的系统函数为 \n퐻(푧) = 1 + 푎푧￿ ￿ + 푧￿ ￿  \n(1)设滤波器的幅度响应在휔 =\n￿ ￿\n￿ 处为 0，试求퐻(푧)中的系数푎； \n(2)若该滤波器的频率响应表示为퐻￿ 푒￿ ￿ ￿ = 퐻(휔)푒￿ ￿ (￿ )，试求系统的振幅响应 \n퐻(휔)及相位响应휃(휔)的表达式； \n(3)该滤波器是否具有线性相位，如果是，请问该滤波器的延迟是多少？如果不\n是，请解释原因。 \n \n \n \n如果一个因果 LSI 系统的输入输出满足如下差分方程 \n푦(푛) = 푎푦(푛 − 1) + 푥(푛) \n系统的单位冲激响应为 ℎ(푛) = 푎￿ 푢(푛)。 \n(1)请问푎取何值时，系统是稳定的？  \n(2)考虑一个因果 LSI 系统，其输入输出关系由如下差分方程描述： \n푦(푛) = 푎푦(푛 − 1) + 푥(푛) − 푎￿ 푥(푛 − 푁) \n式中的푁为正整数，请求出系统的单位脉冲响应。 \n(3)请问(2)中的系统是 FIR 还是 IIR 系统？  \n(4)若(2)中的系统是稳定的，请问对푎取何值是否有限制？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p56-continuation-01",
+    "year": 2025,
+    "source_pages": [
+      56
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  55  页 \n2025  \n（考生注意：全部答案必须写在答题纸上否则后果自负！） \n考试代码：814        考试科目：信号与系统 \n注：①所有答案必须写在答题纸或答题卡上，写在本试题纸或草稿纸上均无效； \n②本试题纸须随答题纸一起装入试题袋中交回！ \n \n \n1.若某连续系统输入为푓(푡)时，输出为푦(푡) = (1 − 푒￿ ￿ )푓(푡 − 2)，判断线性、时\n不变性、因果性。 \n \n \n \n2.푓(푡) =\n￿\n￿ ￿ [푒￿ ￿ ￿ cos 푡 ∙ 푢(푡)]，画出其波形，并计算拉氏变换。  \n \n \n \n3.푓(푡) =\n￿ ￿￿ (￿ ￿ )\n￿ ￿ ∙\n￿ ￿￿ (￿ ￿ ￿ )\n￿ (￿ ￿ ￿ ) 的퐹(휔)。 \n \n \n \n4.系统푦(푛) = ∑ ￿ 푎￿ ￿ ￿￿ ∙ 푥(푛)￿\n￿ ￿ ￿ ￿ , 푎 ≠ 0，系统是否可逆，若可逆，求其逆系\n统。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p56-q二",
+    "year": 2025,
+    "source_pages": [
+      56
+    ],
+    "source_label": "二",
+    "section_kind": "question_start",
+    "text": "二、已知푓￿ (푡) 푓￿ (푡)频谱分别为퐹￿ (휔) 퐹￿ (휔)，求푟(푡) = ∫ 푓￿ (휏)푓￿ (푡 + 휏)\n￿\n￿ ￿ 푑휏\n的傅里叶变换。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p56-q三",
+    "year": 2025,
+    "source_pages": [
+      56
+    ],
+    "source_label": "三",
+    "section_kind": "question_start",
+    "text": "三、已知푓(푡) = 푠푔푛(sin(휋푡)) \n(1)画出波形 \n(2)求三角形式傅里叶级数表达式 \n(3)求傅里叶变换",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p56-q四",
+    "year": 2025,
+    "source_pages": [
+      56
+    ],
+    "source_label": "四",
+    "section_kind": "question_start",
+    "text": "四、一连续脉冲时间函数表达式为푥(푡) = 푢(푡) − 푢(푡 − 7)，单位为s，若以时间\n间隔푡 = 1s进行等间隔理想采样得푥(푛)，求푥(푛)的퐷푇퐹푇，并画出幅度谱波形。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p57-continuation-01",
+    "year": 2025,
+    "source_pages": [
+      57
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  56  页",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p57-q五",
+    "year": 2025,
+    "source_pages": [
+      57
+    ],
+    "source_label": "五",
+    "section_kind": "question_start",
+    "text": "五、某系统微分方程为 \n푑￿\n푑푡￿ 푦(푡) + 2 푑\n푑푡 푦(푡) + 3\n2 푦(푡) = 3\n2 푥(푡) \n(1)求系统函数及冲激响应函数 \n(2)求输入为푥(푡) = 푡[푢(푡) − 푢(푡 − 2)]时系统的零状态响应푦￿ ￿ (푡) \n(3)该系统函数是否为稳定系统",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p57-q六",
+    "year": 2025,
+    "source_pages": [
+      57
+    ],
+    "source_label": "六",
+    "section_kind": "question_start",
+    "text": "六、如图一方波信号푥(푡)幅度为−5V~5V，周期为0.1s，脉冲为0.05s，被一幅\n度为1V，脉冲为휏秒，采样周期为푇￿ = 10￿ ￿ s的周期脉冲信号푠(푡)进行采样，获\n得采样信号푥￿ (푡)，其中휏 ≪ 푇￿  \n−5 \n5 \n푇\n2 \n푥(푡) \n푡 \n… … \n \n(1)是否满足采样定理 \n(2)计算푥(푡), 푠(푡), 푥￿ (푡)的频谱表达式，并画出频谱图 \n(3)若푠(푡)为理想冲激脉冲序列，计算采样信号푥￿ (푡)的频谱，并与(2)进行对比分\n析。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p57-q七",
+    "year": 2025,
+    "source_pages": [
+      57
+    ],
+    "source_label": "七",
+    "section_kind": "question_start",
+    "text": "七、简答题 \n1.푥(푛) = 4훿(푛) + 훿(푛 − 1) + 훿(푛 − 2) + 훿(푛 − 3)，求 \n(1)푥(푛)的 4 点离散傅里叶变换푋(푘)，要求写出푋(푘)每个点的值 \n(2)写出(1)中푋(푘)的共轭对称分量푋￿ ￿ (푘)和共轭反对称分量푋￿ ￿ (푘)的值 \n \n \n \n \n2.已知푥(푛) = ￿\n￿\n￿ ￿\n￿\n푢(푛)，其傅里叶变换为푋(푒￿ ￿ )，另外一个长度为 4 的有限长\n序列푦(푛), 0 ≤ 푛 ≤ 3，其 4 点퐷퐹푇为푌(푘) = 푋￿ 푒￿ ￿ ￿ |￿ ￿ ￿\n￿ ￿ , 0 ≤ 푛 ≤ 3，求푦(푛)的\n表达式。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p58-continuation-01",
+    "year": 2025,
+    "source_pages": [
+      58
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  57  页 \n3.序列푥(푛)在0 ≤ 푛 ≤ 푁 − 1以外为零，푁为偶数，푥(푛)的푁点퐷퐹푇是푋(푘)，求 \n(1)若푥(푛) = 푥(푁 − 1 − 푛)，请给出푋 ￿\n￿\n￿ ￿ 的值 \n(2)若푥(푛) = −푥(푁 − 1 − 푛)，请给出푋(0)的值 \n \n \n \n4.利用如下框图处理连续时间信号，已知采样周期为푇 = 1푚푠, 푥(푡)的频谱푋(푗Ω)\n和系统频谱如图，试画出 \n푋(푗Ω) \nΩ 600휋 −600휋 0 \n1 \n퐻(푒푗 휔 ) \nΩ \n1 \n0.5휋  휋 −0.5휋 −휋 \n퐻(푒푗휔 )푥(푡) 푥(푛) 푤(푛) 푦(푛) 푦(푡) \n푇 푇 (−1)푛 \n理想퐴/퐷  \n转化器 转化器 \n理想퐷/퐴 \n \n(1)푥(푛)的频谱푋￿ 푒￿ ￿ ￿ \n(2)푤(푛)的频谱푊￿ 푒￿ ￿ ￿ \n(3)푦(푛)的频谱푌￿ 푒￿ ￿ ￿ \n(3)푦(푡)的频谱푋(푗Ω) \n \n \n \n5.脉冲响应不变法和双线性变换法是设计离散时间滤波器的两种方法，两种方\n法都是将一个连续时间系统函数퐻￿ (푠)变换为一个离散时间系统函数퐻(푧)，假设\n퐻￿ (푧), 퐻￿ (푧)和퐻(푧)分别是퐻￿ ￿ (푠), 퐻￿ ￿ (푠)和퐻￿ (푠)的变换形式。 \n(1)퐻￿ (푠) = 퐻￿ ￿ (푠) + 퐻￿ ￿ (푠)，则有퐻(푧) = 퐻￿ (푧) + 퐻￿ (푧)，请问脉冲响应不变法\n能满足该条件吗？双线性变换法能满足该条件吗？ \n(2)퐻￿ (푠) = 퐻￿ ￿ (푠) ∙ 퐻￿ ￿ (푠)，则有퐻(푧) = 퐻￿ (푧) ∙ 퐻￿ (푧)，请问脉冲响应不变法能\n满足该条件吗？双线性变换法能满足该条件吗？",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p58-q八",
+    "year": 2025,
+    "source_pages": [
+      58
+    ],
+    "source_label": "八",
+    "section_kind": "question_start",
+    "text": "八、已知某因果稳定的퐿푆퐼系统푆￿ 的差分方程如下 \n푦(푛) = 1\n4 [푥(푛) − 푥(푛 − 1) + 푥(푛 + 2) − 푥(푛 − 3)] \n假设系统函数为퐻￿ (푧)，求系统的频谱响应为퐻￿ (푒￿ ￿ )，单位脉冲响应为ℎ(푛) \n(1)设系统푆￿ 的频率响应表达式为퐻￿ ￿ 푒￿ ￿ ￿ = ￿퐻￿ (푒￿ ￿ )￿푒￿ ￿ ￿ (￿ )，其中￿퐻￿ (푒￿ ￿ )￿为振\n幅响应，휃￿ (휔)为相位响应，请写出￿퐻￿ (푒￿ ￿ )￿和휃￿ (휔)的表达式。",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p59-continuation-01",
+    "year": 2025,
+    "source_pages": [
+      59
+    ],
+    "source_label": null,
+    "section_kind": "continuation",
+    "text": "水木观畴，你身边的考研专家！ \n东坡哥微信:haidongpo15   公众号&B 站:水木观畴电子通信考研 \n第  58  页 \n(2)假设有一个系统푆￿ ，该系统的频率响应为퐻￿ (푒￿ ￿ )，且有퐻￿ ￿ 푒￿ ￿ ￿ = 퐻￿ ￿ −푒￿ ￿ ￿ ，\n设系统푆￿ 的频率响应同样可以表示为퐻￿ ￿ 푒￿ ￿ ￿ = ￿퐻￿ (푒￿ ￿ )￿푒￿ ￿ ￿ (￿ )，试写出单位脉\n冲响应ℎ￿ (푛)，以及￿퐻￿ (푒￿ ￿ )￿和휃￿ (휔)的表达式。 \n(3)试分析系统푆￿ 和系统푆￿ 的滤波特性",
+    "review_status": "pending_dependency_review"
+  },
+  {
+    "id": "2025-p59-q九",
+    "year": 2025,
+    "source_pages": [
+      59
+    ],
+    "source_label": "九",
+    "section_kind": "question_start",
+    "text": "九、用窗函数设计一个因果稳定的퐹퐼푅线性相位高通数字滤波器，要求的理想滤\n波频率响应퐻￿ (푒￿ ￿ )如下: 퐻￿ ￿ 푒￿ ￿ ￿ = ￿ 푒￿ ￿ ￿ ￿ , 휔￿ ≤ |휔| ≤ 휋\n0        ,0 ≤ |휔| ≤ 휔￿\n \n(1)求盖理想高通数字滤波器的单位脉冲响应ℎ￿ (푛) \n(2)写出矩阵窗函数设计法的ℎ(푛)表达式，确定휏和ℎ(푛)的长度푁的关系 \n(3)푁值得奇偶性是否可以随意选择，为什么？ \n(4)若按照上述方法设计出的滤波器达不到阻带衰减的指标要求，你会提出什么\n解决方案？请简要阐述。",
+    "review_status": "pending_dependency_review"
+  }
+]
