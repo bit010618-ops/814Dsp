@@ -1,0 +1,65 @@
+{
+  "year": 2005,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {
+      "candidate_id": "2005-qintro-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2005-qintro-p4", "source_locator": "填空题第4小题：给定 ROC 的 z 反变换", "required_chapters": [2], "placement_chapter": 2}
+      ],
+      "excluded_parts": ["填空题第1、2、3小题为连续时间内容"]
+    },
+    {"candidate_id": "2005-q二-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间冲激信号卷积"},
+    {"candidate_id": "2005-q三-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间信号频谱"},
+    {"candidate_id": "2005-q四-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间频域积分"},
+    {"candidate_id": "2005-q五-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间周期信号与系统傅里叶级数"},
+    {"candidate_id": "2005-q六-01", "decision": "out_of_scope", "included_parts": [], "reason": "电路题"},
+    {
+      "candidate_id": "2005-q七-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2005-q七-whole", "source_locator": "第七题：由单位阶跃响应求二阶离散系统并计算响应", "required_chapters": [1], "placement_chapter": 1}
+      ]
+    },
+    {
+      "candidate_id": "2005-q八-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2005-q八-whole", "source_locator": "第八题全部五问：模拟系统频响、采样离散化与 H(z)", "required_chapters": [1, 2, 6], "placement_chapter": 6}
+      ],
+      "reason": "离散化和 H(z) 的求取依赖前面对同一模拟系统的结果"
+    },
+    {
+      "candidate_id": "2005-q九-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2005-q九-whole", "source_locator": "第九题：5 点 DFT/IDFT 下的循环卷积", "required_chapters": [3], "placement_chapter": 3}
+      ]
+    },
+    {
+      "candidate_id": "2005-q十-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2005-q十-whole", "source_locator": "第十题：采样、数字带阻滤波和 D/A 重构", "required_chapters": [1, 2], "placement_chapter": 2}
+      ],
+      "reason": "采样率选择和离散滤波器频响共同构成实现链"
+    },
+    {
+      "candidate_id": "2005-q十一-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2005-q十一-whole", "source_locator": "第十一题：实因果序列的 DTFT 与反变换", "required_chapters": [2], "placement_chapter": 2}
+      ]
+    },
+    {
+      "candidate_id": "2005-q十二-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2005-q十二-p1", "source_locator": "第十二题第1问：脉冲响应不变法反求模拟原型", "required_chapters": [6], "placement_chapter": 6},
+        {"id": "2005-q十二-p2", "source_locator": "第十二题第2问：双线性变换法反求模拟原型", "required_chapters": [6], "placement_chapter": 6}
+      ],
+      "reason": "两问使用同一已给数字系统函数但计算方法互不依赖"
+    }
+  ]
+}
