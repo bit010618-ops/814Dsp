@@ -17,7 +17,7 @@
       "title": "时域采样与频域离散的对应关系",
       "lead": "图中的两组周期离散序列对应同一组采样参数。阅读时重点观察 T、{{T_0}}、{{f_s}}、{{F_0}} 与 N 的位置和含义。",
       "figure_path": "source-assets/source-spectrum-0528.png",
-      "caption": ""
+      "caption": "图 3-1 采样参数与频域离散的对应关系"
     },
     {
       "kind": "summary",
