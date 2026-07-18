@@ -1,0 +1,17 @@
+{
+  "year": 2014,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {"candidate_id":"2014-qintro-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2014-qintro-p2","source_locator":"填空第2小题：离散系统时变性","required_chapters":[1],"placement_chapter":1},
+      {"id":"2014-qintro-p5","source_locator":"填空第5小题：离散序列卷积","required_chapters":[1],"placement_chapter":1},
+      {"id":"2014-qintro-p6","source_locator":"填空第6小题：采样避免混叠","required_chapters":[1],"placement_chapter":1},
+      {"id":"2014-qintro-p7","source_locator":"填空第7小题：实偶周期序列 DFS","required_chapters":[3],"placement_chapter":3}
+    ],"excluded_parts":["其余连续时间题"]},
+    {"candidate_id":"2014-q二-01","decision":"whole_question","included_parts":[{"id":"2014-q二-whole","source_locator":"第二题：DTFT 幅相频图的序列性质","required_chapters":[2],"placement_chapter":2}]},
+    {"candidate_id":"2014-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间理想滤波器"},
+    {"candidate_id":"2014-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间 H(s) 系统辨识"},
+    {"candidate_id":"2014-q五-01","decision":"whole_question","included_parts":[{"id":"2014-q五-whole","source_locator":"第五题：离散 LTI 的差分方程、H(z)、ROC、h[n] 与频响","required_chapters":[1,2],"placement_chapter":2}]},
+    {"candidate_id":"2014-q六-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间 LTI 系统"}
+  ]
+}
