@@ -1,0 +1,20 @@
+{
+  "year": 2020,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [41], "watermark_present": true, "finding": "原卷有推广页眉页脚与中央水印；本年度纳入题目可用讲义公式和文字重排，不复用带水印页面。"},
+  "candidate_reviews": [
+    {"candidate_id":"2020-qintro-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2020-qintro-p1","source_locator":"填空第1小题：256 点时间抽取基-2 FFT 蝶形数","required_chapters":[4],"placement_chapter":4},
+      {"id":"2020-qintro-p2","source_locator":"填空第2小题：实部序列的 DTFT","required_chapters":[2],"placement_chapter":2},
+      {"id":"2020-qintro-p3","source_locator":"填空第3小题：离散 LTI 稳定与 ROC","required_chapters":[2],"placement_chapter":2},
+      {"id":"2020-qintro-p4","source_locator":"填空第4小题：组合带限信号的无失真抽样频率","required_chapters":[1],"placement_chapter":1},
+      {"id":"2020-qintro-p5","source_locator":"填空第5小题：直接计算 N 点 DFT 的复乘数","required_chapters":[4],"placement_chapter":4},
+      {"id":"2020-qintro-brief1","source_locator":"简答第1小题：栅栏效应","required_chapters":[3],"placement_chapter":3},
+      {"id":"2020-qintro-brief2","source_locator":"简答第2小题：IIR 级联型与并联型结构特点","required_chapters":[5],"placement_chapter":5},
+      {"id":"2020-qintro-brief3","source_locator":"简答第3小题：多路复用","required_chapters":[8],"placement_chapter":8}
+    ]},
+    {"candidate_id":"2020-q三-01","decision":"whole_question","included_parts":[{"id":"2020-q三-whole","source_locator":"第三题：DFT 频域抽取与 2 点 IDFT","required_chapters":[3],"placement_chapter":3}]},
+    {"candidate_id":"2020-q四-01","decision":"whole_question","included_parts":[{"id":"2020-q四-whole","source_locator":"第四题：离散 LTI 频率响应作用于余弦输入","required_chapters":[2],"placement_chapter":2}]},
+    {"candidate_id":"2020-q五-01","decision":"whole_question","included_parts":[{"id":"2020-q五-whole","source_locator":"第五题：DFT 时移性质与循环卷积","required_chapters":[3],"placement_chapter":3}]}
+  ]
+}
