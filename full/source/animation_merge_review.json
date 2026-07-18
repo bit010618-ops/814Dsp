@@ -1,0 +1,24 @@
+{
+  "review_method": "PDFium visual review of rendered source pages at 2x raster scale; an item may be merged only when the later page fully contains the earlier page without losing a formula, label, arrow, diagram, example, or transition context.",
+  "reviewed_on": "2026-07-18",
+  "candidates": [
+    {"source_pages": [142, 143], "decision": "retain", "reason": "sampling-spectrum derivation is followed by a distinct time-domain/frequency-domain concept diagram"},
+    {"source_pages": [164, 165], "decision": "retain", "reason": "sampling reconstruction derivation is followed by a distinct interpolation conclusion and diagram"},
+    {"source_pages": [281, 282], "decision": "retain", "reason": "system frequency-response figure is followed by a new subsection transition"},
+    {"source_pages": [425, 426], "decision": "retain", "reason": "sampling-parameter relation diagram is followed by a separate DFS example"},
+    {"source_pages": [453, 454], "decision": "retain", "reason": "DFT property derivation is followed by a new exercise prompt"},
+    {"source_pages": [455, 456], "decision": "retain", "reason": "DFT property result is followed by a different worked example"},
+    {"source_pages": [462, 463], "decision": "retain", "reason": "DFT relation derivation is followed by a property subsection transition"},
+    {"source_pages": [528, 529], "decision": "retain", "reason": "complete sampling-parameter correspondence figure is followed by parameter definitions and the Nyquist relation"},
+    {"source_pages": [618, 619], "decision": "retain", "reason": "DIF-FFT derivation is followed by an algorithm summary"},
+    {"source_pages": [832, 833], "decision": "retain", "reason": "impulse-invariance comparison figure is followed by a distinct advantages statement"},
+    {"source_pages": [894, 895], "decision": "retain", "reason": "linear-phase FIR amplitude-property overview is followed by a worked example"},
+    {"source_pages": [896, 897], "decision": "retain", "reason": "worked derivation is followed by MATLAB implementation and response interpretation"},
+    {"source_pages": [898, 899], "decision": "retain", "reason": "example response plots are followed by the next symmetry case"},
+    {"source_pages": [904, 905], "decision": "retain", "reason": "chapter/subsection transition is followed by new amplitude-property material"},
+    {"source_pages": [911, 912], "decision": "retain", "reason": "odd-symmetry property conclusion is followed by a new worked example"},
+    {"source_pages": [913, 914], "decision": "retain", "reason": "worked response plots are followed by the next odd-symmetry case"},
+    {"source_pages": [916, 917], "decision": "retain", "reason": "odd-symmetry property conclusion is followed by a new worked example"},
+    {"source_pages": [918, 919], "decision": "retain", "reason": "worked response plots are followed by the section overview and next topic transition"}
+  ]
+}

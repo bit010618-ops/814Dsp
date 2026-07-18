@@ -76,3 +76,8 @@
 
 - 8 章课件底稿已生成于 `full/source/chapter_01.json` 至 `chapter_08.json`：总覆盖 1056 个来源页；分章候选数为 2、1、5、1、0、1、8、0，合计 18。
 - 所有来源页仍为 `retain_pending_review`。候选只能在 300 dpi 视觉核对确认图、公式、箭头和标注零丢失后才允许合并；文本相似不构成删页依据。
+
+## Latest animation visual-review milestone — 2026-07-18
+
+- `full/source/animation_merge_review.json` 逐组记录了 18 个动画递进候选的视觉审核结论；全部为 `retain`。每一组都包含后续新增的推导、图示、例题或小节过渡，后页并未完整包含前页。
+- 新增 `full/tests/test_animation_review.py` 防止遗漏任一候选或写入未决状态；当前完整回归为 16 项测试通过。诊断渲染 PNG 位于未跟踪的 `full/artifacts/animation-review/`，仅用于审阅，不得随此里程碑提交。
