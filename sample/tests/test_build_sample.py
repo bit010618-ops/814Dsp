@@ -8,6 +8,7 @@ from pypdf import PdfReader
 from reportlab.pdfgen import canvas
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
+import build_sample as build_sample_module
 from build_sample import build_sample
 from build_sample import DISPLAY_FORMULA_SIZE, _rich_atoms, draw_continuation_title, draw_figure, math_asset, register_fonts, validate_formula_source
 
@@ -83,6 +84,11 @@ def test_inline_math_token_keeps_nested_braces():
 
 def test_display_formula_uses_the_global_baseline_size():
     assert DISPLAY_FORMULA_SIZE == 11
+
+
+def test_inline_math_uses_a_print_legible_global_height():
+    assert getattr(build_sample_module, "INLINE_MATH_DRAWN_HEIGHT", None) == 16
+    assert getattr(build_sample_module, "INLINE_MATH_BASELINE_OFFSET", None) == -4
 
 
 def test_generated_sample_accepts_a_plain_past_exam_page(tmp_path):

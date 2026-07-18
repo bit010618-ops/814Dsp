@@ -24,6 +24,10 @@ FONT_SERIF = "NotoSerifSC"
 FONT_SANS = "NotoSansSC"
 MATH_CACHE = ROOT / "artifacts" / "formula_cache"
 DISPLAY_FORMULA_SIZE = 11
+# 正文文字之间的行内公式：统一使用 16 pt 实际绘制高度。
+INLINE_MATH_DRAWN_HEIGHT = 16
+# 相对正文基线下移 1.5 pt，使行内数学符号与文字中线对齐。
+INLINE_MATH_BASELINE_OFFSET = -4
 
 matplotlib.rcParams.update({"mathtext.fontset": "stix"})
 
@@ -136,8 +140,8 @@ def draw_rich_paragraph(
             cursor += atom_width
             continue
 
-        asset, image_width, image_height = _math_metrics(value, size + 0.8)
-        drawn_height = min(leading - 2, 12.5)
+        asset, image_width, image_height = _math_metrics(value, size + 2.8)
+        drawn_height = min(leading - 2, INLINE_MATH_DRAWN_HEIGHT)
         drawn_width = image_width * drawn_height / image_height
         trailing_width = 0.0
         if index + 1 < len(atoms):
@@ -147,7 +151,14 @@ def draw_rich_paragraph(
         if cursor > x and cursor + drawn_width + trailing_width > x + width:
             y -= leading
             cursor = x
-        page.drawImage(ImageReader(str(asset)), cursor, y - 2.5, drawn_width, drawn_height, mask="auto")
+        page.drawImage(
+            ImageReader(str(asset)),
+            cursor,
+            y + INLINE_MATH_BASELINE_OFFSET,
+            drawn_width,
+            drawn_height,
+            mask="auto",
+        )
         cursor += drawn_width
     return y - leading
 
