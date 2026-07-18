@@ -1,0 +1,51 @@
+{
+  "year": 2002,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {
+      "candidate_id": "2002-qintro-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2002-qintro-p3", "source_locator": "填空题第3小题：离散时间系统稳定性", "required_chapters": [2], "placement_chapter": 2},
+        {"id": "2002-qintro-p4", "source_locator": "填空题第4小题：奈奎斯特采样", "required_chapters": [1], "placement_chapter": 1}
+      ],
+      "excluded_parts": [
+        "填空题第1、2、5、6小题为连续时间信号与系统内容，不纳入 DSP 讲义"
+      ]
+    },
+    {"candidate_id": "2002-q二-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间卷积波形题"},
+    {"candidate_id": "2002-q三-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间信号频谱题"},
+    {"candidate_id": "2002-q四-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间 LTI 系统全响应题"},
+    {"candidate_id": "2002-q五-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间系统函数 H(s) 题"},
+    {"candidate_id": "2002-q六-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间调制与频谱分析题"},
+    {
+      "candidate_id": "2002-q七-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2002-q七-whole", "source_locator": "第七题全部三问：采样、频谱与重建滤波器", "required_chapters": [1], "placement_chapter": 1}
+      ],
+      "reason": "三个小问共享采样链和同一信号，保留为完整题"
+    },
+    {
+      "candidate_id": "2002-q八-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2002-q八-whole", "source_locator": "第八题：模拟信号采样后的离散频谱与混叠", "required_chapters": [1], "placement_chapter": 1}
+      ]
+    },
+    {
+      "candidate_id": "2002-q九-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2002-q九-whole", "source_locator": "第九题：DFT 与 IDFT 计算卷积", "required_chapters": [3], "placement_chapter": 3}
+      ]
+    },
+    {
+      "candidate_id": "2002-q十-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2002-q十-whole", "source_locator": "第十题：用 DFT 提高频谱分辨率", "required_chapters": [3], "placement_chapter": 3}
+      ]
+    }
+  ]
+}

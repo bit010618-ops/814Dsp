@@ -101,3 +101,8 @@
 
 - `full/tools/annotate_exam_candidates.py` 为 144 个原文题组保存章节候选至 `full/artifacts/exam_question_candidates_annotated.json`；这是便于人工审核的索引，绝非最终归属。
 - 68 个题组因原 PDF 提取不到关键公式或图形文字而无自动章节结论，必须查看原页后手动判定；不准用关键词或年份缺失来编造归属。
+
+## Latest 2002 exam manual-review milestone — 2026-07-18
+
+- `full/source/exam_question_review_2002.json` 已逐一覆盖 2002 年 10 个原文题组。离散稳定性和奈奎斯特采样为独立小题；采样链三问整体在第 1 章；DFT 卷积与频率分辨率在第 3 章；连续时间题全部明确排除。
+- 后续年份继续沿用相同记录粒度：每个原文题组必须写明 `decision`、纳入小题、所需章节和最终放置章节，才能进入最终题库。
