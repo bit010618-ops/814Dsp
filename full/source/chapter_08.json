@@ -1,0 +1,248 @@
+{
+  "chapter": {
+    "number": 8,
+    "title": "多采样率数字信号处理",
+    "start_page": 1010,
+    "end_page": 1056,
+    "bookmark_prefix": "MC8"
+  },
+  "source_page_count": 47,
+  "pages": [
+    {
+      "source_page": 1010,
+      "text": "8.1\n 信号的整数倍抽取\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing\n8.2\n 信号的整数倍内插\n8.3\n 信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1011,
+      "text": "8.1￿￿￿信号的整数倍抽取(1)\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1012,
+      "text": "多采样率数字信号处理\nØ 研究多采样率信号处理的原因：\n(1)￿数字传输系统应具有传输多种抽样率信号(比如语音信号和视频信号)并\n自动地完成抽样率转换的能力。\n(2)￿音频信号的处理和应用中目前存在着多种抽样频率。例如，立体声音频\n信号采样频率是48￿kHz，CD是44.1￿kHz，而数字音频广播是32￿kHz。\n(3)￿将数字信号在两个具有独立时钟的数字系统之间传递时，要求该数字信\n号的抽样率能根据时钟的不同而转换。\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1013,
+      "text": "(4)￿￿用具有不同频带的低通、带通及高通滤波器对信号做子带分解，对分\n解后的信号再做抽样率转换及特征提取，可以最大限度地减少数据量，实\n现数据压缩的目的。\n(5)￿￿对一个信号抽样时，若抽样率过高，必然会造成数据的冗余，这时，\n希望能将该数字信号的抽样率减下来。\n￿￿￿￿￿￿￿￿以上几个方面都是希望能对抽样率进行转换，或要求数字系统能工作\n在多抽样率状态。因此，建立在抽样率转换理论及其系统实现基础上的多\n抽样率数字信号处理已成为现代信号处理的重要内容。\n多采样率数字信号处理\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1014,
+      "text": "一、信号的整数倍抽取过程\nM倍抽取(M>1)\n采样率降低\n令：                            ，采样率fs /M，采样间隔MT。\ndecimation  /  down sampling\n采样间隔T DTFT\n采样间隔MT DTFT\n频谱变化？\nT\nMT\n时域采样定理\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1015,
+      "text": "回忆采样定理：\n频谱横坐标换成数字角频率ω\n同理：\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1016,
+      "text": "令：r=i+kM，0 ≤ i ≤ M-1， -∞ ≤ k ≤ ∞，即将原来的r分为无穷多个M\n段，然后分段进行上式的求和运算。\nr=i+kM",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1017,
+      "text": "理解(1)：由x(2n)的DTFT推导去理解，设\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1018,
+      "text": "  理解(2)：用图示采样定理的方法去理解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1019,
+      "text": "抽取后频谱有拉伸效果\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1020,
+      "text": "移位\n求和\n降幅度\n拉伸",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1021,
+      "text": "抽取后频谱有拉伸效果是否会发生频谱混叠？\n频谱不混叠的条件：当π/M ≤ |ω| ≤ π 时，X1(ejω)=0。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1022,
+      "text": "8.1￿￿￿信号的整数倍抽取(1)\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1023,
+      "text": "8.1￿￿￿信号的整数倍抽取(2)\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1024,
+      "text": "二、抽取滤波器(抗混叠滤波器)与抽取器级联\n抽取滤波器(抗混叠滤波器)，起到宁缺毋滥的效果\n由Hd(ejω)设计因果FIRDF，得到实际系统单位脉冲响应hd(n)\n。\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1025,
+      "text": "例：已知 信号x(n)的取样频率fs=2fh，fh为信号最高频率。设计一个将取样\n率降低到1/8的抽取器系统。\n(1) 画出系统框图，并注明系统中各信号的取样频率；\n(2) 写出抗混叠滤波器的理想幅度响应；\n(3) 用窗函数法设计一个40阶的抗混叠滤波器，采用汉宁窗；\n(4) 写出系统的差分方程。\n(1) 系统框图\n(2) 抗混叠滤波器的理想幅度响应\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1026,
+      "text": "(3) 用窗函数法设计一个40阶的抗混叠滤波器，采用汉宁窗；\n(4) 写出系统的差分方程。\nFIR滤波器的差分方程\n即线性卷积表达式\nh(k)即b系数\n8.1￿信号的整数倍抽取",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1027,
+      "text": "8.1￿￿￿信号的整数倍抽取(2)\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1028,
+      "text": "8.1\n 信号的整数倍抽取\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing\n8.2\n 信号的整数倍内插\n8.3\n 信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1029,
+      "text": "8.2￿￿￿信号的整数倍内插\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1030,
+      "text": "一、信号的整数倍内插过程    \n8.2￿￿￿信号的整数倍内插",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1031,
+      "text": "Ø 内插过程的理解(L=2)：    \n        X(ejω)沿频率轴压缩L倍后得到\nXp(ejω) ，即周期2π缩为2π/L，出现\n了额外的L-1个“影像频谱”",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1032,
+      "text": "",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1033,
+      "text": "二、内插器与内插滤波器(抗影像滤波器)级联    \n内插滤波器(抗影像滤波器)，起到消除影像频谱的作用\n采样率增加L倍\n频谱幅度增加L倍\nIDTFT\n8.2￿￿￿信号的整数倍内插",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1034,
+      "text": "由x(n)求xi(n)\n的内插公式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1035,
+      "text": "x=[1 0 2 0 3 0 4 0 4 0 3 0 2 0 1];\nnx=0:length(x)-1;\n \nnh=-10:10;\nh = sinc(0.5*n);\n \nsubplot(211);stem(nh,h);grid on;\n \nsubplot(212)\nstem(nx,x,'r','linewidth',2);\naxis([-2 16 -1 5]);hold on;\n \ny=conv(x,h);\nny=[nx(1)+nh(1):nx(end)+nh(end)];\n \nstem(ny,y)\naxis([-2 16 -1 5]);grid on;\nMATLAB\n画h抗影像\n(n)\n画 x(n)\n求 y(n)=x(n)*h抗影像(n)\n画 y(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1036,
+      "text": "红色：x(n)\n蓝色：y(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1037,
+      "text": "8.2￿￿￿信号的整数倍内插\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1038,
+      "text": "8.1\n 信号的整数倍抽取\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing\n8.2\n 信号的整数倍内插\n8.3\n 信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1039,
+      "text": "8.3￿￿信号的任意有理数倍采样频变换及应用\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1040,
+      "text": "一、单级采样频率变换\n内插 抽取\n8.3￿￿信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1041,
+      "text": "二、多级采样频率变换\n    当L或M值较大时，ωc很小，设计h(n)的代价太大。因此，\n可以设计为多级采样率变换系统，避开设计高代价的h(n)。\n8.3￿￿信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1042,
+      "text": "三、多采样率系统的应用举例 —— 语音系统中的应用\ny(n)x(n) ya(t)xa(t) 前置\n预滤\n波器\nA/D\n数字\n信号\n处理器\nD/A 模拟\n滤波器\n(Hz)\n        \n(Hz)\n        \nfs/2-fs/2\nanti-alaising\n但这个模拟抗混叠滤波器很难实现！\n   -fs /2  0   fs /2 \n1\nf\n8.3￿￿信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1043,
+      "text": "xc(t)\n 简单抗\n混叠滤波器\nxa(t)\n A/D x(n)\n 截止频率为\nπ/M的数字\n低通滤波器\nx'(n)\n ↓M xd(n)\nM=2\nfs1=16kHz\nT1\nfs=8kHz",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1044,
+      "text": "yd(n)\nyd(t) |H (j)|\nh(t)\nyd(n)xd(n) yd(t)xa(t) 前置\n预滤\n波器\nA/D\n数字\n信号\n处理器\nD/A 模拟\n滤波器\nfs=8kHz\ny(t)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1045,
+      "text": "yd(n) y'(n)\n 量化器\nLPF\n增益M\nωc=π/M\ny(n)\n↑M ya(t)\nfs2=16kHz\nD/A\nT2\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1046,
+      "text": "yd(n) y'(n)\n 量化器\nLPF\n增益M\nωc=π/M\ny(n)\n↑M ya(t)\nM=2\nfs2=16kHz\nD/A\nT2\nyd(n)\n 量化器 ya(t)\nfs2=8kHz\nD/A\nT2\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1047,
+      "text": "u 时分复用（time division multiplexed，TDM）\n数\n据\n传\n输\n     y(n)是x1(n)、x2(n)和x3(n)按时间分开后的组合\n三、多采样率系统的应用举例 —— 时分复用和频分复用\n8.3￿￿信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1048,
+      "text": "u 频分复用（Frequency division multiplexed，FDM）\n数据传输\nLP DF\nBP DF\nHP DF\n8.3￿￿信号的任意有理数倍采样频变换及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1049,
+      "text": "8.3￿￿信号的任意有理数倍采样频变换及应用\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1050,
+      "text": "《\n数\n字\n信\n号\n处\n理》 信号处理之￿——￿力学笃行\n再看音频信号采样率\n华东理工大学信息科学与工程学院 万永菁\n第八章￿￿多采样率数字信号处理\nMultirate Digital Signal Processing",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1051,
+      "text": "2\n再看音频信号的采样率\n业界使用的音频采样率\n44.1KHz\n22.05KHz\n11.025KHz\n88.2KHz\n176.4KHz\n48KHz\n32KHz  24KHz\n16KHz  12KHz\n8KHz\n64KHz\n96KHz\n192KHz\n音乐CD规范以44.1kHz作为标准采样率 音频硬件codec标准的AC97规范规定为48kHz\n阵容一： 阵容二：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1052,
+      "text": "3\n再看音频信号的采样率\nu￿￿采样率44.1KHz的由来\nØ ￿早期的数码录制设备，是一个PCM编码器加一部录像机。\n欧洲的PAL制式：场频50Hz，每一场625条扫描线。\n美国日本的NTSC制式：场频59.94Hz，每一场525条扫描线。\nØ ￿因为是隔行扫描，所以扫描线数要除2。且在模拟电视时代，为确保电视画面内\n容完整，最上、最下、最左、最右的部分都舍去了。故PAL制式下可用扫描线数\n是294线，而NTSC则是245线。此外，一条视频扫描线的磁迹中，记录三个数\n码音频数据块。\n44100 = 294 x 50 x 3\n44056 = 245 x 59.94 x 3 统一为44.1KHz",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1053,
+      "text": "4\n再看音频信号的采样率\nu￿第一阵容(44.1KHz)\nØ ￿88.2KHz、176.4KHz￿则多用于符合CD标准采样频率整数倍的母带处理，￿\n￿￿￿￿￿是为了方便CD标准整数倍数字音频转换而被迫制定的采样频率。\nØ ￿11025Hz、22050Hz￿多用于电话、语音、部分游戏音乐等场合；\nØ ￿44100Hz则是早期的CD标准；\nu￿第二阵容(48KHz)\nØ ￿48KHz多用于形如AC-3、DTS多声道编码以及基础的音频混流；\n￿￿￿￿￿96KHz、192KHz则多用于高清专业音频录音以及高清音频回放。\nØ ￿48KHz符合标准HD音频规格；96KHz符合Full￿HD音频规格；￿\n￿￿￿￿￿192KHz符合Super￿HD音频规格。￿以上都符合HD高清音频规格标准。\n尽量避免非整数倍采样频率的转换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1054,
+      "text": "5\n再看音频信号的采样率\n￿￿￿￿￿￿￿￿目前录影棚常用以下三种规格进行录音进行录音：24Bit/48KHz、24Bit/￿\n96KHz、24Bit/192KHz￿，大录音棚几乎都是采用后两种。优势如下：\nu 符合HD音频标准，这也是将来的主流标准，制作出的成品，可以直接应用于\nHDCD、DVD-Audio、蓝光唱片、数字音乐下载业务、数字对媒体播放机业务。\nu 完全照顾数字影视视频业务，多声道电影视频都会采用HD音频规范。包括移动\n便携数字视频设备都用它。\nu 完全照顾消费性音频播放业务，比如：HD-Audio音频标准，AC97音频编码解\n码，便携MP3/mp4/电话/游戏机最高音频质量播放。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1055,
+      "text": "6\n若要兼容CD标准的唱片，该怎么办？\n￿￿￿￿￿￿￿￿CD音频标准必须使用16bit/44.1KHz才能被播放机播放，录音棚一般在母\n带处理环节采用如下办法：\n￿￿￿￿￿￿￿￿母带处理时，依然按48KHz、96KHz、192KHz采样频率进行处理，然后\n使用采样频率转换器(SRC)进行重采样，由于是非整数倍变换，故会带来失真。\n为尽可能减小失真，可以使用运算能力很高的SRC处理器进行重采样处理。此外，\n为照顾CD标准，还要降低位深，将24比特降低为16比特。\n￿￿￿￿￿￿￿目前的CD唱片一般都有两种音轨：普通CD音轨和HDCD音轨。其中CD音轨\n记录16Bit/44.1KHz信号，HDCD音轨记录24Bit/96KHz信号。普通的CD播放\n机只能播放CD音轨信号，而HDCD音轨则需要HDCD播放机才能播放，实际上现\n在的绝大多数DVD播放机都能播放HDCD，电脑则更没问题了。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1056,
+      "text": "7\n￿￿￿￿￿￿￿￿人们对美好生活的向往常常会对科学技术提出新\n要求、新挑战。准确把握时代特征，始终站在时代前\n列和实践前沿，坚持解放思想、实事求是和开拓进取，\n在积极探索中实现奋斗目标！\n科研工作需要与时俱进",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": []
+}

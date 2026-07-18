@@ -1,0 +1,443 @@
+{
+  "chapter": {
+    "number": 5,
+    "title": "数字滤波器结构",
+    "start_page": 656,
+    "end_page": 741,
+    "bookmark_prefix": "MC5"
+  },
+  "source_page_count": 86,
+  "pages": [
+    {
+      "source_page": 656,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 657,
+      "text": "5.1￿￿￿数字滤波器概述\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 658,
+      "text": "一、什么是数字滤波器(Digital Filter, DF)\n   顾名思义：其作用是对输入信号起到滤波的作用；\n                       即DF是由差分方程描述的一类特殊的\n                       离散时间系统。\n    功能：    把输入序列通过一定的运算变换成输出\n                    序列。不同的运算处理方法决定了滤波\n                    器的实现结构的不同。\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 659,
+      "text": "二、数字滤波器的工作原理\n设：x(n)是系统的输入，X(ej)是其傅立叶变换；\n         y(n)是系统的输出，Y(ej)是其傅立叶变换；\n则：\nh(n)x(n) y(n)\nLTI系统的输出为：\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 660,
+      "text": "|X(ej)|\n 1 2 \n.\n =\n|Y(ej)|\n 1 2 \n低通滤波器将信号中\n高频成分滤除\nØ 数字滤波器的幅频响应 ——  \n    设计数字滤波器的幅频响应，可以实现对输入信号频率成分的选择。\n    实际应用中，我们应该根据具体问题，有选择地抑制某些频率分量，有选择地抑制某些频率分量，\n而让某些频率分量通过而让某些频率分量通过\n。\n|H(ej)|\n 1 2 c \n1 \nØ 数字滤波器的相频响应 ——  \n        数字滤波器的相频响应决定了不同频率成分的信号经过滤波器后的移\n位情况。若滤波器具有线性相位线性相位\n的话，则输入信号的所有频率成分的移位\n情况是一致的。\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 661,
+      "text": "Ø￿数字滤波器的时域表示方法：差分方程\n数字滤波器的表示方法\nØ￿数字滤波器的变换域表示方法：系统函数、系统频率响应\nØ 数字滤波器的结构图：方框图/流图\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 662,
+      "text": "三、数字滤波器结构的表示方法\nØ  表示方法：方框图表示法\n                          信号流图表示法\nØ  三种运算：相加、乘以常数、延时\nØ  基本运算单元：加法器、单位延时、乘法器。\nBlock Diagram\nSignal  flow graph\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 663,
+      "text": "方框图表示法 信号流图表示法\n相加\n乘常数\n延时 z-1 z-1\na a\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 664,
+      "text": "例：二阶数字滤波器：\n其方框图及流图结构如下：\nz-1\nz-1\nx(n) y(n)b0\na1\na2\nu说明：可通过流图或方框图看出系统的运算步骤和运算结构。\n               以后我们用流图流图\n来分析数字滤波器结构。\nx(n) y(n)b0\na1\na2 z-1\nz-1\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 665,
+      "text": "四、研究数字滤波器结构的意义\n    1、滤波器的基本特性（如有限长冲激响应FIR与无限长\n冲激响应IIR）决定了结构上有不同的特点。\n    2、不同结构所需的存储单元及乘法次数不同，前者影响\n复杂性，后者影响运算速度。\n    3、有限精度（有限字长）实现情况下，不同运算结构的\n误差及稳定性不同。\n    4、好的滤波器结构应该易于控制滤波器性能，适合于模\n块化实现，便于时分复用。\n5.1￿￿￿数字滤波器概述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 666,
+      "text": "5.1￿￿￿数字滤波器概述\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 667,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 668,
+      "text": "5.2￿￿￿IIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n直接I型及直接II型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 669,
+      "text": "  一、IIR DF特点\n1、单位脉冲响应h(n)是无限长的：n→∞\n2、系统函数H(z)在有限z平面上 (0<|z|<∞) 有极点存在。\n3、结构上存在输出到输入的反馈，也即结构上是递归型的。\n4、因果稳定的IIR滤波器其全部极点一定在单位圆内。\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 670,
+      "text": "                                                                                        Y(z) = X(z) · H(z)H(z)X(z) 频域相乘 \n                                         时域卷积  x(n) y(n)=x(n)*h(n)h(n)\nz变换\n单位脉冲响应单位脉冲响应    \nz变换 z变换\n系统函数系统函数\n系统差分方程系统差分方程\n  用什么结构实现？\n不同结构特点？\nIIR:  IIR:  aaii≠0≠0\nIIR:  IIR:  hh((nn))无限长无限长",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 671,
+      "text": "(rad)\n系统函数系统函数\nRe[z]\njIm[z]\n0 1-1 0.9\n差分方程差分方程\n一阶低通滤波器一阶低通滤波器\nDirect form I二、初识 IIR 数字滤波器结构 —— 直接I型",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 672,
+      "text": "方框图方框图 信号流图信号流图\n系统函数系统函数\n差分方程差分方程\n加法器个数 乘法器个数 延迟单元\n2 3或2 2\n计算成本计算成本\nz -1z -1 横向横向\n网络网络\n反馈反馈\n网络网络\nz -1\n+ +\nz -1",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 673,
+      "text": "x(n) b0\nb1\nb2z-1\nz-1\ny(n)\na1\na2 z-1\nz-1\nbMz-1\naN-1\naN z-1\nz-1\n        IIR DF的差分方程就代表了一种最直接的计算公式，用流图表现出来\n的实现结构即为直接I型结构(即由差分方程直接实现)。\n第一部分是一个对\n输入x(n)的M节延\n时链结构。即每个\n延时抽头后加权相\n加，即是一个横向\n网络。\n第二部分是一个N\n节延时链结构网络。\n不过它是对y(n)延\n时，因而是个反馈\n网络。\nØ 直接I型流图",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 674,
+      "text": "直接I型IIR数字滤波器结构的特点\nu 两个网络级联：\n￿￿￿￿￿￿￿￿￿￿￿第一个横向的M节延时网络实现零点；第二个反馈的N节\n￿￿￿￿￿￿延时网络实现极点。\nu ￿共需(N+M)级延时单元。\nu ￿系数ai、bi不能直接决定单个零极点，因而不能很好地进行滤波\n￿￿￿￿￿器性能控制。\nu 极点对系数的变化过于灵敏，容易出现不稳定或产生较大误差。\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 675,
+      "text": "Ø￿直接I型IIR数字滤波器结构分析\nu ￿结构图直接由差分方程获得，结构清晰、易于理解\nu ￿关注其延时单元：延时单元能否合并？\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 676,
+      "text": "z -1z -1 横向横向\n网络网络\n反馈反馈\n网络网络\n合并合并zz-1-1\nz -1 横向横向\n网络网络\n反馈反馈\n网络网络\n加法器个数 乘法器个数 延迟单元\n2 3或2 1计算成本计算成本\n存储器减少一半！\nDirect form II\n直接直接II型型 直接直接IIII型型\n三、直接 II 型 IIR 数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 677,
+      "text": "直接直接II型型\n存储器存储器11：存放：存放xx((nn-1)-1)的值的值\n存储器存储器22：存放：存放yy((nn-1)-1)的值的值\nz -1z -1\n直接用差分方程求解y(n)\n存储器存储器11：存放：存放ww((nn-1)-1)的值的值\n直接直接IIII型型\nz -1\n已知x(n)、x(n-1)、y(n-1)，求y(n)\n已知x(n)、w(n-1) ，求y(n)\n按结构图分两步求解y(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 678,
+      "text": "直接II型IIR数字滤波器结构的特点\nu 两个网络级联：\n￿￿￿￿￿￿￿￿￿￿￿第一个横向的M节延时网络实现零点；第二个反馈的N节\n￿￿￿￿￿￿延时网络实现极点。\nu 只需N级(N>=M)延时单元，所需延时单元最少。故称典范型。\nu 具有直接型实现的一般缺点。\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 679,
+      "text": "例：已知IIR DF系统函数，画出直接I型、直接II型的结构流图。\n此处归一化为1\n将H(z)化为z-1的有理式\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 680,
+      "text": "注意反馈部分系数符号\nx(n) 8\n-4\n11z-1\nz-1\ny(n)\n5/4\n-3/4 z-1\nz-1\nz-1\n1/8 z-1-2\n直接I型\n5/4\nz-1\nz-1\nz-1\n-3/4\n1/8\n-4\n11\n-2\n8 y(n)x(n)\n直接II型\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 681,
+      "text": "5.2￿￿￿IIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n直接I型及直接II型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 682,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 683,
+      "text": "5.2￿￿￿IIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n级联型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 684,
+      "text": "xx((nn))\n|X|X((jfjf)|)|\n含噪音频\nn\nf(Hz)\n    下面的音频信号受到了噪声污染，请设计陷波器滤除噪声。\n    同时受到两个不同\n频率的噪声污染！\nfs=11025Hz\n2\nπ\nfs/8\n fs/6\nπ\n/4\n π\n/3\nØ  直接型IIR滤波器存在的问题",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 685,
+      "text": "ØØ 设计陷波器，滤除两个噪声干扰频率设计陷波器，滤除两个噪声干扰频率\n零极点图零极点图\n 幅频响应图幅频响应图\nf(Hz)\n|H|H((jfjf)|)|\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 686,
+      "text": "系统函数系统函数\n差分方程差分方程\n 直接直接IIII型型\nr = 0.95\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 687,
+      "text": "z -1\nz -1\nz -1\nz -1\n-2.4142\n3.4142\n-2.4142\n2.2935\n-3.0813\n2.0699\n-0.8145 1\n1\nØØ  直接型滤波器结构的缺点：直接型滤波器结构的缺点：\n                不利于系统性能的控制不利于系统性能的控制\n，系数的变化极易，系数的变化极易改变系统改变系统滤波特性。滤波特性。\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 688,
+      "text": "Ø 级联型 IIR 数字滤波器结构\n-1.4142\nz -1\nz -1\n1\n1.3435\n-0.9025\n-1\nz -1\nz -1\n1\n0.95\n-0.9025\n1 1级联型级联型\n Cascade Form\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 689,
+      "text": "xx((nn)) |X|X((jfjf)|)|\nyy11((nn)) |Y|Y11((jfjf)|)|\nyy  ((nn)) |Y|Y  ((jfjf)|)|\nnn\nnn\nnn\nf(Hz)\nf(Hz)\nf(Hz)\n22个噪声频率个噪声频率\n11个噪声频率个噪声频率\n无噪声频率无噪声频率\nØ  仿真结果",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 690,
+      "text": "      一个N阶系统函数可用它的零、极点来表示，即系统函数的分子、\n分母进行因式分解：\nØ  级联型IIR数字滤波器系统函数的因式分解\n        零极点ci和di通常只有两种情况：\n         (1)  实根\n         (2)  共轭复根\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 691,
+      "text": "Ø 系统函数系数分析\n若将每一对共轭因子合并起来构成一个实系数的二阶因子，则：\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 692,
+      "text": "Ø 用二阶节级联表示的滤波器系统\n整个滤波器则是多个二阶节级联：\nx(n)\nβ11\nα21\nz-1\nz-1\nα11\nβ21\nβ12\nα22\nz-1\nz-1\nα12\nβ22\nβ1M\nα2M\nz-1\nz-1\nα1M\nβ2M\ny(n)\n…...\nA\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 693,
+      "text": "级联型IIR数字滤波器结构的特点\nu ￿每个二阶节系数单独控制一对零点或一对极点￿，有利于控制\n￿￿￿￿￿频率响应，滤波器调整方便。\nu ￿硬件实现中，可采用一个二阶环分时复用；软件实现中，可\n￿￿￿￿￿以调用同一子函数。\nu ￿对有限字长的敏感程度比直接型低。需要注意的是不同的配\n￿￿￿￿￿对方式具有不同的有限字长敏感程度。\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 694,
+      "text": "5.2￿￿￿IIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n级联型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 695,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 696,
+      "text": "5.2￿￿￿IIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n并联型、转置型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 697,
+      "text": "  一、并联型IIR数字滤波器结构\n1 2 3 A\n4 5 6 B\n7 8 9 C\n* 0 # D\n697Hz\n770Hz\n852Hz\n941Hz\n1209Hz 1336Hz 1477Hz1633Hz\n      如何产生双音多频信号\n波形发生器！\nParallel Form\nDTMF(Dual Tone Multi-Frequency)\nØ由双音多频双音多频\nDTMFDTMF\n信号的产生信号的产生\n学习并联型IIR滤波器结构\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 698,
+      "text": "                                                                                        Y(ej) = X(ej) · H(ej)H(ej)X(ej) 频域相乘 \n输入频谱 \n 波形发生器 · =\n 输出频谱 \n输出频谱中\n保留选择的频率\n                                               x(n) y(n)=x(n)*h(n)  h(n)\n单位脉冲响应单位脉冲响应    \nDTFT DTFT DTFT\nDTFT\n输入信号频谱为在整个频率范围均匀分布\n选择需要的频率成分\n时域卷积",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 699,
+      "text": "1 2 3 A\n4 5 6 B\n7 8 9 C\n* 0 # D\n697Hz\n770Hz\n852Hz\n941Hz\n1209Hz 1336Hz 1477Hz1633Hz\nØ 计算归一化频率ω1和ω2\nH1(z)\nH2(z)\n+\nx(n) = δ(n) y(n)\n 产生按键8的\n双音多频信号\n选择852Hz通过\n选择1336Hz通过\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 700,
+      "text": "ØØ  并联并联型结构的特点：型结构的特点：\n      特别特别利于系统极点的控制利于系统极点的控制\n，每一，每一\n个二阶网络对应系统的一对极点。个二阶网络对应系统的一对极点。\n根据实际情况选择\n合适的滤波器结构\nz -1\nz -1\n0.62031.5685\n-0.9998\n并联型并联型\nz -1\nz -1\n0.86710.9963\n-0.9998\nδ(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 701,
+      "text": "Ø 系统函数的部分分式展开\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 702,
+      "text": "Ø 基本二阶节的并联结构\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 703,
+      "text": "Ø  并联型的基本二阶节的形式\n分子比分母小一阶 :\nx(n)\nz-1\nz-1\ny(n)\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 704,
+      "text": "并联型IIR数字滤波器结构的特点\nu ￿可以单独调整极点位置，但不能象级联那样直接控制零点，\n￿￿￿￿￿故不能用于对零点位置精度要求高的滤波器，例如陷波器和\n￿￿￿￿￿窄带带阻滤波器。\nu ￿各基本网络是并联的，产生的运算误差互不影响，不像直接\n￿￿￿￿￿型和级联型有误差累积，故并联型结构的运算误差较小。\nu ￿硬件实现时，各子系统可以并行实现，速度快。\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 705,
+      "text": "例：画出下面数字滤波器系统函数的并联型结构\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 706,
+      "text": "   二、转置型 IIR 数字滤波器结构\n          如果将一个实系数LSI系统的流图中的所有支路方向翻转，支路增益\n不变，将输入输出的位置交换，则形成原网络的转置型结构，且系统的传\n输函数不变。\nb1\nz -1\nz -1\nb2\n-a1\n-a2\nb0\n直接直接IIII型型 转置型转置型\nb1\nz -1\nz -1\nb2\n-a1\n-a2\nb0\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 707,
+      "text": "转置型转置型IIRIIR滤波器结构分析：滤波器结构分析：\nb1\nz -1\nz -1\nb2\n-a1\n-a2\nb0\n5.2￿￿￿IIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 708,
+      "text": "5.2￿￿￿IIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n并联型、转置型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 709,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 710,
+      "text": "5.3￿￿￿FIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n直接型、级联型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 711,
+      "text": "   一、FIR DF的特点\n1、系统的单位脉冲响应h(n)在有限个n值处不为零。\n       即h(n)是个有限长序列有限长序列\n。\n2、一般来说，系统因果，故H(z)在|z|>0处收敛，\n      极点全部在z=0处(即FIR一定为稳定系统稳定系统\n)。\n3、结构上主要是非递归结构主要是非递归结构\n，没有输出到输入反馈。但有些结构中\n    （例如频率抽样结构）也包含有反馈的递归部分。\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 712,
+      "text": "   二、FIR的系统函数及差分方程\n长度为N的单位脉冲响应h(n)的系统函数为：\n它实际是系统函数H(z)中ai=0的无反馈情况：\n差分方程为：\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 713,
+      "text": "  三、FIR数字滤波器直接型结构\nØ  流图\nØ  特点： (1) 简单直观，运算速度快； \n(2) 系数即为脉冲响应 h(n) 的序列值； \n(3) 不能直接控制零点。 \nDirect Form \nTapped delay line 抽头延迟线结构\nTransversal filter 横向滤波器结构\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 714,
+      "text": "   四、FIR数字滤波器级联型结构\n     当需要控制滤波器的传输零点传输零点\n时，可将H(z)系统函数分解成二\n阶实系数因子的形成：\n上式可由多个二阶节级联多个二阶节级联\n实现：\nx(n)\nβ11\nz-1\nz-1\nβ21\nβ12\nz-1\nz-1\nβ22\nβ1N/2\nz-1\nz-1\nβ2N/2\ny(n)\n…...\nβ01 β02 β0N/2\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 715,
+      "text": "级联型FIR数字滤波器结构的特点\nu ￿级联型FIR数字滤波器结构所需的系数比直接型多，\n￿￿￿￿￿因而所需乘法运算比直接型多。\nu ￿级联型FIR数字滤波器结构的易于系统零点的控制，\n￿￿￿￿￿因而常在需要控制传输零点时使用。\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 716,
+      "text": "5.3￿￿￿FIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n直接型、级联型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 717,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 718,
+      "text": "5.3￿￿￿FIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n频域采样型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 719,
+      "text": "回忆：频率采样定理\nM点\n单位圆上取N点\n（频域采样）\n序列傅立叶变换\n=？\n离散傅立叶反变换\nN点\nN≥M\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 720,
+      "text": "由N个谐振器组\n成的谐振柜谐振柜\n梳状滤波器\n用H(k)表示H(z)的方法，利用内插公式内插公式\n：\nØ  频域采样型滤波器结构的基本原理\n它是由两部分级联而成：\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 721,
+      "text": "Ø  梳状滤波器\n可见，极点集中在 z = 0 处(N 阶)\n零点在单位圆上均匀分布(N 个) \n(8)\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 722,
+      "text": "Ø  谐振柜：由NN\n个谐振器并联个谐振器并联\n而成。\n     梳状滤波器H1(z) 中的每一个零点与 H2(z)中的某一个Hk(z)的极点相抵消。 \n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 723,
+      "text": "频域采样型FIR数字滤波器结构的特点\nu ￿可直接根据系统的频率响应的采样值构造滤波器，\n￿￿￿￿￿易于设计实现。\nu ￿适用于窄带滤波器，即仅有少数H(k)不为0的滤波器。\nu ￿由于系数的有限字长，易使系统变为不稳定。\nu ￿谐振器柜中的每个一阶网络的系数均为复数，计算\n￿￿￿￿￿相对复杂。\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 724,
+      "text": "Ø 修正方法\n         为了克服系数量化后可能不稳定的缺点，将频率抽样\n结构做一点修正。即将所有零极点都移到单位圆内某一靠\n近单位圆、半径为 r (r ≤ 1) 的圆上，同时梳状滤波器的零\n点也移到 r 圆上。(即将频率采样由单位圆移到修正半径 r \n的圆上)\n(1)  原理\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 725,
+      "text": "(2)  修正的频率抽样结构的系统函数\n则谐振器的极点为：\n        Hr(k)为新抽样点上的抽样值，但是由于r ≈1，因此，\nHr(k) ≈H(k)。\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 726,
+      "text": "频域采样型结构实现的说明\nu 常用于窄带滤波，不适于宽带滤波\nu ￿可以共同使用多个并列的滤波器实现\n￿￿￿￿￿￿￿当谐振器中剩下少数几个所需要的谐振器时，该结构\n可以比直接型少用乘法器，但存储器会多一些。\n￿￿￿￿￿￿￿￿在实现时，可以共用梳状滤波器及谐振柜，将各谐振\n器的输出适当加权组合就能组成各种所需的滤波器。\n5.3￿￿￿FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 727,
+      "text": "5.3￿￿￿FIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n频域采样型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 728,
+      "text": "5.1\n ￿数字滤波器概述\n第五章￿￿数字滤波器结构\nStructures for digital filter\n5.2\n IIR数字滤波器结构\n5.3\n FIR数字滤波器结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 729,
+      "text": "5.3￿￿￿FIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n快速卷积型、线性相位型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 730,
+      "text": "Ø  原理\n(1) 设FIR DF的单位脉冲响应h(n)的非零值长度为N，\n      输入x(n)的非零值长度为M。则输出y(n)=x(n)*h(n),\n      且长度L=N+M-1。\n(2) 若将x(n)补零加长至L，将h(n)补零加长至L。\n这样进行LL\n点圆周卷积点圆周卷积\n，可代替线性卷积。\nL\n5.3￿￿￿FIR数字滤波器结构￿——￿快速卷积型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 731,
+      "text": "Ø 结构框图\n补零至L点x(n) L点FFT\n补零至L点h(n) L点FFT\nL点IFFT y(n)= x(n)*h(n)\nL ≥ M+N-1\nX(k)\nH(k\n)\nY(k)\n5.3￿￿￿FIR数字滤波器结构￿——￿快速卷积型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 732,
+      "text": "Ø  线性相位系统  \n式中，幅度|H(ejω)|是非负的ω的实数函数，α为实数，相位是ω的线性函数。\nØ  广义线性相位系统  \n式中，广义幅度A(ejω)是ω的实数函数，α和β为实数，\n            广义相位是ω的线性函数加上常数项。\n线性相位系统和广义线性相位系统统称为常数群延迟系统。 \nStructures for Linear-Phase FIR System\n5.3￿￿￿FIR数字滤波器结构￿——￿线性相位型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 733,
+      "text": "Ø  线性相位系统单位脉冲响应 h(n)的特点  \nhh((nn) = ) = hh((NN-1--1-nn))偶对称：\nhh((nn) = ) = --  hh((NN-1--1-nn))  奇对称：\n00≤ ≤ nn≤≤NN-1-1\n00≤ ≤ nn≤≤NN-1-1\n对称中心：\nu  N为奇数时：\nu  N为偶数时：\n5.3￿￿￿FIR数字滤波器结构￿——￿线性相位型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 734,
+      "text": "Ø  N为奇数时线性相位FIR滤波器结构\nh(n)为偶对称时，±号取“+1”\nh(n)为奇对称时，±号取“-1”，且\n5.3￿￿￿FIR数字滤波器结构￿——￿线性相位型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 735,
+      "text": "Ø  N为偶数时线性相位FIR滤波器结构\nh(n)为偶对称时，±号取“+1”\nh(n)为奇对称时，±号取“-1”\n5.3￿￿￿FIR数字滤波器结构￿——￿线性相位型结构",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 736,
+      "text": "5.3￿￿￿FIR数字滤波器结构\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿￿数字滤波器结构\nStructures for digital filter\n快速卷积型、线性相位型结构及应用",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 737,
+      "text": "《\n数\n字\n信\n号\n处\n理》 信号处理之￿——￿力学笃行\n噪声的秘密\n华东理工大学信息科学与工程学院 万永菁\n第五章￿￿数字滤波器结构\nStructures for digital filter",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 738,
+      "text": "2\n噪声是什么\n？\nu 从物理学的角度，噪声是发声体做无规则振动的声音；\nu 从生理学的角度，凡是妨碍人们正常休息、学习和工作的\n声音，以及对人们要听的声音产生干扰的声音都是噪声。\n分贝数 人的感受 近似的场所\n0-20 很静、几乎感觉不到 安静的卧室\n20-40 安静、轻声絮语 图书馆、阅览室\n40-60 普通室内谈话 办公室、会议室\n60-70 吵闹、有损神经 马路车辆行驶\n70-90 很吵、神经细胞受到破坏 KTV房间\n90-100 吵闹加剧、听力受损 嘈杂酒吧\n100-120 难以忍受、呆一分钟即暂时致聋 电锯、电钻\n120以上 极度聋或全聋 飞机起飞、火箭发射",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 739,
+      "text": "3\nA交通 B\n装修\nD家电C\n商业\n/娱乐\n噪声的\n来源\n￿￿\n？\n噪声的来源\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 740,
+      "text": "4\n减少噪声的措施\nA\nB\nC\nD\n社会生活噪声\n交通运输噪声\n工业生产噪声\n建筑施工噪声\n提高自主意识，尽力不产生或少产生家庭\n生活噪声，注意娱乐场所活动的时间。\n设置隔音屏障；悬挂种植绿化；\n特殊地段(如学校) 附近禁鸣喇叭。\n合理布局城市规划；\n采用新工艺、淘汰老旧设备。\n合理选用施工机械，注意工作时段。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 741,
+      "text": "5\n己所不欲，勿施于人。   —— 孔子\n责人之心责已，恕已之心恕人。   \n                                            —— 《增广贤文》\n多一份理解、\n         多一点换位思考，\n                   我们的世界会更加美好！\n",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": []
+}

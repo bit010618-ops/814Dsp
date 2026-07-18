@@ -1,0 +1,955 @@
+{
+  "chapter": {
+    "number": 1,
+    "title": "离散时间信号与系统",
+    "start_page": 1,
+    "end_page": 185,
+    "bookmark_prefix": "MC1"
+  },
+  "source_page_count": 185,
+  "pages": [
+    {
+      "source_page": 1,
+      "text": "《\n数\n字\n信\n号\n处\n理》\n1.1\n 离散时间信号￿——￿序列\n1.2\n ￿离散时间系统\n1.3\n ￿常系数线性差分方程\n1.4\n ￿连续时间信号的抽样\n第一章￿￿离散时间信号与系统\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 2,
+      "text": "1.1￿￿离散时间信号￿——￿序列\n离散时间信号的由来\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 3,
+      "text": "一、通过时域采样得到离散时间信号\nØ ￿为什么要对连续时间信号进行采样，得到离散时间信号？\nØ ￿面对不同的连续时间信号，如何选择采样频率？\n二、离散时间信号的表达\n￿￿离散时间信号的由来\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 4,
+      "text": "一、通过时域采样得到离散时间信号\nv  离散时间信号（又称序列），是连续时间信号以时间T 等间隔采样\n得到的，T 称为采样周期或采样间隔。\n为什么要\n采样？\n采样间隔 T\n如何选取？\n用计算机处理\n采样数据！\n采样频率与信号\n变化快慢相关！\nfs：Sampling frequency",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 5,
+      "text": "fs = 44100Hz\nfs /4\nfs /8\nfs /16\n￿不同采样频率下钢琴乐曲的赏析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 6,
+      "text": "不同采样频率下钢琴乐曲的赏析\n￿￿￿￿￿￿￿￿￿￿￿￿￿钢琴音频的谐音成分通常会到几千Hz，当采样\n频率选择过小的时候，钢琴音频中一些原有的高频细节\n成分就不能被保留下来，也就不能保证原有的音质和音\n效，乐曲听上去就会感觉有失真。\n卡农\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 7,
+      "text": "v  一般，采样间隔是均匀采样间隔是均匀\n的，用x(nT)表示信号在 nT点上的值，nn\n为整数为整数\n。由于\n     x(nT)顺序存放在计算机存储器中，我们通常用xx\n((\nnn\n))\n表示离散时间信号的序列值。\n0 T 2T 3T 4T 5T 6T 7T 8T 9T\n……\n……\n0 T 2T 3T 4T 5T 6T 7T 8T 9T0 1 2 3 4 5 6 7 8 9\n……\n……\nx(t)  |t=nT  =  x(nT)  \nt(s)  \nx(n)  \nn\nT\n 采样间隔 T\n是x(n)的灵魂灵魂\n！\n二、离散时间信号的表达",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 8,
+      "text": "￿￿离散时间信号的由来\nØ ￿为什么要对连续时间信号进行采样，得到离散时间信号？\nØ ￿面对不同的连续时间信号，如何选择采样频率？\nü 便于用计算机对信号进行处理\nü 采样频率与信号变化的快慢有关\n采样频率 带限信号的最高频率分量\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 9,
+      "text": "1.1￿￿离散时间信号￿——￿序列\n离散时间信号的表示方法\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 10,
+      "text": "￿离散时间信号的表示方法\nØ ￿用数列表示离散时间信号\nØ ￿用图形进行表示离散时间信号\nØ ￿用函数表示离散时间信号\nØ ￿用单位抽样序列表示离散时间信号\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 11,
+      "text": "  一、用数列数列\n表示离散时间信号\nx1(n) = { 1, 2, 3, 4, 5 }\n注：用下划线标出n=0在序列中的位置。\n  二、用函数函数\n表示离散时间信号\n     因为n只能取只能取\n整数整数\n，所以两种\n写法是一样的。\nx2(n) = { 1, 2, 3, 4, 5 } x3(n) = {0, 0, 1, 2, 3, 4, 5 }\n离散时间信号的表示方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 12,
+      "text": "   三、用图形图形\n表示离散时间信号\n0 1 2 3 4 5 6 7 8 9 n\nx(n)\n-1\n1\n2\n1 1\n-1\n-2\n2 2 2\n3 3\n10 11\nv  图中横坐标 n 表示离散的时间坐标，仅在 nn\n为整数为整数\n时才有意义，\n      纵坐标代信号点的值。\n……\nx(0) = 2\nx(1) = 1\nx(2) = 2\nx(3) = 3\n……\n离散时间信号的表示方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 13,
+      "text": "   四、用单位抽样序列单位抽样序列\n  \n\n  \n((\nnn\n) ) \n表示离散时间信号\n回忆：单位抽样序列 (n) \n(n)\nn0 1 2 3 4 5 6\n1\n-1-2-3-4\n注：\n  \n((\nnn\n))\n是一个脉冲幅度为脉冲幅度为\n11\n的现实序列现实序列\n。 \n可以将任意序列任意序列\n表\n示成单位抽样序列\n (n)的移位加权和的移位加权和\n位置\n值\nUnit Sample sequence\n离散时间信号的表示方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 14,
+      "text": " (n)=x(0) (n)\nn0 1 2 3 4 5 6\n1\n-1-2-3-4\n2 (n-1)=x(1) (n-1)\nn0 1 2 3 4 5 6\n2\n-1-2-3-4\n可以用单位抽样序列的移位加权和\n表示任意一个序列\n3 (n-2)=x(2) (n-2)\nn0 1 2 3 4 5 6\n3\n-1-2-3-4\nx(0) (n) + x(1) (n-1)+ x(2) (n-2)\nn0 1 2 3 4 5 6\n3\n-1-2-3-4\n1\n2\nx(n)={1, 2, 3}\n    例：用单位抽样序列 (n)表示任意序列 x(n)={1, 2, 3}\nx(0)=1, x(1)=2, x(2)=3 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 15,
+      "text": "￿离散时间信号的表示方法\nØ ￿用数列表示离散时间信号\nØ ￿用图形进行表示离散时间信号\nØ ￿用函数表示离散时间信号\nØ ￿用单位抽样序列表示离散时间信号\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 16,
+      "text": "1.1￿￿离散时间信号￿——￿序列\n离散时间信号的基本运算\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 17,
+      "text": "￿离散时间信号的基本运算\nØ ￿序列的和(积)\nØ ￿序列的移位\nØ ￿序列的反褶\nØ ￿累加和运算\nØ ￿差分运算\nØ ￿序列的时间尺度（比例）变换\nØ ￿序列的能量\nØ ￿序列的平均功率\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 18,
+      "text": "一、序列的和￿：\nv  两序列的和是指 同序号同序号\nn n \n的序列值 逐项对应相加逐项对应相加\n  \n而构成的新序列。\nx1(n)\nn0 1 2 3 4 5 6\n2\n1\n2\n1 1\nx2(n)\nn0 1 2 3 4 5 6\n1 1 11 1\ny(n)\nn0 1 2 3 4 5 6\n3\n2\n3\n2 2\ny(n) = x1(n) + x2(n)\n… …\ny(0) = x1(0) + x2 (0) = 3\ny(1) = x1(1) + x2 (1) = 2\ny(2) = x1(2) + x2 (2) = 3\ny(3) = x1(3) + x2 (3) = 2\ny(4) = x1(4) + x2 (4) = 2\n… …\nAddition",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 19,
+      "text": "二、序列的积￿：\nv  两序列的积是指 同序号同序号\nn n \n的序列值 逐项对应相乘逐项对应相乘\n  \n而构成的新序列。\nx1(n)\nn0 1 2 3 4 5 6\n2\n1\n2\n1 1\nx2(n)\nn0 1 2 3 4 5 6\n1 1 11 1\ny(n) = x1(n) · x2(n)\n… …\ny(0) = x1(0) · x2 (0) = 2\ny(1) = x1(1) · x2 (1) = 1\ny(2) = x1(2) · x2 (2) = 2\ny(3) = x1(3) · x2 (3) = 1\ny(4) = x1(4) · x2 (4) = 1\n… …\ny(n)\nn0 1 2 3 4 5 6\n2\n1\n2\n1 1\n Product",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 20,
+      "text": "三、序列的移位￿：\nv  设有一序列 x(n)，当 m > 0 时： \n          x(n-m) 表示序列 x(n) 逐项依次逐项依次\n右移右移\n  \nm m \n位位\n后得到的序列。 \n          x(n+m)表示序列 x(n) 逐项依次逐项依次\n左移左移\n  \nm m \n位位\n后得到的序列。 \nn0 1 2 3 4 5 6 n0 1 2 3 4 5-1-2-3\ny(n) = x(n±m)\nx(n-1) x(n+1)\nx(0) = 1\nx(1) = 2\nx(2) = 3\nn\nx(n)\n0 1 2 3 4\n2\n1\n3\n2\n1\n3\n2\n1\n3\nn=3 ，值为3\nx(n-1) = x(2) = 3\nShift\n滞后、延时\n 超前",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 21,
+      "text": "    延时单元可以将以前的某采样时刻的数据暂存将以前的某采样时刻的数据暂存\n起来，参与这个时刻\n的运算。\n       回声可以用延迟单元来生成：回声可以用延迟单元来生成：\n直接声音和它延迟了R个周期的单个回\n声求和即可生成（  为回声的衰减系数）：\n       为了生成间隔为R个周期的多重回声，可将上式改为：\n 原声：  回声1：  回声2：\n=0.3, R=6000 =0.3, R=10000\n￿实例：回声音效的产生",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 22,
+      "text": "四、序列的反褶￿：\nv  设有序列 x(n)，\n      则 x(-n) 是以 n=0 为纵轴将 x(n) 反褶后的序列。  \nx(n)\nn0 1 2 3 4 5 6\n2\n1\n3\n-1-2-3-4\nx(-n)\nn0 1 2 3 4 5 6-1-2-3-4\n2\n1\n3\ny(n) = x(-n)\n     x(0)的值不变\nTime Reversed",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 23,
+      "text": "x(n)\nn0 1 2 3 4 5 6-1-2-3-4\n2\n1\n3\n2\n1\n3\n2\n1\n3\n……\nx(n)\nn0 1 2 3 4 5 6-1-2-3-4\n2\n1\n3\n2\n1\n3\n2\n1\n3\n……\nn\nx(-n)\n0 1 2 3 4 5 6-1-2-3-4\n……\n2\n1\n3\n2\n1\n3\n2\n1\n3\nx(-n)\nn0 1 2 3 4 5 6-1-2-3-4\n……\n2\n1\n3\n2\n1\n3\n2\n1\n3√×\n序列的反褶",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 24,
+      "text": "x(n)\nn0 1 2 3 4 5 6\n2\n1\n3\n-1-2-3-4\nx(-n)\nn0 1 2 3 4 5 6-1-2-3-4\n2\n1\n3\nx(-n+1)\nn0 1 2 3 4 5 6-1-2-3-4\n2\n1\n3\nx(-n-1)\nn0 1 2 3 4 5 6-1-2-3-4\n2\n1\n3\nx(-n+1) 是x(-n) 右移右移\n一位后的序列\nx(-n-1) 是 x(-n) 左移左移\n一位后的序列\nx(0) = 1\nx(1) = 2\nx(2) = 3\nn = 1 ，值为 1 \nx(-n+1) = x(0) =1\nx(-n+1) 是x(n+1) 反褶反褶\n后的序列\nx(-n-1) 是x(n-1) 反褶反褶\n后的序列\n 思考：x(-n+1)和x(-n-1)与x(-n)的移位关系？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 25,
+      "text": "五、累加和\nv  设序列 x(n)，则 x(n)的累加和序列 y(n)定义为：\n-\nAccumulator System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 26,
+      "text": "六、差分运算\nv 前向差分：\nv 后向差分：\n差分运算反映了序列x(n)的幅值变化规律。\nBackward difference\nForward difference\n例：x(n) = R10(n)，试求后向差分信号△x(n)。 \nx(n)  =  R10(n)  = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}\n△x(n) = R10(n) - R10(n-1)\nx(n-1) = R10(n-1) = {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}\n= {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1}\nR10(n)\nn0 1 2 3\n1\n9…… 10……-1",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 27,
+      "text": "七、序列的时间尺度（比例）变换\nv 设某序列为x(n)，则其时间尺度变换序列为x(mn)或 x(n/m)，\n　　m为正整数。\nv x(mn) 为抽取序列抽取序列\n（m>1）\nv x(n/m)为插值序列插值序列\n（m>1）\nInterpolation\nDecimation Down sampling\nUp sampling\n下采样下采样\n上采样上采样\nT 2T",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 28,
+      "text": "八、序列的能量\n复序列x(n)\n        如果Ex=A<∞，则x(n)称为能量有限信号，简称能量信号能量信号\n。一般\n的有限长序列及绝对可和的无限长序列都是能量信号。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 29,
+      "text": "九、序列的平均功率\n        如果Px=C<∞，则x(n)称为功率有限信号，简称功率信号功率信号\n。一般\n来说，周期信号、随机信号的存在时间是无限的，因此它们不是能\n量信号而是功率信号。\n对周期信号，只需取一个周期的平均功率即可：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 30,
+      "text": "￿离散时间信号的基本运算\nØ ￿序列的和(积)\nØ ￿序列的移位\nØ ￿序列的反褶\nØ ￿累加和运算\nØ ￿差分运算\nØ ￿序列的时间尺度（比例）变换\nØ ￿序列的能量\nØ ￿序列的平均功率\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 31,
+      "text": "1.1￿￿离散时间信号￿——￿序列\nMATLAB下序列运算的实现方法\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 32,
+      "text": "MATLAB下序列运算的实现方法\nØ ￿MATLAB编程实现单位抽样序列 (n)\nØ ￿序列移位、反褶的编程方法\nØ ￿序列求和、求积的编程方法\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 33,
+      "text": "  n = -10:20;\n  \n  delta = [zeros(1,10) 1 zeros(1,20)];\n  stem(n, delta);  grid on;\n  \n  xlabel('Time index n'); ylabel('Amplitude');\n  \n  title('Unit Sample Sequence');\n  \n  axis([-10 20 0 1.2]);\n% 确定位置向量(横坐标)显示范围\n% 确定与位置向量(横坐标)匹配的 (n)  \nzeros(m,n)产生\n一个m×n的全零矩阵\n% 画出 (n)  % 图中显示网格\n% 位置向量(横坐标)标识 % 序列(纵坐标)标识\n% 图名\n% 调整坐标显示范围\naxis([minX maxX minY maxY])\n例程： 用MATLAB产生并画出单位抽样序列 (n)。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 34,
+      "text": "网格 (n)\nn\n例程结果： 用MATLAB产生并画出单位抽样序列 (n)。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 35,
+      "text": "5\n  function [x,n] = impseq(np,ns,nf)\n   \n  if ((np < ns) | (np > nf) | (ns > nf)) \n      error('参数必须满足 ns <= np <= nf')\n  end\n   \n  n = [ns:nf];   \n  \n  x = [(n-np) == 0];\n% 定义函数impseq，函数参数为np, ns和nf，返回值为n和x\n显示范围\n% 检查输入参数正确性\n% 生成序列横坐标n\n% 生成序列纵坐标x\n该函数存为文件impseq.m，假设在dsp文件夹中\n该文件所在文件目录(‘…\\...\\dsp’)需用MATLAB\n中的set path(设置路径)菜单命令加载进来并保存好\n  \n  [x,n] = impseq(0,-10,20);\n  stem(n,x);\n% 在另一个脚本文件（.m文件）调用impseq函数 [x,n] = impseq(2,0,10);\n例程： 定义函数生成单位抽样序列 (n-np)。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 36,
+      "text": "function [y,n] = seqadd(x1,n1,x2,n2)\nn = min(min(n1),min(n2)):max(max(n1),max(n2)); \ny1 = zeros(1,length(n));  \ny2 = y1; \ny1(find((n>=min(n1))&(n<=max(n1))))=x1; \ny2(find((n>=min(n2))&(n<=max(n2))))=x2; \ny = y1+y2;                                    \n% 等长的序列y1和y2相加\n% y1和y2都具有最终的相同的长度n\n% 确定n的范围\n% 将x1的值放入y1中，位置保持好\n% 将x2的值放入y2中，位置保持好\nn1∈[-2,7]\nn2∈[3,9]\nn ∈[-2,9]\n-2 7\n3 9\n3 9-2\n-2 7 9\n3 9-2 7\nx1(n1) n1\nx2(n2)\ny1(n) n\ny2(n) n\ny(n) n\nn2\n 例程(函数)： 定义函数实现序列相加 y(n)=x1(n1)+x2(n2)。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 37,
+      "text": "function [y,n] = seqmult(x1,n1,x2,n2)\nn = min(min(n1),min(n2)):max(max(n1),max(n2)); \ny1 = zeros(1,length(n));  \ny2 = y1; \ny1(find((n>=min(n1))&(n<=max(n1))))=x1; \ny2(find((n>=min(n2))&(n<=max(n2))))=x2; \ny = y1.*y2;                                    \n% 等长的序列y1和y2相乘\n% y1和y2都具有最终的相同的长度n\n% 确定n的范围\n% 将x1的值放入y1中，位置保持好\n% 将x2的值放入y2中，位置保持好\n转置\n例程(函数)： 定义函数实现序列相乘 y(n)=x1(n)·x2(n) 。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 38,
+      "text": "clear all; \nclc;   \n \nn1=[-2:3];  x1=[1 2 3 4 5 6];\nn2=[1:5];   x2=[5 4 3 2 1];\n[y,n]=seqadd(x1,n1,x2,n2);\n \nsubplot(311);stem(n1,x1,'linewidth',2);\naxis([min(n) max(n) 0 max(y)]);grid on;\nsubplot(312);stem(n2,x2,'linewidth',2);\naxis([min(n) max(n) 0 max(y)]);grid on;\nsubplot(313);stem(n,y,'linewidth',2);\naxis([min(n) max(n) 0 max(y)]);grid on;\n  例程： 调用seqadd函数实现两序列相加 y(n)=x1(n)+x2(n)。\n% 清除所有变量\n% 清空命令窗口的显示记录\nx1(n)={1,2,3,4,5,6} \nx2(n)={0,5,4,3,2,1}\n序列求和\n统一显示范围\n调整画线宽度\n8",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 39,
+      "text": "x1(n)\nx2(n)\ny(n)\nn\nn\nn\nx1(n)={1,2,3,4,5,6} \nx2(n)={0,5,4,3,2,1}\ny(n)={1,2,3,9,9,9,2,1}\n9\n例程： 调用seqadd函数实现两序列相加 y(n)=x1(n)+x2(n)。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 40,
+      "text": "function [y,ny] = seqshift(x,nx,m)\nny = nx+m;\ny = x;\n10\n例程(函数) ： 定义函数实现序列移位 y(n)=x(n-m) 。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 41,
+      "text": "function [y,n] = seqfold(x,n)\ny = fliplr(x);\nn = -fliplr(n);\n备注：MATLAB中的反褶函数： fliplr和flipud\n     行向量反褶函数：fliplr(x)\n     列向量反褶函数：flipud(x)\n11\n例程(函数) ： 定义函数实现序列反褶 y(n)=x(-n) 。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 42,
+      "text": "  MATLAB自带的音频读取函数：wavread / audioread \n解释：filename是一个字符串，给出(.wav)音频文件名，也可以带指定路径。\n返回值x是音频值，如果是单通道音频，则x是一个n×1的向量。\n[x,fs] = wavread(filename);\n如果是双通道音频，则x是一个n×2的向量。\n返回值fs是音频采样频率。\n[x,fs] = audioread(filename);\n  MATLAB自带的音频写入函数：wavwrite / audiowrite \n解释：filename是一个字符串，给出(.wav)音频文件名，也可以带指定路径。\ny是要存入的音频值， fs是音频采样频率。\nwavwrite(y,fs,filename); audiowrite(filename,y,fs);\n12\n音频读取和写入文件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 43,
+      "text": "  [x,fs] = wavread(‘w2.wav’);  \n  y = flipud(x);  \n  figure(1); plot(x); grid on;  \n  figure(2); plot(y); grid on;\n  wavwrite(y,fs,‘w4.wav’); \nx(n)\ny(n)=x(-n+N)\n%读入单声道音频文件\n%画图显示结果\n%结果保存为声音文件\n%反褶\n原声\n反褶效果\n13\n“我爱你”反褶后…？\n人生感悟 ——\n         爱要勇于付出，\n             更要懂得珍惜\n！\n序列反褶的仿真实验(MATLAB)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 44,
+      "text": "MATLAB下序列运算的实现方法\nØ ￿MATLAB编程实现单位抽样序列 (n)\nØ ￿序列移位、反褶的编程方法\nØ ￿序列求和、求积的编程方法\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 45,
+      "text": "1.1￿￿离散时间信号￿——￿序列\n几种常用的典型序列\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 46,
+      "text": "￿几种典型的序列\nØ ￿单位抽样序列\nØ ￿矩形序列\nØ ￿单位阶跃序列\nØ ￿实指数序列\nØ ￿正弦序列\nØ ￿复指数序列\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 47,
+      "text": " (n)\nn0 1 2 3 4 5 6\n1\n-1-2-3-4\nv  (n)是一个脉冲幅度为1的现实序列。\nv  (t)是脉宽为零，幅度为  的一种数学极限，是非现实信号。 \nv单位抽样序列也称单位脉冲序列，或时域离散冲激。 \nUnit  sample sequence一、单位抽样序列 (n)      ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 48,
+      "text": "u(n)\nn0 1 2 3 4 5 6\n1\n-1-2-3-4 7 8 9 10 ……\n……\nv 用单位阶跃序列u(n)表示单位抽样序列 (n)：\nv 用单位抽样序列 (n)表示单位阶跃序列u(n)：\n Unit  step sequence\n令k=n-m\n二、单位阶跃序列u(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 49,
+      "text": "RN(n)\nn0 1 2 3\n1\nN-1……\n…… ……\n……\nv 用单位阶跃序列u(n)表示矩形序列RN(n)：\nv 用单位取样序列 (n)表示矩形序列RN (n) ：\nRectangular sequence \n三、矩形序列RN(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 50,
+      "text": "|a|≥1时，序列发散|a|< 1时，序列收敛\na<0时，序列摇动 a<0时，序列摇动 \nReal-valued exponential sequence四、实指数序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 51,
+      "text": "Ø 正弦序列的由来：对连续时间正弦信号进行等间隔等间隔\nT T \n采样采样\n，得到正弦序列。 \nω：数字角频率(rad)\nΩ：模拟角频率(rad/s)\nT： 采样间隔(s)\nωω为为相对频率相对频率\n思考： ω=0.2π的含义\nSinusoidal sequence五、正弦序列    ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 52,
+      "text": "% 正弦(余弦)序列数字角频率ω的理解\nn = 0:40; \nx = 1.5*cos(0.2*pi*n);\nstem(n,x); \naxis([0 40 -2 2]);   grid on; \ntitle('Sinusoidal Sequence');\nxlabel('Time index n');   ylabel('Amplitude');\nω=0.2π的含义\n 原连续时间信号的一个\n周期内采样了10个点！\n五、正弦序列    ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 53,
+      "text": "Complex-valued exponential sequence\nv   欧拉公式\n     \n六、复指数序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 54,
+      "text": "%复指数序列\nK = 2; n = 0:40;\nc = -(1/12)+(pi/6)*i; \nx = K*exp(c*n);\nsubplot(3,1,1);stem(n,real(x));\ngrid on;title('Real part');\nsubplot(3,1,2);stem(n,imag(x));\ngrid on;title('Imaginary part');\nsubplot(3,1,3);stem(n,abs(x));\ngrid on;title('Amplitude part');\n实部实部\n虚部虚部\n求模求模\n六、复指数序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 55,
+      "text": "实部实部\n虚部虚部\n求模求模\n六、复指数序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 56,
+      "text": "x = rand(n);   \nx = rand(m,n);\n  例程函数：用MATLAB产生均匀分布的随机信号(序列)。\n% x 为 n×n 的均匀分布的随机矩阵，随机值的区间在(0,1)之间\n% x 为 m×n 的均匀分布的随机矩阵，随机值的区间在(0,1)之间\nx = randn(n);   \nx = randn(m,n);\n% x 为 n×n 的零均值单位方差正态分布的随机矩阵\n% x 为 m×n 的零均值单位方差正态分布的随机矩阵\n  例程函数：用MATLAB产生零均值单位方差的正态分布的随机信号(序列)。\n用MATLAB产生均匀分布的随机信号",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 57,
+      "text": "￿几种典型的序列\nØ ￿单位抽样序列\nØ ￿矩形序列\nØ ￿单位阶跃序列\nØ ￿实指数序列\nØ ￿正弦序列\nØ ￿复指数序列\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 58,
+      "text": "1.1￿￿离散时间信号￿——￿序列\n离散时间信号(序列)的周期性\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 59,
+      "text": "离散时间信号（序列）的周期性\nØ ￿序列周期的定义\nØ ￿序列的周期求解方法小结\nØ ￿正弦序列的周期性\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 60,
+      "text": "        如果对于所有n存在一个最小的正整数N，使得下式成立，则称\nx(n)为周期序列，周期为N。\n                                  x(n) = x(n+N)\n正弦信号：\n      若 N＝2k  ,  当 k 为整数时(即NN  为为22的整数倍的整数倍)，则有：\nx(n)=x(n+N)，x(n)为周期信号。\nn∈[-∞, +∞]\n一、正弦序列的周期性￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 61,
+      "text": "N ＝ 2k\n(1) 当 2 /为整数时：\n原来连续信号的一个周期T0内，\n以采样间隔T等间隔采样了N个\n点，序列周期为周期为\nNN\n。\n例如：求序列 x(n) = cos(0.01πn) 的周期。\nx(n)的周期是200，在1个连续信号周期T0内采样了200个点。\n一、正弦序列的周期性￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 62,
+      "text": "(2) 当 2 / 为有理数时(有理数可表示成分数)：\n(3) 当 2 / 为无理数时：\n    任何k都不能使N为整数，此时x(n)不是周期性的。\n原来连续信号的k周期T0内，以采\n样间隔T等间隔采样了N个点，序\n列周期为周期为\nNN\n。(N, k互素，k≠1)\n例如：求序列 x(n) = cos(3πn/7) 的周期。\nx(n)的周期是14，在3个连续信号周期T0内采样了14个点。\n一、正弦序列的周期性￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 63,
+      "text": " x(n) = x(n+N)  ， n∈[-∞, +∞]\n     \n(1)  观看序列是否是  正弦、余弦或复指数正弦、余弦或复指数\n序列，目测序列是否有周期。譬如：\nnsin(ωn+φ) 、 anu(n) 、或者e(σ+jω)n(但σ≠0)，或者sin(ωn+φ)u(n)都不可能是周期序列。\n(2)  找序列的数字频率 ω , ω一定和n乘在一起。\n(3) 求解 2/：   \n     ①： 2 /  = N，周期为N；\n     ②： 2 /  = N / k，周期仍为N(分子)， 注意N和k互素 ；\n     ③： 2 /  = 无理数，序列无周期。\n(4) 对于sin(ω1n)+sin(ω2n)形式的序列，分别由ω1和ω2求N1和N2 ，序列周期\n       N = 最小公倍数(N1 ,  N2)。\n(5) 对于sin(ω1n)·sin(ω2n)形式的序列，分别由ωa=|ω1+ω2|和ωb= |ω1-ω2|求Na和Nb ，\n      序列周期 N = 最小公倍数(Na ,  Nb)。\n二、序列周期求解方法小结￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 64,
+      "text": "    \n例：(1) 判断序列x(n)是否有周期，如果有请计算其周期。 \n含义：\n 原来13个连续\n正弦信号周期\n内采样8个点\n违背违背\n采样定理采样定理\n该序列\n无周期\n离散时间信号(序列)的周期性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 65,
+      "text": "    \n(2)  用MATLAB产生离散振幅调制信号：\n其中：                                                          ，要求画出序列5个周期的值。\n5个周期\n3个频率成分\n最小公倍数\n离散时间信号(序列)的周期性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 66,
+      "text": "    \n A=1; m=0.5; wL=0.01*pi; wH=0.2*pi;\n n=0:999; x=A*(1+m*cos(wL*n)).*cos(wH*n);\n stem(n,x,'r'); grid on;\n xlabel('n');ylabel('x(n)');\n离散时间信号(序列)的周期性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 67,
+      "text": "离散时间信号（序列）的周期性\nØ ￿序列周期的定义\nØ ￿序列的周期求解方法小结\nØ ￿正弦序列的周期性\n1.1￿￿离散时间信号￿——￿序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 68,
+      "text": "《\n数\n字\n信\n号\n处\n理》\n1.1\n 离散时间信号￿——￿序列\n1.2\n ￿离散时间系统\n1.3\n ￿常系数线性差分方程\n1.4\n ￿连续时间信号的抽样\n第一章￿￿离散时间信号与系统\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 69,
+      "text": "1.2￿￿离散时间系统\n离散时间系统的线性性质\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 70,
+      "text": " (1)可加性\n    设  y1(n)=T[x1(n)]，y2(n)=T[x2(n)]\n    如果  T[x1(n)+ x2(n)]= T[x1(n)]+T[x2(n)] =y1(n)+y2(n) \n    说明系统 T[•] 满足可加性可加性\n。\nu   线性系统——满足叠加原理叠加原理\n的系统\n(2)比例性(齐次性)\n    设  y1(n)=T[x1(n)]\n    如果 T[a1x1(n)] = a1T[x1(n)] = a1 y1(n) \n    说明系统T[•]满足比例性或齐次性比例性或齐次性\n。\n线性系统\nLinear system\nSuperposition principle\nAdditivity property\nScaling property / homogeneity\n离散时间系统的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 71,
+      "text": "线性系统：线性系统：  \n线性系统必满足零输入产生零输出零输入产生零输出\na\n+\nb\na\n+\nb\n 零输入产生零输出零输入产生零输出\n必必是线性系统线性系统\n？\n√\n×\n离散时间系统的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 72,
+      "text": "例：验证下面的系统是否为线性系统：y(n) = x2(n)\n结论：系统 y(n) = x2(n)为非线性系统非线性系统\n零输入产生零输出零输入产生零输出\n的\n不一定是线性系统线性系统\n((零零输入产生零输入产生零输出输出))\n离散时间系统的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 73,
+      "text": "    \na\n+\nb\na\n+\nb\n例：验证下面的系统是否为线性系统：y(n) = x(-n)\n 是线性系统\n离散时间系统的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 74,
+      "text": "例：验证下面的33\n点中值滤波器点中值滤波器\n是否是线性系统：\na\n+\nb\na\n+\nb\n非线性系统非线性系统\n离散时间系统的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 75,
+      "text": "x0(n)\nx(n)\ny(n)\nn\nn\nn\nu 仿真实验：33\n点中值滤波器的滤波效果点中值滤波器的滤波效果\n原声\n含噪音频\n滤波后音频\n离散时间系统的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 76,
+      "text": "1.2￿￿离散时间系统\n离散时间系统的线性性质\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 77,
+      "text": "1.2￿￿离散时间系统\n离散时间系统的移不变性质\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 78,
+      "text": "u  移不变系统 (时不变系统)\n 概念概念\n：若系统响应响应\n与激励加于系统的时刻无关与激励加于系统的时刻无关\n，则系统为移不变或时不变系统。\n 即：若有 y(n) = T[x(n)]，则 y(n-m)  =  T[x(n-m)]  成立。\n延迟 m 个样本 \n延迟 m 个样本 \n移不变系统\n两者相等 \n改n\n 改自变量\nShift invariant system\n离散时间系统的移不变性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 79,
+      "text": "(1)\n因为 ：y(n-k) = T[x(n-k)] ，所以该系统是移不变系统。\n ①\n ②\n 改n\n改自变量\nx(?) → x(?-k) \nn → (n - k)\n例：验证下面的系统是否为移不变系统：\n离散时间系统的移不变性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 80,
+      "text": " ①\n ②\n 改n\n改自变量\nx(?) → x(?-k) \nn → (n - k)\n4\n(2)\n因为 ：y(n-k) ≠ T[x(n-k)] ，所以该系统不是移不变系统。\n离散时间系统的移不变性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 81,
+      "text": "例：验证下面的系统是否为移不变系统：y(n) = x(2n)\n(2)  T[x(n-1)] = x(2n-1)\n(1)  y(n-1) = x(2(n-1)) = x(2n-2)\n延迟 1 个样本 \n{ 0,1,2,3,4,5 } { 0,2,4 }  { 0,0,2,4 } \n  n=3,值为4  \n x(2·3-2) = x(4) = 4\n  x(4)=4  \n延迟 1 个样本 \n{ 0,1,2,3,4,5 } { 0,0,1,2,3,4,5 } { 0,1,3,5 }\n  n=3,值为5  \n x(2·3-1) = x(5) = 5\n移变系统\n  x(5)=5  \n离散时间系统的移不变性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 82,
+      "text": "Ø 线性移不变系统举例 —— 滑动平均系统\n例如：当 M1=0，M2=3时：\nMoving  Average  System\n        这是一个线性移不变系统线性移不变系统\n，又称算术平均滤波\n器，可以实现滤除信号中高频噪声滤除信号中高频噪声\n的作用。\n离散时间系统的移不变性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 83,
+      "text": "x(n)\nn\ny(n)\nn\n仿真实验：4点滑动平均滤波器的音频处理\n原声\n滤波后音频\n离散时间系统的移不变性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 84,
+      "text": "1.2￿￿离散时间系统\n离散时间系统的移不变性质\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 85,
+      "text": "1.2￿￿离散时间系统\nLSI系统的时域求解—线性卷积方法(1)\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 86,
+      "text": "LSI 系统的时域求解 —线性卷积方法\nØ 线性卷积的基本概念\nØ ￿线性卷积的计算方法与步骤\nØ ￿线性卷积的深入理解\n1.2￿￿离散时间系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 87,
+      "text": "一、线性卷积的基本概念\nØ  LSI系统：\n               同时具有线性和移不变性线性和移不变性\n的离散时间系统称为LSILSI\n系统系统\n。\n                LSI (Linear Shift Invariant) System\nØ  单位冲激(脉冲)响应h(n)：\n            当输入为 (n)时，系统的输出用h(n)表示。\nØ  线性卷积：\n     当一个系统是LSILSI\n系统系统\n时，它的输出y(n)可以用输入x(n)与单位脉冲响应h(n)的\n线性卷积(卷积和)来表示。\n              \nImpulse Response\n卷积(和)：Convolution (sum)\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 88,
+      "text": "        当一个系统是LSI系统时，它的输出y(n)可以用输入x(n)与单位\n脉冲响应h(n)的线性卷积线性卷积\n来表示。 \n单位脉冲响应h(n) \n线性卷积 \nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 89,
+      "text": "u 证明——用线性卷积求LSI系统输出  \n任一序列x(n)的表示方法:\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 90,
+      "text": "   二、线性卷积的深入理解   \n线性卷积 \nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 91,
+      "text": "  三、线性卷积的计算方法与步骤\nØ  反褶：画出x(m)与h(m)，以m=0的纵轴为对称轴将h(m)反褶成h(-m)。\nØ  移位：将h(-m)移位n，得到h(n-m)，即h(-m+n) 。\n                  当n为负，左移n位；当n为正，右移n位。 注意：n∈[-∞, ∞]。\nØ  相乘：将h(n-m)和x(m)的相同m值的对应点值进行相乘。\nØ  相加：将所有对应点的乘积累加起来，得到某一个输出值 y(n)。\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 92,
+      "text": "已知某LSI系统的单位脉冲响应h(n)为：例： \n试求该系统的输出响应y(n)。\n若该系统的输入为序列x(n)：\n解：  根据题目已知条件，LSI系统的输出可以通过输入序列与系统单位脉冲\n响应的线性卷积线性卷积\n求出。\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 93,
+      "text": "10 m\n1\n2\n10 m2\n1\n3 2\n0\n1\n32\n-1-2 m\n0\n1\n3\n2\n-1 1 m\ny(0) = 1*3 = 3\ny(1) = 1*2 + 2*3 = 8\n9\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 94,
+      "text": "10 m\n1\n2\n10 m2\n1\n3 2\ny(2) = 1*1 + 2*2 = 5\ny(3) = 2*1 = 2\n0\n1\n32\n21 m\n0\n1\n32\n21 m3\n3    2    1\n1    2\n6    4    2\n3    2    1\n3    8    5    2\nn=2\nn=1\nn=2+1=3\nn=3\ny(n) = {    ,    ,     ,     }\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 95,
+      "text": " 说明：\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 96,
+      "text": "nx=[0:1];  x=[1 2];\nnh=[0:2];  h=[3 2 1];\ny=conv(x,h);\nny=[0:3];\n \nsubplot(311);stem(nx,x,'linewidth',2);\naxis([min(ny) max(ny) 0 max(y)]);grid on;\nsubplot(312);stem(nh,h,'linewidth',2);\naxis([min(ny) max(ny) 0 max(y)]);grid on;\nsubplot(313);stem(ny,y,'linewidth',2);\naxis([min(ny) max(ny) 0 max(y)]);grid on;\nconv函数实现卷积\n定义好输出y的区间\ny =\n     3     8     5     2\nx(n)\nh(n)\ny(n)\nn\nn\nn\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 97,
+      "text": "LSI 系统的时域求解 —线性卷积方法\nØ 线性卷积的基本概念\nØ ￿线性卷积的计算方法与步骤\nØ ￿线性卷积的深入理解\n1.2￿￿离散时间系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 98,
+      "text": "1.2￿￿离散时间系统\nLSI系统的时域求解—线性卷积方法(2)\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 99,
+      "text": "LSI 系统的时域求解 —线性卷积方法\nØ 线性卷积的运算规则\nØ ￿实序列的相关\nØ ￿线性卷积运算与应用举例\n1.2￿￿离散时间系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 100,
+      "text": "  四、线性卷积的运算规则\n 1、交换律 y(n) = x(n)*h(n) = h(n)*x(n)\nh(n)x(n) y(n) x(n)h(n) y(n)等效于\n 2、结合律\nx(n)*h1(n)*h2(n) \n= [x(n)*h1(n)]*h2(n)\n= [x(n)*h2(n)]*h1(n) \n= x(n)*[h1(n)*h2(n)] \nh1(n)x(n) y(n)h2(n)\nh2(n)x(n) y(n)h1(n)\nh1(n)*h2(n)x(n) y(n)\n三者等效\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 101,
+      "text": " 3、分配律\nx(n)*[h1(n)+h2(n)]   =   x(n)*h1(n) + x(n)*h2(n)\nh1(n) + h2(n)x(n) y(n)\n两者等效\nh1(n)x(n) y(n)\nh2(n)\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 102,
+      "text": "有两个序列：x(n)和h(n) \n          x(n)不为零的区间为：N1≤n≤ N2\n              h(n)不为零的区间为：N3≤n≤ N4\n设：y(n)= x(n)*h(n)\n问：y(n)不为零的区间为：                                                  。\n例1： \nx(m)：[N1 , N2]\nh(m)：[N3 , N4]\nh(n-m)：[n-N4 , n-N3]\nh(-m)：[-N4 , -N3]\nn∈ [- ∞ , ∞]\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 103,
+      "text": "x(m) m\nN1 N2\nh(n-m) m\nn-N4 n-N3n∈[-∞, ∞]\nn-N3<N1\nh(n-m) m\nn-N4 n-N3n∈[-∞, ∞]\nn>N2+N4时全为零\nn<N1+N3时y(n)全为零\nh(n-m) m\nn-N4 n-N3n∈[-∞, ∞]\nn-N3=N1\n第一个值不为零的位置：n=N1+N3\nh(n-m) m\nn-N4 n-N3n∈[-∞, ∞]\nN1+N3<n<N2+N4\nh(n-m) m\nn-N4 n-N3n∈[-∞, ∞]\nn=N2+N4\n最后一个值不为零的位置：n=N2+N4\nN1+N3 ≤ n ≤ N2+N4\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 104,
+      "text": "有两个序列：x(n)和h(n) \n          x(n)不为零的区间为：N1≤n≤ N2\n              h(n)不为零的区间为：N3≤n≤ N4\n设：y(n)= x(n)*h(n)\n问：y(n)不为零的区间为：                                                  。N1+N3 ≤ n ≤  N2+N4\n例1： \nx(m)：[N1 , N2]\nh(n-m)：[n-N4 , n-N3]\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 105,
+      "text": "例2：  某LSI系统的单位脉冲响应h(n)为：\n其中，                       ，R为正整数。\n若该系统的输入为x(n)，试写出系统输出y(n)表达式。\n解：  LSI系统的输出可以通过输入序列与系统单位脉冲响应的线性卷积线性卷积\n求出。\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 106,
+      "text": "Ø 例2的实际应用：\n       直接声音和它的延迟了R个周期、并存在衰减的单个回声求和可以用于产\n生回声回声\n的效果。\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 107,
+      "text": " [x,Fs,bits]=wavread('c:\\\\wav\\\\good.wav');  \n a=0.3;  R=10000;\n h=[1 zeros(1,R-1), a];\n y=conv(x,h);\n figure(1);\n subplot(211); nx=0:length(x)-1; \n plot(nx,x);axis([0 length(y)-1 min(x) max(x)])\n subplot(212); ny=0:length(y)-1;\n plot(ny,y);axis([0 length(y)-1 min(y) max(y)])\n wavwrite(y,Fs,'c:\\\\good1.wav'); \n读入音频文件\n写入音频文件\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 108,
+      "text": " 原声：\n 回声：\n=0.3, R=10000\nx(n)\ny(n)\nn\nn\nLSI系统的时域求解—线性卷积方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 109,
+      "text": "五、序列的相关\n     \nØ 实序列的互相关\nØ 实序列的自相关 auto-correlation\ncross-correlation\n        实际工作中，常需要研究经过一段时间差后，两个信号之间的相似程度，\n可以用相关函数来表征。\n实序列相关的定义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 110,
+      "text": "     \n x(m)反褶后得到x(-m)\nn= -∞时，x(-m-∞)\nn= ∞时，x(-m+∞)\nn>0，x(-m+n)相当于x(-m)右移n位\nn<0，x(-m+n)相当于x(-m)左移n位\nx(-m)反褶后得到x(m)\nn>0，x(m -n)相当于x(m)右移n位\nn<0，x(m -n)相当于x(m)左移n位\nn= -∞时，x(m+∞)\nn= ∞时，x(m -∞)\n线性卷积公式的理解：\n序列相关的理解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 111,
+      "text": "     \nn=2\ny(n) n\nx(n) n\nn=0\nn=0\nx(-n) n\ny(m) m\nx(m)\nm\nm=0\nx(m-n)=x(m+∞)n= -∞\n x(m-n)=x(m-∞)n=∞\nm\nx(m-2)\nryx(n)在n=2处出现峰值\n说明y(n)与x(n-2)相似\nn=2\n做\n互\n相\n关\n序列相关的理解：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 112,
+      "text": "例：设x(n) = {3, 5, -7, 2, -1, -3, 2} , y(n)=x(n-2)+w(n)，其中w(n)为零均值和单位方差\n        的高斯序列，计算x(n)与y(n)的互相关ryx。\n nx=[0:6]; x = [3,5,-7,2,-1,-3,2];\n ny=[2:8]; y0 = x;\n w = randn(1,length(y0)); \n y = y0+w; \n ryx = xcorr(y,x);\n nryx = [-4:8];\n \n stem(nryx,ryx,'r','linewidth',2);\n xlabel('nryx');ylabel('ryx');\n[-\n6:0] \n[2:8] \n序列相关的理解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 113,
+      "text": "峰值在n=2处\n说明y(n)与x(n-2)\n最相关(相似)\n序列相关的理解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 114,
+      "text": "LSI 系统的时域求解 —线性卷积方法\nØ 线性卷积的运算规则\nØ ￿实序列的相关\nØ ￿线性卷积运算与应用举例\n1.2￿￿离散时间系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 115,
+      "text": "1.2￿￿离散时间系统\n离散时间系统因果性及稳定性\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 116,
+      "text": "离散时间系统因果性及稳定性的\n基本概念及判断方法\nØ 因果系统\nØ ￿稳定系统\nØ 一般系统 y(n)=T[x(n)] 的因果性定义及判断方法 \nØ  LSI系统的因果性条件\nØ 一般系统 y(n)=T[x(n)] 的稳定性定义及判断方法 \nØ  LSI系统的稳定性条件\n1.2￿￿离散时间系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 117,
+      "text": "定义定义\n：某时刻的输出只取决于此时刻和此时刻以前的输入的系统。 \n即：n=n0时的输出y(n0)只取决于只取决于\nn≤n0的输入x(n) 。\n例： (1)  y(n)=nx(n) 因果， y(n0)只取决于只取决于\nn=n0的输入x(n)\n(2)  y(n)=x(n+2) 非因果， y(0) = x(2)\n(3)  y(n)=x(n2) 非因果， y(2) = x(4)\n(4)  y(n)=x(-n) 非因果， y(-2) = x(2)\n(5)  y(n)=sin(n+2)x(n) 因果， sin(n+2)不是输入\nØ 一般系统:  y(n)=T[x(n)] 的因果性定义\nCausal  system\nNoncausal  system\n一般系统的因果性定义及判断方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 118,
+      "text": "非因果\n=0\n =0\n定义定义\n：若LSI系统的h(n)满足：当n<0时，h(n)=0 ，那么，该LSI\n            系统为因果系统。\n…………………\n =0\n解释：如果存在n<0时，h(n)≠0 ，那么y(n)就将与m>0的x(n+m) 有关，\n            按照因果系统的定义，此时系统非因果。\n？ ？ ？\nLSI系统的因果性条件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 119,
+      "text": "例：已知LSI系统的单位脉冲响应h(n)，判断系统的因果性。\n当n<0时，h(n) = 0 \n 单位阶跃阶跃\n序列\n单位脉冲脉冲\n序列\n非因果,  h(-2) ≠ 0\n因果,  当n≥2时,  h(n) ≠ 0 \n非因果,  当n≤-1时,  h(n) ≠ 0 \n非因果,  当- ≤ n≤时,  h(n) 有值\nLSI系统的因果性条件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 120,
+      "text": "Ø 一般系统:  y(n)=T[x(n)] 的稳定性定义\n定义：有界输入有界输入\n产生有界输出有界输出\n的系统。\n            即： 如果 |x(n)| ≤ M <  ，则有 |y(n)| ≤ P <  。\nn不受限制\nn∈[-, ]\n例： 不稳定,  n=时,  y(n)= \n稳定,  有界输入产生有界输出\n稳定,  有界输入产生有界输出\n不稳定,  y(n)是n-n0+1项输入的求和\n,  当n=时,  y(n)= \nStable  system一般系统的稳定性定义及判断方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 121,
+      "text": "定义定义\n：一个LSI系统是稳定系统的充分必要条件是：\n单位脉冲响应\n绝对可和\n 从线性卷积理解理解\nLSI系统稳定性条件：\n 输入\n有界\n输出有界\nAbsolutely summable\nLSI系统的稳定性条件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 122,
+      "text": "  例：已知LSI系统的单位脉冲响应h(n)，判断系统的稳定性。\n稳定\n稳定,  n ≥2有值, 收敛\n例：\n稳定,  n ≤ -1有值,  收敛\nh(n)绝对可和\n不稳定,  h(n)不满足绝对可和\nLSI系统的稳定性条件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 123,
+      "text": "离散时间系统因果性及稳定性的\n基本概念及判断方法\nØ 因果系统\nØ ￿稳定系统\nØ 一般系统 y(n)=T[x(n)] 的因果性定义及判断方法 \nØ  LSI系统的因果性条件\nØ 一般系统 y(n)=T[x(n)] 的稳定性定义及判断方法 \nØ  LSI系统的稳定性条件\n1.2￿￿离散时间系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 124,
+      "text": "《\n数\n字\n信\n号\n处\n理\n》\n1.11.1 离散时间信号 —— 序列\n1.21.2 离散时间系统\n1.31.3 常系数线性差分方程\n1.41.4 连续时间信号的抽样\n第一章  离散时间信号与系统\nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 125,
+      "text": "1.3  常系数线性差分方程\n华东理工大学信息科学与工程学院 万永菁\n第一章  离散时间信号与系统    \nDiscrete-time signals and systems",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 126,
+      "text": "线性常系数差分方程\n➢ 线性常系数差分方程的表达形式\n➢  线性常系数差分方程的求解方法\n➢ MATLAB中实现差分方程递推解的filter函数\n1.3  常系数线性差分方程",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 127,
+      "text": "常系数：是指方程中ak和bm为常数。\n阶数：  y(n)项中变量序号的最高值与最低值之差。\n线性：  y(n-k)与x(n-m)项都只有一次幂，且不存在相乘项。\n该“线性”与线性系统的“线性”含义不同\n\n==\n−=−\nM\nm\nm\nN\nk\nk mnxbknya\n00\n)()(\nLinear constant-coefficient difference equations\n一、线性常系数差分方程表达形式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 128,
+      "text": "① 经典解法：类似于模拟系统求解微分方程的方法，要求齐次解、特解，并\n由边界条件求待定系数。由于计算复杂，较少使用。\n② 递推(迭代)法：简单、适于用计算机进行求解。但只能得到一系列数值解\n，不易得到封闭式(公式)解答。\n③ 变换域法：将差分方程变换到z域求解。\n④ 卷积法：由差分方程求出系统的h(n)，再与已知的x(n)进行卷积，得到y(n)。\n二、线性常系数差分方程的求解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 129,
+      "text": "例：用迭代法求解差分方程—求单位抽样响应h(n)\n设系统差分方程为：y(n) – ay(n –1) = x(n)，求h(n)。\n例：用迭代法求解差分方程—求单位抽样响应h(n)\n设系统差分方程为：y(n) – ay(n –1) = x(n)，求h(n)。\nh(0) = ah(-1)+ (0) = 0+1 = 1\nh(1) = ah(0) + (1) = a+0 = a\nh(2) = ah(1) + (2) = a2+0 = a2\n解：设x(n)= (n)，对因果系统，且有当n<0时，y(n)=h(n)=0。\nh(n) = ah(n-1)+0 = an+0 = an\n…… 迭代\n故系统的单位抽样响应为：h(n)=anu(n)。这个系统显然是因果系统\n，当|a|<1时，它还是稳定系统。\n注意：一个常系数线性差分方程，并不一定代表因果系统。\n                如果边界条件假设不同，可以得到非因果系统。\n二、线性常系数差分方程的求解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 130,
+      "text": "例：设系统差分方程仍为：y(n) - ay(n-1) = x(n)，求h(n)。例：设系统差分方程仍为：y(n) - ay(n-1) = x(n)，求h(n)。\n解：设x(n)= (n)，且有当n>0 时，y(n)=h(n)=0。\n可写出另一种递推关系：y(n-1)=a-1[y(n)-x(n)]\nh(0) = a-1[h(1)- (1)] = 0\nh(-1) = a-1[h(0)- (0)] = -a-1\nh(-2) = a-1[h(-1)+ (-1)] = -a-2\nh(-n) = -a-n\n……\n迭代\n该系统的单位抽样响应为：h(n)=-anu(-n-1)。这个系统显然非因果系统\n，但它的差分方程与前一题相同。\n二、线性常系数差分方程的求解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 131,
+      "text": "差分方程表示法的一个优点是：\n  可以直接得到系统的结构，这里的结构是指将输入变换成输出的运算结构。\n差分方程表示法的一个优点是：\n  可以直接得到系统的结构，这里的结构是指将输入变换成输出的运算结构。\n例：差分方程：\n                y(n) = b0x(n) - a1 y(n-1)\n该差分方程所表示的结构为：\nz -1\nx(n)\nb0\n-a1\ny(n)\n从图中可以看出需\n要多少个加法器、乘\n法器和延迟单元。\n二、线性常系数差分方程的求解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 132,
+      "text": "函数形式：y =  filter (b, a, x)\n\n==\n−=−\nM\nm\nm\nN\nk\nk mnxbknya\n00\n)()(\n其中：b=[b0,b1,…bM]； a=[a0, a1,…aN]；且a0 ≠ 0\nx为输入序列， y为输出序列。\n例如：y(n) – 0.5y(n-1) = 0.5x(n)\nb=0.5; a=[1, -0.5];\nx=ones(1,100);\ny=filter(b,a,x);\n10 20 30 40 50 60 70 80 90 100\n0\n0.2\n0.4\n0.6\n0.8\n1\n10 20 30 40 50 60 70 80 90 100\n0\n0.2\n0.4\n0.6\n0.8\n1\n三、MATLAB中实现差分方程递推解的函数",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 133,
+      "text": "线性常系数差分方程\n➢ 线性常系数差分方程的表达形式\n➢  线性常系数差分方程的求解方法\n➢ MATLAB中实现差分方程递推解的filter函数\n1.3  常系数线性差分方程",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 134,
+      "text": "1.4￿￿连续时间信号的抽样\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems\n时域采样定理(1)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 135,
+      "text": "时域采样定理\nØ 问题的引入\nØ 理想时域采样过程\nØ 理想采样后信号在频域发生的变化\nØ 时域采样定理\n1.4￿￿连续时间信号的抽样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 136,
+      "text": "？\n    问题：信号被采样后在频域会发生什么变化？\nFrequency domain\n一、时域采样问题的引入",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 137,
+      "text": "采样器：相当于一个电子开关，开关每隔 T 秒(采样间隔)闭合一次，使时间离散。\nt0 t0 T\n采样：利用周期性理想冲激函数序列     ，从连续信号     中抽取一系列的\n      离散值，得到     。 \n2T 3T 4T 5T\n…\nT 2T 3T 4T 5T\n离散连续\n…\n二、理想时域采样过程￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 138,
+      "text": "         就理想采样而言，周期性冲激函数序列 T(t) 的各冲激函数准确地出现在采\n样瞬间上，采样后的信号完全与输入信号xa(t)在采样瞬间的幅度相同。\n冲激函数序列：\n理想采样输出：\n-2T   -T  0  T  2T    \n1\nT(t)\nt\n… …\n二、理想时域采样过程￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 139,
+      "text": "时域相乘 频域卷积 \n三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 140,
+      "text": " FT\n-2T  -T  0    T  2T    \n1\nT(t)\nt\n… …\n-2s -s 0 s 2s \ns\n△T(j)\n\n… …\n三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 141,
+      "text": "s=2 /T，s称为采样角频率\nfs=1/T，fs为采样频率\n-2s -s 0 s 2s \ns\n△T(j)\n\n… …\n三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 142,
+      "text": "三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 143,
+      "text": "时域离散\n频域周期\n三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 144,
+      "text": "时域离散时域离散 频域周期频域周期\n三、理想采样后信号在频域发生的变化￿\n时时\n域域\n相相\n乘乘\n频频\n域域\n卷卷\n积积",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 145,
+      "text": "情况①：不混叠  ——  若带限信号xa(t) 最高频谱分量h不超过s/2。\n   -s                             0                         s\n1/T\n\n…………\n                                0      h\n1\n\n h  ≤ s /2\n h\n        理论上说，只要用一个截止频率为s/2的理想低通滤波器对             \n进行处理，就能得到               ，从而得到            。\nT\n三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 146,
+      "text": "情况②：混叠  ——  若带限信号xa(t) 最高频谱分量h超过s/2。\n               -s               0             s\n1/T\n\n…………\n                                        0      h\n1\n\n    由于各周期延拓分量产生的频谱互相交叠，使抽样信号的频域产生混频域产生混\n叠现象叠现象\n。\n h  > s/2\n h\nAliasing (混叠)\n三、理想采样后信号在频域发生的变化￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 147,
+      "text": "Nyquist-Shannon Sampling Theorem\n令xa(t)是一个带限信号，即：当| |≥ h时，Xa(j)=0。\n那么， xa(t)能唯一地由它的样本x(n)= xa(nT)所决定，唯有：\n        我们将s/2称为折叠频率折叠频率\n。它如同一面镜子，当信号最高频率\n超过它时，就会被折叠回来，造成频谱混叠。\nu 折叠频率\n四、时域采样定理",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 148,
+      "text": "时域离散时域离散\n频域周期频域周期\n(rad/s)\n(Hz)\n(rad)\n四、时域采样定理\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 149,
+      "text": "时域采样定理\nØ 问题的引入\nØ 理想时域采样过程\nØ 理想采样后信号在频域发生的变化\nØ 时域采样定理\n1.4￿￿连续时间信号的抽样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 150,
+      "text": "1.4￿￿连续时间信号的抽样\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems\n时域采样定理(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 151,
+      "text": "时域采样定理\nØ 采样定理的工程应用￿——￿抗混叠滤波器\nØ 带通信号的采样\n1.4￿￿连续时间信号的抽样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 152,
+      "text": "模拟信号的数字处理方法\ny(n)x(n) ya(t)xa(t) 前置\n预滤\n波器\nA/D\n数字\n信号\n处理器\nD/A 模拟\n滤波器\n抗混叠抗混叠\n滤波器 Antialiasing filter\n一、采样定理的工程应用￿——￿抗混叠滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 153,
+      "text": "未经抗混叠滤波器，产生频域混叠现象\n经抗混叠滤波器后，频域不再混叠\n毋滥\n宁缺\n(Hz)\n|          |\n(Hz)\n|          |\n(Hz)\n|            |\n(Hz)\n|            |\n一、采样定理的工程应用￿——￿抗混叠滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 154,
+      "text": "f(Hz)\nf(Hz)\nØ  音频信号处理实例音频信号处理实例 未经抗混叠滤波器，产生频域混叠现象\n时域采样\nfs = 5.512KHz44.1KHz 5.512KHz\n一、采样定理的工程应用￿——￿抗混叠滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 155,
+      "text": "f(Hz)\nf(Hz)\n经抗混叠滤波器后，频域不再混叠\n时域采样\nfs = 5.512KHz\n 抗混叠滤波器\n( fh < 2.5K Hz)\n一、采样定理的工程应用￿——￿抗混叠滤波器\nØ  音频信号处理实例音频信号处理实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 156,
+      "text": "1、带通信号描述：\n        带通信号的频谱存在于一定频段范围内，而不是在零频周围，\n其最高频率为fh，带宽为Δf0，中心频率为f0=fh- Δf0 /2。\nfhf0-fh\nΔf0\nf\nXa(jf )\n二、带通信号的采样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 157,
+      "text": "2、当当  ffhh==rrΔΔff00，，rr为整数为整数，即带通信号的最高频率是带宽的整数倍时，则选择抽样\n频率 ffs  s  = 2Δ= 2Δff00  ，采样后的频谱不会产生混叠现象不会产生混叠现象，只要通过合适的带通滤波器就\n可以恢复原信号。\nfhf0-fh f\nXa(jf )1\nXa(jf )\n-2fs ffs 2fs-fs 3fs 4fs-3fs-4fs 0\n…………\n^\n1/T\n二、带通信号的采样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 158,
+      "text": "理想带通滤波器\nXa(jf )\n-2fs ffs 2fs-fs 3fs 4fs-3fs-4fs 0\n…………\n^1/T\nfhf0-fh f\nHbp(jf )T\nfhf0-fh f\nYa(jf ) = Xa(jf )Hbp(jf )^\n1\n3、当当  ffhh==rr’’ΔΔff00，，rr’ ’ 不为整数不为整数，则将通带下端延伸到使其带宽为ΔΔff00’’  ，且\n满足： f fhh==rrΔΔff00’’，此时，此时rr为整数。然后用为整数。然后用22中的方法进行抽样。中的方法进行抽样。\n二、带通信号的采样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 159,
+      "text": "时域采样定理\nØ 采样定理的工程应用￿——￿抗混叠滤波器\nØ 带通信号的采样\n1.4￿￿连续时间信号的抽样",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 160,
+      "text": "1.4￿￿连续时间信号的抽样\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems\n时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 161,
+      "text": "    如果满足采样定理，信号的最高频率小于折叠频率，则采样后信号的频谱不会\n产生混叠，故可以恢复原信号。\n-2s  -s    0  s 2s\n1/T\n\n…\n…\n…\n…\n         0 \n   -s /2  0 s /2 \nT\n\n   实际上，理想的低通滤波\n器是不能实现的，但我们可以\n在一定精度范围内用一个可实\n现的滤波器来逼近它。\n理想低通滤波器\nReconstruction (重构)\nReconstruction filter\n时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 162,
+      "text": "FT\nFT\n=？\nFT-1\n时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 163,
+      "text": "理想低通滤波器的冲激响应h(t)为：\n思路：因为采样后的频谱是乘以理想低通滤波器的频谱后得到原信号的频谱的，\n            所以对应到时域，应该是采样信号与理想低通滤波器对应时域信号h(t)的\n                        卷积卷积\n。这个卷积的结果即为ya(t)，然后，我们将它与xa(t)进行对比。\n讨论：如何由采样信号      来恢复原来的模拟信号      ？\n时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 164,
+      "text": "时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 165,
+      "text": "信号的采样值xa(mT)经内插函数得到连续信号ya(t)。\nc\n抽样点的内插恢复\nya(t)\n时域采样信号的恢复\nxa(mT)\n……",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 166,
+      "text": "内插函数\n说明： (1) 内插函数只有在采样点mT上为1。\n(2) ya(t)等于xa(mT)乘上对应的内插函数的总和。\n(3) 在每一个采样点上，只有该点所对应的内插函数不为零，这\n     说明在采样点上信号值不变ya(mT)=xa(mT)，而采样点之间的\n     信号由各加权内插函数波形的延伸叠加延伸叠加\n而成。\nInterpolation function\n时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 167,
+      "text": "1.4￿￿连续时间信号的抽样\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems\n时域采样信号的恢复",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 168,
+      "text": "1.4￿￿连续时间信号的抽样\n华东理工大学信息科学与工程学院 万永菁\n第一章￿￿离散时间信号与系统￿￿￿￿\nDiscrete-time signals and systems\n模拟信号的数字处理方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 169,
+      "text": "￿￿模拟信号的数字处理方法￿￿\ny (n)x(n) ya(t)xa(t)\n 前置\n预滤\n波器\nA/D\n转换器\n数字\n信号\n处理器\nD/A\n转换器\n模拟\n低通\n滤波器\n　　通常，要求进入A/D采样的信号为带限信号，最高截止频率为Ωc，并满足采样\n定理：Ωs ≥ 2Ωc。因此，我们经常会对输入的连续信号xa(t)进行前置预滤波，以滤\n除输入信号中超过折叠频率的那部分高频信号，保证后续信号处理正常工作。 \n2\nx(n) y(n)\nΩc ≤ Ωs/2\n宁缺毋滥",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 170,
+      "text": " 采样采样\n：以等间隔T 对模拟信号进行采样，得到采样点上的样本数据，即时域离散信号。\n 量化编码量化编码\n：设A/D有M位，用M位二进制数表示这一串样本数据，即形成数字信号。\n￿￿模拟信号的数字处理方法￿￿\ny (n)x(n) ya(t)xa(t)\n 前置\n预滤\n波器\nA/D\n转换器\n数字\n信号\n处理器\nD/A\n转换器\n模拟\n低通\n滤波器\n采样、量化编码\n3\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 171,
+      "text": "        数字信号处理器对输入信号x(n)进行处理（如对输入信号进行滤波、降噪、\n增强、变换、压缩、识别等等），最终得到输出信号y(n)。\n4\ny (n)x(n) ya(t)xa(t)\n 前置\n预滤\n波器\nA/D\n转换器\n数字\n信号\n处理器\nD/A\n转换器\n模拟\n低通\n滤波器\n￿￿模拟信号的数字处理方法￿￿\nx(n) y(n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 172,
+      "text": "￿￿￿￿￿￿￿￿零零\n阶阶\n保保\n持持\n器器\n是将前一个采样值进行保持，一直到下一个采样值来到，\n再跳到新的采样值并保持。\n5\ny (n)x(n) ya(t)xa(t)\n 前置\n预滤\n波器\nA/D\n转换器\n数字\n信号\n处理器\nD/A\n转换器\n模拟\n低通\n滤波器\n￿￿模拟信号的数字处理方法￿￿\n 解码器  平滑滤波器 y(n) ya(t) 零阶保持器 \n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 173,
+      "text": "图示模拟信号的数字处理方法(理想D/A转换器)\n6\nA/D\n转换器\nDSP\n处理器\n理想D/A\n转换器\n相乘\n 卷积\n卷积\n 相乘\n相乘\n卷积",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 174,
+      "text": "￿￿图示模拟信号的数字处理方法(实际D/A转换器)\n7\nA/D\n转换器\nDSP\n处理器\nD/A\n转换器\n平滑\n滤波器\n相乘\n 卷积\n卷积\n相乘\n相乘\n卷积\n卷积\n 相乘",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 175,
+      "text": "￿￿图示模拟信号的数字处理方法(实际D/A转换器&采样间隔T变小)\n8\nA/D\n转换器\nDSP\n处理器\nD/A\n转换器\n平滑\n滤波器\n相乘\n卷积\n相乘\n 卷积\n卷积\n 相乘\n相乘\n卷积",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 176,
+      "text": "9\n             让未来的你\n感谢曾经努力拼搏的自己！",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 177,
+      "text": "《\n数\n字\n信\n号\n处\n理》\n第一章￿￿离散时间信号与系统\nDiscrete-time signals and systems\n信号处理之￿——￿力学笃行\n￿￿你相信“眼见为实”吗？￿\n华东理工大学信息科学与工程学院 万永菁",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 178,
+      "text": "2\n提出时域采样定理的科学家￿——￿奈奎斯特\n哈利·奈奎斯特\nHarry Nyquist\n（1889-1976）\n美国物理学家，1917年在耶鲁大学获得\n物理学博士学位。先后在在AT&T公司\n和贝尔实验室工作。\n01\n1927年，奈奎斯特提出，如果对某一带\n宽有限的模拟信号进行采样，为了能从\n采样值中准确地恢复原始信号，采采\n样样\n频频\n率至少应为原始信号最高频率的两倍率至少应为原始信号最高频率的两倍\n。\n02\n为表彰奈奎斯特的贡献，采采\n样样\n定定\n理理\n也也\n称称\n为为\n奈奈\n奎奎\n斯斯\n特特\n定定\n理理\n，采样频率的一半fs/2也\n称为奈奎斯特频率。\n03",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 179,
+      "text": "3\n信息论之父￿——￿香农\n克劳德·艾尔伍德·香农\nClaude Elwood Shannon\n（1916-2001）\n美国数学家、信信\n息息\n论论\n的的\n创创\n始始\n人人\n。1936年获得密歇根大\n学学士学位。1940年在麻省理工学院获得硕士和博士\n学位，1941年进入贝尔实验室工作。\n01\n1948年，香农在Bell System Technical Journal上发表\n了 影 响 深 远 的 论 文 ”A mathematical theory of \ncommunication”。1949年，他又在该杂志上发表了另\n一 篇 著 名 论 文 ”Communication in the presence of \nnoise”。这两篇论文奠定了现代信息论的基础。因此，\n香农也被尊称为“信息论之父”。\n02\n奈奎斯特定理给出了无热噪声时信道带宽对最大数据\n速率的限制；而香农进一步研究了受噪声干扰的信道\n的情况：信道的带宽或信道中的信噪比越大，则信息\n的极限传输速率就越高。\n03",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 180,
+      "text": "4\n真真假假的世界，不被实物的表象迷惑\n为什么车子在前进，而我们看到的车轮是反转或是静止的？\n车轮反转 车轮静止",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 181,
+      "text": "5\n真真假假的世界，不被事物的表象迷惑\n已知：有一个离散时间信号x(n)=sin(0.1πn)，是在采样率为1000Hz下由某\n个连续时间信号采样而来的，请问该连续时间信号是否唯一？\nn\nx(n)\nT\nT=1/fs=1(ms)\n0.04s",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 182,
+      "text": "6\n真真假假的世界，不被事物的表象迷惑\nT=1/fs=1(ms)\nT=1/fs=1(ms)\n连续信号的1个周期采样20个点\n连续信号的21个周期采样20个点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 183,
+      "text": "7\n真真假假的世界，不被实物的表象迷惑\n每0.1s逆时针转45°\n每0.1s逆时针转45°\n每0.1s逆时针转45°\n……\nu 前进的车子，倒转的车轮\n每0.1秒顺时针转315°",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 184,
+      "text": "8\n0.1s 0.1s 0.1s ……\nu 前进的车子，静止的车轮\n真真假假的世界，不被实物的表象迷惑",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 185,
+      "text": "￿￿￿￿￿￿￿￿￿￿￿我们通过感官来感知这个世界时，会被各种事物的表象吸引。\n事物的本质往往是看不见、摸不着的，是事物具有的独特性质。\n￿￿￿￿￿￿￿￿我们要善于利用各种方法，细致思考，努力发掘事物的\n本质，才能更加深入地了解这个美丽的世界！\n透过现象看本质，坚持科学精神\n￿￿￿￿￿￿￿￿表象通常来说不是本质的直接表达，而是局部的和片面的，甚至\n有可能是扭曲的。",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": [
+    {
+      "source_pages": [
+        142,
+        143
+      ],
+      "proposed_final_page": 143,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        164,
+        165
+      ],
+      "proposed_final_page": 165,
+      "status": "pending_visual_review"
+    }
+  ]
+}

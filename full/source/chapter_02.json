@@ -1,0 +1,1032 @@
+{
+  "chapter": {
+    "number": 2,
+    "title": "z 变换与LSI系统频域分析",
+    "start_page": 186,
+    "end_page": 387,
+    "bookmark_prefix": "MC2"
+  },
+  "source_page_count": 202,
+  "pages": [
+    {
+      "source_page": 186,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 187,
+      "text": "2.1￿￿z 变换的基本概念\nz 变换及其收敛域\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 188,
+      "text": "z￿变换及其收敛域\nØ  z变换的由来\nØ s平面与z平面的映射关系\nØ z变换定义及其收敛域\n2.1￿￿z 变换的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 189,
+      "text": "        z变换是离散系统与信号分析的重要工具，其地位犹\n如拉普拉斯变换在连续信号与系统中的地位。\n         z变换的定义可以\n从理想信号\n(\n离散信号\n)\n的拉普拉斯\n变换引出\n，也可以独立地对离散信号(序列)给出其定义。\n一 、z￿变换的由来",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 190,
+      "text": "hh((tt))\n hh((nn)) HH((ss))\n HH((zz))\n令令  z z = = eesTsT\n一 、z￿变换的由来",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 191,
+      "text": "  \nj\nS平面 Z平面\nz z = = eesTsT\nRe[z]\njIm[z]\n1\n二、s平面与z平面的映射关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 192,
+      "text": "时域离散时域离散 频域周期频域周期\n  \n  \n  \nZ平面\njIm[z]\nRe[z]\nj\nS平面\n-/T\n/T\n3/\nT\n-\n3/T\nz z = = eesTsT\n线性关系\n频谱混叠？频谱混叠？\n二、s平面与z平面的映射关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 193,
+      "text": "Ø LSI系统单位脉冲响应的z变换即是系统函数H(z)\nØ LSI系统的系统函数H(z)的收敛域\n        要满足收敛条件，|z|的值必须在一定范围内，这个范围就\n是收敛域收敛域\n。\n收敛条件：\nRegion of Convergence Region of Convergence (ROC)(ROC)\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 194,
+      "text": "有限长序列\njIm[z]\nRe[z]\n|z|∈(0,)\n|z|∈(0,Rx+)\n右边序列\njIm[z]\nRe[z]Rx-\n双边序列\njIm[z]\nRe[z]Rx+Rx-\n|z|∈(Rx-,Rx+)左边序列\njIm[z]\nRe[z]Rx+\n|z|∈(Rx-,)\nn1≤0 , n2≥0 n ≥ n0 \nn ≤ n0\nn0 ≤ 0 \n|z|∈[0, Rx+)\nn0 ≥ 0 \n|z|∈(Rx-, ]\n因果序列\nn∈[- ,]\nFinite-duration sequenceFinite-duration sequence Right-sided sequenceRight-sided sequence\nLeft-sided sequenceLeft-sided sequence Two-sided sequenceTwo-sided sequence\n|z|∈(0,]\nn1 ≥0\n|z|∈[0,)\nn2 ≤0\nn1 ≤ n ≤ n2\n有限z平面",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 195,
+      "text": "例：z变换及收敛域的求法 \n(1)  序列 x(n)=(n) 的z变换及收敛域。\n     X(z)为常数1，说明收敛域是整个z的闭平面：|z|∈[0, ]\n仅当n=0时， (n)=1\n而此时：z-n=z0=1\n(2)  序列 x(n)=anu(n) 的z变换及收敛域。\n当|az-1|<1，即：|z|>|a|时，(az-1) = 0，此时X(z)为：\n全z平面\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 196,
+      "text": "说明：\n① 序列 x(n)=anu(n) 是一个右边序列，而且是因果序列，它的收敛域应该是\n       |z|>Rx- 的形式，从本题的结果中也得到了验证：|z|>|a|。\n②  我们再来分析X(z)：\n        可以从X(z)的解析式中看出，z=a处为极点。由于在收敛域内一定没有极\n点，所以对于一般的右边序列而言，其z变换的收敛域一定在模最大的有限极\n点所在的圆之外(若为因果序列，收敛域还包括点)。\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 197,
+      "text": "(3) 序列 x(n)=-anu(-n-1) 的z变换及收敛域。\n当|a-1z|<1，即：|z|<|a|时，(a-1z) = 0，此时X(z)为：\n说明： 序列 x(n)=-anu(-n-1) 是一个左边序列，它的收敛域的形式 |z|<|a|验证\n             了这一点。\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 198,
+      "text": "分析例(2)和例(3)：\n右边序列\n左边序列\nx(n)=anu(n)\nx(n)=-anu(-n-1)\n        两个X(z)是一样的，而这两个X(z)所对应的x(n)是完全不同的。\n        仅由X(z)的表达式不能推断x(n)，还必须知道X(z)收敛域，才可以求出x(n)。\n|z|>|a|\n|z|<|a|\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 199,
+      "text": "(4) 序列                                         的z变换及收敛域。\n上式成立的条件是：|a|<|z|<|b|(收敛域)。\n通常：右边序列右边序列\n的收敛域在模最大的极点所在的圆之外模最大的极点所在的圆之外\n。\n             左边序列左边序列\n的收敛域在模最小的极点所在的圆之内模最小的极点所在的圆之内\n。\njIm[z]\nRe[z]ba\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 200,
+      "text": "(5) 请说出X(z)可能的收敛域及其所对应的序列的特性：\na b\nc Re[z]\njIm[z]\n右边序列：|z|>|c|\na b\nc Re[z]\njIm[z]\n左边序列：|z|<|a|\na b\nc Re[z]\njIm[z]\n双边序列：|b|<|z|<|c|\na b\nc Re[z]\njIm[z]\n双边序列：|a|<|z|<|b|\n三、z变换定义及其收敛域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 201,
+      "text": "z￿变换及其收敛域\nØ  z变换的由来\nØ s平面与z平面的映射关系\nØ z变换定义及其收敛域\n2.1￿￿z 变换的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 202,
+      "text": "2.1  z 变换的基本概念\nz 反变换\n华东理工大学信息科学与工程学院 万永菁\n第二章 z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 203,
+      "text": "概念：由X(z)求出原序列 x(n)，称为z反变换。表示为：\n)]([)( 1 zXZnx −=\nz反变换实际上是求X(z)的幂级数展开式。\nz反变换常用的三种方法：\n围线积分法、\n部分分式法\n、\n幂级数展开法\n(\n长除法\n)。\nInverse \nz \nTransform\n一、\nz\n反变换的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 204,
+      "text": "二、部分分式\n(\n展开\n)\n法\n)(\n)()( zA\nzBzX =\n我们可以将X(z)展开成部分分式的形式，然后求每个部分分式的z变换。\n)()()()(\n)()( 21 zXzXzXzA\nzBzX k+++== \n即：\n)]([)]([)]([)( 1\n2\n1\n1\n1 zXZzXZzXZnx k\n−−− +++= \nPartial Fraction Expansion ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 205,
+      "text": "① 先将X(z)因式分解：\n\n\n=\n−\n=\n−\n+\n== N\ni\ni\ni\nM\ni\ni\ni\nza\nzb\nzA\nzBzX\n1\n0\n1)(\n)()(\n\n=\n−\n−\n=\n−\n−\n=\n−\n−\n+\n−\n+=\nr\nk\nk\ni\nk\nrN\nk k\nk\nNM\nn\nn\nn\nzz\nC\nzz\nAzB\n1\n1\n1\n1\n0 ]1[1\n其中：zi为X(z)的一个r阶极点，各个zk是X(z)的单极点。\nBn是X(z)的整式部分的系数，当M<N时，Bn=0 。\n部分分式\n(\n展开\n)\n法的求解步骤",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 206,
+      "text": "② 根据留数定理求系数Ak  和Ck  ：\nkzzkk zXzzA\n=\n−−= )()1( 1\nkk zzzz\nk\nz\nzX\nz\nzXzz\n==\n\n\n\n=−= )(sRe)()(\n1 ( ) ()( )!\ni\nrk\nr\nki r k k\nzz\nd X zC z z r k dz z\n−\n−\n=\n =−  − \n部分分式\n(\n展开\n)\n法的求解步骤",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 207,
+      "text": "通常：\n右边序列的收敛域在\n模最大的极点所在的圆之外。\n左边序列的收敛域在\n模最小的极点所在的圆之内。\nx(n)=anu(n)\nx(n)=-anu(-n-1)\n11\n1)( −−=−= azaz\nzzX\n|z|>|a|\n|z|<|a|\n序 列 z 变换 收敛域\nx(n)=an-1u(n-1)\nx(n)=-an-1u(-n)\n1\n1\n1\n1)( −\n−\n−=−= az\nz\nazzX\n|z|>|a|\n|z|<|a|\n11\n1)( −−=−= azaz\nzzX\n1\n1\n1\n1)( −\n−\n−=−= az\nz\nazzX\n二、部分分式\n(\n展开\n)\n法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 208,
+      "text": "例：设：\n11\n1( ) ,| | 2, ( )(1 2 )(1 0.5 )X z z x n zz−−= −− 求\n解：∵\n2\n() ( 2)( 0.5)\nzXz zz= −−\n()\n( 2)( 0.5)\nX z z\nz z z= −−\n12\n( 2) ( 0.5)\nAA\nzz=+ −−\n1\n2 2\n( ) 4( 2) ( 0.5) 3z z\nX z zAz zz = =\n= − = =  − \n2\n0.5 0.5\n( ) 1( 0.5) ( 2) 3z z\nX z zAz zz = =\n= − = = −  − \n二、部分分式\n(\n展开\n)\n法\n其中：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 209,
+      "text": "( ) 4 1 1 1\n3 ( 2) 3 ( 0.5)\nXz\nz z z = − −−\n41() 3 ( 2) 3 ( 0.5)\nzzXz zz = − −−\n41( ) 2 (0.5) ( )33\nnnx n u n = − \n11\n4 1 1 1() 3 (1 2 ) 3 (1 0.5 )Xz zz−− = − −−\n收敛域 |z| > 2\n二、部分分式\n(\n展开\n)\n法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 210,
+      "text": "\n\n−=\n−=\nn\nnznxzX )()(\n ++++−+= −− 2101 )2()1()0()1( zxzxzxzx\n1、方法：直接用分子多项式除以分母多项式，得到x(n)。\n2、注意：应依据收敛域来决定x(n)。\n◆ 当 X(z)的收敛域为 |z| > Rx-时，x(n)为因果(右边)序列，故X(z)应向z\n的降幂级数方向展开；\n◆ 当X(z)的收敛域为 |z| < Rx+时，x(n)为反因果(左边)序列，故X(z)应\n向 z的升幂级数方向展开。\nPower Series Expansion\n三、幂级数展开法\n(\n长除法\n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 211,
+      "text": "例：设：\n)(,3||,)31(\n3)( 21\n1\nnxzz\nzzX 求−= −\n−\n解：∵|z|>3，所以x(n)为因果序列，X(z)应按z的降幂排列。\n96\n3\n)3(\n3)( 22 +−=−= zz\nz\nz\nzzX\nz2-6z+9 3z\n3z-1\n3z-18+27z-1\n18-27z-1\n+18z-2\n18-108z-1+162z-2\n81z-1-162z-2\n+81z-3\n81z-1-486z-2+729z-3\n………………………………\n+…\n三、幂级数展开法\n(\n长除法\n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 212,
+      "text": "得： X(z) = 3z-1+18z-2+81z-3+…\n= 3z-1+2×32×z-2+3×33×z-3+…\n∴  x(n) = n3nu(n-1)\n◆ 几种方法的比较：\n首先，围线积分法 、部分分式法和长除法均可以用来计算 z的反变换 。围线\n积分法概念清晰，但判断条件略复杂，使用时一定要分清各种情况；相比之下，\n部分分式法计算起来就容易许多 ，但前提是X(z)是一个较容易被因式分解的有理\n分式；长除法大多用在工程实践中 ，当X(z)很难被因式分解 ，且工程不要求反变\n换的结果很精确或能用解析式表示时，则通常选择长除法。\n三、幂级数展开法\n(\n长除法\n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 213,
+      "text": "2.1  z 变换的基本概念\nz 反变换\n华东理工大学信息科学与工程学院 万永菁\n第二章 z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 214,
+      "text": "2.1￿￿z 变换的基本概念\nz 变换的性质\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 215,
+      "text": "若：Z[x(n)] = X(z)    Rx-< |z| < Rx+\n        Z[y(n)] = Y(z)    Ry- < |z| < Ry+\n则：Z[ax(n)+by(n)] = aX(z)+bY(z)  R-<|z|<R+\n其中，a、b为任意常数，R-=max(Rx-,Ry-)，R+=min(Rx+,Ry+)\n   注意：如果这些线性组合中某些零点和极点互相抵消，则\n               收敛域可能回扩大，而不是缩小。\n一一、、zz变换的线性性质变换的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 216,
+      "text": "例：已知x(n)=cos(0n)u(n)，求它的z变换。\n收敛域|z|>1\n一一、、zz变换的线性性质变换的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 217,
+      "text": "若：Z[x(n)]=X(z)     Rx-<|z|<Rx+\n则：Z[x(n-m)]= z-mX(z)    Rx-<|z|<Rx+\n证明：\n 二、二、zz变换的移位性质变换的移位性质\nz变换的收敛域由序列\n移位情况的不同发生变化",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 218,
+      "text": "例：\n例：求序列 x(n) = u(n)-u(n-3) 的z变换及收敛域。\n说明：序列u(n)和u(n-3)z变换的收敛域应该是|z|>1，而u(n)-u(n-3)的收敛域为|z|≠0，很\n明显收敛域扩大了。这是因为u(n)和u(n-3)是单边序列，而u(n)-u(n-3)是有限长序列。\nx(n) = u(n) – u(n-3)\n= R3(n)\n= δ(n)+ δ(n-1)+ δ(n-2)\nX(z) = 1+z-1+z-2\nROC\n|z| ≠ 0\n|z| > 0\n|z| ∈ (0,∞]\n 二、二、zz变换的移位性质变换的移位性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 219,
+      "text": "      设y(n)为x(n)与h(n)的卷积和：\n  若有：\n  则：\n说明：\n         Y(z)的收敛域理论上是X(z)和H(z)的重叠部分，但若在收敛域边界上一个 z \n变换的零点与另一个 z 变换的极点抵消的话，则收敛域可能会扩大。\n三三、、 z z变换变换的卷积和性质的卷积和性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 220,
+      "text": "例：设x(n)=anu(n)，h(n)=bnu(n)-abn-1u(n-1)，求：x(n)*h(n)\n解：\n      我们发现，在|z|=|a|处，X(z)的极点与H(z)的零点抵消，若|b|<|a|收敛域扩大。\n 注:  z变换其他性质请参阅教材。\n三三、、 z z变换变换的卷积和性质的卷积和性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 221,
+      "text": " 性质  序列 z变换公式 收敛域\nx(n)\ny(n)\nX(z)\nY(z)\nRx\nRy\n线性\n移位 可能加上或去除\n z=0或z=∞\n时间反转\n乘以指数\nz域微分\n共轭序列\n时域卷积 如果零极点抵消\n收敛域可能扩大",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 222,
+      "text": "2.1￿￿z 变换的基本概念\nz 变换的性质\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 223,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 224,
+      "text": "2.2￿￿离散时间信号傅里叶变换\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 225,
+      "text": "离散时间信号傅里叶变换\nØ ￿￿离散时间信号傅里叶变换的基本概念\nØ ￿DTFT正变换和反变换的由来\nØ ￿DTFT的共轭对称性质\n2.2￿￿离散时间信号傅里叶变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 226,
+      "text": "    一个离散时间(非周期)信号及其频谱的关系，可以用离散时间信\n号(序列)的傅立叶变换来表示。\n正变换：\n（正变换可由z变换得来，它是z变换在单位圆上的特例）\n反变换：\n一、离散时间信号傅里叶变换的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 227,
+      "text": "(1) 正变换的收敛条件为：\n若序列x(n)绝对可和，则它的傅立叶变换存在且连续。\n(2) X(ej)的特性：\n    由于时域上x(n)的离散，使得频域上的X(ej)出现周期的特性，周期为2。\n一、离散时间信号傅里叶变换的基本概念\n说明：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 228,
+      "text": "(1) 正变换：可由z变换定义得到。\n(2) 反变换：若序列的z变换在单位圆上收敛时：\n二、DTFT正变换和反变换的由来",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 229,
+      "text": "Ø  什么是共轭？\n    两头牛背上的架子称为轭，轭使两头牛同步行走。共轭共轭\n即为按一定的规律按一定的规律\n相配的一对相配的一对\n。\nØ  数学意义上的共轭复数\n       两个实部相等，虚部互为相反数实部相等，虚部互为相反数\n的复数互为共轭复数共轭复数\n。\nconjugate complex number\nRe[z]\njIm[z]\n(2)\n1-1\nr ω0\n一对共轭极点\n实系数\n三、DTFT的共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 230,
+      "text": "共轭对称序列\n实部偶函数\n 虚部奇函数\nxe(n)\neven\n共轭反对称序列\n实部奇函数\n 虚部偶函数\nxo(n)\nodd\n思考： x(n) = ejn 的共轭对称性?\nConjugate-symmetric Conjugate-symmetric \nsequencesequence\nConjugate-antisymmetric Conjugate-antisymmetric \nsequencesequence\n1、共轭对称序列与共轭反对称序列的定义\n共轭对称",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 231,
+      "text": "一般序列可用共轭对称序列与共轭反对称序列之和表示。\nØ  如何由 x(n) 求 xe(n) 和 xo(n) ？\n2、用共轭对称序列和共轭反对称序列表示一般序列",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 232,
+      "text": "   X(ej)   =   Xe(ej)   +   Xo(ej)\nXe(ej)  =  Xe\n*(e-j) \nXo(ej)  =  - Xo\n*(e-j) \n共轭对称\n共轭反对称\nXe(ej)  =  ½[ X(ej) + X*(e-j)] \nXo(ej)  =  ½[ X(ej) -  X*(e-j)] \n3、关于频域函数X(ej)的共轭对称性质描述",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 233,
+      "text": "① 序列实部的傅立叶变换等于序列傅立叶变换的共轭对称分量\nDTFT[Re[x(n)]] Xe(ej)\n② 序列虚部的傅立叶变换等于序列傅立叶变换的共轭反对称分量\nDTFT[jIm[x(n)]] Xo(ej)\n4、时域与频域对应的共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 234,
+      "text": "证明①：   设 x(n) = xr(n) + j xi(n)  (其中，xr(n)和xi(n)为实序列)\n②的证明类似①\n4、时域与频域对应的共轭对称性质\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 235,
+      "text": "③ 序列的共轭对称分量和共轭反对称分量的DTFT分别等于序列傅立叶\n     变换的实部和虚部。\nDTFT[xe(n)] Re[X(ej)]\nDTFT[xo(n)] jIm[X(ej)]\n证明： DTFT[xe(n)] = DTFT[½[x(n)+x*(-n)]]\n                      = ½[X(ej)+X*(ej)]                       = Re[X(ej)]\nDTFT[xo(n)] = DTFT[½[x(n)-x*(-n)]]\n                      = ½[X(ej)-X*(ej)]                       = jIm[X(ej)]\n4、时域与频域对应的共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 236,
+      "text": "④ 特殊情况：\n              当x(n)为实序列实序列\n时，X(ej)应该只剩下共轭对称分量。\nX(ej)   =   X*(e-j)\nRe[X(ej)]   =   Re[X(e-j)]\nIm[X(ej)]  =  -Im[X(e-j)]\n         |X(ej)| = |X(e-j)|\n         arg[X(ej)] = -arg[X(e-j)]\n4、时域与频域对应的共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 237,
+      "text": "DTFT[he(n)] Re[H(ej)]\nDTFT[ho(n)] jIm[H(ej)]\n例：设h(n)为实因果序列，且HR(ej)=1+cosω，求 h(n) 和H(ej)。\n解：\n三、DTFT的共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 238,
+      "text": "he(n)\nn0 1 2\n1\n1/2\n-1-2\n1/2\nho(n)\nn0 1 2-1-2\nh (n)\nn0 1 2-1-2\n(1) 因为h(n)为实因果序列，所以有\n      当n<0时，h(n)=0。\n-1/2\nho(-1) = -1/2\n(2) 因为h(n)为实序列，所以 \n       ho(n)为奇函数。 ho(0)=0\nho(1)=-ho(-1)=1/2\n(3) h(n)=he(n)+ ho(n)\nh(n) = (n) + (n-1)\n1/2\n1 1\n三、DTFT的共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 239,
+      "text": "离散时间信号傅里叶变换\nØ ￿￿离散时间信号傅里叶变换的基本概念\nØ ￿DTFT正变换和反变换的由来\nØ ￿DTFT的共轭对称性质\n2.2￿￿离散时间信号傅里叶变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 240,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 241,
+      "text": "2.3￿￿系统函数及其与系统性质的关系\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 242,
+      "text": "                                                                                               时域卷积  x(n) y(n)=x(n)*h(n)h(n)\n                                                                                               频域相乘  Y(z) = X(z) · H(z)H(z)X(z)\nz变换\n单位脉冲响应单位脉冲响应    \nLSILSI系统函数系统函数    \nz变换 z变换\n为什么要判断系统\n因果稳定性因果稳定性\n？\nSystem FunctionSystem Function\nImpulse ResponseImpulse Response\n问题的引入",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 243,
+      "text": "定义定义\n：某时刻的输出只取决于此时刻及其以前的输入的系统。 \n即：n=n0时的输出y(n0)只取决于只取决于\nn≤n0的输入x(n) 。\nØ 一般系统:  y(n)=T[x(n)] 的因果性定义\nØ  LSI系统的因果性条件\n非因果\n定义定义\n：若LSI系统的h(n)满足：当n<0时，h(n)=0 ，系统因果。\n=0 ………………………\n =0\n若h(n)为因果序列，则系统因果。 ||zz||∈∈(R(Rx-x-, , ]]\n一、由系统函数系统函数HH((zz))及其收敛域收敛域判断系统因果性系统因果性    ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 244,
+      "text": "Ø 一般系统:  y(n)=T[x(n)] 的稳定性定义\n定义：有界输入有界输入\n产生有界输出有界输出\n的系统。\n    即： 如果 |x(n)| ≤ M <  ，则有 |y(n)| ≤ P <  。\nn不受限制\nn∈[-, ]\nØ LSI系统的稳定性条件\n定义定义\n：一个LSI系统是稳定系统的充分必要条件是：\n单位脉冲响应\n绝对可和\n二、由系统函数H(z)及其收敛域判断系统稳定性  ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 245,
+      "text": "定义：如果LSI系统函数H(z)的收敛域包括单位圆，\n              即|z|=1在收敛域内，则系统稳定系统稳定\n。\n理解理解\n：一个LSI系统是稳定系统的充分必要条件是：\n单位脉冲响应\n绝对可和\n收敛条件：\n|z|=1\n2.3￿￿系统函数及其与系统性质的关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 246,
+      "text": "Ø  总结：系统因果稳定性的频域分析方法\n系统因果：系统因果： ||zz||∈∈(R(Rx-x-, , ]]\n系统稳定：系统稳定： ||zz| = 1| = 1\n系统因果稳定：系统因果稳定： ||zz||∈∈(R(Rx-x-, , ],   |R],   |Rx-x-|<1|<1\nRe[z]\njIm[z]\n1Rx-\n系统函数H(z)的\n极点在单位圆内极点在单位圆内\n2.3￿￿系统函数及其与系统性质的关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 247,
+      "text": "例：判断系统的因果稳定性:\n时域分析：\n 非因果\n   h(-1)≠0，h(n)不是因果序列\n稳定 \n   h(n)是绝对可和的\n频域分析：\n  2个零点，1个极点 \n  收敛域： 0<|z|<  \n   系统非因果、稳定 \nRe[z]\njIm[z]\n1\n2.3￿￿系统函数及其与系统性质的关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 248,
+      "text": "z-1x(n)\nz-2\n+\nz\nx(n)\nz-1\n+\ny(n)=[x(n)+ x(n-1)+ x(n-2)]/3\n  h’(n) 是因果序列，系统因果 \n  h’(n) 仍绝对可和，系统稳定 \nx(n+1)\nx(n)\nx(n-1)\nx(n-2)\nx(n)\nx(n-1)\ny(n)=[x(n+1)+ x(n)+ x(n-1)]/3\n将上例改造为因果稳定系统",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 249,
+      "text": "  收敛域： |z| > 0  \n  系统因果、稳定 \n 2个零点 \n  2个极点  Re[z]\njIm[z]\n1\n(2)\n结果分析：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 250,
+      "text": "例：已知线性移不变因果系统的差分方程为： \n      y(n) + 0.2y(n-1) - 0.24y(n-2) = x(n) + x(n-1) \n(1)求系统函数H(z)和系统收敛域。 \n(2)判别系统的稳定性。 \n(3)求系统的单位取样响应h(n)。 \n 解：(1)求系统函数H(z)和系统收敛域\n 因果\n收敛域：|z|>0.6\n2.3￿￿系统函数及其与系统性质的关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 251,
+      "text": "(2) 判别系统的稳定性。 \n收敛域：|z|>0.6，因此，单位圆在收敛域内，系统稳定。\nRe[z]\njIm[z]\n0 1-0.6 0.4\n2.3￿￿系统函数及其与系统性质的关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 252,
+      "text": "(3) 求系统的单位取样响应h(n)。 \n2.3￿￿系统函数及其与系统性质的关系\n因果\n收敛域：|z|>0.6",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 253,
+      "text": "2.3￿￿系统函数及其与系统性质的关系\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 254,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 255,
+      "text": "2.4￿￿系统频率响应的意义(1)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 256,
+      "text": "系统频率响应的意义\nØ ￿￿系统频率响应的基本概念\nØ ￿系统的幅频响应\nØ ￿固定频率输入信号下的系统输出\nØ ￿系统的相频响应\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 257,
+      "text": "                                                                                        x(n) y(n)=x(n)*h(n)h(n)\n单位脉冲响应单位脉冲响应\n时域卷积\nØ x(n)中的信号含有不同频率成分，经过系统后，\n    输出中这些频率成分发生了什么变化？输出中这些频率成分发生了什么变化？\nØ 这些频率成分还在吗还在吗\n？\nØ 这些频率成分会在同一时刻输出吗同一时刻输出吗\n？\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 258,
+      "text": "                                                                                        \n定义定义\n：LSI系统的频率响应是单位脉冲响应单位脉冲响应\nhh\n((\nnn\n))\n的傅立叶变换的傅立叶变换\n      \n系统幅频响应幅频响应\n：\n决定频率成分的去留\n系统相频响应相频响应\n：\n决定频率成分的移位\nMagnitude specifiesMagnitude specifies幅度特性 Phase specifiesPhase specifies相位特性\nFrequency ResponseFrequency Response一、系统频率响应的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 259,
+      "text": "                                                                                        x(n) y(n)=x(n)*h(n)h(n)\n                                                                                        Y(ej) = X(ej) · H(ej)H(ej)X(ej)\nDTFT DTFT DTFT\n时域卷积\n频域相乘\n.\n =\n系统幅频响应输入频谱 输出频谱\n|X(ej)|\n 1 2 \n(rad) \n|H(ej)|\n 1 2 c \n1 \n(rad) \n|Y(ej)|\n 1 2 \n(rad) \n低通滤波\n一、系统频率响应的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 260,
+      "text": "                                                                                        \n证明：证明：\n已知：已知：\nY(ej) = X(ej) · H(ej)\n                                                                                        \n时域卷积\n频域相乘",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 261,
+      "text": "  1、系统的幅频响应（幅度响应，增益）——\n    如果幅度响应在某些频率上很小幅度响应在某些频率上很小\n的话，那么输出中输入的这些频率分量就受到受到\n抑制抑制\n。\n    实际应用中，我们应该根据具体问题，有选择地抑制某些频率分量，而让某些有选择地抑制某些频率分量，而让某些\n频率分量通过频率分量通过\n。\n    这种频率的选择（是通过还是抑制），是依靠幅频响应的设计来完成的。\n一、系统频率响应的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 262,
+      "text": "的对数幅度 —— dB \n             = 10dB\n             = 1020dB\n             = 10040dB\n             = 100060dB\n增益20dB\n增益40dB\n增益60dB\n一、系统频率响应的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 263,
+      "text": "             = 10dB\n             = 0.1-20dB\n             = 0.01-40dB\n             = 0.001-60dB\n衰减20dB\n衰减40dB\n衰减60dB\n一、系统频率响应的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 264,
+      "text": "  2、系统的相频响应（相位响应）—— \n                                                                                                     时域x(n) y(n)=x(n-nd)\n                                                                                                     频域X(ej)\nDTFT DTFT DTFT\n  某频率处的相相\n位响应位响应\n实际上对应\n着时域上该处频率\n信号的移位移位\n情况。\n理想延时系统\n群延迟： \n一、系统频率响应的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 265,
+      "text": "1、若输入 x(n) = ejω0n  (-≤n≤)，求输出y(n)=x(n)*h(n)\n二、固定频率输入信号下的系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 266,
+      "text": "说明: 若系统频率响应H(ej)存在且连续,则有:\nØ 当系统的输入为正弦序列,则输出为同频的正弦序列。\nØ 其幅度受H(ej)的幅度|H(ej)|加权；\nØ 其相位为输入相位与系统相位响应之和。\n2、 若输入\n则：\n其中, \n线性相位\n二、固定频率输入信号下的系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 267,
+      "text": "系统频率响应的意义\nØ ￿￿系统频率响应的基本概念\nØ ￿系统的幅频响应\nØ ￿固定频率输入信号下的系统输出\nØ ￿系统的相频响应\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 268,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 269,
+      "text": "2.4￿￿系统频率响应的意义(2)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 270,
+      "text": "例例11：某：某LSILSI系统的系统函数如下：系统的系统函数如下：\n若系统的输入信号为：\n试编程并分析系统的输出。\n解：系统的频率响应：\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 271,
+      "text": "  n = 0:199;  %x(n)取200个点\n  x = sin(0.01*pi*n);\n   \n  b=[ 0.05 , 0.05];    a=[ 1 , -0.9 ];\n  y=filter(b,a,x);\n  figure(1)\n  subplot(2,1,1); ylabel(‘x');\n  stem(n, x); grid on; \n  subplot(2,1,2);\n  stem(n, y); grid on; ylabel(‘y');\n求系统输出求系统输出\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 272,
+      "text": "    \n  figure(2);\n  [Fh,w] = freqz(b,a);\n  [Gd,w] = grpdelay(b,a);\n  subplot(311)\n  plot(w/pi,abs(Fh));ylabel('|H(w)|'); grid on;\n  subplot(312)\n  plot(w/pi,angle(Fh));\n  ylabel('ang[H(w)]'); grid on;\n  subplot(313)\n  plot(w/pi,Gd);ylabel('grd[H(w)]'); grid on;\n求系统频率响应和群延迟求系统频率响应和群延迟\n幅频响应幅频响应\n相频响应相频响应\n群延迟群延迟\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 273,
+      "text": "xx((nn))\nyy((nn))\nnn\nnn\n存在移位\n幅度略微变化\nnd\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 274,
+      "text": "(rad) \n(rad) \n(rad) \n幅度略微变小\n群延迟约为10\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 275,
+      "text": " 幅度\n略微变小 \nfreqz(b,a)\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 276,
+      "text": "例例22：分析：分析33点均值滤波系统的频率响应点均值滤波系统的频率响应  \n                                                                                        \nx(n)*δ(n-R)=x(n-R)\n33点算术平均滤波系统点算术平均滤波系统\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 277,
+      "text": "x(n)\ny(n)\nx0(n)\nn\nn\nn\n3点平滑滤波居然\n能有这个效果？\nu仿真实验：3点算术平均滤波效果\n原声\n含噪音频\n滤波后效果\nfs=11025Hz\nfnoise=3675Hz\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 278,
+      "text": "u    用用频域分析法频域分析法\n重识重识33点算术平均滤波系统点算术平均滤波系统\n                                                                                        \n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 279,
+      "text": "(rad) \n(rad) \nfs=11025Hz\nfnoise=fs/3=3675Hz\n幅频响应：幅频响应：\n相频响应：相频响应：\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 280,
+      "text": "例例33：分析下图的系统：分析下图的系统频率响应的作用频率响应的作用\n群\n延\n迟（\n样\n本）\n幅\n度（dB）\n理解群延迟\n2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 281,
+      "text": "2.4￿￿系统频率响应的意义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 282,
+      "text": "2.4￿￿系统频率响应的意义(2)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 283,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 284,
+      "text": "2.5￿￿几何法画频率响应(1)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 285,
+      "text": "  分析：累加器系统的幅频响应\n-\n系统差分方程： \n初识初识几何法画系统幅频响应的几何法画系统幅频响应的方法方法￿￿——￿——￿累加器累加器系统分析系统分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 286,
+      "text": "系统差分方程： \nz变换\n系统函数： \n零点c \n极点d\n单位圆上转动的一个点B \nRe[z]\njIm[z]\n1c d\nB\n初识初识几何法画系统幅频响应的几何法画系统幅频响应的方法方法￿￿——￿——￿累加器累加器系统分析系统分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 287,
+      "text": "Re[z]\njIm[z]\n1c d\nB\nB\nB\n1、极点在单位圆上极点在单位圆上\n，幅频响应值\n      无穷大，系统不稳定不稳定\n；\n2、原点处的零极点原点处的零极点\n对幅频响应值\n       没有影响没有影响\n。\n初识初识几何法画系统幅频响应几何法画系统幅频响应的的方法方法￿￿——￿——￿累加器累加器系统系统分析分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 288,
+      "text": "Re[z]\njIm[z]\n1d\nB\nc\n初识初识几何法画系统幅频响应的几何法画系统幅频响应的方法方法￿￿——￿——￿累加器系统的改造累加器系统的改造",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 289,
+      "text": "系统幅频响应\n3、零点在单位圆上，幅频响应\n       值为0，系统对此处频率能\n       起到很好的滤波滤波\n作用。\n初识初识几何法画系统幅频响应的几何法画系统幅频响应的方法方法￿￿——￿——￿累加器系统的改造累加器系统的改造",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 290,
+      "text": "已知：\n其中，A为增益(比例常数)，cr为零点，dr为极点。\n系统的特性与\n零、极点位置零、极点位置\n紧密相关\n零点\n极点\n增益 ZeroZero\nPolePole\nLSILSI系统幅频响应的几何确定法系统幅频响应的几何确定法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 291,
+      "text": "若系统稳定，则H(ej)一定存在，令 z=e j\n令：N=M，有：\n即使N≠M，对H(ej)而言，幅度不受影响，相位增加(N-M)。\nLSILSI系统幅频响应的几何确定法系统幅频响应的几何确定法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 292,
+      "text": "我们令：\n其中，B为单位圆e j上的点。若用极坐标表示：\n  (零点矢量)   (极点矢量) \n得到：\nLSILSI系统幅频响应的几何确定法系统幅频响应的几何确定法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 293,
+      "text": "① 当BB\n点点\n转到极点附近极点附近\n时，幅度可能出现峰值峰值\n。\n     ★极点越靠近单位圆，幅值越大。\n     ★若极点出现在单位圆e j上，则H(ej)幅值为，系统不稳定。\n② 当BB\n点点\n转到零点附近零点附近\n时，幅度可能出现谷值谷值\n。\n     ★零点越靠近单位圆，幅值越小。\n     ★若零点出现在单位圆e j上，则H(ej)幅值为0。\nRe[z]\njIm[z]\nd0\n1\nc\nB\n零极点位置与系统频率响应的关系小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 294,
+      "text": "2.5￿￿几何法画频率响应(1)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 295,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 296,
+      "text": "2.5￿￿几何法画频率响应(2)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 297,
+      "text": "① 当BB\n点点\n转到极点附近极点附近\n时，幅度可能出现峰值峰值\n。\n     ★极点越靠近单位圆，幅值越大。\n     ★若极点出现在单位圆e j上，则H(ej)幅值为，系统不稳定。\n② 当BB\n点点\n转到零点附近零点附近\n时，幅度可能出现谷值谷值\n。\n     ★零点越靠近单位圆，幅值越小。\n     ★若零点出现在单位圆e j上，则H(ej)幅值为0。\n回顾：系统频率响应的几何确定法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 298,
+      "text": "例：已知 H(z) = z-1，分析其频率响应H(ej)的特性。\n|H(ej)|\n\n()\n\n说明：\n② 当从0～2变化时，极点矢量的长度始终为1，\n     所以：|H(ej)|=1。\n① 从系统函数H(z)= z-1来看，该系统只有一个在\n     原点的极点|z|=0。\n③ 处在原点处的极点和零点，由于其矢量长度均为1，所以原点处的零、极点\n     不影响幅频响应|H(ej)|。\n几何法画系统频率响应举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 299,
+      "text": "例：设一阶系统的差分方程为：y(n)=by(n-1)+x(n)。试分析其幅频特性\n         (其中，0<b<1)。\n解：先求系统函数H(z)，对差分方程两边作z变换，得：\n从H(z)看出，系统有一个极点z=b，一个零点z=0。\n当单位圆上的点B由=0到=2旋转时，有：\n① 在=0时，极点矢量最短(分母最小)，形成波峰。\n② 在=时，极点矢量最长(分母最大)，形成波谷。\n③ 由于零点在原点处，所以不影响幅频响应。\nRe[z]\njIm[z]\nb0\n1\n0  2 \n|H(ej)|\n几何法画系统频率响应举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 300,
+      "text": "例：已知H(z) = 1-z-N，试定性画出系统的幅频响应。\n① H(z)的极点为z=0(N阶)，因为z=0，所以不影响|H(ej)|。\n② H(z)的零点也有N个：\n应将z看作是复变量\n几何法画系统频率响应举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 301,
+      "text": "上式说明这N个零点等间隔地分布在单位圆上，设N=8，有下图：\nRe[z]\njIm[z]\n(8)\n1\n|H(ej)|\n 2\n\n0\n说明： ① 由于极点在z=0处，不影响幅频特性，故只需考虑零点即可。\n② 每遇到一个零点，|H(ej)|幅度降为0，在两个零点之间，幅\n     度最大，形成峰值。\n③ 由于幅度响应像一把梳子，所以该系统又称梳状滤波器梳状滤波器\n。 Comb filter\n几何法画系统频率响应举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 302,
+      "text": "例：若LSI系统差分方程为                                       ，求其幅频响应：\n① H(z)的极点为z=0(4阶)。\n② H(z)的零点也有4个： Re[z]\njIm[z]\n(4) 1\n 2\n\n0 /2\n1\n|H(ej)|\n几何法画系统频率响应举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 303,
+      "text": "2.5￿￿几何法画频率响应(2)\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 304,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 305,
+      "text": "2.6￿￿特殊滤波器的设计\n简单一阶滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 306,
+      "text": "1、若使设计的滤波器拒绝某个频率拒绝某个频率\n（不让该频率信号\n   通过）应在单位圆上相应频率处设置一个零点在单位圆上相应频率处设置一个零点\n。\n2、若使设计的滤波器突出某个突出某个\n频率频率\n（使该频率信号尽\n   量无衰减的通过），应在单位圆内相应的频率处设在单位圆内相应的频率处设\n      置一个极点置一个极点\n，极点越接近单位圆，在该频率处的幅\n   频响应幅值越大。\nDigital FilterDigital Filter\n设计数字滤波器一般原则",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 307,
+      "text": "Re[z]\njIm[z]\n0 1\n-1\nØ 仅由一个零点或极点一个零点或极点\n调节系统滤波特性\n由一个零点调节的低通滤波器\n非因果！\n因果\n  2点滑动平均滤波器\n—— 低通滤波器\n直流分量\n高频分量\n11stst-order System-order System简单一阶滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 308,
+      "text": "f\ns\nf\ns\n/2\nf\ns\nf\ns\n/2\n由一个零点调节的低通滤波器低通滤波器\nRe[z]\njIm[z]\n0 1-1\n由一个零点调节的高通滤波器高通滤波器\nRe[z]\njIm[z]\n0 1-1\n    2点滑动平均——\n低通滤波器\n差分系统——\n高通滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 309,
+      "text": "由一个极点调节的低通滤波器低通滤波器\nRe[z]\njIm[z]\n0 1-1 a\n由一个极点调节的低通滤波器低通滤波器\nRe[z]\njIm[z]\n0 1-1 a\n怎样变换成一阶\n高通滤波器？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 310,
+      "text": "Re[z]\njIm[z]\n0 1-1 a\n通带截止频率\nωc与a的关系？ Passband cut-off frequencyPassband cut-off frequency\n通带\n简单一阶滤波器的设计\n补充：一阶低通滤波器设计中关于带宽的考虑\nØ 问题的提出：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 311,
+      "text": "当 =c 时，幅度降到3dB  \n 0.85 < a < 1\n简单一阶滤波器的设计\nØ 通带截止频率与极点位置的关系    ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 312,
+      "text": "一般极点很靠近单位圆，上式可以近似表示为：\n近似3dB带宽\n0.050.050.95\n0.100.100.9\n0.150.160.85\n0.200.220.8\n0.300.350.7\n0.400.490.6\n      近似带宽精确带宽\n简单一阶滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 313,
+      "text": "  解：确定采样间隔T(采样频率fs)：\nu 模拟信号->数字信号，选择采样频率：\nu 选择一阶低通滤波器模型：\n简单一阶滤波器的设计\n例：假设模拟信号如下，设计一个一阶低通数字滤波器，将信号中的高频分量滤除。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 314,
+      "text": "u 计算需通过的低频分量和需要滤除的高频分量：\nu  由近似带宽选择参数 a：\nu 求得滤波器系统函数：\n0.0628 < ωc\n简单一阶滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 315,
+      "text": "b=[0.05 0.05];%构造系统函数\na=[1 -0.9];\nn=[0:99];\nN=100;fs=1000;\nx=sin(2*pi*10*n/fs)+sin(2*pi*250*n/fs);\ny=filter(b,a,x);%求系统输出\n \nfigure(1)\nzplane(b,a);%画零极点图\n \nfigure(2)\nsubplot(211);plot(n,x);\nsubplot(212);plot(n,y);\n简单一阶滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 316,
+      "text": "figure(3)\nFx=fft(x);%画输入x(n)的频谱\nsubplot(311);\nplot(n*fs/N,abs(Fx)/max(abs(Fx)));\n \n[Hh,wh]=freqz(b,a,’whole’); %画系统h(n)的频谱\nsubplot(312); plot(wh/pi,abs(Hh));\n \nFy=fft(y); %画输出y(n)的频谱\nsubplot(313); plot(n*fs/N,abs(Fy)/max(abs(Fy)));\n简单一阶滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 317,
+      "text": "简单一阶滤波器的设计\n零极点图： ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 318,
+      "text": "x(n)\ny(n)\nn\nn\n10Hz  与 250Hz \n低频10Hz保留\n高频250Hz基本去除\n滤波效果图\n简单一阶滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 319,
+      "text": "一阶低通滤波器\n滤波效果有待提高\n简单一阶滤波器的设计\n频域分析 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 320,
+      "text": "2.6￿￿特殊滤波器的设计\n简单一阶滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 321,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 322,
+      "text": "2.6￿￿特殊滤波器的设计\n数字谐振器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 323,
+      "text": "电路里的谐振：当电路中激励的频率激励的频率\n等于电路的固有频率固有频率\n时，电路电磁振荡的振幅也\n            将达到峰值峰值\n。\n                                                                                        Y(ej) = X(ej) · H(ej)H(ej)X(ej)\n                                         x(n) y(n)=x(n)*h(n)h(n)\n单位脉冲响应单位脉冲响应    \n 频域相乘 \nDTFT DTFT DTFT\n输入频谱\n 数字谐振器· =\n 输出频谱\n输出频谱中\n突显了谐振频率\n共振器：共振器：ResonatorResonator\nPeak valuePeak value\n时域卷积 \n二阶数字谐振器的基本概念￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 324,
+      "text": "Re[z]\njIm[z]\n(2)\n1-1\n一对共轭极点\nr ω0\n 带宽B与r 成反比！\n r小, B大 \n r大, B小\n(1)\n1\n      r对谐振器的影响  \n常见的二阶数字谐振器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 325,
+      "text": " r小, B大 \n r大, B小\nRe[z]\njIm[z]\n1-1\nr ω0\n      零点零点\n对谐振器的影响  \n 带宽B与r 成反比！\n(2)\n零点位置改变\n 直流和最高频分量被滤除\n1\n常见的二阶数字谐振器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 326,
+      "text": "例：设计一个二阶带通滤波器，=/2是通带中心，在=0,两点，频率\n    响应为零，在=4/9处，幅度为    。\n解：\n滤波器系统函数：   \n = /2是通带中心\n二阶带通滤波器\n 用数字谐振器实现\n =0, 时频响为0\n参数G和r怎么取\n0 < r < 1\n极点： \n零点： \nRe[z]\njIm[z]\n1-1\np1\np2\nz2 z1",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 327,
+      "text": " (1)  G的确定—— 谐振频率处的幅频响应值归一化为1 \n (2)  r的确定—— 在=4/9处，幅度为\n二阶数字谐振器举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 328,
+      "text": "n\nn\nf1=50Hz \n f2=250Hz\n fs=1000Hz\nω1=0.1π(rad) \nω2=0.5π(rad) \n250Hz被保留\n50Hz基本滤除\n二阶数字谐振器举例￿——￿仿真实验",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 329,
+      "text": "f(Hz)\nf(Hz)\nω/π(rad)\n50Hz有残留\n250Hz通过\n二阶数字谐振器举例￿——￿仿真实验",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 330,
+      "text": "DTMF(Dual Tone Multi-Frequency)\n1 2 3 A\n4 5 6 B\n7 8 9 C\n* 0 # D\n697Hz\n770Hz\n852Hz\n941Hz\n1209Hz 1336Hz 1477Hz1633Hz\nDTMF技术规范\n      如何产生双音多频信号\n正弦波发生器！\nWaveform generatorWaveform generator\n波形发生器￿——￿双音多频信号的产生",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 331,
+      "text": "                                                                                        Y(ej) = X(ej) · H(ej)H(ej)X(ej) 频域相乘 \n输入频谱\n 波形发生器· =\n 输出频谱\n输出频谱中\n保留需要的频率\n                                      x(n) y(n)=x(n)*h(n)h(n)\n单位脉冲响应单位脉冲响应    \nDTFT DTFT DTFT\nDTFT\n输入信号频谱为在整个频率范围均匀分布\n选择需要的频率成分\n时域卷积 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 332,
+      "text": "1 2 3 A\n4 5 6 B\n7 8 9 C\n* 0 # D\n697Hz\n770Hz\n852Hz\n941Hz\n1209Hz 1336Hz 1477Hz1633Hz\n Ø 计算归一化频率ω1和ω2\nH1(z)\nH2(z)\n+x(n) = δ(n) y(n)\n 产生按键8的\n双音多频信号\n选择852Hz通过\n选择1336Hz通过\n波形发生器￿——￿双音多频信号的产生",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 333,
+      "text": "2.6￿￿特殊滤波器的设计\n数字谐振器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 334,
+      "text": "2.6￿￿特殊滤波器的设计\n数字陷波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 335,
+      "text": "陷波器陷波器\n：一种特殊的带阻滤波器，其阻带在理想情况下只有一个频率点，主要用于\n              消除某个特定频率的干扰消除某个特定频率的干扰\n。\n                                                                                        Y(ej) = X(ej) · H(ej)H(ej)X(ej)\n                                        x(n) y(n)=x(n)*h(n)h(n)\n单位脉冲响应单位脉冲响应    \n频域相乘 \nDTFT DTFT DTFT\n输入频谱 \n 数字陷波器 · =\n 输出频谱 \n 滤除工频干扰\n保留其他频率成分\n含50Hz工频干扰\nNotch filter / Trap  filterNotch filter / Trap  filter\n时域卷积\n数字陷波器的基本概念￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 336,
+      "text": "Re[z]\njIm[z]\n1-1 0\n(2)\n        若零点出现在单位圆ej上，\n则H(ej)幅值为0。\n在ω0= ±0.1π 处设计一对共轭零\n点，以滤除50Hz工频干扰信号。\n设计系统零点\n消除工频50Hz干扰！\nω0\n例：设计一个数字陷波器将输入信号中的50Hz工频干扰信号滤除，尽可能保留其他\n     频率成分，设系统采样频率 fs  = 1000Hz。\n数字陷波器的设计举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 337,
+      "text": "x(n)\n y(n)\nn n\n0 Hz直流分量\n 50 Hz\n 200 Hz\n50Hz工频\n干扰被滤除\n直流分量也基本被滤除\n200Hz高频分量幅度减小\n数字陷波器的设计举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 338,
+      "text": "f (Hz)\nf (Hz)\nω/π(rad)\n0 Hz\n50 Hz\n200 Hz\n数字陷波器的设计举例￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 339,
+      "text": "Re[z]\njIm[z]\n1-1\nω0\n0\n保证直流、高频\n分量不被滤除\n极点与零点\n互相牵制\nRe[z]\njIm[z]\n(2)\n1-1\nω0\n0\n半径r如何取？\n数字陷波器的设计举例￿——￿重新设计极点位置",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 340,
+      "text": "ω/π(rad)\nω/π(rad)\nr\nr\n0 Hz\n50 Hz\n200 Hz\n数字陷波器的设计举例￿——￿不同￿r 参数下的频率响应",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 341,
+      "text": "x(n)\n y(n)\nn n\n0 Hz直流分量\n 50 Hz\n 200 Hz\n   50Hz工频干扰被滤除\n其他频率成分保留\n数字陷波器的设计举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 342,
+      "text": "300Hz单频干扰\n时域\n频域\n含噪音频\nn\nx(n)\nf (Hz)\n数字陷波器的设计举例￿——￿仿真实验\nØ实例：某段音频受到了某单一频率信号的干扰，请设计一个数字陷波器，将\n  干扰信号滤除。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 343,
+      "text": "节约\n计算成本\n数字陷波器的设计举例￿——￿仿真实验\n保证陷波效果的同时\n保留音频中其他频率成分\n将单频干扰信号准确无误地滤除",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 344,
+      "text": "n\nx(n)\nn\ny(n)\n含噪音频\n滤波后音频\n滤波效果不好\n数字陷波器的设计举例￿——￿仿真实验",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 345,
+      "text": "f (Hz)\nω/π(rad)\nf (Hz)\n零极点图\nf (Hz)\nω/π(rad)\nf (Hz)\n系数误差导致\n陷波中心偏移\n局部放大\n数字陷波器的设计举例￿——￿仿真实验",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 346,
+      "text": "f (Hz)\nω/π(rad)\nf (Hz)\n保证系数精度\n陷波效果良好\n数字陷波器的设计举例￿——￿仿真实验",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 347,
+      "text": "n\nx(n)\nn\ny(n)\n含噪音频\n滤波后音频\n滤波效果良好\n数字陷波器的设计举例￿——￿仿真实验",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 348,
+      "text": "严谨认真、精益求精\n工程师的素养 ——",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 349,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 350,
+      "text": "2.6￿￿特殊滤波器的设计\n全通滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 351,
+      "text": "定义：滤波器的幅度幅度\n特性在整个频带[0, 2π]上均等于常数常数\n，或者等于1，即：\n   则该滤波器称为全通滤波器。\n特点：信号通过全通滤波器后，其输出的幅度特性保持不变，仅相位发生变化。\n全通滤波器的系统函数的一般形式为：\nAll-Pass filterAll-Pass filter全通滤波器的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 352,
+      "text": "u  实系数全通滤波器的零极点分布特性 — 共轭倒易共轭倒易\n关系关系\nu  一般作为相位校正，又称相位均衡器。 \n零点\n极点\n共轭倒易\nd\nk\n为实数\n全通滤波器的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 353,
+      "text": "实数零极点对\n 复数零极点对\n讨论：1个极点p=rejθ和1个零点z=r-1ejθ组成的Hi(z)的相位响应：\nHap(z)可以认为由多个Hi(z)级联组成\n可以看出，|Hi(ejω)|=1\n其相位有什么特点？\n实系数因果稳定全通滤波器的相位响应",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 354,
+      "text": "Hi(ejω)的相位响应为：\nHi(ejω)的群延迟为：\n            对于因果稳定的全通滤波器而言，|r|<1，所以有：grdi(ω)>0，\n即：实系数因果稳定全通滤波器的群延迟总为正，相位响应在[0,π]内\n单调减小。\n实系数因果稳定全通滤波器的相位响应",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 355,
+      "text": "实系数因果稳定全通滤波器的重要特性 —— \n相位在相位在[0,[0,]]内单调减小；群延迟为内单调减小；群延迟为\n正正  b=[1 –1/0.9];a=[1 -0.9]; \n  [Fh,w] = freqz(b,a);\n  [Gd,w] = grpdelay(b,a);\n  subplot(311)\n  plot(w/pi,abs(Fh));ylabel('|H(w)|'); grid on;\n  axis([0 max(w/pi) 0 1.5])\n  subplot(312)\n  plot(w/pi,angle(Fh));\n  ylabel('ang[H(w)]'); grid on;\n  subplot(313)\n  plot(w/pi,Gd);ylabel('grd[H(w)]'); grid on;\n实系数因果稳定全通滤波器的重要特性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 356,
+      "text": "实系数因果稳定全通滤波器的重要特性\n相位在相位在[0,[0,]]内单调减小；群延迟为正内单调减小；群延迟为正",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 357,
+      "text": "  b=[1 1/0.9];a=[1 0.9]; \n  [Fh,w] = freqz(b,a);\n  [Gd,w] = grpdelay(b,a);\n  subplot(311)\n  plot(w/pi,abs(Fh));ylabel('|H(w)|'); grid on;\n  axis([0 max(w/pi) 0 1.5])\n  subplot(312)\n  plot(w/pi,angle(Fh));\n  ylabel('ang[H(w)]'); grid on;\n  subplot(313)\n  plot(w/pi,Gd);ylabel('grd[H(w)]'); grid on;\n实系数因果稳定全通滤波器的重要特性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 358,
+      "text": "实系数因果稳定全通滤波器的重要特性\n相位在相位在[0,[0,]]内单调减小；群延迟为正内单调减小；群延迟为正",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 359,
+      "text": "  b=[1 0 -1/0.81];a=[1 0 -0.81]; \n  [Fh,w] = freqz(b,a);\n  [Gd,w] = grpdelay(b,a);\n  subplot(311)\n  plot(w/pi,abs(Fh));ylabel('|H(w)|'); grid on;\n  axis([0 max(w/pi) 0 1.5])\n  subplot(312)\n  plot(w/pi,angle(Fh));\n  ylabel('ang[H(w)]'); grid on;\n  subplot(313)\n  plot(w/pi,Gd);ylabel('grd[H(w)]'); grid on;\n实系数因果稳定全通滤波器的重要特性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 360,
+      "text": "实系数因果稳定全通滤波器的重要特性\n相位在相位在[0,[0,]]内单调减小内单调减小；；\n群群延迟为正延迟为正",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 361,
+      "text": "2.6￿￿特殊滤波器的设计\n全通滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 362,
+      "text": "2.1\n z 变换的基本概念\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System\n2.2\n 离散时间信号傅里叶变换\n2.3\n 系统函数及其与系统性质的关系\n2.4\n 系统频率响应的意义\n2.5\n 几何法画频率响应\n2.6\n 特殊滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 363,
+      "text": "2.6￿￿特殊滤波器的设计\n最小相位滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 364,
+      "text": "最小相位滤波器的基本概念\n(1) 逆系统的概念：\n         对于一个系统函数为H(z)的LSI系统，其逆系统定义为：系统函\n数Hi(z)的逆系统与H(z)级联后，总的系统函数是1。\nMinimum-phase Minimum-phase FilterFilter\nInverse SystemInverse System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 365,
+      "text": "(2) 最小相位滤波器概念的引出 \n        一个因果稳定的系统H(z)，如果要求它的逆系统Hi(z)也是因果因果\n稳定稳定\n的，那么要求该系统H(z)的全部零点和极点都在单位圆内。\n        H(z)的全部零点和极点都在单位圆内的系统称为最小相位系统最小相位系统\n。\n最小相位滤波器系统函数的特点\n最小相位滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 366,
+      "text": "?\n(3) 频率响应的补偿 —— 非最小相位系统分解的由来 \nG(z)\n失真系统\nHd(z)\n补偿系统\nHc(z)\nx(n) y(n)\n信号处理的目标：G(z)=1  或  x(n)=y(n)\n信号要求： G(z) = HHdd((zz)·)·HHcc((zz))\n                ∴∴  HHdd((zz))与与HHcc((zz))互为逆系统互为逆系统。\n对于一般的Hd(z)，它是因果稳定的，但不一定是最小相位系统，\n若Hd(z)在单位圆外有零点，那么其逆系统将无法保证因果稳定！\n最小相位滤波器的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 367,
+      "text": "Ø  非最小相位滤波器的分解   \nG(z)\n失真系统\nHd(z)\n补偿系统\nHc(z)\nx(n) y(n)\n最小相位滤波器的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 368,
+      "text": "(4) 最小相位滤波器名称的含义及其性质 \nØ 最小相位滞后性质\n任何非最小相位系统H(z)都能表示为：\n其相位响应有如下关系：\n解释：前面已经说明，全通系统的群延迟总是为正，意味着全通全通\n系统部分总是使相位滞后系统部分总是使相位滞后\n。因此，HHminmin((zz))则具有最小相位滞后的则具有最小相位滞后的\n特性特性\n，故称最小相位滤波器。\nThe Minimum Phase-Lag PropertyThe Minimum Phase-Lag Property\n最小相位滤波器的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 369,
+      "text": "Ø 最小群延迟性质\n解释：全通系统的群延迟总是为正，因此，最小相位滤波器HHminmin((zz))  \n                          具有具有\n最小群延迟的特性最小群延迟的特性\n。\nØ 最小能量延迟性质\n        从时域分析，最小相位滤波器时域响应的波形延迟和能量延波形延迟和能量延\n迟均最小迟均最小\n。\nThe Minimum Group-Delay PropertyThe Minimum Group-Delay Property\nThe Minimum Energy-Delay PropertyThe Minimum Energy-Delay Property\n最小相位滤波器的基本概念",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 370,
+      "text": "例：一个因果稳定LSI离散时间系统的系统函数如下，求一个最小相位滤波器系统函数\nHmin(z)和一个全通滤波器系统函数Hap(z)，使得： H (z) = Hmin(z) Hap(z)。\n 配成全通系统：\n     零极点共轭倒易\n 凑出最小相位系统：\n     零极点一定在单位圆内  \n  拆分H(z)，单位圆内零极点归为Hmin(z)，其余归为Hap(z)\n最小相位滤波器的举例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 371,
+      "text": "2.6￿￿特殊滤波器的设计\n最小相位滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第二章￿￿z 变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 372,
+      "text": "《\n数\n字\n信\n号\n处\n理》 信号处理之￿——￿力学笃行\n华东理工大学信息科学与工程学院 万永菁\n工程中常用的滤波方法\n第二章￿￿z￿变换与LSI系统频域分析\nThe z Transform and Frequency domain analysis of LSI SystemThe z Transform and Frequency domain analysis of LSI System",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 373,
+      "text": "走进大师 —— 欧拉\n莱昂哈德·欧拉\nLeonhard Euler\n（1707-1783）\n瑞士数学家，是公认为人类历史上成就最为斐然\n的数学家之一。数学学习中，常常看到各种以“\n欧拉”命名的术语：欧拉常数，欧拉方程，欧拉\n公式、欧拉恒等式，欧拉示性数等等；\n01\n欧拉公式：\n欧拉恒等式：\n欧拉不但为数学界作出贡献，更把数学推至几乎\n整个物理的领域。此外欧拉的研究还涉及建筑学、\n弹道学、航海学等领域。\n02\n2",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 374,
+      "text": "欧拉的故事 —— 学术风格\n欧拉\n(1707-1783)\n拉格朗日\n(1736-1813)\n拉格朗日是稍后于欧拉的大数学家。从19岁起和欧拉\n通信、讨论等周问题的一般解法，从而引起了变分法\n的诞生。等周问题是欧拉多年来苦心考虑的问题，拉\n格朗日的解法，博得了欧拉的热烈赞扬。\n03\n1759年，欧拉在回信中盛赞拉格朗日的成就，并谦\n恭地压下自己在这方面的作品暂不发表，使年轻的拉\n格朗日的著作得以发表和流传，赢得巨大声誉。\n欧拉晚年的时候，欧洲所有的数学家都把他当作老师。\n3",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 375,
+      "text": "欧拉的故事 —— 学术贡献\n欧拉19岁开始发表论文，直到76岁，半个多世纪写下了\n浩如烟海的书籍和论文。据统计他共写下了886本书籍\n和论文，其中分析、代数、数论占40%，几何占18%，\n物理和力学占28%，天文学占11%，弹道学、航海学、\n建筑学等占3%。\n04\n莱昂哈德·欧拉\nLeonhard Euler\n欧拉的著作中有不少是教科书。他的著作《无穷小分析\n引论》、《微分学》、《积分学》是18世纪欧洲标准的\n微积分教科书。此外，欧拉还创造了一批数学符号，使\n得数学更容易表述和推广。\n05\nu 没有欧拉的众多科学发现，今天的我们将过着完全不一样的\n生活。￿￿￿￿￿￿￿——瑞士教育与研究国务秘书Charles￿Kleiber\nu 读读欧拉，他是所有人的老师。￿￿——法国数学家拉普拉斯\n4",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 376,
+      "text": "工程中常用的滤波方法\n1、限幅滤波法\nA、算法思想：\nB、算法功能：有效克服因偶然因素引起的脉冲干扰。\nØ 由经验确定两次采样允许的最大偏差阈值E；\nØ 计算本次采样值后向差分信号：\nØ 将后向差分值与阈值E进行比较，决定是否采纳本次采样值。\n接受本次采样值\n不接受本次采样值，用上次采样值代替本次采样值\n5\n限幅滤波",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 377,
+      "text": "6\n工程中常用的滤波方法 —— 限幅滤波法\n滤波前\n限幅滤波后\n阈值E的选择很关键",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 378,
+      "text": "7\n工程中常用的滤波方法 —— 限幅滤波法\n滤波前\n限幅滤波后\n阈值E选择过小可能\n破坏原始信号",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 379,
+      "text": "8\n滤波前\n限幅滤波后\n工程中常用的滤波方法 —— 限幅滤波法\n阈值E选择过大可能\n无法滤除噪声",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 380,
+      "text": "9\n工程中常用的滤波方法\n2、中值滤波法\nA、算法思想：\n对连续 N 次的采样值进行排序，取中间值为本次有效值。\n中值滤波\nN=3 \nB、算法功能：能有效克服因偶然因素引起的波动干扰。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 381,
+      "text": "10\n工程中常用的滤波方法 —— 中值滤波法\n滤波前\n3点中值滤波后\n滤除奇异噪声点的同时，\n有平滑滤波的效果",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 382,
+      "text": "11\n工程中常用的滤波方法 —— 中值滤波法\n滤波前\n5点中值滤波后\n滤除奇异噪声点的同时，\n有平滑滤波的效果\n使用时请慎重选择中值滤波滑动窗N的大小",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 383,
+      "text": "12\n工程中常用的滤波方法\n3、算术平均(滑动平均)滤波法\nA、算法思想：\n滑动平均滤波\nB、算法功能：抑制信号中高频成分，平滑效果较好；对偶然出现的脉冲性\n                           干扰的抑制作用较差。\n当 M1=0，M2=3 时：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 384,
+      "text": "13\n工程中常用的滤波方法 —— 平滑滤波法\n滤波前\n4点平滑滤波后\n平滑滤波效果好，\n对脉冲型噪声的抑制效果较差",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 385,
+      "text": "14\n工程中常用的滤波方法\nu  几种融合型的滤波方法\nØ ￿中值平均滤波法\n (1) 连续采样N个数据，去掉一个最大值和一个最小值；\n (2) 计算剩余的N-2个数据的算术平均值。\nØ ￿限幅平均滤波法\n (1) 对每次采样到的新数据先进行限幅处理；\n (2) 再进行算术平均滤波处理。\nØ ￿加权算术平均滤波法\n(1) 不同时刻的数据加以不同的权；通常越接近现时刻的数据，权取得越大；\n(2) 给予新采样值的权系数越大，则灵敏度越高，但信号平滑度越低。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 386,
+      "text": "15\nu 去除信号中的趋势项\np = polyfit(n,x,1);\np =  [0.0183  0.1355] ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 387,
+      "text": "来自滤波器的感悟\n￿￿￿￿￿￿￿￿我们要处理的信号在采集和传输的过程中往往会受到各种干扰，这就\n需要我们设计合适滤波器来进行滤波，确保信号的有用信息不被破坏。\n￿￿￿￿￿￿￿￿每个人的一生，总有自己的梦想和追求，希望做最好的自己，实现\n自己的愿望。而在我们努力奋斗的过程中，却可能受到干扰，并不一定\n会一帆风顺。\n￿￿￿￿￿￿￿￿面对纷繁芜杂的社会，每个人的奋斗之路上都需要一个正\n确的人生滤波器，滤除各种干扰和噪声，坚定信心、专心致志，\n心无旁骛地向着自己的目标不懈奋斗！\n",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": [
+    {
+      "source_pages": [
+        281,
+        282
+      ],
+      "proposed_final_page": 282,
+      "status": "pending_visual_review"
+    }
+  ]
+}

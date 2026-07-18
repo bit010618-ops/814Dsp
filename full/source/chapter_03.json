@@ -1,0 +1,914 @@
+{
+  "chapter": {
+    "number": 3,
+    "title": "离散傅里叶变换",
+    "start_page": 388,
+    "end_page": 559,
+    "bookmark_prefix": "MC3"
+  },
+  "source_page_count": 172,
+  "pages": [
+    {
+      "source_page": 388,
+      "text": "《\n数\n字\n信\n号\n处\n理》 傅里叶变换之美(1)\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 389,
+      "text": "Ø 傅里叶级数、傅里叶变换、离散时间信号傅里叶变换\nu 傅里叶级数 FS  \nu 傅里叶变换 FT  \nu 离散时间信号傅里叶变换DTFT  \nForurier Series\nForurier Transform\nDiscrete-Time Forurier Transform\n2",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 390,
+      "text": "Ø 傅里叶级数￿FS￿￿\n…\n3",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 391,
+      "text": "输入信号是实偶函数\n直流分量 各次谐波分量\n谐波分量值的计算\n傅里叶级数的系数\nØ 傅里叶级数￿FS￿￿\n4",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 392,
+      "text": "…\n …\nØ 傅里叶级数￿FS￿￿\n5",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 393,
+      "text": "…\nØ 傅里叶级数￿FS￿￿\n6",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 394,
+      "text": "…\nØ 傅里叶级数￿FS￿￿\n7",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 395,
+      "text": "…\nØ 傅里叶级数￿FS￿￿\n8",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 396,
+      "text": "…\nØ 傅里叶级数￿FS￿￿\n9",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 397,
+      "text": "Ø 傅里叶级数￿FS￿￿\n谐波  \n直流分量大小  各次谐波分量大小  \n10",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 398,
+      "text": "Ø 傅里叶级数￿FS￿￿\n…\n11",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 399,
+      "text": "Ø 傅里叶级数￿FS￿￿\n…\n…\n时域信号周期T0增加，谱间隔Ω0减小\n12",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 400,
+      "text": "13\nØ 傅里叶级数￿FS￿￿\n…\n…\n13",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 401,
+      "text": "Ø 傅里叶级数￿FS￿￿\n…\n…\n虽然X(jkΩ0)的每个点的值相同，但是他们真正的物理含义不同。\n14",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 402,
+      "text": "15\n纸上得来终觉浅，\n        绝知此事要躬行。\n                                   ——陆游",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 403,
+      "text": "《\n数\n字\n信\n号\n处\n理》 傅里叶变换之美(2)\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 404,
+      "text": "Ø ￿从傅里叶级数￿FS￿￿￿到￿￿傅里叶变换￿FT￿￿\n…\n  TT00 =  = ∞∞      \n17",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 405,
+      "text": "Ø ￿从傅里叶级数￿FS￿￿￿到￿￿傅里叶变换￿FT￿￿\n18",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 406,
+      "text": "Ø ￿傅里叶变换￿FT￿￿\n19",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 407,
+      "text": "Ø ￿傅里叶级数￿FS￿￿￿￿V.S.￿￿傅里叶变换￿FT￿￿\n…\n…\n时域周期\n 频域离散\n20",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 408,
+      "text": "Ø ￿傅里叶级数￿FS￿￿￿V.S.￿￿傅里叶变换￿FT￿￿\n…\n…\n时域周期\n 频域离散\n21",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 409,
+      "text": "22\n勤于思考、善于总结、\n       勇于实践、 敢于创新！",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 410,
+      "text": "《\n数\n字\n信\n号\n处\n理》 傅里叶变换之美(3)\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 411,
+      "text": "Ø ￿从傅里叶￿变换￿FT￿到￿￿序列傅里叶变换DTFT￿￿\n时域离散时域离散\n频域周期频域周期\n24",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 412,
+      "text": "Ø ￿从傅里叶￿变换￿FT￿到￿￿序列傅里叶变换DTFT￿￿\n25\nX(jΩ)仅在折叠频率以内有值\nX(ejω)是X(jΩ)以2π为周期延拓\n且幅度乘1/T后的结果\nX(ejω)是X(jΩ)以2π为周期延拓\n且幅度乘1/T后的结果",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 413,
+      "text": "Ø ￿序列傅里叶变换￿DTFT￿￿\n折叠频率\n26",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 414,
+      "text": "折叠频率\n \nØ ￿序列傅里叶变换￿DTFT￿￿\n采样间隔T 减小\n采样频率fs增大\n频谱观察范围扩大\n27",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 415,
+      "text": "28\n傅里叶变换之美\n时域问题\n频域问题\n傅里叶变换\n时域的解\n求解困难\n求解容易\n频域的解\n傅里叶逆变换\n￿￿￿￿￿￿￿￿傅里叶变换可以化复杂的卷积运算为简单的乘积运算，提供了计算卷积的一\n种简单手段；离散形式的傅里叶变换可以利用数字计算机快速求解（即FFT）；\n傅里叶变换良好的性质使其在物理学、数论、组合数学、信号处理、概率、统计、\n密码学、声学、光学等领域都有着广泛的应用。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 416,
+      "text": "29\n        转身，\n        是另一个起点；\n                换一个角度，\n                你会发现别样的天空和不一样的自己！\n困惑的时候，换个方法去思考；\n心累的时候，换个角度看世界；\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 417,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 418,
+      "text": "3.1￿￿离散傅里叶级数及其性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 419,
+      "text": "离散\n傅里叶级数\n(DFS)\n及其\n性质\nØ ￿￿为什么要研究离散傅立叶级数(DFS)\nØ ￿由DTFT推出离散傅立叶级数(DFS)的表达式\nØ ￿\n离散\n傅立叶级数的\n性质\nDiscrete Forurier Series\n3.1￿￿离散傅里叶级数及其性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 420,
+      "text": "连续时间、连续频率 — 傅立叶变换FT\n连续时间、离散频率 — 傅立叶级数FS\n离散时间、连续频率 — 序列傅立叶变换DTFT\n离散时间、离散频率 — 离散傅立叶级数DFS\n时 域 频 域\n一、为什么要研究离散傅立叶级数￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 421,
+      "text": "频域离散时域周期\n频域周期时域离散\n一个周期\n采样N点\n二、由DTFT推出离散傅立叶级数(DFS)的表达式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 422,
+      "text": "离散时间傅里叶反变换\n离散傅里叶级数反变换\n二、由DTFT推出离散傅立叶级数(DFS)的表达式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 423,
+      "text": "频域离散\n时域周期\nDTFT\nDFS\n频域周期时域离散\n均以N为周期\n二、由DTFT推出离散傅立叶级数(DFS)的表达式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 424,
+      "text": "令\n二、由DTFT推出离散傅立叶级数(DFS)的表达式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 425,
+      "text": "二、由DTFT推出离散傅立叶级数(DFS)的表达式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 426,
+      "text": "例：已知序列x(n)=R4(n)，将x(n)以N=8为周期进行周期延拓形成           ，求          \n                  的 DFS一个周期内的系数。\n二、由DTFT推出离散傅立叶级数(DFS)的表达式",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 427,
+      "text": "        由于可用抽样z变换解释DFS，故DFS的许多性质与z变换相似。但         与         \n           都具有周期性，所以DFS在时域和频域之间存在着严格的对偶关系严格的对偶关系\n，这\n是序列z变换所不具有的。\n1、线性\n2、序列的移位\n三、离散傅立叶级数的性质三、离散傅立叶级数的性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 428,
+      "text": "3、调制特性\n4、周期卷积和\n三、离散傅立叶级数的性质三、离散傅立叶级数的性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 429,
+      "text": "离散\n傅里叶级数\n(DFS)\n及其\n性质\nØ ￿￿为什么要研究离散傅立叶级数(DFS)\nØ ￿由DTFT推出离散傅立叶级数(DFS)的表达式\nØ ￿\n离散\n傅立叶级数的\n性质\nDiscrete Forurier Series\n3.1￿￿离散傅里叶级数及其性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 430,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 431,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n离散傅里叶变换的定义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 432,
+      "text": "令\n一、离散傅里叶级数(DFS)\n周期离散\n离散周期\n周期离散\n离散周期",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 433,
+      "text": "         周期序列只有有限个序列值有意义，我们可以把 N点有限长序列看作是周期\n为N的周期序列的一个周期，就可以利用离散傅立叶级数DFS来计算了。\n    设x(n)为有限长序列，点数为N，在n=0～N-1处有值。\n      为x(n)的以N为周期的周期延拓序列。\nØØ   离散傅立叶离散傅立叶变换变换DFTDFT的定义的定义 Discrete Forurier Transform\nperiodic extension\n二、离散傅里叶变换(DFT)的定义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 434,
+      "text": "           与x(n)的关系：\n①           的第一个周期：n[0, N-1]定义为“主值区间主值区间\n”。\n②  x(n)为        的“主值序列主值序列\n”。\n③  对不同的r 值，x(n+rN)之间彼此不重叠，故可写为：\n其中，(n模N)或((n))N 数学上表示“nn\n对对\nNN\n取余数或取模值取余数或取模值\n”\n例：       的周期为N=9，求           和           所对应的x(n)。\n( (          ) )\nn\nx NN\n二、离散傅里叶变换(DFT)的定义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 435,
+      "text": "         同理，对频域的周期序列         也可看成是有限长序列          的周期延拓，         \n为          的主值序列。\n        从DFS和IDFS的表达式可知，求和只是在n=0～N-1的主值区间上进行，所\n以它完全适用于x(n)和X(k)这两对主值序列。由此我们得到有限长序列的离散有限长序列的离散\n傅立叶变换傅立叶变换\n((\nDFT)DFT)\n的定义的定义\n：\n二、离散傅里叶变换(DFT)的定义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 436,
+      "text": "M点\n有限长序列\n周期、连续\n一个周期\n采样N个点\n频域\n离散\n以N为\n周期\n延拓\n时域\n周期\n取主值\n序列\n取主值\n序列\n周期\n延拓\n周期\n延拓\n周期序列\n DFT\nIDFT\nDTFT\nIDTFT\nIDFS\nDFS\n三、离散傅里叶变换(DFT)隐含的周期性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 437,
+      "text": "DTFT\nDFS\nDFT\n频域\n离散\n取主值\n序列\n四、离散时间傅立叶变换与离散傅立叶变换的关系",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 438,
+      "text": "注意：\n①  回忆DFS，我们发现他们的形式基本一致，只是DFT仅考虑主值序列\n(有限长)，而DFS考虑的是一个周期序列。因此，DFT的定义形式中一\n定会有对主值区间范围的说明。\n②  x(n)与X(k) 均有N点独立值，为N点序列，信息量相当。\n③  凡是说到DFT，有限长序列均是作为周期序列的一个周期来表示的，\n它隐含了周期性。DFT的真正幕后英雄是DFS。\n3.1￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 439,
+      "text": "π π π\n例：已知序列x(n)=R4(n)，求x(n)的DTFT和8点和16点DFTDFT\n。\n      (1) 求x(n)的DTFTDTFT\n。\nDTFT\n3.1￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 440,
+      "text": "π π π\n(2) 求x(n)的8点DFT。\n8点DFT\nDTFT\n3.1￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 441,
+      "text": "π π π π π π\n(3) 求x(n)的1616\n点点\nDFTDFT\n。\n8点DFT\nDTFT\n16点DFT\n3.1￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 442,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n离散傅里叶变换的定义",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 443,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 444,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n离散傅里叶变换的性质\n(1\n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 445,
+      "text": "离散\n傅里变换的性质\n(1)\nØ ￿￿DFT的线性性质\nØ ￿圆周(循环)移位的基本概念与实现方法\nØ ￿DFT的时域圆周(循环)移位性质\nØ ￿DFT的频域圆周(循环)移位性质\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 446,
+      "text": "(1) 两序列都是N点时:\n       如果\n   则有：\n(2)  x1(n)和x2(n) 的长度N1和N2不等时:\n选择：N=max[N1, N2]\n           为DFT变换的长度，短者进行补零达到 N 点。\n一、DFT的线性性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 447,
+      "text": "这里包括三层意思：\n       (1) 先将x(n)进行周期延拓周期延拓\n       (2)再进行移位移位\n       (3)最后取主值序列主值序列\n：　\n一个有限长序列x(n)的圆周移位定义：\nCircular Shift\n 二、圆周(循环)移位的基本概念与实现方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 448,
+      "text": "n0 N-1\n 二、圆周(循环)移位的基本概念与实现方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 449,
+      "text": "n0\n周期延拓\nn0\n左移2\n 二、圆周(循环)移位的基本概念与实现方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 450,
+      "text": "n0\n取主值\nN-1\n 二、圆周(循环)移位的基本概念与实现方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 451,
+      "text": "            由于我们取主值序列，即只观察n=0\n到N-1这一主值区间，当某一抽样从此区\n间一端移出时，与它相同值的抽样又从此\n区间的另一端进来。如果把x(n)排列一个\nN等 分 的 圆 周 上 ， 序 列 的 移 位 就 相 当 于\nx(n)在圆上旋转，故称作圆周移位圆周移位\n。\nu 圆周(循环)移位的含义\n             \nn=0\n12\nN-2 N-1\nn=0\n12\nN-2 N-1\nn=0\n12\nN-2 N-1\n 二、圆周(循环)移位的基本概念与实现方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 452,
+      "text": " 三、DFT的时域圆周(循环)移位性质\n 四、DFT的频域圆周(循环)移位性质\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 453,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 454,
+      "text": "直接求和\n等比数列公式\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 455,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 456,
+      "text": "例：已知序列 x(n) = {1, 2, 3, 4}，求：\nx((n+2))8R8(n)  =  _____________________\nx((n-2))8R8(n)  =  _____________________\nx((-n+2))8R8(n)  =  _____________________\nx((-n-2))8R8(n)  =  _____________________\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 457,
+      "text": "x((n))8R8(n)  =  _____________________\nx(n) = {1, 2, 3, 4}\n{1, 2 , 3 , 4 , 0 , 0 , 0 , 0}\nx((n+2))8R8(n)  =  _____________________\nx((n-2))8R8(n)  =  _____________________\n{ 3, 4, 0, 0, 0, 0, 1, 2 }\n{ 0, 0, 1, 2, 3, 4, 0, 0 }\nx((-n))8R8(n)  =  _____________________\nx(n) = {1, 2, 3, 4}\n{1, 0 , 0 , 0 , 0 , 4 , 3 , 2}\nx(-n) = {4, 3, 2, 1,}\nx((-n+2))8R8(n)  =  _____________________\nx((-n-2))8R8(n)  =  _____________________\n{ 3, 2, 1, 0, 0, 0, 0, 4 }\n{ 0, 0, 0, 4, 3, 2, 1, 0 }\n    检验当n=3时：\n                 x((-3-2))8 = x((-5))8= x(-5 mod 8) = x(3) = 4  \nn=3\n翻转\nn∈[1,N-1]",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 458,
+      "text": "例：若 X(k) 是序列 x(n) 的 4点 DFT，已知：\n        若 Y(k) 是序列 y(n) 的 4点 DFT，且：\n        求序列 y(n) 。\n周期、取主值",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 459,
+      "text": "X(k) 是序列 x(n) 的 4点 DFT\nY(k) 是序列 y(n) 的 4点 DFT\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 460,
+      "text": "例：求序列 x(n) 的 10点 DFT：\n(N点1)\n(求RN(n)的N点DFT)\n基础知识：\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 461,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 462,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 463,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n离散傅里叶变换的性质\n(1\n)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 464,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 465,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n离散傅里叶变换的性质\n(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 466,
+      "text": "离散\n傅里变换的性质\n(2)\nØ ￿￿DFT的圆周共轭对称性质\nØ ￿DFT的圆周(循环)卷积性质\n3.2￿￿离散傅里叶变换的定义及性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 467,
+      "text": "Ø  回忆：共轭对称序列与共轭反对称序列的定义\n共轭对称序列\n实部偶函数\n 虚部奇函数\nxe(n)\neven\n共轭反对称序列\n实部奇函数\n 虚部偶函数\nxo(n)\nodd\n五、DFT的圆周共轭对称性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 468,
+      "text": "Ø  由x(n)求xe(n)和xo(n)\nØ  DFT概念下的圆周圆周\n共轭共轭\n对称对称\n与圆周共轭反对称圆周共轭反对称\n 隐含的周期性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 469,
+      "text": "探讨对应关系！\nØ 实序列x(n)的DFT—X(k)的特性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 470,
+      "text": "例：设x1(n)和x2(n)都是N点的实数序列，试用一次一次\nNN\n点点\nDFTDFT\n运算计算它们各自各自\n的的\n        DFTDFT\n。\n解：\n线性性质\n共轭对称性质",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 471,
+      "text": " 设x1(n)和x2(n)均为长度为N的有限长序列，且有：\n                      DFT[x1(n)]=X1(k)  和  DFT[x2(n)]=X2(k)\n如果：                                            \n则：                                            \nN\nCircular Convolution\nNN\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 472,
+      "text": "圆周(循环)卷积过程：\n        (1) 补零(当两序列长度不等于N时)\n        (2) 周期延拓(有限长序列变周期序列)\n        (3) 反褶，取主值序列(周期序列的反褶)\n        (4) 圆周(循环)移位\n        (5) 相乘相加\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 473,
+      "text": "例：求下面两序列的6点圆周(循环)卷积。\n10 2 m\nx2(m)\n1\n3\n2\n(1) 补零\n    补到6点\n5\n3 4 5\n10 2 3 m\nx1(m)\n1\n4\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 474,
+      "text": "10 2 3 m4 5 6 7 8 9 10 11-1-2-3-4-5-6\n……… ………\n(2)  周期延拓  N=6\n10 2 3 m\nx1(m)\n1\n4 5\n11 1\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 475,
+      "text": "10 2 m\nx2(m)\n1\n3\n2\n3 4 5\n1\n3\n2\n1\n3\n2\n1\n3\n2\n10 2 m3 4 5 6 7 8 9 10 11-1-2-3-4-5-6\n……… ………\n(2)  周期延拓  N=6\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 476,
+      "text": "10 2 m3 4\n1\n3\n2\n5\n1\n3\n2\n1\n3\n2\n6 7 8 9 10 11-1-2-3-4-5-6\n……… ………\n10 2 m3 4\n1\n3\n2\n5 6 7 8 9 10 11-1-2-3-4-5-6\n……… ………1\n3\n2\n1\n3\n2\n10 2 3 m4\n1\n5\n11\n6 7 8 9 10 11-1-2-3-4-5-6\n……… ………\n(3)  反褶，取主值序列\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 477,
+      "text": "10 2 m\n1\n3\n2\n3 4 5\n10 2 m\n1\n3\n2\n3 4 5\ny(0)=1*1+3*1=4\ny(1)=2*1+1*1=3\n10 2 3 m\n1\n4 5\ny(2)=3*1+2*1+1*1=6\ny(3)=3*1+2*1+1*1=6\ny(4)=3*1+2*1+1*1=6\ny(5)=3*1+2*1=5\n(4)  圆周(循环)移位\n(5)  相乘相加\n6\n六、DFT的圆周(循环)卷积和性质 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 478,
+      "text": "3.2￿￿离散傅里叶变换的定义及性质\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n离散傅里叶变换的性质\n(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 479,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 480,
+      "text": "3.3￿￿￿用DFT求解LSI系统输出\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n用\nDFT\n求解系统线性卷积输出的方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 481,
+      "text": "                                                                                        Y(k) = X(k) · H(k)H(k)X(k) 频域相乘 \n                                                                                          时域卷积  x(n) yl (n)=x(n)*h(n)h(n)\nN点 \nDFT\nN点 \nDFT\nN1点 N2点\nN ≥ N1 N ≥ N2\nN点\nN点\nN点\nN点 \nIDFT\n   y(n)与yl (n)的关系\nN点 N点\ny(n)\n频域离散\n时域周期\n定义圆周卷积：\n  y(n) = x(n)   N   h(n)  \n线性卷积： \nu 用离散傅立叶变换(DFT)实现线性卷积的思路",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 482,
+      "text": "周期序列的表示\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 483,
+      "text": "Ø 圆周卷积与线性卷积的关系\n          x(n)与h(n)的N点圆周卷积 y(n)  等于 它们的线性卷积yl(n)以N为周期\n延拓后取主值序列的结果 yl((n))N RN(n)。\nØ  问题1：yl(n)线性卷积结果的长度？\n设：x(m)为N1点长序列： 0 ≤ m ≤ N1-1\nh(m)为N2点长序列： 0 ≤ m ≤ N2-1\n那么：h(n-m)序列有值的区间为： n-N2+1 ≤ n-m ≤ n\n移动的序列\nN1+N2-1点长\n -N2+1 ≤ -m ≤ 0 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 484,
+      "text": "Ø  问题2：N在什么条件下，圆周卷积与线性卷积结果相同？\n        N1+N2-1点\n以N为周期延拓\n后取主值序列\n设N1=7,  N2=3，\n则 yl(n)为9点长序列\n 取N=8\n取N=9\n y(n)=yl(n)\n时域混叠\n   N  ≥  N1 + N2 – 1   \n=\nN ≥",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 485,
+      "text": "例：求下面两序列的线性卷积和4点、5点、6点、7点圆周卷积。\n(1) 线性卷积  L = N1+N2-1 = 5+3-1 = \n7\n1  1  1  1  1\n1  2  3\n3  3  3  3  3\n2  2  2  2  2\n1  1  1  1  1\n1  3  6  6  6  5  3 \n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 486,
+      "text": "(2)  4点圆周卷积     主值区间：0 ≤ n ≤ 3\n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n        将线性卷积的结果以4为周期进行周期延拓后再取主值区间即获得4点\n圆周卷积结果。\n-4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9  10 n\nx(0) = 1+6=7\nx(1) = 3+5=8\nx(2) = 6+3=9\nx(3) = 6\n…\n…\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 487,
+      "text": "(3)   5点圆周卷积     主值区间：0 ≤ n ≤ 4\n        将线性卷积的结果以5为周期进行周期延拓后再取主值区间即获得5点\n圆周卷积结果。\nx(0) = 1+5=6\nx(1) = 3+3=6\nx(2) = 6\nx(3) = 6\nx(4) = 6\n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n-4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9  10 n\n…\n…\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 488,
+      "text": "x(0) = 1+3=4\nx(1) = 3\nx(2) = 6\nx(3) = 6\nx(4) = 6\nx(5) = 5\n(4)   6点圆周卷积     主值区间：0 ≤ n ≤ 5\n        将线性卷积的结果以6为周期进行周期延拓后再取主值区间即获得6点\n圆周卷积结果。\n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n-4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9  10 n\n…\n…\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 489,
+      "text": "x(0) = 1\nx(1) = 3\nx(2) = 6\nx(3) = 6\nx(4) = 6\nx(5) = 5\nx(6) = 3\n(5)   7点圆周卷积     主值区间：0 ≤ n ≤ 6\n        将线性卷积的结果以7为周期进行周期延拓后再取主值区间即获得7点\n圆周卷积结果。\n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n1  3  6  6  6  5  3 \n-4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9  10 n\n…\n…\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 490,
+      "text": "例：对50点长序列x(n)，0≤n≤49和20点长序列h(n)，0≤n≤19分别做50点的DFT，\n得到X(k)和H(k)，令 Y(k)=X(k)H(k)， 0≤k≤49， y(n) 是Y(k)50点IDFT的值，则n\n在______范围内时，y(n)的结果与x(n)和h(n)线性卷积的结果一致。\n(A)   19 ≤ n ≤ 48 (B)   19 ≤ n ≤ 49 (C)   20 ≤ n ≤ 49 (D)   20 ≤ n ≤ 68\nB\n50\n有混叠\n 无混叠\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 491,
+      "text": "例：序列                                                            ，试求：\n(A) 求序列x(n)的4点DFT。\n(B) 若y(n)是x(n)与它本身的4点圆周卷积，求y(n)及其4点DFT 。\n(A)\n ☆\n☆\n☆\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 492,
+      "text": "(B) 若y(n)是x(n)与它本身的4点圆周卷积，求y(n)及其4点DFT 。\n4\n方法一：\n方法二：\n1    0    2    1   \n{ 1    0    4    2    4    4    1 }\n1    0    2    1   \n2    0    4    2   \n1    0    2    1   \n1    0    2    1   \n4    4    1 \n{ 5    4    5    2}",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 493,
+      "text": "                                                                                        时域卷积  x(n) yl (n)=x(n)*h(n)h(n)\n                                                                                           Y(k) = X(k) · H(k)H(k)X(k) 频域相乘 \nN点\nN点\nN点 N点 N点\nN点 \nDFT N点 \nDFT\nN点 \nDFT\nx((n))RN(n)\n h((n))RN(n)\n yl((n))RN(n)\nN1点 N2点 N1 + N2 -1 点\nN点 \nIDFT\nN≥N1 N≥N2\nN点 \nIDFT\nN点 \nIDFT\nN ≥ N1 +N2 -1\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 494,
+      "text": "补零至\nN点\nx(n) N点\nDFT\nh(n)\nN点IDFT\n补零至\nN点\nN点\nDFT\nØ  时域直接求解\nØ  频域解析法\nØ  DFT求解法\nN ≥ N1+N2-1\nN1点\nN2点\nX(k)\nH(k)\nY(k)\nh(n)为有限长序列\nN2≠∞\nØ 几种求解LSI系统输出的方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 495,
+      "text": "3.3￿￿￿用DFT求解LSI系统输出\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n用\nDFT\n求解系统线性卷积输出的方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 496,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 497,
+      "text": "3.3￿￿￿用DFT求解LSI系统输出\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n长序列线性卷积的\nDFT\n求解方法\n——\n重叠相加法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 498,
+      "text": "1    2    3    4    5    6    7    8\n1    1    1\n例：求下面两序列的线性卷积，并用重叠相加重叠相加\n法验证。\n{ 1    3    6    9   12  15  18  21  15   8 }\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 499,
+      "text": "1、重叠相加法\n1    1    1\n{ 1    3    6    9   12  15  18  21  15   8 }\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\nM = 4\nN = 3\n1    2    3    4    5    6    7    8\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 500,
+      "text": "1    2    3    4   \n1    1    1\n{ 1    3    6    9    7    4 }\n1    2    3    4\n1    2    3    4\n1    2    3    4\n5    6    7    8   \n1    1    1\n{ 5   11  18  21  15   8 }\n5    6    7    8\n5    6    7    8\n5    6    7    8\nn=4\nx1(n)\nh(n)\ny1(n)\nx2(n)\nh(n)\ny2(n)\n{ 1    3    6    9    7    4 }\n{ 5   11  18  21  15   8 }\n{ 1    3    6    9   12  15  18  21  15   8 }\n重叠相加\nL ≥ M+N-1\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 501,
+      "text": "重叠相加\n 重叠相加\nyi(n)的求解方法：\n  重叠相加法的基本原理：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 502,
+      "text": "Overlap-add method\nA、将h(n)补零延长到 L ≥ M + N -1，并计算长为L的FFT，得到 H(k)；\nB、将每一段M点的xi(n)补零延长到 L ≥ M + N -1，并计算长为L的FFT，得\n到 Xi(k)；\nC、计算                                   ，并求长为L的反变换，即：\nD、将yi(n)的重叠重叠\n部分相加相加\n，最后得到结果为：\nØ￿￿小结小结：长序列线性卷积的：长序列线性卷积的DFTDFT求解方法求解方法————重叠相加法重叠相加法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 503,
+      "text": "3.3￿￿￿用DFT求解LSI系统输出\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n长序列线性卷积的\nDFT\n求解方法\n——\n重叠相加法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 504,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 505,
+      "text": "3.3￿￿￿用DFT求解LSI系统输出\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n长序列线性卷积的\nDFT\n求解方法\n——\n重叠保留法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 506,
+      "text": "重叠保留\n 重叠保留\n  重叠保留法的实现步骤：\n√\n√\n√\n前N-1点存在混叠\n全部舍去！\n×\n×\n×\n1、取输入：输入的每段中，保留\n原来的N-1点(上次已经参加过运\n算的)，再新取值M点，组成L0点\n长的xi(n)，L0=M+N-1。\n2、用FFT的方法求解每段输出：\n3、对于每段输出的结果，其前\nN-1点舍去；取出其之后的M个\n点作为本段的输出结果； L>L0 \n时，后面多余的点也不取。\n其中：L ≥ L0。\n中间的M点是结果\nL>L0时，后面有多\n余的点，也不要！\n4、截取后的每段M点的输出自然\n拼接后即为系统输出。\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 507,
+      "text": "1    2    3    4    5    6    7    8\n1    1    1\n例：求下面两序列的线性卷积，并用重叠保留重叠保留\n法验证。\n{ 1    3    6    9   12  15  18  21  15   8 }\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 508,
+      "text": "2、重叠保留法\n1    1    1\n{ 1    3    6    9   12  15  18  21  15   8 }\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\n1    2    3    4    5    6    7    8\nM = 4\n N = 3\n 0    0 \nM = 4\nN - 1 = 2\n N - 1 = 2\n1    2    3    4    5    6    7    8  0  0  0  0 \nM = 4\n N - 1 = 2\n M = 4\nL0 = M + N – 1 = 6\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 509,
+      "text": "1  2  3  4   \n1  1  1\n{ 0  0  1  3  6  9  7  4 }\n0  0   \n0  0  1  2  3  4\n0  0  1  2  3  4\n0  0  1  2  3  4\n7  4   \n{ 7  4  1  3  6  9 }×\nn=0 n=M-1\n5  6  7  8   \n1  1  1\n{ 3  7 12 15 18 21 15  8 }\n3  4  5  6  7  8\n3  4  5  6  7  8\n3  4  5  6  7  8\n15  8   \n{ 18  15 12 15 18 21 }×\nn=M n=2M-1\n0  0  0  0  \n1  1  1\n{ 7 15 15  8  0   0   0  0 }\n7  8  0  0  0  0\n7  8  0  0  0  0\n7  8  0  0  0  0\n  0  0   \n{ 7  15 15  8  0   0  }×\nn=2M n=3M-1\n3  4   \n 7  8   \n重叠保留\n  y(n) = { 1    3    6    9   12  15  18  21  15   8 } \nM = 4\n N = 3\n L0 = M + N – 1 = 6\nL ≥ M+N-1\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 510,
+      "text": "  重叠保留法的实现步骤：\n1、取每段输入：输入的每段中，重叠保留原来的N-1点(上次已经参加\n      过运算的)，再新取值M点，组成L0点长的xi(n)， L0=M+N-1。\n2、用FFT的方法求解每段输出，L ≥ L0 ：\n3、对于每段输出的结果，其前N-1点舍去；取出其之后的M个点作为本\n      段的输出结果； L>L0 时，后面多余的点也不取。\n4、将截取后的每段M点输出自然拼接后即为系统输出。\n3.3￿￿￿用DFT求解LSI系统输出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 511,
+      "text": "3.3￿￿￿用DFT求解LSI系统输出\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n长序列线性卷积的\nDFT\n求解方法\n——\n重叠保留法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 512,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 513,
+      "text": "3.4￿￿￿频域采样定理\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 514,
+      "text": "1、频域采样定理要研究的问题\nM点\n单位圆上取N点\n（频域采样）\n序列傅立叶变换\n=？\n离散傅立叶反变换\nN点\n￿一、频域采样与频域采样定理￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 515,
+      "text": "2、由频域采样恢复时域序列   \n一个绝对可和的非周期序列 x(n)的z变换为：\n      由于x(n)绝对可和，故其傅里叶变换存在且连续，也即其\nz变换收敛域包括单位圆。这样，对对\nXX\n((\nzz\n))\n在单位圆上在单位圆上\nNN\n等份抽等份抽\n样样\n，就得到           。\n￿一、频域采样与频域采样定理￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 516,
+      "text": "对          进行反变换，并令其为            ，则：\n为避免混淆，改用m",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 517,
+      "text": "         可见，由          得到的周期序列           是非周期序列x(n)的\n周期延拓。其周期为频域采样点数N。\n所以：时域采样(离散)产生频域周期延拓\n同样，频域采样(离散)产生时域周期延拓\n      (1)  x(n)是无限长序列 ： 一定存在混叠失真\n      (2)  x(n)是长度为M的有限长序列：\n             (A)   N ≥ M ，不失真\n             (B)   N < M ，失真\n￿一、频域采样与频域采样定理￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 518,
+      "text": "3、频率采样定理的内容  \n若序列长度为M，则只有当频域采样点数:\n时，才有\n       即可由频域采样X(k)不失真地恢复原信号x(n) ，否则产\n生时域混叠现象。时域混叠现象\n￿一、频域采样与频域采样定理￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 519,
+      "text": "1、用频域采样X(k)恢复X(z)\nIDFT\n频域\n采样\nDTFT\nN ≥ M\nz变换\nIDFT\n频域插值\n恢复\n内插公式内插公式\n二、频域插值的恢复￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 520,
+      "text": "内插公式：\n内插公式可以简化为：\n二、频域插值的恢复￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 521,
+      "text": "2、用频域采样X(k)表示X(ejω)的内插公式\n内插函数：\n二、频域插值的恢复￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 522,
+      "text": "内插公式：\n0\n二、频域插值的恢复￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 523,
+      "text": "3.4￿￿￿频域采样定理\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 524,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 525,
+      "text": "3.5￿￿￿模拟信号的频谱分析\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 526,
+      "text": "抽样\n周期延拓\n截断 周期延拓\n周期延拓\n卷积 抽样\n取一个周期\n周期延拓\n取一个周期\nØ 用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 527,
+      "text": "",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 528,
+      "text": "Ø 用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 529,
+      "text": "T — 时域采样间隔\nfs — 时域采样频率\nT0 — 信号记录长度\nF0 —频率分辨率(频谱间隔)\nN — 采样点数 fh —信号最高频率\n提高频率提高频率\n分辨率分辨率\n相当于减小减小\nFF\n00\nØ 用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 530,
+      "text": "例：   有一频谱分析用的FFT处理器，其抽样点数必须是2的整数幂，假\n设没有采用任何数据处理的措施，已给条件为：\n        (a)  对频率分辨率的要求是F0≤10Hz;\n        (b)  信号频率不超过4KHz。\n试确定以下参量：\n        (A)  最小记录长度T0 ;\n        (B)  抽样点间的最大时间间隔T (即最小抽样频率) ;\n        (C)  在一个记录中最少点数N。\nØ 用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 531,
+      "text": "解：(1) 最小记录长度\n(2) 最大抽样间隔\n(3) 最小记录点数\n 此时，记录长度T0=NT=1024×0.125×10-3 = 0.128(s)\nØ 用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 532,
+      "text": "3.5￿￿￿模拟信号的频谱分析\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n用DFT对模拟信号作频谱分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 533,
+      "text": "3.1\n 离散傅里叶级数及其性质\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n3.2\n 离散傅里叶变换的定义及性质\n3.3\n 用DFT求解LSI系统输出\n3.4\n 频域采样定理\n3.5\n 模拟信号的谱分析方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 534,
+      "text": "3.5￿￿￿模拟信号的频谱分析\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n谱分析方法中存在的问题及应对措施谱分析方法中存在的问题及应对措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 535,
+      "text": "时域抽样 频域混叠\n时域截断 频谱泄漏\n频域抽样 栅栏效应\n抽样\n周期延拓\n截断 周期延拓\n周期延拓\n卷积 抽样\n取一个周期\n周期延拓\n取一个周期\nspectrum aliasing\nspectral leakage\npicket fence effect\nØ￿用DFT对模拟信号进行谱分析存在的问题",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 536,
+      "text": "    若要从抽样后的信号中不失真的还原出原信号，则抽样频率抽样频率\n必须大于信号\n最高频率最高频率\n的两倍以上。\n时域抽样定理：\n时域离散\n频域周期\nØ￿￿￿￿时域时域\n抽样抽样\n可能带来的问题及解决方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 537,
+      "text": "模拟信号的数字处理方法\ny(n)x (n) ya(t)xa(t)\n 前置\n预滤\n波器\nA/D\n数字\n信号\n处理器\nD/A\n 模拟\n滤波器\n抗混叠抗混叠\n滤波器\nØ￿￿￿￿频谱频谱混叠现象的解决方案混叠现象的解决方案￿￿——￿——￿抗抗混叠滤波器混叠滤波器￿￿￿￿￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 538,
+      "text": "未经抗混叠滤波器，产生频域混叠现象\n经抗混叠滤波器后，频域不再混叠\n毋滥\n宁缺\n(Hz)\n|         |\n(Hz)\n|         |\n(Hz)\n|           |\n(Hz)\n|            |\nØ￿￿￿￿频谱频谱混叠现象的解决方案混叠现象的解决方案￿￿——￿——￿抗抗混叠滤波器混叠滤波器￿￿￿￿￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 539,
+      "text": "x(n)\nw(n)\nx(n) ·w(n)\nX(ejω)\nW(ejω)\nX(ejω)*W(ejω)\n(rad)\n(rad)\n(rad)\n    信号的频谱与窗函数的卷积后必然产生必然产生拖尾、变宽拖尾、变宽\n的现象，从而造成的现象，从而造成\n截断效应截断效应  —— —— 频谱泄漏频谱泄漏\n现象。现象。\n 选好窗函数\nØ ￿时域截断时域截断\n可能带来的问题及解决方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 540,
+      "text": "矩形窗\n三角窗\n二阶升余弦窗\n矩形窗频谱\n三角窗频谱\nN=50\nN=50\nN=50\n|WR(ejω)|wR(n)\nwtr(n)\nwbk(n)\n|Wtr(ejω)|\n|Wbk(ejω)|\nn\nn\nn\nω(rad)\nω(rad)\nω(rad)\n二阶升余弦窗频谱\nØ  不同窗函数w(n)及其它们的频谱W(ejω)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 541,
+      "text": "矩形窗\n三角窗\n二阶升余弦窗\n矩形窗频谱\n三角窗频谱\n二阶升余弦窗频谱\nN=100\nN=100\nN=100\nω(rad)\nω(rad)\nω(rad)\n|WR(ejω)|\nwR(n)\nwtr(n)\nwbk(n)\n|Wtr(ejω)|\n|Wbk(ejω)|\nn\nn\nn\nN增大后\n过渡带变窄 \nN 增大后主旁瓣\n能量比不变\nGibbs现象\nØ    增加窗函数长度后，窗函数w(n)及其它们的频谱W(ejω)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 542,
+      "text": "u 频谱泄漏产生的原因\n时域乘窗函数 频域卷积窗函数的谱\nu 窗函数及其参数的选择\n窗形状：选择缓慢截断的窗函数。\n窗长度：延长窗的长度 N 可减小过渡带宽。\nØ时域截断产生频谱泄漏现象的改善措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 543,
+      "text": "x(n)\nx1(n)\nx2(n)\nx3(n)\n|X(ejω)|\n|X1(k)|\n|X2(k)|\n|X3(k)|\nπn\nn\nn\nn k\nk\nk\nω(rad)\n频域抽样 栅栏效应\n时域添零增加\n观察分辨率\n添4点零\nDTFT\n8点DFT\n添12点零 16点DFT\n添28点零 32点DFT\nØ￿￿频域抽样可能带来的问题及解决方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 544,
+      "text": "时域抽样 频域混叠\n时域截断 频谱泄漏\n频域抽样 栅栏效应\n抽样\n周期延拓\n截断 周期延拓\n周期延拓\n卷积 抽样\n取一个周期\n周期延拓\n取一个周期\n抗混叠滤波器： fs ≥ 2fh\n合适的窗函数长度、形状\n适当添零\nØ￿用DFT对模拟信号进行谱分析存在的问题及应对措施小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 545,
+      "text": "3.5￿￿￿模拟信号的频谱分析\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform\n谱分析方法中存在的问题及应对措施谱分析方法中存在的问题及应对措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 546,
+      "text": "《\n数\n字\n信\n号\n处\n理》\n信号处理之￿——￿力学笃行\n频谱泄漏与信号加窗\n华东理工大学信息科学与工程学院 万永菁\n第三章￿￿离散傅里叶变换\nDiscrete Forurier TransformDiscrete Forurier Transform",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 547,
+      "text": "傅里叶的故事\n让·巴普蒂斯·约瑟夫·傅里叶\nJean Baptiste Joseph Fourier\n（1768-1830）\n傅里叶分析是信号处理中最基本、最核心的内容之一，\n这种分析方法得名于法国数学家傅里叶。实际上，傅里\n叶分析不仅应用于信号处理领域，作为数学的一个主要\n分支，傅里叶分析在很多工程领域都有广泛的应用。\n01\n在傅里叶之前，人们很早就已经认识到可以用三角函数\n来表示复杂的周期信号，甚至在古巴比伦和古埃及时期，\n人们就开始用这种方法来预测天文事件。\n02\n在近代科学史上，18世纪伟大的数学家欧拉重新使这种\n方法走进人们的视野，他在研究声波传播问题的时候发\n现，可以将传播函数分解为多个正弦信号之和。同时代\n伟大数学家拉格朗日扩展了欧拉的思想，将其应用在天\n体轨道的观察和预测中。\n03",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 548,
+      "text": "傅里叶专著\n《热的解析理论》\n(1822)\n在当时，数学家们都面临着一个问题，即在不连续的情况下，\n信号是否还能用这种方法分解？在这个问题上，即便是当时最\n伟大的数学家拉格朗日也认为无穷多个正弦信号之和必定是平\n滑的，因而不平滑的信号不能用这种方法来分解，着导致了当\n时几乎所有的数学家对这种方法失去了兴趣。\n04\n1807年，傅里叶向科学院呈交了一篇很长的论文，题为“热的\n传播”，他在论文中运用正弦曲线来描述温度分布，并提出一\n个很有争议性的结论：任何连续周期信号可以由一组适当的正\n弦曲线组合而成。\n05\n傅里叶的故事\n但是拉格朗日认为文章的严格性和普遍性上仍有问题，论文没有\n发表。后来，傅里叶又专门写了一本专著《热的解析理论》进行\n阐述，由此奠定了傅里叶的不朽名声。关于信号的不连续的情况，\n多年之后由狄利克雷等数学家给出了完整的证明。狄利克雷认为，\n只有在满足一定条件时，周期信号才能展开成傅里叶级数。因此，\n傅里叶级数成立的条件也称为狄利克雷条件。\n￿￿￿￿￿￿￿但是，有一个人例外，他就是￿B.J.Fourier￿!\n06",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 549,
+      "text": "频谱泄漏与信号加窗\n时域周期 频域离散\n窗函数的长度和形状",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 550,
+      "text": "Ø￿信号的谱分析￿——￿加窗的影响\n时域\n频域",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 551,
+      "text": "时域乘窗函数\n频域卷积窗谱\nØ￿￿信号的谱分析￿——￿加窗的影响",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 552,
+      "text": "窗长变长，矩形窗主瓣宽度变小，过渡带变窄\nØ￿不同窗长下，矩形窗对谱分析的影响",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 553,
+      "text": "频谱泄漏影响谱线识别\n窗长增加，过渡带变窄，\n频谱泄漏现象缓解\nØ￿不同窗长下，矩形窗对谱分析的影响\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 554,
+      "text": "三角窗的主瓣宽度比矩形窗宽\n但旁瓣较小，利于缓解谱泄漏\nØ￿不同窗函数对谱分析的影响",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 555,
+      "text": "由于三角窗的过渡带更宽，\n同样窗长下，频谱泄漏现象未缓解\nØ￿不同窗函数窗长的选择\n频谱泄漏影响谱线识别\n频谱泄漏仍然存在",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 556,
+      "text": "Ø￿窗长的选择与比较\n三角窗窗长增加后，过渡带变窄，泄漏现象明显缓解",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 557,
+      "text": "Ø￿频谱泄漏现象的观察与解释\nn = 0:31;\ny = cos(pi/4*n);\nN = 32;  Fv = fft(v,N);\nstem(n*2/32,abs(Fv));\nN=32，除π/4、7π/4点，\n其余点正好在过零点上 ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 558,
+      "text": "Ø￿频谱泄漏现象的观察与解释\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 559,
+      "text": "从谱分析看科学精神\n￿￿￿￿￿￿￿科学精神是发现规律、揭示本质的理性思考，不\n仅要回答是什么，还要回答为什么，尊重事实进行符\n合逻辑的思维，是科学的重要品质。\n",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": [
+    {
+      "source_pages": [
+        425,
+        426
+      ],
+      "proposed_final_page": 426,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        453,
+        454
+      ],
+      "proposed_final_page": 454,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        455,
+        456
+      ],
+      "proposed_final_page": 456,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        462,
+        463
+      ],
+      "proposed_final_page": 463,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        528,
+        529
+      ],
+      "proposed_final_page": 529,
+      "status": "pending_visual_review"
+    }
+  ]
+}

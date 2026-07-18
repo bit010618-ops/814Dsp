@@ -159,7 +159,7 @@ Commit message: feat: add global DSP handout typography.
 - Create: full/source/chapter_01.json through full/source/chapter_08.json
 - Create: full/source/figures.json
 
-- [ ] **Step 1: Write containment-only tests.**
+- [x] **Step 1: Write containment-only tests.**
 
 ~~~python
 def test_keep_only_final_slide_when_final_text_contains_prior_slide():
@@ -171,12 +171,12 @@ def test_keep_both_when_new_page_lacks_prior_unique_content():
     assert collapse_incremental_pages(pages) == pages
 ~~~
 
-- [ ] **Step 2: Run the tests before implementation.**
+- [x] **Step 2: Run the tests before implementation.**
 
 Run: python -m pytest full/tests/test_extract_course.py -q
 Expected: import failure for collapse_incremental_pages.
 
-- [ ] **Step 3: Implement normalized exact containment only.**
+- [x] **Step 3: Implement normalized exact containment only.**
 
 ~~~python
 def collapse_incremental_pages(pages):

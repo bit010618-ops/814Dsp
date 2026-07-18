@@ -1,0 +1,798 @@
+{
+  "chapter": {
+    "number": 7,
+    "title": "FIR数字滤波器设计",
+    "start_page": 866,
+    "end_page": 1009,
+    "bookmark_prefix": "MC7"
+  },
+  "source_page_count": 144,
+  "pages": [
+    {
+      "source_page": 866,
+      "text": "7.1\n 线性相位FIR数字滤波器的条件和特点\n第七章￿￿FIR数字滤波器设计\nFFIR IR Digital Filter DesignDigital Filter Design\n7.2\n 利用窗函数法设计FIR滤波器\n7.3\n 利用频率采样法设计FIR滤波器\n7.4\n 利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 867,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器单位脉冲响应的条件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 868,
+      "text": "IIR数字滤波器与FIR数字滤波器比较\nØ ￿IIR数字滤波器\nu ￿￿可以利用模拟滤波器的设计结果，方便简单\nu ￿￿非线性相位，若需线性相位，要采用全通网络进行相位校正\nØ ￿FIR数字滤波器\nu ￿￿可以做到严格线性相位\nu ￿￿可以具有任意的幅度特性\n7.1￿￿线性相位FIR数字滤波器的条件和特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 869,
+      "text": "                                                                                        Y(ej) = X(ej) · H(ej)H(ej)X(ej) 频域相乘\n                                                                                        x(n) y(n)=x(n)*h(n)h(n) 时域卷积\nDTFT\n.\n =\n系统幅频响应输入频谱 输出频谱\nhh((nn))有限长有限长\n FIRFIR滤波器滤波器\nDTFT DTFT\n|X(ej)|\n 1 2 (rad)(rad)\n|H(ej)|\n 1 2 c \n1 \n(rad)(rad)\n|Y(ej)|\n 1 2 (rad)(rad)\n幅频响应决定\n频率成分的去留\n一、基础知识回顾及问题的引出",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 870,
+      "text": "                                                                                                    时域卷积x(n) y(n) = x(n- τ)\n                                                                                                     频域相乘X(ej)\nDTFT DTFT DTFT\n某频率处的相位响应相位响应\n实际上对应着时\n域上该处频率信号的移位移位\n情况。\n理想延时系统\n群延迟： \n相频响应的作用： FIRFIR滤波器滤波器\n 容易设计为线性相位容易设计为线性相位？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 871,
+      "text": "Ø 两类线性相位\n一类线性相位一类线性相位\n振幅响应振幅响应 相位响应相位响应\n二类线性相位二类线性相位\n 1、线性相位条件下hh\n((\nnn\n))\n有什么特性？\n 2、线性相位条件下滤波器频率响应滤波器频率响应\n有何特点？\n 3、线性相位条件下系统零极点分布零极点分布\n有什么特点？\n7.1￿￿线性相位FIR数字滤波器的条件和特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 872,
+      "text": "线性相位FIR滤波器单位脉冲响应的条件\nØ 如何研究线性相位条件下 h(n) 的特性\n一类线性相位一类线性相位\n二类线性相位二类线性相位\n7.1￿￿线性相位FIR数字滤波器的条件和特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 873,
+      "text": "一类线性相位一类线性相位\n实部实部 虚部虚部\n 二、线性相位条件下h(n)的特性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 874,
+      "text": "①①\n②②\n②②//①①\n 二、线性相位条件下h(n)的特性\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 875,
+      "text": "以以ττ为中心对称的奇函数为中心对称的奇函数\nnn  ∈∈[0 , [0 , NN-1]-1]\n若若  ττ = ( = (NN-1)/2-1)/2\n若若hh((nn))以以  ττ = ( = (NN-1)/2-1)/2\n为中心为中心偶对称偶对称\n一类线性相位一类线性相位\n hh((nn) = ) = hh((NN-1--1-nn)) nn∈∈[0, [0, NN-1]-1]\n?  ?  nn  ∈∈[[nn11 ,  , nn22]]\nττ =  = nn11+(+(nn22--nn11)/2)/2\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 876,
+      "text": "二类线性相位二类线性相位\n以以ττ为中心对称的为中心对称的偶函数偶函数\nnn  ∈∈[0 , [0 , NN-1]-1]\n若若hh((nn))以以  ττ = ( = (NN-1)/2-1)/2\n为中心为中心奇对称奇对称\n二类线性相位二类线性相位\n hh((nn) = ) = --  hh((NN-1--1-nn)) nn∈∈[0, [0, NN-1]-1]\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 877,
+      "text": "线性相位FIR滤波器单位脉冲响应的条件\nØ  线性相位条件下 h(n) 的特性\n一类线性相位一类线性相位\n二类线性相位二类线性相位\nhh((nn) = ) = --  hh((NN-1--1-nn)) nn∈∈[0, [0, NN-1]-1]\nhh((nn) = ) = hh((NN-1--1-nn)) nn∈∈[0, [0, NN-1]-1]\n 二、线性相位条件下h(n)的特性",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 878,
+      "text": "对称中心\nhh((nn))偶对称，偶对称，NN为偶数为偶数hh((nn))偶对称，偶对称，NN为奇数为奇数\n0 1 2\n3\n4 5\n6\n7 8 9 n\nh(n)\n0 1 2\n3\n4 5 6\n7\n8 9 n\nh(n)\n10\n第一类线性相位￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿的充要条件：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 879,
+      "text": "0 1 2\n3\n4\n5 6 7\n8 9\nn\nh(n)\n10\n 0 1 2\n3\n4\n5\n6\n7 8 9\nn\nh(n)\nhh((nn))奇对称，奇对称，NN为偶数为偶数hh((nn))奇对称，奇对称，NN为奇数为奇数\n对称中心\n第二类线性相位￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿￿的充要条件：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 880,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器单位脉冲响应的条件",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 881,
+      "text": "7.1\n 线性相位FIR数字滤波器的条件和特点\n第七章￿￿FIR数字滤波器设计\nFFIR IR Digital Filter DesignDigital Filter Design\n7.2\n 利用窗函数法设计FIR滤波器\n7.3\n 利用频率采样法设计FIR滤波器\n7.4\n 利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 882,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器的幅度响应的特点(1)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 883,
+      "text": "线性相位FIR滤波器的幅度响应的特点\nØ 线性相位条件下FIR滤波器幅度响应的特点\n一类线性相位一类线性相位\n 二类线性相位二类线性相位\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 884,
+      "text": "系统函数：\n由\n￿线性相位条件下FIR滤波器频率响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 885,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 886,
+      "text": "",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 887,
+      "text": "线性相位FIR滤波器的幅度响应的特点\nØ  h(n)偶对称，\nN 为奇数\nØ  h(n)偶对称，\nN 为偶数\nØ  h(n)奇对称，\nN 为奇数\nØ  h(n)奇对称，\nN 为偶数\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 888,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器的幅度响应的特点(1)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 889,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器的幅度响应的特点(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 890,
+      "text": "线性相位FIR滤波器的幅度响应的特点\nØ  h(n)偶对称，\nN 为奇数\nØ  h(n)偶对称，\nN 为偶数\nØ  h(n)奇对称，\nN 为奇数\nØ  h(n)奇对称，\nN 为偶数\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 891,
+      "text": "1、h(n)偶对称\n为第一类线性相位： \n相位函数：\n频率响应：\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 892,
+      "text": "0 1 2\n3\n4 5 6\n7\n8 9 n\nh(n)\n10\n幅度函数：\n(1)  h(n)偶对称，NN为奇数\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 893,
+      "text": "其中：\n线性相位FIR滤波器的幅度响应的特点\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 894,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 895,
+      "text": "线性相位FIR滤波器的幅度响应的特点\n例1：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 896,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 897,
+      "text": " b1=[1 1 1 1 1];\n a1=1;\n [H1,w1]=freqz(b1,a1,'whole');\n figure(1);\n subplot(221);plot(w1/pi,abs(H1));grid\n subplot(222);zplane(b1,a1);\n subplot(223);\n plot(w1/pi,sin(5*w1/2)./sin(w1/2));grid\n subplot(224);\n plot(w1/pi,1+2*cos(w1)+2*cos(2*w1));grid\n幅度响应\n振幅响应\n振幅响应\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 898,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 899,
+      "text": "幅度函数：\n  (2) h(n)偶对称，N为偶数\n0 1 2\n3\n4 5\n6\n7 8 9 n\nh(n)\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 900,
+      "text": "其中：\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 901,
+      "text": "，故故\n不能设计成高通、带阻滤波器不能设计成高通、带阻滤波器\n  \n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 902,
+      "text": "线性相位FIR滤波器的幅度响应的特点\n例2：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 903,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 904,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 905,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器的幅度响应的特点(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 906,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器的幅度响应的特点(3)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 907,
+      "text": "线性相位FIR滤波器的幅度响应的特点\nØ  h(n)偶对称，\nN 为奇数\nØ  h(n)偶对称，\nN 为偶数\nØ  h(n)奇对称，\nN 为奇数\nØ  h(n)奇对称，\nN 为偶数\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 908,
+      "text": "2、h(n)奇对称\n相位函数：\n为第二类线性相位：\n频率响应：\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 909,
+      "text": "幅度函数：\n (3)  h(n)奇对称，N为奇数\n0 1 2\n3\n4\n5 6 7\n8 9\nn\nh(n)\n10\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 910,
+      "text": "其中：\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 911,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 912,
+      "text": "线性相位FIR滤波器的幅度响应的特点\n例3：",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 913,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 914,
+      "text": "幅度函数：\n(4)  h(n)奇对称，N为偶数\n0 1 2\n3\n4\n5\n6\n7 8 9\nn\nh(n)\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 915,
+      "text": "其中：\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 916,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 917,
+      "text": "例4：\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 918,
+      "text": "线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 919,
+      "text": "线性相位FIR滤波器的幅度响应的特点\nØ  h(n)不同对称特性，其长度的奇偶性不同的情况下：\nu  滤波器相位响应\nu  滤波器幅度响应\nu  滤波器设计时的注意事项\n线性相位FIR滤波器的幅度响应的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 920,
+      "text": "0 1 2\n3\n4 5 6\n7\n8 9 n\nh(n)\n10\n一类线性相位一类线性相位\nNN为奇数为奇数 √√LP HP BP BS√√ √√ √√\nNN为偶数为偶数 LP HP BP BS√√ ×× ××√√\n0 1 2\n3\n4 5\n6\n7 8 9 n\nh(n)\nH(π)=0",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 921,
+      "text": "二类线性相位二类线性相位\nNN为奇数为奇数 LP HP BP BS√√\nNN为偶数为偶数 LP HP BP BS ××√√\n0 1 2\n3\n4 5\n6\n7\n8 9\nn\nh(n)\n10\n0 1 2\n3\n4\n5\n6\n7 8 9\nn\nh(n)\n×× ×× ××\n×× √√\nH(0)=H(π)=0\nH(0)=0",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 922,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器的幅度响应的特点(3)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 923,
+      "text": "7.1\n 线性相位FIR数字滤波器的条件和特点\n第七章￿￿FIR数字滤波器设计\nFFIR IR Digital Filter DesignDigital Filter Design\n7.2\n 利用窗函数法设计FIR滤波器\n7.3\n 利用频率采样法设计FIR滤波器\n7.4\n 利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 924,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器系统函数零极点的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 925,
+      "text": "1、h(n)为N点长因果系统，其\n极点数为N-1个，且全部在z平\n面原点的位置。\n2、FIR系统一定是稳定的。\nRe[z]\njIm[z]\n(N-1)\n1-1\n收敛域收敛域\n由由zz变换表达式分析变换表达式分析FIRFIR系统极点特点系统极点特点\n零点特点？\n线性相位FIR滤波器系统函数零极点的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 926,
+      "text": "uu     由由线性相位条件分析系统零点分布特点线性相位条件分析系统零点分布特点\n线性相位线性相位\n hh((nn) = ) = ±±  hh((NN-1--1-nn)) nn∈∈[0, [0, NN-1]-1]\nττ = ( = (NN-1)/2-1)/2\n线性相位FIR滤波器系统函数零极点的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 927,
+      "text": "线性相位线性相位\nØØ 线性线性相位相位FIRFIR滤波器：零点滤波器：零点关于单位圆镜像对称对称\n设 zi 是系统零点，即H(zi) = 0\n则 zi \n-1也是系统零点\nØØ 回忆回忆：： FIR FIR滤波器的滤波器的hh((nn))若为实序列，则零点若为实序列，则零点共轭对称共轭对称\n        NN点长实序列点长实序列hh((nn))的线性相位的线性相位FIRFIR滤波器的零极点特征：滤波器的零极点特征：\n    1    1、、NN-1-1个零点：共轭成对且与单位圆成镜像对称。个零点：共轭成对且与单位圆成镜像对称。\n                                  即有即有 zi 、则有： zi\n*、1/zi、1/zi\n*\n    2    2、、NN-1-1个极点：个极点：zz平面圆心处，平面圆心处，FIRFIR系统必稳定。系统必稳定。\n线性相位FIR滤波器系统函数零极点的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 928,
+      "text": "Re[z]\njIm[z]\n(N-1)\n1-1 0.5\n      例：设某线性相位例：设某线性相位FIRFIR数字滤波器的数字滤波器的hh((nn))为实序列，它的三为实序列，它的三个零个零点是点是：：                                    \n            (1)             (1) 试确定该试确定该FIRFIR数字滤波器可能存在的其它零点？数字滤波器可能存在的其它零点？\n            (2)             (2) 该滤波器的最低阶数及最小群延迟是多少？该滤波器的最低阶数及最小群延迟是多少？\n2\n77个零点个零点 N-1=7N-1=7\n (2)   (2)  滤波器的最低为滤波器的最低为77阶；阶；\n                滤波器最小群延迟：滤波器最小群延迟：\n线性相位FIR滤波器系统函数零极点的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 929,
+      "text": "7.1￿￿线性相位FIR数字滤波器的条件和特点\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design\n线性相位FIR滤波器系统函数零极点的特点",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 930,
+      "text": "7.1\n 线性相位FIR数字滤波器的条件和特点\n第七章￿￿FIR数字滤波器设计\nFFIR IR Digital Filter DesignDigital Filter Design\n7.2\n 利用窗函数法设计FIR滤波器\n7.3\n 利用频率采样法设计FIR滤波器\n7.4\n 利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 931,
+      "text": "7.2￿￿￿利用窗函数法设计FIR滤波器(1)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 932,
+      "text": "窗函数法设计FIR滤波器\nØ ￿音频滤波实例\nØ ￿窗函数设计法的设计思路\nØ ￿加窗对滤波器频谱带来的影响以及窗函数的选择\nØ ￿窗函数设计法的步骤\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 933,
+      "text": "         有一个被高频噪声污染的音频信号，分析信号的频谱，用窗函数法设计\n一个FIR线性相位滤波器对该音频信号进行滤波处理，去除高频噪声。\n  高频噪声  \nxx((nn))\n|X|X((jfjf)|)|\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 934,
+      "text": "……\n(rad)(rad)\n理想幅频、相频响应理想幅频、相频响应\nffss/2/2\n|X|X((jfjf)|)|\nØ  分析理想低通滤波器的频率响应\n    理想频率响应及单位脉冲响应理想频率响应及单位脉冲响应\nIDTFTIDTFT\n无限长\n以τ为中心偶对称",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 935,
+      "text": "τ\nh(n)=hd(n)·RN(n)\nnN-1\n(N-1)/2\nτ n\nhd(n)\n无限长无限长\n  NN点有限长点有限长\nhh((nn) = ) = hh((NN-1--1-nn))\n 线性相位线性相位\nHd (ej)\n hd (n)\n设计思路：\n· w(n)\n h(n)\n H(ej)\nIDTFT DTFT\n问题：窗函数窗函数\n会使滤波器频率响应频率响应\nHH\n((\nee\njj\n\n))\n发生什么变化？\n无限长\n 有限长\n窗函数\n.\n =\n 幅频响应?",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 936,
+      "text": "时域相乘\n 频域卷积\n设w(n)=RN(n)，则 DTFT[RN(n)]=WR(ejω)\nDTFT\n矩形窗\n幅度响应\n线性相位线性相位\n(rad)(rad)\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 937,
+      "text": "Ø 频域卷积给幅度响应带来的影响\n(rad)(rad)\n(rad)(rad)\n(rad)(rad)\n理想低通\n无限长\n矩形窗\n有限长\n矩形窗谱\n实际低通\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 938,
+      "text": "Ø 分析讨论\n(rad)(rad)\n出现 过渡带 和 振荡起伏 的现象\n与窗函数形状和N值有关\n 仅与窗函数形状有关\n(rad)(rad)\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 939,
+      "text": "矩形窗\n三角窗\n二阶升余弦窗\n矩形窗频谱\n三角窗频谱\nN=50\nN=50\nN=50\n|WR(ejω)|wR(n)\nwtr(n)\nwbk(n)\n|Wtr(ejω)|\n|Wbk(ejω)|\nn\nn\nn\nω(rad)\nω(rad)\nω(rad)\n二阶升余弦窗频谱\nØ  不同窗函数w(n)及其它们的频谱W(ejω)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 940,
+      "text": "矩形窗\n三角窗\n二阶升余弦窗\n矩形窗频谱\n三角窗频谱\n二阶升余弦窗频谱\nN=100\nN=100\nN=100\nω(rad)\nω(rad)\nω(rad)\n|WR(ejω)|\nwR(n)\nwtr(n)\nwbk(n)\n|Wtr(ejω)|\n|Wbk(ejω)|\nn\nn\nn\nØ 增加增加\n窗函数长度窗函数长度\n后，窗函数w(n)及其它们的频谱W(ejω)\nN增大后\n过渡带变窄 \nN 增大后主旁瓣\n能量比不变\nGibbs现象",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 941,
+      "text": "三角窗\n汉宁窗\n海明窗\n布莱克曼窗\n|W(ejω)|\n|W(ejω)|\n|W(ejω)|\n|W(ejω)|\nω(rad)n\nω(rad)n\nω(rad)n\nω(rad)n\nØ  各种窗函数及其参数 DTFT",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 942,
+      "text": "窗函数\n类型\n窗谱性能指标 加窗后滤波器性能指标\n主瓣\n宽度\n(rad)\n旁瓣\n峰值\n(dB)\n过渡\n带宽\n△ω (rad)\n阻带\n最小衰减\nαs(dB)\n矩形窗\n三角形窗\n汉宁窗\n海明窗\n布拉克曼窗\n4/N\n8/N\n8/N\n8/N\n12/N\n-13\n-25\n-31\n-41\n-57\n1.8  / N\n6.1  / N\n6.2  / N\n6.6  / N\n11  / N\n-21\n-25\n-44\n-53\n-74\n窗谱指标和加窗后滤波器性能指标\n窗函数类型\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 943,
+      "text": "7.2￿￿￿利用窗函数法设计FIR滤波器(1)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 944,
+      "text": "7.2￿￿￿利用窗函数法设计FIR滤波器(2)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 945,
+      "text": "确定阻带衰减\n确定过渡带宽\nffss/2/2\n|X|X((jfjf)|)|\nØ 音频去噪实例分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 946,
+      "text": "|X|X((jfjf)|)|\n|H|H((jfjf)|)|\n|Y|Y((jfjf)|)|\n矩形窗\nØ ￿音频去噪仿真结果与分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 947,
+      "text": "汉宁窗\n|X|X((jfjf)|)|\n|H|H((jfjf)|)|\n|Y|Y((jfjf)|)|\nØ ￿音频去噪仿真结果与分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 948,
+      "text": "布莱克曼窗\n|X|X((jfjf)|)|\n|H|H((jfjf)|)|\n|Y|Y((jfjf)|)|\nØ ￿音频去噪仿真结果与分析",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 949,
+      "text": "解： (1) 求数字滤波器指标\n例：请设计一个线性相位FIR低通滤波器，技术指标如下：\n         (1) 抽样频率为  fs=15KHz；\n         (2) 通带截止频率为 fp =1.5KHz；\n         (3) 阻带截止频率为 fst =3KHz；\n         (4) 阻带衰减不小于50dB。\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 950,
+      "text": "(2)  求hd(n)：\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 951,
+      "text": "(4) 确定N 值\n(3) 选择窗函数：由                    确定海明窗（-53dB）\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 952,
+      "text": "        若不满足技术指标，\n则改变N或窗形状重新设\n计。\n(5)  确定FIR滤波器的h(n)\n(6)  求            ，验证。\n7.2￿￿￿利用窗函数法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 953,
+      "text": "7.2￿￿￿利用窗函数法设计FIR滤波器(2)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 954,
+      "text": "7.2￿￿￿利用窗函数法设计FIR滤波器(3)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 955,
+      "text": "其单位抽样响应：\n理想高通的频响：\n N必须为奇数！\nØ￿￿线性相位FIR高通滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 956,
+      "text": "其单位抽样响应：\n理想带通的频响：\nØ￿￿线性相位FIR带通滤波器的设计\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 957,
+      "text": "其单位抽样响应：\n理想带阻的频响：\n N必须为奇数！\nØ￿￿线性相位FIR带阻滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 958,
+      "text": "7.2￿￿￿利用窗函数法设计FIR滤波器(3)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 959,
+      "text": "7.1\n 线性相位FIR数字滤波器的条件和特点\n第七章￿￿FIR数字滤波器设计\nFFIR IR Digital Filter DesignDigital Filter Design\n7.2\n 利用窗函数法设计FIR滤波器\n7.3\n 利用频率采样法设计FIR滤波器\n7.4\n 利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 960,
+      "text": "7.3￿￿￿利用频域采样法设计FIR滤波器(1)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 961,
+      "text": "频域采样法设计FIR滤波器\nØ ￿频域采样法的设计思路\nØ ￿关于线性相位约束的考虑\nØ ￿逼近误差及其改进措施\nØ ￿含噪音频滤波实例\n7.3￿￿利用频域采样法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 962,
+      "text": "           对理想频率响应等间隔采样，并将其作为实际FIR数字滤波器的频率特\n性的抽样值。\n      得到H(k)后, 由IDFT定义, 可以用这N个采样值H(k)来唯一确定单位\n脉冲响应h(n)，即 \n￿一、设计思路￿￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 963,
+      "text": "频域采样法设计FIR滤波器\nØ ￿关于线性相位约束的考虑\nØ  h(n)偶对称，N N 为奇数\nØ  h(n)偶对称，N N 为偶数\nØ  h(n)奇对称，N N 为奇数\nØ  h(n)奇对称，N N 为偶数\nH(ω)以0, π, 2π呈偶对称\nH(ω)以 π 呈奇对称，H(π)=0\nH(ω)以0, π,2π呈奇对称，\nH(0)=H(π)=0\nH(ω)以 π 呈偶对称，H(0)=0\n￿一、设计思路￿￿￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 964,
+      "text": "        如果所设计的是线性相位的FIR滤波器，则其采样值H(k)的幅幅\n度度\n和和\n相相\n位位\n一定\n要满足线性相位滤波器的约束条件约束条件\n。 \nh(n)偶对称，一类线性相位\nN为奇数\nN为偶数\nN为奇数\nN为偶数\nH(ω)以0, π,2π呈偶对称\nH(ω)以 π 呈奇对称\nH(π)=0\nH(ω)以0, π,2π呈奇对称\nH(0)=H(π)=0\nH(ω)以 π 呈偶对称\nH(0)=0\nh(n)奇对称，二类线性相位\n￿二、关于线性相位约束的考虑",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 965,
+      "text": "例 ：利用频率采样法，设计一个线性相位低通FIR数字滤波器，其理想幅频\n         特性如下 ：\n        已知ωc=0.5π，采样点数为奇数N=33。试求各采样点的幅值Hk及\n相位θk，也即求频域采样值H(k)。\n分析： N=33为奇数，故只有两种可能：\n(1) 一类线性相位，N为奇数。\n(2) 二类线性相位，N为奇数。\nH(0)=H(π)=0 不符合题目中低通滤波器低通滤波器\n的要求\n7.3￿￿利用频域采样法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 966,
+      "text": "解：根据一类线性相位，N为奇数的条件可知，频域采样后的Hk和θk应\n        满足下式：\n×\n9点 8点\n16点\n7.3￿￿利用频域采样法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 967,
+      "text": "解：\n0 ≤ k ≤ 8, 25 ≤ k ≤ 32 \n9 ≤ k ≤ 24 \n0≤k≤32 \n9点 8点\n16点\n7.3￿￿利用频域采样法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 968,
+      "text": "N=33\n过渡带没有采样点\n7.3￿￿利用频域采样法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 969,
+      "text": "滤波器的阻带\n衰减效果很差\n7.3￿￿利用频域采样法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 970,
+      "text": "回忆内插公式： \n0\n￿三、逼近误差及其改进措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 971,
+      "text": "(2)￿理想频率响应特性变化越平缓变化越平缓\n，则内插值越接近理想值内插值越接近理想值\n￿￿￿￿￿￿，逼近误差越小逼近误差越小\n。\n(1)￿如果采样点之间的理想频率特性变化越陡变化越陡\n，则内插值与\n￿￿￿￿￿￿理想值的误差就越大误差就越大\n，因而在理想频率特性的不连续点不连续点\n￿￿￿￿￿￿￿￿￿￿￿￿附近，就会产生肩峰和起伏附近，就会产生肩峰和起伏\n。\n分析：￿\n￿三、逼近误差及其改进措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 972,
+      "text": "频域采样法设计FIR滤波器\nØ 减小逼近误差的方法￿——￿过渡带增加采样点\n(1) 不加过渡采样点时，阻带衰减大约为20dB。\n(2) 过渡内有一个采样点时(经验最优值为0.3904)，阻带衰\n减大约为 44dB ~ 54dB。\n(3) 过渡内有两个采样点时(经验最优值为0.5886、0.1065)，\n阻带衰减大约为 65dB ~ 75dB。\n￿三、逼近误差及其改进措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 973,
+      "text": "N=67\n过渡带有一个采样点\n￿三、逼近误差及其改进措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 974,
+      "text": "滤波器的阻带\n衰减效果较好\n￿三、逼近误差及其改进措施",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 975,
+      "text": "7.3￿￿￿利用频域采样法设计FIR滤波器(1)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 976,
+      "text": "7.3￿￿￿利用频域采样法设计FIR滤波器(2)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 977,
+      "text": "Ø 音频去噪实例\n       有一个被高频噪声污染的音频信号，分析信号的频谱，用频域采样法设计一个\nFIR线性相位滤波器对该音频信号进行滤波处理，去除高频噪声。\n  高频噪声  \n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 978,
+      "text": "幅频响应：\n相频响应：   线性相位线性相位\nFIR数字低通滤波器  \n￿(1)￿设计理想滤波器的频率响应",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 979,
+      "text": "       若选择一一\n类类\n线线\n性性\n相相\n位位\n、NN\n=21=21\n，过渡带上不设采样点，则频域采样后\n的 Hk和θk 应满足下式：\n×\n 3点  \n  16点  \n  2点  \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 980,
+      "text": "解：\n0 ≤ k ≤ 2, 19 ≤ k ≤ 20 \n3 ≤ k ≤ 18 \n  3点    2点  \n  16点  \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 981,
+      "text": "  过渡带没有采样点  \n  N=21  \n内插公式：  \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 982,
+      "text": "滤波器的阻带 \n衰减效果很差 \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 983,
+      "text": "高频噪声\n未被有效滤除\n  含噪音频信号  滤波后音频信号  \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 984,
+      "text": "         若保持原过渡带宽不变原过渡带宽不变\n，则需要在原过渡带中再采样一个频率点。这样，利用频\n域采样法，NN\n设计为设计为\n4141\n，所设计的线性相位低通FIR数字滤波器理想幅频特性如下 ：\n0≤k≤40 \n  5点    4点  \n  30点  \n0 ≤ k ≤ 4, 37 ≤ k ≤ 40 \n6≤ k ≤ 35 \nk=5, 36   2点  \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 985,
+      "text": "  过渡带有一个采样点  \n  N=41  \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 986,
+      "text": "滤波器的阻带 \n衰减效果较好 \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 987,
+      "text": "  高频噪声被有效滤除  \nØ 音频去噪实例\n  含噪音频信号  滤波后音频信号  ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 988,
+      "text": "过渡带有两个采样点\nN=61\nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 989,
+      "text": "滤波器的阻带 \n衰减效果很好 \nØ 音频去噪实例",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 990,
+      "text": "高频噪声被很好地滤除\nØ 音频去噪实例\n  含噪音频信号  滤波后音频信号  ",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 991,
+      "text": "7.3￿￿￿利用频域采样法设计FIR滤波器(2)\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 992,
+      "text": "7.1\n 线性相位FIR数字滤波器的条件和特点\n第七章￿￿FIR数字滤波器设计\nFFIR IR Digital Filter DesignDigital Filter Design\n7.2\n 利用窗函数法设计FIR滤波器\n7.3\n 利用频率采样法设计FIR滤波器\n7.4\n 利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 993,
+      "text": "7.4￿￿￿利用等波纹逼近法设计FIR滤波器\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 994,
+      "text": "等波纹逼近法设计FIR滤波器\nØ 等波纹逼近法的基本思想\nØ 用MATLAB实现等波纹最佳逼近设计方法\nØ 举例分析与比较\n7.4￿￿￿利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 995,
+      "text": "等波纹逼近法设计FIR滤波器\n￿￿￿￿￿￿￿￿等波纹最佳逼近法是一种优化设计法，它克服了窗函数设\n计法和频率采样法的缺点，使最大误差最小化最大误差最小化\n，并在整个逼近\n频段上均匀分布。\n￿￿￿￿￿￿￿￿用等波纹最佳逼近法设计的FIRDF的幅频响应在通带和阻\n带都是等波纹的，而且可以分别控制通带和阻带波纹幅度。最最\n佳佳\n逼近逼近\n是指在滤波器长度给定的条件下使加权误差波纹幅度最\n小化。\n7.4￿￿￿利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 996,
+      "text": "u  等波纹最佳逼近设计法的基本思想\n       Hd(ω)为理想幅度特性函数，且满足线性相位约束条件。Hg(ω)为实际设计\n的滤波器幅度特性函数。\n定义加权误差函数：\n    其中，W(ω)为加权函数，用来控制通带和阻带的逼近精度。\n        等波纹最佳逼近基于切比雪夫逼近，在通带和阻带以|E(ω)|的\n最大值最小化为准则，采用Remez多重交换迭代算法求解滤波器系\n数，即单位脉冲响应h(n)。\n7.4￿￿￿利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 997,
+      "text": "u  算法说明：\n        W(ω)取值越大的频段逼近精度越高。开始设计时应根据逼近精度\n要求确定W(ω) ，在Remez多重交换迭代过程中W(ω)是确知函数。\n       等波纹最佳逼近设计中，把数字频段分为逼近区域和无关区域。逼\n近区域一般指通带和阻带，无关区域一般指过渡带。设计过程中只考虑\n对逼近区域的最佳逼近，但无关区宽度不能为零，即Hg(ω)不可能是理\n想滤波特性。\n7.4￿￿￿利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 998,
+      "text": "u￿￿用MATLAB实现等波纹最佳逼近设计方法\n(1) 根据逼近指标估算滤波器阶数N和加权函数W(ω) ；\n(2) 采用Remez算法求滤波器单位脉冲响应h(n)。\nØ  remez函数：\n hn = remez(M, fo, mo, w)\n  M： 滤波器阶数；\n fo： 边界频率向量；\n mo： 与fo对应的幅度向量，长度与fo长度相等；\n  w： 误差加权向量，长度为fo的一半；\n hn： 滤波器系数，即单位脉冲响应；\n7.4￿￿￿利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 999,
+      "text": "Ø  remezord函数：\n[M, fo, mo, w]=remezord(f, m, rip, Fs) \n  f： 边界频率向量，可以使用模拟频率或归一化频率；\n  m： 希望逼近的幅度，m的每个元素表示f给定的一个逼近\n        频段上希望逼近的幅度值；\nrip： 通带和阻带波纹幅度；\n Fs： 采样频率。\n  注意：①省略Fs时，f中必须为归一化频率。\n       ②有时估算的阶数M略小，要取M+l或M+2(必须注意对滤\n         波器长度N=M+l的奇偶性要求)。\n       ③如果无关区（过渡带）太窄，或截止频率接近零频率和\n         Fs/2时，设计结果不正确。\n检验设计结果",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1000,
+      "text": "  例：用窗函数法和等波纹最佳逼近法分别设计一个线性相位FIR带阻滤波器。\n          指标如下：\n               通带下截止频率ωlp=0.2π，阻带下截止频率ωls=0.35π；\n               阻带上截止频率ωus=0.65π，通带上截止频率ωup=0.8π，\n               αp=1dB，αs=60dB。\nwlp=0.2*pi; wls=0.35*pi; wus=0.65*pi; wup=0.8*pi;\nB=wls-wlp; N0=ceil(12*pi/B); N = N0 + mod(N0+1,2);\nwp=[(wls+wlp)/2/pi, (wus+wup)/2/pi]; \nhn1=fir1(N-1,wp,'stop',blackman(N)); \n \nMk=1024;hk1=fft(hn1,Mk);n=0:length(hn1)-1;\nsubplot(2,2,1); stem(n,hn1,'.');\nxlabel('n'); ylabel('h1(n)');grid on\nk = 1:Mk/2; w = (0:Mk/2-1) / (Mk/2);\nsubplot(2,2,2); plot(w,20*log10(abs(hk1(k)))); grid on;\naxis([0,1,-90,5]); xlabel('\\omega/\\pi'); ylabel(‘Hk1幅度(dB)');",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1001,
+      "text": "f=[0.2,0.35,0.65,0.8];  m=[1,0,1];\nrp=1; rs=60;\ndat1=(10^(rp/20)-1)/(10^(rp/20)+1); dat2=10^(-rs/20); \nrip=[dat1,dat2,dat1];\n[M,fo,mo,wo]=remezord(f,m,rip);\nhn2=remez(M,fo,mo,wo);\n \nMk=1024;hk2=fft(hn2,Mk);n=0:length(hn2)-1;\nsubplot(2,2,3); stem(n,hn2,'.');\nxlabel('n'); ylabel('h2(n)');grid on\nk = 1:Mk/2; w = (0:Mk/2-1) / (Mk/2);\nsubplot(2,2,4); plot(w,20*log10(abs(hk2(k)))); grid on;\naxis([0,1,-90,5]); \nxlabel('\\omega/\\pi'); ylabel(‘Hk2幅度(dB)');\nωlp=0.2π，ωls=0.35π\nωus=0.65π，ωup=0.8π\nαp=1dB，αs=60dB",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1002,
+      "text": "N = 81\nN = 29\n窗函数\n等波纹\n最佳逼近\n7.4￿￿￿利用等波纹逼近法设计FIR滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1003,
+      "text": "7.4￿￿￿利用等波纹逼近法设计FIR滤波器\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿￿FIR数字滤波器设计\nFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1004,
+      "text": "《\n数\n字\n信\n号\n处\n理》 信号处理之￿——￿力学笃行\n耳朵与音频信号处理\n华东理工大学信息科学与工程学院 万永菁\n第七章￿￿FIR数字滤波器设计\nFIR Digital Filter DesignFIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1005,
+      "text": "2\n fs = 44100; %采样频率44.1kHz\n n = 0:88200-1;  %维持2秒输出\n f0 = 1000; \n x=cos(2*pi*f0*n/fs); %生成固定频率信号\n wavwrite(x,44100,'c:\\\\w1000Hz.wav');\n1000Hz1000Hz\n 5000Hz5000Hz\n 10kHz10kHz\n 12kHz12kHz\n13kHz13kHz\n 14kHz14kHz\n 15kHz15kHz\n 16kHz16kHz\n频率20Hz~20kHz称为声波，但是我们真的能听到20kHz吗？\n小测试￿——￿我们听觉还灵敏如初吗？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1006,
+      "text": "3\n声音的等响曲线\nu 人们习惯于地用响与不响来描述声波的强\n度，但这一描述与实际声波的强度不完全\n等同。\nu 人耳对声波响度的感觉与声波的频率有关，\n即使相同声压级但频率不同的声音，人耳\n听起来会不一样响。不同人种的听觉等响\n曲线也不完全一致。\n人耳的听觉的等响曲线\nu 为了获得良好的听觉享受或者形成愉悦的\n听觉感知，需要考虑到人耳的听觉等响曲\n线和听觉主观反应特征进行声音调节。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1007,
+      "text": "4\n声音的掩蔽效应\nu 时域掩蔽：能量较强的音频信号\n,￿可掩蔽同时或其前后出现能量\n较弱的音频信号。\nu 频域掩蔽：掩蔽声与被掩蔽声同\n时作用时发生的掩蔽效应,￿也称\n同时掩蔽。\n￿￿￿￿￿￿￿￿当两种或两种以上的声音同时存在，人耳对声音的感觉与仅有一种声音单独\n存在时的感觉是不同的。掩蔽效应主要可划分为时域掩蔽和频域掩蔽。\n掩蔽效应示意图",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1008,
+      "text": "5\n掩蔽效应的应用——MP3压缩技术\n￿￿￿￿￿￿￿￿应用掩蔽效应，人们发明了mp3等压缩的数字音乐格式，在这些格式的文\n件里，只突出记录人耳较为敏感的中频段声音，而对于较高和较低的频率的声音\n则简略记录，从而大大压缩了所需的存储空间。\nu MP3压缩使用的比特率一般是128kbps。如果是高\n品质的MP3则会提高到192kbps，甚至320kbps\n。\nu 如果使用较高的比特率编码，“无关”和“冗余”\n的标准就会被限定的更严格，细节会被保留，但是\n文件更大。\nu 如果比特率比较低，那么“无关”和“冗余”数据\n的定义就会被放宽，压缩后的音频会丢失更多细节，\n导致音质下降。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 1009,
+      "text": "6\n创新源于\n细心观察与用心研究",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": [
+    {
+      "source_pages": [
+        894,
+        895
+      ],
+      "proposed_final_page": 895,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        896,
+        897
+      ],
+      "proposed_final_page": 897,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        898,
+        899
+      ],
+      "proposed_final_page": 899,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        904,
+        905
+      ],
+      "proposed_final_page": 905,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        911,
+        912
+      ],
+      "proposed_final_page": 912,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        913,
+        914
+      ],
+      "proposed_final_page": 914,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        916,
+        917
+      ],
+      "proposed_final_page": 917,
+      "status": "pending_visual_review"
+    },
+    {
+      "source_pages": [
+        918,
+        919
+      ],
+      "proposed_final_page": 919,
+      "status": "pending_visual_review"
+    }
+  ]
+}

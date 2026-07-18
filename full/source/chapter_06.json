@@ -1,0 +1,642 @@
+{
+  "chapter": {
+    "number": 6,
+    "title": "IIR数字滤波器设计",
+    "start_page": 742,
+    "end_page": 865,
+    "bookmark_prefix": "MC6"
+  },
+  "source_page_count": 124,
+  "pages": [
+    {
+      "source_page": 742,
+      "text": "6.1\n 数字滤波器设计方法概述\n第六章￿￿IIR数字滤波器设计\nIIR Digital Filter DesignIIR Digital Filter Design\n6.2\n 模拟滤波器的设计\n6.3\n 脉冲响应不变法\n6.4\n 双线性变换法\n6.5\n IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 743,
+      "text": "6.1￿￿数字滤波器设计方法概述\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 744,
+      "text": "数数\n字字\n滤滤\n波波\n器器\n:  输入输出均为数字信号，经过一定运算关系改变输入信号所含频率成\n分的相对比例或者滤除某些频率成分的器件。\n优点优点\n： 精度高，稳定，体积小，重量轻，灵活，不要求阻抗匹配，能实现模拟滤波\n器(AF)无法实现的特殊滤波功能。\n  1、数字滤波器的分类\nu  从功能上分；\n         低通、带通、高通、带阻\nu  从实现方法上分：FIR、IIR\nu  从设计方法上来分： \n       IIR:  Butterworth(巴特沃斯)、 \n                Chebyshev(切比雪夫)、\n                Ellips(椭圆)、贝塞尔等。\n       FIR:  窗函数法、\n                 频率采样法、\n                 等波纹逼近法等。\nu  从处理信号分：\n            经典滤波器、现代滤波器\n一、数字滤波器基本概念\n3",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 745,
+      "text": "1、经典滤波器\nØ   假定输入信号 x(n) 中的有用成分和希望去除的成分，各自占有不同的频带。\nØ   当 x(n) 经过一个线性系统（即滤波器）后即可将欲去除的成分有效地去除。\nØ   如果信号和噪声的频谱相互重叠，那么经典滤波器将无能为力，此时可以设计\n      现代滤波器来解决。\n原始音频\n含噪音频频谱\n原始音频频谱\n含噪音频\n4",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 746,
+      "text": "2、现代滤波器\nØ  现代滤波器主要研究从含有噪声的数据记录中估计出信号的某些特征或信号本身。\n     一旦信号被估计出，那么估计出的信号将比原信号会有高的信噪比。\nØ  现代滤波器理论源于维纳在40年代及其以后的工作，这一类滤波器的代表为维纳\n     滤波器，此外，还有卡尔曼滤波器、线性预测器、自适应滤波器。\n原始音频\n含噪音频频谱\n原始音频频谱\n含噪音频\n5",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 747,
+      "text": "提出现代滤波算法的大师们\n诺伯特·维纳 \nNorbert Wiener \n（1894-1964）\n美国应用数学家，控制论的创始人，在电子工程方面\n贡献良多。他是研究随机过程和噪声过程的先驱，同\n时提出了“控制论”￿一词。\n01\n1935～1936年，维纳应邀到中国作访问教授，研究\n并设计出很好的电子滤波器，并获得了该项发明的专\n利权。维纳也把在中国的这一年作为自己学术生涯中\n的一个里程碑。\n02\n在第二次世界大战期间，维纳接受了一项与火力控制\n有关的研究工作。这促使他深入探索了用机器来模拟\n人脑的计算功能，建立预测理论并应用于防空火力控\n制系统的预测装置。1948年，维纳发表《控制论》，\n宣告了这门新兴学科的诞生。\n03\n6",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 748,
+      "text": "鲁道夫·卡尔曼\nRudolf Emil Kálmán \n（1930-2016）\n美国数学家、电气工程师。他提出了一种以其名字命名\n的卡尔曼滤波的新的滤波方法，以及能控性、能观性的\n概念，为现代控制理论作出了杰出贡献。\n01\n维纳滤波缺点在于必须使用全部的历史观测数据，存储量\n和计算量都很大;￿当获得新的观测数据时，没有合适的递\n推算法；很难用于非平稳过程的滤波问题。为克服上述缺\n点，卡尔曼提出一种递推滤波方法，即卡尔曼滤波。\n02\n卡尔曼的工作直接针对着科学理解现代工程中的创新过\n程。他的方法着重于基于数学概念的抽象方法对工程的\n实用价值。1963年，美国宇宙飞船在卡尔曼滤波器导引\n下登上月球。\n03\n提出现代滤波算法的大师们\n7",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 749,
+      "text": "直面挑战、刻苦钻研、\n尊重科学、敢于创新、\n不忘初心、勤奋工作，\n科技工作者的使命与担当\n￿￿￿￿￿￿为建设社会主义现代化强国及增进\n人民福祉做出自身贡献！",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 750,
+      "text": "                                                                                        Y(s) = X(s) · H(s)H(s)X(s) 频域相乘  \n                                                                                        Y(z) = X(z) · H(z)H(z)X(z) 频域相乘  \n    (3)  模拟滤波器和数字滤波器\n                                                                                        x(t) y(t) = x(t)*h(t)h(t) 时域卷积  \n                                                                                        x(n) y(n) = x(n)*h(n)h(n) 时域卷积  \n模拟滤波器\n数字滤波器\n时域离散时域离散\n频域周期频域周期\nLT LT LT\nZT ZT ZT\n9",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 751,
+      "text": "                 \n(rad/s)\n时域相乘时域相乘 频域卷积频域卷积\n               \n(rad/s)\n(rad/s)\n(rad)\n10",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 752,
+      "text": "模拟模拟低通低通滤波器滤波器\n模拟模拟高通高通滤波器滤波器\n模拟模拟带通带通滤波器滤波器\n模拟模拟带阻带阻滤波器滤波器\nΩΩ>>ΩΩcc全部为阻带全部为阻带\nΩΩ>>ΩΩcc全部为通带全部为通带\n(rad/s)\n(rad/s)\n(rad/s)\n(rad/s)\n11",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 753,
+      "text": "数字数字低通低通滤波器滤波器\n数字数字高通高通滤波器滤波器\n数字数字带通带通滤波器滤波器\n数字数字带阻带阻滤波器滤波器\n周期延拓！\n(rad)\n(rad)\n(rad)\n(rad)\n12\n………………\n………………  \n………………\n………………",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 754,
+      "text": "         数字滤波器从实现的网络结构或者从单位脉冲响应分类，可以分\n成无限长单位脉冲响应(IIR)滤波器和有限长单位脉冲响应(FIR)滤波\n器。它们的系统函数分别为：\nIIR滤波器 \nFIR滤波器 \n一、数字滤波器基本概念\n13",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 755,
+      "text": "(1) 按设计任务，确定滤波器性能要求，制定技术指标。\n(2) 用一个因果稳定的离散LSI系统的系统函数H(z)逼近此\n     性能指标。\n(3) 利用有限精度算法实现此系统函数：如运算结构、字长\n     的选择。\n二、数字滤波器的设计过程\n14",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 756,
+      "text": "        我们通常用的数字滤波器一般属于选频滤波器。假设数字滤波器\n的传输函数 H(e jω)用下式表示：\nu 幅频特性|H(ej)|：\n　    信号通过滤波器后的各频率成分衰减情况。\nu 相频特性θ()：\n　　各频率成分通过滤波器后在时间上的延时情况。\n三、数字滤波器的技术要求\n15",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 757,
+      "text": "n 通带： \nn 阻带：\nn 过渡带：\n：阻带截止频率\n：通带截止频率\n：通带容限\n：阻带容限\n通\n带\n过渡带 阻带\n三、数字滤波器的技术要求\n实际滤波器越逼近理想\n滤波器，实现难度越大！\n16",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 758,
+      "text": "让心中的梦想指引我们前行，\n     时刻用坚持和努力，\n          谱写生命中最动听的乐曲，\n              在奋斗的路上，\n                       —— 留下自己坚实的足迹！",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 759,
+      "text": "        通带内和阻带内允许的衰减一般用dB数表示，通带内允许的最大衰减用p表\n示，阻带内允许的最小衰减用s表示，p和s分别定义为：\n上式中，|H(ejω0)|归一化为1。\nØ   当p=-3dB时，即|H(ejωp)|=0.707时，称此时的ωp为ωc，ωc为3dB3dB\n处处\n通带截\n      止频率，是通带截止频率的底线是通带截止频率的底线\n。\npass\nstop\ncut-off\n三、数字滤波器的技术要求\n18",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 760,
+      "text": "Ø 用一因果稳定的离散LSI系统逼近给定的性能要求：\ns平面逼近：模拟滤波器的设计\nz平面逼近：数字滤波器的设计\nØ 先设计模拟滤波器，再转换为数字滤波器\nØ 即为求滤波器的各系数：\n四、IIR数字滤波器的设计方法\n19",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 761,
+      "text": "6.1￿￿数字滤波器设计方法概述\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 762,
+      "text": "6.1\n 数字滤波器设计方法概述\n第六章￿￿IIR数字滤波器设计\nIIR Digital Filter DesignIIR Digital Filter Design\n6.2\n 模拟滤波器的设计\n6.3\n 脉冲响应不变法\n6.4\n 双线性变换法\n6.5\n IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 763,
+      "text": "6.2￿￿模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design\n模拟巴特沃斯低通滤波器的设计方法(1)￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 764,
+      "text": "模拟滤波器的设计方法\n￿￿￿￿￿￿￿模拟滤波器的理论和设计方法已发展得相当成熟，且有若干典型的模\n拟滤波器供我们选择，如：\n(1)￿￿巴特沃斯(Butterworth)滤波器\n(2)￿￿切比雪夫(Chebyshev)滤波器\n(3)￿￿椭圆(Ellipse)滤波器\n(4)￿￿贝塞尔(Bessel)滤波器\n￿￿￿￿￿￿￿￿这些滤波器都有严格的设计公式、现成的曲线和图表供设计人员使用。\n6.2￿￿模拟滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 765,
+      "text": "模拟低通滤波器的设计指标有pp, , ΩΩpp, , ss和和ΩΩss。。\nΩp和Ωs分别称为通带截止频率和阻带截止频率，\n p是通带 Ω(0~Ωp)中的最大衰减系数\n s是阻带 Ω≥Ωs的最小衰减系数\n一、模拟低通滤波器的设计指标及逼近方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 766,
+      "text": "Ω (rad/s)\nΩc称为3dB截止频率：\nΩsΩcΩp\n0.891\n0.707\n0.01\n1dB\n3dB\n40dB\n衰减\n衰减\n一、模拟低通滤波器的设计指标及逼近方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 767,
+      "text": "         滤波器的技术指标给定后，需要设计一个传输函数Ha(s)，希\n望其幅度平方函数满足给定的指标p和s，一般滤波器的单位冲激\n响应h(t)为实数，有：\n一、模拟低通滤波器的设计指标及逼近方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 768,
+      "text": "模拟巴特沃斯低通滤波器的设计方法\n(1)￿巴特沃斯低通滤波器的幅度平方函数\n(2)￿幅度平方函数极点分布及Ha(s)的构成\n(3)￿频率归一化方法\n(4)￿阶数 N 的确定\nØ 巴特沃斯低通滤波器的设计方法\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 769,
+      "text": "    1、巴特沃斯低通滤波器的幅度平方函数|Ha(jΩ)|2用下式表示：\n   N越大，越接近理想滤波器，\n   N越大，滤波器的实现也越复杂。\nN=5\nN=10\nN=2\nΩ (rad/s)\n0.707 3dB 衰减\nΩc\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 770,
+      "text": "    2、幅度平方函数极点分布及Ha(s)的构成\n将幅度平方函数|Ha(jΩ)|2写成 s的函数：\n上式表明，极点sk用下式表示：\n       为形成稳定的滤波器，2N个极点中只取 s 平面左半平面的N个极点构成Ha(s)\n，而右半平面的N个极点构成Ha(-s)。\nHa(s)的表示式为：\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 771,
+      "text": "jΩ\nσΩc\n  设N=3，极点有6个，它们分别为：\n取s平面左半平面左半平面\n的极点s0,s1,s2组成Ha(s)：\ns0\ns1\ns2\ns5\ns3\n因果稳定\ns4\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 772,
+      "text": "   3、频率归一化\n        由于各滤波器的幅频特性不同，为使设计统一，将所有的频率归一化。用\n对3dB截止频率Ωc归一化，归一化后Ha(s)表示为： \n式中，s/Ωc = jΩ/Ωc。 \n令 λ = Ω/Ωc，λ 称为归一化频率；令 p = jλ = jΩ/Ωc ，\n p 称为归一化复变量，这样归一化巴特沃斯的传输函数为：\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 773,
+      "text": "式中，pk为归一化极点，用下式表示：\n        带入Ha(p)表达式，得到的Ha(p)的分母是p的N阶多项式，\n用下式表示：\n归一化的传输函数系数 H(p) 的系数以及极点可以查表得到。\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 774,
+      "text": "表6.2.1  巴特沃斯归一化低通滤波器参数\n(1) \nP0 , N-1 P1 , N-1 P2 , N-1 P3 , N-1 P4 , N-1\n1 -1.0000\n2 -0.7071±j0.7071\n3 -0.5000±j0.8660 -1.0000\n4 -0.3827±j0.9239 -0.9239±j0.3827\n5 -0.3090±j0.9511 -0.8090±j0.5878 -1.0000\n6 -0.2588±j0.9659 -0.7071±j0.7071 -0.9659±j0.2588\n7 -0.2225±j0.9749 -0.6235±j0.7818 -0.9010±j0.4339 -1.0000\n8 -0.1951±j0.9808 -0.5556±j0.8315 -0.8315±j0.5556 -0.9808±j0.1951\n9 -0.1736±j0.9848 -0.5000±j0.8660 -0.7660±j0.6428 -0.9397±j0.3420 -1.0000\n共轭极点对形式\n极点位置\n阶数N\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 775,
+      "text": "B(p) = pN\n +bN-1pN-1 +bN-2pN-2 +…+b1p1 +b0\nb0 b1 b2 b3 b4 b5 b6 b7 b8\n1 1.00000\n2 1.00000 1.4142\n3 1.00000 2.0000 2.0000\n4 1.00000 2.6131 3.4142 2.6131\n5 1.00000 3.2361 5.2361 5.2361 3.2361\n6 1.00000 3.8637 7.4641 9.1416 7.4641 3.8637\n7 1.00000 4.4940 10.0978 14.5918 14.5918 10.0978 4.4940\n8 1.00000 5.1258 13.1371 21.8462 25.6884 21.8462 13.1371 5.1258\n9 1.00000 5.7588 16.5817 31.1634 41.9864 41.9864 31.1634 16.5817 5.7588\n分母多项式\n多项式系数\n阶数N\n表6.2.1  巴特沃斯归一化低通滤波器参数\n(2) \n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 776,
+      "text": "表6.2.1  巴特沃斯归一化低通滤波器参数\n(3) \nB(p)\n1 (p+1)\n2 (p2+1.4142p+1)\n3 (p2+p+1)( p+1)\n4 (p2+0.7654p+1) (p2+1.8478p+1)\n5 (p2+0.6180p+1) (p2+1.6180p+1) ( p+1)\n6 (p2+0.5176p+1) (p2+1.4142p+1) (p2+1.9319p+1)\n7 (p2+0.4450p+1) (p2+1.2470p+1) (p2+1.8019p+1) ( p+1)\n8 (p2+0.3902p+1) (p2+1.1111p+1) (p2+1.6629p+1) (p2+1.9616p+1)\n9 (p2+0.3473p+1) (p2+p+1) (p2+1.5321p+1) (p2+1.8794p+1) ( p+1)\n二阶节形式\n分解因式\n阶数N\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 777,
+      "text": "6.2￿￿模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design\n模拟巴特沃斯低通滤波器的设计方法(1)￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 778,
+      "text": "6.2￿￿模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design\n模拟巴特沃斯低通滤波器的设计方法(2)￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 779,
+      "text": "   4、阶数N的确定\n         阶数N的大小主要影响幅度特性下降的速度，它应该由技术指标确定。将\n = p 代入幅度平方函数中:\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 780,
+      "text": "将  = s 代入幅度平方函数中:\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 781,
+      "text": "用上式求出的N可能有小数部分，应取大于等于N的最小整数。\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 782,
+      "text": "     关于3dB截止频率Ωc，如果技术指标中没有给出，可以按照\n下面两式求出：\n     通常是用一个算出Ωc，然后用另一个来检验。\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 783,
+      "text": "Ø  总结 —— 低通巴特沃斯滤波器的设计步骤如下：\n(1)  根据技术指标Ωp, p, Ωs, s，求出滤波器的阶数N及Ωc 。\n(2) 求出归一化极点pk，得到归一化传输函数H(p)。 \n(3) 将H(p)去归一化。将p=s/Ωc代入H(p)，得到实际的滤波器传输函数Ha(s)。",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 784,
+      "text": "例： 已知通带截止频率fp=5KHz，通带最大衰减p=2dB，截止频率fs=12KHz，阻带\n最小衰减s=30dB，按照以上技术指标设计巴特沃斯低通滤波器。\n解： (1) 确定阶数N\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 785,
+      "text": "(2)  求极点：  \n归一化传输函数为\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 786,
+      "text": "     上式分母可以展开成为五阶多项式，或者将共轭极点放在一起，\n形成因式分解形式。不如直接查表简单，由N=5，直接查表得到：\n极点：-0.3090±j0.9511、-0.8090±j0.5878、 -1.0000\n其中：\n      b0=1.0000,  b1=3.2361,  b2=5.2361,  b3=5.2361,  b4=3.2361\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 787,
+      "text": "(3) 为将H(p)去归一化，先求3dB截止频率Ωc。\n将p=s/Ωc代入H(p)中得到：\n检验：\n     可以看出，满足s=30dB 的真实fs在10.525KHz处，与12KHz比，还有富裕量。\n二、巴特沃斯低通滤波器的设计方法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 788,
+      "text": "6.2￿￿模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design\n模拟巴特沃斯低通滤波器的设计方法(2)￿",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 789,
+      "text": "6.1\n 数字滤波器设计方法概述\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n6.2\n 模拟滤波器的设计\n6.3\n 脉冲响应不变法\n6.4\n 双线性变换法\n6.5\n IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 790,
+      "text": "6.2  模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n模拟滤波器的频带转换方法(1)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 791,
+      "text": "➢ 高通巴特沃斯模拟滤波器的设计步骤\n3\nsλ\n1=p\n0\n)( jH\nλ\n)( pH\n)(qH\ns\n0\n\n)( jH\np\n 1=\n低通 高通\n11q j j p = = = −\n1( ) ( )H q H p=−\n1( ) ( )H q H p=\n()Hj  有对称性\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 792,
+      "text": "4\n高通\n滤波器(HP)\n技术指标\nΩp  Ωs \np   s\n** / p  =\n求 N\n H(p) \n由 N值查表\nHa(s) \n频带转换\nH(q) \n➢ 高通巴特沃斯模拟滤波器的设计步骤\n归一化\nHP指标\nηp   ηs \np   s\n归一化\n原型低通\n滤波器(LP)\n技术指标\nλp    λs \np   s\n1 =\nsp\nspkN lg\nlg=\ns\nsp\np\n =\n110\n110\n10\n10\n−\n−\n=\np\ns\nspk \n\n1p q=\npp\nsq j j  = = =\n解归一化\n频带转换\np\np s\n=\n频带转换及解归一化",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 793,
+      "text": "5\n低通\n滤波器(LP)\n技术指标\nΩp  Ωs \np   s\n求 N和Ωc \n H(p) \n由 N值查表\nHa(s) \nsp\nspkN lg\nlg=\ns\nsp\np\n =\n110\n110\n10\n10\n−\n−\n=\np\ns\nspk \n\njj\ncc\nsp  = = =\n解归一化\n原型低通\nλp    λs \ns\np\n\n=\n-\n1\n10 2/ (10 1)\np N\ncp\n\n=\n➢ 高通巴特沃斯模拟滤波器的设计步骤\n",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 794,
+      "text": "6.2  模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n模拟滤波器的频带转换方法(1)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 795,
+      "text": "6.2  模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n模拟滤波器的频带转换方法(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 796,
+      "text": "sλ-\npλ-\nsλ\npλ\n0\n)( jH\nλ\n)( ηjH\n1sη\nlη\n2sη\nuη\n0η\nη\n)( jHa\n1s\nl\n0\nu\n2s\n\n模拟带通滤波器指标\n归一化\n频带转换\n模拟原型低通滤波器指标\n设计模拟原型\n低通滤波器\n频带转换\n 解归一化\n)( pH\n)(qH\n)(sHa\n通带带宽：B = Ωu – Ωl\n通带中心频率： Ω0\n2= ΩuΩl\n归一化： ηs1 = Ωs1 / B ；ηs2 = Ωs2 / B    (两个阻带截止频率)\n                  ηl  = Ωl / B  ； ηu = Ωu / B     (两个通带截止频率)\n                  η0\n2  = ηl ηu\n？\n？\n？ ？\n二、低通到带通的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 797,
+      "text": "研究 λ 与η的对应关系，得到：\n\n\n2\n0\n2 −=\n由上式知λp对应ηu，代入上式中，有\n1\n2\n0\n2\n=−=−=−= B\nlu\nlu\nu\nu\np\n\n\n1sη\nlη\n2sη\nuη\n0η\n\n0\nη\nsλ-\npλ-\nsλ\npλ\n0\n\n-\nλ\n归一化后的原型低通滤波器的通带截止频率：λp=1     \n二、低通到带通的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 798,
+      "text": "上式称为\n低通到带通的频率变换公式\n。利用该式将带通的边界频率\n转换成低通的边界频率。\n下面推导由归一化低通到带通的转换公式：\njp =\n\n 2\n0\n2 −= jp\n\n\n2\n0\n2 −=\n将 q=jη 代入上式，得到：\nq\nq\nj\njjjp\n2\n0\n22\n0\n2222\n0\n2 \n\n\n\n +=−=−=\n二、低通到带通的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 799,
+      "text": ")(\n222\n0\n2\n02\n2\nlu\nul\ns\ns\nsB\nBs\nB\ns\nB\ns\np \n\n−\n+=+=\n+\n=\n为去归一化，将 q=s/B 代入 ，得到：\nq\nqp\n2\n0\n2 +=\n)(\n2)()(\nlu\nul\ns\nspa pHsH\n\n\n−\n+==\n归一化原型低通滤波器\n带通滤波器\n二、低通到带通的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 800,
+      "text": "➢ 模拟带通的设计步骤\nA、  确定模拟带通滤波器的技术指标：\n设：通带上限频率为Ωu，通带下限频率为Ωl\n阻带上限频率为Ωs1 ，阻带下限频率Ωs2 \n通带中心频率Ω0\n2=ΩlΩu，通带宽度B=Ωu-Ωl\n与之对应的\n归一化边界频率\n如下：\nBB\ns\ns\ns\ns\n2\n2\n1\n1\n == ，\nBB\nu\nu\nl\nl\n == ，\nul =2\n0\n二、低通到带通的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 801,
+      "text": "B、 确定归一化原型低通滤波器技术指标：\nλs与-λs的绝对值可能不相等，一般取\n绝对值小\n的λs。\n通带最大衰减仍为p，阻带最小衰减亦为s。\nC、设计归一化低通H(p)。\nD、 将H(p)转换成带通Ha(s)。\n1=p\n2\n2\n0\n2\n2\ns\ns\ns\n\n −=\n1\n2\n0\n2\n1\ns\ns\ns\n\n −=−\n)(\n2)()(\nlu\nul\ns\nspa pHsH\n\n\n−\n+==\nsλ-\npλ-\nsλ\npλ\n0\n)( jH\nλ\n110\n110\n1.0\n1.0\n−\n−=\np\ns\nspk \n\npssp  /=\nsp\nspkN lg\nlg=",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 802,
+      "text": "带通滤波器\n技术指标\nΩu Ωl\n Ωs1  Ωs2\np s  \nB= Ωu –Ωl\nΩ0\n2=ΩlΩu \n求N\n \nHa(s) \n带通滤波器\n归一化\n技术指标\n ηu ηl\n ηs1  ηs2\np s  \nη0\n2=ηlηu \nB/** =\n归一化\n归一化\n原型低通\n滤波器\n技术指标\nλp   λs\np   s  \nH(p) \n1=p\n2\n2\n0\n2\n2\ns\ns\ns\n\n −=\n1\n2\n0\n2\n1\ns\ns\ns\n\n −=−\n取\n绝对值小\n的λs\n频带转换\nsp\nspkN lg\nlg=\np\ns\nsp\n\n =\n110\n110\n10\n10\n−\n−\n=\np\ns\nspk \n\n查表\n频带转换\n及解归一化\n)(\n2\nlu\nul\ns\nsp −\n+=\n➢ 带通巴特沃斯模拟滤波器的设计步骤\n二、低通到带通的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 803,
+      "text": "例：设计模拟带通滤波器，通带带宽B=2π×200rad/s，中心频率\nΩ0=2π×1000rad/s，通带内最大衰减p=3dB，阻带Ωs1=2π×830rad/s，\nΩs2=2π×1200rad/s，阻带最小衰减s=15dB。\n解 ：(1) 模拟带通的技术要求\nB = 2π×200rad/s;    \nΩ0=2π×1000rad/s； η0= Ω0 /B = 5\nΩs1 =2π×830rad/s；p=3dB   \nΩs2=2π×1200rad/s； s=15dB\nηs1= Ωs1 /B = 4.15；  ηs2 = Ωs2 /B = 6\n6.2  模拟滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 804,
+      "text": "(2) 模拟归一化低通技术要求：\n874.1,833.1,1\n1\n2\n0\n2\n1\n2\n2\n0\n2\n2 −=−=−=−==\ns\ns\ns\ns\ns\nsp\n\n\n\n取λs=1.833,   p=3dB,   s=15dB。\n(3)设计模拟归一化低通滤波器H(p)：\n5469.5\n110\n110\n1.0\n1.0\n=\n−\n−=\np\ns\nspk \n\n833.1==\np\ns\nsp\n\n\n8274.2lg\nlg ==\nsp\nspkN \n3=N\n6.2  模拟滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 805,
+      "text": "取N=3，查表得：\n(4)  求模拟带通Ha(s)：\n)(\n2)()(\nlu\nul\ns\nspa pHsH\n\n\n−\n+==\n3 3 6 5 2 2 4 2 3 3\n00\n4 2 2 2 4 6 1\n0 0 0 0\n( ) [ 2 (3 2 ) (4 )\n(3 2 ) 2 ]\naH s s B s Bs B s B B s\nB s Bs −\n= + +  + +  +\n+  +  +  + \n122\n1)( 23 +++= ppppH\n6.2  模拟滤波器的设计",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 806,
+      "text": "6.2  模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n模拟滤波器的频带转换方法(2)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 807,
+      "text": "6.2  模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n模拟滤波器的频带转换方法(3)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 808,
+      "text": ")( ηjH\n1sη\nlη\n2s\nuη\n0η\nη\n1s\nl\n0\nu\n2s\n\n模拟带阻滤波器指标\n归一化模拟原型低通滤波器指标\n设计模拟原型\n低通滤波器\n频带转换\n 解归一化\nsλ-\npλ-\nsλ\npλ\n0\n)( jH\nλ\n)( pH\n)(qH\n)( jH a\n)(sHa\n带宽：B = Ωu – Ωl\n中心频率： Ω0\n2= ΩuΩl\n归一化： ηs1 = Ωs1 / B ；ηs2 = Ωs2 / B    (两个阻带截止频率)\n                  ηl  = Ωl / B  ； ηu = Ωu / B     (两个通带截止频率)\n                  η0\n2  = ηl ηu\n频带转换\n三、低通到带阻的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 809,
+      "text": "上式称为\n低通到\n带阻的\n频率变换公式。利用该式将带阻的边界频率\n转换成低通的边界频率。\n2\n0\n2 \n −=\nul\nlu\ns\nspa pHsH\n\n\n+\n−==\n2\n)()()(\n归一化原型低通滤波器\n带阻滤波器\n三、低通到带阻的频率变换",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 810,
+      "text": "➢ 模拟带阻的设计步骤\nA、  确定模拟带阻滤波器的技术指标：\n设：通带上限频率为Ωu，通带下限频率为Ωl\n阻带上限频率为Ωs1 ，阻带下限频率Ωs2 \n中心频率 Ω0\n2=ΩlΩu，带宽 B=Ωu-Ωl\n与之对应的\n归一化边界频率\n如下：\nBB\ns\ns\ns\ns\n2\n2\n1\n1\n == ，\nBB\nu\nu\nl\nl\n == ，\nul =2\n0",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 811,
+      "text": "B、 确定归一化原型低通滤波器技术指标：\nλs与-λs的绝对值可能不相等，一般取\n绝对值小\n的λs。\n通带最大衰减仍为p，阻带最小衰减亦为s。\nC、设计归一化低通H(p)。\nD、 将H(p)转换成带阻Ha(s)。\n1=p\n2\n0\n2\n2\n2\n\n −=\ns\ns\ns\n2\n0\n2\n1\n1\n\n −=−\ns\ns\ns\nul\nlu\ns\nspa pHsH\n\n\n+\n−==\n2\n)()()(",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 812,
+      "text": "6.2  模拟滤波器的设计\n华东理工大学信息科学与工程学院 万永菁\n第六章 IIR数字滤波器设计\nIIR Digital Filter Design\n模拟滤波器的频带转换方法(3)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 813,
+      "text": "6.1\n 数字滤波器设计方法概述\n第六章￿￿IIR数字滤波器设计\nIIR Digital Filter DesignIIR Digital Filter Design\n6.2\n 模拟滤波器的设计\n6.3\n 脉冲响应不变法\n6.4\n 双线性变换法\n6.5\n IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 814,
+      "text": "6.3￿￿脉冲响应不变法(1)\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 815,
+      "text": "脉冲响应不变￿变换法\n        利用模拟滤波器来设计数字滤波器，就是从已知的模拟滤波器\n传输函数Ha(s)设计数字滤波器的系统函数H(z)。\n        因此，它归根结底是一个由S平面映射到Z平面的变换，这个变\n换通常是复变函数的映射变换，为了保证转换后的H(z)稳定且满足稳定且满足\n技术要求技术要求\n，这个映射变换必须满足两条基本要求。\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 816,
+      "text": "  \nj\nS平面 Z平面\nSS左半平面左半平面\n ZZ平面单位圆内平面单位圆内Ø 保证系统的因果稳定性\nSS平面虚轴平面虚轴\nØ 保证系统的频率响应一致 ZZ平面单位圆上平面单位圆上\nRe[z]\njIm[z]\n1\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 817,
+      "text": "模拟滤波器模拟滤波器\n传递函数传递函数HH((ss))\n模拟滤波器模拟滤波器\n单位脉冲响应单位脉冲响应hh((tt))\n数字滤波器数字滤波器\n单位脉冲响应单位脉冲响应hh((nn))\n数字滤波器数字滤波器\n系统函数系统函数HH((zz))\n拉氏反变换拉氏反变换\nt t = = nTnT\n时域采样时域采样\nzz变换变换\n时域离散时域离散\n频域周期频域周期\n拉氏反变换拉氏反变换\nt t = = nTnT\n时域采样时域采样\nzz变换变换\n选择合适的\n采样间隔T\nØ￿脉冲响应不变法的算法原理",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 818,
+      "text": "脉冲响应不变￿变换法\nØ￿￿脉冲响应不变法是否满足转换原则？\nØ￿￿脉冲响应不变法是否存在缺陷？\nu ￿￿能否保证转换后系统的因果稳定性\nu ￿￿能否保证转换前后系统的频率响应一致\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 819,
+      "text": "s域和z域\n的对应关系？hh((tt))\n hh((nn)) HH((ss))\n HH((zz))\n令令  z z = = eesTsT\n验证：脉冲响应不变法是否满足转换原则？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 820,
+      "text": "  \nj\nS平面 Z平面\nSS左半平面左半平面\n ZZ平面单位圆内平面单位圆内Ø 保证系统的因果稳定性\nSS平面虚轴平面虚轴\nØ 保证系统的频率响应一致 ZZ平面单位圆上平面单位圆上\nz z = = eesTsT\n满足转换原则！\nRe[z]\njIm[z]\n1",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 821,
+      "text": "时域离散时域离散 频域周期频域周期？\n  \n  \n  \nZ平面\njIm[z]\nRe[z]\nj\nS平面\n-/T\n/T\n3/\nT\n-\n3/T\nz z = = eesTsT\n多值映射多值映射\n仅用于带限\n滤波器的转换\n线性关系\n问题：脉冲响应不变法是否存在缺陷？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 822,
+      "text": "脉冲响应不变￿变换法\nØ￿￿优点\n        脉冲响应不变法使得数字滤波器的单位脉冲响应完全模仿模\n拟滤波器的单位冲激响应，也就是时域时域\n逼近逼近\n良好良好\n。\n        模拟频率Ω和数字频率ω之间呈线性关系线性关系\nωω\n=Ω=Ω\nTT\n。\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 823,
+      "text": "脉冲响应不变￿变换法\nØ￿￿缺点\n        存在频率响应的混叠现象。 故脉冲响应不变法只适用于带\n限的模拟滤波器，例如衰减特性很好的低通或带通滤波器，而\n且高频衰减越快，混叠效应越小。\n        不适用于高通和带阻滤波器，由于它们在高频部分不衰减， \n因此会产生频率混叠现象。\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 824,
+      "text": "6.3￿￿脉冲响应不变法(1)\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 825,
+      "text": "6.3￿￿脉冲响应不变法(2)\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 826,
+      "text": "例：已知一RC低通滤波电路如图所示：\n(1) 请求解该模拟滤波器的传递函数H(s)，分析其滤波特性。\n(2) 用脉冲响应不变法将该模拟滤波器转换为数字滤波器H(z) ，需保证数字滤波器\n       H(z)的滤波特性与模拟滤波器相近。\nR\nC\n设RC=1\nx(t) y(t)i(t)\n拉氏变换拉氏变换\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 827,
+      "text": "Hs = tf (1,[1 1]);\nbode(Hs);  grid;\n    (1)  (1)  HH((ss))滤波特性：低通滤波器滤波特性：低通滤波器\n    阻带衰减频率：阻带衰减频率：ΩΩstst ≈ 100(rad/s) ≈ 100(rad/s)\n                                                              ffst  st  ≈ 16Hz≈ 16Hz",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 828,
+      "text": "                 (rad/s)\n(2) 用脉冲响应不变法将该模拟滤波器转换为数字滤波器H(z) ，需保证数字滤波器\nH(z)的滤波特性滤波特性\n与模拟滤波器相近相近\n。\nu  脉冲响应不变法的转换公式\nu  选择采样间隔 T\n频域周期频域周期\nz z = = eesTsT\n(rad)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 829,
+      "text": "Ωst ≈ 100 (rad/s)\n        虽然带限，\n仍有混叠！\nTT的选取应留有富裕量的选取应留有富裕量\n√",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 830,
+      "text": "例： 已知模拟滤波器的传输函数为：\n        用脉冲响应不变法将Ha(s)转换成数字滤波器的系统函数H(z)。试分析对比\nT=1s和T=0.1s两种情况。\n解：首先将Ha(s)写成部分分式\n极点为：\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 831,
+      "text": "那么H(z)的极点为：\n设T=1s时用H1(z)表示，T=0.1s时用H2(z)表示，则：\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 832,
+      "text": "6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 833,
+      "text": "脉冲响应不变￿变换法\nØ￿￿优点\n        脉冲响应不变法使得数字滤波器的单位脉冲响应完全模仿模\n拟滤波器的单位冲激响应，也就是时域时域\n逼近逼近\n良好良好\n。\n        模拟频率Ω和数字频率ω之间呈线性关系线性关系\nωω\n=Ω=Ω\nTT\n。\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 834,
+      "text": "脉冲响应不变￿变换法\nØ￿￿缺点\n        存在频率响应的混叠现象。 故脉冲响应不变法只适用于带\n限的模拟滤波器，例如衰减特性很好的低通或带通滤波器，而\n且高频衰减越快，混叠效应越小。\n        不适用于高通和带阻滤波器，由于它们在高频部分不衰减， \n因此会产生频率混叠现象。\n6.3￿￿脉冲响应不变法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 835,
+      "text": "6.3￿￿脉冲响应不变法(2)\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 836,
+      "text": "6.1\n 数字滤波器设计方法概述\n第六章￿￿IIR数字滤波器设计\nIIR Digital Filter DesignIIR Digital Filter Design\n6.2\n 模拟滤波器的设计\n6.3\n 脉冲响应不变法\n6.4\n 双线性变换法\n6.5\n IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 837,
+      "text": "6.4￿￿￿￿双线性变换法\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 838,
+      "text": "Ø  双线性变换法的变换原理\nu 方法：\n        采用非线性压缩的方法，将模拟角频率压缩至折叠频率\n以内。即：\n   若： ： -∞ ~ 0 ~ ∞,   压缩后得到1\n                  1：-π/T ~ 0 ~ π/T \n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 839,
+      "text": "jΩ\nσ\n-∞-∞\n∞∞\njΩ1\nσ-π/T\nπ/T\nRe[z]\njIm[z]\nS平面\n单值映射非线性压缩\nS1平面 Z平面\n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 840,
+      "text": "找z与s的关系：\n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 841,
+      "text": "一般来说，为使AF与DF的某一频率有对应关系，可引入常数C：\nØ 变换常数C的选取：\n 常数C用来调节频率间的对应关系：\n       若希望AF与DF在低频处有较为确切的对应关系，可以选择：\n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 842,
+      "text": " 解释：\n 在低频处有较为确切的对应关系，即要求低频处：\n当1较小时，处于低频处，此时有：\n而和1的对应公式为：\n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 843,
+      "text": "Ø  优点、问题及其解决办法\nu  优点：解决了混叠问题。解决了混叠问题。\nu 问题：Ω与ω呈非线性关系！\n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 844,
+      "text": "Ø  解决方法：通过频率预畸来解决通过频率预畸来解决。。\nS→Z\n指标转换\n预畸，非线性变换\n指标转换\n不预畸，线性变换\nS→Z\n产生畸变\n不产生畸变\n数字指标\n 模拟指标\n数字指标\n模拟指标\n非线性\n非线性\n6.4￿￿双线性变换法",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 845,
+      "text": "6.4￿￿￿￿双线性变换法\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 846,
+      "text": "6.1\n 数字滤波器设计方法概述\n第六章￿￿IIR数字滤波器设计\nIIR Digital Filter DesignIIR Digital Filter Design\n6.2\n 模拟滤波器的设计\n6.3\n 脉冲响应不变法\n6.4\n 双线性变换法\n6.5\n IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 847,
+      "text": "6.5￿￿￿IIR数字滤波器设计方法小结\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 848,
+      "text": "IIR数字滤波器技术指标\n脉冲响应不变法 双线性变换法\n模拟滤波器技术指标\n原型变换\n设计模拟低通原型滤波器\n巴特沃斯逼近法 切比雪夫逼近法 其他逼近法\n模拟低通原型滤波器技术指标\n原型变换\n各经典类模拟滤波器\n脉冲响应不变法 双线性变换法\nIIR数字滤波器",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 849,
+      "text": "例：设计低通数字滤波器，要求在通带内频率低于0.2πrad时，容许幅度误差在1dB\n以内；在频率0.3π到π之间的阻带衰减大于15dB。指定模拟滤波器采用巴特沃斯低\n通滤波器，试分别用脉冲响应不变法和双线性变换法设计滤波器。\n解： (1) 用脉冲响应不变法设计数字低通滤波器。\n① 数字低通的技术指标为 \n              ωp=0.2π rad,   p=1 dB\n              ωs=0.3π rad,   s=15 dB\n② 模拟低通的技术指标为                  \n              T=1 s,    Ωp=0.2π rad/s,   p=1 dB;\n              Ωs=0.3π rad/s,    s=15 dB\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 850,
+      "text": "③ 设计巴特沃斯低通滤波器。先计算阶数N及3dB截止频率Ωc。\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 851,
+      "text": "根据阶数N=6，查表得到归一化传输函数为：\n由式：\n得到：Ωc = 0.7032(rad/s)\n       最后，去归一化，将p=s/Ωc代入Ha(p)中，得到实际的传输函数Ha(s)。\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 852,
+      "text": "④ 用脉冲响应不变法将Ha(s)转换成H(z)。首先将Ha(s)进行部分\n      分式分解，然后再转换 z=esT。\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 853,
+      "text": "(2) 用双线性变换法设计数字低通滤波器。\n① 数字低通技术指标仍为\n                 ωp=0.2πrad,   p=1dB\n                   ωs=0.3πrad,    s=15dB\n② 模拟低通的技术指标为\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 854,
+      "text": "③ 设计巴特沃斯低通滤波器。阶数N计算如下：\n                   并求得：Ωc=0.7662rad/s\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 855,
+      "text": "         根据N=6，查表得到的归一化传输函数Ha(p)与脉冲响应不变法\n得到的相同。为去归一化，将p=s/Ωc代入Ha(p)，得实际的Ha(s)：\n④ 用双线性变换法将Ha(s)转换成数字滤波器H(z)\n6.5￿￿￿IIR数字滤波器设计方法小结",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 856,
+      "text": "6.5￿￿￿IIR数字滤波器设计方法小结\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿￿IIR数字滤波器设计\nIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 857,
+      "text": "《\n数\n字\n信\n号\n处\n理》 信号处理之￿——￿力学笃行\n音频中的不同频率成分\n华东理工大学信息科学与工程学院 万永菁\n第六章￿￿IIR数字滤波器设计\nIIR Digital Filter DesignIIR Digital Filter Design",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 858,
+      "text": "  [x,Fs] = audioread('good.wav');\n  Xk=fft(x);\n  wp=2*500/Fs;  ws=2*1000/Fs;\n  rp=0.5;  rs=80;\n  [n,wn] = buttord(wp,ws,rp,rs)\n  [b,a] = butter(n,wn);\n  [H,w] = freqz(b,a,’whole’);\n  y=filter(b,a,x);\n  Yk=fft(y);\n  audiowrite('Lowfilter_good.wav',y,Fs);\n读入音频文件\n获取音频信号的频谱\n设计滤波器技术指标\n设计巴特沃斯数字滤波器\n获取滤波器频率响应\n对输入信号进行滤波\n获取输出信号的频谱\n将输出写入音频文件\n2\n美妙旋律背后，不同频率成分的贡献如何？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 859,
+      "text": "figure(1);\nsubplot(2,1,1); plot(x);\nsubplot(2,1,2); plot(y);\nk=0:length(Xk)-1;\nfigure(2);\nsubplot(3,1,1);  \nplot(k*Fs/length(Xk),abs(Xk));grid;\nsubplot(3,1,2);  \nplot(w*Fs/2/3.14,abs(H)); grid;\nsubplot(3,1,3);\nplot(k*Fs/length(Yk),abs(Yk));grid;\n3\n美妙旋律背后，不同频率成分的贡献如何？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 860,
+      "text": "x(n)\ny(n)\n4\n美妙旋律背后的低频成分\n低频成分",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 861,
+      "text": "X(k)\nY(k)\nH(k)\n5\n美妙旋律背后的低频成分",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 862,
+      "text": "wp=2*1000/Fs;  ws=2*500/Fs;\nrp=0.5;  rs=80;\n[n,wn] = buttord(wp,ws,rp,rs)\n[b,a] = butter(n,wn,’high’);\nwp=2*500/Fs;  ws=2*1000/Fs;\nrp=0.5;  rs=80;\n[n,wn] = buttord(wp,ws,rp,rs)\n[b,a] = butter(n,wn);\n低通滤波\n高通滤波\n6\n美妙旋律背后，不同频率成分的贡献如何？",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 863,
+      "text": "7\n美妙旋律背后的高频成分\nx(n)\ny(n)\n高频成分",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 864,
+      "text": "8\n美妙旋律背后的高频成分\nX(k)\nY(k)\nH(k)",
+      "merge_decision": "retain_pending_review"
+    },
+    {
+      "source_page": 865,
+      "text": "9\n来自音频信号的感悟\n￿￿￿￿￿￿￿￿一首美妙的乐曲，每个频段的每个音符的作用都不容小觑。\n不论是长音还是短音，不论是低音还是高音，都在为表现最动听的\n乐曲做出自己的贡献。\n￿￿￿￿￿￿￿￿乐曲如此，人生亦然。我们是社会的一员，更是祖国\n发展的交响曲中的一个音符。所以，请找准定位，做最好\n的自己，让自己演绎的这个音符更加美丽。如此，你的身\n边，将不仅是岁月静好，更有幸福与自豪！",
+      "merge_decision": "retain_pending_review"
+    }
+  ],
+  "incremental_candidates": [
+    {
+      "source_pages": [
+        832,
+        833
+      ],
+      "proposed_final_page": 833,
+      "status": "pending_visual_review"
+    }
+  ]
+}
