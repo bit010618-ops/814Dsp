@@ -1,0 +1,53 @@
+{
+  "year": 2004,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {"candidate_id": "2004-qintro-01", "decision": "out_of_scope", "included_parts": [], "reason": "第 11 页连续时间题的续接"},
+    {
+      "candidate_id": "2004-q五-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2004-q五-whole", "source_locator": "第五题：离散系统方框图、H(z)、差分方程、因果稳定与冲激响应", "required_chapters": [1, 2], "placement_chapter": 2}
+      ],
+      "reason": "系统函数、零极点、收敛域和冲激响应互相依赖"
+    },
+    {"candidate_id": "2004-q六-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间单边带调制与同步解调"},
+    {"candidate_id": "2004-q七-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间 LTI 系统辨识题"},
+    {
+      "candidate_id": "2004-q八-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2004-q八-whole", "source_locator": "第八题：离散 LTI 的单位样值响应、稳定性和因果性", "required_chapters": [1], "placement_chapter": 1}
+      ]
+    },
+    {
+      "candidate_id": "2004-q九-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2004-q九-whole", "source_locator": "第九题：梳状滤波器 H(z) 的零极点和增益", "required_chapters": [2], "placement_chapter": 2}
+      ]
+    },
+    {
+      "candidate_id": "2004-q十-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2004-q十-whole", "source_locator": "第十题：DFT 频率分辨率与三正弦频谱", "required_chapters": [3], "placement_chapter": 3}
+      ]
+    },
+    {
+      "candidate_id": "2004-q十一-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2004-q十一-whole", "source_locator": "第十一题：FFT/IFFT 重叠相加法的调用次数", "required_chapters": [3, 4], "placement_chapter": 4}
+      ],
+      "reason": "问题要求用 FFT 分块实现，整体放在快速傅里叶变换章"
+    },
+    {
+      "candidate_id": "2004-q十二-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2004-q十二-whole", "source_locator": "第十二题：给定 h(n) 的滤波器类型和幅频响应", "required_chapters": [2], "placement_chapter": 2}
+      ]
+    }
+  ]
+}
