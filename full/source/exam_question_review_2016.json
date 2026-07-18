@@ -1,0 +1,25 @@
+{
+  "year": 2016,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [33, 34, 35], "watermark_present": true, "finding": "原卷带推广页眉页脚和中央水印；含序列图的题干须净化后重绘。"},
+  "candidate_reviews": [
+    {"candidate_id":"2016-qintro-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2016-qintro-p2","source_locator":"计算题第2小题：两离散序列卷积","required_chapters":[1],"placement_chapter":1},
+      {"id":"2016-qintro-brief1","source_locator":"简答第1小题：FT、LT、ZT 的关系","required_chapters":[2],"placement_chapter":2},
+      {"id":"2016-qintro-brief2","source_locator":"简答第2小题：时分复用原理与举例","required_chapters":[8],"placement_chapter":8}
+    ],"excluded_parts":["计算题第1、3、4、5小题为连续时间系统或连续变换"],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"f1(n)、f2(n) 的抽样位置、幅值、坐标轴与 n=0 位置"}},
+    {"candidate_id":"2016-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间正弦稳态响应"},
+    {"candidate_id":"2016-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数"},
+    {"candidate_id":"2016-q五-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间微分方程系统"},
+    {"candidate_id":"2016-q六-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间冲激采样"},
+    {"candidate_id":"2016-q七-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2016-q七-p1","source_locator":"DSP 第1小题：由单位阶跃响应求有限序列输出","required_chapters":[1],"placement_chapter":1},
+      {"id":"2016-q七-p2","source_locator":"DSP 第2小题：有限序列的偶、奇分解及运算","required_chapters":[1],"placement_chapter":1},
+      {"id":"2016-q七-p3","source_locator":"DSP 第3小题：DFT 频域抽取与反变换","required_chapters":[3],"placement_chapter":3},
+      {"id":"2016-q七-p4","source_locator":"DSP 第4小题：余弦序列 N 点 DFT","required_chapters":[3],"placement_chapter":3},
+      {"id":"2016-q七-p5","source_locator":"DSP 第5小题：栅栏效应及减小方法","required_chapters":[3],"placement_chapter":3}
+    ]},
+    {"candidate_id":"2016-q八-01","decision":"whole_question","included_parts":[{"id":"2016-q八-whole","source_locator":"第八题：用一次 N 点 DFT 求两个实序列的 DFT","required_chapters":[3],"placement_chapter":3}]},
+    {"candidate_id":"2016-q九-01","decision":"whole_question","included_parts":[{"id":"2016-q九-whole","source_locator":"第九题：频率采样法设计一类 FIR 及频域采样型结构","required_chapters":[7],"placement_chapter":7}]}
+  ]
+}
