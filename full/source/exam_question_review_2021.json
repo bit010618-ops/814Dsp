@@ -1,0 +1,16 @@
+{
+  "year": 2021,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [43,44,45], "watermark_present": true, "finding": "原卷带推广页眉页脚和中央水印；离散序列图、DTFT 频谱和解调结构均须重绘。"},
+  "candidate_reviews": [
+    {"candidate_id":"2021-qintro-01","decision":"split_independent_parts","included_parts":[{"id":"2021-qintro-p4","source_locator":"填空第4小题：两离散序列图形卷积","required_chapters":[1],"placement_chapter":1}],"excluded_parts":["连续时间系统、波形、卷积和拉普拉斯变换"],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"f1(n)、f2(n) 的抽样位置、幅值、坐标轴和 n=0 标注"}},
+    {"candidate_id":"2021-q二-01","decision":"whole_question","included_parts":[{"id":"2021-q二-whole","source_locator":"第二题：连续时间信号抽样频谱与无失真低通恢复","required_chapters":[1],"placement_chapter":1}]},
+    {"candidate_id":"2021-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间 LTI 冲激响应"},
+    {"candidate_id":"2021-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间 s 域反馈系统"},
+    {"candidate_id":"2021-q五-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数与频谱"},
+    {"candidate_id":"2021-q六-01","decision":"whole_question","included_parts":[{"id":"2021-q六-whole","source_locator":"第六题：离散时间正弦调制、DTFT 频谱搬移、低通解调与恢复条件","required_chapters":[2],"placement_chapter":2}],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"输入频谱支撑区、调制器、低通 H(e^{jω})、相干解调器、ωc、ωcp、x(n)、y(n) 与输出标注"}},
+    {"candidate_id":"2021-q七-01","decision":"whole_question","included_parts":[{"id":"2021-q七-whole","source_locator":"第七题：DFT、循环卷积、z 变换取样、IDFT 与频谱泄露","required_chapters":[3],"placement_chapter":3}]},
+    {"candidate_id":"2021-q八-01","decision":"whole_question","included_parts":[{"id":"2021-q八-whole","source_locator":"第八题：双线性变换法设计巴特沃斯低通 IIR","required_chapters":[6],"placement_chapter":6}]},
+    {"candidate_id":"2021-q九-01","decision":"whole_question","included_parts":[{"id":"2021-q九-whole","source_locator":"第九题：FIR 零极点、线性相位与窄带干扰抑制","required_chapters":[2,5,7],"placement_chapter":7}]}
+  ]
+}
