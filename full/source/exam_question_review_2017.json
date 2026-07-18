@@ -1,0 +1,23 @@
+{
+  "year":2017,"review_status":"manual_dependency_review_complete",
+  "source_visual_review":{"source_pages":[36,37,38],"watermark_present":true,"finding":"原卷带推广页眉页脚和中央水印；任何需保留的离散图形均重绘。"},
+  "candidate_reviews":[
+    {"candidate_id":"2017-qintro-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2017-qintro-p2-discrete","source_locator":"计算题第2小题中的离散系统线性、时不变与因果性","required_chapters":[1],"placement_chapter":1},
+      {"id":"2017-qintro-brief1","source_locator":"简答第1小题：拉氏变换与 z 变换关系","required_chapters":[2],"placement_chapter":2}
+    ],"excluded_parts":["其余连续时间信号、拉普拉斯/傅里叶及通信调制小题"]},
+    {"candidate_id":"2017-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间卷积图形"},
+    {"candidate_id":"2017-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间 LTI 冲激响应"},
+    {"candidate_id":"2017-q五-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间 s 域结构"},
+    {"candidate_id":"2017-q六-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2017-q六-p1","source_locator":"第六题第1小题：DFT 时移与频域相乘","required_chapters":[3],"placement_chapter":3},
+      {"id":"2017-q六-p2","source_locator":"第六题第2小题：点循环卷积","required_chapters":[3],"placement_chapter":3},
+      {"id":"2017-q六-p3","source_locator":"第六题第3小题：频率分辨率、记录时间与采样频率","required_chapters":[3],"placement_chapter":3},
+      {"id":"2017-q六-p4","source_locator":"第六题第4小题：重叠相加法的 FFT/IFFT 次数","required_chapters":[3,4],"placement_chapter":4},
+      {"id":"2017-q六-p5","source_locator":"第六题第5小题：8 点时间抽取基-2 FFT 流图","required_chapters":[4],"placement_chapter":4}
+    ]},
+    {"candidate_id":"2017-q八-01","decision":"whole_question","included_parts":[{"id":"2017-q八-whole","source_locator":"第八题：矩形/余弦窗设计线性相位 FIR","required_chapters":[7],"placement_chapter":7}]},
+    {"candidate_id":"2017-q九-01","decision":"whole_question","included_parts":[{"id":"2017-q九-whole","source_locator":"第九题：双线性变换法 IIR 低通指标与阶数","required_chapters":[6],"placement_chapter":6}]},
+    {"candidate_id":"2017-q十-01","decision":"whole_question","included_parts":[{"id":"2017-q十-whole","source_locator":"第十题：差分方程、H(z)、零极点、单位样值响应与稳定性","required_chapters":[1,2],"placement_chapter":2}]}
+  ]
+}
