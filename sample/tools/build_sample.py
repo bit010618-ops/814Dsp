@@ -245,6 +245,7 @@ def draw_figure(
     y: float,
     figure_title: str = "",
     crop: dict | None = None,
+    max_height: float = 420,
 ) -> float:
     path = Path(figure_path)
     if not path.is_absolute():
@@ -266,7 +267,6 @@ def draw_figure(
     if cropped_width <= 0 or cropped_height <= 0:
         raise ValueError("invalid figure crop")
     max_width = A4[0] - 124
-    max_height = 420
     scale = min(max_width / cropped_width, max_height / cropped_height)
     drawn_width = cropped_width * scale
     drawn_height = cropped_height * scale
@@ -314,6 +314,7 @@ def draw_page(page: canvas.Canvas, item: dict, chapter: str, page_number: int) -
             y,
             item.get("figure_title", ""),
             item.get("figure_crop"),
+            float(item.get("figure_max_height", 420)),
         )
     if item.get("note"):
         page.setFillColor(HexColor("#F4F7F8"))
