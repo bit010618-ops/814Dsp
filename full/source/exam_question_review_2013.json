@@ -1,0 +1,46 @@
+{
+  "year": 2013,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {
+      "candidate_id": "2013-qintro-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2013-qintro-p3", "source_locator": "第一组填空第3小题：带限信号采样", "required_chapters": [1], "placement_chapter": 1},
+        {"id": "2013-qintro-p5", "source_locator": "第一组填空第5小题：实偶周期序列的 DFS 系数", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2013-qintro-p2-3", "source_locator": "第二组第3小题：离散 LTI 的因果稳定性", "required_chapters": [1], "placement_chapter": 1},
+        {"id": "2013-qintro-p2-5", "source_locator": "第二组第5小题：双边序列 z 变换", "required_chapters": [2], "placement_chapter": 2}
+      ],
+      "excluded_parts": ["其余为连续时间拉普拉斯、傅里叶或系统响应内容"]
+    },
+    {
+      "candidate_id": "2013-q三-01",
+      "decision": "whole_question",
+      "included_parts": [{"id": "2013-q三-whole", "source_locator": "第三题：理想低高带通带阻数字滤波器幅频响应", "required_chapters": [2], "placement_chapter": 2}]
+    },
+    {"candidate_id": "2013-q四-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间 H(s) 结构实现"},
+    {
+      "candidate_id": "2013-q五-01",
+      "decision": "whole_question",
+      "included_parts": [{"id": "2013-q五-whole", "source_locator": "第五题：离散系统 H(z)、ROC 与单位脉冲响应", "required_chapters": [1, 2], "placement_chapter": 2}]
+    },
+    {
+      "candidate_id": "2013-q六-01",
+      "decision": "whole_question",
+      "included_parts": [{"id": "2013-q六-whole", "source_locator": "第六题：H(z) 零极点和幅频特性", "required_chapters": [2], "placement_chapter": 2}]
+    },
+    {"candidate_id": "2013-q七-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间理想低通滤波器"},
+    {
+      "candidate_id": "2013-q八-01",
+      "decision": "whole_question",
+      "included_parts": [{"id": "2013-q八-whole", "source_locator": "第八题：离散因果 LTI 的零极点、ROC、稳定性与差分方程", "required_chapters": [1, 2], "placement_chapter": 2}]
+    },
+    {
+      "candidate_id": "2013-q九-01",
+      "decision": "whole_question",
+      "included_parts": [{"id": "2013-q九-whole", "source_locator": "第九题：零值插入、数字低通和周期采样的多采样率频谱", "required_chapters": [8], "placement_chapter": 8}]
+    },
+    {"candidate_id": "2013-q十-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间理想高通滤波器变换"},
+    {"candidate_id": "2013-q十一-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间周期波形"}
+  ]
+}
