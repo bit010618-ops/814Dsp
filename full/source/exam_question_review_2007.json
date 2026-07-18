@@ -1,0 +1,71 @@
+{
+  "year": 2007,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {
+      "candidate_id": "2007-qintro-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2007-qintro-p2", "source_locator": "填空题第2小题：常数序列的 DTFT", "required_chapters": [2], "placement_chapter": 2},
+        {"id": "2007-qintro-p3", "source_locator": "填空题第3小题：连续信号时域采样", "required_chapters": [1], "placement_chapter": 1}
+      ],
+      "excluded_parts": ["填空题第1、4、5小题为连续时间内容"]
+    },
+    {"candidate_id": "2007-q二-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间傅里叶级数和 LTI 滤波"},
+    {"candidate_id": "2007-q三-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间傅里叶级数与微分方程"},
+    {"candidate_id": "2007-q四-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间卷积值"},
+    {
+      "candidate_id": "2007-q五-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2007-q五-whole", "source_locator": "第五题：模拟信号、采样脉冲及离散序列的频谱", "required_chapters": [1], "placement_chapter": 1}
+      ]
+    },
+    {
+      "candidate_id": "2007-q六-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2007-q六-whole", "source_locator": "第六题：离散系统差分方程和单位冲激响应", "required_chapters": [1], "placement_chapter": 1}
+      ]
+    },
+    {"candidate_id": "2007-q七-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间系统状态方程"},
+    {
+      "candidate_id": "2007-q八-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2007-q八-whole", "source_locator": "第八题：双线性变换保持稳定性的证明", "required_chapters": [2, 6], "placement_chapter": 6},
+        {"id": "2007-q九-p1", "source_locator": "第九题填空第1小题：有限长卷积支持区间", "required_chapters": [1], "placement_chapter": 1},
+        {"id": "2007-q九-p2", "source_locator": "第九题填空第2小题：z 域取样和 IDFT 恢复", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2007-q九-p3", "source_locator": "第九题填空第3小题：稳定系统的极点与因果性", "required_chapters": [2], "placement_chapter": 2},
+        {"id": "2007-q九-p4", "source_locator": "第九题填空第4小题：循环卷积与线性卷积", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2007-q十-p1", "source_locator": "第十题简答第1小题：窗函数法 FIR 设计", "required_chapters": [7], "placement_chapter": 7},
+        {"id": "2007-q十-p2", "source_locator": "第十题简答第2小题：频谱泄露及改善", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2007-q十-p3", "source_locator": "第十题简答第3小题：脉冲响应不变法与双线性变换频率映射", "required_chapters": [6], "placement_chapter": 6}
+      ],
+      "reason": "OCR 将第 8、9、10 题合并；原页核对确认这些单元彼此独立，按实际题号拆分"
+    },
+    {
+      "candidate_id": "2007-q十一-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2007-q十一-whole", "source_locator": "第十一题：按时间抽取的 2-FFT 分解和流图", "required_chapters": [3, 4], "placement_chapter": 4}
+      ]
+    },
+    {
+      "candidate_id": "2007-q十二-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2007-q十二-whole", "source_locator": "第十二题：频率采样法设计线性相位 FIR", "required_chapters": [7], "placement_chapter": 7}
+      ]
+    },
+    {
+      "candidate_id": "2007-q十三-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2007-q十三-p1", "source_locator": "第十三题第1问：用 DFT 分析指定模拟频率", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2007-q十三-p2", "source_locator": "第十三题第2问：单次 256 点 FFT 的谱分析方法", "required_chapters": [4], "placement_chapter": 4}
+      ],
+      "reason": "两问针对同一记录，但分别只要求 DFT 频率对应和 FFT 算法安排，无前一步结果依赖"
+    }
+  ]
+}
