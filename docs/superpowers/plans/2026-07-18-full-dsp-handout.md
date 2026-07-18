@@ -247,7 +247,7 @@ Every candidate stores year, source page(s), exact transcription/image, chapter,
 
 - [ ] **Step 4: Manually resolve every low-confidence candidate.**
 
-For each chapter, select 2–3 representative high-frequency questions as 重点精练 with natural white writing area. Put every remaining relevant question under 补充真题 grouped by year. Do not invent questions for missing years. For cross-chapter questions use a visible cross-reference, never a silent duplicate.
+For each chapter, select 2–3 representative high-frequency questions as 重点精练 with natural white writing area. Put every remaining relevant question under 补充真题 grouped by year. Do not invent questions for missing years. For a cross-chapter large question, record its split mode: split independent subquestions into their own chapters; keep linked subquestions as one complete question in the latest required chapter. Never leave an earlier chapter with a subquestion that relies on unavailable later knowledge.
 
 - [ ] **Step 5: Test completeness, generate exam-coverage.md and commit/push.**
 
