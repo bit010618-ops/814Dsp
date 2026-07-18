@@ -87,8 +87,8 @@ def test_display_formula_uses_the_global_baseline_size():
 
 
 def test_inline_math_uses_a_print_legible_global_height():
-    assert getattr(build_sample_module, "INLINE_MATH_DRAWN_HEIGHT", None) == 16
-    assert getattr(build_sample_module, "INLINE_MATH_BASELINE_OFFSET", None) == -4
+    assert getattr(build_sample_module, "INLINE_MATH_DRAWN_HEIGHT", None) == 17.5
+    assert getattr(build_sample_module, "INLINE_MATH_BASELINE_OFFSET", None) == -5.5
 
 
 def test_generated_sample_accepts_a_plain_past_exam_page(tmp_path):

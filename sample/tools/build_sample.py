@@ -24,10 +24,10 @@ FONT_SERIF = "NotoSerifSC"
 FONT_SANS = "NotoSansSC"
 MATH_CACHE = ROOT / "artifacts" / "formula_cache"
 DISPLAY_FORMULA_SIZE = 11
-# 正文文字之间的行内公式：统一使用 16 pt 实际绘制高度。
-INLINE_MATH_DRAWN_HEIGHT = 16
-# 相对正文基线下移 1.5 pt，使行内数学符号与文字中线对齐。
-INLINE_MATH_BASELINE_OFFSET = -4
+# 正文文字之间的行内公式：统一使用 17.5 pt 实际绘制高度。
+INLINE_MATH_DRAWN_HEIGHT = 17.5
+# 相对正文基线下移 3 pt，使行内数学符号与文字中线对齐。
+INLINE_MATH_BASELINE_OFFSET = -5.5
 
 matplotlib.rcParams.update({"mathtext.fontset": "stix"})
 
