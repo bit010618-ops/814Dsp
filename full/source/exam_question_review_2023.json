@@ -1,0 +1,17 @@
+{
+  "year": 2023,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [50,51], "watermark_present": true, "finding": "原卷推广页眉页脚和中央水印覆盖多道题；讲义按真实题号拆分为干净题干、公式与重绘示意图。"},
+  "candidate_reviews": [
+    {"candidate_id":"2023-qintro-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2023-sampling-halfwave-p3","source_locator":"半波整流题第3小题：连续正弦的采样频率与采样周期","required_chapters":[1],"placement_chapter":1},
+      {"id":"2023-dsp-p1","source_locator":"DSP 第1小题：由单位阶跃响应求离散系统单位脉冲响应","required_chapters":[1],"placement_chapter":1},
+      {"id":"2023-dsp-p2","source_locator":"DSP 第2小题：不同采样频率下正弦采样序列的 DTFT","required_chapters":[1],"placement_chapter":1},
+      {"id":"2023-dsp-p3","source_locator":"DSP 第3小题：DFT 频域相乘求 y(n)","required_chapters":[3],"placement_chapter":3},
+      {"id":"2023-dsp-p4","source_locator":"DSP 第4小题：重叠保留法分段与首末段构造","required_chapters":[3],"placement_chapter":3},
+      {"id":"2023-dsp-p5","source_locator":"DSP 第5小题：8 点基-2 DIT-FFT 蝶形流图","required_chapters":[4],"placement_chapter":4},
+      {"id":"2023-lsti","source_locator":"离散 LSTI 差分方程、H(z)、零极点、频响与输出","required_chapters":[1,2],"placement_chapter":2},
+      {"id":"2023-iir","source_locator":"脉冲响应不变法与双线性变换法设计 IIR 及结构比较","required_chapters":[6],"placement_chapter":6}
+    ],"excluded_parts":["开头的连续时间傅里叶级数、连续 LTI、连续微分方程与整流频谱部分"]}
+  ]
+}
