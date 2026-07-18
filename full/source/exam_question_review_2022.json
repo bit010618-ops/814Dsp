@@ -1,0 +1,19 @@
+{
+  "year": 2022,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [46,47,48], "watermark_present": true, "finding": "原卷带推广页眉页脚和中央水印；含图的采样链及离散 LTI 流图须重绘。"},
+  "candidate_reviews": [
+    {"candidate_id":"2022-qintro-01","decision":"split_independent_parts","included_parts":[{"id":"2022-qintro-p4","source_locator":"填空第4小题：周期理想采样后信号的拉普拉斯变换","required_chapters":[1],"placement_chapter":1}],"excluded_parts":["连续时间系统、傅里叶与拉普拉斯变换题"]},
+    {"candidate_id":"2022-q二-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数 Gibbs 现象"},
+    {"candidate_id":"2022-q三-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间傅里叶级数与单边幅度谱"},
+    {"candidate_id":"2022-q四-01","decision":"out_of_scope","included_parts":[],"reason":"连续时间微分方程 LTI 系统"},
+    {"candidate_id":"2022-q五-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2022-q五-p2","source_locator":"第五题第2小题：连续信号采样与采样频谱","required_chapters":[1],"placement_chapter":1},
+      {"id":"2022-q五-p3","source_locator":"第五题第3小题：一次 N/2 点 FFT 计算 N 点 DFT","required_chapters":[4],"placement_chapter":4}
+    ],"excluded_parts":["第1小题为连续时间调制系统" ]},
+    {"candidate_id":"2022-q六-01","decision":"whole_question","included_parts":[{"id":"2022-q六-whole","source_locator":"第六题：双线性变换法设计二阶巴特沃斯低通 IIR","required_chapters":[6],"placement_chapter":6}]},
+    {"candidate_id":"2022-q七-01","decision":"whole_question","included_parts":[{"id":"2022-q七-whole","source_locator":"第七题：A/D、数字低通、D/A 级联的采样与恢复频谱","required_chapters":[1],"placement_chapter":1}],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"输入频谱、A/D—h(n)—D/A 框图、采样周期 T、截止频率与各信号标注"}},
+    {"candidate_id":"2022-q八-01","decision":"whole_question","included_parts":[{"id":"2022-q八-whole","source_locator":"第八题：离散 LTI 流图、H(z)、零极点与幅频响应","required_chapters":[1,2],"placement_chapter":2}],"source_figure_handling":{"watermark_present":true,"handout_action":"redraw","preserve":"x(n)、y(n)、-1 系数、z^{-N} 延时支路与加法节点"}},
+    {"candidate_id":"2022-q九-01","decision":"whole_question","included_parts":[{"id":"2022-q九-whole","source_locator":"第九题：海明窗设计数字带阻 FIR","required_chapters":[7],"placement_chapter":7}]}
+  ]
+}
