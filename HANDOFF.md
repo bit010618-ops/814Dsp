@@ -66,3 +66,8 @@
 
 - 真题正文已按原 PDF 第 5–59 页完成页级人工审阅：共 55 页，51 页含 DSP 内容，4 页（2004-P11、2020-P42、2023-P49、2024-P53）明确范围外。
 - `full/source/exam_page_review.json` 与对应测试保证正文页无遗漏；多章内容页仍必须进入题号级依赖判断，不能直接按整页放入某一章。
+
+## Latest question-unit model — 2026-07-18
+
+- `full/tools/question_units.py` 已用测试固定题号归属：`dependency_group = null` 的独立小题生成各自章节单元；同一 `dependency_group` 的关联小题合为完整单元，归入其所需章节最大值。
+- 该模型只定义规则，不能替代人工读取真实题号与依赖关系；录入最终 `exam_questions.json` 前不得宣称真题已按章节收齐。
