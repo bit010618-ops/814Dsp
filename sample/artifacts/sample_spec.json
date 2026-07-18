@@ -1,0 +1,39 @@
+{
+  "page_size": "A4",
+  "orientation": "portrait",
+  "margins_mm": {
+    "inner": 22,
+    "outer": 17,
+    "top": 18,
+    "bottom": 18
+  },
+  "header_left": "数字信号处理讲义",
+  "type_scale": {
+    "chapter": 19,
+    "section": 14,
+    "body": 10.5,
+    "formula": 11,
+    "caption": 9
+  },
+  "formula_policy": {
+    "typeset": true,
+    "fractions": "stacked_vertical",
+    "forbid_solidus_for_division": true,
+    "subscripts_and_superscripts": "true_math_positioning",
+    "rendering": "math_layout_asset"
+  },
+  "fonts": {
+    "chinese": "C:\\Windows\\Fonts\\NotoSerifSC-VF.ttf",
+    "chinese_bold": "C:\\Windows\\Fonts\\NotoSansSC-VF.ttf",
+    "math": "C:\\Windows\\Fonts\\cambria.ttc"
+  },
+  "palette": {
+    "ink": "#1F2933",
+    "muted": "#52616B",
+    "chapter": "#123B5D",
+    "accent": "#9D2B2B",
+    "rule": "#C9D2D8",
+    "note_bg": "#F4F7F8",
+    "exercise_bg": "#FFF9E8"
+  }
+}
