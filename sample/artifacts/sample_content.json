@@ -61,12 +61,10 @@
       "exercise_height": 300
     },
     {
-      "kind": "exercise",
-      "title": "真题训练：频率分辨率与 DFT 栅格",
-      "lead": "2004 年真题（节选）",
-      "exercise": "设 {{x(t)}} 的最高频率 {{f_h}} 不超过 {{3\\,\\mathrm{Hz}}}，现用 {{f_s=100\\,\\mathrm{Hz}}} 对 {{x(t)}} 取样 256 点，得到 {{x(n)}}。\n（1）对 {{x(n)}} 作 DFT 时，所能得到的频率分辨率是多少？\n（2）若 {{x(t)=\\sin(2\\pi f_1t)+\\sin(2\\pi f_2t)+\\sin(2\\pi f_3t)}}，其中 {{f_1=2\\,\\mathrm{Hz}}}，{{f_2=2.02\\,\\mathrm{Hz}}}，{{f_3=2.07\\,\\mathrm{Hz}}}，画出取样后 {{x(n)}} 的 DFT 图，并说明能否分辨三个分量。",
-      "exercise_height": 310,
-      "note": "本题答案见第 8 页。请先独立完成，再核对频谱间隔与 DFT 栅格位置。"
+      "kind": "past_exam",
+      "title": "2004 年真题",
+      "title_right": "答案见 P.8",
+      "plain_question": "设 {{x(t)}} 的最高频率 {{f_h}} 不超过 {{3\\,\\mathrm{Hz}}}，现用 {{f_s=100\\,\\mathrm{Hz}}} 对 {{x(t)}} 取样 256 点，得到 {{x(n)}}。\n（1）对 {{x(n)}} 作 DFT 时，所能得到的频率分辨率是多少？\n（2）若 {{x(t)=\\sin(2\\pi f_1t)+\\sin(2\\pi f_2t)+\\sin(2\\pi f_3t)}}，其中 {{f_1=2\\,\\mathrm{Hz}}}，{{f_2=2.02\\,\\mathrm{Hz}}}，{{f_3=2.07\\,\\mathrm{Hz}}}，画出取样后 {{x(n)}} 的 DFT 图，并说明能否分辨三个分量。"
     },
     {
       "kind": "solution",

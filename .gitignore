@@ -4,3 +4,5 @@ __pycache__/
 sample/artifacts/.matplotlib/
 sample/artifacts/formula_cache/
 sample/outputs/qa-*.png
+sample/outputs/past-exam-qa-*.png
+.test-tmp/

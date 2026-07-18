@@ -81,3 +81,27 @@ def test_inline_math_token_keeps_nested_braces():
 
 def test_display_formula_uses_the_global_baseline_size():
     assert DISPLAY_FORMULA_SIZE == 11
+
+
+def test_generated_sample_accepts_a_plain_past_exam_page(tmp_path):
+    content = {
+        "chapter": "第三章 离散傅里叶变换",
+        "pages": [
+            {
+                "kind": "past_exam",
+                "title": "2004 年真题",
+                "title_right": "答案见 P.8",
+                "plain_question": "设 {{x(t)}} 的最高频率不超过 {{3\\,\\mathrm{Hz}}}。",
+            }
+        ],
+    }
+    content_path = tmp_path / "content.json"
+    content_path.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
+    output = tmp_path / "past-exam.pdf"
+
+    build_sample(content_path, output)
+
+    page_text = PdfReader(str(output)).pages[0].extract_text() or ""
+    assert "2004 年真题" in page_text
+    assert "答案见 P.8" in page_text
+    assert "最高频率" in page_text.replace("\n", "")

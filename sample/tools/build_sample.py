@@ -172,10 +172,15 @@ def draw_footer(page: canvas.Canvas, page_number: int) -> None:
     page.drawCentredString(width / 2, 31, str(page_number))
 
 
-def draw_title(page: canvas.Canvas, title: str, y: float) -> float:
+def draw_title(page: canvas.Canvas, title: str, y: float, title_right: str = "") -> float:
     page.setFillColor(HexColor("#123B5D"))
     page.setFont(FONT_SANS, 18)
     page.drawString(62, y, title)
+    if title_right:
+        title_width = pdfmetrics.stringWidth(title, FONT_SANS, 18)
+        page.setFillColor(HexColor("#52616B"))
+        page.setFont(FONT_SERIF, 9.5)
+        page.drawString(62 + title_width + 22, y + 2, title_right)
     page.setStrokeColor(HexColor("#9D2B2B"))
     page.setLineWidth(1.2)
     page.line(62, y - 12, 230, y - 12)
@@ -290,7 +295,7 @@ def draw_figure(
 
 def draw_page(page: canvas.Canvas, item: dict, chapter: str, page_number: int) -> None:
     draw_header(page, item.get("chapter", chapter))
-    y = draw_title(page, item["title"], A4[1] - 82)
+    y = draw_title(page, item["title"], A4[1] - 82, item.get("title_right", ""))
     if item.get("lead"):
         y = draw_body_lines(page, [item["lead"]], y)
         y -= 8
@@ -299,6 +304,8 @@ def draw_page(page: canvas.Canvas, item: dict, chapter: str, page_number: int) -
         y = draw_formula(page, formula, y)
     if item.get("body"):
         y = draw_body_lines(page, item["body"], y)
+    if item.get("plain_question"):
+        y = draw_body_lines(page, [item["plain_question"]], y)
     if item.get("figure_path"):
         y = draw_figure(
             page,
