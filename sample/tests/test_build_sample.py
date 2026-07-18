@@ -9,7 +9,7 @@ from reportlab.pdfgen import canvas
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 from build_sample import build_sample
-from build_sample import DISPLAY_FORMULA_SIZE, _rich_atoms, draw_figure, math_asset, register_fonts, validate_formula_source
+from build_sample import DISPLAY_FORMULA_SIZE, _rich_atoms, draw_continuation_title, draw_figure, math_asset, register_fonts, validate_formula_source
 
 
 def test_generated_sample_is_a4_and_has_page_numbers(tmp_path):
@@ -124,18 +124,64 @@ def test_figure_supports_a_compact_height_cap():
     assert next_y == 616
 
 
+def test_continuation_title_supports_the_primary_heading_size():
+    register_fonts()
+    page = canvas.Canvas(io.BytesIO())
+
+    next_y = draw_continuation_title(page, "频谱分析的参数关系", 700, size=18)
+
+    assert next_y == 662
+
+
 def test_representative_content_flows_the_figure_and_uses_plain_practice_pages():
     content_path = Path(__file__).resolve().parents[1] / "artifacts" / "sample_content.json"
     content = json.loads(content_path.read_text(encoding="utf-8"))
     pages = content["pages"]
 
-    assert len(pages) == 7
+    assert len(pages) == 5
     assert pages[0]["kind"] == "overview"
     assert pages[0]["figure_path"]
     assert pages[0]["figure_max_height"] <= 300
+    assert pages[0]["continuations"][0]["title"] == "频谱分析的参数关系"
+    assert pages[0]["continuations"][0]["title_size"] == 18
+    assert pages[1]["title"] == "频谱分析的参数关系（续）"
     assert all(item["kind"] != "figure" for item in pages)
+    assert pages[1]["continuations"][0]["title"] == "例题：8 点周期延拓序列的 DFS"
+    assert pages[1]["continuations"][2]["note"]
     classroom = next(item for item in pages if item["kind"] == "exercise")
     assert classroom["plain_question"]
     assert "exercise" not in classroom
     past_exam = next(item for item in pages if item["kind"] == "past_exam")
-    assert past_exam["title_right"] == "答案见 P.7"
+    assert past_exam["title_right"] == "答案见 P.5"
+
+
+def test_generated_sample_renders_a_continuation_section_on_the_same_page(tmp_path):
+    content = {
+        "chapter": "第三章 离散傅里叶变换",
+        "pages": [
+            {
+                "kind": "summary",
+                "title": "参数关系",
+                "body": ["参数正文。"],
+                "continuations": [
+                    {
+                        "title": "例题：同页连续排版",
+                        "lead": "例题导语。",
+                        "formula": "X_0 = 1",
+                        "body": ["例题正文。"],
+                        "note": "例题复习提示。",
+                    }
+                ],
+            }
+        ],
+    }
+    content_path = tmp_path / "content.json"
+    content_path.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
+    output = tmp_path / "continuation.pdf"
+
+    build_sample(content_path, output)
+
+    page_text = PdfReader(str(output)).pages[0].extract_text() or ""
+    assert "参数关系" in page_text
+    assert "例题：同页连续排版" in page_text
+    assert "复习提示" in page_text

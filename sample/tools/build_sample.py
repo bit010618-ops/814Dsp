@@ -187,11 +187,31 @@ def draw_title(page: canvas.Canvas, title: str, y: float, title_right: str = "")
     return y - 38
 
 
+def draw_continuation_title(page: canvas.Canvas, title: str, y: float, size: float = 13) -> float:
+    page.setFillColor(HexColor("#123B5D"))
+    page.setFont(FONT_SANS, size)
+    page.drawString(62, y, title)
+    page.setStrokeColor(HexColor("#9D2B2B"))
+    page.setLineWidth(0.9)
+    page.line(62, y - 10, 230 if size >= 18 else 190, y - 10)
+    return y - (38 if size >= 18 else 28)
+
+
 def draw_body_lines(page: canvas.Canvas, lines: list[str], y: float) -> float:
     usable_width = A4[0] - 124
     for text in lines:
         y = draw_rich_paragraph(page, text, 62, y, usable_width)
     return y
+
+
+def draw_note(page: canvas.Canvas, note: str, y: float) -> float:
+    page.setFillColor(HexColor("#F4F7F8"))
+    page.roundRect(62, y - 58, A4[0] - 124, 58, 3, fill=1, stroke=0)
+    page.setFillColor(HexColor("#123B5D"))
+    page.setFont(FONT_SANS, 9.5)
+    page.drawString(76, y - 20, "复习提示")
+    y = draw_rich_paragraph(page, note, 76, y - 40, A4[0] - 152, size=10)
+    return y - 18
 
 
 def draw_formula(page: canvas.Canvas, formula: str, y: float) -> float:
@@ -317,13 +337,27 @@ def draw_page(page: canvas.Canvas, item: dict, chapter: str, page_number: int) -
             float(item.get("figure_max_height", 420)),
         )
     if item.get("note"):
-        page.setFillColor(HexColor("#F4F7F8"))
-        page.roundRect(62, y - 58, A4[0] - 124, 58, 3, fill=1, stroke=0)
-        page.setFillColor(HexColor("#123B5D"))
-        page.setFont(FONT_SANS, 9.5)
-        page.drawString(76, y - 20, "复习提示")
-        y = draw_rich_paragraph(page, item["note"], 76, y - 40, A4[0] - 152, size=10)
-        y -= 18
+        y = draw_note(page, item["note"], y)
+    for continuation in item.get("continuations", []):
+        y -= 4
+        y = draw_continuation_title(
+            page,
+            continuation["title"],
+            y,
+            float(continuation.get("title_size", 13)),
+        )
+        if continuation.get("lead"):
+            y = draw_body_lines(page, [continuation["lead"]], y)
+            y -= 8
+        formulae = continuation.get("formulae") or (
+            [continuation["formula"]] if continuation.get("formula") else []
+        )
+        for formula in formulae:
+            y = draw_formula(page, formula, y)
+        if continuation.get("body"):
+            y = draw_body_lines(page, continuation["body"], y)
+        if continuation.get("note"):
+            y = draw_note(page, continuation["note"], y)
     if item.get("exercise"):
         draw_exercise_box(
             page,
