@@ -1,0 +1,18 @@
+{
+  "year": 2024,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {"source_pages": [52,54,55], "watermark_present": true, "finding": "原卷多页题目被 OCR 合并，且每页带推广页眉页脚和中央水印；最终讲义按实际题目拆分、转写和重绘。"},
+  "candidate_reviews": [
+    {"candidate_id":"2024-qintro-01","decision":"split_independent_parts","included_parts":[
+      {"id":"2024-sampling-rect","source_locator":"矩形脉冲以给定角频率采样、恢复性与离散时间傅里叶变换","required_chapters":[1],"placement_chapter":1},
+      {"id":"2024-sampling-pulse","source_locator":"Sa 信号的非理想脉冲采样、频谱、带宽与串联系统恢复","required_chapters":[1],"placement_chapter":1},
+      {"id":"2024-dsp-p1","source_locator":"DSP 第1小题：4 点 DFT 与 X*(k)","required_chapters":[3],"placement_chapter":3},
+      {"id":"2024-dsp-p2","source_locator":"DSP 第2小题：H(z) 零极点与幅频响应","required_chapters":[2],"placement_chapter":2},
+      {"id":"2024-dsp-p3","source_locator":"DSP 第3小题：偶对称实序列的 N 点 DFT 特性","required_chapters":[3],"placement_chapter":3},
+      {"id":"2024-dsp-p4","source_locator":"DSP 第4小题：线性相位 FIR 的零点约束、最低阶数与群延迟","required_chapters":[7],"placement_chapter":7},
+      {"id":"2024-dsp-p5","source_locator":"DSP 第5小题：重叠保留法的 128 点 FFT/IFFT 次数","required_chapters":[3,4],"placement_chapter":4},
+      {"id":"2024-fir-second","source_locator":"二阶 FIR 的系数、幅相响应与线性相位","required_chapters":[7],"placement_chapter":7},
+      {"id":"2024-lsi-difference","source_locator":"因果 LSI 差分方程、稳定性、脉冲响应及 FIR/IIR 判定","required_chapters":[1,2],"placement_chapter":2}
+    ],"excluded_parts":["连续时间卷积、连续系统、单边拉普拉斯与 Hilbert 变换题"]}
+  ]
+}

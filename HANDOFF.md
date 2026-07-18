@@ -177,3 +177,8 @@
 
 - 原 PDF 将多题误并为 `2023-qintro-01`；`full/source/exam_question_review_2023.json` 已依据真实小题边界拆为 8 个纳入单元：采样/离散系统归第 1 章，DFT/重叠保留归第 3 章，DIT-FFT 归第 4 章，离散 LSTI 归第 2 章，IIR 设计归第 6 章。
 - 原卷带水印，讲义须按拆分后的题干、正式公式和重绘蝶形/必要示意图生成，不得将带水印整页作为题图。
+
+## Latest 2024 exam manual-review milestone — 2026-07-18
+
+- 原 PDF 将多页多题合并为 `2024-qintro-01`；`full/source/exam_question_review_2024.json` 已按真实题目拆为 9 个纳入单元：采样题归第 1 章，DFT 归第 3 章，重叠保留 FFT 归第 4 章，离散系统归第 2 章，线性相位和二阶 FIR 归第 7 章。
+- 全部原卷图仅作内容依据；最终以无水印题干、公式及必要的重绘频谱/系统图呈现。
