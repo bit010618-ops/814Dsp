@@ -1,0 +1,56 @@
+{
+  "year": 2006,
+  "review_status": "manual_dependency_review_complete",
+  "candidate_reviews": [
+    {
+      "candidate_id": "2006-qintro-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2006-qintro-p10", "source_locator": "填空题第10小题：给定 ROC 的 z 反变换", "required_chapters": [2], "placement_chapter": 2}
+      ],
+      "excluded_parts": ["填空题第1至9、11小题为连续时间积分、傅里叶或拉普拉斯内容"]
+    },
+    {"candidate_id": "2006-q二-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间 LTI 零状态响应"},
+    {"candidate_id": "2006-q三-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间系统零输入/零状态响应"},
+    {"candidate_id": "2006-q四-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间傅里叶变换性质"},
+    {"candidate_id": "2006-q五-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间 LTI 系统频率响应"},
+    {"candidate_id": "2006-q六-01", "decision": "out_of_scope", "included_parts": [], "reason": "电路题"},
+    {
+      "candidate_id": "2006-q七-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2006-q七-whole", "source_locator": "第七题：离散系统结构、传递函数、差分方程与阶跃响应", "required_chapters": [1], "placement_chapter": 1}
+      ]
+    },
+    {
+      "candidate_id": "2006-q九-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2006-q九-whole", "source_locator": "第九题：10 点 DFT、时移与频域相乘", "required_chapters": [3], "placement_chapter": 3}
+      ]
+    },
+    {
+      "candidate_id": "2006-q十-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2006-q十-whole", "source_locator": "第十题：给定 X(e^jω) 的 DTFT 反变换", "required_chapters": [2], "placement_chapter": 2}
+      ]
+    },
+    {
+      "candidate_id": "2006-q十一-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2006-q十一-p1", "source_locator": "第十一题第1问：脉冲响应不变法与最小相位", "required_chapters": [6], "placement_chapter": 6},
+        {"id": "2006-q十一-p2", "source_locator": "第十一题第2问：双线性变换与最小相位", "required_chapters": [6], "placement_chapter": 6}
+      ],
+      "reason": "两种映射方法从同一给定模拟滤波器出发，无前后计算依赖"
+    },
+    {
+      "candidate_id": "2006-q十二-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2006-q十二-whole", "source_locator": "第十二题：重叠保留法的 DFT/IDFT 次数", "required_chapters": [3], "placement_chapter": 3}
+      ]
+    }
+  ]
+}
