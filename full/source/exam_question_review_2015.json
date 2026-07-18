@@ -1,0 +1,67 @@
+{
+  "year": 2015,
+  "review_status": "manual_dependency_review_complete",
+  "source_visual_review": {
+    "source_pages": [30, 31, 32],
+    "watermark_present": true,
+    "finding": "原卷每页均含推广页眉页脚与中央半透明水印；讲义须转写题干，必要题图单独重绘或净化。"
+  },
+  "candidate_reviews": [
+    {
+      "candidate_id": "2015-qintro-01",
+      "decision": "split_independent_parts",
+      "included_parts": [
+        {"id": "2015-qintro-p1", "source_locator": "填空第1小题：模拟信号采样所得信号", "required_chapters": [1], "placement_chapter": 1},
+        {"id": "2015-qintro-p2", "source_locator": "填空第2小题：DTFT 实部对应序列", "required_chapters": [2], "placement_chapter": 2},
+        {"id": "2015-qintro-p3", "source_locator": "填空第3小题：N 点 DFT 与 z 变换取样", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2015-qintro-p4", "source_locator": "填空第4小题：循环卷积等于线性卷积的长度条件", "required_chapters": [3], "placement_chapter": 3},
+        {"id": "2015-qintro-p5", "source_locator": "填空第5小题：16 点 DFT 与 2FFT 运算量", "required_chapters": [4], "placement_chapter": 4},
+        {"id": "2015-qintro-p6", "source_locator": "填空第6小题：FFT 降低计算量的原理", "required_chapters": [4], "placement_chapter": 4},
+        {"id": "2015-qintro-p7", "source_locator": "填空第7小题：数字信号处理的基本运算", "required_chapters": [1], "placement_chapter": 1},
+        {"id": "2015-qintro-p8", "source_locator": "填空第8小题：偶对称 FIR 的幅频与相频特性", "required_chapters": [7], "placement_chapter": 7}
+      ]
+    },
+    {
+      "candidate_id": "2015-q二-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2015-q二-whole", "source_locator": "第二题：理想低通、高通、带通、带阻数字滤波器幅频响应", "required_chapters": [6], "placement_chapter": 6}
+      ]
+    },
+    {"candidate_id": "2015-q三-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间 H(s) 系统结构"},
+    {
+      "candidate_id": "2015-q四-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2015-q四-whole", "source_locator": "第四题：离散结构图、H(z)、ROC 与稳定非因果脉冲响应", "required_chapters": [1, 2], "placement_chapter": 2}
+      ],
+      "source_figure_handling": {"watermark_present": true, "handout_action": "redraw", "preserve": "加法器、两级延时、5/2 与 -1 系数及 x[n]、y[n] 标注"}
+    },
+    {
+      "candidate_id": "2015-q五-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2015-q五-whole", "source_locator": "第五题：由 h[n] 求 H(z)、零极点与幅频特性", "required_chapters": [2], "placement_chapter": 2}
+      ]
+    },
+    {"candidate_id": "2015-q六-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间理想低通滤波器"},
+    {
+      "candidate_id": "2015-q七-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2015-q七-whole", "source_locator": "第七题：离散因果 LTI 零极点图、H(z)、ROC、稳定性、h[n] 与差分方程", "required_chapters": [1, 2], "placement_chapter": 2}
+      ],
+      "source_figure_handling": {"watermark_present": true, "handout_action": "redraw", "preserve": "单位圆、原点、实虚轴、极点位置及 1、2 坐标标注"}
+    },
+    {
+      "candidate_id": "2015-q八-01",
+      "decision": "whole_question",
+      "included_parts": [
+        {"id": "2015-q八-whole", "source_locator": "第八题：零值插入、理想低通、采样组成的多采样率链", "required_chapters": [8], "placement_chapter": 8}
+      ],
+      "source_figure_handling": {"watermark_present": true, "handout_action": "redraw", "preserve": "输入三角频谱、零值插入—H(e^{jω})—采样框图、x[n]、g[n]、ω[n]、y[n] 与截止频率"}
+    },
+    {"candidate_id": "2015-q九-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间理想高通滤波器构造"},
+    {"candidate_id": "2015-q十-01", "decision": "out_of_scope", "included_parts": [], "reason": "连续时间波形绘制"}
+  ]
+}
