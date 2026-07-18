@@ -32,6 +32,61 @@ def write_question_section_index(
     return sections
 
 
+def group_sections_into_question_candidates(sections: list[dict]) -> list[dict]:
+    candidates: list[dict] = []
+    active_by_year: dict[int, dict] = {}
+    counts: dict[tuple[int, str], int] = {}
+
+    for section in sections:
+        year = section["year"]
+        if section["section_kind"] == "question_start":
+            label = section["source_label"]
+            active_by_year[year] = _new_candidate(section, f"q{label}", counts)
+            candidates.append(active_by_year[year])
+        elif year in active_by_year:
+            _append_section(active_by_year[year], section)
+        else:
+            active_by_year[year] = _new_candidate(section, "qintro", counts)
+            candidates.append(active_by_year[year])
+    return candidates
+
+
+def write_question_candidates(sections_path: Path, output_path: Path) -> list[dict]:
+    sections = json.loads(sections_path.read_text(encoding="utf-8"))
+    candidates = group_sections_into_question_candidates(sections)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(candidates, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return candidates
+
+
+def _new_candidate(section: dict, stem: str, counts: dict[tuple[int, str], int]) -> dict:
+    key = (section["year"], stem)
+    counts[key] = counts.get(key, 0) + 1
+    candidate = {
+        "id": f"{section['year']}-{stem}-{counts[key]:02d}",
+        "year": section["year"],
+        "source_section_ids": [],
+        "source_pages": [],
+        "source_labels": [],
+        "text": "",
+        "review_status": "pending_dependency_review",
+    }
+    _append_section(candidate, section)
+    return candidate
+
+
+def _append_section(candidate: dict, section: dict) -> None:
+    candidate["source_section_ids"].append(section["id"])
+    for page in section["source_pages"]:
+        if page not in candidate["source_pages"]:
+            candidate["source_pages"].append(page)
+    if section["source_label"] is not None:
+        candidate["source_labels"].append(section["source_label"])
+    candidate["text"] = "\n\n".join(part for part in [candidate["text"], section["text"]] if part)
+
+
 def split_question_sections(record: dict) -> list[dict]:
     text = record["text"].strip()
     matches = list(QUESTION_HEADING.finditer(text))

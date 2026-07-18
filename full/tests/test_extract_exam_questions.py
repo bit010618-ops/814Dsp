@@ -8,7 +8,9 @@ import json
 
 from extract_exam_questions import (
     build_question_section_index,
+    group_sections_into_question_candidates,
     split_question_sections,
+    write_question_candidates,
     write_question_section_index,
 )
 
@@ -86,3 +88,60 @@ def test_write_question_section_index_persists_reviewable_source_sections(tmp_pa
 
     assert sections[0]["id"] == "2002-p5-q一"
     assert json.loads(output.read_text(encoding="utf-8"))[0]["review_status"] == "pending_dependency_review"
+
+
+def test_group_sections_attaches_a_later_page_continuation_to_the_previous_question():
+    questions = group_sections_into_question_candidates(
+        [
+            {"id": "2002-p5-continuation-01", "year": 2002, "source_pages": [5], "source_label": None, "section_kind": "continuation", "text": "第一题。"},
+            {"id": "2002-p5-q二", "year": 2002, "source_pages": [5], "source_label": "二", "section_kind": "question_start", "text": "第二题。"},
+            {"id": "2002-p6-continuation-01", "year": 2002, "source_pages": [6], "source_label": None, "section_kind": "continuation", "text": "第二题续。"},
+            {"id": "2002-p6-q三", "year": 2002, "source_pages": [6], "source_label": "三", "section_kind": "question_start", "text": "第三题。"},
+        ]
+    )
+
+    assert questions == [
+        {
+            "id": "2002-qintro-01",
+            "year": 2002,
+            "source_section_ids": ["2002-p5-continuation-01"],
+            "source_pages": [5],
+            "source_labels": [],
+            "text": "第一题。",
+            "review_status": "pending_dependency_review",
+        },
+        {
+            "id": "2002-q二-01",
+            "year": 2002,
+            "source_section_ids": ["2002-p5-q二", "2002-p6-continuation-01"],
+            "source_pages": [5, 6],
+            "source_labels": ["二"],
+            "text": "第二题。\n\n第二题续。",
+            "review_status": "pending_dependency_review",
+        },
+        {
+            "id": "2002-q三-01",
+            "year": 2002,
+            "source_section_ids": ["2002-p6-q三"],
+            "source_pages": [6],
+            "source_labels": ["三"],
+            "text": "第三题。",
+            "review_status": "pending_dependency_review",
+        },
+    ]
+
+
+def test_write_question_candidates_persists_grouped_source_questions(tmp_path):
+    sections_path = tmp_path / "sections.json"
+    output = tmp_path / "questions.json"
+    sections_path.write_text(
+        json.dumps(
+            [{"id": "2002-p5-q二", "year": 2002, "source_pages": [5], "source_label": "二", "section_kind": "question_start", "text": "第二题。"}]
+        ),
+        encoding="utf-8",
+    )
+
+    questions = write_question_candidates(sections_path, output)
+
+    assert questions[0]["id"] == "2002-q二-01"
+    assert json.loads(output.read_text(encoding="utf-8"))[0]["source_pages"] == [5]

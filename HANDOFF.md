@@ -91,3 +91,8 @@
 
 - `full/tools/extract_exam_questions.py` 和 `full/artifacts/exam_question_sections.json` 已将 51 页已归入 DSP 范围的真题正文机械分为 177 个可审阅原文段落（126 个明确题号起点、51 个续接段）。4 页已确认范围外页面不会进入该清单。
 - 该产物只保存原文边界和 `pending_dependency_review` 状态，尚未把跨页续接段绑定到题号，也未执行最终分章；不得据此声称真题已经收齐或归位。新的抽取器测试和全量回归共 19 项通过。
+
+## Latest exam-source-question-group milestone — 2026-07-18
+
+- 通过 `group_sections_into_question_candidates`，51 个跨页续接段已按原文顺序归并到前一题号；`full/artifacts/exam_question_candidates.json` 现含 144 个原文题组候选。
+- 此归并仅解决跨页连续性，全部候选仍为 `pending_dependency_review`。下一步必须逐题判断独立小题与关联题组，不能将候选题组直接等同于最终章末训练或讲义题目。
