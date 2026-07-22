@@ -47,6 +47,10 @@ INCREMENTAL_GROUPS_BY_UNIT = {
 COMPONENT_FILE_BY_UNIT = {
     "c1-01-representations": "full/source/chapter_01_representation_component.json",
     "c1-01-operations": "full/source/chapter_01_operations_component.json",
+    "c1-01-typical-sequences": "full/source/chapter_01_typical_sequences_component.json",
+    "c1-01-periodicity": "full/source/chapter_01_periodicity_component.json",
+    "c1-02-linearity": "full/source/chapter_01_linearity_component.json",
+    "c1-02-time-invariance": "full/source/chapter_01_time_invariance_component.json",
 }
 
 

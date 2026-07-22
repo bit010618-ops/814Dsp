@@ -1,0 +1,12 @@
+{
+  "component": "chapter_01_time_invariance",
+  "source_pages": [78, 79, 80, 81, 82],
+  "merged_pages": [
+    {"source_page": 77, "merged_with": 78, "reason": "本节标题页仅含标题"},
+    {"source_page": 84, "merged_with": 78, "reason": "内容完全重复"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_page": 83, "reason": "音频仿真实验与处理结果"}
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}
