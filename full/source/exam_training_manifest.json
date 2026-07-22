@@ -1,0 +1,3401 @@
+{
+  "schema_version": 1,
+  "source": "exam question bank plus verified priority selection",
+  "answer_section": "真题整理详解",
+  "chapters": [
+    {
+      "chapter": 1,
+      "priority_questions": [
+        {
+          "id": "2006-q七-whole",
+          "year": 2006,
+          "source_candidate_id": "2006-q七-01",
+          "source_pages": [
+            19
+          ],
+          "source_section_ids": [
+            "2006-p19-q七"
+          ],
+          "source_locator": "第七题：离散系统结构、传递函数、差分方程与阶跃响应",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2002-q七-whole",
+          "year": 2002,
+          "source_candidate_id": "2002-q七-01",
+          "source_pages": [
+            6,
+            7
+          ],
+          "source_section_ids": [
+            "2002-p6-q七",
+            "2002-p7-continuation-01"
+          ],
+          "source_locator": "第七题全部三问：采样、频谱与重建滤波器",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2019-q二-whole",
+          "year": 2019,
+          "source_candidate_id": "2019-q二-01",
+          "source_pages": [
+            39
+          ],
+          "source_section_ids": [
+            "2019-p39-q二"
+          ],
+          "source_locator": "第二题：两离散序列图形卷积",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "f1(n)、f2(n) 抽样位置、幅值、坐标轴及 n=0 标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2002-qintro-p4",
+          "year": 2002,
+          "source_candidate_id": "2002-qintro-01",
+          "source_pages": [
+            5
+          ],
+          "source_section_ids": [
+            "2002-p5-continuation-01"
+          ],
+          "source_locator": "填空题第4小题：奈奎斯特采样",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2002-q八-whole",
+          "year": 2002,
+          "source_candidate_id": "2002-q八-01",
+          "source_pages": [
+            7
+          ],
+          "source_section_ids": [
+            "2002-p7-q八"
+          ],
+          "source_locator": "第八题：模拟信号采样后的离散频谱与混叠",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-qintro-p4",
+          "year": 2003,
+          "source_candidate_id": "2003-qintro-01",
+          "source_pages": [
+            8
+          ],
+          "source_section_ids": [
+            "2003-p8-continuation-01"
+          ],
+          "source_locator": "填空题第4小题：奈奎斯特采样",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-q二-whole",
+          "year": 2003,
+          "source_candidate_id": "2003-q二-01",
+          "source_pages": [
+            8
+          ],
+          "source_section_ids": [
+            "2003-p8-q二"
+          ],
+          "source_locator": "第二题：差分方程求单位样值响应",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-q六-whole",
+          "year": 2003,
+          "source_candidate_id": "2003-q六-01",
+          "source_pages": [
+            9
+          ],
+          "source_section_ids": [
+            "2003-p9-q六"
+          ],
+          "source_locator": "第六题：冲激串采样后的低通重建性质",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2004-q八-whole",
+          "year": 2004,
+          "source_candidate_id": "2004-q八-01",
+          "source_pages": [
+            13
+          ],
+          "source_section_ids": [
+            "2004-p13-q八"
+          ],
+          "source_locator": "第八题：离散 LTI 的单位样值响应、稳定性和因果性",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-q七-whole",
+          "year": 2005,
+          "source_candidate_id": "2005-q七-01",
+          "source_pages": [
+            15
+          ],
+          "source_section_ids": [
+            "2005-p15-q七"
+          ],
+          "source_locator": "第七题：由单位阶跃响应求二阶离散系统并计算响应",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-qintro-p3",
+          "year": 2007,
+          "source_candidate_id": "2007-qintro-01",
+          "source_pages": [
+            21
+          ],
+          "source_section_ids": [
+            "2007-p21-continuation-01"
+          ],
+          "source_locator": "填空题第3小题：连续信号时域采样",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q五-whole",
+          "year": 2007,
+          "source_candidate_id": "2007-q五-01",
+          "source_pages": [
+            22
+          ],
+          "source_section_ids": [
+            "2007-p22-q五"
+          ],
+          "source_locator": "第五题：模拟信号、采样脉冲及离散序列的频谱",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q六-whole",
+          "year": 2007,
+          "source_candidate_id": "2007-q六-01",
+          "source_pages": [
+            22,
+            23
+          ],
+          "source_section_ids": [
+            "2007-p22-q六",
+            "2007-p23-continuation-01"
+          ],
+          "source_locator": "第六题：离散系统差分方程和单位冲激响应",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q九-p1",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第九题填空第1小题：有限长卷积支持区间",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-qintro-p3",
+          "year": 2013,
+          "source_candidate_id": "2013-qintro-01",
+          "source_pages": [
+            25,
+            26
+          ],
+          "source_section_ids": [
+            "2013-p25-continuation-01",
+            "2013-p26-continuation-01"
+          ],
+          "source_locator": "第一组填空第3小题：带限信号采样",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-qintro-p2-3",
+          "year": 2013,
+          "source_candidate_id": "2013-qintro-01",
+          "source_pages": [
+            25,
+            26
+          ],
+          "source_section_ids": [
+            "2013-p25-continuation-01",
+            "2013-p26-continuation-01"
+          ],
+          "source_locator": "第二组第3小题：离散 LTI 的因果稳定性",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2014-qintro-p2",
+          "year": 2014,
+          "source_candidate_id": "2014-qintro-01",
+          "source_pages": [
+            28
+          ],
+          "source_section_ids": [
+            "2014-p28-continuation-01"
+          ],
+          "source_locator": "填空第2小题：离散系统时变性",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2014-qintro-p5",
+          "year": 2014,
+          "source_candidate_id": "2014-qintro-01",
+          "source_pages": [
+            28
+          ],
+          "source_section_ids": [
+            "2014-p28-continuation-01"
+          ],
+          "source_locator": "填空第5小题：离散序列卷积",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2014-qintro-p6",
+          "year": 2014,
+          "source_candidate_id": "2014-qintro-01",
+          "source_pages": [
+            28
+          ],
+          "source_section_ids": [
+            "2014-p28-continuation-01"
+          ],
+          "source_locator": "填空第6小题：采样避免混叠",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p1",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第1小题：模拟信号采样所得信号",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p7",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第7小题：数字信号处理的基本运算",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-qintro-p2",
+          "year": 2016,
+          "source_candidate_id": "2016-qintro-01",
+          "source_pages": [
+            33,
+            34
+          ],
+          "source_section_ids": [
+            "2016-p33-continuation-01",
+            "2016-p34-continuation-01"
+          ],
+          "source_locator": "计算题第2小题：两离散序列卷积",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴与 n=0 位置"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q六-whole",
+          "year": 2016,
+          "source_candidate_id": "2016-q六-01",
+          "source_pages": [
+            34
+          ],
+          "source_section_ids": [
+            "2016-p34-q六"
+          ],
+          "source_locator": "第六题：冲激采样、奈奎斯特频率、采样频谱与采样保持恢复",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q七-p1",
+          "year": 2016,
+          "source_candidate_id": "2016-q七-01",
+          "source_pages": [
+            34
+          ],
+          "source_section_ids": [
+            "2016-p34-q七"
+          ],
+          "source_locator": "DSP 第1小题：由单位阶跃响应求有限序列输出",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q七-p2",
+          "year": 2016,
+          "source_candidate_id": "2016-q七-01",
+          "source_pages": [
+            34
+          ],
+          "source_section_ids": [
+            "2016-p34-q七"
+          ],
+          "source_locator": "DSP 第2小题：有限序列的偶、奇分解及运算",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-qintro-p2-discrete",
+          "year": 2017,
+          "source_candidate_id": "2017-qintro-01",
+          "source_pages": [
+            36,
+            37
+          ],
+          "source_section_ids": [
+            "2017-p36-continuation-01",
+            "2017-p37-continuation-01"
+          ],
+          "source_locator": "计算题第2小题中的离散系统线性、时不变与因果性",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2019-qintro-p3",
+          "year": 2019,
+          "source_candidate_id": "2019-qintro-01",
+          "source_pages": [
+            39
+          ],
+          "source_section_ids": [
+            "2019-p39-continuation-01"
+          ],
+          "source_locator": "填空第3小题：离散系统线性、时变与因果性",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2019-q七-whole",
+          "year": 2019,
+          "source_candidate_id": "2019-q七-01",
+          "source_pages": [
+            40
+          ],
+          "source_section_ids": [
+            "2019-p40-q七"
+          ],
+          "source_locator": "第七题：冲激采样、奈奎斯特频率、采样频谱与采样保持恢复",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-qintro-p4",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "填空第4小题：组合带限信号的无失真抽样频率",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2021-qintro-p4",
+          "year": 2021,
+          "source_candidate_id": "2021-qintro-01",
+          "source_pages": [
+            43
+          ],
+          "source_section_ids": [
+            "2021-p43-continuation-01"
+          ],
+          "source_locator": "填空第4小题：两离散序列图形卷积",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴和 n=0 标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2021-q二-whole",
+          "year": 2021,
+          "source_candidate_id": "2021-q二-01",
+          "source_pages": [
+            43
+          ],
+          "source_section_ids": [
+            "2021-p43-q二"
+          ],
+          "source_locator": "第二题：连续时间信号抽样频谱与无失真低通恢复",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2022-qintro-p4",
+          "year": 2022,
+          "source_candidate_id": "2022-qintro-01",
+          "source_pages": [
+            46
+          ],
+          "source_section_ids": [
+            "2022-p46-continuation-01"
+          ],
+          "source_locator": "填空第4小题：周期理想采样后信号的拉普拉斯变换",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2022-q五-p2",
+          "year": 2022,
+          "source_candidate_id": "2022-q五-01",
+          "source_pages": [
+            47
+          ],
+          "source_section_ids": [
+            "2022-p47-q五"
+          ],
+          "source_locator": "第五题第2小题：连续信号采样与采样频谱",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2022-q七-whole",
+          "year": 2022,
+          "source_candidate_id": "2022-q七-01",
+          "source_pages": [
+            48
+          ],
+          "source_section_ids": [
+            "2022-p48-q七"
+          ],
+          "source_locator": "第七题：A/D、数字低通、D/A 级联的采样与恢复频谱",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "输入频谱、A/D—h(n)—D/A 框图、采样周期 T、截止频率与各信号标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-sampling-halfwave-p3",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "半波整流题第3小题：连续正弦的采样频率与采样周期",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-dsp-p1",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "DSP 第1小题：由单位阶跃响应求离散系统单位脉冲响应",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-dsp-p2",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "DSP 第2小题：不同采样频率下正弦采样序列的 DTFT",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-sampling-rect",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "矩形脉冲以给定角频率采样、恢复性与离散时间傅里叶变换",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-sampling-pulse",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "Sa 信号的非理想脉冲采样、频谱、带宽与串联系统恢复",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-qintro-p4",
+          "year": 2025,
+          "source_candidate_id": "2025-qintro-01",
+          "source_pages": [
+            56
+          ],
+          "source_section_ids": [
+            "2025-p56-continuation-01"
+          ],
+          "source_locator": "填空第4小题：离散系统可逆性与逆系统",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q六-whole",
+          "year": 2025,
+          "source_candidate_id": "2025-q六-01",
+          "source_pages": [
+            57
+          ],
+          "source_section_ids": [
+            "2025-p57-q六"
+          ],
+          "source_locator": "第六题：周期脉冲采样、采样定理、非理想/冲激采样频谱对比",
+          "required_chapters": [
+            1
+          ],
+          "placement_chapter": 1,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "方波幅值与周期、采样脉冲宽度与周期、x(t)、s(t)、xs(t) 及频谱坐标标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "priority_questions": [
+        {
+          "id": "2015-q七-whole",
+          "year": 2015,
+          "source_candidate_id": "2015-q七-01",
+          "source_pages": [
+            31
+          ],
+          "source_section_ids": [
+            "2015-p31-q七"
+          ],
+          "source_locator": "第七题：离散因果 LTI 零极点图、H(z)、ROC、稳定性、h[n] 与差分方程",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "单位圆、原点、实虚轴、极点位置及 1、2 坐标标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2021-q六-whole",
+          "year": 2021,
+          "source_candidate_id": "2021-q六-01",
+          "source_pages": [
+            44,
+            45
+          ],
+          "source_section_ids": [
+            "2021-p44-q六",
+            "2021-p45-continuation-01"
+          ],
+          "source_locator": "第六题：离散时间正弦调制、DTFT 频谱搬移、低通解调与恢复条件",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "输入频谱支撑区、调制器、低通 H(e^{jω})、相干解调器、ωc、ωcp、x(n)、y(n) 与输出标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q八-whole",
+          "year": 2025,
+          "source_candidate_id": "2025-q八-01",
+          "source_pages": [
+            58,
+            59
+          ],
+          "source_section_ids": [
+            "2025-p58-q八",
+            "2025-p59-continuation-01"
+          ],
+          "source_locator": "第八题：离散 LSI 频响、单位脉冲响应、幅相响应与滤波特性",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2002-qintro-p3",
+          "year": 2002,
+          "source_candidate_id": "2002-qintro-01",
+          "source_pages": [
+            5
+          ],
+          "source_section_ids": [
+            "2002-p5-continuation-01"
+          ],
+          "source_locator": "填空题第3小题：离散时间系统稳定性",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-q八-whole",
+          "year": 2003,
+          "source_candidate_id": "2003-q八-01",
+          "source_pages": [
+            10
+          ],
+          "source_section_ids": [
+            "2003-p10-q八"
+          ],
+          "source_locator": "第八题：H(z) 的稳定与因果稳定条件",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-q九-p2",
+          "year": 2003,
+          "source_candidate_id": "2003-q九-01",
+          "source_pages": [
+            10
+          ],
+          "source_section_ids": [
+            "2003-p10-q九"
+          ],
+          "source_locator": "判断题第2小题：z 变换收敛域",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2004-q五-whole",
+          "year": 2004,
+          "source_candidate_id": "2004-q五-01",
+          "source_pages": [
+            12
+          ],
+          "source_section_ids": [
+            "2004-p12-q五"
+          ],
+          "source_locator": "第五题：离散系统方框图、H(z)、差分方程、因果稳定与冲激响应",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2004-q九-whole",
+          "year": 2004,
+          "source_candidate_id": "2004-q九-01",
+          "source_pages": [
+            13
+          ],
+          "source_section_ids": [
+            "2004-p13-q九"
+          ],
+          "source_locator": "第九题：梳状滤波器 H(z) 的零极点和增益",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2004-q十二-whole",
+          "year": 2004,
+          "source_candidate_id": "2004-q十二-01",
+          "source_pages": [
+            13
+          ],
+          "source_section_ids": [
+            "2004-p13-q十二"
+          ],
+          "source_locator": "第十二题：给定 h(n) 的滤波器类型和幅频响应",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-qintro-p4",
+          "year": 2005,
+          "source_candidate_id": "2005-qintro-01",
+          "source_pages": [
+            14
+          ],
+          "source_section_ids": [
+            "2005-p14-continuation-01"
+          ],
+          "source_locator": "填空题第4小题：给定 ROC 的 z 反变换",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-q十-whole",
+          "year": 2005,
+          "source_candidate_id": "2005-q十-01",
+          "source_pages": [
+            16
+          ],
+          "source_section_ids": [
+            "2005-p16-q十"
+          ],
+          "source_locator": "第十题：采样、数字带阻滤波和 D/A 重构",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-q十一-whole",
+          "year": 2005,
+          "source_candidate_id": "2005-q十一-01",
+          "source_pages": [
+            16
+          ],
+          "source_section_ids": [
+            "2005-p16-q十一"
+          ],
+          "source_locator": "第十一题：实因果序列的 DTFT 与反变换",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2006-qintro-p10",
+          "year": 2006,
+          "source_candidate_id": "2006-qintro-01",
+          "source_pages": [
+            17,
+            18
+          ],
+          "source_section_ids": [
+            "2006-p17-continuation-01",
+            "2006-p18-continuation-01"
+          ],
+          "source_locator": "填空题第10小题：给定 ROC 的 z 反变换",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2006-q十-whole",
+          "year": 2006,
+          "source_candidate_id": "2006-q十-01",
+          "source_pages": [
+            19
+          ],
+          "source_section_ids": [
+            "2006-p19-q十"
+          ],
+          "source_locator": "第十题：给定 X(e^jω) 的 DTFT 反变换",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-qintro-p2",
+          "year": 2007,
+          "source_candidate_id": "2007-qintro-01",
+          "source_pages": [
+            21
+          ],
+          "source_section_ids": [
+            "2007-p21-continuation-01"
+          ],
+          "source_locator": "填空题第2小题：常数序列的 DTFT",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q九-p3",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第九题填空第3小题：稳定系统的极点与因果性",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-qintro-p2-5",
+          "year": 2013,
+          "source_candidate_id": "2013-qintro-01",
+          "source_pages": [
+            25,
+            26
+          ],
+          "source_section_ids": [
+            "2013-p25-continuation-01",
+            "2013-p26-continuation-01"
+          ],
+          "source_locator": "第二组第5小题：双边序列 z 变换",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-q三-whole",
+          "year": 2013,
+          "source_candidate_id": "2013-q三-01",
+          "source_pages": [
+            26
+          ],
+          "source_section_ids": [
+            "2013-p26-q三"
+          ],
+          "source_locator": "第三题：理想低高带通带阻数字滤波器幅频响应",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-q五-whole",
+          "year": 2013,
+          "source_candidate_id": "2013-q五-01",
+          "source_pages": [
+            26
+          ],
+          "source_section_ids": [
+            "2013-p26-q五"
+          ],
+          "source_locator": "第五题：离散系统 H(z)、ROC 与单位脉冲响应",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-q六-whole",
+          "year": 2013,
+          "source_candidate_id": "2013-q六-01",
+          "source_pages": [
+            26
+          ],
+          "source_section_ids": [
+            "2013-p26-q六"
+          ],
+          "source_locator": "第六题：H(z) 零极点和幅频特性",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-q八-whole",
+          "year": 2013,
+          "source_candidate_id": "2013-q八-01",
+          "source_pages": [
+            26,
+            27
+          ],
+          "source_section_ids": [
+            "2013-p26-q八",
+            "2013-p27-continuation-01"
+          ],
+          "source_locator": "第八题：离散因果 LTI 的零极点、ROC、稳定性与差分方程",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2014-q二-whole",
+          "year": 2014,
+          "source_candidate_id": "2014-q二-01",
+          "source_pages": [
+            28,
+            29
+          ],
+          "source_section_ids": [
+            "2014-p28-q二",
+            "2014-p29-continuation-01"
+          ],
+          "source_locator": "第二题：DTFT 幅相频图的序列性质",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2014-q五-whole",
+          "year": 2014,
+          "source_candidate_id": "2014-q五-01",
+          "source_pages": [
+            29
+          ],
+          "source_section_ids": [
+            "2014-p29-q五"
+          ],
+          "source_locator": "第五题：离散 LTI 的差分方程、H(z)、ROC、h[n] 与频响",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p2",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第2小题：DTFT 实部对应序列",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-q四-whole",
+          "year": 2015,
+          "source_candidate_id": "2015-q四-01",
+          "source_pages": [
+            30,
+            31
+          ],
+          "source_section_ids": [
+            "2015-p30-q四",
+            "2015-p31-continuation-01"
+          ],
+          "source_locator": "第四题：离散结构图、H(z)、ROC 与稳定非因果脉冲响应",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "加法器、两级延时、5/2 与 -1 系数及 x[n]、y[n] 标注"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-q五-whole",
+          "year": 2015,
+          "source_candidate_id": "2015-q五-01",
+          "source_pages": [
+            31
+          ],
+          "source_section_ids": [
+            "2015-p31-q五"
+          ],
+          "source_locator": "第五题：由 h[n] 求 H(z)、零极点与幅频特性",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-qintro-brief1",
+          "year": 2016,
+          "source_candidate_id": "2016-qintro-01",
+          "source_pages": [
+            33,
+            34
+          ],
+          "source_section_ids": [
+            "2016-p33-continuation-01",
+            "2016-p34-continuation-01"
+          ],
+          "source_locator": "简答第1小题：FT、LT、ZT 的关系",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴与 n=0 位置"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-qintro-brief1",
+          "year": 2017,
+          "source_candidate_id": "2017-qintro-01",
+          "source_pages": [
+            36,
+            37
+          ],
+          "source_section_ids": [
+            "2017-p36-continuation-01",
+            "2017-p37-continuation-01"
+          ],
+          "source_locator": "简答第1小题：拉氏变换与 z 变换关系",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q十-whole",
+          "year": 2017,
+          "source_candidate_id": "2017-q十-01",
+          "source_pages": [
+            38
+          ],
+          "source_section_ids": [
+            "2017-p38-q十"
+          ],
+          "source_locator": "第十题：差分方程、H(z)、零极点、单位样值响应与稳定性",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-qintro-p2",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "填空第2小题：实部序列的 DTFT",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-qintro-p3",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "填空第3小题：离散 LTI 稳定与 ROC",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-q四-whole",
+          "year": 2020,
+          "source_candidate_id": "2020-q四-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-q四"
+          ],
+          "source_locator": "第四题：离散 LTI 频率响应作用于余弦输入",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2022-q八-whole",
+          "year": 2022,
+          "source_candidate_id": "2022-q八-01",
+          "source_pages": [
+            48
+          ],
+          "source_section_ids": [
+            "2022-p48-q八"
+          ],
+          "source_locator": "第八题：离散 LTI 流图、H(z)、零极点与幅频响应",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "x(n)、y(n)、-1 系数、z^{-N} 延时支路与加法节点"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-lsti",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "离散 LSTI 差分方程、H(z)、零极点、频响与输出",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-dsp-p2",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "DSP 第2小题：H(z) 零极点与幅频响应",
+          "required_chapters": [
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-lsi-difference",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "因果 LSI 差分方程、稳定性、脉冲响应及 FIR/IIR 判定",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q四-whole",
+          "year": 2025,
+          "source_candidate_id": "2025-q四-01",
+          "source_pages": [
+            56,
+            57
+          ],
+          "source_section_ids": [
+            "2025-p56-q四",
+            "2025-p57-continuation-01"
+          ],
+          "source_locator": "第四题：连续脉冲采样所得序列的 DTFT 与幅度谱",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q七-p4",
+          "year": 2025,
+          "source_candidate_id": "2025-q七-01",
+          "source_pages": [
+            57,
+            58
+          ],
+          "source_section_ids": [
+            "2025-p57-q七",
+            "2025-p58-continuation-01"
+          ],
+          "source_locator": "简答第4小题：A/D、调制、数字滤波、D/A 级联频谱",
+          "required_chapters": [
+            1,
+            2
+          ],
+          "placement_chapter": 2,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "priority_questions": [
+        {
+          "id": "2003-q七-whole",
+          "year": 2003,
+          "source_candidate_id": "2003-q七-01",
+          "source_pages": [
+            9,
+            10
+          ],
+          "source_section_ids": [
+            "2003-p9-q七",
+            "2003-p10-continuation-01"
+          ],
+          "source_locator": "第七题：用 DFT 对模拟信号进行频谱分析",
+          "required_chapters": [
+            1,
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2021-q七-whole",
+          "year": 2021,
+          "source_candidate_id": "2021-q七-01",
+          "source_pages": [
+            45
+          ],
+          "source_section_ids": [
+            "2021-p45-q七"
+          ],
+          "source_locator": "第七题：DFT、循环卷积、z 变换取样、IDFT 与频谱泄露",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-dsp-p4",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "DSP 第4小题：重叠保留法分段与首末段构造",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2002-q九-whole",
+          "year": 2002,
+          "source_candidate_id": "2002-q九-01",
+          "source_pages": [
+            7
+          ],
+          "source_section_ids": [
+            "2002-p7-q九"
+          ],
+          "source_locator": "第九题：DFT 与 IDFT 计算卷积",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2002-q十-whole",
+          "year": 2002,
+          "source_candidate_id": "2002-q十-01",
+          "source_pages": [
+            7
+          ],
+          "source_section_ids": [
+            "2002-p7-q十"
+          ],
+          "source_locator": "第十题：用 DFT 提高频谱分辨率",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-q九-p1",
+          "year": 2003,
+          "source_candidate_id": "2003-q九-01",
+          "source_pages": [
+            10
+          ],
+          "source_section_ids": [
+            "2003-p10-q九"
+          ],
+          "source_locator": "判断题第1小题：DFT 时移性质",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2003-q九-p3",
+          "year": 2003,
+          "source_candidate_id": "2003-q九-01",
+          "source_pages": [
+            10
+          ],
+          "source_section_ids": [
+            "2003-p10-q九"
+          ],
+          "source_locator": "判断题第3小题：频率采样与 IDFT 的时域混叠",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2004-q十-whole",
+          "year": 2004,
+          "source_candidate_id": "2004-q十-01",
+          "source_pages": [
+            13
+          ],
+          "source_section_ids": [
+            "2004-p13-q十"
+          ],
+          "source_locator": "第十题：DFT 频率分辨率与三正弦频谱",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-q九-whole",
+          "year": 2005,
+          "source_candidate_id": "2005-q九-01",
+          "source_pages": [
+            15,
+            16
+          ],
+          "source_section_ids": [
+            "2005-p15-q九",
+            "2005-p16-continuation-01"
+          ],
+          "source_locator": "第九题：5 点 DFT/IDFT 下的循环卷积",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2006-q九-whole",
+          "year": 2006,
+          "source_candidate_id": "2006-q九-01",
+          "source_pages": [
+            19
+          ],
+          "source_section_ids": [
+            "2006-p19-q九"
+          ],
+          "source_locator": "第九题：10 点 DFT、时移与频域相乘",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2006-q十二-whole",
+          "year": 2006,
+          "source_candidate_id": "2006-q十二-01",
+          "source_pages": [
+            20
+          ],
+          "source_section_ids": [
+            "2006-p20-q十二"
+          ],
+          "source_locator": "第十二题：重叠保留法的 DFT/IDFT 次数",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q九-p2",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第九题填空第2小题：z 域取样和 IDFT 恢复",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q九-p4",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第九题填空第4小题：循环卷积与线性卷积",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q十-p2",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第十题简答第2小题：频谱泄露及改善",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q十三-p1",
+          "year": 2007,
+          "source_candidate_id": "2007-q十三-01",
+          "source_pages": [
+            24
+          ],
+          "source_section_ids": [
+            "2007-p24-q十三"
+          ],
+          "source_locator": "第十三题第1问：用 DFT 分析指定模拟频率",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2013-qintro-p5",
+          "year": 2013,
+          "source_candidate_id": "2013-qintro-01",
+          "source_pages": [
+            25,
+            26
+          ],
+          "source_section_ids": [
+            "2013-p25-continuation-01",
+            "2013-p26-continuation-01"
+          ],
+          "source_locator": "第一组填空第5小题：实偶周期序列的 DFS 系数",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2014-qintro-p7",
+          "year": 2014,
+          "source_candidate_id": "2014-qintro-01",
+          "source_pages": [
+            28
+          ],
+          "source_section_ids": [
+            "2014-p28-continuation-01"
+          ],
+          "source_locator": "填空第7小题：实偶周期序列 DFS",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p3",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第3小题：N 点 DFT 与 z 变换取样",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p4",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第4小题：循环卷积等于线性卷积的长度条件",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q七-p3",
+          "year": 2016,
+          "source_candidate_id": "2016-q七-01",
+          "source_pages": [
+            34
+          ],
+          "source_section_ids": [
+            "2016-p34-q七"
+          ],
+          "source_locator": "DSP 第3小题：DFT 频域抽取与反变换",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q七-p4",
+          "year": 2016,
+          "source_candidate_id": "2016-q七-01",
+          "source_pages": [
+            34
+          ],
+          "source_section_ids": [
+            "2016-p34-q七"
+          ],
+          "source_locator": "DSP 第4小题：余弦序列 N 点 DFT",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q七-p5",
+          "year": 2016,
+          "source_candidate_id": "2016-q七-01",
+          "source_pages": [
+            34
+          ],
+          "source_section_ids": [
+            "2016-p34-q七"
+          ],
+          "source_locator": "DSP 第5小题：栅栏效应及减小方法",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q八-whole",
+          "year": 2016,
+          "source_candidate_id": "2016-q八-01",
+          "source_pages": [
+            34,
+            35
+          ],
+          "source_section_ids": [
+            "2016-p34-q八",
+            "2016-p35-continuation-01"
+          ],
+          "source_locator": "第八题：用一次 N 点 DFT 求两个实序列的 DFT",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q六-p1",
+          "year": 2017,
+          "source_candidate_id": "2017-q六-01",
+          "source_pages": [
+            37,
+            38
+          ],
+          "source_section_ids": [
+            "2017-p37-q六",
+            "2017-p38-continuation-01"
+          ],
+          "source_locator": "第六题第1小题：DFT 时移与频域相乘",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q六-p2",
+          "year": 2017,
+          "source_candidate_id": "2017-q六-01",
+          "source_pages": [
+            37,
+            38
+          ],
+          "source_section_ids": [
+            "2017-p37-q六",
+            "2017-p38-continuation-01"
+          ],
+          "source_locator": "第六题第2小题：点循环卷积",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q六-p3",
+          "year": 2017,
+          "source_candidate_id": "2017-q六-01",
+          "source_pages": [
+            37,
+            38
+          ],
+          "source_section_ids": [
+            "2017-p37-q六",
+            "2017-p38-continuation-01"
+          ],
+          "source_locator": "第六题第3小题：频率分辨率、记录时间与采样频率",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2019-q三-whole",
+          "year": 2019,
+          "source_candidate_id": "2019-q三-01",
+          "source_pages": [
+            39
+          ],
+          "source_section_ids": [
+            "2019-p39-q三"
+          ],
+          "source_locator": "第三题：栅栏效应原因与解决方法",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-qintro-brief1",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "简答第1小题：栅栏效应",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-q三-whole",
+          "year": 2020,
+          "source_candidate_id": "2020-q三-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-q三"
+          ],
+          "source_locator": "第三题：DFT 频域抽取与 2 点 IDFT",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-q五-whole",
+          "year": 2020,
+          "source_candidate_id": "2020-q五-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-q五"
+          ],
+          "source_locator": "第五题：DFT 时移性质与循环卷积",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-dsp-p3",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "DSP 第3小题：DFT 频域相乘求 y(n)",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-dsp-p1",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "DSP 第1小题：4 点 DFT 与 X*(k)",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-dsp-p3",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "DSP 第3小题：偶对称实序列的 N 点 DFT 特性",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q七-p1",
+          "year": 2025,
+          "source_candidate_id": "2025-q七-01",
+          "source_pages": [
+            57,
+            58
+          ],
+          "source_section_ids": [
+            "2025-p57-q七",
+            "2025-p58-continuation-01"
+          ],
+          "source_locator": "简答第1小题：4 点 DFT 及共轭对称/反对称分量",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q七-p2",
+          "year": 2025,
+          "source_candidate_id": "2025-q七-01",
+          "source_pages": [
+            57,
+            58
+          ],
+          "source_section_ids": [
+            "2025-p57-q七",
+            "2025-p58-continuation-01"
+          ],
+          "source_locator": "简答第2小题：DTFT 等间隔取样与 4 点 DFT 反变换",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q七-p3",
+          "year": 2025,
+          "source_candidate_id": "2025-q七-01",
+          "source_pages": [
+            57,
+            58
+          ],
+          "source_section_ids": [
+            "2025-p57-q七",
+            "2025-p58-continuation-01"
+          ],
+          "source_locator": "简答第3小题：偶/奇对称有限序列的 DFT 特性",
+          "required_chapters": [
+            3
+          ],
+          "placement_chapter": 3,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "priority_questions": [
+        {
+          "id": "2017-q六-p5",
+          "year": 2017,
+          "source_candidate_id": "2017-q六-01",
+          "source_pages": [
+            37,
+            38
+          ],
+          "source_section_ids": [
+            "2017-p37-q六",
+            "2017-p38-continuation-01"
+          ],
+          "source_locator": "第六题第5小题：8 点时间抽取基-2 FFT 流图",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2022-q五-p3",
+          "year": 2022,
+          "source_candidate_id": "2022-q五-01",
+          "source_pages": [
+            47
+          ],
+          "source_section_ids": [
+            "2022-p47-q五"
+          ],
+          "source_locator": "第五题第3小题：一次 N/2 点 FFT 计算 N 点 DFT",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-dsp-p5",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "DSP 第5小题：重叠保留法的 128 点 FFT/IFFT 次数",
+          "required_chapters": [
+            3,
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2004-q十一-whole",
+          "year": 2004,
+          "source_candidate_id": "2004-q十一-01",
+          "source_pages": [
+            13
+          ],
+          "source_section_ids": [
+            "2004-p13-q十一"
+          ],
+          "source_locator": "第十一题：FFT/IFFT 重叠相加法的调用次数",
+          "required_chapters": [
+            3,
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q十一-whole",
+          "year": 2007,
+          "source_candidate_id": "2007-q十一-01",
+          "source_pages": [
+            23,
+            24
+          ],
+          "source_section_ids": [
+            "2007-p23-q十一",
+            "2007-p24-continuation-01"
+          ],
+          "source_locator": "第十一题：按时间抽取的 2-FFT 分解和流图",
+          "required_chapters": [
+            3,
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q十三-p2",
+          "year": 2007,
+          "source_candidate_id": "2007-q十三-01",
+          "source_pages": [
+            24
+          ],
+          "source_section_ids": [
+            "2007-p24-q十三"
+          ],
+          "source_locator": "第十三题第2问：单次 256 点 FFT 的谱分析方法",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p5",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第5小题：16 点 DFT 与 2FFT 运算量",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p6",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第6小题：FFT 降低计算量的原理",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q六-p4",
+          "year": 2017,
+          "source_candidate_id": "2017-q六-01",
+          "source_pages": [
+            37,
+            38
+          ],
+          "source_section_ids": [
+            "2017-p37-q六",
+            "2017-p38-continuation-01"
+          ],
+          "source_locator": "第六题第4小题：重叠相加法的 FFT/IFFT 次数",
+          "required_chapters": [
+            3,
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-qintro-p1",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "填空第1小题：256 点时间抽取基-2 FFT 蝶形数",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2020-qintro-p5",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "填空第5小题：直接计算 N 点 DFT 的复乘数",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-dsp-p5",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "DSP 第5小题：8 点基-2 DIT-FFT 蝶形流图",
+          "required_chapters": [
+            4
+          ],
+          "placement_chapter": 4,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "priority_questions": [
+        {
+          "id": "2020-qintro-brief2",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "简答第2小题：IIR 级联型与并联型结构特点",
+          "required_chapters": [
+            5
+          ],
+          "placement_chapter": 5,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": []
+    },
+    {
+      "chapter": 6,
+      "priority_questions": [
+        {
+          "id": "2007-q八-whole",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第八题：双线性变换保持稳定性的证明",
+          "required_chapters": [
+            2,
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2021-q八-whole",
+          "year": 2021,
+          "source_candidate_id": "2021-q八-01",
+          "source_pages": [
+            45
+          ],
+          "source_section_ids": [
+            "2021-p45-q八"
+          ],
+          "source_locator": "第八题：双线性变换法设计巴特沃斯低通 IIR",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2023-iir",
+          "year": 2023,
+          "source_candidate_id": "2023-qintro-01",
+          "source_pages": [
+            50,
+            51
+          ],
+          "source_section_ids": [
+            "2023-p50-continuation-01",
+            "2023-p51-continuation-01"
+          ],
+          "source_locator": "脉冲响应不变法与双线性变换法设计 IIR 及结构比较",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2005-q八-whole",
+          "year": 2005,
+          "source_candidate_id": "2005-q八-01",
+          "source_pages": [
+            15
+          ],
+          "source_section_ids": [
+            "2005-p15-q八"
+          ],
+          "source_locator": "第八题全部五问：模拟系统频响、采样离散化与 H(z)",
+          "required_chapters": [
+            1,
+            2,
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-q十二-p1",
+          "year": 2005,
+          "source_candidate_id": "2005-q十二-01",
+          "source_pages": [
+            16
+          ],
+          "source_section_ids": [
+            "2005-p16-q十二"
+          ],
+          "source_locator": "第十二题第1问：脉冲响应不变法反求模拟原型",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2005-q十二-p2",
+          "year": 2005,
+          "source_candidate_id": "2005-q十二-01",
+          "source_pages": [
+            16
+          ],
+          "source_section_ids": [
+            "2005-p16-q十二"
+          ],
+          "source_locator": "第十二题第2问：双线性变换法反求模拟原型",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2006-q十一-p1",
+          "year": 2006,
+          "source_candidate_id": "2006-q十一-01",
+          "source_pages": [
+            19,
+            20
+          ],
+          "source_section_ids": [
+            "2006-p19-q十一",
+            "2006-p20-continuation-01"
+          ],
+          "source_locator": "第十一题第1问：脉冲响应不变法与最小相位",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2006-q十一-p2",
+          "year": 2006,
+          "source_candidate_id": "2006-q十一-01",
+          "source_pages": [
+            19,
+            20
+          ],
+          "source_section_ids": [
+            "2006-p19-q十一",
+            "2006-p20-continuation-01"
+          ],
+          "source_locator": "第十一题第2问：双线性变换与最小相位",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q十-p3",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第十题简答第3小题：脉冲响应不变法与双线性变换频率映射",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-q二-whole",
+          "year": 2015,
+          "source_candidate_id": "2015-q二-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-q二"
+          ],
+          "source_locator": "第二题：理想低通、高通、带通、带阻数字滤波器幅频响应",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q九-whole",
+          "year": 2017,
+          "source_candidate_id": "2017-q九-01",
+          "source_pages": [
+            38
+          ],
+          "source_section_ids": [
+            "2017-p38-q九"
+          ],
+          "source_locator": "第九题：双线性变换法 IIR 低通指标与阶数",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2022-q六-whole",
+          "year": 2022,
+          "source_candidate_id": "2022-q六-01",
+          "source_pages": [
+            47,
+            48
+          ],
+          "source_section_ids": [
+            "2022-p47-q六",
+            "2022-p48-continuation-01"
+          ],
+          "source_locator": "第六题：双线性变换法设计二阶巴特沃斯低通 IIR",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q七-p5",
+          "year": 2025,
+          "source_candidate_id": "2025-q七-01",
+          "source_pages": [
+            57,
+            58
+          ],
+          "source_section_ids": [
+            "2025-p57-q七",
+            "2025-p58-continuation-01"
+          ],
+          "source_locator": "简答第5小题：脉冲响应不变法与双线性变换法的线性/级联性质",
+          "required_chapters": [
+            6
+          ],
+          "placement_chapter": 6,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "priority_questions": [
+        {
+          "id": "2022-q九-whole",
+          "year": 2022,
+          "source_candidate_id": "2022-q九-01",
+          "source_pages": [
+            48
+          ],
+          "source_section_ids": [
+            "2022-p48-q九"
+          ],
+          "source_locator": "第九题：海明窗设计数字带阻 FIR",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-dsp-p4",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "DSP 第4小题：线性相位 FIR 的零点约束、最低阶数与群延迟",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2025-q九-whole",
+          "year": 2025,
+          "source_candidate_id": "2025-q九-01",
+          "source_pages": [
+            59
+          ],
+          "source_section_ids": [
+            "2025-p59-q九"
+          ],
+          "source_locator": "第九题：窗函数法设计因果稳定线性相位高通 FIR",
+          "required_chapters": [
+            2,
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2007-q十-p1",
+          "year": 2007,
+          "source_candidate_id": "2007-q八-01",
+          "source_pages": [
+            23
+          ],
+          "source_section_ids": [
+            "2007-p23-q八"
+          ],
+          "source_locator": "第十题简答第1小题：窗函数法 FIR 设计",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2007-q十二-whole",
+          "year": 2007,
+          "source_candidate_id": "2007-q十二-01",
+          "source_pages": [
+            24
+          ],
+          "source_section_ids": [
+            "2007-p24-q十二"
+          ],
+          "source_locator": "第十二题：频率采样法设计线性相位 FIR",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-qintro-p8",
+          "year": 2015,
+          "source_candidate_id": "2015-qintro-01",
+          "source_pages": [
+            30
+          ],
+          "source_section_ids": [
+            "2015-p30-continuation-01"
+          ],
+          "source_locator": "填空第8小题：偶对称 FIR 的幅频与相频特性",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-q九-whole",
+          "year": 2016,
+          "source_candidate_id": "2016-q九-01",
+          "source_pages": [
+            35
+          ],
+          "source_section_ids": [
+            "2016-p35-q九"
+          ],
+          "source_locator": "第九题：频率采样法设计一类 FIR 及频域采样型结构",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2017-q八-whole",
+          "year": 2017,
+          "source_candidate_id": "2017-q八-01",
+          "source_pages": [
+            38
+          ],
+          "source_section_ids": [
+            "2017-p38-q八"
+          ],
+          "source_locator": "第八题：矩形/余弦窗设计线性相位 FIR",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2019-q五-whole",
+          "year": 2019,
+          "source_candidate_id": "2019-q五-01",
+          "source_pages": [
+            40
+          ],
+          "source_section_ids": [
+            "2019-p40-q五"
+          ],
+          "source_locator": "第五题：FIR 零极点、直接型与线性相位",
+          "required_chapters": [
+            2,
+            5,
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2021-q九-whole",
+          "year": 2021,
+          "source_candidate_id": "2021-q九-01",
+          "source_pages": [
+            45
+          ],
+          "source_section_ids": [
+            "2021-p45-q九"
+          ],
+          "source_locator": "第九题：FIR 零极点、线性相位与窄带干扰抑制",
+          "required_chapters": [
+            2,
+            5,
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2024-fir-second",
+          "year": 2024,
+          "source_candidate_id": "2024-qintro-01",
+          "source_pages": [
+            52,
+            54,
+            55
+          ],
+          "source_section_ids": [
+            "2024-p52-continuation-01",
+            "2024-p54-continuation-01",
+            "2024-p55-continuation-01"
+          ],
+          "source_locator": "二阶 FIR 的系数、幅相响应与线性相位",
+          "required_chapters": [
+            7
+          ],
+          "placement_chapter": 7,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "priority_questions": [
+        {
+          "id": "2013-q九-whole",
+          "year": 2013,
+          "source_candidate_id": "2013-q九-01",
+          "source_pages": [
+            27
+          ],
+          "source_section_ids": [
+            "2013-p27-q九"
+          ],
+          "source_locator": "第九题：零值插入、数字低通和周期采样的多采样率频谱",
+          "required_chapters": [
+            8
+          ],
+          "placement_chapter": 8,
+          "split_mode": "whole_question",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2015-q八-whole",
+          "year": 2015,
+          "source_candidate_id": "2015-q八-01",
+          "source_pages": [
+            31,
+            32
+          ],
+          "source_section_ids": [
+            "2015-p31-q八",
+            "2015-p32-continuation-01"
+          ],
+          "source_locator": "第八题：零值插入、理想低通、采样组成的多采样率链",
+          "required_chapters": [
+            8
+          ],
+          "placement_chapter": 8,
+          "split_mode": "whole_question",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "输入三角频谱、零值插入—H(e^{jω})—采样框图、x[n]、g[n]、ω[n]、y[n] 与截止频率"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        },
+        {
+          "id": "2016-qintro-brief2",
+          "year": 2016,
+          "source_candidate_id": "2016-qintro-01",
+          "source_pages": [
+            33,
+            34
+          ],
+          "source_section_ids": [
+            "2016-p33-continuation-01",
+            "2016-p34-continuation-01"
+          ],
+          "source_locator": "简答第2小题：时分复用原理与举例",
+          "required_chapters": [
+            8
+          ],
+          "placement_chapter": 8,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": {
+            "watermark_present": true,
+            "handout_action": "redraw",
+            "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴与 n=0 位置"
+          },
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ],
+      "supplemental_questions": [
+        {
+          "id": "2020-qintro-brief3",
+          "year": 2020,
+          "source_candidate_id": "2020-qintro-01",
+          "source_pages": [
+            41
+          ],
+          "source_section_ids": [
+            "2020-p41-continuation-01"
+          ],
+          "source_locator": "简答第3小题：多路复用",
+          "required_chapters": [
+            8
+          ],
+          "placement_chapter": 8,
+          "split_mode": "split_independent_parts",
+          "source_figure_handling": null,
+          "answer_page_ref_status": "pending_final_pagination",
+          "figure_instruction": "逐幅检查水印；有水印即去除；遮挡有效信息时修复或重绘，且不得裁掉坐标、曲线、公式、单位或标签。"
+        }
+      ]
+    }
+  ]
+}
