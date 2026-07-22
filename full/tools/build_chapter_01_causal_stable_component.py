@@ -26,7 +26,7 @@ def p1(p):
  y=sec(p,'按输入索引判断',y-2)
  y=box(p,r'y(n_0)\quad\Longleftarrow\quad x(n),\ n\leq n_0',y,48)
  y=para(p,'判断时只看输出中出现的输入样值索引，不把已知的时间函数误判为输入。',y)
- y=sec(p,'源课件例题',y-2)
+ y=sec(p,'例题',y-2)
  y=para(p,'{{y(n)=n x(n)}} 因果；{{y(n)=x(n+2)}} 非因果，因为 {{y(0)=x(2)}}；{{y(n)=x(n^2)}} 非因果，因为 {{y(2)=x(4)}}；{{y(n)=x(-n)}} 非因果，因为 {{y(-2)=x(2)}}；{{y(n)=\\sin(n+2)x(n)}} 因果，因为正弦因子不是输入。',y)
  style.draw_note(p,'口诀：只要出现未来的输入样值，就不是因果系统。',y-3); p.showPage()
 
@@ -44,7 +44,7 @@ def p3(p):
  start(p,3); y=title(p,'一般系统的稳定性')
  y=para(p,'稳定性采用 BIBO（有界输入、有界输出）定义：若任意有界输入都产生有界输出，则系统稳定。时间索引 {{n}} 不受限制。',y)
  y=box(p,r'|x(n)|\leq M<\infty\ \Longrightarrow\ |y(n)|\leq P<\infty',y,50)
- y=sec(p,'源课件例题',y-2)
+ y=sec(p,'例题',y-2)
  y=para(p,'{{y(n)=n x(n)}} 不稳定：取有界常数输入时输出随 {{n}} 增长。{{y(n)=x(n^2)}} 稳定。',y)
  y=box(p,r'y(n)=\frac{1}{3}\sum_{k=n-1}^{n+1}x(k)',y,48)
  y=para(p,'该三点平均系统稳定：它只取三个有界样值的平均。',y)
