@@ -1,0 +1,18 @@
+{
+  "component": "chapter_01_difference_equation",
+  "source_pages": [125, 126, 127, 128, 129, 130, 131],
+  "merged_pages": [
+    {"source_page": 124, "merged_with": 125, "reason": "章节导览页仅含标题"},
+    {"source_page": 133, "merged_with": 126, "reason": "章节导览完全重复"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_pages": [132], "reason": "MATLAB filter 函数、代码与绘图输出"}
+  ],
+  "retained_core": [
+    "线性常系数差分方程的通式、常系数、阶数和线性含义",
+    "经典解法、迭代法、变换域法和卷积法",
+    "同一方程在因果与非因果边界条件下的两种单位脉冲响应",
+    "由一阶差分方程得到加法器、乘法器与延迟单元的结构"
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}

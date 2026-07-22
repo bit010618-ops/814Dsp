@@ -25,7 +25,7 @@ UNIT_DEFINITIONS = [
     ("c1-02-convolution-basics", "textbook_section", "1.2 LSI 系统的时域求解：线性卷积（基础）", 85, 97, "保留 LSI、单位抽样响应、卷积和定义及计算步骤。"),
     ("c1-02-convolution-properties", "textbook_section", "1.2 LSI 系统的时域求解：卷积性质与应用", 98, 114, "保留卷积规则、相关、应用例题和图解。"),
     ("c1-02-causal-stable", "textbook_section", "1.2 离散时间系统的因果性及稳定性", 115, 123, "保留一般系统与 LSI 系统的因果性、稳定性判据和例题。"),
-    ("c1-03-difference-equation", "textbook_section", "1.3 常系数线性差分方程", 124, 133, "保留通式、四种求解法、因果和非因果迭代解、结构及 MATLAB filter。"),
+    ("c1-03-difference-equation", "textbook_section", "1.3 常系数线性差分方程", 124, 133, "保留通式、四种求解法、因果和非因果迭代解及系统结构；MATLAB filter 按范围约束排除。"),
     ("c1-04-sampling-theorem-1", "textbook_section", "1.4 时域采样定理", 134, 149, "保留理想采样、频域周期延拓、无混叠和混叠、采样定理。"),
     ("c1-04-sampling-theorem-2", "textbook_section", "1.4 采样定理的工程应用与带通信号采样", 150, 159, "保留抗混叠滤波、音频实例和带通信号采样。"),
     ("c1-04-sampling-recovery", "textbook_section", "1.4 时域采样信号的恢复", 160, 167, "保留理想低通重构、内插函数和恢复过程图解。"),
@@ -54,6 +54,7 @@ COMPONENT_FILE_BY_UNIT = {
     "c1-02-convolution-basics": "full/source/chapter_01_convolution_basics_component.json",
     "c1-02-convolution-properties": "full/source/chapter_01_convolution_properties_component.json",
     "c1-02-causal-stable": "full/source/chapter_01_causal_stable_component.json",
+    "c1-03-difference-equation": "full/source/chapter_01_difference_equation_component.json",
 }
 
 

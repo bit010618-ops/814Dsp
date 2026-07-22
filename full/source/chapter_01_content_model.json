@@ -313,13 +313,13 @@
         132,
         133
       ],
-      "source_scope": "保留通式、四种求解法、因果和非因果迭代解、结构及 MATLAB filter。",
+      "source_scope": "保留通式、四种求解法、因果和非因果迭代解及系统结构；MATLAB filter 按范围约束排除。",
       "direct_rewrite_source_pages": [
         129,
         130
       ],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_difference_equation_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
