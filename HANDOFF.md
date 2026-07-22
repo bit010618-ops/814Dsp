@@ -222,3 +222,9 @@
 - 已从导入脚本重新生成全部批次和合并 PDF；结果为 119 页 A4、约 14.93 MiB。以 `legacy_full/` 为模块根运行旧回归为 `246 passed`；从当前仓库根运行抽样旧回归 `8 passed`，现有 `sample/tests` 与 `full/tests` 为 `69 passed`。
 - `docs/legacy-full-baseline-audit.md` 规定采用边界：历史基线为绘制资产库，不是本项目最终交付。它的 7 章／436 页追踪范围、已记录的 IIR 回退和旧页眉规则均不得覆盖当前锁定的 8 章／1056 页、无水印真题图、蓝金版式和真题组织要求。
 - 下一步：从 `legacy_full/work/` 抽取共享排版与图形函数，建立 `full/` 自己的八章生成入口和覆盖审计；绝不把 119 页历史 PDF直接替换为当前成品。
+
+## Latest current-source coverage comparison milestone — 2026-07-22
+
+- 已以 1056 页当前主课件逐页对比两份可打印基线。历史 119 页稿平均文本匹配为 `0.5342`，二十四稿为 `0.6380`；各章二十四稿均更高，第七章最高 `0.7219`。原始审计结果在 `full/artifacts/legacy_current_coverage.json` 与 `full/artifacts/reference24_current_coverage.json`。
+- 因此：`legacy_full/` 仍仅作代码／图形资产库；用户提供的二十四稿可作为内容补写优先基线，但绝不作为完成证据。二十四稿仍有 43 个当前源页匹配低于 `0.30`，且所有图、公式和改写语句都必须按主课件逐页复核。
+- `full/docs/content-baseline-comparison.md` 已保存方法、八章统计与采用边界。下一步：以该页级审计为输入建立当前八章的转写状态模型，再生成并核验第一章。
