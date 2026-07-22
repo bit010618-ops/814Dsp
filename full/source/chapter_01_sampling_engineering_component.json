@@ -1,0 +1,19 @@
+{
+  "component": "chapter_01_sampling_engineering",
+  "source_pages": [151, 152, 153, 156, 157, 158],
+  "merged_pages": [
+    {"source_page": 150, "merged_with": 151, "reason": "section title page only"},
+    {"source_page": 159, "merged_with": 151, "reason": "duplicate section outline"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_pages": [154, 155], "reason": "audio processing example is outside the DSP fundamentals handout scope"}
+  ],
+  "retained_core": [
+    "anti-alias filtering before A/D conversion",
+    "frequency-domain comparison before and after bandwidth limiting",
+    "bandpass-signal upper frequency, bandwidth, and center frequency",
+    "integer-r bandpass sampling condition and recovery filter",
+    "noninteger case handled by extending the lower band edge"
+  ],
+  "source_audit_status": "rendered_and_visually_verified_for_integration"
+}

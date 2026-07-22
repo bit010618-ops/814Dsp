@@ -27,7 +27,7 @@ UNIT_DEFINITIONS = [
     ("c1-02-causal-stable", "textbook_section", "1.2 离散时间系统的因果性及稳定性", 115, 123, "保留一般系统与 LSI 系统的因果性、稳定性判据和例题。"),
     ("c1-03-difference-equation", "textbook_section", "1.3 常系数线性差分方程", 124, 133, "保留通式、四种求解法、因果和非因果迭代解及系统结构；MATLAB filter 按范围约束排除。"),
     ("c1-04-sampling-theorem-1", "textbook_section", "1.4 时域采样定理", 134, 149, "保留理想采样、频域周期延拓、无混叠和混叠、采样定理。"),
-    ("c1-04-sampling-theorem-2", "textbook_section", "1.4 采样定理的工程应用与带通信号采样", 150, 159, "保留抗混叠滤波、音频实例和带通信号采样。"),
+    ("c1-04-sampling-theorem-2", "textbook_section", "1.4 采样定理的工程应用与带通信号采样", 150, 159, "保留抗混叠滤波与带通信号采样；音频实验内容按范围约束排除。"),
     ("c1-04-sampling-recovery", "textbook_section", "1.4 时域采样信号的恢复", 160, 167, "保留理想低通重构、内插函数和恢复过程图解。"),
     ("c1-04-analog-digital-chain", "textbook_section", "1.4 模拟信号的数字处理方法", 168, 176, "保留前置滤波、A/D、DSP、D/A、平滑滤波、零阶保持及处理链图解。"),
     ("c1-04-applications-and-close", "chapter_case", "1.4 采样认知案例与本章收束", 177, 185, "保留奈奎斯特、香农、车轮视觉混叠和透过现象看本质的课程收束内容。"),
@@ -56,6 +56,7 @@ COMPONENT_FILE_BY_UNIT = {
     "c1-02-causal-stable": "full/source/chapter_01_causal_stable_component.json",
     "c1-03-difference-equation": "full/source/chapter_01_difference_equation_component.json",
     "c1-04-sampling-theorem-1": "full/source/chapter_01_sampling_theorem_component.json",
+    "c1-04-sampling-theorem-2": "full/source/chapter_01_sampling_engineering_component.json",
 }
 
 

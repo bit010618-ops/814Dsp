@@ -373,10 +373,10 @@
         158,
         159
       ],
-      "source_scope": "保留抗混叠滤波、音频实例和带通信号采样。",
+      "source_scope": "保留抗混叠滤波与带通信号采样；音频实验内容按范围约束排除。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_sampling_engineering_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
