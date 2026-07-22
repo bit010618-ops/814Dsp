@@ -34,6 +34,7 @@ def test_chapter_one_model_anchors_verified_direct_rewrites_and_retained_increme
     assert by_id["c1-01-periodicity"]["component_file"] == "full/source/chapter_01_periodicity_component.json"
     assert by_id["c1-02-linearity"]["component_file"] == "full/source/chapter_01_linearity_component.json"
     assert by_id["c1-02-time-invariance"]["component_file"] == "full/source/chapter_01_time_invariance_component.json"
+    assert by_id["c1-02-convolution-basics"]["component_file"] == "full/source/chapter_01_convolution_basics_component.json"
     assert by_id["c1-04-sampling-theorem-1"]["incremental_page_groups"] == [[142, 143]]
     assert by_id["c1-04-sampling-recovery"]["incremental_page_groups"] == [[164, 165]]
 

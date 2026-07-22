@@ -1,0 +1,21 @@
+{
+  "component": "chapter_01_convolution_basics",
+  "source_pages": [86, 87, 88, 89, 90, 91, 92, 93, 94, 95],
+  "merged_pages": [
+    {"source_page": 85, "merged_with": 86, "reason": "本节封面仅含标题"},
+    {"source_page": 97, "merged_with": 86, "reason": "内容完全重复"},
+    {"source_page": 88, "merged_with": 87, "reason": "保留概念图，避免重复定义"},
+    {"source_pages": [93, 94], "reason": "同一道卷积例题的逐步动画，合并为完整详解"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_page": 96, "reason": "MATLAB conv 函数、绘图代码与输出示例"}
+  ],
+  "retained_core": [
+    "LSI 系统、单位脉冲响应与卷积和定义",
+    "由单位脉冲分解、线性和移不变性导出卷积和",
+    "反褶、移位、相乘、相加的图解计算步骤",
+    "x(n)=delta(n)+2delta(n-1) 与 h(n)=3delta(n)+2delta(n-1)+delta(n-2) 的完整例题",
+    "与移位单位脉冲卷积得到延时序列的性质"
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}

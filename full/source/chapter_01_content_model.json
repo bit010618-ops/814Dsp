@@ -241,7 +241,7 @@
       "source_scope": "保留 LSI、单位抽样响应、卷积和定义及计算步骤。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_convolution_basics_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
