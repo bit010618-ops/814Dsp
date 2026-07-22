@@ -45,6 +45,8 @@ INCREMENTAL_GROUPS_BY_UNIT = {
     "c1-04-sampling-recovery": [[164, 165]],
 }
 COMPONENT_FILE_BY_UNIT = {
+    "c1-opening": "full/source/chapter_01_opening_component.json",
+    "c1-01-origin": "full/source/chapter_01_origin_component.json",
     "c1-01-representations": "full/source/chapter_01_representation_component.json",
     "c1-01-operations": "full/source/chapter_01_operations_component.json",
     "c1-01-typical-sequences": "full/source/chapter_01_typical_sequences_component.json",

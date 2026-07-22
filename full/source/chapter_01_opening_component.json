@@ -1,0 +1,17 @@
+{
+  "chapter": 1,
+  "component": "chapter_01_opening",
+  "source_pages": [1],
+  "component_status": "rendered_and_visually_verified_for_integration",
+  "sections": [
+    "1.1 离散时间信号——序列",
+    "1.2 离散时间系统",
+    "1.3 常系数线性差分方程",
+    "1.4 连续时间信号的抽样"
+  ],
+  "layout_contract": {
+    "chapter_starts_on_new_page": true,
+    "reader_facing_identity": "数字信号处理讲义",
+    "source_identity_wording_forbidden": true
+  }
+}

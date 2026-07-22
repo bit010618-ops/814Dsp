@@ -29,6 +29,8 @@ def test_chapter_one_model_anchors_verified_direct_rewrites_and_retained_increme
     assert by_id["c1-04-analog-digital-chain"]["direct_rewrite_source_pages"] == [171]
     assert by_id["c1-opening"]["direct_rewrite_source_pages"] == []
     assert by_id["c1-01-representations"]["component_file"] == "full/source/chapter_01_representation_component.json"
+    assert by_id["c1-01-origin"]["component_file"] == "full/source/chapter_01_origin_component.json"
+    assert by_id["c1-opening"]["component_file"] == "full/source/chapter_01_opening_component.json"
     assert by_id["c1-01-operations"]["component_file"] == "full/source/chapter_01_operations_component.json"
     assert by_id["c1-01-typical-sequences"]["component_file"] == "full/source/chapter_01_typical_sequences_component.json"
     assert by_id["c1-01-periodicity"]["component_file"] == "full/source/chapter_01_periodicity_component.json"

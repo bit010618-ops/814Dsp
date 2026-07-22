@@ -26,7 +26,7 @@
       "source_scope": "将原课件四节目录改排为本章开篇导览，保留四节名称和原始顺序。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_opening_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -46,7 +46,7 @@
       "source_scope": "保留时域采样、采样间隔、采样频率与音频采样率实例。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_origin_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
