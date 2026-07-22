@@ -57,6 +57,7 @@ COMPONENT_FILE_BY_UNIT = {
     "c1-03-difference-equation": "full/source/chapter_01_difference_equation_component.json",
     "c1-04-sampling-theorem-1": "full/source/chapter_01_sampling_theorem_component.json",
     "c1-04-sampling-theorem-2": "full/source/chapter_01_sampling_engineering_component.json",
+    "c1-04-sampling-recovery": "full/source/chapter_01_sampling_recovery_component.json",
 }
 
 

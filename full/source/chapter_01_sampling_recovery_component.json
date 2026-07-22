@@ -1,0 +1,17 @@
+{
+  "component": "chapter_01_sampling_recovery",
+  "source_pages": [161, 162, 163, 165, 166],
+  "merged_pages": [
+    {"source_page": 160, "merged_with": 161, "reason": "section title page only"},
+    {"source_pages": [164, 165], "reason": "interpolation recovery progressive diagram; retain the complete explanatory state"},
+    {"source_page": 167, "merged_with": 161, "reason": "duplicate section title page"}
+  ],
+  "retained_core": [
+    "recovery condition after non-aliased sampling",
+    "ideal low-pass reconstruction filter and its impulse response",
+    "time-domain convolution interpretation of reconstruction",
+    "interpolation-function reconstruction from samples",
+    "interpolation values at sample instants"
+  ],
+  "source_audit_status": "rendered_and_visually_verified_for_integration"
+}
