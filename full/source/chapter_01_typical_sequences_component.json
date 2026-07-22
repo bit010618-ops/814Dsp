@@ -1,0 +1,22 @@
+{
+  "component": "chapter_01_typical_sequences",
+  "source_pages": [46, 47, 48, 49, 50, 51, 53, 55],
+  "merged_pages": [
+    {"source_page": 45, "merged_with": 46, "reason": "仅含本节标题"},
+    {"source_page": 57, "merged_with": 46, "reason": "内容完全重复"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_page": 52, "reason": "MATLAB 正弦序列作图代码"},
+    {"source_page": 54, "reason": "MATLAB 复指数序列作图代码"},
+    {"source_page": 56, "reason": "MATLAB 随机序列例程"}
+  ],
+  "sections": [
+    {"title": "单位抽样序列", "formula": "\\delta(n)=1\\ (n=0),\\qquad \\delta(n)=0\\ (n\\ne0)", "points": ["脉冲幅度为 1 的离散现实序列", "也称单位脉冲序列或时域离散冲激"]},
+    {"title": "单位阶跃序列", "formulae": ["u(n)=1\\ (n\\geq0),\\qquad u(n)=0\\ (n<0)", "\\delta(n)=u(n)-u(n-1)", "u(n)=\\sum_{k=-\\infty}^{n}\\delta(k)"]},
+    {"title": "矩形序列", "formulae": ["R_N(n)=1\\ (0\\leq n\\leq N-1),\\qquad R_N(n)=0\\ (n\\notin[0,N-1])", "R_N(n)=u(n)-u(n-N)", "R_N(n)=\\sum_{m=0}^{N-1}\\delta(n-m)"]},
+    {"title": "实指数序列", "formula": "x(n)=a^n u(n)", "points": ["|a|<1 时收敛；|a|\\ge1 时发散", "a<0 时样值正负交替，序列摇动"]},
+    {"title": "正弦序列", "formulae": ["x(n)=A\\sin(n\\omega+\\varphi),\\quad x(n)=A\\cos(n\\omega+\\varphi)", "\\omega=\\Omega T=2\\pi\\frac{f_0}{f_s}"], "points": ["\\omega 为数字角频率（rad），\\Omega 为模拟角频率（rad/s），T 为采样间隔（s）", "\\omega=0.2\\pi 表示连续正弦的一个周期内采样 10 个点"]},
+    {"title": "复指数序列", "formulae": ["x(n)=e^{(\\sigma+j\\omega)n}=e^{\\sigma n}[\\cos(\\omega n)+j\\sin(\\omega n)]", "e^{\\pm jx}=\\cos x\\pm j\\sin x"], "points": ["实部与虚部均为同一角频率的正弦型序列", "模为 |x(n)|=e^{\\sigma n}"]}
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}
