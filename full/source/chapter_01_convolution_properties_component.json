@@ -1,0 +1,20 @@
+{
+  "component": "chapter_01_convolution_properties",
+  "source_pages": [99, 100, 101, 102, 103, 104, 105, 106, 109, 110, 111, 112, 113],
+  "merged_pages": [
+    {"source_page": 98, "merged_with": 99, "reason": "本节封面仅含标题"},
+    {"source_pages": [102, 103, 104], "reason": "同一有限支持区间例题的逐步动画，合并为完整推导"},
+    {"source_page": 114, "merged_with": 99, "reason": "内容完全重复"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_pages": [107, 108], "reason": "音频读写、MATLAB 代码与实验输出"}
+  ],
+  "retained_core": [
+    "交换律、结合律与分配律及其系统串并联解释",
+    "有限支持序列卷积的非零区间 N1+N3 到 N2+N4",
+    "h(n)=delta(n)+alpha delta(n-R) 的回声系统及 y(n)=x(n)+alpha x(n-R)",
+    "实序列互相关和自相关的卷积表达式",
+    "互相关峰值用于判断延时与相似度的解释"
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}

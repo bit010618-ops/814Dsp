@@ -271,7 +271,7 @@
       "source_scope": "保留卷积规则、相关、应用例题和图解。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_convolution_properties_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
