@@ -12,15 +12,16 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_chapter_one_handout_reflows_all_component_inputs_without_source_identity(tmp_path: Path):
     component_paths = load_component_paths(ROOT)
-    assert len(component_paths) == 17
+    assert len(component_paths) == 18
     assert component_paths[0].name == "chapter_01_opening_component.pdf"
-    assert component_paths[-1].name == "chapter_01_applications_close_component.pdf"
+    assert component_paths[-2].name == "chapter_01_applications_close_component.pdf"
+    assert component_paths[-1].name == "chapter_01_training_component.pdf"
 
     output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_handout.pdf")
     reader = PdfReader(str(output))
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
 
-    assert len(reader.pages) < 62
+    assert len(reader.pages) < 65
     assert "第一章 离散时间信号与系统" in text
     assert "连续时间信号的抽样" in text
     assert "透过现象看本质" in text
