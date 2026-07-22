@@ -172,7 +172,7 @@
       "source_scope": "保留周期定义、周期求解方法与正弦序列周期性。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
-      "component_file": "full/source/chapter_01_periodicity_component.json",
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },

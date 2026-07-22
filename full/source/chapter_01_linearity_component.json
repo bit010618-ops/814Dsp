@@ -1,0 +1,13 @@
+{
+  "component": "chapter_01_linearity",
+  "source_pages": [70, 71, 72, 73, 74],
+  "merged_pages": [
+    {"source_page": 68, "merged_with": 69, "reason": "章节目录页仅引出本节"},
+    {"source_page": 69, "merged_with": 70, "reason": "本节标题页仅含标题"},
+    {"source_page": 76, "merged_with": 69, "reason": "内容完全重复"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_page": 75, "reason": "音频仿真实验与滤波效果展示"}
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}
