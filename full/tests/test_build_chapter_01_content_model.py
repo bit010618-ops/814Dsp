@@ -38,6 +38,7 @@ def test_chapter_one_model_anchors_verified_direct_rewrites_and_retained_increme
     assert by_id["c1-02-convolution-properties"]["component_file"] == "full/source/chapter_01_convolution_properties_component.json"
     assert by_id["c1-02-causal-stable"]["component_file"] == "full/source/chapter_01_causal_stable_component.json"
     assert by_id["c1-03-difference-equation"]["component_file"] == "full/source/chapter_01_difference_equation_component.json"
+    assert by_id["c1-04-sampling-theorem-1"]["component_file"] == "full/source/chapter_01_sampling_theorem_component.json"
     assert by_id["c1-04-sampling-theorem-1"]["incremental_page_groups"] == [[142, 143]]
     assert by_id["c1-04-sampling-recovery"]["incremental_page_groups"] == [[164, 165]]
 

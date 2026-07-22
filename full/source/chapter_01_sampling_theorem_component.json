@@ -1,0 +1,16 @@
+{
+  "component": "chapter_01_sampling_theorem",
+  "source_pages": [135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148],
+  "merged_pages": [
+    {"source_page": 134, "merged_with": 135, "reason": "章节封面仅含标题"},
+    {"source_pages": [139, 140, 141, 142, 143, 144], "reason": "理想采样的频域推导动画；保留公式、周期谱、时频对应与完整结论"},
+    {"source_page": 149, "merged_with": 135, "reason": "章节导览完全重复"}
+  ],
+  "retained_core": [
+    "周期冲激函数序列采样、采样间隔 T、采样角频率和采样频率",
+    "时域相乘对应频域卷积，以及时域离散导致频域周期延拓",
+    "不混叠与混叠两种频谱条件及可恢复性",
+    "Nyquist-Shannon 时域采样定理、折叠频率及角频率/赫兹/数字角频率对应"
+  ],
+  "source_audit_status": "rendered_and_visually_verified_for_integration"
+}

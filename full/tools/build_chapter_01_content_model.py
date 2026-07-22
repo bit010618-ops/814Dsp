@@ -55,6 +55,7 @@ COMPONENT_FILE_BY_UNIT = {
     "c1-02-convolution-properties": "full/source/chapter_01_convolution_properties_component.json",
     "c1-02-causal-stable": "full/source/chapter_01_causal_stable_component.json",
     "c1-03-difference-equation": "full/source/chapter_01_difference_equation_component.json",
+    "c1-04-sampling-theorem-1": "full/source/chapter_01_sampling_theorem_component.json",
 }
 
 
