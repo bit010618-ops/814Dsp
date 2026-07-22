@@ -1,0 +1,21 @@
+{
+  "component_id": "c1-04-analog-digital-chain",
+  "title": "模拟信号的数字处理方法",
+  "source_pages": [169, 170, 171, 172, 173, 174, 175, 176],
+  "merged_pages": [
+    {"source_pages": [168, 169], "decision": "标题页并入处理链总览。"},
+    {"source_pages": [173, 174, 175], "decision": "将理想与实际数模恢复及采样间隔影响连续组织。"}
+  ],
+  "reused_direct_rewrite_source_pages": [171],
+  "retained_core": [
+    "模拟输入、前置预滤波、模数转换、数字信号处理、数模转换、模拟低通滤波与模拟输出的完整链路",
+    "输入信号带限、采样频率与前置预滤波器的抗混叠作用",
+    "采样、量化、编码得到离散数字序列的含义",
+    "滤波、降噪、增强、变换、压缩和识别等数字处理任务",
+    "零阶保持、理想数模恢复与实际平滑滤波的关系",
+    "减小采样间隔可使保持输出更接近连续恢复波形",
+    "本节收束语"
+  ],
+  "excluded_by_scope": [],
+  "reader_facing_source_reference": false
+}

@@ -42,6 +42,7 @@ def test_chapter_one_model_anchors_verified_direct_rewrites_and_retained_increme
     assert by_id["c1-04-sampling-theorem-2"]["component_file"] == "full/source/chapter_01_sampling_engineering_component.json"
     assert "音频实验内容按范围约束排除" in by_id["c1-04-sampling-theorem-2"]["source_scope"]
     assert by_id["c1-04-sampling-recovery"]["component_file"] == "full/source/chapter_01_sampling_recovery_component.json"
+    assert by_id["c1-04-analog-digital-chain"]["component_file"] == "full/source/chapter_01_analog_digital_chain_component.json"
     assert by_id["c1-04-sampling-theorem-1"]["incremental_page_groups"] == [[142, 143]]
     assert by_id["c1-04-sampling-recovery"]["incremental_page_groups"] == [[164, 165]]
 

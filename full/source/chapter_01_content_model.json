@@ -421,12 +421,12 @@
         175,
         176
       ],
-      "source_scope": "保留前置滤波、A/D、DSP、D/A、平滑滤波、零阶保持及处理链图解。",
+      "source_scope": "保留前置滤波、模数转换、数字信号处理、数模转换、平滑滤波、零阶保持及处理链图解。",
       "direct_rewrite_source_pages": [
         171
       ],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_analog_digital_chain_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
