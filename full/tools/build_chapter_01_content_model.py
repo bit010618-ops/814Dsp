@@ -59,6 +59,7 @@ COMPONENT_FILE_BY_UNIT = {
     "c1-04-sampling-theorem-2": "full/source/chapter_01_sampling_engineering_component.json",
     "c1-04-sampling-recovery": "full/source/chapter_01_sampling_recovery_component.json",
     "c1-04-analog-digital-chain": "full/source/chapter_01_analog_digital_chain_component.json",
+    "c1-04-applications-and-close": "full/source/chapter_01_applications_close_component.json",
 }
 
 

@@ -1,0 +1,17 @@
+{
+  "component_id": "c1-04-applications-and-close",
+  "title": "采样认知案例与本章收束",
+  "source_pages": [177, 178, 179, 180, 181, 182, 183, 184, 185],
+  "merged_pages": [
+    {"source_pages": [180, 183, 184], "decision": "将车轮视觉混叠的提问、反转与静止状态合并为一个完整说明。"},
+    {"source_pages": [181, 182], "decision": "将同一离散样值的连续信号歧义与其两个频率例子合并。"}
+  ],
+  "retained_core": [
+    "奈奎斯特的采样定理贡献与奈奎斯特频率",
+    "香农的信息论贡献及其对奈奎斯特结论的推广",
+    "x(n)=sin(0.1πn) 在 1000 Hz 采样频率下连续信号不唯一的例子",
+    "车轮视觉混叠中的反转和静止现象",
+    "表象、局部信息与本质的课程收束"
+  ],
+  "reader_facing_source_reference": false
+}
