@@ -28,6 +28,8 @@ DISPLAY_FORMULA_SIZE = 11
 INLINE_MATH_DRAWN_HEIGHT = 17.5
 # 相对正文基线下移 3 pt，使行内数学符号与文字中线对齐。
 INLINE_MATH_BASELINE_OFFSET = -5.5
+# 传统教材风的低饱和黄铜金，仅用于细线点缀，不承担正文信息。
+ACCENT_BRASS = "#B08D57"
 
 matplotlib.rcParams.update({"mathtext.fontset": "stix"})
 
@@ -165,8 +167,8 @@ def draw_rich_paragraph(
 
 def draw_header(page: canvas.Canvas, chapter: str) -> None:
     width, height = A4
-    page.setStrokeColor(HexColor("#C9D2D8"))
-    page.setLineWidth(0.6)
+    page.setStrokeColor(HexColor(ACCENT_BRASS))
+    page.setLineWidth(0.45)
     page.line(50, height - 46, width - 50, height - 46)
     page.setFillColor(HexColor("#123B5D"))
     page.setFont(FONT_SANS, 8.6)
@@ -192,8 +194,8 @@ def draw_title(page: canvas.Canvas, title: str, y: float, title_right: str = "")
         page.setFillColor(HexColor("#52616B"))
         page.setFont(FONT_SERIF, 9.5)
         page.drawString(62 + title_width + 22, y + 2, title_right)
-    page.setStrokeColor(HexColor("#9D2B2B"))
-    page.setLineWidth(1.2)
+    page.setStrokeColor(HexColor(ACCENT_BRASS))
+    page.setLineWidth(0.9)
     page.line(62, y - 12, 230, y - 12)
     return y - 38
 
@@ -202,8 +204,8 @@ def draw_continuation_title(page: canvas.Canvas, title: str, y: float, size: flo
     page.setFillColor(HexColor("#123B5D"))
     page.setFont(FONT_SANS, size)
     page.drawString(62, y, title)
-    page.setStrokeColor(HexColor("#9D2B2B"))
-    page.setLineWidth(0.9)
+    page.setStrokeColor(HexColor(ACCENT_BRASS))
+    page.setLineWidth(0.7)
     page.line(62, y - 10, 230 if size >= 18 else 190, y - 10)
     return y - (38 if size >= 18 else 28)
 

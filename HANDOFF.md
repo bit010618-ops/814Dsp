@@ -209,3 +209,9 @@
 - `full/tools/build_exam_figure_work_queue.py` 已将题库中 17 条带图记录归并为 11 项唯一源题图工作项，写入 `full/source/exam_figure_work_queue.json`。一个源题图若被拆分到多个独立小题／章节，清单会保留所有题号和落点章节，但只创建一项图形重绘工作，避免重复重绘后发生版本不一致。
 - 11 项均明确为含水印、`redraw`；每项记录必须保留的坐标、曲线、公式、单位和标签，以及固定验收语句“渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失”。所有工作项目前均为 `pending_redraw_or_repair`，尚未把任何原卷图直接排入讲义。
 - TDD：新增 `full/tests/test_build_exam_figure_work_queue.py` 并确认缺失实现时失败；实现后新增测试与全套 51 项测试通过。
+
+## Latest blue-brass sample-template milestone — 2026-07-22
+
+- 已将视觉参考实际落入 `sample/tools/build_sample.py` 和 `sample/artifacts/sample_spec.json`：页眉分隔线、一级／续页标题下划线统一改为低饱和黄铜金 `#B08D57`，正文与标题仍使用深青蓝，避免艳色、粗框和大色块。
+- 用真实样稿内容重新生成并渲染第 1、2 页：细线在 A4 视图清晰但不抢公式与正文；既有 11 pt 展示公式、17.5 pt 行内公式和自然续排无回归。中间渲染件仅位于未跟踪的 `tmp/`，不作为交付或提交内容。
+- TDD：样式常量与样式规格测试先失败后通过；`sample/tests` 与 `full/tests` 共 69 项测试通过。下一步：把同一版式令牌迁移到全文生成器，而非继续依赖样稿专用代码。

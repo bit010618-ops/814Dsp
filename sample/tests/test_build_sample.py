@@ -86,6 +86,10 @@ def test_display_formula_uses_the_global_baseline_size():
     assert DISPLAY_FORMULA_SIZE == 11
 
 
+def test_template_uses_a_restrained_brass_accent_for_formal_textbook_hairlines():
+    assert getattr(build_sample_module, "ACCENT_BRASS", None) == "#B08D57"
+
+
 def test_inline_math_uses_a_print_legible_global_height():
     assert getattr(build_sample_module, "INLINE_MATH_DRAWN_HEIGHT", None) == 17.5
     assert getattr(build_sample_module, "INLINE_MATH_BASELINE_OFFSET", None) == -5.5
