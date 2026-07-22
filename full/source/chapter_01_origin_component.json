@@ -1,0 +1,38 @@
+{
+  "chapter": 1,
+  "title": "第一章 离散时间信号与系统",
+  "component": "离散时间信号的由来与表达",
+  "source_pages": [2, 3, 4, 5, 6, 7, 8],
+  "component_status": "rendered_and_visually_verified_for_integration",
+  "rewrite_mode": "editable_text_formal_math_clean_redraw",
+  "formal_formulae": [
+    "T=\\frac{1}{f_s}",
+    "f_s\\geq 2f_h"
+  ],
+  "coordinate_label_rule": {
+    "horizontal_tick_offset_pt": 4,
+    "reason": "横轴样点编号若与纵轴或 stem 线重合，统一向右微移，保证印刷可读性且不改变样点位置。"
+  },
+  "waveform_comparison": {
+    "title": "不同采样频率下钢琴乐曲的赏析",
+    "left_label_clearance_pt": 24,
+    "labels": [
+      "f_s=44100\\,\\mathrm{Hz}",
+      "\\frac{f_s}{4}",
+      "\\frac{f_s}{8}",
+      "\\frac{f_s}{16}"
+    ],
+    "meaning": "比较同一段钢琴音频在不同采样频率下的离散波形；采样频率降低时，高频细节更难被保留。"
+  },
+  "retain": [
+    "通过时域采样由连续时间信号得到离散时间信号",
+    "离散时间信号又称序列；时间 T 为等间隔采样的采样周期或采样间隔",
+    "采样为了便于用计算机处理；采样频率与信号变化快慢有关",
+    "不同采样频率下钢琴音频波形的比较",
+    "x(nT) 顺序存放在计算机后通常简记为 x(n)",
+    "带限信号最高频率为 f_h 时的采样条件"
+  ],
+  "remove_as_cosmetic": [
+    "学校标识", "课件标题条", "照片", "扬声器图标", "问号图形", "气泡口号", "课堂颜色强调"
+  ]
+}
