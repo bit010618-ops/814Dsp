@@ -234,3 +234,14 @@
 - `full/tools/build_transcription_status.py` 已将当前源课件 1056 页逐页登记到 `full/source/transcription_status.json`；每页均有源页号、二十四稿匹配率、文字层状态、转写状态及待视觉核验的图形状态，页号连续且恰好覆盖 1–1056。
 - 匹配低于 `0.30` 或无可审文字层的 43 页被强制标为 `source_direct_rewrite_required`，按第 1–8 章分别为 5、13、7、4、2、4、4、4 页；其余页为 `baseline_reconcile_required`，仍不得跳过原课件对照。任何章节不能仅因二十四稿已有相似表述而关闭此状态。
 - TDD：`full/tests/test_build_transcription_status.py` 先因缺失实现而失败，实现后通过。下一步：基于第一章 185 个状态条目、参考稿目录及源课件实际页，生成第一章的可编辑正文模型与 PDF。
+
+## Latest chapter-one direct-rewrite component milestone — 2026-07-22
+
+- 源课件第 20、35、129、130、171 页均属于二十四稿低覆盖、但含唯一图形、MATLAB 代码或完整迭代推导的页面。已将它们建立为 `full/source/chapter_01_direct_rewrites.json` 的可编辑内容模型，并由 `full/tools/build_chapter_01_direct_rewrites.py` 重建为 `full/outputs/chapter_01_direct_rewrites.pdf`（4 页）。
+- 逐页 PDFium 视觉复核：序列移位的三个 stem 图、`impseq` 完整函数和调用、因果／非因果边界条件及迭代结果、模拟—数字处理链的五个模块与四个信号标注均完整；粉色圈画、红色课堂箭头、彩色课件边框和校名模板均未带入。模型中五个块的 `component_status` 均为 `rendered_and_visually_verified_for_integration`。
+- 该 4 页 PDF 是转写组件验收件，不是最后一章的分页输出。最终第一章必须把其内容与源页 1–185 的相邻正文自然续排，避免隔离组件造成正文页大面积空白。
+
+## Latest cover-toc-appendix direction — 2026-07-22
+
+- 用户认可二十四稿的封面、目录、附录 A 公式速查，以及“分章强化训练—书末真题详解”的组织方向。最终讲义需独立实现封面、基于最终 PDF 页码的目录、附录 A 与既定真题训练／详解，不复制参考稿文字或问题图形。
+- 附录 A 将收录华理 814 复习所需公式，仍执行正式数学排版、竖式分数和统一字号。范围的“全量覆盖”或“高频速查”口径待用户下一条确认；在确认前不得以其中一种自行替代另一种。

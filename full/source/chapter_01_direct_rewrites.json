@@ -1,0 +1,59 @@
+{
+  "chapter": 1,
+  "title": "离散时间信号与系统",
+  "purpose": "对二十四稿低覆盖、但原课件含有唯一图形、代码或推导的页面进行可编辑重制；所有课堂圈画和模板元素均不带入。",
+  "blocks": [
+    {
+      "source_page": 20,
+      "title": "序列的移位",
+      "component_status": "rendered_and_visually_verified_for_integration",
+      "rewrite_mode": "clean_redraw",
+      "retain": ["m>0 时 x(n-m) 右移 m 位", "m>0 时 x(n+m) 左移 m 位", "原序列与左右移一位的 stem 图", "滞后／延时与超前的术语"],
+      "remove_as_cosmetic": ["粉色圈画", "红色指示箭头", "彩色课件框与校名模板"],
+      "diagram": {
+        "series": [[0, 1], [1, 2], [2, 3]],
+        "right_shift": [[1, 1], [2, 2], [3, 3]],
+        "left_shift": [[-1, 1], [0, 2], [1, 3]]
+      }
+    },
+    {
+      "source_page": 35,
+      "title": "MATLAB 下生成单位抽样序列",
+      "component_status": "rendered_and_visually_verified_for_integration",
+      "rewrite_mode": "editable_code",
+      "retain": ["impseq 的完整函数定义", "输入参数检查", "ns:nf 横坐标生成", "两个调用示例", "函数保存和 MATLAB 路径说明"],
+      "remove_as_cosmetic": ["彩色课件框与模板"],
+      "matlab_code": "function [x,n] = impseq(np,ns,nf)\nif ((np < ns) | (np > nf) | (ns > nf))\n    error('参数必须满足 ns <= np <= nf')\nend\nn = [ns:nf];\nx = [(n-np) == 0];\nend\n\n[x,n] = impseq(0,-10,20);\nstem(n,x);\n\n[x,n] = impseq(2,0,10);"
+    },
+    {
+      "source_page": 129,
+      "title": "迭代法：因果解",
+      "component_status": "rendered_and_visually_verified_for_integration",
+      "rewrite_mode": "formal_math",
+      "retain": ["差分方程", "x(n)=δ(n) 的设定", "n<0 时零状态边界条件", "从 h(0) 到 h(n) 的迭代", "因果性与 |a|<1 时稳定性的结论"],
+      "remove_as_cosmetic": ["黄色、绿色、紫色课件边框", "蓝色迭代箭头", "红色课堂强调"],
+      "result_formula": "h(n)=a^n u(n)"
+    },
+    {
+      "source_page": 130,
+      "title": "迭代法：非因果解",
+      "component_status": "rendered_and_visually_verified_for_integration",
+      "rewrite_mode": "formal_math",
+      "retain": ["同一差分方程", "n>0 时零状态边界条件", "反向迭代关系", "从 h(0) 到 h(-n) 的迭代", "相同方程可对应非因果系统的结论"],
+      "remove_as_cosmetic": ["黄色、绿色、紫色课件边框", "蓝色迭代箭头", "红色课堂强调"],
+      "result_formula": "h(n)=-a^n u(-n-1)"
+    },
+    {
+      "source_page": 171,
+      "title": "模拟信号的数字处理方法",
+      "component_status": "rendered_and_visually_verified_for_integration",
+      "rewrite_mode": "clean_block_diagram",
+      "retain": ["x_a(t)、x(n)、y(n)、y_a(t) 的信号链", "前置预滤波器、A/D 转换器、数字信号处理器、D/A 转换器、模拟低通滤波器", "滤波、降噪、增强、变换、压缩、识别等处理举例"],
+      "remove_as_cosmetic": ["校名模板", "红绿高亮框与箭头", "大面积课件背景"],
+      "signal_chain": {
+        "blocks": ["前置预滤波器", "A/D 转换器", "数字信号处理器", "D/A 转换器", "模拟低通滤波器"],
+        "labels": ["x_a(t)", "x(n)", "y(n)", "y_a(t)"]
+      }
+    }
+  ]
+}
