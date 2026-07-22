@@ -228,3 +228,9 @@
 - 已以 1056 页当前主课件逐页对比两份可打印基线。历史 119 页稿平均文本匹配为 `0.5342`，二十四稿为 `0.6380`；各章二十四稿均更高，第七章最高 `0.7219`。原始审计结果在 `full/artifacts/legacy_current_coverage.json` 与 `full/artifacts/reference24_current_coverage.json`。
 - 因此：`legacy_full/` 仍仅作代码／图形资产库；用户提供的二十四稿可作为内容补写优先基线，但绝不作为完成证据。二十四稿仍有 43 个当前源页匹配低于 `0.30`，且所有图、公式和改写语句都必须按主课件逐页复核。
 - `full/docs/content-baseline-comparison.md` 已保存方法、八章统计与采用边界。下一步：以该页级审计为输入建立当前八章的转写状态模型，再生成并核验第一章。
+
+## Latest eight-chapter transcription-status milestone — 2026-07-22
+
+- `full/tools/build_transcription_status.py` 已将当前源课件 1056 页逐页登记到 `full/source/transcription_status.json`；每页均有源页号、二十四稿匹配率、文字层状态、转写状态及待视觉核验的图形状态，页号连续且恰好覆盖 1–1056。
+- 匹配低于 `0.30` 或无可审文字层的 43 页被强制标为 `source_direct_rewrite_required`，按第 1–8 章分别为 5、13、7、4、2、4、4、4 页；其余页为 `baseline_reconcile_required`，仍不得跳过原课件对照。任何章节不能仅因二十四稿已有相似表述而关闭此状态。
+- TDD：`full/tests/test_build_transcription_status.py` 先因缺失实现而失败，实现后通过。下一步：基于第一章 185 个状态条目、参考稿目录及源课件实际页，生成第一章的可编辑正文模型与 PDF。
