@@ -17,15 +17,6 @@
       }
     },
     {
-      "source_page": 35,
-      "title": "MATLAB 下生成单位抽样序列",
-      "component_status": "rendered_and_visually_verified_for_integration",
-      "rewrite_mode": "editable_code",
-      "retain": ["impseq 的完整函数定义", "输入参数检查", "ns:nf 横坐标生成", "两个调用示例", "函数保存和 MATLAB 路径说明"],
-      "remove_as_cosmetic": ["彩色课件框与模板"],
-      "matlab_code": "function [x,n] = impseq(np,ns,nf)\nif ((np < ns) | (np > nf) | (ns > nf))\n    error('参数必须满足 ns <= np <= nf')\nend\nn = [ns:nf];\nx = [(n-np) == 0];\nend\n\n[x,n] = impseq(0,-10,20);\nstem(n,x);\n\n[x,n] = impseq(2,0,10);"
-    },
-    {
       "source_page": 129,
       "title": "迭代法：因果解",
       "component_status": "rendered_and_visually_verified_for_integration",

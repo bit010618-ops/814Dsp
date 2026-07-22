@@ -151,20 +151,8 @@ def _page_shift(page: canvas.Canvas, model: dict) -> None:
     _finish_page(page)
 
 
-def _page_matlab(page: canvas.Canvas, model: dict) -> None:
-    _start_page(page, 2)
-    y = style.draw_title(page, "MATLAB：单位抽样序列函数", 774)
-    y = style.draw_rich_paragraph(page, "定义函数 {{impseq}}，以 {{n_p}}、{{n_s}} 和 {{n_f}} 为参数，生成显示区间 {{n\\in[n_s,n_f]}} 内的单位抽样序列。将函数保存为 {{impseq.m}} 后，应将所在的 dsp 文件夹加入 MATLAB 路径并保存。", 62, y, A4[0] - 124)
-    y = _draw_code(page, model["blocks"][1]["matlab_code"], 62, y - 2, A4[0] - 124)
-    y -= 18
-    y = _math_box(page, r"x(n)=\delta(n-n_p),\quad n\in[n_s,n_f]", 62, y, A4[0] - 124)
-    y -= 12
-    y = style.draw_rich_paragraph(page, "调用 {{impseq(0,-10,20)}} 时，得到 {{x(n)=\\delta(n)}}、{{n\\in[-10,20]}}；调用 {{impseq(2,0,10)}} 时，得到 {{x(n)=\\delta(n-2)}}、{{n\\in[0,10]}}。", 62, y, A4[0] - 124)
-    _finish_page(page)
-
-
 def _page_difference(page: canvas.Canvas) -> None:
-    _start_page(page, 3)
+    _start_page(page, 2)
     y = style.draw_title(page, "线性常系数差分方程的迭代求解", 774)
     y = style.draw_rich_paragraph(page, "考虑系统差分方程 {{y(n)-ay(n-1)=x(n)}}，令 {{x(n)=\\delta(n)}}，分别在两种边界条件下用迭代法求单位抽样响应。", 62, y, A4[0] - 124)
     y = _math_box(page, r"y(n)-ay(n-1)=x(n)", 62, y - 2, A4[0] - 124)
@@ -196,10 +184,10 @@ def _page_difference(page: canvas.Canvas) -> None:
 
 
 def _page_signal_chain(page: canvas.Canvas, model: dict) -> None:
-    _start_page(page, 4)
+    _start_page(page, 3)
     y = style.draw_title(page, "模拟信号的数字处理方法", 774)
     y = style.draw_rich_paragraph(page, "模拟输入 {{x_a(t)}} 依次经过前置预滤波、A/D 转换、数字处理、D/A 转换和模拟低通滤波，得到模拟输出 {{y_a(t)}}。其中数字信号处理器接收 {{x(n)}} 并输出 {{y(n)}}。", 62, y, A4[0] - 124)
-    _draw_signal_chain(page, model["blocks"][4]["signal_chain"]["blocks"])
+    _draw_signal_chain(page, model["blocks"][3]["signal_chain"]["blocks"])
     y = style.draw_rich_paragraph(page, "数字信号处理器可对输入信号 {{x(n)}} 进行滤波、降噪、增强、变换、压缩和识别等处理，最终形成输出 {{y(n)}}。前置预滤波器用于在 A/D 转换前限制带宽；输出端的模拟低通滤波器用于平滑恢复后的连续信号。", 62, 330, A4[0] - 124)
     style.draw_note(page, "阅读信号处理链时，先区分连续时间信号 {{x_a(t)}}、{{y_a(t)}} 与离散时间序列 {{x(n)}}、{{y(n)}}；A/D 与 D/A 两侧的信号表示及滤波职责不能混淆。", y - 12)
     _finish_page(page)
@@ -213,7 +201,6 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     page = canvas.Canvas(str(output), pagesize=A4)
     page.setTitle("数字信号处理讲义：第一章直接转写块")
     _page_shift(page, model)
-    _page_matlab(page, model)
     _page_difference(page)
     _page_signal_chain(page, model)
     page.save()

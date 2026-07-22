@@ -96,14 +96,14 @@
         20
       ],
       "incremental_page_groups": [],
-      "component_file": null,
+      "component_file": "full/source/chapter_01_operations_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
     {
       "id": "c1-02-matlab-sequence",
-      "unit_type": "matlab_reference",
-      "title": "1.1 MATLAB 下序列运算的实现",
+      "unit_type": "excluded_source_scope",
+      "title": "1.1 MATLAB 下序列运算的实现（不纳入讲义）",
       "source_pages": [
         31,
         32,
@@ -120,14 +120,12 @@
         43,
         44
       ],
-      "source_scope": "保留单位抽样、移位、反褶、加法和乘法的 MATLAB 函数及示例。",
-      "direct_rewrite_source_pages": [
-        35
-      ],
+      "source_scope": "用户明确限定本讲义仅覆盖 DSP 基础知识；本单元及其 MATLAB 绘图、函数和音频实验内容全部不纳入讲义。",
+      "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
       "component_file": null,
-      "source_text_status": "must_reconcile_with_original_courseware",
-      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+      "source_text_status": "excluded_by_user_scope_2026-07-22",
+      "figure_status": "not_applicable_excluded_by_user_scope"
     },
     {
       "id": "c1-01-typical-sequences",

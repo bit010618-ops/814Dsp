@@ -17,7 +17,7 @@ UNIT_DEFINITIONS = [
     ("c1-01-origin", "textbook_section", "1.1 离散时间信号的由来", 2, 8, "保留时域采样、采样间隔、采样频率与音频采样率实例。"),
     ("c1-01-representations", "textbook_section", "1.1 离散时间信号的表示方法", 9, 15, "保留数列、函数、图形和单位抽样序列四种表示。"),
     ("c1-01-operations", "textbook_section", "1.1 离散时间信号的基本运算", 16, 30, "保留和、积、移位、反褶、累加、差分、尺度、能量和平均功率。"),
-    ("c1-02-matlab-sequence", "matlab_reference", "1.1 MATLAB 下序列运算的实现", 31, 44, "保留单位抽样、移位、反褶、加法和乘法的 MATLAB 函数及示例。"),
+    ("c1-02-matlab-sequence", "excluded_source_scope", "1.1 MATLAB 下序列运算的实现（不纳入讲义）", 31, 44, "用户明确限定本讲义仅覆盖 DSP 基础知识；本单元及其 MATLAB 绘图、函数和音频实验内容全部不纳入讲义。"),
     ("c1-01-typical-sequences", "textbook_section", "1.1 几种常用的典型序列", 45, 57, "保留单位抽样、矩形、阶跃、实指数、正弦和复指数序列。"),
     ("c1-01-periodicity", "textbook_section", "1.1 离散时间序列的周期性", 58, 67, "保留周期定义、周期求解方法与正弦序列周期性。"),
     ("c1-02-linearity", "textbook_section", "1.2 离散时间系统的线性性质", 68, 76, "将原章节导览与线性系统判定例题连续排版。"),
@@ -36,7 +36,6 @@ UNIT_DEFINITIONS = [
 
 DIRECT_REWRITE_UNIT_BY_PAGE = {
     20: "c1-01-operations",
-    35: "c1-02-matlab-sequence",
     129: "c1-03-difference-equation",
     130: "c1-03-difference-equation",
     171: "c1-04-analog-digital-chain",
@@ -47,6 +46,7 @@ INCREMENTAL_GROUPS_BY_UNIT = {
 }
 COMPONENT_FILE_BY_UNIT = {
     "c1-01-representations": "full/source/chapter_01_representation_component.json",
+    "c1-01-operations": "full/source/chapter_01_operations_component.json",
 }
 
 
@@ -61,6 +61,7 @@ def build_content_model(root: Path = ROOT, output_path: Path | None = None) -> d
     units = []
     for unit_id, unit_type, title, start, end, scope in UNIT_DEFINITIONS:
         source_pages = _pages(start, end)
+        excluded = unit_id == "c1-02-matlab-sequence"
         units.append(
             {
                 "id": unit_id,
@@ -71,8 +72,8 @@ def build_content_model(root: Path = ROOT, output_path: Path | None = None) -> d
                 "direct_rewrite_source_pages": [page for page in source_pages if DIRECT_REWRITE_UNIT_BY_PAGE.get(page) == unit_id],
                 "incremental_page_groups": INCREMENTAL_GROUPS_BY_UNIT.get(unit_id, []),
                 "component_file": COMPONENT_FILE_BY_UNIT.get(unit_id),
-                "source_text_status": "must_reconcile_with_original_courseware",
-                "figure_status": "must_visually_verify_or_redraw_before_final_layout",
+                "source_text_status": "excluded_by_user_scope_2026-07-22" if excluded else "must_reconcile_with_original_courseware",
+                "figure_status": "not_applicable_excluded_by_user_scope" if excluded else "must_visually_verify_or_redraw_before_final_layout",
             }
         )
 
