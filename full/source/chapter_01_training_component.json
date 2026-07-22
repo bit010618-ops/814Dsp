@@ -1,0 +1,15 @@
+{
+  "chapter": 1,
+  "component_status": "priority_training_and_detailed_answers_ready_for_book_end_integration",
+  "priority_questions": [
+    {"id": "2002-q七-whole", "year": 2002, "topic": "理想冲激采样、频谱复制与低通恢复", "source_pages": [6, 7]},
+    {"id": "2006-q七-whole", "year": 2006, "topic": "离散系统结构、传递函数、差分方程与阶跃响应", "source_pages": [19]},
+    {"id": "2019-q二-whole", "year": 2019, "topic": "离散序列图形卷积", "source_pages": [39]}
+  ],
+  "reader_layout": {
+    "white_background_only": true,
+    "no_exercise_label": true,
+    "answer_reference": "详解：真题整理详解",
+    "final_page_numbers": "to_be_backfilled_after_whole_book_pagination"
+  }
+}
