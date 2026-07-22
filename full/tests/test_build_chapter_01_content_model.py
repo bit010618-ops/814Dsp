@@ -26,6 +26,8 @@ def test_chapter_one_model_anchors_verified_direct_rewrites_and_retained_increme
     assert by_id["c1-02-matlab-sequence"]["direct_rewrite_source_pages"] == [35]
     assert by_id["c1-03-difference-equation"]["direct_rewrite_source_pages"] == [129, 130]
     assert by_id["c1-04-analog-digital-chain"]["direct_rewrite_source_pages"] == [171]
+    assert by_id["c1-opening"]["direct_rewrite_source_pages"] == []
+    assert by_id["c1-01-representations"]["component_file"] == "full/source/chapter_01_representation_component.json"
     assert by_id["c1-04-sampling-theorem-1"]["incremental_page_groups"] == [[142, 143]]
     assert by_id["c1-04-sampling-recovery"]["incremental_page_groups"] == [[164, 165]]
 

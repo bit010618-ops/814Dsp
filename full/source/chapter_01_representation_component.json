@@ -1,0 +1,31 @@
+{
+  "chapter": 1,
+  "component": "离散时间信号的表示方法",
+  "source_pages": [9, 10, 11, 12, 13, 14, 15],
+  "component_status": "rendered_and_visually_verified_for_integration",
+  "exact_repeat_merge": {"source_page": 15, "merged_with": 10},
+  "formal_formulae": [
+    "x_4(n)=A\\sin(\\omega n+\\varphi),\\quad n\\in(-\\infty,\\infty)",
+    "\\delta(n)=\\begin{cases}1,&n=0\\\\0,&n\\ne0\\end{cases}",
+    "x(n)=\\sum_{m=-\\infty}^{\\infty}x(m)\\delta(n-m)",
+    "x(n)=\\delta(n)+2\\delta(n-1)+3\\delta(n-2)=\\sum_{m=0}^{2}x(m)\\delta(n-m)"
+  ],
+  "coordinate_label_rule": {
+    "horizontal_tick_offset_pt": 4,
+    "reason": "横轴样点编号不得与纵轴或 stem 线重合。"
+  },
+  "sample_plot": {
+    "values": {"-1": 1, "0": 2, "1": 1, "2": 2, "3": 3, "4": 1, "5": -2, "6": 2, "7": -1, "8": 3, "9": 2}
+  },
+  "retain": [
+    "用数列、函数、图形和单位抽样序列表示离散时间信号",
+    "以数列表示时用下划线标出 n=0 在序列中的位置",
+    "n 只取整数，故 n<0 与 n≤-1 对离散序列等价",
+    "图形的横坐标 n 为离散时间坐标，仅 n 为整数时有意义；纵坐标为信号点的值",
+    "单位抽样序列的定义、幅度为 1 的现实序列解释及任意序列的移位加权和展开",
+    "x(n)={1,2,3} 的单位抽样序列展开例题"
+  ],
+  "remove_as_cosmetic": [
+    "学校标识", "课件标题条", "彩色强调下划线", "课堂圈画", "箭头和气泡口号", "课件背景图案"
+  ]
+}

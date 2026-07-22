@@ -1,0 +1,2 @@
+# Generated PDF artifacts contain binary object streams; do not diff as text.
+full/outputs/*.pdf binary

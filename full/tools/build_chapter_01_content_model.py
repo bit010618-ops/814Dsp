@@ -45,6 +45,9 @@ INCREMENTAL_GROUPS_BY_UNIT = {
     "c1-04-sampling-theorem-1": [[142, 143]],
     "c1-04-sampling-recovery": [[164, 165]],
 }
+COMPONENT_FILE_BY_UNIT = {
+    "c1-01-representations": "full/source/chapter_01_representation_component.json",
+}
 
 
 def build_content_model(root: Path = ROOT, output_path: Path | None = None) -> dict:
@@ -67,6 +70,7 @@ def build_content_model(root: Path = ROOT, output_path: Path | None = None) -> d
                 "source_scope": scope,
                 "direct_rewrite_source_pages": [page for page in source_pages if DIRECT_REWRITE_UNIT_BY_PAGE.get(page) == unit_id],
                 "incremental_page_groups": INCREMENTAL_GROUPS_BY_UNIT.get(unit_id, []),
+                "component_file": COMPONENT_FILE_BY_UNIT.get(unit_id),
                 "source_text_status": "must_reconcile_with_original_courseware",
                 "figure_status": "must_visually_verify_or_redraw_before_final_layout",
             }

@@ -26,6 +26,7 @@
       "source_scope": "将原课件四节目录改排为本章开篇导览，保留四节名称和原始顺序。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -45,6 +46,7 @@
       "source_scope": "保留时域采样、采样间隔、采样频率与音频采样率实例。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -64,6 +66,7 @@
       "source_scope": "保留数列、函数、图形和单位抽样序列四种表示。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": "full/source/chapter_01_representation_component.json",
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -93,6 +96,7 @@
         20
       ],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -121,6 +125,7 @@
         35
       ],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -146,6 +151,7 @@
       "source_scope": "保留单位抽样、矩形、阶跃、实指数、正弦和复指数序列。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -168,6 +174,7 @@
       "source_scope": "保留周期定义、周期求解方法与正弦序列周期性。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -189,6 +196,7 @@
       "source_scope": "将原章节导览与线性系统判定例题连续排版。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -209,6 +217,7 @@
       "source_scope": "保留移不变定义、移位比较法和相关例题。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -234,6 +243,7 @@
       "source_scope": "保留 LSI、单位抽样响应、卷积和定义及计算步骤。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -263,6 +273,7 @@
       "source_scope": "保留卷积规则、相关、应用例题和图解。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -284,6 +295,7 @@
       "source_scope": "保留一般系统与 LSI 系统的因果性、稳定性判据和例题。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -309,6 +321,7 @@
         130
       ],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -342,6 +355,7 @@
           143
         ]
       ],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -364,6 +378,7 @@
       "source_scope": "保留抗混叠滤波、音频实例和带通信号采样。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -389,6 +404,7 @@
           165
         ]
       ],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -412,6 +428,7 @@
         171
       ],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     },
@@ -433,6 +450,7 @@
       "source_scope": "保留奈奎斯特、香农、车轮视觉混叠和透过现象看本质的课程收束内容。",
       "direct_rewrite_source_pages": [],
       "incremental_page_groups": [],
+      "component_file": null,
       "source_text_status": "must_reconcile_with_original_courseware",
       "figure_status": "must_visually_verify_or_redraw_before_final_layout"
     }
