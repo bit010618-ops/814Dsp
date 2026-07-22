@@ -1,0 +1,23 @@
+# Generated caches and visual QA artifacts
+.pytest_cache/
+tmp/
+work/formula_cache/
+work/mplcache/
+work/__pycache__/
+**/__pycache__/
+*.pyc
+
+# Source and documentation only from the work tree.
+work/*
+!work/*.py
+!work/*.md
+
+# Keep only the single complete deliverable from outputs.
+outputs/*
+!outputs/华理814DSP讲义_完整彩色A4版.pdf
+
+# Local editor and agent state
+.agents/
+.codex/
+.superpowers/
+.learnings/
