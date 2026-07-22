@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "source": "exam question bank manual figure review",
+  "items": [
+    {
+      "source_candidate_id": "2016-qintro-01",
+      "source_pages": [
+        33,
+        34
+      ],
+      "question_ids": [
+        "2016-qintro-p2",
+        "2016-qintro-brief1",
+        "2016-qintro-brief2"
+      ],
+      "placement_chapters": [
+        1,
+        2,
+        8
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴与 n=0 位置",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2019-q二-01",
+      "source_pages": [
+        39
+      ],
+      "question_ids": [
+        "2019-q二-whole"
+      ],
+      "placement_chapters": [
+        1
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "f1(n)、f2(n) 抽样位置、幅值、坐标轴及 n=0 标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2021-qintro-01",
+      "source_pages": [
+        43
+      ],
+      "question_ids": [
+        "2021-qintro-p4"
+      ],
+      "placement_chapters": [
+        1
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴和 n=0 标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2022-q七-01",
+      "source_pages": [
+        48
+      ],
+      "question_ids": [
+        "2022-q七-whole"
+      ],
+      "placement_chapters": [
+        1
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "输入频谱、A/D—h(n)—D/A 框图、采样周期 T、截止频率与各信号标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2025-q六-01",
+      "source_pages": [
+        57
+      ],
+      "question_ids": [
+        "2025-q六-whole"
+      ],
+      "placement_chapters": [
+        1
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "方波幅值与周期、采样脉冲宽度与周期、x(t)、s(t)、xs(t) 及频谱坐标标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2015-q四-01",
+      "source_pages": [
+        30,
+        31
+      ],
+      "question_ids": [
+        "2015-q四-whole"
+      ],
+      "placement_chapters": [
+        2
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "加法器、两级延时、5/2 与 -1 系数及 x[n]、y[n] 标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2015-q七-01",
+      "source_pages": [
+        31
+      ],
+      "question_ids": [
+        "2015-q七-whole"
+      ],
+      "placement_chapters": [
+        2
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "单位圆、原点、实虚轴、极点位置及 1、2 坐标标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2021-q六-01",
+      "source_pages": [
+        44,
+        45
+      ],
+      "question_ids": [
+        "2021-q六-whole"
+      ],
+      "placement_chapters": [
+        2
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "输入频谱支撑区、调制器、低通 H(e^{jω})、相干解调器、ωc、ωcp、x(n)、y(n) 与输出标注",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2022-q八-01",
+      "source_pages": [
+        48
+      ],
+      "question_ids": [
+        "2022-q八-whole"
+      ],
+      "placement_chapters": [
+        2
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "x(n)、y(n)、-1 系数、z^{-N} 延时支路与加法节点",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2025-q七-01",
+      "source_pages": [
+        57,
+        58
+      ],
+      "question_ids": [
+        "2025-q七-p4",
+        "2025-q七-p1",
+        "2025-q七-p2",
+        "2025-q七-p3",
+        "2025-q七-p5"
+      ],
+      "placement_chapters": [
+        2,
+        3,
+        3,
+        3,
+        6
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "X(jΩ)、H(e^{jω})、A/D、(-1)^n、D/A、x(t)、x(n)、w(n)、y(n)、y(t) 及频率坐标",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    },
+    {
+      "source_candidate_id": "2015-q八-01",
+      "source_pages": [
+        31,
+        32
+      ],
+      "question_ids": [
+        "2015-q八-whole"
+      ],
+      "placement_chapters": [
+        8
+      ],
+      "watermark_present": true,
+      "handout_action": "redraw",
+      "preserve": "输入三角频谱、零值插入—H(e^{jω})—采样框图、x[n]、g[n]、ω[n]、y[n] 与截止频率",
+      "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
+      "status": "pending_redraw_or_repair"
+    }
+  ]
+}

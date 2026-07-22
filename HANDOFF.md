@@ -203,3 +203,9 @@
 - 已审阅用户提供的二十四稿参考 PDF（254 页）。视觉上吸收正式教材的深青蓝层级、克制信息框和低饱和黄铜金细线点缀；不直接复用其内容或图形，避免把可能不严谨、带水印或与源课件不一致的图带入新讲义。
 - `full/tools/build_exam_training_manifest.py` 已将最终真题题库和已确认的重点精练选择合成为 `full/source/exam_training_manifest.json`。156 个纳入真题均被恰好分配为所属章节的“重点精练”或“补充真题”，并保留原题元数据、书末“真题整理详解”待最终分页回填状态，以及逐幅去水印／修复或重绘指令。
 - TDD：先新增 `full/tests/test_build_exam_training_manifest.py` 并确认其因缺失实现而失败；实现后单测通过。下一步：将该清单接入可自然续排的全文生成管线，先完成真题题干转写、图形清理任务清单和书末详解页码回填机制。
+
+## Latest watermarked-exam-figure queue milestone — 2026-07-22
+
+- `full/tools/build_exam_figure_work_queue.py` 已将题库中 17 条带图记录归并为 11 项唯一源题图工作项，写入 `full/source/exam_figure_work_queue.json`。一个源题图若被拆分到多个独立小题／章节，清单会保留所有题号和落点章节，但只创建一项图形重绘工作，避免重复重绘后发生版本不一致。
+- 11 项均明确为含水印、`redraw`；每项记录必须保留的坐标、曲线、公式、单位和标签，以及固定验收语句“渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失”。所有工作项目前均为 `pending_redraw_or_repair`，尚未把任何原卷图直接排入讲义。
+- TDD：新增 `full/tests/test_build_exam_figure_work_queue.py` 并确认缺失实现时失败；实现后新增测试与全套 51 项测试通过。
