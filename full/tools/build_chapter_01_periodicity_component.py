@@ -83,7 +83,7 @@ def page_three(page, m):
     y = section(page, "调幅序列的频率成分", y - 2)
     y = box(page, m["sections"][3]["formula"], y)
     y = para(page, "该式可写成载波分量和两个边带分量，数字角频率分别为 {{\\omega_H}}、{{\\omega_H+\\omega_L}}、{{\\omega_H-\\omega_L}}。因此应分别检查三个分量的周期，再取最小公倍数。", y)
-    y = section(page, "源课件参数的周期结论", y - 2)
+    y = section(page, "参数的周期结论", y - 2)
     y = box(page, r"\omega_L=0.01\pi,\quad \omega_H=0.2\pi,\quad N_1=10,\quad N_2=N_3=200", y, 50)
     y = para(page, "三项频率为 {{0.2\\pi}}、{{0.21\\pi}}、{{0.19\\pi}}，相应基本周期为 {{10}}、{{200}}、{{200}}；故调幅序列的基本周期为 {{\\operatorname{lcm}(10,200,200)=200}}。", y)
     style.draw_note(page, "方法小结：先确认各分量自身有周期，再把每个基本周期化为整数，最后取最小公倍数；不要把连续信号周期 {{T_0}} 与离散样值周期 {{N}} 混为一谈。", y - 3)

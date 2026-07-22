@@ -14,5 +14,7 @@ def test_periodicity_component_preserves_non_code_source_content(tmp_path: Path)
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
     assert len(reader.pages) == 3
     assert "MATLAB" not in text
+    assert "源课件" not in text
+    assert "源文件" not in text
     assert "周期序列的定义" in text
     assert "调幅序列" in text
