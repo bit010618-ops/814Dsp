@@ -1,0 +1,440 @@
+{
+  "chapter": {
+    "number": 1,
+    "title": "离散时间信号与系统",
+    "start_page": 1,
+    "end_page": 185,
+    "bookmark_prefix": "MC1"
+  },
+  "source_file": "full/source/chapter_01.json",
+  "direct_rewrite_component_file": "full/source/chapter_01_direct_rewrites.json",
+  "generation_contract": {
+    "source_order_locked": true,
+    "all_source_pages_represented_once": true,
+    "natural_reflow_required": true,
+    "final_page_breaks_must_not_follow_source_page_breaks": true,
+    "incremental_pages": "retain as separately represented source content unless final visual review proves full containment"
+  },
+  "units": [
+    {
+      "id": "c1-opening",
+      "unit_type": "chapter_opening",
+      "title": "第一章导览",
+      "source_pages": [
+        1
+      ],
+      "source_scope": "将原课件四节目录改排为本章开篇导览，保留四节名称和原始顺序。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-01-origin",
+      "unit_type": "textbook_section",
+      "title": "1.1 离散时间信号的由来",
+      "source_pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_scope": "保留时域采样、采样间隔、采样频率与音频采样率实例。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-01-representations",
+      "unit_type": "textbook_section",
+      "title": "1.1 离散时间信号的表示方法",
+      "source_pages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "source_scope": "保留数列、函数、图形和单位抽样序列四种表示。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-01-operations",
+      "unit_type": "textbook_section",
+      "title": "1.1 离散时间信号的基本运算",
+      "source_pages": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "source_scope": "保留和、积、移位、反褶、累加、差分、尺度、能量和平均功率。",
+      "direct_rewrite_source_pages": [
+        20
+      ],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-02-matlab-sequence",
+      "unit_type": "matlab_reference",
+      "title": "1.1 MATLAB 下序列运算的实现",
+      "source_pages": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "source_scope": "保留单位抽样、移位、反褶、加法和乘法的 MATLAB 函数及示例。",
+      "direct_rewrite_source_pages": [
+        35
+      ],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-01-typical-sequences",
+      "unit_type": "textbook_section",
+      "title": "1.1 几种常用的典型序列",
+      "source_pages": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57
+      ],
+      "source_scope": "保留单位抽样、矩形、阶跃、实指数、正弦和复指数序列。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-01-periodicity",
+      "unit_type": "textbook_section",
+      "title": "1.1 离散时间序列的周期性",
+      "source_pages": [
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "source_scope": "保留周期定义、周期求解方法与正弦序列周期性。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-02-linearity",
+      "unit_type": "textbook_section",
+      "title": "1.2 离散时间系统的线性性质",
+      "source_pages": [
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76
+      ],
+      "source_scope": "将原章节导览与线性系统判定例题连续排版。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-02-time-invariance",
+      "unit_type": "textbook_section",
+      "title": "1.2 离散时间系统的移不变性质",
+      "source_pages": [
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "source_scope": "保留移不变定义、移位比较法和相关例题。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-02-convolution-basics",
+      "unit_type": "textbook_section",
+      "title": "1.2 LSI 系统的时域求解：线性卷积（基础）",
+      "source_pages": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97
+      ],
+      "source_scope": "保留 LSI、单位抽样响应、卷积和定义及计算步骤。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-02-convolution-properties",
+      "unit_type": "textbook_section",
+      "title": "1.2 LSI 系统的时域求解：卷积性质与应用",
+      "source_pages": [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114
+      ],
+      "source_scope": "保留卷积规则、相关、应用例题和图解。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-02-causal-stable",
+      "unit_type": "textbook_section",
+      "title": "1.2 离散时间系统的因果性及稳定性",
+      "source_pages": [
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123
+      ],
+      "source_scope": "保留一般系统与 LSI 系统的因果性、稳定性判据和例题。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-03-difference-equation",
+      "unit_type": "textbook_section",
+      "title": "1.3 常系数线性差分方程",
+      "source_pages": [
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133
+      ],
+      "source_scope": "保留通式、四种求解法、因果和非因果迭代解、结构及 MATLAB filter。",
+      "direct_rewrite_source_pages": [
+        129,
+        130
+      ],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-04-sampling-theorem-1",
+      "unit_type": "textbook_section",
+      "title": "1.4 时域采样定理",
+      "source_pages": [
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149
+      ],
+      "source_scope": "保留理想采样、频域周期延拓、无混叠和混叠、采样定理。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [
+        [
+          142,
+          143
+        ]
+      ],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-04-sampling-theorem-2",
+      "unit_type": "textbook_section",
+      "title": "1.4 采样定理的工程应用与带通信号采样",
+      "source_pages": [
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159
+      ],
+      "source_scope": "保留抗混叠滤波、音频实例和带通信号采样。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-04-sampling-recovery",
+      "unit_type": "textbook_section",
+      "title": "1.4 时域采样信号的恢复",
+      "source_pages": [
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167
+      ],
+      "source_scope": "保留理想低通重构、内插函数和恢复过程图解。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [
+        [
+          164,
+          165
+        ]
+      ],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-04-analog-digital-chain",
+      "unit_type": "textbook_section",
+      "title": "1.4 模拟信号的数字处理方法",
+      "source_pages": [
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176
+      ],
+      "source_scope": "保留前置滤波、A/D、DSP、D/A、平滑滤波、零阶保持及处理链图解。",
+      "direct_rewrite_source_pages": [
+        171
+      ],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    },
+    {
+      "id": "c1-04-applications-and-close",
+      "unit_type": "chapter_case",
+      "title": "1.4 采样认知案例与本章收束",
+      "source_pages": [
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185
+      ],
+      "source_scope": "保留奈奎斯特、香农、车轮视觉混叠和透过现象看本质的课程收束内容。",
+      "direct_rewrite_source_pages": [],
+      "incremental_page_groups": [],
+      "source_text_status": "must_reconcile_with_original_courseware",
+      "figure_status": "must_visually_verify_or_redraw_before_final_layout"
+    }
+  ]
+}
