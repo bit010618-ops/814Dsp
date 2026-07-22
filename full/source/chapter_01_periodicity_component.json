@@ -1,0 +1,18 @@
+{
+  "component": "chapter_01_periodicity",
+  "source_pages": [59, 60, 61, 62, 63, 64, 65],
+  "merged_pages": [
+    {"source_page": 58, "merged_with": 59, "reason": "章节封面仅含本节标题"},
+    {"source_page": 67, "merged_with": 59, "reason": "内容完全重复"}
+  ],
+  "excluded_by_user_scope": [
+    {"source_page": 66, "reason": "MATLAB 代码与作图输出"}
+  ],
+  "sections": [
+    {"title": "周期序列的定义", "formula": "x(n+N)=x(n),\\quad n\\in\\mathbb{Z},\\quad N\\in\\mathbb{Z}_{+}"},
+    {"title": "正弦序列的周期性", "formula": "x(n)=A\\sin(n\\omega+\\varphi),\\quad N\\omega=2k\\pi"},
+    {"title": "基本判据", "formula": "\\frac{2\\pi}{\\omega}=\\frac{N}{k},\\quad N,k\\in\\mathbb{Z}_{+},\\quad \\gcd(N,k)=1"},
+    {"title": "调幅序列", "formula": "x(n)=A[1+m\\cos(\\omega_L n)]\\cos(\\omega_H n)"}
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}
