@@ -1,0 +1,15 @@
+{
+  "component": "chapter_01_causal_stable",
+  "source_pages": [116, 117, 118, 119, 120, 121, 122],
+  "merged_pages": [
+    {"source_page": 115, "merged_with": 116, "reason": "本节封面仅含标题"},
+    {"source_page": 123, "merged_with": 116, "reason": "章节导览完全重复"}
+  ],
+  "retained_core": [
+    "一般系统的因果性定义与五个判断例",
+    "LSI 系统 h(n) 的因果条件及四个序列例",
+    "一般系统 BIBO 稳定性定义与四个判断例",
+    "LSI 系统单位脉冲响应绝对可和的充要条件及四个序列例"
+  ],
+  "component_status": "rendered_and_visually_verified_for_integration"
+}

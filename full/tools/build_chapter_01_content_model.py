@@ -53,6 +53,7 @@ COMPONENT_FILE_BY_UNIT = {
     "c1-02-time-invariance": "full/source/chapter_01_time_invariance_component.json",
     "c1-02-convolution-basics": "full/source/chapter_01_convolution_basics_component.json",
     "c1-02-convolution-properties": "full/source/chapter_01_convolution_properties_component.json",
+    "c1-02-causal-stable": "full/source/chapter_01_causal_stable_component.json",
 }
 
 
