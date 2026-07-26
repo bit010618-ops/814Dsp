@@ -78,6 +78,24 @@ def _training(page: canvas.Canvas) -> None:
         y,
         A4[0] - 124,
     )
+    y -= 40
+    y = _question_heading(page, 2015, y, first=False)
+    y = style.draw_rich_paragraph(
+        page,
+        "对模拟信号进行采样，得到的是______信号。",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    y -= 40
+    y = _question_heading(page, 2020, y, first=False)
+    style.draw_rich_paragraph(
+        page,
+        r"已知频带宽度有限信号 {{x(t)}}、{{y(t)}} 的最高频率分别为 {{f_1}} 和 {{f_2}}，其中 {{f_1<f_2}}，则对信号 {{2x(t)+5y(t)}} 进行无失真抽样的采样频率为______。",
+        62,
+        y,
+        A4[0] - 124,
+    )
     page.showPage()
 
 
@@ -110,6 +128,27 @@ def _answers(page: canvas.Canvas) -> None:
         y,
         A4[0] - 124,
     )
+    page.showPage()
+    _start(page, 2)
+    y = style.draw_title(page, "真题整理详解（续）", 770)
+    y = style.draw_continuation_title(page, "2015 年真题：采样后信号的类型", y + 6)
+    y = style.draw_rich_paragraph(
+        page,
+        "采样把连续时间自变量限制在离散的采样时刻，因此得到离散时间信号。采样本身不等同于量化；若还对幅值作离散化，才会得到数字信号。",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    y -= 18
+    y = style.draw_continuation_title(page, "2020 年真题：组合带限信号的抽样频率", y)
+    y = style.draw_rich_paragraph(
+        page,
+        r"线性组合 {{2x(t)+5y(t)}} 不产生高于原分量的频率。因为 {{f_2}} 是两个分量中的最高频率，无失真抽样频率应满足 {{f_s\geq 2f_2}}；取临界值时，最小采样频率为：",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    _formula(page, r"f_{s,\min}=2f_2", y)
     page.showPage()
 
 

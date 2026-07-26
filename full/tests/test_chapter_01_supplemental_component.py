@@ -13,6 +13,8 @@ def test_chapter_one_sampling_supplemental_questions_and_answers_are_reader_clea
     assert [item["id"] for item in model["questions"]] == [
         "2002-qintro-p4",
         "2003-qintro-p4",
+        "2015-qintro-p1",
+        "2020-qintro-p4",
     ]
 
     training = build_training_pdf(ROOT, output_path=tmp_path / "chapter_01_supplemental.pdf")
@@ -23,12 +25,16 @@ def test_chapter_one_sampling_supplemental_questions_and_answers_are_reader_clea
     answer_compact = "".join(answer_text.split())
 
     assert len(PdfReader(str(training)).pages) == 1
-    assert len(PdfReader(str(answers)).pages) == 1
+    assert len(PdfReader(str(answers)).pages) == 2
     assert "2002年真题" in training_compact
     assert "2003年真题" in training_compact
+    assert "2015年真题" in training_compact
+    assert "2020年真题" in training_compact
     assert "奈奎斯特" in training_compact
     assert "最高角频率" in answer_compact
     assert "最小采样频率" in answer_compact
+    assert "离散时间信号" in answer_compact
+    assert "组合带限信号的抽样频率" in answer_compact
     for text in (training_compact, answer_compact):
         for forbidden in ("源课件", "源文件", "原始材料", "根据原课件"):
             assert forbidden not in text

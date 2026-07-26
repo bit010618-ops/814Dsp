@@ -13,6 +13,18 @@
       "year": 2003,
       "topic": "多频正弦信号的奈奎斯特采样频率与采样周期",
       "source_pages": [8]
+    },
+    {
+      "id": "2015-qintro-p1",
+      "year": 2015,
+      "topic": "模拟信号采样后的信号类型",
+      "source_pages": [30]
+    },
+    {
+      "id": "2020-qintro-p4",
+      "year": 2020,
+      "topic": "组合带限信号的无失真抽样频率",
+      "source_pages": [41]
     }
   ],
   "reader_layout": {
