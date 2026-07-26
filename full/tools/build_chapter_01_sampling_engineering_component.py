@@ -175,43 +175,39 @@ def page_one(page: canvas.Canvas) -> None:
     y = section(page, "采样前的带宽约束", y - 2)
     y = paragraph(page, "若滤波后的模拟输入最高频率为 {{f_h}}，则选择采样频率时应满足采样定理。工程上，滤波器还需要留出过渡带，因此截止频率通常应低于折叠频率，而不应刚好压在临界位置。", y)
     y = formula_box(page, r"f_h\leq\frac{f_s}{2}\qquad\Longleftrightarrow\qquad \Omega_h\leq\frac{\Omega_s}{2}", y, 50)
-    style.draw_note(page, "抗混叠滤波器位于采样之前；采样后再滤除混叠，已经无法恢复被重叠的频谱成分。", y - 3)
+    y = title(page, "抗混叠滤波的频域作用", y - 18)
+    y = paragraph(page, "采样会使模拟频谱按 {{f_s}} 为间隔重复出现。若原信号带宽过宽，相邻副本会相交；先用低通滤波器限制输入带宽后，副本之间保留空隙，才可用重构滤波器取回所需频带。", y)
+    section(page, "频谱副本的分离", y - 2)
     page.showPage()
 
 
 def page_two(page: canvas.Canvas) -> None:
     start(page, 2)
-    y = title(page, "抗混叠滤波的频域作用")
-    y = paragraph(page, "采样会使模拟频谱按 {{f_s}} 为间隔重复出现。若原信号带宽过宽，相邻副本会相交；先用低通滤波器限制输入带宽后，副本之间保留空隙，才可用重构滤波器取回所需频带。", y)
-    y = section(page, "频谱副本的分离", y - 2)
-    y = anti_alias_spectrum(page, y - 70)
+    y = anti_alias_spectrum(page, 670)
     y = paragraph(page, "上图的差别不在于采样操作本身，而在于采样前是否已经满足带宽条件。混叠一旦发生，重叠区域来自哪些原始频率成分便不再能够唯一判定。", y)
-    style.draw_note(page, "判断顺序：先看输入最高频率，再比较 {{f_h}} 与 {{\\frac{f_s}{2}}}；若不满足，先设计前置滤波而不是事后补救。", y - 3)
+    y = title(page, "带通信号的采样参数", y - 18)
+    y = paragraph(page, "带通信号的频谱只占据某一段非零频率附近的区间，而不是从零频率开始。记最高频率为 {{f_h}}、频带宽度为 {{\\Delta f_0}}，则频带中心频率由右端点与带宽共同确定。", y)
+    formula_box(page, r"f_0=f_h-\frac{\Delta f_0}{2}", y, 48)
     page.showPage()
 
 
 def page_three(page: canvas.Canvas) -> None:
     start(page, 3)
-    y = title(page, "带通信号的采样参数")
-    y = paragraph(page, "带通信号的频谱只占据某一段非零频率附近的区间，而不是从零频率开始。记最高频率为 {{f_h}}、频带宽度为 {{\\Delta f_0}}，则频带中心频率由右端点与带宽共同确定。", y)
-    y = formula_box(page, r"f_0=f_h-\frac{\Delta f_0}{2}", y, 48)
-    y = section(page, "频带位置与带宽", y - 2)
+    y = section(page, "频带位置与带宽", 746)
     y = bandpass_spectrum(page, y - 66)
     y = paragraph(page, "带通采样的关键不只在于最高频率 {{f_h}}，还在于有效带宽 {{\\Delta f_0}} 与频带所在位置。合理选择采样频率时，可让重复后的频带交错排列而不发生重叠。", y)
-    style.draw_note(page, "带通信号的采样率可以与带宽相关，但仍必须保证所有频谱副本之间没有相交。", y - 3)
+    y = title(page, "带通信号的无混叠采样", y - 18)
+    y = paragraph(page, "当带通信号的最高频率恰好是带宽的整数倍时，可以直接选用两倍带宽作为采样频率。采样后的频谱副本不重叠，并可由适当的带通滤波器恢复原信号。", y)
+    formula_box(page, r"f_h=r\Delta f_0,\quad r\in\mathbb{Z}\qquad\Longrightarrow\qquad f_s=2\Delta f_0", y, 52)
     page.showPage()
 
 
 def page_four(page: canvas.Canvas) -> None:
     start(page, 4)
-    y = title(page, "带通信号的无混叠采样")
-    y = paragraph(page, "当带通信号的最高频率恰好是带宽的整数倍时，可以直接选用两倍带宽作为采样频率。采样后的频谱副本不重叠，并可由适当的带通滤波器恢复原信号。", y)
-    y = formula_box(page, r"f_h=r\Delta f_0,\quad r\in\mathbb{Z}\qquad\Longrightarrow\qquad f_s=2\Delta f_0", y, 52)
-    y = section(page, "非整数情形", y - 2)
+    y = section(page, "非整数情形", 746)
     y = paragraph(page, "若 {{\\frac{f_h}{\\Delta f_0}}} 不是整数，则将频带下端向低频方向延伸，构造一个不小于原带宽的 {{\\Delta f_0'}}，使最高频率成为该扩展带宽的整数倍；随后按相同方法选择采样频率。", y)
     y = formula_box(page, r"\Delta f_0'=\frac{f_h}{r}\geq\Delta f_0,\qquad r\in\mathbb{Z},\qquad f_s=2\Delta f_0'", y, 54)
     y = paragraph(page, "这里的扩展只用于确定可行的采样频率和滤波器通带，并不表示原信号新增了频率成分。恢复时仍使用与原频带相匹配的带通滤波器选出所需部分。", y)
-    style.draw_note(page, "做带通采样题时，先写清 {{f_h}}、{{\\Delta f_0}} 和 {{f_0}}；再检查整数倍条件，最后说明采样后用带通滤波器恢复。", y - 3)
     page.showPage()
 
 
