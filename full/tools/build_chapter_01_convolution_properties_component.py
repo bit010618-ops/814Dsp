@@ -33,7 +33,11 @@ def p1(p):
 
 def p2(p):
  start(p,2); y=title(p,'有限支持序列的卷积区间')
- y=para(p,'设 {{x(n)}} 仅在 {{N_1\\leq n\\leq N_2}} 非零，{{h(n)}} 仅在 {{N_3\\leq n\\leq N_4}} 非零。求 {{y(n)=x(n)*h(n)}} 的非零区间。',y)
+ y=para(p,'例1：有两个序列：{{x(n)}} 和 {{h(n)}}',y)
+ y=para(p,'{{x(n)}} 不为零的区间为：{{N_1\\leq n\\leq N_2}}',y)
+ y=para(p,'{{h(n)}} 不为零的区间为：{{N_3\\leq n\\leq N_4}}',y)
+ y=para(p,'设：{{y(n)=x(n)*h(n)}}',y)
+ y=para(p,'问：{{y(n)}} 不为零的区间为：______。',y)
  y=sec(p,'由重叠条件判断首尾位置',y-2)
  y=box(p,r'x(m)\ne0:\ N_1\leq m\leq N_2,\qquad h(n-m)\ne0:\ n-N_4\leq m\leq n-N_3',y,58)
  y=para(p,'当 {{n<N_1+N_3}} 时二者尚未重叠，输出为零；第一次重叠发生在 {{n=N_1+N_3}}。最后一次重叠发生在 {{n=N_2+N_4}}。',y)

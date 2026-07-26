@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from pypdf import PdfReader
 from full.tools.build_chapter_01_convolution_properties_component import build_pdf, load_model
 
@@ -10,3 +11,13 @@ def test_convolution_properties_component_preserves_core_and_excludes_matlab(tmp
     assert len(PdfReader(str(out)).pages)==4
     assert 'MATLAB' not in text
     assert '互相关' in text
+
+
+def test_convolution_properties_component_preserves_original_support_interval_prompt(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'convolution-properties.pdf')
+    text = re.sub(r'\s+', '', ''.join(page.extract_text() or '' for page in PdfReader(str(out)).pages))
+
+    assert '例1：有两个序列' in text
+    # 行内 y(n) 以数学图像绘制，文本层仅能可靠提取题干文字。
+    assert '问：' in text
+    assert '不为零的区间为：' in text
