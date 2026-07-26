@@ -23,3 +23,18 @@ def test_causal_stable_component_preserves_original_lsi_example_prompts(tmp_path
     assert '判断系统的稳定性。' in text
     builder_text=Path('full/tools/build_chapter_01_causal_stable_component.py').read_text(encoding='utf-8')
     assert "if t == 'LSI系统的稳定性条件':" in builder_text
+
+
+def test_causal_stable_component_preserves_original_example_numbering_and_conditions(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'causal-stable.pdf')
+    text = re.sub(r'\s+', '', ''.join(page.extract_text() or '' for page in PdfReader(str(out)).pages))
+
+    assert '（1）' in text
+    assert '（5）' in text
+    assert '项输入的求和' in text
+    assert '不满足绝对可和' in text
+    # 行内不等式以数学图像绘制，检查生成脚本中的标准公式源。
+    builder_text = Path('full/tools/build_chapter_01_causal_stable_component.py').read_text(encoding='utf-8')
+    assert r'n\\geq2' in builder_text
+    assert r'n\\leq-1' in builder_text
+    assert r'n-n_0+1' in builder_text
