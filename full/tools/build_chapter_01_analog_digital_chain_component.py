@@ -175,15 +175,14 @@ def page_two(page: canvas.Canvas) -> None:
     y = paragraph(page, "采样决定信号在时间轴上的离散位置；量化决定每个样值可取的幅度等级；编码则把量化等级写成数字系统可以传输、存储和运算的码字。三者共同完成从连续量到数字表示的转换。", y)
     y = section(page, "前置预滤波的作用", y - 2)
     y = paragraph(page, "实际输入往往含有目标频带之外的成分。前置预滤波器应在采样前抑制这些成分，以防它们在频谱复制时混入目标频带；这一环节不能由采样后的数字处理完全补救。", y)
-    style.draw_note(page, "学习时应区分：采样频率决定频谱副本之间的间隔；量化等级决定幅度表示的精细程度。两者对应不同的失真来源。", y - 3)
+    y = title(page, "数模转换与零阶保持", y - 18)
+    paragraph(page, "数字处理器的输出 {{y(n)}} 仍是离散序列。数模转换器把各个数值依次送入保持电路；最常见的零阶保持方式是在两个采样时刻之间维持前一个样值不变，因此得到阶梯状的连续时间波形。", y)
     page.showPage()
 
 
 def page_three(page: canvas.Canvas) -> None:
     start(page, 3)
-    y = title(page, "数模转换与零阶保持")
-    y = paragraph(page, "数字处理器的输出 {{y(n)}} 仍是离散序列。数模转换器把各个数值依次送入保持电路；最常见的零阶保持方式是在两个采样时刻之间维持前一个样值不变，因此得到阶梯状的连续时间波形。", y)
-    y = section(page, "零阶保持输出", y - 2)
+    y = section(page, "零阶保持输出", 746)
     y = zero_order_hold(page, y - 76)
     y = paragraph(page, "阶梯波形包含目标低频成分，也包含由保持过程带来的高频成分。理想数模恢复可用满足重构条件的低通滤波器直接得到连续输出；实际系统则在保持器之后配置模拟平滑滤波器，使输出波形更加连续。", y)
     y = formula_box(page, r"y(n)\ \longrightarrow\ y_0(t)\ \longrightarrow\ y_a(t)", y, 50)
