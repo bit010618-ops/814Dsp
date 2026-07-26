@@ -66,12 +66,13 @@ def page_two(page, m):
     y = section(page, "有理性判据", y)
     y = box(page, m["sections"][2]["formula"], y, 52)
     y = para(page, "当 {{\\frac{2\\pi}{\\omega}}} 为整数时，基本周期就是该整数；当它是既约分数 {{\\frac{N}{k}}} 时，基本周期为分子 {{N}}；若它是无理数，序列无周期。", y)
-    y = section(page, "例 1：余弦序列的基本周期", y - 2)
+    y = para(page, "例：（1）判断序列 {{x(n)}} 是否有周期，如果有请计算其周期。", y - 2)
+    y = para(page, "（A）{{x(n)=A\\cos(\\frac{13\\pi}{4}n)}}", y)
     y = box(page, r"x(n)=A\cos(\frac{13\pi}{4}n),\qquad \frac{2\pi}{\omega}=\frac{8}{13},\qquad N=8", y, 48)
     y = para(page, "{{8}} 与 {{13}} 互素，故既约分数的分子为基本周期，即 {{N=8}}。从采样观点看，{{13}} 个连续正弦周期内取到 {{8}} 个离散样值周期。", y)
-    y = section(page, "例 2：复指数序列是否周期", y - 2)
-    y = box(page, r"x(n)=e^{j\frac{n}{6}},\qquad \omega=\frac{1}{6},\qquad \frac{2\pi}{\omega}=12\pi\notin\mathbb{Q}", y, 48)
-    style.draw_note(page, "结论：{{12\\pi}} 为无理数，不存在整数 {{N}} 使 {{N\\omega=2k\\pi}}，所以该复指数序列不是周期序列。", y - 2)
+    y = para(page, "（B）{{x(n)=e^{j(\\frac{n}{6}-\\pi)}}}", y - 2)
+    y = box(page, r"x(n)=e^{j(\frac{n}{6}-\pi)},\qquad \omega=\frac{1}{6},\qquad \frac{2\pi}{\omega}=12\pi\notin\mathbb{Q}", y, 48)
+    para(page, "结论：{{12\\pi}} 为无理数，不存在整数 {{N}} 使 {{N\\omega=2k\\pi}}，所以该复指数序列不是周期序列。", y - 2)
     page.showPage()
 
 def page_three(page, m):
