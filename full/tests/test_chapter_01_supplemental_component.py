@@ -13,6 +13,7 @@ def test_chapter_one_sampling_supplemental_questions_and_answers_are_reader_clea
     assert [item["id"] for item in model["questions"]] == [
         "2002-qintro-p4",
         "2003-qintro-p4",
+        "2014-qintro-p2",
         "2015-qintro-p1",
         "2020-qintro-p4",
     ]
@@ -29,11 +30,13 @@ def test_chapter_one_sampling_supplemental_questions_and_answers_are_reader_clea
     assert "2002年真题" in training_compact
     assert "2003年真题" in training_compact
     assert "2015年真题" in training_compact
+    assert "2014年真题" in training_compact
     assert "2020年真题" in training_compact
     assert "奈奎斯特" in training_compact
     assert "最高角频率" in answer_compact
     assert "最小采样频率" in answer_compact
     assert "离散时间信号" in answer_compact
+    assert "不是时变系统" in answer_compact
     assert "组合带限信号的抽样频率" in answer_compact
     for text in (training_compact, answer_compact):
         for forbidden in ("源课件", "源文件", "原始材料", "根据原课件"):

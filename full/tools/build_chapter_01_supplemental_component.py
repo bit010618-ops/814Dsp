@@ -78,7 +78,16 @@ def _training(page: canvas.Canvas) -> None:
         y,
         A4[0] - 124,
     )
-    y -= 40
+    y -= 32
+    y = _question_heading(page, 2014, y, first=False)
+    y = style.draw_rich_paragraph(
+        page,
+        r"已知系统 {{y[n]=x[n]\{g[n]+g[n-1]\}}}，若 {{g[n]=1+(-1)^n}}，则系统是否为时变系统？______。",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    y -= 32
     y = _question_heading(page, 2015, y, first=False)
     y = style.draw_rich_paragraph(
         page,
@@ -131,6 +140,15 @@ def _answers(page: canvas.Canvas) -> None:
     page.showPage()
     _start(page, 2)
     y = style.draw_title(page, "真题整理详解（续）", 770)
+    y = style.draw_continuation_title(page, "2014 年真题：离散系统时变性判定", y + 6)
+    y = style.draw_rich_paragraph(
+        page,
+        r"代入 {{g[n]=1+(-1)^n}} 可得 {{g[n-1]=1-(-1)^n}}，因此 {{g[n]+g[n-1]=2}}。系统化为 {{y[n]=2x[n]}}，不显含时间索引，故不是时变系统。",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    y -= 18
     y = style.draw_continuation_title(page, "2015 年真题：采样后信号的类型", y + 6)
     y = style.draw_rich_paragraph(
         page,
