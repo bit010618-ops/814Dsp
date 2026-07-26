@@ -81,13 +81,13 @@ def page_one(page):
     y = box(page, r"x(n)=\sum_{m=-\infty}^{\infty}x(m)\delta(n-m)", y, 54)
     y = para(page, "利用线性性可把响应逐项相加；再利用移不变性，有 {{T[\\delta(n-m)]=h(n-m)}}，因此可直接得到下式。", y)
     y = box(page, r"T[x(n)]=\sum_{m=-\infty}^{\infty}x(m)h(n-m)", y, 52)
-    style.draw_note(page, "关键：卷积不是普通逐项相乘。它体现的是“每一个输入脉冲在系统中产生的移位响应之和”。", y - 3)
+    y = title(page, "图解计算法：反褶、移位、相乘、相加", y - 18)
+    para(page, "图解法始终将 {{x(m)}} 固定，把 {{h(m)}} 看成关于变量 {{m}} 的序列。按如下顺序操作，可以逐个求出每一个 {{y(n)}}。", y)
     page.showPage()
 
 
 def page_two(page):
-    start(page, 2); y = title(page, "图解计算法：反褶、移位、相乘、相加")
-    y = para(page, "图解法始终将 {{x(m)}} 固定，把 {{h(m)}} 看成关于变量 {{m}} 的序列。按如下顺序操作，可以逐个求出每一个 {{y(n)}}。", y)
+    start(page, 2); y = 746
     for heading, body in [
         ("1. 反褶", "以 {{m=0}} 为对称轴，将 {{h(m)}} 反褶为 {{h(-m)}}。"),
         ("2. 移位", "将 {{h(-m)}} 沿 {{m}} 轴平移 {{n}}，得到 {{h(n-m)}}；{{n>0}} 时向右移，{{n<0}} 时向左移。"),
@@ -98,14 +98,14 @@ def page_two(page):
     y = section(page, "支持区间检查", y - 2)
     y = para(page, "只有两个序列在横轴上发生重叠的样点才会对结果有贡献。有限长序列卷积的长度为 {{L_x+L_h-1}}，这可用于检查是否漏算首尾项。", y)
     y = box(page, r"x(n)*\delta(n-n_0)=x(n-n_0)", y, 50)
-    style.draw_note(page, "上式说明：与移位单位脉冲卷积只会使序列延时 {{n_0}}；这也是检查卷积方向与下标的简便方法。", y - 3)
+    y = title(page, "例题：两个有限长序列的线性卷积", y - 18)
+    y = para(page, "已知 {{x(n)=\\delta(n)+2\\delta(n-1)}}，{{h(n)=3\\delta(n)+2\\delta(n-1)+\\delta(n-2)}}，求 {{y(n)=x(n)*h(n)}}。", y)
+    box(page, r"x=[1,2],\qquad h=[3,2,1]", y, 46)
     page.showPage()
 
 
 def page_three(page):
-    start(page, 3); y = title(page, "例题：两个有限长序列的线性卷积")
-    y = para(page, "已知 {{x(n)=\\delta(n)+2\\delta(n-1)}}，{{h(n)=3\\delta(n)+2\\delta(n-1)+\\delta(n-2)}}，求 {{y(n)=x(n)*h(n)}}。", y)
-    y = box(page, r"x=[1,2],\qquad h=[3,2,1]", y, 46)
+    start(page, 3); y = 746
     stems(page, [1, 2], 72, y, 190, 106, "x(m)"); stems(page, [3, 2, 1], 330, y, 190, 106, "h(m)"); y -= 122
     y = section(page, "逐步计算", y)
     y = para(page, "{{n=0}} 时仅 {{m=0}} 重叠：{{y(0)=1\\cdot3=3}}。{{n=1}} 时有两项重叠：{{y(1)=1\\cdot2+2\\cdot3=8}}。", y)
@@ -113,13 +113,14 @@ def page_three(page):
     y = box(page, r"y(n)=3\delta(n)+8\delta(n-1)+5\delta(n-2)+2\delta(n-3)", y, 56)
     stems(page, [3, 8, 5, 2], 120, y, 355, 120, "y(n)"); y -= 137
     style.draw_note(page, "核对：输入长度为 2、响应长度为 3，因此输出长度应为 {{2+3-1=4}}，与结果一致。", y - 2)
+    y = title(page, "例题详解：由脉冲响应直接求输出", y - 18)
+    y = para(page, "同一例题也可用脉冲分解直接计算。先把输入写成两项加权移位单位脉冲，再分别写出每一项的系统响应。", y)
+    box(page, r"x(n)=\delta(n)+2\delta(n-1)", y, 46)
     page.showPage()
 
 
 def page_four(page):
-    start(page, 4); y = title(page, "例题详解：由脉冲响应直接求输出")
-    y = para(page, "同一例题也可用脉冲分解直接计算。先把输入写成两项加权移位单位脉冲，再分别写出每一项的系统响应。", y)
-    y = box(page, r"x(n)=\delta(n)+2\delta(n-1)", y, 46)
+    start(page, 4); y = 746
     y = para(page, "输入 {{\\delta(n)}} 的响应为 {{h(n)}}；输入 {{2\\delta(n-1)}} 的响应为 {{2h(n-1)}}。由线性性相加即可。", y)
     y = box(page, r"y(n)=h(n)+2h(n-1)", y, 46)
     y = para(page, "代入 {{h(n)=3\\delta(n)+2\\delta(n-1)+\\delta(n-2)}} 并合并同类项：", y)
