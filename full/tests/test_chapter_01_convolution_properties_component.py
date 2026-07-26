@@ -21,3 +21,24 @@ def test_convolution_properties_component_preserves_original_support_interval_pr
     # 行内 y(n) 以数学图像绘制，文本层仅能可靠提取题干文字。
     assert '问：' in text
     assert '不为零的区间为：' in text
+
+
+def test_convolution_properties_component_continues_support_interval_into_first_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'convolution-properties.pdf')
+    reader = PdfReader(str(out))
+
+    assert '有限支持序列的卷积区间' in (reader.pages[0].extract_text() or '')
+
+
+def test_convolution_properties_component_continues_correlation_into_third_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'convolution-properties.pdf')
+    reader = PdfReader(str(out))
+
+    assert '实序列的相关：相似度与延时' in (reader.pages[2].extract_text() or '')
+
+
+def test_convolution_properties_component_continues_delay_example_into_second_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'convolution-properties.pdf')
+    reader = PdfReader(str(out))
+
+    assert '应用例：延时叠加系统' in (reader.pages[1].extract_text() or '')
