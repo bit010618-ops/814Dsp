@@ -38,3 +38,17 @@ def test_causal_stable_component_preserves_original_example_numbering_and_condit
     assert r'n\\geq2' in builder_text
     assert r'n\\leq-1' in builder_text
     assert r'n-n_0+1' in builder_text
+
+
+def test_causal_stable_component_continues_lsi_causality_into_first_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'causal-stable.pdf')
+    reader = PdfReader(str(out))
+
+    assert 'LSI 系统的因果性条件' in (reader.pages[0].extract_text() or '')
+
+
+def test_causal_stable_component_continues_stability_into_second_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'causal-stable.pdf')
+    reader = PdfReader(str(out))
+
+    assert '一般系统的稳定性' in (reader.pages[1].extract_text() or '')
