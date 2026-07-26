@@ -57,13 +57,14 @@ def page_one(page):
     y = para(page, "（1）由原输入 {{x(n)}} 写出 {{y(n)}}；（2）把输入替换为 {{x(n-k)}} 并求输出 {{T[x(n-k)]}}；（3）把原输出替换为 {{y(n-k)}}；（4）比较两式。", y)
     y = box(page, r"T[x(n-k)]=y(n-k)", y, 44)
     style.draw_note(page, "常见误区：不能只在某一个样点比较数值；时不变性要求等式对任意输入、任意整数移位 {{k}} 都成立。", y - 2)
+    y = title(page, "累加系统的时不变性", y - 18)
+    y = section(page, "例 1：从负无穷开始的累加器", y)
+    box(page, r"y(n)=\sum_{m=-\infty}^{n}x(m)", y, 48)
     page.showPage()
 
 def page_two(page):
     start(page, 2)
-    y = title(page, "累加系统的时不变性")
-    y = section(page, "例 1：从负无穷开始的累加器", y)
-    y = box(page, r"y(n)=\sum_{m=-\infty}^{n}x(m)", y, 48)
+    y = 746
     y = para(page, "对移位输入，有 {{T[x(n-k)]=\\sum_{m=-\\infty}^{n}x(m-k)}}。令 {{m'=m-k}}，下限仍为负无穷，得到下式。", y)
     y = box(page, r"T[x(n-k)]=\sum_{m'=-\infty}^{n-k}x(m')=y(n-k)", y, 50)
     y = para(page, "故从负无穷开始的累加器是时不变系统。", y)
@@ -72,14 +73,15 @@ def page_two(page):
     y = para(page, "相同变量替换后，下限由 {{0}} 变为 {{-k}}，因此一般不能与 {{y(n-k)}} 的下限 {{0}} 一致。", y)
     y = box(page, r"T[x(n-k)]=\sum_{m'=-k}^{n-k}x(m')\ne\sum_{m=0}^{n-k}x(m')=y(n-k)", y, 54)
     style.draw_note(page, "结论：从零开始累加器的“起始时刻”固定在绝对时间原点，系统行为依赖于时刻，因此是时变系统。", y - 2)
+    y = title(page, "抽取与滑动平均系统", y - 18)
+    y = section(page, "例 3：抽取系统", y)
+    y = para(page, "系统定义为 {{y(n)=x(2n)}}。先延迟输出得到 {{y(n-k)=x(2n-2k)}}；先延迟输入再通过系统则得到 {{T[x(n-k)]=x(2n-k)}}。两式一般不相等。", y)
+    box(page, r"x(2n-2k)\ne x(2n-k)", y, 52)
     page.showPage()
 
 def page_three(page):
     start(page, 3)
-    y = title(page, "抽取与滑动平均系统")
-    y = section(page, "例 3：抽取系统", y)
-    y = para(page, "系统定义为 {{y(n)=x(2n)}}。先延迟输出得到 {{y(n-k)=x(2n-2k)}}；先延迟输入再通过系统则得到 {{T[x(n-k)]=x(2n-k)}}。两式一般不相等。", y)
-    y = box(page, r"x(2n-2k)\ne x(2n-k)", y, 52)
+    y = 746
     y = para(page, "例如取 {{x(n)=n}}、{{k=1}}、{{n=3}}：前者为 {{x(4)=4}}，后者为 {{x(5)=5}}，故可直接构成反例。", y)
     y = section(page, "线性时不变系统：滑动平均", y - 2)
     y = box(page, r"T[x(n)]=\frac{1}{M_2-M_1+1}\sum_{k=M_1}^{M_2}x(n-k)", y, 58)

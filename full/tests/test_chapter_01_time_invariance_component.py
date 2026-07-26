@@ -16,3 +16,5 @@ def test_time_invariance_component_preserves_core_examples_and_excludes_experime
     assert "仿真实验" not in text
     assert "滑动平均" in text
     assert "从零开始的累加器" in text
+    assert "累加系统的时不变性" in (reader.pages[0].extract_text() or "")
+    assert "抽取与滑动平均系统" in (reader.pages[1].extract_text() or "")
