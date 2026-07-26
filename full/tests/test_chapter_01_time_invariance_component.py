@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 from pypdf import PdfReader
 
@@ -15,6 +16,17 @@ def test_time_invariance_component_preserves_core_examples_and_excludes_experime
     assert len(reader.pages) == 3
     assert "仿真实验" not in text
     assert "滑动平均" in text
-    assert "从零开始的累加器" in text
-    assert "累加系统的时不变性" in (reader.pages[0].extract_text() or "")
-    assert "抽取与滑动平均系统" in (reader.pages[1].extract_text() or "")
+    assert "验证下面的系统是否为移不变系统：" in text
+    assert "例：验证下面的系统是否为移不变系统：" in (reader.pages[0].extract_text() or "")
+    assert "例：验证下面的系统是否为移不变系统：" in (reader.pages[1].extract_text() or "")
+
+
+def test_time_invariance_component_preserves_original_example_statements(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "time-invariance.pdf")
+    reader = PdfReader(str(output))
+    text = re.sub(r"\s+", "", "".join(page.extract_text() or "" for page in reader.pages))
+    assert "例：验证下面的系统是否为移不变系统：" in text
+    builder_text = Path("full/tools/build_chapter_01_time_invariance_component.py").read_text(encoding="utf-8")
+    assert 'r"(1)\\quad y(n)=\\sum_{m=-\\infty}^{n}x(m)"' in builder_text
+    assert 'r"(2)\\quad y(n)=\\sum_{m=0}^{n}x(m)"' in builder_text
+    assert 'r"y(n)=x(2n)"' in builder_text

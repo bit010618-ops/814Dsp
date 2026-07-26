@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import re
 import sys
 from pathlib import Path
 
@@ -59,6 +60,20 @@ def _body_bounds(page: PageObject) -> tuple[float, float]:
             positions.append(float(tm[5]))
 
     page.extract_text(visitor_text=collect)
+    # Displayed formulas are raster XObjects and have no extractable text.  Keep
+    # their transformation bounds in the crop calculation so their surrounding
+    # formula box can never be split into a visible sliver at a reflow boundary.
+    try:
+        content = page.get_contents().get_data().decode("latin1")
+    except Exception:
+        content = ""
+    number = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)"
+    matrix = re.compile(
+        rf"q\s+({number})\s+({number})\s+({number})\s+({number})\s+({number})\s+({number})\s+cm\s+/\S+\s+Do"
+    )
+    for match in matrix.finditer(content):
+        _a, _b, _c, height, _x, bottom = map(float, match.groups())
+        positions.extend((bottom, bottom + height))
     if not positions:
         return BODY_BOTTOM, CROP_TOP
     return max(BODY_BOTTOM, min(positions) - 42), min(CROP_TOP, max(positions) + 28)

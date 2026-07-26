@@ -51,3 +51,12 @@ def test_reflow_crop_keeps_a_safe_upper_margin_for_section_titles():
     _bottom, top = _body_bounds(source_page)
 
     assert top >= 795
+
+
+def test_reflow_crop_keeps_the_last_formula_image_and_its_background_box():
+    source_page = PdfReader(str(ROOT / "full/outputs/chapter_01_time_invariance_component.pdf")).pages[0]
+    bottom, _top = _body_bounds(source_page)
+
+    # The final displayed formula occupies the box from y=368 to y=416.
+    # Text extraction alone sees only the nearby heading and used to crop this box.
+    assert bottom <= 368
