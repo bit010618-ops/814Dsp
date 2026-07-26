@@ -1,0 +1,25 @@
+{
+  "chapter": 1,
+  "component_status": "sampling_supplemental_questions_and_detailed_answers_ready_for_book_end_integration",
+  "questions": [
+    {
+      "id": "2002-qintro-p4",
+      "year": 2002,
+      "topic": "正弦信号的奈奎斯特采样频率与采样周期",
+      "source_pages": [5]
+    },
+    {
+      "id": "2003-qintro-p4",
+      "year": 2003,
+      "topic": "多频正弦信号的奈奎斯特采样频率与采样周期",
+      "source_pages": [8]
+    }
+  ],
+  "reader_layout": {
+    "white_background_only": true,
+    "no_exercise_label": true,
+    "no_answer_lines": true,
+    "answer_reference": "详解：真题整理详解",
+    "final_page_numbers": "to_be_backfilled_after_whole_book_pagination"
+  }
+}

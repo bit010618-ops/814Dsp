@@ -39,6 +39,7 @@ COMPONENT_FILENAMES = (
     "chapter_01_analog_digital_chain_component.pdf",
     "chapter_01_applications_close_component.pdf",
     "chapter_01_training_component.pdf",
+    "chapter_01_supplemental_component.pdf",
 )
 
 
