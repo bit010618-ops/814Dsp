@@ -163,16 +163,15 @@ def page_one(page: canvas.Canvas) -> None:
     y = process_chain(page, y - 44)
     y = formula_box(page, r"x_a(t)\ \longrightarrow\ x(n)\ \longrightarrow\ y(n)\ \longrightarrow\ y_a(t)", y, 52)
     y = paragraph(page, "前置预滤波器先去除可能在采样后折叠到有效频带内的高频成分。若输入信号的最高角频率为 {{\\Omega_c}}，采样角频率需满足 {{\\Omega_s\\geq2\\Omega_c}}；这一条件保证后续数字处理建立在无混叠的离散表示上。", y)
-    style.draw_note(page, "数字信号处理器可实现滤波、降噪、增强、变换、压缩和识别等任务。它处理的是离散序列，而不是直接对连续波形进行运算。", y - 3)
+    y = title(page, "采样、量化与编码", y - 18)
+    y = paragraph(page, "模数转换把连续时间输入变成可存储、可计算的数字序列。它先在等间隔时刻取得样值，再把连续幅度映射到有限个量化等级，并用二进制码字表示量化后的结果。", y)
+    formula_box(page, r"x(n)=x_a(nT),\qquad q(n)=Q\left[x(n)\right]", y, 56)
     page.showPage()
 
 
 def page_two(page: canvas.Canvas) -> None:
     start(page, 2)
-    y = title(page, "采样、量化与编码")
-    y = paragraph(page, "模数转换把连续时间输入变成可存储、可计算的数字序列。它先在等间隔时刻取得样值，再把连续幅度映射到有限个量化等级，并用二进制码字表示量化后的结果。", y)
-    y = section(page, "离散化的三个环节", y - 2)
-    y = formula_box(page, r"x(n)=x_a(nT),\qquad q(n)=Q\left[x(n)\right]", y, 56)
+    y = section(page, "离散化的三个环节", 746)
     y = paragraph(page, "采样决定信号在时间轴上的离散位置；量化决定每个样值可取的幅度等级；编码则把量化等级写成数字系统可以传输、存储和运算的码字。三者共同完成从连续量到数字表示的转换。", y)
     y = section(page, "前置预滤波的作用", y - 2)
     y = paragraph(page, "实际输入往往含有目标频带之外的成分。前置预滤波器应在采样前抑制这些成分，以防它们在频谱复制时混入目标频带；这一环节不能由采样后的数字处理完全补救。", y)
