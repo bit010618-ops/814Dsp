@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 from pypdf import PdfReader
 
@@ -23,10 +24,16 @@ def test_convolution_basics_continues_the_graphical_method_heading_on_page_one(t
     assert "图解计算法：反褶、移位、相乘、相加" in (reader.pages[0].extract_text() or "")
 
 
-def test_convolution_basics_continues_the_example_heading_on_page_two(tmp_path: Path):
+def test_convolution_basics_preserves_the_original_example_statement_on_page_two(tmp_path: Path):
     output = build_pdf(output_path=tmp_path / "convolution-basics.pdf")
     reader = PdfReader(str(output))
-    assert "例题：两个有限长序列的线性卷积" in (reader.pages[1].extract_text() or "")
+    page_text = re.sub(r"\s+", "", reader.pages[1].extract_text() or "")
+    assert "已知某LSI系统的单位脉冲响应为：" in page_text
+    assert "若该系统的输入为序列：" in page_text
+    assert "试求该系统的输出响应。" in page_text
+    builder_text = Path("full/tools/build_chapter_01_convolution_basics_component.py").read_text(encoding="utf-8")
+    assert 'r"h(n)=3\\delta(n)+2\\delta(n-1)+\\delta(n-2)"' in builder_text
+    assert 'r"x(n)=\\delta(n)+2\\delta(n-1)"' in builder_text
 
 
 def test_convolution_basics_continues_the_impulse_response_solution_on_page_three(tmp_path: Path):

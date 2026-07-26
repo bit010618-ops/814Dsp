@@ -98,9 +98,12 @@ def page_two(page):
     y = section(page, "支持区间检查", y - 2)
     y = para(page, "只有两个序列在横轴上发生重叠的样点才会对结果有贡献。有限长序列卷积的长度为 {{L_x+L_h-1}}，这可用于检查是否漏算首尾项。", y)
     y = box(page, r"x(n)*\delta(n-n_0)=x(n-n_0)", y, 50)
-    y = title(page, "例题：两个有限长序列的线性卷积", y - 18)
-    y = para(page, "已知 {{x(n)=\\delta(n)+2\\delta(n-1)}}，{{h(n)=3\\delta(n)+2\\delta(n-1)+\\delta(n-2)}}，求 {{y(n)=x(n)*h(n)}}。", y)
-    box(page, r"x=[1,2],\qquad h=[3,2,1]", y, 46)
+    y = section(page, "例：", y - 2)
+    y = para(page, "已知某 LSI 系统的单位脉冲响应 {{h(n)}} 为：", y)
+    y = box(page, r"h(n)=3\delta(n)+2\delta(n-1)+\delta(n-2)", y, 46)
+    y = para(page, "若该系统的输入为序列 {{x(n)}}：", y)
+    y = box(page, r"x(n)=\delta(n)+2\delta(n-1)", y, 46)
+    para(page, "试求该系统的输出响应 {{y(n)}}。", y)
     page.showPage()
 
 
