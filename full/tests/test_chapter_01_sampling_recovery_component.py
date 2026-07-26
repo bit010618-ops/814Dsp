@@ -12,9 +12,10 @@ def test_sampling_recovery_component_keeps_reconstruction_and_interpolation_core
     output = build_pdf(output_path=tmp_path / "sampling-recovery.pdf")
     reader = PdfReader(str(output))
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    assert len(reader.pages) == 4
+    assert len(reader.pages) == 3
     assert "重构的时域表达" in (reader.pages[0].extract_text() or "")
     assert "内插函数" in (reader.pages[1].extract_text() or "")
     assert "采样点处的严格插值" in (reader.pages[2].extract_text() or "")
+    assert "样值不变性" in (reader.pages[2].extract_text() or "")
     assert "源课件" not in text
     assert "源文件" not in text
