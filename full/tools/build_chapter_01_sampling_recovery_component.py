@@ -162,44 +162,40 @@ def page_one(page: canvas.Canvas) -> None:
     y = recovery_spectrum(page, y - 68)
     y = paragraph(page, "理想重构滤波器的截止角频率取为 {{\\frac{\\Omega_s}{2}}}。实际滤波器不能做到理想的垂直截止，但可在允许误差范围内逼近该通带并实现恢复。", y)
     y = formula_box(page, r"H_r(j\Omega)=T,\quad |\Omega|\leq\frac{\Omega_s}{2}\qquad H_r(j\Omega)=0,\quad |\Omega|>\frac{\Omega_s}{2}", y, 52)
-    style.draw_note(page, "恢复的前提是采样前没有产生混叠；重构滤波器只能取出已经分离的频谱副本，不能分开已重叠的成分。", y - 3)
+    y = title(page, "重构的时域表达", y - 18)
+    y = paragraph(page, "频域中将采样频谱乘以重构滤波器，对应到时域就是将采样信号与滤波器的冲激响应卷积。理想低通滤波器的冲激响应给出了恢复所需的基本波形。", y)
+    formula_box(page, r"h_r(t)=\frac{T\sin\!\left(\frac{\Omega_s}{2}t\right)}{\pi t}", y, 56)
     page.showPage()
 
 
 def page_two(page: canvas.Canvas) -> None:
     start(page, 2)
-    y = title(page, "重构的时域表达")
-    y = paragraph(page, "频域中将采样频谱乘以重构滤波器，对应到时域就是将采样信号与滤波器的冲激响应卷积。理想低通滤波器的冲激响应给出了恢复所需的基本波形。", y)
-    y = formula_box(page, r"h_r(t)=\frac{T\sin\!\left(\frac{\Omega_s}{2}t\right)}{\pi t}", y, 56)
-    y = section(page, "卷积与恢复", y - 2)
+    y = section(page, "卷积与恢复", 746)
     y = formula_box(page, r"y_a(t)=x_s(t)*h_r(t)", y, 48)
     y = paragraph(page, "若 {{y_a(t)}} 与原模拟信号 {{x_a(t)}} 相同，便完成恢复。将采样冲激串代入卷积式，可把恢复过程进一步写成各个样值的加权叠加，这正是内插恢复的形式。", y)
     y = formula_box(page, r"y_a(t)=\sum_{m=-\infty}^{\infty}x_a(mT)\,g(t-mT)", y, 56)
-    style.draw_note(page, "这里 {{g(t)}} 是内插函数。每一个样值决定一条移位后的内插曲线，所有曲线相加得到连续时间输出。", y - 3)
+    y = title(page, "内插函数", y - 18)
+    y = paragraph(page, "把理想低通重构的冲激响应乘以 {{T}}，可得到标准内插函数。它以某个采样点为中心，在其他整数倍采样时刻取零，因此不会改变相邻样值。", y)
+    formula_box(page, r"g(t)=T h_r(t)=\frac{\sin\!\left(\frac{\pi t}{T}\right)}{\frac{\pi t}{T}}", y, 56)
     page.showPage()
 
 
 def page_three(page: canvas.Canvas) -> None:
     start(page, 3)
-    y = title(page, "内插函数")
-    y = paragraph(page, "把理想低通重构的冲激响应乘以 {{T}}，可得到标准内插函数。它以某个采样点为中心，在其他整数倍采样时刻取零，因此不会改变相邻样值。", y)
-    y = formula_box(page, r"g(t)=T h_r(t)=\frac{\sin\!\left(\frac{\pi t}{T}\right)}{\frac{\pi t}{T}}", y, 56)
-    y = section(page, "移位内插波形", y - 2)
+    y = section(page, "移位内插波形", 746)
     y = interpolation_diagram(page, y - 78)
     y = paragraph(page, "对每个 {{m}}，函数 {{g(t-mT)}} 以 {{mT}} 为中心。对应样值 {{x_a(mT)}} 只改变该曲线的幅度；所有移位、加权后的曲线叠加，便在采样点之间补出连续波形。", y)
-    style.draw_note(page, "内插不是任意连线，而是由重构滤波器确定的严格函数叠加。", y - 3)
+    y = title(page, "采样点处的严格插值", y - 18)
+    y = paragraph(page, "内插函数在自身中心采样点的值为一，在其他整数倍采样点的值为零。因此，在任意采样时刻，求和式中只有与该时刻对应的一项保留，其余项全部消失。", y)
+    formula_box(page, r"g(0)=1,\qquad g(kT)=0\quad(k\in\mathbb{Z},\ k\ne0)", y, 52)
     page.showPage()
 
 
 def page_four(page: canvas.Canvas) -> None:
     start(page, 4)
-    y = title(page, "采样点处的严格插值")
-    y = paragraph(page, "内插函数在自身中心采样点的值为一，在其他整数倍采样点的值为零。因此，在任意采样时刻，求和式中只有与该时刻对应的一项保留，其余项全部消失。", y)
-    y = formula_box(page, r"g(0)=1,\qquad g(kT)=0\quad(k\in\mathbb{Z},\ k\ne0)", y, 52)
-    y = section(page, "样值不变性", y - 2)
+    y = section(page, "样值不变性", 746)
     y = formula_box(page, r"y_a(mT)=x_a(mT)", y, 48)
     y = paragraph(page, "这说明恢复后的连续信号准确穿过每一个采样值；而采样点之间的波形由全部加权内插函数的延伸和叠加决定。该性质既解释了“恢复”的含义，也为检查重构公式提供了直接依据。", y)
-    style.draw_note(page, "检查恢复式：把 {{t=mT}} 代入，结果必须化为 {{y_a(mT)=x_a(mT)}}；若不能满足，内插函数或比例系数存在错误。", y - 3)
     page.showPage()
 
 
