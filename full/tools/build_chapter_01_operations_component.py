@@ -92,6 +92,15 @@ def _draw_stems(page: canvas.Canvas, x: float, y: float, width: float, height: f
 
 
 def _operation_heading(page: canvas.Canvas, title: str, y: float) -> float:
+    if title == "例：矩形序列的后向差分":
+        y = style.draw_continuation_title(page, "例：", y)
+        return style.draw_rich_paragraph(
+            page,
+            r"{{x(n)=R_{10}(n)}}，试求后向差分信号{{\Delta x(n)}}。",
+            62,
+            y,
+            A4[0] - 124,
+        )
     return style.draw_continuation_title(page, title, y)
 
 

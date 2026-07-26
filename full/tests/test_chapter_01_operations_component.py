@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import re
 
 from pypdf import PdfReader
 
@@ -29,3 +30,11 @@ def test_operations_component_is_editable_five_page_pdf(tmp_path):
     assert "离散时间信号的基本运算" in text
     assert "移位的应用：回声" in text
     assert "累加和与差分" in text
+
+
+def test_operations_component_preserves_original_backward_difference_example_prompt(tmp_path):
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_operations_component.pdf")
+    reader = PdfReader(str(output))
+    text = re.sub(r"\s+", "", "".join(page.extract_text() or "" for page in reader.pages))
+    assert "例：" in text
+    assert "试求后向差分信号" in text
