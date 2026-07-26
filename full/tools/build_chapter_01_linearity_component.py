@@ -62,13 +62,15 @@ def page_one(page):
 
 def page_two(page):
     start(page, 2)
-    y = title(page, "线性判别例：平方与时间反褶")
-    y = section(page, "例 1：平方系统", y)
+    y = title(page, "例：验证下面的系统是否为线性系统：")
+    y = box(page, r"y(n)=x^2(n)", y, 46)
+    y = para(page, "（零输入产生零输出）", y)
     y = para(page, "系统定义为 {{y(n)=x^2(n)}}。虽然零输入产生零输出，但仍需检验叠加原理。", y)
     y = box(page, r"T[a x_1+b x_2]=(a x_1+b x_2)^2=a^2x_1^2+b^2x_2^2+2abx_1x_2", y, 58)
     y = box(page, r"T[a x_1+b x_2]\ne aT[x_1]+bT[x_2]", y, 48)
     y = para(page, "交叉项 {{2abx_1x_2}} 一般不为零，故平方系统不是线性系统。", y)
-    y = section(page, "例 2：时间反褶系统", y - 2)
+    y = section(page, "例：验证下面的系统是否为线性系统：", y - 2)
+    y = box(page, r"y(n)=x(-n)", y, 46)
     y = para(page, "系统定义为 {{y(n)=x(-n)}}，于是", y)
     y = box(page, r"T[a x_1(n)+b x_2(n)]=a x_1(-n)+b x_2(-n)=a y_1(n)+b y_2(n)", y, 54)
     y = para(page, "等式对任意输入与任意系数都成立，因此时间反褶系统是线性系统。线性与时不变是不同性质；该例的时不变性将单独讨论。", y)
@@ -77,10 +79,9 @@ def page_two(page):
 
 def page_three(page):
     start(page, 3)
-    y = title(page, "线性判别例：三点中值滤波器")
-    y = para(page, "三点中值滤波器定义为：对 {{n-1\\leq k\\leq n+1}} 的三个样值取中间值。它能保留中值而抑制异常点，但不满足叠加原理。", y)
-    y = section(page, "系统定义", y - 2)
+    y = section(page, "例：验证下面的3点中值滤波器是否是线性系统：", 746)
     y = box(page, r"y(n)=\operatorname{Mid}\{x(k)\},\qquad n-1\leq k\leq n+1", y, 52)
+    y = para(page, "三点中值滤波器定义为：对 {{n-1\\leq k\\leq n+1}} 的三个样值取中间值。它能保留中值而抑制异常点，但不满足叠加原理。", y)
     y = section(page, "反例", y - 2)
     y = para(page, "取 {{a=b=1}}，并在同一三个样点上令 {{x_1=\\{1,2,1\\}}}、{{x_2=\\{2,1,1\\}}}。", y)
     y = box(page, r"T[x_1]=1,\qquad T[x_2]=1,\qquad T[x_1]+T[x_2]=2", y, 48)
