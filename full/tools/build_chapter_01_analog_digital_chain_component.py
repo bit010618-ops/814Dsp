@@ -186,18 +186,11 @@ def page_three(page: canvas.Canvas) -> None:
     y = zero_order_hold(page, y - 76)
     y = paragraph(page, "阶梯波形包含目标低频成分，也包含由保持过程带来的高频成分。理想数模恢复可用满足重构条件的低通滤波器直接得到连续输出；实际系统则在保持器之后配置模拟平滑滤波器，使输出波形更加连续。", y)
     y = formula_box(page, r"y(n)\ \longrightarrow\ y_0(t)\ \longrightarrow\ y_a(t)", y, 50)
-    style.draw_note(page, "保持器负责把离散数值变为可供模拟电路处理的阶梯波形；平滑滤波器负责抑制不需要的高频分量。两者的功能不能混为一谈。", y - 3)
-    page.showPage()
-
-
-def page_four(page: canvas.Canvas) -> None:
-    start(page, 4)
-    y = title(page, "采样间隔与实际恢复")
+    y = title(page, "采样间隔与实际恢复", y - 18)
     y = paragraph(page, "在相同的模拟低通滤波条件下，采样间隔 {{T}} 越小，零阶保持的每个台阶越短，阶梯波形对连续信号变化的跟随越细致。采样点更密并不替代重构滤波，但会降低实际恢复时的近似误差。", y)
     y = formula_box(page, r"T\downarrow\quad\Longrightarrow\quad f_s=\frac{1}{T}\uparrow", y, 54)
     y = section(page, "处理链的检查顺序", y - 2)
-    y = paragraph(page, "先检查输入是否已带限、采样频率是否满足无混叠条件；再检查量化和编码是否形成正确的数字序列；最后检查数模转换、保持与平滑滤波是否按正确次序连接。任何一个环节失配，都会使最终模拟输出偏离希望得到的波形。", y)
-    style.draw_note(page, "本节小结：数字处理并不是脱离模拟环节的独立过程。抗混叠、采样、量化编码、数字运算、数模转换和恢复滤波共同构成一条完整链路。让未来的你感谢曾经努力拼搏的自己。", y - 3)
+    paragraph(page, "先检查输入是否已带限、采样频率是否满足无混叠条件；再检查量化和编码是否形成正确的数字序列；最后检查数模转换、保持与平滑滤波是否按正确次序连接。任何一个环节失配，都会使最终模拟输出偏离希望得到的波形。", y)
     page.showPage()
 
 
@@ -211,7 +204,6 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     page_one(page)
     page_two(page)
     page_three(page)
-    page_four(page)
     page.save()
     return output
 
