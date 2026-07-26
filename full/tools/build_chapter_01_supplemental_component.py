@@ -59,6 +59,23 @@ def _question_heading(page: canvas.Canvas, year: int, y: float, *, first: bool) 
     return y - 31
 
 
+def _impulse_spectrum(page: canvas.Canvas, y: float, *, title: str, labels: list[str], values: list[float], color: str = "#008F95") -> float:
+    x, width = 76, A4[0] - 152
+    axis = y - 48
+    page.setStrokeColor(HexColor("#163A5F")); page.setLineWidth(0.7)
+    page.line(x, axis, x + width, axis)
+    page.setFillColor(INK); page.setFont(style.FONT_SANS, 9); page.drawString(x, y, title)
+    step = width / (len(labels) - 1)
+    for index, (label, value) in enumerate(zip(labels, values)):
+        px, height = x + index * step, 30 + value * 16
+        page.setStrokeColor(HexColor(color)); page.setLineWidth(1.2)
+        page.line(px, axis, px, axis + height)
+        page.circle(px, axis + height, 1.8, fill=1, stroke=0)
+        page.setFillColor(INK); page.setFont(style.FONT_SERIF, 8)
+        page.drawCentredString(px, axis - 13, label)
+    return axis - 28
+
+
 def _training(page: canvas.Canvas) -> None:
     _start(page, 1)
     y = _question_heading(page, 2002, 770, first=True)
@@ -105,6 +122,10 @@ def _training(page: canvas.Canvas) -> None:
         y,
         A4[0] - 124,
     )
+    page.showPage()
+    _start(page, 3)
+    y = _question_heading(page, 2002, 770, first=True)
+    style.draw_rich_paragraph(page, r"有一信号 {{x(t)=3\cos(2\pi t)+2\sin(3\pi t)+\cos(5\pi t)}}，现以 {{\Omega_s=8\pi}} 的频率对其采样得到离散信号 {{x(n)}}。画出 {{x(t)}} 和 {{x(n)}} 的幅度谱，判断是否存在混叠；若存在，说明避免方法并画出不失真时的离散频谱。", 62, y, A4[0] - 124)
     page.showPage()
     _start(page, 2)
     y = _question_heading(page, 2003, 770, first=True)
@@ -197,6 +218,15 @@ def _answers(page: canvas.Canvas) -> None:
         A4[0] - 124,
     )
     _formula(page, r"h[n]=\frac{1}{4}\delta[n]-2^n u[n]+\frac{3}{4}\,4^n u[n]", y)
+    page.showPage()
+    _start(page, 4)
+    y = style.draw_title(page, "真题整理详解（续）", 770)
+    y = style.draw_continuation_title(page, "2002 年真题：采样后的离散频谱与混叠", y + 6)
+    y = style.draw_rich_paragraph(page, r"原信号含有 {{2\pi}}、{{3\pi}}、{{5\pi}} 三个正频率分量。给定 {{\Omega_s=8\pi}}，奈奎斯特角频率为 {{4\pi}}；因此 {{5\pi}} 分量越过奈奎斯特频率并折叠到 {{-3\pi}}，产生混叠。", 62, y, A4[0] - 124)
+    y = _impulse_spectrum(page, y - 10, title="连续时间幅度谱 |X(jΩ)|", labels=["−5π","−3π","−2π","2π","3π","5π"], values=[1,2,3,3,2,1])
+    y = _impulse_spectrum(page, y - 5, title="Ωs=8π 时的离散频谱：5π 与 −3π 折叠重合", labels=["−π","−3π/4","−π/2","π/2","3π/4","π"], values=[0,3,3,3,3,0], color="#B3423C")
+    y = style.draw_rich_paragraph(page, r"避免混叠需满足 {{\Omega_s>2\Omega_{\max}=10\pi}}。提高采样角频率后，{{5\pi}} 的归一化频率落入 {{(-\pi,\pi)}} 的不同位置，三个分量即可分离。", 62, y - 6, A4[0] - 124)
+    _impulse_spectrum(page, y - 14, title="提高采样频率后的无失真离散频谱（示意）", labels=["−π","−5π/Ωs","−3π/Ωs","3π/Ωs","5π/Ωs","π"], values=[0,1,2,2,1,0])
     page.showPage()
 
 
