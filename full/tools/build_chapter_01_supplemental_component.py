@@ -106,6 +106,16 @@ def _training(page: canvas.Canvas) -> None:
         A4[0] - 124,
     )
     page.showPage()
+    _start(page, 2)
+    y = _question_heading(page, 2003, 770, first=True)
+    style.draw_rich_paragraph(
+        page,
+        r"已知系统差分方程为 {{r(n)-6r(n-1)+8r(n-2)=e(n-1)+2e(n-2)}}，求单位样值响应。",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    page.showPage()
 
 
 def _answers(page: canvas.Canvas) -> None:
@@ -167,6 +177,26 @@ def _answers(page: canvas.Canvas) -> None:
         A4[0] - 124,
     )
     _formula(page, r"f_{s,\min}=2f_2", y)
+    page.showPage()
+    _start(page, 3)
+    y = style.draw_title(page, "真题整理详解（续）", 770)
+    y = style.draw_continuation_title(page, "2003 年真题：差分方程求单位样值响应", y + 6)
+    y = style.draw_rich_paragraph(
+        page,
+        r"在零状态条件下，对差分方程作 {{z}} 变换，得到系统函数 {{H(z)=\frac{R(z)}{E(z)}}}。令 {{w=z^{-1}}}，并作部分分式展开：",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    y = _formula(page, r"H(z)=\frac{z^{-1}+2z^{-2}}{1-6z^{-1}+8z^{-2}}=\frac{1}{4}-\frac{1}{1-2z^{-1}}+\frac{3}{4(1-4z^{-1})}", y)
+    y = style.draw_rich_paragraph(
+        page,
+        r"取因果系统的收敛域 {{|z|>4}}，再利用因果指数序列的 {{z}} 反变换对，可得单位样值响应：",
+        62,
+        y,
+        A4[0] - 124,
+    )
+    _formula(page, r"h[n]=\frac{1}{4}\delta[n]-2^n u[n]+\frac{3}{4}\,4^n u[n]", y)
     page.showPage()
 
 
