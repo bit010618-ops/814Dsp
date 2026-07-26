@@ -156,7 +156,7 @@ def _page_expansion_example(page: canvas.Canvas) -> None:
     y = style.draw_title(page, "单位抽样序列的移位加权和", 774)
     y = style.draw_rich_paragraph(page, r"任何序列都可以表示为单位抽样序列的移位加权和：{{x(m)}} 给出第 {{m}} 个样点的值，{{\delta(n-m)}} 给出该样点所在的位置。", 62, y, A4[0] - 124)
     y = _formula_box(page, r"x(n)=\sum_{m=-\infty}^{\infty}x(m)\delta(n-m)", y - 3)
-    y = style.draw_continuation_title(page, "例：用单位抽样序列表示 x(n)={1,2,3}", y - 3)
+    y = style.draw_continuation_title(page, "例：用单位抽样序列 δ(n) 表示任意序列 x(n)={1,2,3}", y - 3)
     y = style.draw_rich_paragraph(page, "数列中第一项为 {{n=0}}，因此 {{x(0)=1}}、{{x(1)=2}}、{{x(2)=3}}。将三个样点分别平移到 0、1、2 处并按幅值加权：", 62, y, A4[0] - 124)
     _draw_stems(page, 66, 390, 212, 105, {0: 1}, n_min=-2, n_max=4, show_values=True, label="δ(n)")
     _draw_stems(page, 310, 390, 212, 105, {1: 2}, n_min=-2, n_max=4, show_values=True, label="2δ(n-1)")

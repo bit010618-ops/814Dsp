@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import re
 
 from pypdf import PdfReader
 
@@ -31,3 +32,12 @@ def test_representation_component_is_editable_three_page_pdf(tmp_path):
     assert "离散时间信号的表示方法" in text
     assert "单位抽样序列" in text
     assert "移位加权和" in text
+
+
+def test_representation_component_preserves_original_unit_sample_example_prompt(tmp_path):
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_representation_component.pdf")
+
+    reader = PdfReader(str(output))
+    text = re.sub(r"\s+", "", "".join(page.extract_text() or "" for page in reader.pages))
+    assert "例：用单位抽样序列" in text
+    assert "表示任意序列" in text
