@@ -127,6 +127,10 @@ def _training(page: canvas.Canvas) -> None:
     y = _question_heading(page, 2002, 770, first=True)
     style.draw_rich_paragraph(page, r"有一信号 {{x(t)=3\cos(2\pi t)+2\sin(3\pi t)+\cos(5\pi t)}}，现以 {{\Omega_s=8\pi}} 的频率对其采样得到离散信号 {{x(n)}}。画出 {{x(t)}} 和 {{x(n)}} 的幅度谱，判断是否存在混叠；若存在，说明避免方法并画出不失真时的离散频谱。", 62, y, A4[0] - 124)
     page.showPage()
+    _start(page, 4)
+    y = _question_heading(page, 2003, 770, first=True)
+    style.draw_rich_paragraph(page, r"信号经过理想冲激串采样后，再经过增益为 {{T}} 的理想低通滤波器。证明：当低通滤波器截止角频率为 {{\omega_c=\frac{\omega_s}{2}}} 时，对任意 {{T}}，重建信号与原信号在采样时刻始终相等。", 62, y, A4[0] - 124)
+    page.showPage()
     _start(page, 2)
     y = _question_heading(page, 2003, 770, first=True)
     style.draw_rich_paragraph(
@@ -227,6 +231,14 @@ def _answers(page: canvas.Canvas) -> None:
     y = _impulse_spectrum(page, y - 5, title="Ωs=8π 时的离散频谱：5π 与 −3π 折叠重合", labels=["−π","−3π/4","−π/2","π/2","3π/4","π"], values=[0,3,3,3,3,0], color="#B3423C")
     y = style.draw_rich_paragraph(page, r"避免混叠需满足 {{\Omega_s>2\Omega_{\max}=10\pi}}。提高采样角频率后，{{5\pi}} 的归一化频率落入 {{(-\pi,\pi)}} 的不同位置，三个分量即可分离。", 62, y - 6, A4[0] - 124)
     _impulse_spectrum(page, y - 14, title="提高采样频率后的无失真离散频谱（示意）", labels=["−π","−5π/Ωs","−3π/Ωs","3π/Ωs","5π/Ωs","π"], values=[0,1,2,2,1,0])
+    page.showPage()
+    _start(page, 5)
+    y = style.draw_title(page, "真题整理详解（续）", 770)
+    y = style.draw_continuation_title(page, "2003 年真题：冲激采样后的低通重建", y + 6)
+    y = style.draw_rich_paragraph(page, r"采样信号为 {{f_p(t)=\sum_{n=-\infty}^{\infty}f(nT)\delta(t-nT)}}。增益为 {{T}}、截止频率为 {{\frac{\omega_s}{2}}} 的理想低通滤波器的冲激响应为重建核，因此输出可写为：", 62, y, A4[0] - 124)
+    y = _formula(page, r"f_0(t)=\sum_{n=-\infty}^{\infty}f(nT)\,\operatorname{Sa}\left(\frac{t-nT}{T}\right)", y)
+    y = style.draw_rich_paragraph(page, r"令 {{t=mT}}。当 {{n\ne m}} 时，{{m-n}} 是非零整数，重建核取零；当 {{n=m}} 时，重建核取一。因此求和中只剩下 {{n=m}} 的一项：", 62, y, A4[0] - 124)
+    _formula(page, r"f_0(mT)=f(mT)", y)
     page.showPage()
 
 
