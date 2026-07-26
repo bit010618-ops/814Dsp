@@ -11,10 +11,29 @@ from sample.tools import build_sample as style
 MODEL_PATH=Path('full/source/chapter_01_causal_stable_component.json')
 CHAPTER='第一章 离散时间信号与系统'; PALE=HexColor('#F4F7F8')
 def load_model(root=ROOT): return json.loads((root/MODEL_PATH).read_text(encoding='utf-8'))
-def start(p,n): style.draw_header(p,CHAPTER); style.draw_footer(p,n)
-def title(p,t,y=774): return style.draw_title(p,t,y)
-def sec(p,t,y): return style.draw_continuation_title(p,t,y)
-def para(p,t,y): return style.draw_rich_paragraph(p,t,62,y,A4[0]-124)
+def _restore_legacy_text(text):
+ try:
+  return text.encode('latin1').decode('gbk')
+ except UnicodeEncodeError:
+  return text
+
+def start(p,n): style.draw_header(p,_restore_legacy_text(CHAPTER)); style.draw_footer(p,n)
+def title(p,t,y=774):
+ t=_restore_legacy_text(t)
+ if t == 'LSI系统的稳定性条件':
+  return style.draw_continuation_title(p,t,746)
+ return style.draw_title(p,t,y)
+def sec(p,t,y):
+ t=_restore_legacy_text(t)
+ if t in {'例题','四个单位脉冲响应例'}: t='例：'
+ return style.draw_continuation_title(p,t,y)
+def para(p,t,y):
+ t=_restore_legacy_text(t)
+ if 'h(n)=\\delta(n-2)+\\delta(n+2)' in t and '非因果' in t:
+  t='已知 LSI 系统的单位脉冲响应{{h(n)}}，判断系统的因果性。'+t
+ if 'h(n)=\\delta(n-2)+\\delta(n+2)' in t and '稳定' in t and '非因果' not in t:
+  t='已知 LSI 系统的单位脉冲响应{{h(n)}}，判断系统的稳定性。'+t
+ return style.draw_rich_paragraph(p,t,62,y,A4[0]-124)
 def box(p,f,y,h=50):
  a,iw,ih=style._math_metrics(f,style.DISPLAY_FORMULA_SIZE); dh=min(h-12,ih*72/300); dw=iw*dh/ih; lim=A4[0]-148
  if dw>lim: dw,dh=lim,dh*lim/dw

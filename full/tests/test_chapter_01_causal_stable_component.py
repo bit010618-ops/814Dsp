@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from pypdf import PdfReader
 from full.tools.build_chapter_01_causal_stable_component import build_pdf, load_model
 
@@ -11,3 +12,14 @@ def test_causal_stable_component_preserves_definitions_and_examples(tmp_path: Pa
     assert len(reader.pages)==4
     assert len(model['retained_core'])==4
     assert 'MATLAB' not in text
+
+
+def test_causal_stable_component_preserves_original_lsi_example_prompts(tmp_path: Path):
+    out=build_pdf(output_path=tmp_path/'causal-stable.pdf')
+    reader=PdfReader(str(out))
+    text=re.sub(r'\s+','', ''.join(page.extract_text() or '' for page in reader.pages))
+    assert '例：已知LSI系统的单位脉冲响应' in text
+    assert '判断系统的因果性。' in text
+    assert '判断系统的稳定性。' in text
+    builder_text=Path('full/tools/build_chapter_01_causal_stable_component.py').read_text(encoding='utf-8')
+    assert "if t == 'LSI系统的稳定性条件':" in builder_text
