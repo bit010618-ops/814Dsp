@@ -39,7 +39,7 @@ def _heading(page: canvas.Canvas, title: str, year: int) -> float:
     page.setFont(style.FONT_SERIF, 10.5)
     page.drawString(62, 736, f"{year} 年真题")
     page.setFillColor(HexColor("#52616B"))
-    page.drawRightString(A4[0] - 62, 736, "详解：真题整理详解")
+    page.drawRightString(A4[0] - 62, 736, "详解见 P.待回填")
     return 702
 
 

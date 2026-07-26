@@ -28,6 +28,7 @@ def test_chapter_one_handout_reflows_all_component_inputs_without_source_identit
     assert "透过现象看本质" in text
     for forbidden in ("源课件", "源文件", "原始材料", "根据原课件"):
         assert forbidden not in text
+    assert "复习提示" not in text
     assert all(round(float(page.mediabox.width)) == 595 for page in reader.pages)
     assert all(round(float(page.mediabox.height)) == 842 for page in reader.pages)
 

@@ -65,6 +65,17 @@ def math_label(page: canvas.Canvas, formula: str, center_x: float, center_y: flo
     page.drawImage(ImageReader(str(asset)), center_x - draw_width / 2, center_y - draw_height / 2, draw_width, draw_height, mask="auto")
 
 
+def process_chain_layout() -> dict[str, float]:
+    """Keep the final output arrow and its mathematical label in separate zones."""
+    return {
+        "final_arrow_start": 480.0,
+        "final_arrow_end": 491.0,
+        "output_label_center": 520.0,
+        "output_label_left": 504.0,
+        "label_clearance": 8.0,
+    }
+
+
 def arrow(page: canvas.Canvas, x1: float, y1: float, x2: float, y2: float) -> None:
     page.setStrokeColor(BLUE)
     page.setLineWidth(0.8)
@@ -102,8 +113,9 @@ def process_chain(page: canvas.Canvas, y: float) -> float:
     arrow(page, 61, base + 19, 62, base + 19)
     math_label(page, r"x(n)", 222, base + 58, 10)
     math_label(page, r"y(n)", 315, base + 58, 10)
-    math_label(page, r"y_a(t)", 497, base + 20, 10)
-    arrow(page, 477, base + 19, 491, base + 19)
+    layout = process_chain_layout()
+    arrow(page, layout["final_arrow_start"], base + 19, layout["final_arrow_end"], base + 19)
+    math_label(page, r"y_a(t)", layout["output_label_center"], base + 20, 10)
     page.setFillColor(BRASS)
     page.setFont(style.FONT_SANS, 8.4)
     page.drawCentredString(275, base - 17, "模拟域                              数字域                              模拟域")

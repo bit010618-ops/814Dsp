@@ -55,7 +55,7 @@ def _question_heading(page: canvas.Canvas, year: int, y: float, *, first: bool) 
     page.setFont(style.FONT_SERIF, 10.5)
     page.drawString(62, y, f"{year} 年真题")
     page.setFillColor(MUTED)
-    page.drawRightString(A4[0] - 62, y, "详解：真题整理详解")
+    page.drawRightString(A4[0] - 62, y, "详解见 P.待回填")
     return y - 31
 
 
@@ -88,7 +88,7 @@ def _training(page: canvas.Canvas) -> None:
     )
     y -= 46
     y = _question_heading(page, 2003, y, first=False)
-    style.draw_rich_paragraph(
+    y = style.draw_rich_paragraph(
         page,
         r"已知 {{x(t)=1+\cos(200t)+\sin(300t)}}，对其进行时域采样。要求能从采样信号中恢复原始信号，填空：奈奎斯特频率为______ {{\mathrm{Hz}}}；奈奎斯特采样周期为______ {{\mathrm{s}}}。",
         62,
@@ -115,23 +115,21 @@ def _training(page: canvas.Canvas) -> None:
     )
     y -= 40
     y = _question_heading(page, 2020, y, first=False)
-    style.draw_rich_paragraph(
+    y = style.draw_rich_paragraph(
         page,
         r"已知频带宽度有限信号 {{x(t)}}、{{y(t)}} 的最高频率分别为 {{f_1}} 和 {{f_2}}，其中 {{f_1<f_2}}，则对信号 {{2x(t)+5y(t)}} 进行无失真抽样的采样频率为______。",
         62,
         y,
         A4[0] - 124,
     )
-    page.showPage()
-    _start(page, 3)
-    y = _question_heading(page, 2002, 770, first=True)
+    y = _question_heading(page, 2002, y - 42, first=False)
     style.draw_rich_paragraph(page, r"有一信号 {{x(t)=3\cos(2\pi t)+2\sin(3\pi t)+\cos(5\pi t)}}，现以 {{\Omega_s=8\pi}} 的频率对其采样得到离散信号 {{x(n)}}。画出 {{x(t)}} 和 {{x(n)}} 的幅度谱，判断是否存在混叠；若存在，说明避免方法并画出不失真时的离散频谱。", 62, y, A4[0] - 124)
     page.showPage()
-    _start(page, 4)
+    _start(page, 2)
     y = _question_heading(page, 2003, 770, first=True)
     style.draw_rich_paragraph(page, r"信号经过理想冲激串采样后，再经过增益为 {{T}} 的理想低通滤波器。证明：当低通滤波器截止角频率为 {{\omega_c=\frac{\omega_s}{2}}} 时，对任意 {{T}}，重建信号与原信号在采样时刻始终相等。", 62, y, A4[0] - 124)
     page.showPage()
-    _start(page, 2)
+    _start(page, 3)
     y = _question_heading(page, 2003, 770, first=True)
     style.draw_rich_paragraph(
         page,

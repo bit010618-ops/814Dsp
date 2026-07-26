@@ -110,6 +110,38 @@ def _rich_atoms(text: str) -> list[tuple[str, str]]:
     return atoms
 
 
+def _rich_line_count(text: str, width: float, font: str = FONT_SERIF, size: float = 10, leading: float = 18) -> int:
+    """Mirror rich-paragraph wrapping so enclosing panels can reserve real space."""
+    cursor = 0.0
+    lines = 1
+    atoms = _rich_atoms(text)
+    for index, (kind, value) in enumerate(atoms):
+        if kind == "text":
+            if value == "\n":
+                lines += 1
+                cursor = 0.0
+                continue
+            atom_width = pdfmetrics.stringWidth(value, font, size)
+            if cursor > 0 and cursor + atom_width > width and value not in "，。；：、】【）":
+                lines += 1
+                cursor = 0.0
+            cursor += atom_width
+            continue
+        _asset, image_width, image_height = _math_metrics(value, size + 2.8)
+        drawn_height = min(leading - 2, INLINE_MATH_DRAWN_HEIGHT)
+        drawn_width = image_width * drawn_height / image_height
+        trailing_width = 0.0
+        if index + 1 < len(atoms):
+            next_kind, next_value = atoms[index + 1]
+            if next_kind == "text" and next_value in "，。；：、】【）":
+                trailing_width = pdfmetrics.stringWidth(next_value, font, size)
+        if cursor > 0 and cursor + drawn_width + trailing_width > width:
+            lines += 1
+            cursor = 0.0
+        cursor += drawn_width
+    return lines
+
+
 def draw_rich_paragraph(
     page: canvas.Canvas,
     text: str,
@@ -218,13 +250,8 @@ def draw_body_lines(page: canvas.Canvas, lines: list[str], y: float) -> float:
 
 
 def draw_note(page: canvas.Canvas, note: str, y: float) -> float:
-    page.setFillColor(HexColor("#F4F7F8"))
-    page.roundRect(62, y - 58, A4[0] - 124, 58, 3, fill=1, stroke=0)
-    page.setFillColor(HexColor("#123B5D"))
-    page.setFont(FONT_SANS, 9.5)
-    page.drawString(76, y - 20, "复习提示")
-    y = draw_rich_paragraph(page, note, 76, y - 40, A4[0] - 152, size=10)
-    return y - 18
+    """Suppress deprecated review-prompt panels in every generated handout page."""
+    return y
 
 
 def draw_formula(page: canvas.Canvas, formula: str, y: float) -> float:

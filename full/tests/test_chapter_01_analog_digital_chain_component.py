@@ -2,7 +2,12 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
-from full.tools.build_chapter_01_analog_digital_chain_component import build_pdf, load_model
+from full.tools.build_chapter_01_analog_digital_chain_component import build_pdf, load_model, process_chain_layout
+
+
+def test_process_chain_reserves_clearance_between_final_arrow_and_output_label():
+    layout = process_chain_layout()
+    assert layout["final_arrow_end"] + layout["label_clearance"] <= layout["output_label_left"]
 
 
 def test_analog_digital_chain_component_keeps_the_complete_conversion_chain(tmp_path: Path):
@@ -16,3 +21,5 @@ def test_analog_digital_chain_component_keeps_the_complete_conversion_chain(tmp_
     assert "源课件" not in text
     assert "源文件" not in text
     assert "根据原课件" not in text
+    assert "复习提示" not in text
+    assert "让未来的你感谢曾经努力拼搏的自己" not in text
