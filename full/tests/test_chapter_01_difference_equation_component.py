@@ -9,7 +9,7 @@ def test_difference_equation_component_preserves_core_and_excludes_matlab(tmp_pa
     assert model['excluded_by_user_scope'][0]['source_pages']==[132]
     out=build_pdf(output_path=tmp_path/'difference-equation.pdf')
     text='\n'.join(page.extract_text() or '' for page in PdfReader(str(out)).pages)
-    assert len(PdfReader(str(out)).pages)==4
+    assert len(PdfReader(str(out)).pages)==3
     assert 'MATLAB' not in text
 
 
@@ -37,4 +37,4 @@ def test_difference_equation_component_continues_noncausal_intro_into_second_pag
 def test_difference_equation_component_uses_complete_source_structure_slide(tmp_path: Path):
     assert (ROOT / 'full/artifacts/source_pages/chapter_01/difference_equation_feedback_structure.png').exists()
     out = build_pdf(output_path=tmp_path / 'difference-equation.pdf')
-    assert len(PdfReader(str(out)).pages[3].images) >= 1
+    assert len(PdfReader(str(out)).pages[2].images) >= 1

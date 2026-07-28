@@ -17,10 +17,13 @@ from sample.tools import build_sample as style
 CHAPTER_NAME = "第一章 离散时间信号与系统"
 OUTPUT_PATH = Path("full/outputs/chapter_01_handout.pdf")
 PAGE_WIDTH, PAGE_HEIGHT = map(float, A4)
-BODY_TOP = 780.0
-BODY_BOTTOM = 70.0
+BODY_TOP = 806.0
+BODY_BOTTOM = 35.0
 CROP_TOP = 800.0
-BLOCK_GAP = 12.0
+# Individual component pages already carry a conservative internal safety
+# margin around every glyph, formula and figure.  A small inter-block gap is
+# therefore enough and avoids creating artificial half-page whitespace.
+BLOCK_GAP = 0.0
 COMPONENT_FILENAMES = (
     "chapter_01_opening_component.pdf",
     "chapter_01_origin_component.pdf",
@@ -76,7 +79,7 @@ def _body_bounds(page: PageObject) -> tuple[float, float]:
         positions.extend((bottom, bottom + height))
     if not positions:
         return BODY_BOTTOM, CROP_TOP
-    return max(BODY_BOTTOM, min(positions) - 42), min(CROP_TOP, max(positions) + 28)
+    return max(BODY_BOTTOM, min(positions) - 34), min(CROP_TOP, max(positions) + 22)
 
 
 def _overlay(page_count: int) -> PdfReader:
