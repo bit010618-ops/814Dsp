@@ -46,7 +46,7 @@ def para(page, text, y):
     return style.draw_rich_paragraph(page, text, 62, y, A4[0] - 124)
 
 
-def title(page, text, y=774):
+def title(page, text, y=730):
     return style.draw_title(page, text, y)
 
 
@@ -82,15 +82,17 @@ def page_one(page):
     y = para(page, "利用线性性可把响应逐项相加；再利用移不变性，有 {{T[\\delta(n-m)]=h(n-m)}}，因此可直接得到下式。", y)
     y = box(page, r"T[x(n)]=\sum_{m=-\infty}^{\infty}x(m)h(n-m)", y, 52)
     y = title(page, "图解计算法：反褶、移位、相乘、相加", y - 18)
-    para(page, "图解法始终将 {{x(m)}} 固定，把 {{h(m)}} 看成关于变量 {{m}} 的序列。按如下顺序操作，可以逐个求出每一个 {{y(n)}}。", y)
+    y = para(page, "图解法始终将 {{x(m)}} 固定，把 {{h(m)}} 看成关于变量 {{m}} 的序列。按如下顺序操作，可以逐个求出每一个 {{y(n)}}。", y)
+    y = section(page, "1. 反褶", y - 2)
+    y = para(page, "以 {{m=0}} 为对称轴，将 {{h(m)}} 反褶为 {{h(-m)}}。", y)
+    y = section(page, "2. 移位", y - 2)
+    para(page, "将 {{h(-m)}} 沿 {{m}} 轴平移 {{n}}，得到 {{h(n-m)}}；{{n>0}} 时向右移，{{n<0}} 时向左移。", y)
     page.showPage()
 
 
 def page_two(page):
     start(page, 2); y = 746
     for heading, body in [
-        ("1. 反褶", "以 {{m=0}} 为对称轴，将 {{h(m)}} 反褶为 {{h(-m)}}。"),
-        ("2. 移位", "将 {{h(-m)}} 沿 {{m}} 轴平移 {{n}}，得到 {{h(n-m)}}；{{n>0}} 时向右移，{{n<0}} 时向左移。"),
         ("3. 相乘", "将 {{x(m)}} 与 {{h(n-m)}} 在相同 {{m}} 处的样值逐点相乘。"),
         ("4. 相加", "把所有乘积相加，得到该固定 {{n}} 下的输出值 {{y(n)}}。"),
     ]:
@@ -103,13 +105,17 @@ def page_two(page):
     y = box(page, r"h(n)=3\delta(n)+2\delta(n-1)+\delta(n-2)", y, 46)
     y = para(page, "若该系统的输入为序列 {{x(n)}}：", y)
     y = box(page, r"x(n)=\delta(n)+2\delta(n-1)", y, 46)
-    para(page, "试求该系统的输出响应 {{y(n)}}。", y)
+    y = para(page, "试求该系统的输出响应 {{y(n)}}。", y)
+    # The two short input/response plots are one complete visual block.  They
+    # fit below the intact prompt and remove the otherwise unused lower half
+    # without splitting either the example statement or a graph.
+    stems(page, [1, 2], 72, y - 24, 190, 106, "x(m)")
+    stems(page, [3, 2, 1], 330, y - 24, 190, 106, "h(m)")
     page.showPage()
 
 
 def page_three(page):
     start(page, 3); y = 746
-    stems(page, [1, 2], 72, y, 190, 106, "x(m)"); stems(page, [3, 2, 1], 330, y, 190, 106, "h(m)"); y -= 122
     y = section(page, "逐步计算", y)
     y = para(page, "{{n=0}} 时仅 {{m=0}} 重叠：{{y(0)=1\\cdot3=3}}。{{n=1}} 时有两项重叠：{{y(1)=1\\cdot2+2\\cdot3=8}}。", y)
     y = para(page, "{{n=2}} 时：{{y(2)=1\\cdot1+2\\cdot2=5}}；{{n=3}} 时仅 {{m=1}} 重叠：{{y(3)=2\\cdot1=2}}。", y)

@@ -24,6 +24,24 @@ def test_convolution_basics_continues_the_graphical_method_heading_on_page_one(t
     assert "图解计算法：反褶、移位、相乘、相加" in (reader.pages[0].extract_text() or "")
 
 
+def test_convolution_basics_carries_complete_first_two_graphical_steps_into_page_one(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "convolution-basics.pdf")
+    first_page = PdfReader(str(output)).pages[0].extract_text() or ""
+
+    assert "1. 反褶" in first_page
+    assert "2. 移位" in first_page
+
+
+def test_convolution_basics_carries_the_complete_input_response_stem_pair_after_the_prompt(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "convolution-basics.pdf")
+    reader = PdfReader(str(output))
+    page_two = reader.pages[1]
+    drawings = page_two.get("/Resources", {}).get("/XObject", {})
+
+    assert "试求该系统的输出响应" in re.sub(r"\s+", "", page_two.extract_text() or "")
+    assert len(drawings) >= 6
+
+
 def test_convolution_basics_preserves_the_original_example_statement_on_page_two(tmp_path: Path):
     output = build_pdf(output_path=tmp_path / "convolution-basics.pdf")
     reader = PdfReader(str(output))
