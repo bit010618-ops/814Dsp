@@ -9,6 +9,7 @@ from reportlab.pdfgen import canvas
 ROOT=Path(__file__).resolve().parents[2]; sys.path.insert(0,str(ROOT))
 from sample.tools import build_sample as style
 MODEL_PATH=Path('full/source/chapter_01_difference_equation_component.json')
+STRUCTURE_SLIDE=Path('full/artifacts/source_pages/chapter_01/difference_equation_feedback_structure.png')
 CHAPTER='第一章 离散时间信号与系统'; PALE=HexColor('#F4F7F8'); BLUE=HexColor('#123B5D')
 def load_model(root=ROOT): return json.loads((root/MODEL_PATH).read_text(encoding='utf-8'))
 def start(p,n): style.draw_header(p,CHAPTER); style.draw_footer(p,n)
@@ -57,6 +58,14 @@ def p3(p):
 def p4(p):
  start(p,4); y=sec(p,'由差分方程得到系统结构（续）',746)
  y=sec(p,'一阶反馈结构（续）',y-2)
+ slide=ROOT/STRUCTURE_SLIDE
+ if not slide.exists(): raise FileNotFoundError(slide)
+ y=para(p,'下图保留原课件中完整的一阶反馈结构，以确保乘法器、加法器、延迟单元、反馈支路及其系数位置均可直接辨认。',y)
+ w=A4[0]-124; h=w*1050/1867
+ p.drawImage(ImageReader(str(slide)),62,y-h,w,h,mask='auto')
+ y=y-h-16
+ y=para(p,'{{b_0}} 对当前输入进行乘法，{{z^{-1}}} 表示一个采样周期的延迟，{{-a_1}} 形成反馈支路，求和器给出输出。由图可数出乘法器、加法器和延迟单元。',y)
+ style.draw_note(p,'结构图中的每一条线都对应差分方程的一项；系数与延迟的位置不得互换。',y-3); p.showPage(); return
  left,cy=92,y-55; bw,bh=64,36
  p.setStrokeColor(BLUE); p.setFillColor(HexColor('#F4F7F8'))
  for x,label in [(180,'b0'),(320,'Σ')]:
