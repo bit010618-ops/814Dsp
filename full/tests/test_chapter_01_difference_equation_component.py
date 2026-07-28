@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from pypdf import PdfReader
 from full.tools.build_chapter_01_difference_equation_component import build_pdf, load_model
 
@@ -18,6 +19,15 @@ def test_difference_equation_component_continues_causal_iteration_into_first_pag
     reader = PdfReader(str(out))
 
     assert '迭代法：因果单位脉冲响应' in (reader.pages[0].extract_text() or '')
+
+
+def test_difference_equation_component_uses_remaining_first_page_space_for_noncausal_lead_in(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'difference-equation.pdf')
+    reader = PdfReader(str(out))
+
+    text = re.sub(r'\s+', '', reader.pages[0].extract_text() or '')
+    assert '迭代法：非因果单位脉冲响应' in text
+    assert '若改用另一边界条件' in text
 
 
 def test_difference_equation_component_continues_structure_intro_into_third_page(tmp_path: Path):

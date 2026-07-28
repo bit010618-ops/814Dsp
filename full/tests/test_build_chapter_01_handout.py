@@ -4,7 +4,7 @@ import sys
 
 from pypdf import PdfReader
 
-from full.tools.build_chapter_01_handout import _body_bounds, build_pdf, load_component_paths
+from full.tools.build_chapter_01_handout import BODY_TOP, _body_bounds, build_pdf, load_component_paths
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -56,6 +56,13 @@ def test_reflow_crop_keeps_a_safe_upper_margin_for_section_titles():
     _bottom, top = _body_bounds(source_page)
 
     assert top >= 795
+
+
+def test_reflow_leaves_clearance_below_the_rebuilt_page_header():
+    # A reflowed component is aligned to BODY_TOP before the unified header is
+    # overlaid.  Keeping this point below 770 pt avoids large section titles
+    # touching the header rule around 794 pt.
+    assert BODY_TOP <= 770
 
 
 def test_reflow_crop_keeps_the_last_formula_image_and_its_background_box():

@@ -17,7 +17,9 @@ from sample.tools import build_sample as style
 CHAPTER_NAME = "第一章 离散时间信号与系统"
 OUTPUT_PATH = Path("full/outputs/chapter_01_handout.pdf")
 PAGE_WIDTH, PAGE_HEIGHT = map(float, A4)
-BODY_TOP = 806.0
+# The overlay header rule sits near 794 pt.  Keep the top of each reflowed
+# content block below it so 18 pt section titles cannot touch the rule.
+BODY_TOP = 766.0
 BODY_BOTTOM = 35.0
 CROP_TOP = 800.0
 # Individual component pages already carry a conservative internal safety

@@ -13,7 +13,7 @@ STRUCTURE_SLIDE=Path('full/artifacts/source_pages/chapter_01/difference_equation
 CHAPTER='第一章 离散时间信号与系统'; PALE=HexColor('#F4F7F8'); BLUE=HexColor('#123B5D')
 def load_model(root=ROOT): return json.loads((root/MODEL_PATH).read_text(encoding='utf-8'))
 def start(p,n): style.draw_header(p,CHAPTER); style.draw_footer(p,n)
-def title(p,t,y=774): return style.draw_title(p,t,y)
+def title(p,t,y=730): return style.draw_title(p,t,y)
 def sec(p,t,y): return style.draw_continuation_title(p,t,y)
 def para(p,t,y): return style.draw_rich_paragraph(p,t,62,y,A4[0]-124)
 def box(p,f,y,h=50):
@@ -82,7 +82,7 @@ def p4(p):
  style.draw_note(p,'结构图中的每一条线都对应差分方程的一项；系数与延迟的位置不得交换。',y-3); p.showPage()
 
 def p1_reflow(p):
- start(p,1); y=title(p,'常系数线性差分方程')
+ start(p,1); y=title(p,'常系数线性差分方程',690)
  y=para(p,'常系数线性差分方程以过去和当前的输入、输出样值建立关系，是离散时间系统的重要表示方法。',y)
  y=box(p,r'\sum_{k=0}^{N}a_k y(n-k)=\sum_{m=0}^{M}b_m x(n-m),\qquad a_0\ne0',y,55)
  y=sec(p,'三个术语',y-2)
@@ -94,14 +94,15 @@ def p1_reflow(p):
  y=sec(p,'逐项迭代',y-2)
  y=box(p,r'h(0)=1,\qquad h(1)=a,\qquad h(2)=a^2',y,50)
  y=box(p,r'h(n)=a h(n-1)=a^n u(n)',y,50)
- para(p,'因此该解是因果的；当 {{|a|<1}} 时，{{h(n)}} 绝对可和，系统还稳定。',y)
+ y=para(p,'因此该解是因果的；当 {{|a|<1}} 时，{{h(n)}} 绝对可和，系统还稳定。',y)
+ y=title(p,'迭代法：非因果单位脉冲响应',y-12)
+ para(p,'对同一方程 {{y(n)-a y(n-1)=x(n)}}，若改用另一边界条件 {{h(n)=0}}（{{n>0}}），应从反向递推关系出发。',y)
  p.showPage()
 
 
 def p2_reflow(p):
- start(p,2); y=title(p,'迭代法：非因果单位脉冲响应')
- y=para(p,'对同一方程 {{y(n)-a y(n-1)=x(n)}}，若改用另一边界条件 {{h(n)=0}}（{{n>0}}），应从反向递推关系出发。',y)
- y=sec(p,'反向迭代',y-4)
+ start(p,2); y=sec(p,'迭代法：非因果单位脉冲响应（续）',746)
+ y=sec(p,'反向迭代',y-2)
  y=box(p,r'y(n-1)=a^{-1}[y(n)-x(n)]',y,50)
  y=box(p,r'h(0)=0,\qquad h(-1)=-a^{-1},\qquad h(-2)=-a^{-2}',y,52)
  y=box(p,r'h(n)=-a^n u(-n-1)',y,50)
