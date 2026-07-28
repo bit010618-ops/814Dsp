@@ -28,7 +28,7 @@ def test_chapter_one_sampling_supplemental_questions_and_answers_are_reader_clea
     training_compact = "".join(training_text.split())
     answer_compact = "".join(answer_text.split())
 
-    assert len(PdfReader(str(training)).pages) == 3
+    assert len(PdfReader(str(training)).pages) == 8
     assert len(PdfReader(str(answers)).pages) == 5
     assert "2002年真题" in training_compact
     assert "2003年真题" in training_compact

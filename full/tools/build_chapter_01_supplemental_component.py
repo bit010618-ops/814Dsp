@@ -19,7 +19,6 @@ MODEL_PATH = Path("full/source/chapter_01_supplemental_component.json")
 CHAPTER_NAME = "第一章 离散时间信号与系统"
 INK = HexColor("#1F2933")
 MUTED = HexColor("#52616B")
-ANSWER_PAGE = {2002: 54, 2003: 54, 2014: 54, 2015: 54, 2020: 54}
 
 
 def load_model(root: Path = ROOT) -> dict:
@@ -46,7 +45,7 @@ def _formula(page: canvas.Canvas, formula: str, y: float, *, size: float = 15) -
     return y - drawn_height - 12
 
 
-def _question_heading(page: canvas.Canvas, year: int, y: float, *, first: bool) -> float:
+def _question_heading(page: canvas.Canvas, year: int, answer_page: int, y: float, *, first: bool) -> float:
     if first:
         page.setFillColor(HexColor("#123B5D"))
         page.setFont(style.FONT_SANS, 18)
@@ -56,7 +55,7 @@ def _question_heading(page: canvas.Canvas, year: int, y: float, *, first: bool) 
     page.setFont(style.FONT_SERIF, 10.5)
     page.drawString(62, y, f"{year} 年真题")
     page.setFillColor(MUTED)
-    page.drawRightString(A4[0] - 62, y, f"详解见 P.{ANSWER_PAGE[year]}")
+    page.drawRightString(A4[0] - 62, y, f"详解见 P.{answer_page}")
     return y - 31
 
 
@@ -78,68 +77,21 @@ def _impulse_spectrum(page: canvas.Canvas, y: float, *, title: str, labels: list
 
 
 def _training(page: canvas.Canvas) -> None:
-    _start(page, 1)
-    y = _question_heading(page, 2002, 770, first=True)
-    y = style.draw_rich_paragraph(
-        page,
-        r"已知 {{x(t)=\cos(50t)}}，对其进行时域采样。要求能从采样信号中恢复原始信号，填空：奈奎斯特频率为______ {{\mathrm{Hz}}}；奈奎斯特采样周期为______ {{\mathrm{s}}}。",
-        62,
-        y,
-        A4[0] - 124,
-    )
-    y -= 46
-    y = _question_heading(page, 2003, y, first=False)
-    y = style.draw_rich_paragraph(
-        page,
-        r"已知 {{x(t)=1+\cos(200t)+\sin(300t)}}，对其进行时域采样。要求能从采样信号中恢复原始信号，填空：奈奎斯特频率为______ {{\mathrm{Hz}}}；奈奎斯特采样周期为______ {{\mathrm{s}}}。",
-        62,
-        y,
-        A4[0] - 124,
-    )
-    y -= 32
-    y = _question_heading(page, 2014, y, first=False)
-    y = style.draw_rich_paragraph(
-        page,
-        r"已知系统 {{y[n]=x[n]\{g[n]+g[n-1]\}}}，若 {{g[n]=1+(-1)^n}}，则系统是否为时变系统？______。",
-        62,
-        y,
-        A4[0] - 124,
-    )
-    y -= 32
-    y = _question_heading(page, 2015, y, first=False)
-    y = style.draw_rich_paragraph(
-        page,
-        "对模拟信号进行采样，得到的是______信号。",
-        62,
-        y,
-        A4[0] - 124,
-    )
-    y -= 40
-    y = _question_heading(page, 2020, y, first=False)
-    y = style.draw_rich_paragraph(
-        page,
-        r"已知频带宽度有限信号 {{x(t)}}、{{y(t)}} 的最高频率分别为 {{f_1}} 和 {{f_2}}，其中 {{f_1<f_2}}，则对信号 {{2x(t)+5y(t)}} 进行无失真抽样的采样频率为______。",
-        62,
-        y,
-        A4[0] - 124,
-    )
-    y = _question_heading(page, 2002, y - 42, first=False)
-    style.draw_rich_paragraph(page, r"有一信号 {{x(t)=3\cos(2\pi t)+2\sin(3\pi t)+\cos(5\pi t)}}，现以 {{\Omega_s=8\pi}} 的频率对其采样得到离散信号 {{x(n)}}。画出 {{x(t)}} 和 {{x(n)}} 的幅度谱，判断是否存在混叠；若存在，说明避免方法并画出不失真时的离散频谱。", 62, y, A4[0] - 124)
-    page.showPage()
-    _start(page, 2)
-    y = _question_heading(page, 2003, 770, first=True)
-    style.draw_rich_paragraph(page, r"信号经过理想冲激串采样后，再经过增益为 {{T}} 的理想低通滤波器。证明：当低通滤波器截止角频率为 {{\omega_c=\frac{\omega_s}{2}}} 时，对任意 {{T}}，重建信号与原信号在采样时刻始终相等。", 62, y, A4[0] - 124)
-    page.showPage()
-    _start(page, 3)
-    y = _question_heading(page, 2003, 770, first=True)
-    style.draw_rich_paragraph(
-        page,
-        r"已知系统差分方程为 {{r(n)-6r(n-1)+8r(n-2)=e(n-1)+2e(n-2)}}，求单位样值响应。",
-        62,
-        y,
-        A4[0] - 124,
-    )
-    page.showPage()
+    questions = [
+        (2002, 60, r"已知 {{x(t)=\cos(50t)}}，对其进行时域采样。要求能从采样信号中恢复原始信号，填空：奈奎斯特频率为______ {{\mathrm{Hz}}}；奈奎斯特采样周期为______ {{\mathrm{s}}}。"),
+        (2003, 60, r"已知 {{x(t)=1+\cos(200t)+\sin(300t)}}，对其进行时域采样。要求能从采样信号中恢复原始信号，填空：奈奎斯特频率为______ {{\mathrm{Hz}}}；奈奎斯特采样周期为______ {{\mathrm{s}}}。"),
+        (2014, 61, r"已知系统 {{y[n]=x[n]\{g[n]+g[n-1]\}}}，若 {{g[n]=1+(-1)^n}}，则系统是否为时变系统？______。"),
+        (2015, 61, "对模拟信号进行采样，得到的是______信号。"),
+        (2020, 61, r"已知频带宽度有限信号 {{x(t)}}、{{y(t)}} 的最高频率分别为 {{f_1}} 和 {{f_2}}，其中 {{f_1<f_2}}，则对信号 {{2x(t)+5y(t)}} 进行无失真抽样的采样频率为______。"),
+        (2002, 62, r"有一信号 {{x(t)=3\cos(2\pi t)+2\sin(3\pi t)+\cos(5\pi t)}}，现以 {{\Omega_s=8\pi}} 的频率对其采样得到离散信号 {{x(n)}}。画出 {{x(t)}} 和 {{x(n)}} 的幅度谱，判断是否存在混叠；若存在，说明避免方法并画出不失真时的离散频谱。"),
+        (2003, 62, r"信号经过理想冲激串采样后，再经过增益为 {{T}} 的理想低通滤波器。证明：当低通滤波器截止角频率为 {{\omega_c=\frac{\omega_s}{2}}} 时，对任意 {{T}}，重建信号与原信号在采样时刻始终相等。"),
+        (2003, 61, r"已知系统差分方程为 {{r(n)-6r(n-1)+8r(n-2)=e(n-1)+2e(n-2)}}，求单位样值响应。"),
+    ]
+    for number, (year, answer_page, statement) in enumerate(questions, start=1):
+        _start(page, number)
+        y = _question_heading(page, year, answer_page, 770, first=number == 1)
+        style.draw_rich_paragraph(page, statement, 62, y, A4[0] - 124)
+        page.showPage()
 
 
 def _answers(page: canvas.Canvas) -> None:

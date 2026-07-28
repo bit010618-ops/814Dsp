@@ -106,9 +106,12 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     for component_path in load_component_paths(root):
         reader = PdfReader(str(component_path))
         # Chapter training is intentionally one exam question per printable
-        # page.  Preserve that boundary when the otherwise-flowing body is
-        # assembled into the final handout.
-        keep_each_page = component_path.name == "chapter_01_training_component.pdf"
+        # page.  Preserve that boundary for both priority and supplementary
+        # sets when the otherwise-flowing body is assembled into the handout.
+        keep_each_page = component_path.name in {
+            "chapter_01_training_component.pdf",
+            "chapter_01_supplemental_component.pdf",
+        }
         for page in reader.pages:
             bottom, top = _body_bounds(page)
             source_pages.append((page, bottom, top, keep_each_page))

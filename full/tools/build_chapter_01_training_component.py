@@ -20,7 +20,7 @@ CHAPTER_NAME = "第一章 离散时间信号与系统"
 BLUE = HexColor("#123B5D")
 INK = HexColor("#1F2933")
 BRASS = HexColor(style.ACCENT_BRASS)
-ANSWER_PAGE = {2002: 52, 2006: 53, 2019: 53}
+ANSWER_PAGE = {2002: 59, 2006: 59, 2019: 60}
 
 
 def load_model(root: Path = ROOT) -> dict:

@@ -2,6 +2,7 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
+from full.tools.build_chapter_01_supplemental_component import build_training_pdf as build_supplemental_training_pdf
 from full.tools.build_chapter_01_training_component import build_answers_pdf, build_training_pdf, load_model
 
 
@@ -27,8 +28,8 @@ def test_chapter_one_priority_training_and_detailed_answers_are_clean_and_comple
     assert "2002 年真题" in training_text
     assert "2006 年真题" in training_text
     assert "2019 年真题" in training_text
-    assert "详解见 P.52" in training_text
-    assert "详解见 P.53" in training_text
+    assert "详解见 P.59" in training_text
+    assert "详解见 P.60" in training_text
     assert "详解：真题整理详解" not in training_text
     assert "最大抽样间隔" in answer_compact
     assert "传递函数" in answer_compact
@@ -46,3 +47,21 @@ def test_training_diagrams_use_rendered_math_for_subscripts_and_delays():
     assert "z⁻¹" not in source
     assert "f₁(n)" not in source
     assert "f₂(n)" not in source
+
+
+def test_supplemental_training_keeps_every_exam_question_on_its_own_page(tmp_path: Path):
+    training = build_supplemental_training_pdf(
+        ROOT, output_path=tmp_path / "chapter_01_supplemental_training.pdf"
+    )
+    reader = PdfReader(str(training))
+
+    # Eight individual exam questions are included in this supplementary set.
+    # A question page must never share its writing area with the next question.
+    assert len(reader.pages) == 8
+    for page in reader.pages:
+        years = [year for year in ("2002 年真题", "2003 年真题", "2014 年真题", "2015 年真题", "2020 年真题") if year in (page.extract_text() or "")]
+        assert len(years) == 1
+
+    text = "\n".join(page.extract_text() or "" for page in reader.pages)
+    for page_number in (60, 61, 62):
+        assert f"详解见 P.{page_number}" in text

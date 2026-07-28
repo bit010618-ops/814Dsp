@@ -65,3 +65,17 @@ def test_reflow_crop_keeps_the_last_formula_image_and_its_background_box():
     # The final displayed formula occupies the box from y=368 to y=416.
     # Text extraction alone sees only the nearby heading and used to crop this box.
     assert bottom <= 368
+
+
+def test_final_handout_preserves_one_printable_page_per_exam_question(tmp_path: Path):
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_handout.pdf")
+    question_pages = [
+        page.extract_text() or ""
+        for page in PdfReader(str(output)).pages
+        if "详解见 P." in (page.extract_text() or "")
+    ]
+
+    assert len(question_pages) == 11
+    for text in question_pages:
+        years = [year for year in ("2002 年真题", "2003 年真题", "2006 年真题", "2014 年真题", "2015 年真题", "2019 年真题", "2020 年真题") if year in text]
+        assert len(years) == 1
