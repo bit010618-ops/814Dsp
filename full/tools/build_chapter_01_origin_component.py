@@ -212,10 +212,22 @@ def _page_representation(page: canvas.Canvas) -> None:
     # lower half of this textbook page empty.  The detailed representations
     # begin on the following page at a safe subsection boundary.
     y = style.draw_continuation_title(page, "离散时间信号的表示方法", y - 14)
-    style.draw_rich_paragraph(
+    y = style.draw_rich_paragraph(
         page,
         "离散时间信号可用数列、函数、图形和单位抽样序列四种方式表示。它们描述的是同一个以整数 {{n}} 为自变量的序列，应能相互对应。",
         62, y, A4[0] - 124
+    )
+    y = style.draw_continuation_title(page, "用数列与函数表示", y - 4)
+    y = style.draw_rich_paragraph(
+        page,
+        "用数列表示时，下划线标出 {{n=0}} 在序列中的位置。例如：",
+        62, y, A4[0] - 124
+    )
+    _formula_box(
+        page,
+        r"x_1(n)=\{\underline{1},2,3,4,5\},\quad x_2(n)=\{1,2,\underline{3},4,5\},\quad x_3(n)=\{\underline{0},0,1,2,3,4,5\}",
+        y - 4,
+        height=44,
     )
     page.showPage()
 
