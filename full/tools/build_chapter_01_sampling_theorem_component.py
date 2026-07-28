@@ -63,7 +63,6 @@ def p4(p):
  style.draw_note(p,'考试中先统一频率单位，再比较最高频率与采样频率的一半。',y-3); p.showPage()
 def p1_reflow(p):
  start(p,1); y=sec(p,'理想时域采样（续）',746)
- y=box(p,r'x(n)=x_a(nT),\qquad f_s=\frac{1}{T},\qquad \Omega_s=\frac{2\pi}{T}',y,52)
  y=sec(p,'采样瞬间的幅度',y-2)
  y=para(p,'理想采样输出在 {{t=nT}} 处的冲激权重等于原连续信号的瞬时幅度；{{T}} 是采样间隔，{{f_s}} 和 {{\\Omega_s}} 分别是采样频率与采样角频率。',y)
  y=title(p,'采样后的频域周期延拓',y-18)

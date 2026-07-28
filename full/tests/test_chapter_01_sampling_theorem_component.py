@@ -10,3 +10,10 @@ def test_sampling_theorem_component_keeps_animation_audit_and_core(tmp_path: Pat
  assert "理想时域采样" in (reader.pages[0].extract_text() or "")
  assert "采样后的频域周期延拓" in (reader.pages[0].extract_text() or "")
  assert "频域示意" in (reader.pages[0].extract_text() or "")
+
+
+def test_sampling_theorem_component_uses_previous_page_for_the_complete_sampling_parameter_formula(tmp_path: Path):
+ builder_text = Path('full/tools/build_chapter_01_sampling_theorem_component.py').read_text(encoding='utf-8')
+ assert "start(p,1); y=sec(p,'理想时域采样（续）',746)" in builder_text
+ reflow_body = builder_text.split('def p1_reflow', 1)[1].split('def build_pdf', 1)[0]
+ assert "x(n)=x_a(nT)" not in reflow_body
