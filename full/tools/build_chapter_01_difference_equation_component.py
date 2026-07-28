@@ -122,7 +122,10 @@ def p3_reflow(p):
  w=A4[0]-124; h=w*1050/1867
  p.drawImage(ImageReader(str(slide)),62,y-h,w,h,mask='auto')
  y=y-h-16
- para(p,'{{b_0}} 对当前输入进行乘法，{{z^{-1}}} 表示一个采样周期的延迟，{{-a_1}} 形成反馈支路，求和器给出输出。由图可数出乘法器、加法器和延迟单元。',y)
+ y=para(p,'{{b_0}} 对当前输入进行乘法，{{z^{-1}}} 表示一个采样周期的延迟，{{-a_1}} 形成反馈支路，求和器给出输出。由图可数出乘法器、加法器和延迟单元。',y)
+ y=title(p,'理想时域采样',y-18)
+ y=para(p,'采样器可看作每隔 {{T}} 秒闭合一次的电子开关。它利用周期冲激函数序列从连续信号 {{x_a(t)}} 中抽取样值，使时间变量离散。',y)
+ box(p,r'\delta_T(t)=\sum_{n=-\infty}^{\infty}\delta(t-nT),\qquad x_s(t)=x_a(t)\delta_T(t)',y,58)
  p.showPage()
 
 
