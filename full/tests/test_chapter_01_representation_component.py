@@ -46,6 +46,7 @@ def test_representation_component_preserves_original_unit_sample_example_prompt(
 def test_unit_sample_piecewise_definition_is_rendered_as_one_standard_cases_formula():
     builder = (ROOT / "full" / "tools" / "build_chapter_01_representation_component.py").read_text(encoding="utf-8")
 
-    assert "height = 60" in builder
-    assert 'page.setFont("Times-Roman", 30)' in builder
+    assert "height = 64" in builder
+    assert "def _draw_cases_brace" in builder
+    assert "curveTo" in builder
     assert 'page.roundRect(x, bottom, width, height' in builder

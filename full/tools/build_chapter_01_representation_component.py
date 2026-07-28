@@ -107,20 +107,32 @@ def _draw_stems(page: canvas.Canvas, x: float, y: float, width: float, height: f
             page.drawCentredString(px + TICK_OFFSET, top + (7 if value >= 0 else -11), str(value))
 
 
+def _draw_cases_brace(page: canvas.Canvas, x: float, bottom: float, height: float) -> None:
+    """Draw a proper two-row cases brace rather than a text-glyph substitute."""
+    mid = bottom + height / 2
+    path = page.beginPath()
+    path.moveTo(x + 13, bottom + height - 4)
+    path.curveTo(x + 3, bottom + height - 5, x + 3, mid + 10, x + 11, mid + 3)
+    path.curveTo(x + 14, mid + 1, x + 14, mid - 1, x + 11, mid - 3)
+    path.curveTo(x + 3, mid - 10, x + 3, bottom + 5, x + 13, bottom + 4)
+    page.setStrokeColor(INK)
+    page.setLineWidth(1.45)
+    page.drawPath(path, stroke=1, fill=0)
+
+
 def _case_definition(page: canvas.Canvas, x: float, y_top: float, width: float) -> float:
     # Keep a two-row definition as one compact, textbook-style unit.
-    height = 60
+    height = 64
     bottom = y_top - height
     page.setFillColor(PALE)
     page.roundRect(x, bottom, width, height, 3, fill=1, stroke=0)
     page.setFillColor(INK)
     _draw_math(page, r"\delta(n)=", x + 28, bottom + 22, height=16)
-    page.setFont("Times-Roman", 30)
-    page.drawString(x + 108, bottom + 12, "{")
-    _draw_math(page, r"1", x + 134, bottom + 35, height=12)
-    _draw_math(page, r"n=0", x + 172, bottom + 35, height=12)
-    _draw_math(page, r"0", x + 134, bottom + 14, height=12)
-    _draw_math(page, r"n\ne0", x + 172, bottom + 14, height=12)
+    _draw_cases_brace(page, x + 105, bottom, height)
+    _draw_math(page, r"1", x + 137, bottom + 38, height=12)
+    _draw_math(page, r"n=0", x + 181, bottom + 38, height=12)
+    _draw_math(page, r"0", x + 137, bottom + 15, height=12)
+    _draw_math(page, r"n\ne0", x + 181, bottom + 15, height=12)
     return bottom - 12
 
 
@@ -136,34 +148,49 @@ def _page_methods(page: canvas.Canvas, model: dict) -> None:
     y = _case_definition(page, 158, y, 280)
     y = style.draw_continuation_title(page, "用图形表示离散时间信号", y - 2)
     y = style.draw_rich_paragraph(page, "图形的横坐标 {{n}} 表示离散时间坐标，仅在 {{n}} 为整数时有意义；纵坐标表示各信号点的值。下图给出同一序列的 stem 图表示。", 62, y, A4[0] - 124)
+    # This stem plot is the complete visual block introduced immediately above.
+    # Keeping it on the same page prevents an otherwise empty lower half and
+    # guarantees that its axes and lower labels are never cut by page slicing.
+    values = {int(key): value for key, value in model["sample_plot"]["values"].items()}
+    _draw_stems(page, 74, 128, A4[0] - 148, 150, values, n_min=-1, n_max=11)
     page.showPage()
 
 
 def _page_graph_and_impulse(page: canvas.Canvas, model: dict) -> None:
     _start(page, 2)
-    # The figure is a complete visual block.  Keep it on this new page instead
-    # of squeezing it below the preceding case definition on page 1.
-    values = {int(key): value for key, value in model["sample_plot"]["values"].items()}
-    _draw_stems(page, 74, 588, A4[0] - 148, 150, values, n_min=-1, n_max=11)
-    y = style.draw_continuation_title(page, "用单位抽样序列表示", 560)
+    y = style.draw_title(page, "用单位抽样序列表示", 774)
     y = style.draw_rich_paragraph(page, r"单位抽样序列 {{\delta(n)}} 是脉冲幅度为 1 的离散序列。它只有在 {{n=0}} 时取 1，在其他整数时刻均取 0：", 62, y, A4[0] - 124)
     _case_definition(page, 62, y - 4, 250)
     _draw_stems(page, 350, y - 92, 175, 100, {0: 1}, n_min=-4, n_max=6, show_values=True, label="δ(n)")
+    _draw_expansion_preamble(page, 520, continuation=True)
+    _draw_expansion_example_prompt(page, 330)
     page.showPage()
+
+
+def _draw_expansion_preamble(page: canvas.Canvas, y_top: float, *, continuation: bool) -> float:
+    if continuation:
+        y = style.draw_continuation_title(page, "单位抽样序列的移位加权和", y_top)
+    else:
+        y = style.draw_title(page, "单位抽样序列的移位加权和", y_top)
+    y = style.draw_rich_paragraph(page, r"任何序列都可以表示为单位抽样序列的移位加权和：{{x(m)}} 给出第 {{m}} 个样点的值，{{\delta(n-m)}} 给出该样点所在的位置。", 62, y, A4[0] - 124)
+    y = _formula_box(page, r"x(n)=\sum_{m=-\infty}^{\infty}x(m)\delta(n-m)", y - 3)
+    return y
+
+
+def _draw_expansion_example_prompt(page: canvas.Canvas, y_top: float) -> float:
+    y = style.draw_continuation_title(page, "例：用单位抽样序列 δ(n) 表示任意序列 x(n)={1,2,3}", y_top)
+    return style.draw_rich_paragraph(page, "数列中第一项为 {{n=0}}，因此 {{x(0)=1}}、{{x(1)=2}}、{{x(2)=3}}。将三个样点分别平移到 0、1、2 处并按幅值加权：", 62, y, A4[0] - 124)
 
 
 def _page_expansion_example(page: canvas.Canvas) -> None:
     _start(page, 3)
-    y = style.draw_title(page, "单位抽样序列的移位加权和", 774)
-    y = style.draw_rich_paragraph(page, r"任何序列都可以表示为单位抽样序列的移位加权和：{{x(m)}} 给出第 {{m}} 个样点的值，{{\delta(n-m)}} 给出该样点所在的位置。", 62, y, A4[0] - 124)
-    y = _formula_box(page, r"x(n)=\sum_{m=-\infty}^{\infty}x(m)\delta(n-m)", y - 3)
-    y = style.draw_continuation_title(page, "例：用单位抽样序列 δ(n) 表示任意序列 x(n)={1,2,3}", y - 3)
-    y = style.draw_rich_paragraph(page, "数列中第一项为 {{n=0}}，因此 {{x(0)=1}}、{{x(1)=2}}、{{x(2)=3}}。将三个样点分别平移到 0、1、2 处并按幅值加权：", 62, y, A4[0] - 124)
-    _draw_stems(page, 66, 390, 212, 105, {0: 1}, n_min=-2, n_max=4, show_values=True, label="δ(n)")
-    _draw_stems(page, 310, 390, 212, 105, {1: 2}, n_min=-2, n_max=4, show_values=True, label="2δ(n-1)")
-    _draw_stems(page, 66, 260, 212, 105, {2: 3}, n_min=-2, n_max=4, show_values=True, label="3δ(n-2)")
-    _draw_stems(page, 310, 260, 212, 105, {0: 1, 1: 2, 2: 3}, n_min=-2, n_max=4, show_values=True, label="x(n)")
-    y = _formula_box(page, r"x(n)=\delta(n)+2\delta(n-1)+3\delta(n-2)=\sum_{m=0}^{2}x(m)\delta(n-m)", 229, height=47)
+    y = style.draw_continuation_title(page, "例（续）：逐项移位与加权", 748)
+    style.draw_rich_paragraph(page, "下列四幅图依次给出三个加权单位抽样序列及其相加后的原序列。每一项的系数决定幅值，括号内的移位量决定样点位置。", 62, y, A4[0] - 124)
+    _draw_stems(page, 66, 500, 212, 105, {0: 1}, n_min=-2, n_max=4, show_values=True, label="δ(n)")
+    _draw_stems(page, 310, 500, 212, 105, {1: 2}, n_min=-2, n_max=4, show_values=True, label="2δ(n-1)")
+    _draw_stems(page, 66, 345, 212, 105, {2: 3}, n_min=-2, n_max=4, show_values=True, label="3δ(n-2)")
+    _draw_stems(page, 310, 345, 212, 105, {0: 1, 1: 2, 2: 3}, n_min=-2, n_max=4, show_values=True, label="x(n)")
+    y = _formula_box(page, r"x(n)=\delta(n)+2\delta(n-1)+3\delta(n-2)=\sum_{m=0}^{2}x(m)\delta(n-m)", 292, height=47)
     style.draw_note(page, r"展开时，“值”写在 {{x(m)}} 前，“位置”由 {{\delta(n-m)}} 决定。检查时逐项代入 {{n=0,1,2}}，应分别得到 1、2、3。", y - 4)
     page.showPage()
 
