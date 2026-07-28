@@ -20,6 +20,7 @@ CHAPTER_NAME = "第一章 离散时间信号与系统"
 BLUE = HexColor("#123B5D")
 INK = HexColor("#1F2933")
 BRASS = HexColor(style.ACCENT_BRASS)
+ANSWER_PAGE = {2002: 52, 2006: 53, 2019: 53}
 
 
 def load_model(root: Path = ROOT) -> dict:
@@ -39,7 +40,7 @@ def _heading(page: canvas.Canvas, title: str, year: int) -> float:
     page.setFont(style.FONT_SERIF, 10.5)
     page.drawString(62, 736, f"{year} 年真题")
     page.setFillColor(HexColor("#52616B"))
-    page.drawRightString(A4[0] - 62, 736, "详解见 P.待回填")
+    page.drawRightString(A4[0] - 62, 736, f"详解见 P.{ANSWER_PAGE[year]}")
     return 702
 
 

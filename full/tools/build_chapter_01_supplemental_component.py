@@ -19,6 +19,7 @@ MODEL_PATH = Path("full/source/chapter_01_supplemental_component.json")
 CHAPTER_NAME = "第一章 离散时间信号与系统"
 INK = HexColor("#1F2933")
 MUTED = HexColor("#52616B")
+ANSWER_PAGE = {2002: 54, 2003: 54, 2014: 54, 2015: 54, 2020: 54}
 
 
 def load_model(root: Path = ROOT) -> dict:
@@ -55,7 +56,7 @@ def _question_heading(page: canvas.Canvas, year: int, y: float, *, first: bool) 
     page.setFont(style.FONT_SERIF, 10.5)
     page.drawString(62, y, f"{year} 年真题")
     page.setFillColor(MUTED)
-    page.drawRightString(A4[0] - 62, y, "详解见 P.待回填")
+    page.drawRightString(A4[0] - 62, y, f"详解见 P.{ANSWER_PAGE[year]}")
     return y - 31
 
 

@@ -27,7 +27,8 @@ def test_chapter_one_priority_training_and_detailed_answers_are_clean_and_comple
     assert "2002 年真题" in training_text
     assert "2006 年真题" in training_text
     assert "2019 年真题" in training_text
-    assert "详解见 P.待回填" in training_text
+    assert "详解见 P.52" in training_text
+    assert "详解见 P.53" in training_text
     assert "详解：真题整理详解" not in training_text
     assert "最大抽样间隔" in answer_compact
     assert "传递函数" in answer_compact

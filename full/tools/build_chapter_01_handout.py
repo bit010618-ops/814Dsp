@@ -44,6 +44,8 @@ COMPONENT_FILENAMES = (
     "chapter_01_applications_close_component.pdf",
     "chapter_01_training_component.pdf",
     "chapter_01_supplemental_component.pdf",
+    "chapter_01_answers_component.pdf",
+    "chapter_01_supplemental_answers_component.pdf",
 )
 
 
@@ -103,14 +105,18 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     source_pages: list[tuple[PageObject, float, float]] = []
     for component_path in load_component_paths(root):
         reader = PdfReader(str(component_path))
+        # Chapter training is intentionally one exam question per printable
+        # page.  Preserve that boundary when the otherwise-flowing body is
+        # assembled into the final handout.
+        keep_each_page = component_path.name == "chapter_01_training_component.pdf"
         for page in reader.pages:
             bottom, top = _body_bounds(page)
-            source_pages.append((page, bottom, top))
+            source_pages.append((page, bottom, top, keep_each_page))
 
     writer = PdfWriter()
     target = _new_page(writer)
     cursor = BODY_TOP
-    for source, bottom, top in source_pages:
+    for source, bottom, top, keep_each_page in source_pages:
         height = top - bottom
         if cursor - height < BODY_BOTTOM:
             target = _new_page(writer)
@@ -121,7 +127,7 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
         source.cropbox.upper_right = (PAGE_WIDTH, top)
         destination_bottom = cursor - height
         target.merge_transformed_page(source, Transformation().translate(0, destination_bottom - bottom))
-        cursor = destination_bottom - BLOCK_GAP
+        cursor = BODY_BOTTOM if keep_each_page else destination_bottom - BLOCK_GAP
 
     overlay = _overlay(len(writer.pages))
     for page, layer in zip(writer.pages, overlay.pages):
