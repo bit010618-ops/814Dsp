@@ -75,7 +75,11 @@ def page_two(page):
     y = section(page, "例：验证下面的系统是否为移不变系统：", y - 2)
     y = box(page, r"y(n)=x(2n)", y, 46)
     y = para(page, "系统定义为 {{y(n)=x(2n)}}。先延迟输出得到 {{y(n-k)=x(2n-2k)}}；先延迟输入再通过系统则得到 {{T[x(n-k)]=x(2n-k)}}。两式一般不相等。", y)
-    box(page, r"x(2n-2k)\ne x(2n-k)", y, 52)
+    y = box(page, r"x(2n-2k)\ne x(2n-k)", y, 52)
+    y = para(page, "例如取 {{x(n)=n}}、{{k=1}}、{{n=3}}：前者为 {{x(4)=4}}，后者为 {{x(5)=5}}，故可直接构成反例。", y)
+    y = section(page, "线性时不变系统：滑动平均", y - 2)
+    y = box(page, r"T[x(n)]=\frac{1}{M_2-M_1+1}\sum_{k=M_1}^{M_2}x(n-k)", y, 58)
+    para(page, "当 {{M_1=0}}、{{M_2=3}} 时，{{y(n)=\\frac{1}{4}[x(n)+x(n-1)+x(n-2)+x(n-3)]}}。加权求和保持线性，固定的相对延迟保持时不变，因此它是线性时不变系统。", y)
     page.showPage()
 
 def page_three(page):
@@ -97,7 +101,6 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     page.setTitle("数字信号处理讲义：第一章时不变性")
     page_one(page)
     page_two(page)
-    page_three(page)
     page.save()
     return out
 

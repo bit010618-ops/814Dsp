@@ -13,7 +13,7 @@ def test_time_invariance_component_preserves_core_examples_and_excludes_experime
     output = build_pdf(output_path=tmp_path / "time-invariance.pdf")
     reader = PdfReader(str(output))
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    assert len(reader.pages) == 3
+    assert len(reader.pages) == 2
     assert "仿真实验" not in text
     assert "滑动平均" in text
     assert "验证下面的系统是否为移不变系统：" in text
