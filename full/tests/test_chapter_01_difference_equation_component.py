@@ -9,3 +9,24 @@ def test_difference_equation_component_preserves_core_and_excludes_matlab(tmp_pa
     text='\n'.join(page.extract_text() or '' for page in PdfReader(str(out)).pages)
     assert len(PdfReader(str(out)).pages)==4
     assert 'MATLAB' not in text
+
+
+def test_difference_equation_component_continues_causal_iteration_into_first_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'difference-equation.pdf')
+    reader = PdfReader(str(out))
+
+    assert '迭代法：因果单位脉冲响应' in (reader.pages[0].extract_text() or '')
+
+
+def test_difference_equation_component_continues_structure_intro_into_third_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'difference-equation.pdf')
+    reader = PdfReader(str(out))
+
+    assert '由差分方程得到系统结构' in (reader.pages[2].extract_text() or '')
+
+
+def test_difference_equation_component_continues_noncausal_intro_into_second_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'difference-equation.pdf')
+    reader = PdfReader(str(out))
+
+    assert '迭代法：非因果单位脉冲响应' in (reader.pages[1].extract_text() or '')
