@@ -79,7 +79,9 @@ def p4(p):
  y=box(p,r'|y(n)|\leq\sum_{m=-\infty}^{\infty}|h(m)|\,|x(n-m)|\leq Mq',y,54)
  y=sec(p,'四个单位脉冲响应例',y-2)
  y=para(p,'（1）{{h(n)=\\delta(n-2)+\\delta(n+2)}}：稳定。 （2）{{h(n)=0.5^n u(n-2)}}：稳定，{{n\\geq2}} 有值，收敛。 （3）{{h(n)=2^n u(-n-1)}}：稳定，{{n<-1}} 有值，收敛。 （4）{{h(n)=0.5^n}}：不稳定，{{h(n)}} 不满足绝对可和。',y)
- style.draw_note(p,'考研判据：LSI 看 {{\\sum|h(n)|}}；一般系统则必须从 BIBO 定义或反例出发。',y-3); p.showPage()
+ y=title(p,'常系数线性差分方程',y-12)
+ y=para(p,'常系数线性差分方程以过去和当前的输入、输出样值建立关系，是离散时间系统的重要表示方法。',y)
+ box(p,r'\sum_{k=0}^{N}a_k y(n-k)=\sum_{m=0}^{M}b_m x(n-m),\qquad a_0\ne0',y,55); p.showPage()
 
 def build_pdf(root=ROOT,output_path=None):
  style.register_fonts(); load_model(root); out=output_path or root/'full/outputs/chapter_01_causal_stable_component.pdf'; out.parent.mkdir(parents=True,exist_ok=True); p=canvas.Canvas(str(out),pagesize=A4); p.setTitle('数字信号处理讲义：因果性与稳定性'); p1(p);p2(p);p3(p);p4(p);p.save();return out
