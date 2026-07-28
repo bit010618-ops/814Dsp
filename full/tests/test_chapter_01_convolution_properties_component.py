@@ -42,3 +42,18 @@ def test_convolution_properties_component_continues_delay_example_into_second_pa
     reader = PdfReader(str(out))
 
     assert '应用例：延时叠加系统' in (reader.pages[1].extract_text() or '')
+
+
+def test_convolution_properties_component_carries_delay_derivation_lead_into_second_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'convolution-properties.pdf')
+    reader = PdfReader(str(out))
+
+    assert '输出推导' in (reader.pages[1].extract_text() or '')
+
+
+def test_convolution_properties_component_does_not_leave_a_dangling_correlation_subheading(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'convolution-properties.pdf')
+    reader = PdfReader(str(out))
+
+    assert '互相关与自相关' not in (reader.pages[2].extract_text() or '')
+    assert '互相关与自相关' in (reader.pages[3].extract_text() or '')

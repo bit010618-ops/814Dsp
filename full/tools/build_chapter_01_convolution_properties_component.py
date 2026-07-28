@@ -13,7 +13,7 @@ CHAPTER='第一章 离散时间信号与系统'; PALE=HexColor('#F4F7F8')
 
 def load_model(root=ROOT): return json.loads((root/MODEL_PATH).read_text(encoding='utf-8'))
 def start(p,n): style.draw_header(p,CHAPTER); style.draw_footer(p,n)
-def title(p,t,y=774): return style.draw_title(p,t,y)
+def title(p,t,y=730): return style.draw_title(p,t,y)
 def sec(p,t,y): return style.draw_continuation_title(p,t,y)
 def para(p,t,y): return style.draw_rich_paragraph(p,t,62,y,A4[0]-124)
 def box(p,f,y,h=50):
@@ -46,11 +46,13 @@ def p2(p):
  y=sec(p,'用求和上下限复核',y-2)
  y=para(p,'卷积和中同时满足两段非零条件的求和变量必须落在它们的交集内。该交集非空时，便得到上面的输出区间。',y)
  y=title(p,'应用例：延时叠加系统',y-12)
- y=para(p,'某 LSI 系统的单位脉冲响应为 {{h(n)=\\delta(n)+\\alpha\\delta(n-R)}}，其中 {{0<\\alpha<1}}，{{R}} 为正整数。',y); p.showPage()
+ y=para(p,'某 LSI 系统的单位脉冲响应为 {{h(n)=\\delta(n)+\\alpha\\delta(n-R)}}，其中 {{0<\\alpha<1}}，{{R}} 为正整数。',y)
+ y=sec(p,'输出推导',y-2)
+ box(p,r'y(n)=x(n)*[\delta(n)+\alpha\delta(n-R)]',y,48); p.showPage()
 
 def p3(p):
  start(p,3); y=sec(p,'应用例：延时叠加系统（续）',746)
- y=sec(p,'输出推导',y-2); y=box(p,r'y(n)=x(n)*[\delta(n)+\alpha\delta(n-R)]',y,48)
+ y=sec(p,'输出推导（续）',y-2)
  y=box(p,r'y(n)=x(n)+\alpha x(n-R)',y,48)
  y=para(p,'第一项是原信号，第二项是延迟 {{R}} 个采样点并衰减 {{\\alpha}} 倍的副本。因此该系统形成单次回声；{{R}} 决定回声延迟，{{\\alpha}} 决定回声强度。',y)
  y=sec(p,'与范围约束的关系',y-2)
@@ -59,11 +61,10 @@ def p3(p):
  y=para(p,'R 决定副本相对原信号向右平移的采样点数；α 决定副本的幅度比例。因此同一模型既能描述回声，也能描述一般离散信号的延时叠加。',y)
  y=sec(p,'实序列的相关：相似度与延时',y-12)
  y=para(p,'相关函数用于衡量两个序列在不同相对位移下的相似程度。对实序列，互相关和自相关可写为卷积形式。',y)
- y=sec(p,'互相关与自相关',y-2); p.showPage()
+ p.showPage()
 
 def p4(p):
- start(p,4); y=sec(p,'实序列的相关：相似度与延时（续）',746)
- y=sec(p,'互相关与自相关（续）',y-2)
+ start(p,4); y=sec(p,'互相关与自相关',746)
  y=box(p,r'r_{xy}(n)=x(n)*y(-n),\qquad r_{yx}(n)=y(n)*x(-n)',y,50)
  y=box(p,r'r_{xx}(n)=x(n)*x(-n)',y,48)
  y=para(p,'计算相关时，先将其中一个序列反褶，再随 {{n}} 移位，与另一个序列逐点相乘并相加。相关峰值对应两序列最匹配的相对位置。',y)
