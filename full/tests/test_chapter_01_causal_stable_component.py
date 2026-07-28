@@ -47,6 +47,13 @@ def test_causal_stable_component_continues_lsi_causality_into_first_page(tmp_pat
     assert 'LSI 系统的因果性条件' in (reader.pages[0].extract_text() or '')
 
 
+def test_causal_stable_component_carries_complete_lsi_impulse_examples_into_first_page(tmp_path: Path):
+    out = build_pdf(output_path=tmp_path / 'causal-stable.pdf')
+    first_page = PdfReader(str(out)).pages[0].extract_text() or ''
+
+    assert '四个单位脉冲响应例' in first_page
+
+
 def test_causal_stable_component_continues_stability_into_second_page(tmp_path: Path):
     out = build_pdf(output_path=tmp_path / 'causal-stable.pdf')
     reader = PdfReader(str(out))

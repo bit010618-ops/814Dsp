@@ -18,21 +18,21 @@ def _restore_legacy_text(text):
   return text
 
 def start(p,n): style.draw_header(p,_restore_legacy_text(CHAPTER)); style.draw_footer(p,n)
-def title(p,t,y=774):
+def title(p,t,y=730):
  t=_restore_legacy_text(t)
  if t == 'LSI系统的稳定性条件':
   return style.draw_continuation_title(p,t,746)
  return style.draw_title(p,t,y)
 def sec(p,t,y):
  t=_restore_legacy_text(t)
- if t in {'例题','四个单位脉冲响应例'}: t='例：'
+ if t == '例题': t='例：'
  return style.draw_continuation_title(p,t,y)
 def para(p,t,y):
  t=_restore_legacy_text(t)
  if 'h(n)=\\delta(n-2)+\\delta(n+2)' in t and '非因果' in t:
-  t='已知 LSI 系统的单位脉冲响应{{h(n)}}，判断系统的因果性。'+t
+  t='例：已知 LSI 系统的单位脉冲响应{{h(n)}}，判断系统的因果性。'+t
  if 'h(n)=\\delta(n-2)+\\delta(n+2)' in t and '稳定' in t and '非因果' not in t:
-  t='已知 LSI 系统的单位脉冲响应{{h(n)}}，判断系统的稳定性。'+t
+  t='例：已知 LSI 系统的单位脉冲响应{{h(n)}}，判断系统的稳定性。'+t
  return style.draw_rich_paragraph(p,t,62,y,A4[0]-124)
 def box(p,f,y,h=50):
  a,iw,ih=style._math_metrics(f,style.DISPLAY_FORMULA_SIZE); dh=min(h-12,ih*72/300); dw=iw*dh/ih; lim=A4[0]-148
@@ -49,13 +49,12 @@ def p1(p):
  y=para(p,'（1）{{y(n)=n x(n)}}：因果，{{y(n_0)}} 只取决于 {{n=n_0}} 的输入 {{x(n)}}。 （2）{{y(n)=x(n+2)}}：非因果，{{y(0)=x(2)}}。 （3）{{y(n)=x(n^2)}}：非因果，{{y(2)=x(4)}}。 （4）{{y(n)=x(-n)}}：非因果，{{y(-2)=x(2)}}。 （5）{{y(n)=\\sin(n+2)x(n)}}：因果，{{\\sin(n+2)}} 不是输入。',y)
  y=sec(p,'LSI 系统的因果性条件',y-10)
  y=para(p,'对 LSI 系统，{{y(n)=h(n)*x(n)}}。若 {{h(m)}} 在 {{m<0}} 时非零，卷积和中会含有 {{x(n-m)=x(n+|m|)}}，这正是未来输入。',y)
- box(p,r'h(n)=0\quad(n<0)',y,52); p.showPage()
+ y=box(p,r'h(n)=0\quad(n<0)',y,52)
+ y=sec(p,'四个单位脉冲响应例',y-2)
+ para(p,'（1）{{h(n)=\\delta(n-2)+\\delta(n+2)}}：非因果，{{h(-2)\\ne0}}。 （2）{{h(n)=0.5^n u(n-2)}}：因果，当 {{n\\geq2}} 时 {{h(n)\\ne0}}。 （3）{{h(n)=2^n u(-n-1)}}：非因果，当 {{n\\leq-1}} 时 {{h(n)\\ne0}}。 （4）{{h(n)=0.5^n}}：非因果，当 {{-\\infty\\leq n\\leq\\infty}} 时 {{h(n)}} 有值。',y); p.showPage()
 
 def p2(p):
- start(p,2); y=sec(p,'LSI 系统的因果性条件（续）',746)
- y=sec(p,'四个单位脉冲响应例',y-2)
- y=para(p,'（1）{{h(n)=\\delta(n-2)+\\delta(n+2)}}：非因果，{{h(-2)\\ne0}}。 （2）{{h(n)=0.5^n u(n-2)}}：因果，当 {{n\\geq2}} 时 {{h(n)\\ne0}}。 （3）{{h(n)=2^n u(-n-1)}}：非因果，当 {{n\\leq-1}} 时 {{h(n)\\ne0}}。 （4）{{h(n)=0.5^n}}：非因果，当 {{-\\infty\\leq n\\leq\\infty}} 时 {{h(n)}} 有值。',y)
- y=sec(p,'判题步骤',y-2)
+ start(p,2); y=sec(p,'判题步骤',746)
  y=para(p,'先确认系统是否为 LSI；再检查 {{n<0}} 的单位脉冲响应是否全为零。对有限长序列，只需找最左侧非零样值。',y)
  y=sec(p,'一般系统的稳定性',y-10)
  y=para(p,'稳定性采用 BIBO（有界输入、有界输出）定义：若任意有界输入都产生有界输出，则系统稳定。时间索引 {{n}} 不受限制。',y)
