@@ -288,3 +288,4 @@
 - 差分方程页已将“非因果单位脉冲响应”的完整标题和导语续入因果迭代页；后页从完整“（续）”标题及反向迭代公式接续。一阶反馈结构图继续保留为完整原图块。
 - 最终合并器的正文起点已下调，避免重建页眉后一级标题压到横线。以 180 dpi 抽查第 3、4 页的连续/离散对应图、分段函数，以及受影响的差分方程页，图形完整、标题与页眉分离。
 - 验证：差分方程与合并器回归 `12 passed`；全量 `full/tests` `125 passed`；`git diff --check` 通过。下一步：提交并推送本里程碑，再继续第一章其余正文页审校；第二章暂停。
+- 已提交并推送 `aaa5d8c`（`fix: preserve header clearance and continue difference equations`）；当前预览为 `full/outputs/chapter_01_handout_preview_20260729_2340.pdf`。
