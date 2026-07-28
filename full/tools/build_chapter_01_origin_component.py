@@ -194,7 +194,9 @@ def _page_origin(page: canvas.Canvas) -> None:
 
 def _page_representation(page: canvas.Canvas) -> None:
     _start(page, 2)
-    y = style.draw_title(page, "离散时间信号的表达", 774)
+    # Keep the title below the shared header rule; 774 pt visually collides
+    # with that rule after final continuous composition.
+    y = style.draw_title(page, "离散时间信号的表达", 752)
     y = style.draw_rich_paragraph(
         page,
         "一般，采样间隔是均匀的，用 {{x(nT)}} 表示信号在 {{nT}} 点上的值，{{n}} 为整数。由于 {{x(nT)}} 顺序存放在计算机存储器中，我们通常用 {{x(n)}} 表示离散时间信号的序列值。",

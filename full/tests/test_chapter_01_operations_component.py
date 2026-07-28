@@ -38,3 +38,12 @@ def test_operations_component_preserves_original_backward_difference_example_pro
     text = re.sub(r"\s+", "", "".join(page.extract_text() or "" for page in reader.pages))
     assert "例：" in text
     assert "试求后向差分信号" in text
+
+
+def test_operations_component_carries_safe_next_section_leads_into_low_density_pages(tmp_path):
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_operations_component.pdf")
+    reader = PdfReader(str(output))
+
+    assert "序列的反褶" in (reader.pages[1].extract_text() or "")
+    assert "累加和与差分" in (reader.pages[2].extract_text() or "")
+    assert "时间尺度、能量与平均功率" in (reader.pages[3].extract_text() or "")
