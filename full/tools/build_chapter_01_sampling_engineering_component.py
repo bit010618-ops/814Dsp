@@ -169,8 +169,7 @@ def bandpass_spectrum(page: canvas.Canvas, y: float) -> float:
 
 def page_one(page: canvas.Canvas) -> None:
     start(page, 1)
-    y = title(page, "抗混叠滤波")
-    y = paragraph(page, "实际的模拟信号在进入模数转换器之前，通常先经过抗混叠滤波器。它的任务是限制输入带宽，使采样后的频谱副本彼此分离，从而避免不可逆的混叠。", y)
+    y = section(page, "抗混叠滤波（续）", 746)
     y = process_chain(page, y - 12)
     y = section(page, "采样前的带宽约束", y - 2)
     y = paragraph(page, "若滤波后的模拟输入最高频率为 {{f_h}}，则选择采样频率时应满足采样定理。工程上，滤波器还需要留出过渡带，因此截止频率通常应低于折叠频率，而不应刚好压在临界位置。", y)
