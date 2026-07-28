@@ -28,6 +28,16 @@ def test_linearity_component_uses_available_page_space_before_opening_the_next_e
     assert "3\u70b9\u4e2d\u503c\u6ee4\u6ce2\u5668" in (reader.pages[1].extract_text() or "")
 
 
+def test_linearity_component_carries_first_example_lead_into_definition_page(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "linearity.pdf")
+    reader = PdfReader(str(output))
+    first = re.sub(r"\s+", "", reader.pages[0].extract_text() or "")
+    text = "".join(page.extract_text() or "" for page in reader.pages)
+
+    assert "零输入产生零输出" in first
+    assert "复习提示" not in text
+
+
 def test_linearity_component_preserves_original_example_statements(tmp_path: Path):
     output = build_pdf(output_path=tmp_path / "linearity.pdf")
     reader = PdfReader(str(output))

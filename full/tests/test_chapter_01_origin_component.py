@@ -43,3 +43,16 @@ def test_origin_expression_page_carries_the_next_section_heading_before_its_safe
     page_text = PdfReader(str(output)).pages[1].extract_text() or ""
 
     assert "离散时间信号的表示方法" in page_text
+
+
+def test_origin_expression_primary_heading_keeps_clear_of_the_header_rule(tmp_path):
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_origin_component.pdf")
+    positions: list[float] = []
+
+    def collect(text, _cm, tm, _font, _size):
+        if "离散时间信号的表达" in text:
+            positions.append(float(tm[5]))
+
+    PdfReader(str(output)).pages[1].extract_text(visitor_text=collect)
+    assert positions
+    assert max(positions) <= 735

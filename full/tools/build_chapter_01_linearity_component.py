@@ -40,7 +40,7 @@ def box(page, formula, y, h=48):
 def para(page, text, y):
     return style.draw_rich_paragraph(page, text, 62, y, A4[0] - 124)
 
-def title(page, text, y=774):
+def title(page, text, y=730):
     return style.draw_title(page, text, y)
 
 def section(page, text, y):
@@ -57,18 +57,18 @@ def page_one(page):
     y = box(page, r"T[a x_1(n)+b x_2(n)]=a y_1(n)+b y_2(n)", y, 50)
     y = para(page, "更一般地，若 {{y_i(n)=T[x_i(n)]}}，则对任意有限组输入和系数，线性系统均有下式。", y)
     y = box(page, r"T[\sum_{i=1}^{N}a_i x_i(n)]=\sum_{i=1}^{N}a_i y_i(n)", y, 50)
-    style.draw_note(page, "快速排除条件：线性系统一定满足 {{T[0]=0}}。但 {{T[0]=0}} 只是必要条件，不能单独证明一个系统线性。", y - 2)
     # This intact title/formula block belongs in the available lower area of
     # the definition page; its derivation continues on the next page.
     y = section(page, "例：验证下面的系统是否为线性系统：", y - 2)
-    box(page, r"y(n)=x^2(n)", y, 46)
+    y = box(page, r"y(n)=x^2(n)", y, 46)
+    y = section(page, "例（续）", y - 2)
+    y = para(page, "（零输入产生零输出）", y)
+    para(page, "系统定义为 {{y(n)=x^2(n)}}。虽然零输入产生零输出，但仍需检验叠加原理。", y)
     page.showPage()
 
 def page_two(page):
     start(page, 2)
-    y = section(page, "例（续）", 774)
-    y = para(page, "（零输入产生零输出）", y)
-    y = para(page, "系统定义为 {{y(n)=x^2(n)}}。虽然零输入产生零输出，但仍需检验叠加原理。", y)
+    y = section(page, "例（续）：叠加检验", 752)
     y = box(page, r"T[a x_1+b x_2]=(a x_1+b x_2)^2=a^2x_1^2+b^2x_2^2+2abx_1x_2", y, 58)
     y = box(page, r"T[a x_1+b x_2]\ne aT[x_1]+bT[x_2]", y, 48)
     y = para(page, "交叉项 {{2abx_1x_2}} 一般不为零，故平方系统不是线性系统。", y)
@@ -91,7 +91,6 @@ def page_three(page):
     y = box(page, r"T[x_1]=1,\qquad T[x_2]=1,\qquad T[x_1]+T[x_2]=2", y, 48)
     y = box(page, r"x_1+x_2=\{3,3,2\},\qquad T[x_1+x_2]=3", y, 48)
     y = para(page, "因此 {{T[x_1+x_2]\\ne T[x_1]+T[x_2]}}，三点中值滤波器为非线性系统。这个例子说明：系统具有实际滤波作用，并不意味着它必定线性。", y)
-    style.draw_note(page, "小结：先用定义检验叠加原理；平方、绝对值、中值、限幅等含非线性运算的系统通常不线性，但仍应通过公式或反例给出判断。", y - 4)
     page.showPage()
 
 def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
