@@ -157,8 +157,7 @@ def zero_order_hold(page: canvas.Canvas, y: float) -> float:
 
 def page_one(page: canvas.Canvas) -> None:
     start(page, 1)
-    y = title(page, "模拟信号的数字处理链路")
-    y = paragraph(page, "模拟信号进入数字处理系统前，需要先限制其有效频带；经过模数转换后，信号成为可由数字系统处理的离散序列。处理结果再经数模转换与模拟低通滤波，恢复为连续时间输出。", y)
+    y = section(page, "模拟信号的数字处理链路（续）", 746)
     y = section(page, "从模拟输入到模拟输出", y - 2)
     y = process_chain(page, y - 44)
     y = formula_box(page, r"x_a(t)\ \longrightarrow\ x(n)\ \longrightarrow\ y(n)\ \longrightarrow\ y_a(t)", y, 52)

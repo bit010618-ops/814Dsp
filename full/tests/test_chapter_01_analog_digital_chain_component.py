@@ -25,3 +25,9 @@ def test_analog_digital_chain_component_keeps_the_complete_conversion_chain(tmp_
     assert "根据原课件" not in text
     assert "复习提示" not in text
     assert "让未来的你感谢曾经努力拼搏的自己" not in text
+
+
+def test_analog_digital_chain_continues_after_recovery_page(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "analog-digital-chain.pdf")
+    reader = PdfReader(str(output))
+    assert "模拟信号的数字处理链路（续）" in (reader.pages[0].extract_text() or "")

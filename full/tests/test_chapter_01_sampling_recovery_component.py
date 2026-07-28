@@ -19,3 +19,12 @@ def test_sampling_recovery_component_keeps_reconstruction_and_interpolation_core
     assert "样值不变性" in (reader.pages[2].extract_text() or "")
     assert "源课件" not in text
     assert "源文件" not in text
+
+
+def test_sampling_recovery_carries_interpolation_figure_heading_to_previous_page(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "sampling-recovery.pdf")
+    reader = PdfReader(str(output))
+    second_page = reader.pages[1].extract_text() or ""
+    third_page = reader.pages[2].extract_text() or ""
+    assert "移位内插波形" in second_page
+    assert "移位内插波形" not in third_page

@@ -176,21 +176,24 @@ def page_two(page: canvas.Canvas) -> None:
     y = formula_box(page, r"y_a(t)=\sum_{m=-\infty}^{\infty}x_a(mT)\,g(t-mT)", y, 56)
     y = title(page, "内插函数", y - 18)
     y = paragraph(page, "把理想低通重构的冲激响应乘以 {{T}}，可得到标准内插函数。它以某个采样点为中心，在其他整数倍采样时刻取零，因此不会改变相邻样值。", y)
-    formula_box(page, r"g(t)=T h_r(t)=\frac{\sin\!\left(\frac{\pi t}{T}\right)}{\frac{\pi t}{T}}", y, 56)
+    y = formula_box(page, r"g(t)=T h_r(t)=\frac{\sin\!\left(\frac{\pi t}{T}\right)}{\frac{\pi t}{T}}", y, 56)
+    y = section(page, "移位内插波形", y - 18)
+    interpolation_diagram(page, y - 78)
     page.showPage()
 
 
 def page_three(page: canvas.Canvas) -> None:
     start(page, 3)
-    y = section(page, "移位内插波形", 746)
-    y = interpolation_diagram(page, y - 78)
+    y = section(page, "移位内插说明（续）", 746)
     y = paragraph(page, "对每个 {{m}}，函数 {{g(t-mT)}} 以 {{mT}} 为中心。对应样值 {{x_a(mT)}} 只改变该曲线的幅度；所有移位、加权后的曲线叠加，便在采样点之间补出连续波形。", y)
     y = title(page, "采样点处的严格插值", y - 18)
     y = paragraph(page, "内插函数在自身中心采样点的值为一，在其他整数倍采样点的值为零。因此，在任意采样时刻，求和式中只有与该时刻对应的一项保留，其余项全部消失。", y)
     y = formula_box(page, r"g(0)=1,\qquad g(kT)=0\quad(k\in\mathbb{Z},\ k\ne0)", y, 52)
     y = section(page, "样值不变性", y - 18)
     y = formula_box(page, r"y_a(mT)=x_a(mT)", y, 48)
-    paragraph(page, "这说明恢复后的连续信号准确穿过每一个采样值；而采样点之间的波形由全部加权内插函数的延伸和叠加决定。该性质既解释了“恢复”的含义，也为检查重构公式提供了直接依据。", y)
+    y = paragraph(page, "这说明恢复后的连续信号准确穿过每一个采样值；而采样点之间的波形由全部加权内插函数的延伸和叠加决定。该性质既解释了“恢复”的含义，也为检查重构公式提供了直接依据。", y)
+    y = title(page, "模拟信号的数字处理链路", y - 18)
+    paragraph(page, "模拟信号进入数字处理系统前，需要先限制其有效频带；经过模数转换后，信号成为可由数字系统处理的离散序列。处理结果再经数模转换与模拟低通滤波，恢复为连续时间输出。", y)
     page.showPage()
 
 
