@@ -14,7 +14,7 @@ def test_linearity_component_preserves_examples_and_excludes_experiment(tmp_path
     reader = PdfReader(str(output))
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
     compact_text = re.sub(r"\s+", "", text)
-    assert len(reader.pages) == 3
+    assert len(reader.pages) == 2
     assert "仿真实验" not in text
     assert "三点中值滤波器" in compact_text
     assert "叠加原理" in text
@@ -36,6 +36,15 @@ def test_linearity_component_carries_first_example_lead_into_definition_page(tmp
 
     assert "零输入产生零输出" in first
     assert "复习提示" not in text
+
+
+def test_linearity_component_reflows_all_three_examples_into_two_full_pages(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "linearity.pdf")
+    reader = PdfReader(str(output))
+    second = re.sub(r"\s+", "", reader.pages[1].extract_text() or "")
+
+    assert len(reader.pages) == 2
+    assert "三点中值滤波器为非线性系统" in second
 
 
 def test_linearity_component_preserves_original_example_statements(tmp_path: Path):

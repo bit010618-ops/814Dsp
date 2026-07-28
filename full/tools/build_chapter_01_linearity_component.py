@@ -63,23 +63,32 @@ def page_one(page):
     y = box(page, r"y(n)=x^2(n)", y, 46)
     y = section(page, "例（续）", y - 2)
     y = para(page, "（零输入产生零输出）", y)
-    para(page, "系统定义为 {{y(n)=x^2(n)}}。虽然零输入产生零输出，但仍需检验叠加原理。", y)
+    y = para(page, "系统定义为 {{y(n)=x^2(n)}}。虽然零输入产生零输出，但仍需检验叠加原理。", y)
+    y = section(page, "例（续）：叠加检验", y - 2)
+    y = box(page, r"T[a x_1+b x_2]=(a x_1+b x_2)^2=a^2x_1^2+b^2x_2^2+2abx_1x_2", y, 58)
+    y = box(page, r"T[a x_1+b x_2]\ne aT[x_1]+bT[x_2]", y, 48)
+    para(page, "交叉项 {{2abx_1x_2}} 一般不为零，故平方系统不是线性系统。", y)
     page.showPage()
 
 def page_two(page):
     start(page, 2)
-    y = section(page, "例（续）：叠加检验", 752)
-    y = box(page, r"T[a x_1+b x_2]=(a x_1+b x_2)^2=a^2x_1^2+b^2x_2^2+2abx_1x_2", y, 58)
-    y = box(page, r"T[a x_1+b x_2]\ne aT[x_1]+bT[x_2]", y, 48)
-    y = para(page, "交叉项 {{2abx_1x_2}} 一般不为零，故平方系统不是线性系统。", y)
-    y = section(page, "例：验证下面的系统是否为线性系统：", y - 2)
+    y = section(page, "例：验证下面的系统是否为线性系统：", 752)
     y = box(page, r"y(n)=x(-n)", y, 46)
     y = para(page, "系统定义为 {{y(n)=x(-n)}}，于是", y)
     y = box(page, r"T[a x_1(n)+b x_2(n)]=a x_1(-n)+b x_2(-n)=a y_1(n)+b y_2(n)", y, 54)
     y = para(page, "等式对任意输入与任意系数都成立，因此时间反褶系统是线性系统。线性与时不变是不同性质；该例的时不变性将单独讨论。", y)
-    # Page 2 still has room for the next complete example heading/formula.
+    # Page 2 still has room for the next complete example, including its
+    # counterexample and conclusion.  Keep the original prompt untouched.
     y = section(page, "例：验证下面的3点中值滤波器是否是线性系统：", y - 4)
-    box(page, r"y(n)=\operatorname{Mid}\{x(k)\},\qquad n-1\leq k\leq n+1", y, 52)
+    y = box(page, r"y(n)=\operatorname{Mid}\{x(k)\},\qquad n-1\leq k\leq n+1", y, 52)
+    y = section(page, "例（续）", y - 2)
+    y = para(page, r"三点中值滤波器定义为：对 {{n-1\leq k\leq n+1}} 的三个样值取中间值。它能保留中值而抑制异常点，但不满足叠加原理。", y)
+    y = section(page, "反例", y - 2)
+    y = para(page, r"取 {{a=b=1}}，并在同一三个样点上令 {{x_1=\{1,2,1\}}}、{{x_2=\{2,1,1\}}}。", y)
+    y = box(page, r"T[x_1]=1,\qquad T[x_2]=1,\qquad T[x_1]+T[x_2]=2", y, 48)
+    y = box(page, r"x_1+x_2=\{3,3,2\},\qquad T[x_1+x_2]=3", y, 48)
+    y = box(page, r"T[x_1+x_2]\ne T[x_1]+T[x_2]", y, 42)
+    para(page, "因此，三点中值滤波器为非线性系统。这个例子说明：系统具有实际滤波作用，并不意味着它必定线性。", y)
     page.showPage()
 
 def page_three(page):
@@ -102,7 +111,6 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     page.setTitle("数字信号处理讲义：第一章线性系统")
     page_one(page)
     page_two(page)
-    page_three(page)
     page.save()
     return out
 
