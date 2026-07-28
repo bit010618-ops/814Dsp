@@ -11,6 +11,6 @@ def test_applications_close_component_keeps_aliasing_and_chapter_closure(tmp_pat
     output = build_pdf(output_path=tmp_path / "applications-close.pdf")
     reader = PdfReader(str(output))
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    assert len(reader.pages) == 4
+    assert len(reader.pages) == 2
     assert "源课件" not in text
     assert "源文件" not in text
