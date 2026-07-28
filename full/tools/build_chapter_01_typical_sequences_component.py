@@ -33,7 +33,8 @@ def box(page, formula, y, h=48):
     return y-h-12
 
 def para(page, text, y): return style.draw_rich_paragraph(page,text,62,y,A4[0]-124)
-def title(page, text, y=774): return style.draw_title(page,text,y)
+# All primary titles clear the common header rule by a fixed safe margin.
+def title(page, text, y=730): return style.draw_title(page,text,y)
 
 def section(page, text, y): return style.draw_continuation_title(page,text,y)
 
@@ -83,37 +84,35 @@ def page_one(page, m):
     for f in m['sections'][1]['formulae']: y=box(page,f,y,42)
     # Carry the next complete section heading forward instead of preserving a
     # mostly empty lower page. Details resume on the next page.
-    section(page,"矩形序列与实指数序列",y-18)
+    y=section(page,"矩形序列与实指数序列",y-18)
+    for f in m['sections'][2]['formulae']: y=box(page,f,y,44)
+    y=para(page,"矩形序列在索引 0 至 N−1 取 1，其余索引取 0；可等价地由两个阶跃序列相减，或由 N 个移位单位抽样序列求和得到。",y)
+    section(page,"实指数序列",y-3)
     page.showPage()
 
 def page_two(page,m):
-    start(page,2); y=section(page,"矩形序列",774)
-    for f in m['sections'][2]['formulae']: y=box(page,f,y,44)
-    y=para(page,"矩形序列在索引 0 至 N−1 取 1，其余索引取 0；可等价地由两个阶跃序列相减，或由 N 个移位单位抽样序列求和得到。",y)
-    y=section(page,"实指数序列",y-3); y=box(page,m['sections'][3]['formula'],y)
+    start(page,2); y=section(page,"实指数序列",752); y=box(page,m['sections'][3]['formula'],y)
     y=para(page,"当 {{|a|<1}} 时，样值随 n 增大而衰减；当 {{|a|\\geq1}} 时发散。若 {{a<0}}，样值符号交替，呈摇动特征。",y)
-    section(page,"正弦序列",y-18)
+    y=section(page,"正弦序列",y-18)
+    for f in m['sections'][4]['formulae']: y=box(page,f,y,50)
     page.showPage()
 
 def page_three(page,m):
-    start(page,3); y=774
-    for f in m['sections'][4]['formulae']: y=box(page,f,y,50)
+    start(page,3); y=section(page,"正弦序列（续）",752)
     y=para(page,"连续时间正弦信号经等间隔 {{T}} 采样后得到正弦序列。{{\\omega}} 为数字角频率（rad），{{\\Omega}} 为模拟角频率（单位：弧度每秒），二者通过 {{\\omega=\\Omega T}} 联系。",y)
     y=section(page,"数字角频率的含义",y-3)
     y=para(page,"{{\\omega=0.2\\pi}} 表示相邻样值的相位差为 {{0.2\\pi}} rad，因此一个完整周期包含 {{\\frac{2\\pi}{0.2\\pi}=10}} 个采样点。数字角频率是相对频率，而非模拟角频率的单位。",y)
     y=draw_sine_example(page,y-10)
-    style.draw_note(page,"复习提示：采样频率为 {{f_s}}、连续信号频率为 {{f_0}} 时，先用 {{\\omega=2\\pi\\frac{f_0}{f_s}}} 换算，再讨论离散序列。",y-2)
     page.showPage()
 
 def page_four(page,m):
-    start(page,4); y=title(page,"复指数序列")
+    start(page,4); y=title(page,"复指数序列",752)
     for f in m['sections'][5]['formulae']: y=box(page,f,y,48)
     y=para(page,"复指数序列的实部与虚部分别是同一数字角频率的余弦和正弦序列；指数因子 {{e^{\\sigma n}}} 决定其包络。",y)
     y=section(page,"实部、虚部与模",y-3)
     y=box(page,r"\Re\{x(n)\}=e^{\sigma n}\cos(\omega n),\quad \Im\{x(n)\}=e^{\sigma n}\sin(\omega n),\quad |x(n)|=e^{\sigma n}",y,54)
     y=para(page,"例如，对 {{x(n)=2e^{(-\\frac{1}{12}+j\\frac{\\pi}{6})n}}}，实部与虚部为衰减振荡，而模值按指数规律衰减，如下图所示。",y)
     y=draw_complex_example(page,y-8)
-    style.draw_note(page,"欧拉公式把复指数和正弦、余弦联系起来；后续 DTFT、DFT 与频率响应分析都会反复使用这一表示。",y-1)
     page.showPage()
 
 def build_pdf(root: Path=ROOT, output_path: Path|None=None) -> Path:

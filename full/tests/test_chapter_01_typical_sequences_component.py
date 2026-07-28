@@ -15,3 +15,12 @@ def test_typical_sequences_carry_next_section_titles_into_available_page_space(t
 
     assert '矩形序列与实指数序列' in (reader.pages[0].extract_text() or '')
     assert '正弦序列' in (reader.pages[1].extract_text() or '')
+
+
+def test_typical_sequences_carry_complete_safe_formula_blocks_not_only_titles(tmp_path):
+    out = build_pdf(ROOT, tmp_path / 'a.pdf')
+    reader = PdfReader(str(out))
+
+    assert '矩形序列在索引' in ''.join((reader.pages[0].extract_text() or '').split())
+    assert '正弦序列（续）' in (reader.pages[2].extract_text() or '')
+    assert '复习提示' not in ''.join(page.extract_text() or '' for page in reader.pages)
