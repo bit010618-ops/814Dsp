@@ -281,3 +281,4 @@
 
 - 针对用户报告的旧版截图，重新以 200 dpi 从当前 `full/outputs/chapter_01_handout.pdf` 直接渲染第 3--5 页核验：第 3 页连续波形和离散 stem 图、坐标轴、刻度、`T` 与图下说明完整；第 4 页单位抽样序列为同一紧凑公式框中的两行大括号、取值及条件，均未裁切。
 - 已把“最终合并 PDF、带版本预览、两项完整性”加入持久化要求。下一步：提交该要求记录并为用户生成带版本标识的当前预览 PDF；第一章其余正文审校仍继续，第二章暂停。
+- 已提交并推送 `72741da`（`docs: record representation preview verification`）；预览文件为 `full/outputs/chapter_01_handout_preview_20260729_2320.pdf`。
