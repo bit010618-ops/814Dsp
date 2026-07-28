@@ -138,9 +138,7 @@ def _case_definition(page: canvas.Canvas, x: float, y_top: float, width: float) 
 
 def _page_methods(page: canvas.Canvas, model: dict) -> None:
     _start(page, 1)
-    y = style.draw_title(page, "离散时间信号的表示方法", 774)
-    y = style.draw_rich_paragraph(page, "离散时间信号可用数列、函数、图形和单位抽样序列四种方式表示。它们描述的是同一个以整数 {{n}} 为自变量的序列，应能相互对应。", 62, y, A4[0] - 124)
-    y = style.draw_continuation_title(page, "用数列与函数表示", y - 2)
+    y = style.draw_continuation_title(page, "用数列与函数表示", 774)
     y = style.draw_rich_paragraph(page, "用数列表示时，下划线标出 {{n=0}} 在序列中的位置。例如：", 62, y, A4[0] - 124)
     y = _formula_box(page, r"x_1(n)=\{\underline{1},2,3,4,5\},\quad x_2(n)=\{1,2,\underline{3},4,5\},\quad x_3(n)=\{\underline{0},0,1,2,3,4,5\}", y - 4, height=44)
     y = style.draw_rich_paragraph(page, r"三组数值相同的数列并不一定代表同一序列：必须用下划线明确 {{n=0}} 对应的项。用函数表示时，{{n}} 只取整数，因此条件 {{n<0}} 与 {{n\leq-1}} 对离散序列是等价的。", 62, y, A4[0] - 124)

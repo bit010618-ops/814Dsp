@@ -81,21 +81,22 @@ def page_one(page, m):
     y=para(page,"{{\\delta(n)}} 是脉冲幅度为 1 的离散现实序列，也称单位脉冲序列或时域离散冲激；它不同于连续时间的 {{\\delta(t)}} 数学极限。",y)
     y=section(page,"单位阶跃序列",y-3)
     for f in m['sections'][1]['formulae']: y=box(page,f,y,42)
-    style.draw_note(page,"要点：{{\\delta(n)}} 是相邻两个阶跃序列之差；{{u(n)}} 可看作从负无穷到 n 的单位抽样序列累加。",y)
+    # Carry the next complete section heading forward instead of preserving a
+    # mostly empty lower page. Details resume on the next page.
+    section(page,"矩形序列与实指数序列",y-18)
     page.showPage()
 
 def page_two(page,m):
-    start(page,2); y=title(page,"矩形序列与实指数序列")
-    y=section(page,"矩形序列",y)
+    start(page,2); y=section(page,"矩形序列",774)
     for f in m['sections'][2]['formulae']: y=box(page,f,y,44)
     y=para(page,"矩形序列在索引 0 至 N−1 取 1，其余索引取 0；可等价地由两个阶跃序列相减，或由 N 个移位单位抽样序列求和得到。",y)
     y=section(page,"实指数序列",y-3); y=box(page,m['sections'][3]['formula'],y)
     y=para(page,"当 {{|a|<1}} 时，样值随 n 增大而衰减；当 {{|a|\\geq1}} 时发散。若 {{a<0}}，样值符号交替，呈摇动特征。",y)
-    style.draw_note(page,"判断实指数序列时，应同时观察幅度 {{|a|}} 与符号 {{a}}：前者决定收敛或发散，后者决定是否正负交替。",y-4)
+    section(page,"正弦序列",y-18)
     page.showPage()
 
 def page_three(page,m):
-    start(page,3); y=title(page,"正弦序列")
+    start(page,3); y=774
     for f in m['sections'][4]['formulae']: y=box(page,f,y,50)
     y=para(page,"连续时间正弦信号经等间隔 {{T}} 采样后得到正弦序列。{{\\omega}} 为数字角频率（rad），{{\\Omega}} 为模拟角频率（单位：弧度每秒），二者通过 {{\\omega=\\Omega T}} 联系。",y)
     y=section(page,"数字角频率的含义",y-3)

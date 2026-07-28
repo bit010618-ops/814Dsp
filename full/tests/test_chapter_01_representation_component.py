@@ -29,7 +29,9 @@ def test_representation_component_flows_the_next_complete_graph_section_on_to_th
     reader = PdfReader(str(output))
     assert "用图形表示离散时间信号" in (reader.pages[0].extract_text() or "")
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
-    assert "离散时间信号的表示方法" in text
+    # The parent component now carries the section heading and lead-in to
+    # avoid a large blank area before this component begins.
+    assert "用数列与函数表示" in text
     assert "单位抽样序列" in text
     assert "移位加权和" in text
 

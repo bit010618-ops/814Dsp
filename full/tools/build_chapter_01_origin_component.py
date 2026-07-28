@@ -206,7 +206,15 @@ def _page_representation(page: canvas.Canvas) -> None:
         "因此，{{T}} 不只是图上的相邻样点距离：它把序列索引 {{n}} 与实际物理时间联系起来。后续分析中，{{x(n)}} 是以整数 {{n}} 为自变量的离散时间序列，而 {{x(nT)}} 则强调其来自连续时间信号在各采样时刻的取值。",
         62, y, A4[0] - 124
     )
-    style.draw_note(page, "记号检查：{{x(t)}} 是连续时间信号；{{x(nT)}} 是采样时刻的取值；{{x(n)}} 是将这些取值按整数序号记录后的离散时间序列。", y - 3)
+    # Continue with a complete heading and its lead-in rather than leaving the
+    # lower half of this textbook page empty.  The detailed representations
+    # begin on the following page at a safe subsection boundary.
+    y = style.draw_continuation_title(page, "离散时间信号的表示方法", y - 14)
+    style.draw_rich_paragraph(
+        page,
+        "离散时间信号可用数列、函数、图形和单位抽样序列四种方式表示。它们描述的是同一个以整数 {{n}} 为自变量的序列，应能相互对应。",
+        62, y, A4[0] - 124
+    )
     page.showPage()
 
 

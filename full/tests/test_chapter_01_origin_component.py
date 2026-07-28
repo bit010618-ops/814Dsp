@@ -36,3 +36,10 @@ def test_origin_component_uses_natural_flow_in_two_editable_a4_pages(tmp_path):
     assert "不同采样频率下钢琴乐曲的赏析" in text
     assert "离散时间信号的表达" in text
     assert "采样频率" in text
+
+
+def test_origin_expression_page_carries_the_next_section_heading_before_its_safe_break(tmp_path):
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_origin_component.pdf")
+    page_text = PdfReader(str(output)).pages[1].extract_text() or ""
+
+    assert "离散时间信号的表示方法" in page_text
