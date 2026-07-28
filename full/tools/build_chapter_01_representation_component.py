@@ -108,22 +108,23 @@ def _draw_stems(page: canvas.Canvas, x: float, y: float, width: float, height: f
 
 
 def _case_definition(page: canvas.Canvas, x: float, y_top: float, width: float) -> float:
-    height = 83
+    # Keep a two-row definition as one compact, textbook-style unit.
+    height = 60
     bottom = y_top - height
     page.setFillColor(PALE)
     page.roundRect(x, bottom, width, height, 3, fill=1, stroke=0)
     page.setFillColor(INK)
-    _draw_math(page, r"\delta(n)=", x + 54, bottom + 34, height=18)
-    page.setFont("Times-Roman", 40)
-    page.drawString(x + 132, bottom + 22, "{")
-    _draw_math(page, r"1", x + 162, bottom + 49, height=15)
-    _draw_math(page, r"n=0", x + 202, bottom + 49, height=15)
-    _draw_math(page, r"0", x + 162, bottom + 22, height=15)
-    _draw_math(page, r"n\ne0", x + 202, bottom + 22, height=15)
-    return bottom - 14
+    _draw_math(page, r"\delta(n)=", x + 28, bottom + 22, height=16)
+    page.setFont("Times-Roman", 30)
+    page.drawString(x + 108, bottom + 12, "{")
+    _draw_math(page, r"1", x + 134, bottom + 35, height=12)
+    _draw_math(page, r"n=0", x + 172, bottom + 35, height=12)
+    _draw_math(page, r"0", x + 134, bottom + 14, height=12)
+    _draw_math(page, r"n\ne0", x + 172, bottom + 14, height=12)
+    return bottom - 12
 
 
-def _page_methods(page: canvas.Canvas) -> None:
+def _page_methods(page: canvas.Canvas, model: dict) -> None:
     _start(page, 1)
     y = style.draw_title(page, "离散时间信号的表示方法", 774)
     y = style.draw_rich_paragraph(page, "离散时间信号可用数列、函数、图形和单位抽样序列四种方式表示。它们描述的是同一个以整数 {{n}} 为自变量的序列，应能相互对应。", 62, y, A4[0] - 124)
@@ -132,19 +133,19 @@ def _page_methods(page: canvas.Canvas) -> None:
     y = _formula_box(page, r"x_1(n)=\{\underline{1},2,3,4,5\},\quad x_2(n)=\{1,2,\underline{3},4,5\},\quad x_3(n)=\{\underline{0},0,1,2,3,4,5\}", y - 4, height=44)
     y = style.draw_rich_paragraph(page, r"三组数值相同的数列并不一定代表同一序列：必须用下划线明确 {{n=0}} 对应的项。用函数表示时，{{n}} 只取整数，因此条件 {{n<0}} 与 {{n\leq-1}} 对离散序列是等价的。", 62, y, A4[0] - 124)
     y = _formula_box(page, r"x_4(n)=A\sin(\omega n+\varphi),\quad n\in(-\infty,\infty)", y - 3)
-    y = _case_definition(page, 62, y, A4[0] - 124)
-    style.draw_note(page, "读数列时先找 {{n=0}} 的位置，再向两侧确定各样点的时间索引；不能只按数字的排列顺序判断序列。", y - 3)
+    y = _case_definition(page, 158, y, 280)
+    y = style.draw_continuation_title(page, "用图形表示离散时间信号", y - 2)
+    y = style.draw_rich_paragraph(page, "图形的横坐标 {{n}} 表示离散时间坐标，仅在 {{n}} 为整数时有意义；纵坐标表示各信号点的值。下图给出同一序列的 stem 图表示。", 62, y, A4[0] - 124)
     page.showPage()
 
 
 def _page_graph_and_impulse(page: canvas.Canvas, model: dict) -> None:
     _start(page, 2)
-    y = style.draw_title(page, "用图形表示离散时间信号", 774)
-    y = style.draw_rich_paragraph(page, "图形的横坐标 {{n}} 表示离散时间坐标，仅在 {{n}} 为整数时有意义；纵坐标表示各信号点的值。下图给出同一序列的 stem 图表示。", 62, y, A4[0] - 124)
+    # The figure is a complete visual block.  Keep it on this new page instead
+    # of squeezing it below the preceding case definition on page 1.
     values = {int(key): value for key, value in model["sample_plot"]["values"].items()}
-    _draw_stems(page, 74, 390, A4[0] - 148, 210, values, n_min=-1, n_max=11)
-    y = 365
-    y = style.draw_continuation_title(page, "用单位抽样序列表示", y)
+    _draw_stems(page, 74, 588, A4[0] - 148, 150, values, n_min=-1, n_max=11)
+    y = style.draw_continuation_title(page, "用单位抽样序列表示", 560)
     y = style.draw_rich_paragraph(page, r"单位抽样序列 {{\delta(n)}} 是脉冲幅度为 1 的离散序列。它只有在 {{n=0}} 时取 1，在其他整数时刻均取 0：", 62, y, A4[0] - 124)
     _case_definition(page, 62, y - 4, 250)
     _draw_stems(page, 350, y - 92, 175, 100, {0: 1}, n_min=-4, n_max=6, show_values=True, label="δ(n)")
@@ -174,7 +175,7 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     page = canvas.Canvas(str(output), pagesize=A4, pageCompression=1)
     page.setTitle("数字信号处理讲义：第一章表示方法组件")
-    _page_methods(page)
+    _page_methods(page, model)
     _page_graph_and_impulse(page, model)
     _page_expansion_example(page)
     page.save()

@@ -58,12 +58,15 @@ def page_one(page):
     y = para(page, "更一般地，若 {{y_i(n)=T[x_i(n)]}}，则对任意有限组输入和系数，线性系统均有下式。", y)
     y = box(page, r"T[\sum_{i=1}^{N}a_i x_i(n)]=\sum_{i=1}^{N}a_i y_i(n)", y, 50)
     style.draw_note(page, "快速排除条件：线性系统一定满足 {{T[0]=0}}。但 {{T[0]=0}} 只是必要条件，不能单独证明一个系统线性。", y - 2)
+    # This intact title/formula block belongs in the available lower area of
+    # the definition page; its derivation continues on the next page.
+    y = section(page, "例：验证下面的系统是否为线性系统：", y - 2)
+    box(page, r"y(n)=x^2(n)", y, 46)
     page.showPage()
 
 def page_two(page):
     start(page, 2)
-    y = title(page, "例：验证下面的系统是否为线性系统：")
-    y = box(page, r"y(n)=x^2(n)", y, 46)
+    y = section(page, "例（续）", 774)
     y = para(page, "（零输入产生零输出）", y)
     y = para(page, "系统定义为 {{y(n)=x^2(n)}}。虽然零输入产生零输出，但仍需检验叠加原理。", y)
     y = box(page, r"T[a x_1+b x_2]=(a x_1+b x_2)^2=a^2x_1^2+b^2x_2^2+2abx_1x_2", y, 58)
@@ -74,13 +77,14 @@ def page_two(page):
     y = para(page, "系统定义为 {{y(n)=x(-n)}}，于是", y)
     y = box(page, r"T[a x_1(n)+b x_2(n)]=a x_1(-n)+b x_2(-n)=a y_1(n)+b y_2(n)", y, 54)
     y = para(page, "等式对任意输入与任意系数都成立，因此时间反褶系统是线性系统。线性与时不变是不同性质；该例的时不变性将单独讨论。", y)
-    style.draw_note(page, "判别步骤：先写出 {{T[a x_1+b x_2]}}，再与 {{aT[x_1]+bT[x_2]}} 逐项比较；只用一个特例不能证明线性。", y - 4)
+    # Page 2 still has room for the next complete example heading/formula.
+    y = section(page, "例：验证下面的3点中值滤波器是否是线性系统：", y - 4)
+    box(page, r"y(n)=\operatorname{Mid}\{x(k)\},\qquad n-1\leq k\leq n+1", y, 52)
     page.showPage()
 
 def page_three(page):
     start(page, 3)
-    y = section(page, "例：验证下面的3点中值滤波器是否是线性系统：", 746)
-    y = box(page, r"y(n)=\operatorname{Mid}\{x(k)\},\qquad n-1\leq k\leq n+1", y, 52)
+    y = section(page, "例（续）", 774)
     y = para(page, "三点中值滤波器定义为：对 {{n-1\\leq k\\leq n+1}} 的三个样值取中间值。它能保留中值而抑制异常点，但不满足叠加原理。", y)
     y = section(page, "反例", y - 2)
     y = para(page, "取 {{a=b=1}}，并在同一三个样点上令 {{x_1=\\{1,2,1\\}}}、{{x_2=\\{2,1,1\\}}}。", y)

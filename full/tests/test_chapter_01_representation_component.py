@@ -23,11 +23,11 @@ def test_representation_model_covers_source_pages_and_merges_only_exact_repeat()
     assert model["coordinate_label_rule"]["horizontal_tick_offset_pt"] == 4
 
 
-def test_representation_component_is_editable_three_page_pdf(tmp_path):
+def test_representation_component_flows_the_next_complete_graph_section_on_to_the_delta_page(tmp_path):
     output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_representation_component.pdf")
 
     reader = PdfReader(str(output))
-    assert len(reader.pages) == 3
+    assert "用图形表示离散时间信号" in (reader.pages[0].extract_text() or "")
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
     assert "离散时间信号的表示方法" in text
     assert "单位抽样序列" in text
@@ -41,3 +41,11 @@ def test_representation_component_preserves_original_unit_sample_example_prompt(
     text = re.sub(r"\s+", "", "".join(page.extract_text() or "" for page in reader.pages))
     assert "例：用单位抽样序列" in text
     assert "表示任意序列" in text
+
+
+def test_unit_sample_piecewise_definition_is_rendered_as_one_standard_cases_formula():
+    builder = (ROOT / "full" / "tools" / "build_chapter_01_representation_component.py").read_text(encoding="utf-8")
+
+    assert "height = 60" in builder
+    assert 'page.setFont("Times-Roman", 30)' in builder
+    assert 'page.roundRect(x, bottom, width, height' in builder

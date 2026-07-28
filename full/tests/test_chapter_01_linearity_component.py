@@ -20,6 +20,14 @@ def test_linearity_component_preserves_examples_and_excludes_experiment(tmp_path
     assert "叠加原理" in text
 
 
+def test_linearity_component_uses_available_page_space_before_opening_the_next_example_page(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "linearity.pdf")
+    reader = PdfReader(str(output))
+
+    assert "\u4f8b\uff1a" in (reader.pages[0].extract_text() or "")
+    assert "3\u70b9\u4e2d\u503c\u6ee4\u6ce2\u5668" in (reader.pages[1].extract_text() or "")
+
+
 def test_linearity_component_preserves_original_example_statements(tmp_path: Path):
     output = build_pdf(output_path=tmp_path / "linearity.pdf")
     reader = PdfReader(str(output))
@@ -30,4 +38,4 @@ def test_linearity_component_preserves_original_example_statements(tmp_path: Pat
     assert 'r"y(n)=x^2(n)"' in builder_text
     assert 'r"y(n)=x(-n)"' in builder_text
     assert 'r"y(n)=\\operatorname{Mid}\\{x(k)\\},\\qquad n-1\\leq k\\leq n+1"' in builder_text
-    assert 'y = section(page, "例：验证下面的3点中值滤波器是否是线性系统：", 746)' in builder_text
+    assert 'y = section(page, "例：验证下面的3点中值滤波器是否是线性系统：", y - 4)' in builder_text
