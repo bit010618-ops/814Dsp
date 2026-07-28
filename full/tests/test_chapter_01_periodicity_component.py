@@ -31,3 +31,14 @@ def test_periodicity_component_preserves_original_a_b_example_prompt(tmp_path: P
     assert "（B）" in text
     implementation = (Path(__file__).resolve().parents[2] / "full/tools/build_chapter_01_periodicity_component.py").read_text(encoding="utf-8")
     assert r"e^{j(\frac{n}{6}-\pi)}" in implementation
+
+
+def test_periodicity_component_carries_next_complete_criterion_block(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "periodicity.pdf")
+    reader = PdfReader(str(output))
+    first_page = re.sub(r"\s+", "", reader.pages[0].extract_text() or "")
+    all_text = "".join(page.extract_text() or "" for page in reader.pages)
+
+    assert "由频率求基本周期" in first_page
+    assert "有理性判据" in first_page
+    assert "复习提示" not in all_text

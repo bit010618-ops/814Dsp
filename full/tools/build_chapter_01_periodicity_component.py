@@ -40,7 +40,7 @@ def box(page, formula, y, h=48):
 def para(page, text, y):
     return style.draw_rich_paragraph(page, text, 62, y, A4[0] - 124)
 
-def title(page, text, y=774):
+def title(page, text, y=730):
     return style.draw_title(page, text, y)
 
 def section(page, text, y):
@@ -57,15 +57,15 @@ def page_one(page, m):
     y = box(page, m["sections"][1]["formula"], y)
     y = para(page, "由 {{x(n+N)=A\\sin[(n+N)\\omega+\\varphi]}} 可知，只有当 {{N\\omega}} 是 {{2\\pi}} 的整数倍时，相移才不改变每一个样值。", y)
     y = box(page, r"N=\frac{2\pi k}{\omega},\qquad k\in\mathbb{Z}_{+}", y, 44)
-    style.draw_note(page, "判定要点：离散正弦序列是否周期，取决于数字角频率与 {{2\\pi}} 的比值是否为有理数；连续时间正弦信号必周期这一结论不能直接照搬。", y - 2)
+    y = section(page, "由频率求基本周期", y - 16)
+    y = section(page, "有理性判据", y)
+    y = box(page, m["sections"][2]["formula"], y, 52)
+    para(page, "当 {{\\frac{2\\pi}{\\omega}}} 为整数时，基本周期就是该整数；当它是既约分数 {{\\frac{N}{k}}} 时，基本周期为分子 {{N}}；若它是无理数，序列无周期。", y)
     page.showPage()
 
 def page_two(page, m):
     start(page, 2)
-    y = title(page, "由频率求基本周期")
-    y = section(page, "有理性判据", y)
-    y = box(page, m["sections"][2]["formula"], y, 52)
-    y = para(page, "当 {{\\frac{2\\pi}{\\omega}}} 为整数时，基本周期就是该整数；当它是既约分数 {{\\frac{N}{k}}} 时，基本周期为分子 {{N}}；若它是无理数，序列无周期。", y)
+    y = section(page, "由频率求基本周期（续）", 752)
     y = para(page, "例：（1）判断序列 {{x(n)}} 是否有周期，如果有请计算其周期。", y - 2)
     y = para(page, "（A）{{x(n)=A\\cos(\\frac{13\\pi}{4}n)}}", y)
     y = box(page, r"x(n)=A\cos(\frac{13\pi}{4}n),\qquad \frac{2\pi}{\omega}=\frac{8}{13},\qquad N=8", y, 48)
@@ -87,7 +87,6 @@ def page_three(page, m):
     y = section(page, "参数的周期结论", y - 2)
     y = box(page, r"\omega_L=0.01\pi,\quad \omega_H=0.2\pi,\quad N_1=10,\quad N_2=N_3=200", y, 50)
     y = para(page, "三项频率为 {{0.2\\pi}}、{{0.21\\pi}}、{{0.19\\pi}}，相应基本周期为 {{10}}、{{200}}、{{200}}；故调幅序列的基本周期为 {{\\operatorname{lcm}(10,200,200)=200}}。", y)
-    style.draw_note(page, "方法小结：先确认各分量自身有周期，再把每个基本周期化为整数，最后取最小公倍数；不要把连续信号周期 {{T_0}} 与离散样值周期 {{N}} 混为一谈。", y - 3)
     page.showPage()
 
 def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
