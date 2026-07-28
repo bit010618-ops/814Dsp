@@ -42,3 +42,12 @@ def test_periodicity_component_carries_next_complete_criterion_block(tmp_path: P
     assert "由频率求基本周期" in first_page
     assert "有理性判据" in first_page
     assert "复习提示" not in all_text
+
+
+def test_periodicity_component_uses_example_page_space_for_combined_sequence_method(tmp_path: Path):
+    output = build_pdf(output_path=tmp_path / "periodicity.pdf")
+    reader = PdfReader(str(output))
+    second_page = re.sub(r"\s+", "", reader.pages[1].extract_text() or "")
+
+    assert "周期求解方法与调幅序列" in second_page
+    assert "组合序列的处理" in second_page
