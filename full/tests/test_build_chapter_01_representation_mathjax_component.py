@@ -20,6 +20,7 @@ def test_representation_component_is_a_reflowing_mathjax_and_svg_document(tmp_pa
     assert "data-index=\"2\"" in page
     assert "page-break-after" not in page
     assert "section { break-inside: avoid;" not in page
+    assert '<p class="eyebrow">' not in page
     assert ".chapter { width:100%; max-width:100%;" in page
     assert ".chart { margin-left:0; margin-right:0; }" in page
     assert "<image" not in page

@@ -4,7 +4,15 @@ import sys
 
 from pypdf import PdfReader
 
-from full.tools.build_chapter_01_handout import BODY_TOP, _body_bounds, build_pdf, load_component_paths
+from full.tools.build_chapter_01_handout import (
+    BODY_BOTTOM,
+    BODY_TOP,
+    CROP_TOP,
+    _component_page_bounds,
+    _body_bounds,
+    build_pdf,
+    load_component_paths,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -14,6 +22,7 @@ def test_chapter_one_handout_reflows_all_component_inputs_without_source_identit
     component_paths = load_component_paths(ROOT)
     assert len(component_paths) == 21
     assert component_paths[0].name == "chapter_01_opening_component.pdf"
+    assert component_paths[2].name == "chapter_01_representation_mathjax_component.pdf"
     assert component_paths[-5].name == "chapter_01_applications_close_component.pdf"
     assert component_paths[-4].name == "chapter_01_training_component.pdf"
     assert component_paths[-3].name == "chapter_01_supplemental_component.pdf"
@@ -72,6 +81,18 @@ def test_reflow_crop_keeps_the_last_formula_image_and_its_background_box():
     # The final displayed formula occupies the box from y=368 to y=416.
     # Text extraction alone sees only the nearby heading and used to crop this box.
     assert bottom <= 368
+
+
+def test_mathjax_svg_representation_pages_use_vector_geometry_bounds():
+    component = ROOT / "full/outputs/chapter_01_representation_mathjax_component.pdf"
+    reader = PdfReader(str(component))
+
+    bottom, top = _component_page_bounds(component, reader.pages[2], page_index=2)
+    # The third HTML page has real SVG paths and MathJax glyph paths, but no
+    # raster XObjects. It must crop at the real vector-content boundary so
+    # the following section can naturally continue in the remaining page area.
+    assert BODY_BOTTOM < bottom < 350
+    assert 760 < top <= CROP_TOP
 
 
 def test_final_handout_preserves_one_printable_page_per_exam_question(tmp_path: Path):

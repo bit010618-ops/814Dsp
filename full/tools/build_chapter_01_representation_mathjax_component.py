@@ -61,7 +61,6 @@ def write_html(output: Path) -> Path:
     content = r"""
 <main class="chapter">
   <header>
-    <p class="eyebrow">第一章 离散时间信号与系统</p>
     <h1>离散时间信号的表示方法</h1>
   </header>
   <section>

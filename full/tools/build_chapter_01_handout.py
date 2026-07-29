@@ -5,6 +5,7 @@ import re
 import sys
 from pathlib import Path
 
+import pdfplumber
 from pypdf import PageObject, PdfReader, PdfWriter, Transformation
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -29,7 +30,7 @@ BLOCK_GAP = 0.0
 COMPONENT_FILENAMES = (
     "chapter_01_opening_component.pdf",
     "chapter_01_origin_component.pdf",
-    "chapter_01_representation_component.pdf",
+    "chapter_01_representation_mathjax_component.pdf",
     "chapter_01_operations_component.pdf",
     "chapter_01_typical_sequences_component.pdf",
     "chapter_01_periodicity_component.pdf",
@@ -49,6 +50,9 @@ COMPONENT_FILENAMES = (
     "chapter_01_answers_component.pdf",
     "chapter_01_supplemental_answers_component.pdf",
 )
+FULL_PAGE_VECTOR_COMPONENTS = frozenset({
+    "chapter_01_representation_mathjax_component.pdf",
+})
 
 
 def load_component_paths(root: Path = ROOT) -> list[Path]:
@@ -86,6 +90,35 @@ def _body_bounds(page: PageObject) -> tuple[float, float]:
     return max(BODY_BOTTOM, min(positions) - 34), min(CROP_TOP, max(positions) + 22)
 
 
+def _vector_geometry_bounds(component_path: Path, page_index: int) -> tuple[float, float]:
+    """Read actual HTML/SVG and MathJax vector marks, not just PDF text."""
+    with pdfplumber.open(str(component_path)) as document:
+        page = document.pages[page_index]
+        objects = [
+            item
+            for group in page.objects.values()
+            for item in group
+            if "top" in item and "bottom" in item
+        ]
+        if not objects:
+            return BODY_BOTTOM, CROP_TOP
+        content_top = min(float(item["top"]) for item in objects)
+        content_bottom = max(float(item["bottom"]) for item in objects)
+        return (
+            max(BODY_BOTTOM, float(page.height) - content_bottom - 25.0),
+            min(CROP_TOP, float(page.height) - content_top + 20.0),
+        )
+
+
+def _component_page_bounds(
+    component_path: Path, page: PageObject, *, page_index: int | None = None
+) -> tuple[float, float]:
+    """Use true vector geometry so the reflow engine never keeps blank page tails."""
+    if component_path.name in FULL_PAGE_VECTOR_COMPONENTS and page_index is not None:
+        return _vector_geometry_bounds(component_path, page_index)
+    return _body_bounds(page)
+
+
 def _overlay(page_count: int) -> PdfReader:
     style.register_fonts()
     buffer = io.BytesIO()
@@ -114,8 +147,10 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
             "chapter_01_training_component.pdf",
             "chapter_01_supplemental_component.pdf",
         }
-        for page in reader.pages:
-            bottom, top = _body_bounds(page)
+        for page_index, page in enumerate(reader.pages):
+            bottom, top = _component_page_bounds(
+                component_path, page, page_index=page_index
+            )
             source_pages.append((page, bottom, top, keep_each_page))
 
     writer = PdfWriter()
