@@ -43,9 +43,9 @@ h1 {{ color:#1e4f79; font-weight:400; border-bottom:1px solid #bd862f; padding-b
 </style>
 <main>
 <h1>用单位抽样序列表示</h1>
-<p>单位抽样序列 \\(\delta(n)\\) 是脉冲幅度为 1 的离散序列。它只在 \\(n=0\\) 时取 1，在其他整数时刻均取 0：</p>
+<p>单位抽样序列 \\(\\delta(n)\\) 是脉冲幅度为 1 的离散序列。它只在 \\(n=0\\) 时取 1，在其他整数时刻均取 0：</p>
 <section class="formula">\\[
-\delta(n)=
+\\delta(n)=
 \\begin{{cases}}
 1, & n=0,\\\\
 0, & n\\ne 0.
