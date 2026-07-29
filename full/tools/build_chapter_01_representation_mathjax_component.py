@@ -67,6 +67,11 @@ def write_html(output: Path) -> Path:
   <section>
     <h2>用数列与函数表示</h2>
     <p>三组数值相同的数列并不一定代表同一序列：必须用下划线明确 \(n=0\) 对应的项。用函数表示时，\(n\) 只取整数，因此条件 \(n<0\) 与 \(n\leq-1\) 对离散序列是等价的。</p>
+    <div class="formula">\[
+    x_1(n)=\{1,2,3,4,5\},\qquad
+    x_2(n)=\{1,2,3,4,5\},\qquad
+    x_3(n)=\{0,0,1,2,3\}.
+    \]</div>
     <div class="formula">\[x_4(n)=A\sin(\omega n+\varphi),\quad n\in(-\infty,\infty)\]</div>
   </section>
   <section>
