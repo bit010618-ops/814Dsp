@@ -1,0 +1,83 @@
+from pathlib import Path
+
+from full.tools.signal_plot_svg import render_stem_svg
+
+
+def test_stem_svg_uses_real_data_coordinates_and_textbook_axes(tmp_path: Path):
+    output = tmp_path / "impulse.svg"
+
+    result = render_stem_svg(
+        output,
+        samples={0: 1.0, 2: -0.5},
+        x_label=r"n",
+        y_label=r"\delta(n)",
+        title="单位抽样序列",
+        x_limits=(-2, 4),
+        y_limits=(-1, 2),
+    )
+
+    svg = result.read_text(encoding="utf-8")
+    assert result == output
+    assert "<svg" in svg
+    assert 'viewBox="' in svg
+    assert "单位抽样序列" in svg
+    assert "marker-end" in svg
+    assert "stem-line" in svg
+    assert "sample-marker" in svg
+    assert "data-index=\"0\"" in svg
+    assert "data-index=\"2\"" in svg
+    assert "<image" not in svg
+
+
+def test_stem_svg_places_vertical_axis_left_of_a_zero_index_sample(tmp_path: Path):
+    output = tmp_path / "zero-first.svg"
+
+    render_stem_svg(
+        output,
+        samples={0: 1.0},
+        x_label="n",
+        y_label="x[n]",
+        title="离散序列",
+        x_limits=(-1, 3),
+        y_limits=(-0.5, 1.5),
+    )
+
+    svg = output.read_text(encoding="utf-8")
+    assert 'data-index="0"' in svg
+    assert 'data-axis="vertical"' in svg
+    assert 'data-first-sample-clearance="true"' in svg
+
+
+def test_stem_svg_reserves_a_distinct_safe_zone_for_title_and_vertical_label(tmp_path: Path):
+    output = tmp_path / "title-clearance.svg"
+
+    render_stem_svg(
+        output,
+        samples={0: 1.0},
+        x_label="n",
+        y_label="x[n]",
+        title="单位抽样序列",
+        x_limits=(-1, 3),
+        y_limits=(-0.5, 1.5),
+    )
+
+    svg = output.read_text(encoding="utf-8")
+    assert 'data-title-label-clearance="true"' in svg
+
+
+def test_stem_svg_scales_to_a_narrow_container_without_clipping(tmp_path: Path):
+    output = tmp_path / "responsive.svg"
+
+    render_stem_svg(
+        output,
+        samples={0: 1.0, 2: -0.5},
+        x_label="n",
+        y_label="x[n]",
+        title="离散序列",
+        x_limits=(-2, 4),
+        y_limits=(-1, 2),
+    )
+
+    svg = output.read_text(encoding="utf-8")
+    assert 'width="100%"' in svg
+    assert 'max-width:720px' in svg
