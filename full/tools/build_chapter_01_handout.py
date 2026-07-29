@@ -35,7 +35,7 @@ COMPONENT_FILENAMES = (
     "chapter_01_typical_sequences_mathjax_component.pdf",
     "chapter_01_periodicity_mathjax_component.pdf",
     "chapter_01_linearity_mathjax_component.pdf",
-    "chapter_01_time_invariance_component.pdf",
+    "chapter_01_time_invariance_mathjax_component.pdf",
     "chapter_01_convolution_basics_component.pdf",
     "chapter_01_convolution_properties_component.pdf",
     "chapter_01_causal_stable_component.pdf",
@@ -56,6 +56,7 @@ FULL_PAGE_VECTOR_COMPONENTS = frozenset({
     "chapter_01_typical_sequences_mathjax_component.pdf",
     "chapter_01_periodicity_mathjax_component.pdf",
     "chapter_01_linearity_mathjax_component.pdf",
+    "chapter_01_time_invariance_mathjax_component.pdf",
 })
 
 
