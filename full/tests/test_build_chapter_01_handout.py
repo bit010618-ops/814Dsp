@@ -23,6 +23,7 @@ def test_chapter_one_handout_reflows_all_component_inputs_without_source_identit
     assert len(component_paths) == 21
     assert component_paths[0].name == "chapter_01_opening_component.pdf"
     assert component_paths[2].name == "chapter_01_representation_mathjax_component.pdf"
+    assert component_paths[3].name == "chapter_01_operations_mathjax_component.pdf"
     assert component_paths[-5].name == "chapter_01_applications_close_component.pdf"
     assert component_paths[-4].name == "chapter_01_training_component.pdf"
     assert component_paths[-3].name == "chapter_01_supplemental_component.pdf"
