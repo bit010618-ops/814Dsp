@@ -87,8 +87,8 @@ def page_one(page: canvas.Canvas) -> None:
     y = formula_box(page, r"f_s\geq2f_h,\qquad f_N=\frac{f_s}{2}", y, 54)
     y = section(page, "香农的推广", y - 2)
     y = paragraph(page, "克劳德·香农（1916—2001）建立现代信息论，并在带宽、噪声和信息传输速率的研究中发展了相关理论。采样定理通常也称为奈奎斯特—香农采样定理。", y)
-    style.draw_note(page, "记忆主线：奈奎斯特给出采样恢复的频率条件；香农将信号、带宽、噪声与信息传输的理论框架系统化。", y - 3)
-    page_two_preamble(page, y - 20, continuation=True)
+    y = page_two_preamble(page, y - 20, continuation=True)
+    section(page, "两个给出相同样值的连续信号", y - 2)
     page.showPage()
 
 
@@ -126,7 +126,7 @@ def wheel_block(page: canvas.Canvas, y: float) -> float:
 
 def page_two(page: canvas.Canvas) -> None:
     start(page, 2)
-    y = section(page, "两个给出相同样值的连续信号", 746)
+    y = section(page, "两个给出相同样值的连续信号（续）", 746)
     y = formula_box(page, r"\left.\sin(100\pi t)\right|_{t=nT}=\sin(0.1\pi n)", y, 48)
     y = formula_box(page, r"\left.\sin(2100\pi t)\right|_{t=nT}=\sin(2.1\pi n)=\sin(0.1\pi n)", y, 54)
     y = paragraph(page, "前者的频率为 {{50\\,Hz}}，后者的频率为 {{1050\\,Hz}}；在该采样频率下，它们的样值完全相同。这正是频谱复制造成的歧义：连续信号必须先满足带限条件，才能从样值中唯一恢复。", y)
