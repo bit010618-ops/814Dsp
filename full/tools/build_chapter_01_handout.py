@@ -41,8 +41,8 @@ COMPONENT_FILENAMES = (
     "chapter_01_causal_stable_mathjax_component.pdf",
     "chapter_01_difference_equation_mathjax_component.pdf",
     "chapter_01_sampling_theorem_mathjax_component.pdf",
-    "chapter_01_sampling_engineering_component.pdf",
-    "chapter_01_sampling_recovery_component.pdf",
+    "chapter_01_sampling_engineering_mathjax_component.pdf",
+    "chapter_01_sampling_recovery_mathjax_component.pdf",
     "chapter_01_analog_digital_chain_component.pdf",
     "chapter_01_applications_close_component.pdf",
     "chapter_01_training_component.pdf",
@@ -62,6 +62,8 @@ FULL_PAGE_VECTOR_COMPONENTS = frozenset({
     "chapter_01_causal_stable_mathjax_component.pdf",
     "chapter_01_difference_equation_mathjax_component.pdf",
     "chapter_01_sampling_theorem_mathjax_component.pdf",
+    "chapter_01_sampling_engineering_mathjax_component.pdf",
+    "chapter_01_sampling_recovery_mathjax_component.pdf",
 })
 
 
