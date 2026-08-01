@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 
 def test_batch_four_preserves_2013_source_prompts_and_mathjax(tmp_path: Path):
@@ -19,9 +20,11 @@ def test_batch_four_preserves_2013_source_prompts_and_mathjax(tmp_path: Path):
     assert 'd="M617 165V235H515"' in html
     # Each feedback branch must use its own gain block and its own input port
     # on the summing node; neither may merge into x[n] before the node.
-    assert 'd="M435 235H150V142H180"' in html
+    assert 'd="M435 235H390"' in html
+    assert 'd="M390 235H150V142H180"' in html
     assert 'd="M742 165V310H515"' in html
-    assert 'd="M435 310H205V152"' in html
+    assert 'd="M435 310H390"' in html
+    assert 'd="M390 310H205V152"' in html
 
 
 def test_batch_four_feedback_branches_use_separate_gain_blocks_and_summer_ports(tmp_path: Path):
@@ -30,10 +33,16 @@ def test_batch_four_feedback_branches_use_separate_gain_blocks_and_summer_ports(
     html = batch.write_html(tmp_path / "batch-four.html").read_text(encoding="utf-8")
     assert 'data-role="feedback-first-gain"' in html
     assert 'data-role="feedback-second-gain"' in html
+    assert 'data-role="feedback-first-output" fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)"' in html
+    assert 'data-role="feedback-second-output" fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)"' in html
     assert 'data-role="feedback-first-return"' in html
     assert 'data-role="feedback-second-return"' in html
     assert 'data-port="lower-left"' in html
     assert 'data-port="bottom"' in html
+    first_return = re.search(r'<path(?=[^>]*data-role="feedback-first-return")[^>]*>', html).group(0)
+    second_return = re.search(r'<path(?=[^>]*data-role="feedback-second-return")[^>]*>', html).group(0)
+    assert 'marker-end' not in first_return
+    assert 'marker-end' not in second_return
 
 
 def test_batch_four_browser_dom_has_no_raw_math_delimiters(tmp_path: Path):
