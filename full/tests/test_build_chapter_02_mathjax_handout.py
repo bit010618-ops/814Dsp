@@ -14,6 +14,8 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "2015 年真题" in html
     assert "2021 年真题" in html
     assert "2025 年真题" in html
+    assert "2002 年真题" in html
+    assert "2006 年真题" in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert '.exam-page{break-before:page;min-height:230mm}' in html
