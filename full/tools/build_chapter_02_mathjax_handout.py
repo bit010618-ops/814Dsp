@@ -25,6 +25,7 @@ from full.tools import (
     build_chapter_02_inverse_properties_mathjax_component as inverse_properties,
     build_chapter_02_special_filters_mathjax_component as special_filters,
     build_chapter_02_supplemental_training_mathjax_component as supplemental_training,
+    build_chapter_02_supplemental_training_batch_two_mathjax_component as supplemental_training_batch_two,
     build_chapter_02_system_frequency_mathjax_component as system_frequency,
     build_chapter_02_training_mathjax_component as training,
 )
@@ -38,6 +39,7 @@ COMPONENTS = (
     special_filters,
     training,
     supplemental_training,
+    supplemental_training_batch_two,
 )
 
 STYLE = r"""<style>
@@ -70,6 +72,35 @@ def write_html(output: Path) -> Path:
     return output
 
 
+def rendered_dom(html: Path) -> str:
+    """Return the assembled document only after MathJax has typeset every formula."""
+    completed = subprocess.run(
+        [
+            str(EDGE), "--headless=new", "--disable-gpu",
+            "--virtual-time-budget=10000", "--dump-dom", html.resolve().as_uri(),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    return completed.stdout
+
+
+def assert_mathjax_ready(dom: str) -> None:
+    """Prevent PDF export from silently leaking raw TeX source notation."""
+    if "<mjx-container" not in dom:
+        raise RuntimeError("MathJax did not produce any rendered formula containers")
+    raw_delimiters = (r"\(", r"\)", r"\[", r"\]")
+    remaining = [delimiter for delimiter in raw_delimiters if delimiter in dom]
+    if remaining:
+        raise RuntimeError(
+            "MathJax left unprocessed formula delimiters in the document: "
+            + ", ".join(remaining)
+        )
+
+
 def stamp_headers_and_folios(source: Path, output: Path) -> Path:
     """Place verified static page furniture in reserved PDF margins."""
     page_style.register_fonts()
@@ -92,6 +123,7 @@ def stamp_headers_and_folios(source: Path, output: Path) -> Path:
 
 def render_pdf(output: Path) -> Path:
     html = write_html(output.with_suffix(".html"))
+    assert_mathjax_ready(rendered_dom(html))
     with tempfile.TemporaryDirectory(prefix="dsp-chapter-02-pdf-") as directory:
         raw_pdf = Path(directory) / "raw.pdf"
         subprocess.run([str(EDGE), "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=10000", f"--print-to-pdf={raw_pdf.resolve()}", html.resolve().as_uri()], check=True)
