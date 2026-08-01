@@ -37,10 +37,10 @@ def test_chapter_one_handout_reflows_all_component_inputs_without_source_identit
     assert component_paths[14].name == "chapter_01_sampling_recovery_mathjax_component.pdf"
     assert component_paths[15].name == "chapter_01_analog_digital_chain_mathjax_component.pdf"
     assert component_paths[16].name == "chapter_01_applications_close_mathjax_component.pdf"
-    assert component_paths[-4].name == "chapter_01_training_component.pdf"
-    assert component_paths[-3].name == "chapter_01_supplemental_component.pdf"
-    assert component_paths[-2].name == "chapter_01_answers_component.pdf"
-    assert component_paths[-1].name == "chapter_01_supplemental_answers_component.pdf"
+    assert component_paths[17].name == "chapter_01_training_mathjax_component.pdf"
+    assert component_paths[-3].name == "chapter_01_supplemental_mathjax_component.pdf"
+    assert component_paths[-2].name == "chapter_01_training_answers_mathjax_component.pdf"
+    assert component_paths[-1].name == "chapter_01_supplemental_answers_mathjax_component.pdf"
 
     output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_handout.pdf")
     reader = PdfReader(str(output))

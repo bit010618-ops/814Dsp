@@ -45,10 +45,10 @@ COMPONENT_FILENAMES = (
     "chapter_01_sampling_recovery_mathjax_component.pdf",
     "chapter_01_analog_digital_chain_mathjax_component.pdf",
     "chapter_01_applications_close_mathjax_component.pdf",
-    "chapter_01_training_component.pdf",
-    "chapter_01_supplemental_component.pdf",
-    "chapter_01_answers_component.pdf",
-    "chapter_01_supplemental_answers_component.pdf",
+    "chapter_01_training_mathjax_component.pdf",
+    "chapter_01_supplemental_mathjax_component.pdf",
+    "chapter_01_training_answers_mathjax_component.pdf",
+    "chapter_01_supplemental_answers_mathjax_component.pdf",
 )
 FULL_PAGE_VECTOR_COMPONENTS = frozenset({
     "chapter_01_representation_mathjax_component.pdf",
@@ -66,6 +66,10 @@ FULL_PAGE_VECTOR_COMPONENTS = frozenset({
     "chapter_01_sampling_recovery_mathjax_component.pdf",
     "chapter_01_analog_digital_chain_mathjax_component.pdf",
     "chapter_01_applications_close_mathjax_component.pdf",
+    "chapter_01_training_mathjax_component.pdf",
+    "chapter_01_supplemental_mathjax_component.pdf",
+    "chapter_01_training_answers_mathjax_component.pdf",
+    "chapter_01_supplemental_answers_mathjax_component.pdf",
 })
 
 
@@ -158,8 +162,8 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
         # page.  Preserve that boundary for both priority and supplementary
         # sets when the otherwise-flowing body is assembled into the handout.
         keep_each_page = component_path.name in {
-            "chapter_01_training_component.pdf",
-            "chapter_01_supplemental_component.pdf",
+            "chapter_01_training_mathjax_component.pdf",
+            "chapter_01_supplemental_mathjax_component.pdf",
         }
         for page_index, page in enumerate(reader.pages):
             bottom, top = _component_page_bounds(
