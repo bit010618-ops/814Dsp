@@ -29,6 +29,7 @@ from full.tools import (
     build_chapter_02_supplemental_training_batch_two_mathjax_component as supplemental_training_batch_two,
     build_chapter_02_supplemental_training_batch_three_mathjax_component as supplemental_training_batch_three,
     build_chapter_02_supplemental_training_batch_four_mathjax_component as supplemental_training_batch_four,
+    build_chapter_02_supplemental_training_batch_five_mathjax_component as supplemental_training_batch_five,
     build_chapter_02_system_frequency_mathjax_component as system_frequency,
     build_chapter_02_training_mathjax_component as training,
 )
@@ -45,6 +46,7 @@ COMPONENTS = (
     supplemental_training_batch_two,
     supplemental_training_batch_three,
     supplemental_training_batch_four,
+    supplemental_training_batch_five,
 )
 
 STYLE = r"""<style>
