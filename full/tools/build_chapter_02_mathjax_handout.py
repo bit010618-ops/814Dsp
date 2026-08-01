@@ -26,6 +26,7 @@ from full.tools import (
     build_chapter_02_special_filters_mathjax_component as special_filters,
     build_chapter_02_supplemental_training_mathjax_component as supplemental_training,
     build_chapter_02_supplemental_training_batch_two_mathjax_component as supplemental_training_batch_two,
+    build_chapter_02_supplemental_training_batch_three_mathjax_component as supplemental_training_batch_three,
     build_chapter_02_system_frequency_mathjax_component as system_frequency,
     build_chapter_02_training_mathjax_component as training,
 )
@@ -40,6 +41,7 @@ COMPONENTS = (
     training,
     supplemental_training,
     supplemental_training_batch_two,
+    supplemental_training_batch_three,
 )
 
 STYLE = r"""<style>
@@ -67,7 +69,7 @@ def _combined_content() -> str:
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     body = _combined_content()
-    document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}<main>{body}</main></html>'''
+    document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}<body><main>{body}</main></body></html>'''
     output.write_text(document, encoding="utf-8")
     return output
 
