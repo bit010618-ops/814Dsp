@@ -27,6 +27,22 @@ def write_html(output: Path) -> Path:
     return output
 
 
+def rendered_dom(html: Path) -> str:
+    """Return the DOM only after the same browser has finished MathJax typesetting."""
+    completed = subprocess.run(
+        [
+            str(EDGE), "--headless=new", "--disable-gpu",
+            "--virtual-time-budget=10000", "--dump-dom", html.resolve().as_uri(),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    return completed.stdout
+
+
 def render_pdf(output: Path) -> Path:
     html = write_html(output.with_suffix(".html"))
     subprocess.run([str(EDGE), "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=10000", f"--print-to-pdf={output.resolve()}", html.resolve().as_uri()], check=True)

@@ -21,3 +21,18 @@ def test_selected_training_answers_use_one_mathjax_document(tmp_path: Path):
         assert formula in html
     assert "drawImage" not in html
     assert "<image" not in html
+
+
+def test_2019_answer_has_no_unprocessed_tex_after_browser_typesetting(tmp_path: Path):
+    """A formula is not accepted until MathJax has replaced its source tokens."""
+    from full.tools.build_chapter_01_training_answers_mathjax_component import (
+        rendered_dom,
+        write_html,
+    )
+
+    dom = rendered_dom(write_html(tmp_path / "answers.html"))
+    assert '<mjx-container' in dom
+    section = dom[dom.index('2019 年真题：图形卷积'):]
+    assert r"\(f_1(n)=1\)" not in section
+    assert r"\(-2\leq n\leq2\)" not in section
+    assert r"\((f_1*f_2)(n)\)" not in section
