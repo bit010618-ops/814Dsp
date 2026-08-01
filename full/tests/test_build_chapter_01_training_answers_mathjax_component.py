@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 
 def test_selected_training_answers_use_one_mathjax_document(tmp_path: Path):
     from full.tools.build_chapter_01_training_answers_mathjax_component import write_html
@@ -36,3 +38,26 @@ def test_2019_answer_has_no_unprocessed_tex_after_browser_typesetting(tmp_path: 
     assert r"\(f_1(n)=1\)" not in section
     assert r"\(-2\leq n\leq2\)" not in section
     assert r"\((f_1*f_2)(n)\)" not in section
+
+
+def test_answer_document_rejects_any_raw_mathjax_delimiter_after_typesetting(
+    tmp_path: Path,
+):
+    """One sampled formula is insufficient: every answer fragment must render."""
+    from full.tools.build_chapter_01_training_answers_mathjax_component import (
+        assert_mathjax_ready,
+        rendered_dom,
+        write_html,
+    )
+
+    dom = rendered_dom(write_html(tmp_path / "answers.html"))
+    assert_mathjax_ready(dom)
+
+
+def test_answer_document_rejects_literal_formula_that_browser_left_unprocessed():
+    from full.tools.build_chapter_01_training_answers_mathjax_component import (
+        assert_mathjax_ready,
+    )
+
+    with pytest.raises(RuntimeError, match="unprocessed formula delimiters"):
+        assert_mathjax_ready("<mjx-container></mjx-container><p>\\(f_1(n)\\)</p>")

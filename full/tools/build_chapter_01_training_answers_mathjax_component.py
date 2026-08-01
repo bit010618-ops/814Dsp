@@ -43,8 +43,22 @@ def rendered_dom(html: Path) -> str:
     return completed.stdout
 
 
+def assert_mathjax_ready(dom: str) -> None:
+    """Reject a reader-facing export when even one formula remains literal TeX."""
+    if "<mjx-container" not in dom:
+        raise RuntimeError("MathJax did not produce any rendered formula containers")
+    raw_delimiters = (r"\(", r"\)", r"\[", r"\]")
+    remaining = [delimiter for delimiter in raw_delimiters if delimiter in dom]
+    if remaining:
+        raise RuntimeError(
+            "MathJax left unprocessed formula delimiters in the document: "
+            + ", ".join(remaining)
+        )
+
+
 def render_pdf(output: Path) -> Path:
     html = write_html(output.with_suffix(".html"))
+    assert_mathjax_ready(rendered_dom(html))
     subprocess.run([str(EDGE), "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=10000", f"--print-to-pdf={output.resolve()}", html.resolve().as_uri()], check=True)
     return output
 
