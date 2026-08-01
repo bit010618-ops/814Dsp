@@ -1,0 +1,30 @@
+from pathlib import Path
+
+
+def test_batch_four_preserves_2013_source_prompts_and_mathjax(tmp_path: Path):
+    from full.tools import build_chapter_02_supplemental_training_batch_four_mathjax_component as batch
+
+    html = batch.write_html(tmp_path / "batch-four.html").read_text(encoding="utf-8")
+    assert "五、某离散系统如图所示：" in html
+    assert r"（1）求出系统函数 \(H(z)\)，并求出收敛域；" in html
+    assert "（3）写出一个满足稳定、非因果的单位脉冲响应函数。" in html
+    assert r"八、离散因果 LTI 系统的系统函数 \(H(z)\) 的零极点图如图所示，其中 \(h[0]=2\)" in html
+    assert "（4）求出系统的差分方程。" in html
+    assert r"\frac{1}{1-\frac{5}{2}z^{-1}+z^{-2}}" in html
+    assert r"H(z)=\frac{2}{1-2z^{-1}}" in html
+    assert 'aria-label="2013 年第五题的离散系统结构图"' in html
+    assert 'aria-label="2013 年第八题的零极点图"' in html
+    assert 'stroke="#174b73"' in html
+    assert 'fill="#0f8b8d"' in html
+    assert 'd="M620 175V240H190V153"' in html
+    # The second feedback enters the lower-left port of the summing node;
+    # it must not merge into the x[n] input wire before the node.
+    assert 'd="M746 175V312H125V148H175"' in html
+
+
+def test_batch_four_browser_dom_has_no_raw_math_delimiters(tmp_path: Path):
+    from full.tools import build_chapter_02_supplemental_training_batch_four_mathjax_component as batch
+    from full.tools.build_chapter_02_mathjax_handout import assert_mathjax_ready
+
+    dom = batch.rendered_dom(batch.write_html(tmp_path / "batch-four.html"))
+    assert_mathjax_ready(dom)

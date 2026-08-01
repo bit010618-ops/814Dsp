@@ -8,7 +8,8 @@ import tempfile
 from io import BytesIO
 from pathlib import Path
 
-from pypdf import PdfReader, PdfWriter
+from pypdf import PageObject, PdfReader, PdfWriter
+from pypdf.generic import ArrayObject, BooleanObject, DecodedStreamObject, DictionaryObject, FloatObject, NameObject, NumberObject
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 
@@ -27,6 +28,7 @@ from full.tools import (
     build_chapter_02_supplemental_training_mathjax_component as supplemental_training,
     build_chapter_02_supplemental_training_batch_two_mathjax_component as supplemental_training_batch_two,
     build_chapter_02_supplemental_training_batch_three_mathjax_component as supplemental_training_batch_three,
+    build_chapter_02_supplemental_training_batch_four_mathjax_component as supplemental_training_batch_four,
     build_chapter_02_system_frequency_mathjax_component as system_frequency,
     build_chapter_02_training_mathjax_component as training,
 )
@@ -42,6 +44,7 @@ COMPONENTS = (
     supplemental_training,
     supplemental_training_batch_two,
     supplemental_training_batch_three,
+    supplemental_training_batch_four,
 )
 
 STYLE = r"""<style>
@@ -103,6 +106,42 @@ def assert_mathjax_ready(dom: str) -> None:
         )
 
 
+def _page_as_form_xobject(writer: PdfWriter, page: PageObject, *, isolated: bool = False):
+    """Embed a PDF page as a self-contained Form XObject.
+
+    Chromium occasionally leaves a malformed graphics-state stack in a page
+    stream.  Invoking that page as a Form confines the defect to the form, so
+    it cannot clip or otherwise mask the independent header/footer layer.
+    """
+    form = DecodedStreamObject()
+    contents = page.get_contents()
+    form.set_data(contents.get_data() if contents is not None else b"")
+    form[NameObject("/Type")] = NameObject("/XObject")
+    form[NameObject("/Subtype")] = NameObject("/Form")
+    form[NameObject("/FormType")] = NumberObject(1)
+    form[NameObject("/BBox")] = ArrayObject(
+        [
+            FloatObject(float(page.mediabox.left)),
+            FloatObject(float(page.mediabox.bottom)),
+            FloatObject(float(page.mediabox.right)),
+            FloatObject(float(page.mediabox.top)),
+        ]
+    )
+    resources = page.get("/Resources")
+    form[NameObject("/Resources")] = (
+        resources.clone(writer) if resources is not None else DictionaryObject()
+    )
+    if isolated:
+        form[NameObject("/Group")] = DictionaryObject(
+            {
+                NameObject("/S"): NameObject("/Transparency"),
+                NameObject("/I"): BooleanObject(True),
+                NameObject("/K"): BooleanObject(False),
+            }
+        )
+    return writer._add_object(form)
+
+
 def stamp_headers_and_folios(source: Path, output: Path) -> Path:
     """Place verified static page furniture in reserved PDF margins."""
     page_style.register_fonts()
@@ -116,8 +155,23 @@ def stamp_headers_and_folios(source: Path, output: Path) -> Path:
         page_style.draw_footer(layer, number)
         layer.save()
         overlay.seek(0)
-        page.merge_page(PdfReader(overlay).pages[0])
-        writer.add_page(page)
+        header_page = PdfReader(overlay).pages[0]
+        source_form = _page_as_form_xobject(writer, page, isolated=True)
+        header_form = _page_as_form_xobject(writer, header_page)
+        finished_page = writer.add_blank_page(width=A4[0], height=A4[1])
+        finished_page[NameObject("/Resources")] = DictionaryObject(
+            {
+                NameObject("/XObject"): DictionaryObject(
+                    {
+                        NameObject("/Source"): source_form,
+                        NameObject("/Header"): header_form,
+                    }
+                )
+            }
+        )
+        stream = DecodedStreamObject()
+        stream.set_data(b"q\n/Source Do\nQ\nq\n/Header Do\nQ\n")
+        finished_page.replace_contents(stream)
     with output.open("wb") as stream:
         writer.write(stream)
     return output

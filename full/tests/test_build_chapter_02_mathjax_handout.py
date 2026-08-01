@@ -21,10 +21,19 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "以除去 5kHz&lt;F&lt;10kHz 的频率成分" in html
     assert "2013 年真题：理想滤波器幅频响应" in html
     assert r"h(n)=\delta(n)-0.98\delta(n-6)" in html
+    assert "五、某离散系统如图所示：" in html
+    assert "八、离散因果 LTI 系统的系统函数" in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
     assert "page_style.draw_header(layer, chapter)" in Path(handout.__file__).read_text(encoding="utf-8")
+    builder_source = Path(handout.__file__).read_text(encoding="utf-8")
+    assert "writer.add_blank_page" in builder_source
+    # Browser page content and PDF furniture must be isolated in separate
+    # Form XObjects; a broken browser graphics stack must never hide a header.
+    assert "_page_as_form_xobject" in builder_source
+    assert 'b"q\\n/Source Do\\nQ\\nq\\n/Header Do\\nQ\\n"' in builder_source
+    assert 'NameObject("/Group")' in builder_source
     assert '.exam-page{break-before:page;min-height:230mm}' in html
     assert html.count('<main>') == 1
 
