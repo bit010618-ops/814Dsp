@@ -43,8 +43,8 @@ COMPONENT_FILENAMES = (
     "chapter_01_sampling_theorem_mathjax_component.pdf",
     "chapter_01_sampling_engineering_mathjax_component.pdf",
     "chapter_01_sampling_recovery_mathjax_component.pdf",
-    "chapter_01_analog_digital_chain_component.pdf",
-    "chapter_01_applications_close_component.pdf",
+    "chapter_01_analog_digital_chain_mathjax_component.pdf",
+    "chapter_01_applications_close_mathjax_component.pdf",
     "chapter_01_training_component.pdf",
     "chapter_01_supplemental_component.pdf",
     "chapter_01_answers_component.pdf",
@@ -64,6 +64,8 @@ FULL_PAGE_VECTOR_COMPONENTS = frozenset({
     "chapter_01_sampling_theorem_mathjax_component.pdf",
     "chapter_01_sampling_engineering_mathjax_component.pdf",
     "chapter_01_sampling_recovery_mathjax_component.pdf",
+    "chapter_01_analog_digital_chain_mathjax_component.pdf",
+    "chapter_01_applications_close_mathjax_component.pdf",
 })
 
 
