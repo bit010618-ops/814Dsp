@@ -16,10 +16,24 @@ def test_batch_four_preserves_2013_source_prompts_and_mathjax(tmp_path: Path):
     assert 'aria-label="2013 年第八题的零极点图"' in html
     assert 'stroke="#174b73"' in html
     assert 'fill="#0f8b8d"' in html
-    assert 'd="M620 175V240H190V153"' in html
-    # The second feedback enters the lower-left port of the summing node;
-    # it must not merge into the x[n] input wire before the node.
-    assert 'd="M746 175V312H125V148H175"' in html
+    assert 'd="M617 165V235H515"' in html
+    # Each feedback branch must use its own gain block and its own input port
+    # on the summing node; neither may merge into x[n] before the node.
+    assert 'd="M435 235H150V142H180"' in html
+    assert 'd="M742 165V310H515"' in html
+    assert 'd="M435 310H205V152"' in html
+
+
+def test_batch_four_feedback_branches_use_separate_gain_blocks_and_summer_ports(tmp_path: Path):
+    from full.tools import build_chapter_02_supplemental_training_batch_four_mathjax_component as batch
+
+    html = batch.write_html(tmp_path / "batch-four.html").read_text(encoding="utf-8")
+    assert 'data-role="feedback-first-gain"' in html
+    assert 'data-role="feedback-second-gain"' in html
+    assert 'data-role="feedback-first-return"' in html
+    assert 'data-role="feedback-second-return"' in html
+    assert 'data-port="lower-left"' in html
+    assert 'data-port="bottom"' in html
 
 
 def test_batch_four_browser_dom_has_no_raw_math_delimiters(tmp_path: Path):
