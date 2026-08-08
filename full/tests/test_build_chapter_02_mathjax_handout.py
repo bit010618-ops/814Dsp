@@ -28,6 +28,11 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "2014 年真题" in html
     assert "五、某离散 LTI 系统如图所示：" in html
     assert r"H(e^{j\omega})&=\frac{1}{1-\frac{1}{2}e^{-j\omega}}" in html
+    assert "2024 年真题" in html
+    assert "2.已知某线性移不变系统的系统函数是" in html
+    assert r"H(z)=0.18\frac{1-z^{-2}}{1+0.64z^{-2}}" in html
+    assert 'aria-label="2024 年第二章真题的零极点图"' in html
+    assert 'aria-label="2024 年第二章真题的幅频响应"' in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
