@@ -41,6 +41,11 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "四、设 LTI 系统的频率响应为" in html
     assert r"H\!\left(e^{j\frac{\pi}{2}}\right)&=" in html
     assert r"\\&=4\cos\left(\frac{\pi n}{2}\right)" in html
+    assert "2022 年真题" in html
+    assert "八、一离散时间 LTI 系统流图如下图所示：" in html
+    assert r"H(z)=1-z^{-N}=\frac{z^N-1}{z^N}" in html
+    assert r"\left|H(e^{j\omega})\right|=2\left|\sin(4\omega)\right|" in html
+    assert 'aria-label="2022 年第八题的零极点图"' in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
