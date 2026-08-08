@@ -2,15 +2,17 @@ from pathlib import Path
 import re
 
 
-def test_batch_four_preserves_2015_fourth_source_prompt_and_mathjax(tmp_path: Path):
+def test_batch_four_preserves_the_shared_2013_2015_feedback_prompt_and_mathjax(tmp_path: Path):
     from full.tools import build_chapter_02_supplemental_training_batch_four_mathjax_component as batch
 
     html = batch.write_html(tmp_path / "batch-four.html").read_text(encoding="utf-8")
-    assert "四、某离散系统如图所示：" in html
+    assert "2013 年第五题／2015 年第四题：某离散系统如图所示：" in html
+    assert "2013、2015 年真题" in html
     assert r"（1）求出系统函数 \(H(z)\)，并求出收敛域；" in html
     assert "（3）写出一个满足稳定、非因果的单位脉冲响应函数。" in html
     assert r"\frac{1}{1-\frac{5}{2}z^{-1}+z^{-2}}" in html
-    assert 'aria-label="2015 年第四题的离散系统结构图"' in html
+    assert 'aria-label="2013 年第五题与 2015 年第四题的离散系统结构图"' in html
+    assert "2013、2015 年真题：两延时反馈系统" in html
     assert "离散因果 LTI 系统的系统函数" not in html
     assert '零极点图"' not in html
     assert 'stroke="#174b73"' in html

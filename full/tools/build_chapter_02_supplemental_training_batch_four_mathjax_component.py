@@ -26,7 +26,7 @@ def feedback_system_svg() -> str:
 
 def feedback_system_svg_v2() -> str:
     """Textbook feedback diagram with two separate gain blocks and summer ports."""
-    return r'''<svg class="diagram" viewBox="0 0 780 370" role="img" aria-label="2015 年第四题的离散系统结构图">
+    return r'''<svg class="diagram" viewBox="0 0 780 370" role="img" aria-label="2013 年第五题与 2015 年第四题的离散系统结构图">
 <defs>
   <marker id="arrow-b4-v2-main" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker>
   <marker id="arrow-b4-v2-feedback" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#0f8b8d"/></marker>
@@ -65,15 +65,15 @@ def feedback_system_svg_v2() -> str:
 def training_html() -> str:
     return (
         r'''<section class="exam-page"><h1>第二章 补充真题（续）</h1>
-<div class="exam-head"><span>2015 年真题</span><span>详解见 P.____</span></div>
-<p>四、某离散系统如图所示：</p>'''
+<div class="exam-head"><span>2013、2015 年真题</span><span>详解见 P.____</span></div>
+<p>2013 年第五题／2015 年第四题：某离散系统如图所示：</p>'''
         + feedback_system_svg_v2()
         + r'''<p class="indent">（1）求出系统函数 \(H(z)\)，并求出收敛域；</p><p class="indent">（2）求出系统的单位脉冲响应；</p><p class="indent">（3）写出一个满足稳定、非因果的单位脉冲响应函数。</p></section>'''
     )
 
 
 def answers_html() -> str:
-    return r'''<section><h1>真题整理详解（续）</h1><h2>2015 年真题：两延时反馈系统</h2>
+    return r'''<section><h1>真题整理详解（续）</h1><h2>2013、2015 年真题：两延时反馈系统</h2>
 <p>由两个反馈支路直接列出差分方程：</p>
 <div class="formula">\[y[n]=x[n]+\frac{5}{2}y[n-1]-y[n-2].\]</div>
 <p>作 \(z\) 变换可得</p>
