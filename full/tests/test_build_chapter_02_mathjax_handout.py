@@ -50,6 +50,10 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert r"H(z)=\frac{1-a^Nz^{-N}}{1-az^{-1}}" in html
     assert r"h[n]&=a^nu[n]-a^N a^{n-N}u[n-N]" in html
     assert r"\sum_{k=0}^{N-1}a^kz^{-k}" in html
+    assert "四、一连续脉冲时间函数表达式为" in html
+    assert r"x[n]=u[n]-u[n-7]" in html
+    assert r"\left|X(e^{j\omega})\right|=\left|\frac{\sin\left(\frac{7\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}\right|" in html
+    assert 'aria-label="2025 年第四题的 DTFT 幅度谱"' in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
