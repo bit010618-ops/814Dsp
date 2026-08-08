@@ -14,17 +14,43 @@ STYLE = r"""<style>
 
 
 def z_plane_svg() -> str:
-    """Programmatic s-plane/z-plane mapping diagram with full coordinate axes."""
-    return r"""<!-- z_plane_svg: coordinate geometry for the z-plane mapping -->
-<svg class="diagram" viewBox="0 0 900 360" role="img" aria-label="s 平面与 z 平面的映射">
- <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#174b73"/></marker></defs>
- <path class="axis" d="M60 180H390" marker-end="url(#arrow)"/><path class="axis" d="M225 325V35" marker-end="url(#arrow)"/>
- <path class="guide" d="M120 65V295"/><text class="label" x="395" y="165">\(\sigma\)</text><text class="label" x="233" y="45">\(j\Omega\)</text>
- <text class="label" x="172" y="330">s 平面：\(\sigma=0\)</text>
- <path class="axis" d="M520 180H844" marker-end="url(#arrow)"/><path class="axis" d="M682 325V35" marker-end="url(#arrow)"/>
- <circle class="circle" cx="682" cy="180" r="106"/><text class="label" x="849" y="165">\(\operatorname{Re}\{z\}\)</text><text class="label" x="690" y="45">\(\operatorname{Im}\{z\}\)</text>
- <text class="label" x="580" y="330">z 平面：\(\left|z\right|=1\)</text>
- <g class="math"><foreignObject x="62" y="44" width="118" height="28"><div>\(\Omega+\frac{2\pi}{T}\)</div></foreignObject><foreignObject x="717" y="74" width="110" height="28"><div>\(e^{j\omega}\)</div></foreignObject></g>
+    """Textbook mapping from the s-plane imaginary axis to the unit circle.
+
+    Every visual attribute is inline.  The chapter assembler keeps component
+    bodies but not their local stylesheets, so CSS-class-dependent SVGs would
+    silently fall back to SVG's black-fill defaults in the final handout.
+    """
+    return r"""<!-- z_plane_svg: explicit coordinate geometry for the s-to-z mapping -->
+<svg class="diagram" viewBox="0 0 920 390" role="img" aria-label="s 平面虚轴映射到 z 平面单位圆，频率相差二π除以T的点重合">
+ <defs>
+  <marker id="s-z-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#174b73"/></marker>
+ </defs>
+ <rect x="18" y="18" width="390" height="344" rx="7" fill="#fbfcfd" stroke="#d8e0e5"/>
+ <rect x="512" y="18" width="390" height="344" rx="7" fill="#fbfcfd" stroke="#d8e0e5"/>
+ <text x="72" y="52" fill="#315d7c" font-size="18" font-family="Microsoft YaHei, sans-serif">s 平面</text>
+ <path d="M72 205H356" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#s-z-arrow)"/>
+ <path d="M214 326V72" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#s-z-arrow)"/>
+ <path d="M214 88V312" fill="none" stroke="#b56b2e" stroke-width="2" stroke-dasharray="7 5"/>
+ <circle cx="214" cy="142" r="5" fill="#b56b2e"/><circle cx="214" cy="234" r="5" fill="#b56b2e"/>
+ <path d="M214 142H128M214 234H128" fill="none" stroke="#b56b2e" stroke-width="1.2" stroke-dasharray="4 3"/>
+ <foreignObject x="359" y="184" width="46" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif;text-align:center">\(\sigma\)</div></foreignObject>
+ <foreignObject x="224" y="54" width="52" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif">\(j\Omega\)</div></foreignObject>
+ <foreignObject x="53" y="124" width="164" height="33"><div xmlns="http://www.w3.org/1999/xhtml" style="font:16px serif;text-align:right">\(\Omega+\frac{2\pi}{T}\)</div></foreignObject>
+ <foreignObject x="118" y="218" width="88" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="font:16px serif;text-align:right">\(\Omega\)</div></foreignObject>
+ <foreignObject x="143" y="330" width="143" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(\sigma=0\)</div></foreignObject>
+ <path d="M430 174C462 174 474 174 500 174" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#s-z-arrow)"/>
+ <foreignObject x="412" y="130" width="112" height="35"><div xmlns="http://www.w3.org/1999/xhtml" style="font:18px serif;text-align:center">\(z=e^{sT}\)</div></foreignObject>
+ <text x="560" y="52" fill="#315d7c" font-size="18" font-family="Microsoft YaHei, sans-serif">z 平面</text>
+ <path d="M552 205H856" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#s-z-arrow)"/>
+ <path d="M704 326V72" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#s-z-arrow)"/>
+ <circle cx="704" cy="205" r="110" fill="none" stroke="#0f8b8d" stroke-width="2.4"/>
+ <path d="M704 205L780 125" fill="none" stroke="#b56b2e" stroke-width="1.6" stroke-dasharray="6 4"/>
+ <circle cx="780" cy="125" r="5.5" fill="#b56b2e"/>
+ <foreignObject x="862" y="184" width="44" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif">\(\operatorname{Re}\{z\}\)</div></foreignObject>
+ <foreignObject x="714" y="54" width="64" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif">\(\operatorname{Im}\{z\}\)</div></foreignObject>
+ <foreignObject x="786" y="99" width="88" height="33"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif">\(e^{j\omega}\)</div></foreignObject>
+ <foreignObject x="601" y="330" width="207" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(\left|z\right|=1\)</div></foreignObject>
+ <foreignObject x="531" y="365" width="350" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font:14px 'Microsoft YaHei', sans-serif;color:#52616b">两点相差 \(2\pi/T\)，映射到同一单位圆点</div></foreignObject>
 </svg>"""
 
 
