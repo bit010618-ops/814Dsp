@@ -3,6 +3,7 @@ from __future__ import annotations
 import io
 import re
 import sys
+from collections import deque
 from pathlib import Path
 
 import pdfplumber
@@ -137,6 +138,60 @@ def _component_page_bounds(
     return _body_bounds(page)
 
 
+def _safe_split_boundary(
+    component_path: Path,
+    page_index: int,
+    *,
+    bottom: float,
+    top: float,
+    max_height: float,
+) -> float | None:
+    """Return a whitespace cut line that fits the next normal-content fragment.
+
+    Component PDFs are often taller than the remaining space on a handout page,
+    even when their opening heading, prose and formula comfortably fit.  Use the
+    real vector-object gaps as admissible cut lines so a chart or formula is
+    never sheared just to eliminate a page tail.
+    """
+    minimum = top - max_height
+    if minimum <= bottom or max_height < 96:
+        return None
+
+    with pdfplumber.open(str(component_path)) as document:
+        page = document.pages[page_index]
+        intervals: list[tuple[float, float]] = []
+        for objects in page.objects.values():
+            for item in objects:
+                if "top" not in item or "bottom" not in item:
+                    continue
+                lower = max(bottom, float(page.height) - float(item["bottom"]))
+                upper = min(top, float(page.height) - float(item["top"]))
+                if upper > lower:
+                    intervals.append((lower, upper))
+
+    if not intervals:
+        return None
+    intervals.sort()
+    merged: list[list[float]] = []
+    for lower, upper in intervals:
+        if not merged or lower > merged[-1][1] + 1.5:
+            merged.append([lower, upper])
+        else:
+            merged[-1][1] = max(merged[-1][1], upper)
+
+    # Select the lowest available gap: it fills the current page as much as
+    # possible while retaining a generous buffer around adjacent content.
+    candidates: list[float] = []
+    for previous, following in zip(merged, merged[1:]):
+        gap_bottom, gap_top = previous[1], following[0]
+        if gap_top - gap_bottom < 16:
+            continue
+        cut = (gap_bottom + gap_top) / 2
+        if minimum + 6 <= cut <= top - 48:
+            candidates.append(cut)
+    return min(candidates) if candidates else None
+
+
 def _overlay(page_count: int) -> PdfReader:
     style.register_fonts()
     buffer = io.BytesIO()
@@ -155,7 +210,7 @@ def _new_page(writer: PdfWriter) -> PageObject:
 
 
 def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
-    source_pages: list[tuple[PageObject, float, float]] = []
+    source_pages: deque[tuple[Path, int, float, float, bool]] = deque()
     for component_path in load_component_paths(root):
         reader = PdfReader(str(component_path))
         # Chapter training is intentionally one exam question per printable
@@ -169,16 +224,34 @@ def build_pdf(root: Path = ROOT, output_path: Path | None = None) -> Path:
             bottom, top = _component_page_bounds(
                 component_path, page, page_index=page_index
             )
-            source_pages.append((page, bottom, top, keep_each_page))
+            source_pages.append((component_path, page_index, bottom, top, keep_each_page))
 
     writer = PdfWriter()
     target = _new_page(writer)
     cursor = BODY_TOP
-    for source, bottom, top, keep_each_page in source_pages:
+    while source_pages:
+        component_path, page_index, bottom, top, keep_each_page = source_pages.popleft()
         height = top - bottom
+        available = cursor - BODY_BOTTOM
+        if not keep_each_page and height > available and cursor < BODY_TOP:
+            split = _safe_split_boundary(
+                component_path,
+                page_index,
+                bottom=bottom,
+                top=top,
+                max_height=available,
+            )
+            if split is not None:
+                # Continue the lower fragment before later component pages.
+                source_pages.appendleft((component_path, page_index, bottom, split, False))
+                bottom = split
+                height = top - bottom
         if cursor - height < BODY_BOTTOM:
             target = _new_page(writer)
             cursor = BODY_TOP
+        # A fresh reader keeps crops of a preceding fragment from leaking into
+        # the continuation fragment of the same source component page.
+        source = PdfReader(str(component_path)).pages[page_index]
         source.mediabox.lower_left = (0, bottom)
         source.mediabox.upper_right = (PAGE_WIDTH, top)
         source.cropbox.lower_left = (0, bottom)

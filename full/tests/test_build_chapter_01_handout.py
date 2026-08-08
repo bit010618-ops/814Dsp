@@ -108,6 +108,17 @@ def test_mathjax_svg_representation_pages_use_vector_geometry_bounds():
     assert 760 < top <= CROP_TOP
 
 
+def test_reflow_continues_next_normal_component_into_available_lower_page(tmp_path: Path):
+    """Normal teaching content must use a safe lower-page gap before a page break."""
+    output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_handout.pdf")
+    pages = [page.extract_text() or "" for page in PdfReader(str(output)).pages]
+
+    # The representation example finishes with usable lower-page space.  The
+    # following normal teaching component starts with a heading, prose and a
+    # formula that fit there; only its later figures need continue below.
+    assert "离散时间信号的基本运算" in pages[5]
+
+
 def test_final_handout_preserves_one_printable_page_per_exam_question(tmp_path: Path):
     output = build_pdf(ROOT, output_path=tmp_path / "chapter_01_handout.pdf")
     question_pages = [
