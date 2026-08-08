@@ -23,6 +23,9 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "2016 年真题" in html
     assert "二、简答题第 1 小题：说明" in html
     assert r"X(j\Omega)=X(s)\big|_{s=j\Omega}" in html
+    assert "2017 年真题" in html
+    assert "二、简答题第 1 小题：在信号与系统里面，拉氏变换和" in html
+    assert r"z=e^{sT}" in html
     assert r"h(n)=\delta(n)-0.98\delta(n-6)" in html
     assert "2013 年第五题／2015 年第四题：某离散系统如图所示：" in html
     assert html.count("七、离散因果 LTI 系统的系统函数") == 2
