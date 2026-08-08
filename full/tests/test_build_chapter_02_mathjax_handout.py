@@ -46,6 +46,10 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert r"H(z)=1-z^{-N}=\frac{z^N-1}{z^N}" in html
     assert r"\left|H(e^{j\omega})\right|=2\left|\sin(4\omega)\right|" in html
     assert 'aria-label="2022 年第八题的零极点图"' in html
+    assert "九、如果一个因果 LSI 系统的输入输出满足如下差分方程" in html
+    assert r"H(z)=\frac{1-a^Nz^{-N}}{1-az^{-1}}" in html
+    assert r"h[n]&=a^nu[n]-a^N a^{n-N}u[n-N]" in html
+    assert r"\sum_{k=0}^{N-1}a^kz^{-k}" in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
