@@ -29,6 +29,11 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "2020 年真题（填空题第 2、3 小题）" in html
     assert "序列实部的傅里叶变换等于傅里叶变换的" in html
     assert r"\left|z\right|=1" in html
+    assert "2005 年真题" in html
+    assert "<p>一、计算</p>" in html
+    assert "4.求" in html
+    assert r"F(z)=\frac{z^2}{z^2-2z-3}" in html
+    assert r"f[n]=\frac{1}{2}(-1)^n u[n]-\frac{1}{2}3^n u[-n-1]" in html
     assert r"h(n)=\delta(n)-0.98\delta(n-6)" in html
     assert "2013 年第五题／2015 年第四题：某离散系统如图所示：" in html
     assert html.count("七、离散因果 LTI 系统的系统函数") == 2
