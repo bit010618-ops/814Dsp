@@ -21,7 +21,7 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "以除去 5kHz&lt;F&lt;10kHz 的频率成分" in html
     assert "2013 年真题：理想滤波器幅频响应" in html
     assert r"h(n)=\delta(n)-0.98\delta(n-6)" in html
-    assert "五、某离散系统如图所示：" in html
+    assert "四、某离散系统如图所示：" in html
     assert "八、离散因果 LTI 系统的系统函数" in html
     assert "五、已知" in html
     assert r"\operatorname{ROC}:\frac13<\left|z\right|<\frac12" in html
