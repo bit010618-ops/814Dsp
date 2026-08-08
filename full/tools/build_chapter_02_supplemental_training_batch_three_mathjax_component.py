@@ -44,8 +44,8 @@ def training_html() -> str:
         r'''<section class="exam-page"><h1>第二章 补充真题（续）</h1>
 <div class="exam-head"><span>2013 年真题：理想滤波器幅频响应</span><span>详解见 P.____</span></div>
 <p>三、画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频率。</p></section>
-<section class="exam-page"><div class="exam-head"><span>2013 年真题：单位脉冲响应与频率特性</span><span>详解见 P.____</span></div>
-<p>六、离散系统的单位脉冲响应 \(h(n)=\delta(n)-0.98\delta(n-6)\)，求系统函数 \(H(z)\)，画出零极点图和该系统的幅频特性。</p></section>'''
+<section class="exam-page"><div class="exam-head"><span>2015 年真题</span><span>详解见 P.____</span></div>
+<p>五、离散系统的单位脉冲响应 \(h(n)=\delta(n)-0.98\delta(n-6)\)，求系统函数 \(H(z)\)，画出零极点图和该系统的幅频特性。</p></section>'''
     )
 
 
@@ -57,7 +57,7 @@ def answers_html() -> str:
         + r'''<p>四类理想滤波器的幅度响应可分别写成</p>
 <div class="formula">\[\left|H_{\mathrm{LP}}(e^{j\omega})\right|=\begin{cases}1,&|\omega|<\omega_c,\\0,&\omega_c<|\omega|\le\pi,\end{cases}\qquad \left|H_{\mathrm{HP}}(e^{j\omega})\right|=\begin{cases}0,&|\omega|<\omega_c,\\1,&\omega_c<|\omega|\le\pi.\end{cases}\]</div>
 <div class="formula">\[\left|H_{\mathrm{BP}}(e^{j\omega})\right|=\begin{cases}1,&\omega_1<|\omega|<\omega_2,\\0,&\text{其他频率},\end{cases}\qquad \left|H_{\mathrm{BS}}(e^{j\omega})\right|=\begin{cases}0,&\omega_1<|\omega|<\omega_2,\\1,&\text{其他频率}.\end{cases}\]</div></section>
-<section><h2>2013 年真题：由单位脉冲响应求零极点与幅频特性</h2>
+<section><h2>2015 年真题：由单位脉冲响应求零极点与幅频特性</h2>
 <p>对 \(h(n)\) 作 \(z\) 变换，得到有限长 FIR 系统函数</p>
 <div class="formula">\[H(z)=1-0.98z^{-6}.\]</div>
 <p>令 \(H(z)=0\)，六个零点等角分布在半径 \(0.98^{1/6}\) 的圆上；系统没有有限极点。零极点图如下：</p>'''

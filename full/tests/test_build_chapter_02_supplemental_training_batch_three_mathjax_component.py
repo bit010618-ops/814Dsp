@@ -11,9 +11,10 @@ def test_third_supplemental_batch_preserves_the_verified_2013_prompts_and_math()
     answers = answers_html()
 
     assert training.count('class="exam-page"') == 2
+    assert "五、离散系统的单位脉冲响应" in training
     assert "2013 年真题：理想滤波器幅频响应" in training
     assert "画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频率。" in training
-    assert "2013 年真题：单位脉冲响应与频率特性" in training
+    assert "2015 年真题" in training
     assert r"h(n)=\delta(n)-0.98\delta(n-6)" in training
     assert "画出零极点图和该系统的幅频特性。" in training
     assert r"\left|H_{\mathrm{LP}}(e^{j\omega})\right|" in answers
