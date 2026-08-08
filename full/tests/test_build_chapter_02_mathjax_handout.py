@@ -25,6 +25,9 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "八、离散因果 LTI 系统的系统函数" in html
     assert "五、已知" in html
     assert r"\operatorname{ROC}:\frac13<\left|z\right|<\frac12" in html
+    assert "2014 年真题" in html
+    assert "五、某离散 LTI 系统如图所示：" in html
+    assert r"H(e^{j\omega})&=\frac{1}{1-\frac{1}{2}e^{-j\omega}}" in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
