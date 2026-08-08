@@ -49,6 +49,9 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "2003 年真题" in html
     assert "八、已知时域离散线性非移变系统的系统函数" in html
     assert r"H(z)=\frac{1}{(z-a)(z-b)}" in html
+    assert "2007 年真题" in html
+    assert r"2.若信号\(x(n)=k\)，\(k\)为常数，求其离散时间傅里叶变换；" in html
+    assert r"X\!\left(e^{j\omega}\right)=2\pi k\sum_{m=-\infty}^{\infty}\delta\!\left(\omega-2\pi m\right)" in html
     assert "五、某离散 LTI 系统如图所示：" in html
     assert r"H(e^{j\omega})&=\frac{1}{1-\frac{1}{2}e^{-j\omega}}" in html
     assert "2024 年真题" in html
