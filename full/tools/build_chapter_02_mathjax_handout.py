@@ -46,6 +46,7 @@ from full.tools import (
     build_chapter_02_supplemental_training_batch_twenty_mathjax_component as supplemental_training_batch_twenty,
     build_chapter_02_supplemental_training_batch_twenty_one_mathjax_component as supplemental_training_batch_twenty_one,
     build_chapter_02_supplemental_training_batch_twenty_two_mathjax_component as supplemental_training_batch_twenty_two,
+    build_chapter_02_supplemental_training_batch_twenty_three_mathjax_component as supplemental_training_batch_twenty_three,
     build_chapter_02_system_frequency_mathjax_component as system_frequency,
     build_chapter_02_training_mathjax_component as training,
 )
@@ -79,10 +80,11 @@ COMPONENTS = (
     supplemental_training_batch_twenty,
     supplemental_training_batch_twenty_one,
     supplemental_training_batch_twenty_two,
+    supplemental_training_batch_twenty_three,
 )
 
 STYLE = r"""<style>
-@page{size:A4;margin:24mm 18mm 20mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{break-after:avoid;color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}figure{break-inside:avoid;margin:12pt auto;text-align:center}svg{width:min(100%,470pt);height:auto}figcaption{color:#315d7c;font-size:9.5pt;margin-top:4pt}.exam-page{break-before:page;min-height:230mm}.exam-head{display:flex;justify-content:space-between;align-items:baseline;color:#52616b;margin:0 0 10pt}.indent{padding-left:1.7em;text-indent:-1.7em}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
+@page{size:A4;margin:24mm 18mm 20mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{break-after:avoid;color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}figure{break-inside:avoid;margin:12pt auto;text-align:center}svg{width:min(100%,470pt);height:auto}.plot-pair{break-inside:avoid;display:block;margin:10pt 0}.plot{display:block;break-inside:avoid;margin:6pt auto;text-align:center}.plot svg{width:min(100%,400pt);height:auto}.plot figcaption{color:#315d7c;font-size:9.5pt;margin-top:2pt}figcaption{color:#315d7c;font-size:9.5pt;margin-top:4pt}.exam-page{break-before:page;min-height:230mm}.exam-head{display:flex;justify-content:space-between;align-items:baseline;color:#52616b;margin:0 0 10pt}.indent{padding-left:1.7em;text-indent:-1.7em}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
 </style>"""
 
 
