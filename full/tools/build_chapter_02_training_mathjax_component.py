@@ -26,13 +26,45 @@ def _zero_pole_svg() -> str:
 </svg>'''
 
 
+def _math_label(x: float, y: float, width: float, height: float, latex: str, *, size: int = 16) -> str:
+    """Put one complete MathJax expression into an SVG label region."""
+    return (
+        f'<foreignObject x="{x:g}" y="{y:g}" width="{width:g}" height="{height:g}">'
+        '<div xmlns="http://www.w3.org/1999/xhtml" '
+        f'style="height:100%;display:flex;align-items:center;justify-content:center;font-size:{size}px">'
+        f'\\({latex}\\)</div></foreignObject>'
+    )
+
+
 def _am_svg() -> str:
-    return r'''<svg viewBox="0 0 540 420" role="img" aria-label="离散时间正弦调制、频谱搬移和相干解调框图">
-<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7z" fill="#234d70"/></marker></defs>
-<text x="30" y="34" font-size="15" fill="#315d7c">(a) 正弦调制</text><line x1="54" y1="72" x2="176" y2="72" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/><circle cx="201" cy="72" r="19" fill="white" stroke="#234d70" stroke-width="1.4"/><path d="M190 61l22 22m0-22l-22 22" stroke="#b56b2e" stroke-width="1.5"/><line x1="220" y1="72" x2="362" y2="72" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/><line x1="201" y1="115" x2="201" y2="91" stroke="#234d70" stroke-width="1.2" marker-end="url(#arrow)"/><text x="53" y="63" font-size="15">x(n)</text><text x="335" y="63" font-size="15">y(n)</text><text x="143" y="132" font-size="14">cos(ω<tspan baseline-shift="sub" font-size="10">c</tspan>n)</text>
-<text x="30" y="169" font-size="15" fill="#315d7c">(b) 频谱搬移</text><line x1="50" y1="267" x2="500" y2="267" stroke="#234d70" stroke-width="1.3" marker-end="url(#arrow)"/><line x1="275" y1="278" x2="275" y2="186" stroke="#234d70" stroke-width="1.3" marker-end="url(#arrow)"/><path d="M210 267 L243 205 L275 267 M275 267 L307 205 L340 267" fill="none" stroke="#0e8d93" stroke-width="2"/><path d="M50 267 L83 205 L115 267 M435 267 L467 205 L500 267" fill="none" stroke="#0e8d93" stroke-width="2"/><text x="276" y="195" font-size="14">Y(e<tspan baseline-shift="super" font-size="10">jω</tspan>)</text><text x="267" y="290" font-size="12">0</text><text x="205" y="290" font-size="12">−ω<tspan baseline-shift="sub" font-size="9">c</tspan></text><text x="328" y="290" font-size="12">ω<tspan baseline-shift="sub" font-size="9">c</tspan></text><text x="506" y="272" font-size="14">ω</text>
-<text x="30" y="318" font-size="15" fill="#315d7c">(c) 相干解调与低通恢复</text><line x1="54" y1="356" x2="160" y2="356" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/><circle cx="183" cy="356" r="19" fill="white" stroke="#234d70" stroke-width="1.4"/><path d="M172 345l22 22m0-22l-22 22" stroke="#b56b2e" stroke-width="1.5"/><line x1="202" y1="356" x2="264" y2="356" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/><rect x="269" y="333" width="109" height="45" rx="3" fill="white" stroke="#234d70" stroke-width="1.4"/><line x1="378" y1="356" x2="470" y2="356" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/><text x="52" y="347" font-size="14">y(n)</text><text x="289" y="362" font-size="15">H(e<tspan baseline-shift="super" font-size="10">jω</tspan>)</text><text x="439" y="347" font-size="14">x̂(n)</text><text x="118" y="398" font-size="12">cos(ω<tspan baseline-shift="sub" font-size="9">c</tspan>n+θ<tspan baseline-shift="sub" font-size="9">c</tspan>)</text>
-</svg>'''
+    """Rebuild the three source diagrams without watermark or text-formula hacks."""
+    spectrum = (
+        '<path data-role="input-periodic-spectrum" fill="none" stroke="#0f8b8d" '
+        'stroke-width="3" stroke-linejoin="round" d="M92 356L132 276L172 356 '
+        'M260 356L340 276L420 356 '
+        'M508 356L548 276L588 356"/>'
+    )
+    return r'''<svg class="diagram" viewBox="0 0 680 700" role="img" aria-label="2021 年 AM 调制题的调制框图、输入周期谱与相干解调框图">
+<defs><marker id="arrow-am-source" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker></defs>
+<text x="52" y="42" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="18">(a) 正弦调制</text>
+<path data-role="am-modulator" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M95 96H282"/><circle cx="310" cy="96" r="28" fill="#fff" stroke="#174b73" stroke-width="2"/><path d="M294 80l32 32m0-32l-32 32" fill="none" stroke="#b56b2e" stroke-width="2.4"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M338 96H548"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M310 176V126"/>
+''' + _math_label(72, 55, 80, 34, r'x(n)', size=18) + _math_label(528, 55, 84, 34, r'y(n)', size=18) + _math_label(208, 174, 205, 36, r'\cos(\omega_cn)', size=17) + r'''
+<text x="52" y="246" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="18">(b) 输入信号的周期频谱</text>
+<path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M70 356H625"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M340 382V265"/>
+''' + spectrum + _math_label(343, 262, 116, 34, r'X(e^{j\omega})', size=17) + _math_label(315, 278, 42, 31, '1', size=15) + _math_label(92, 361, 80, 33, r'-2\pi', size=15) + _math_label(346, 361, 40, 33, r'0', size=15) + _math_label(508, 361, 80, 33, r'2\pi', size=15) + _math_label(210, 361, 100, 33, r'-\omega_0', size=15) + _math_label(370, 361, 100, 33, r'\omega_0', size=15) + _math_label(606, 337, 45, 34, r'\omega', size=18) + r'''
+<text x="52" y="470" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="18">(c) 相干解调与低通恢复</text>
+<path data-role="coherent-demodulator" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M95 528H232"/><circle cx="260" cy="528" r="28" fill="#fff" stroke="#174b73" stroke-width="2"/><path d="M244 512l32 32m0-32l-32 32" fill="none" stroke="#b56b2e" stroke-width="2.4"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M288 528H358"/><rect x="365" y="489" width="148" height="78" rx="5" fill="#fff" stroke="#174b73" stroke-width="2"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M513 528H594"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M260 620V558"/>
+''' + _math_label(75, 488, 85, 34, r'y(n)', size=18) + _math_label(536, 488, 95, 34, r'\hat{x}(n)', size=18) + _math_label(377, 508, 126, 38, r'H(e^{j\omega})', size=18) + _math_label(135, 619, 250, 40, r'\cos(\omega_cn+\theta_c)', size=17) + r'''</svg>'''
+
+
+def _am_output_spectrum_svg() -> str:
+    """Draw the modulated DTFT from the two exact frequency-shift copies."""
+    return r'''<svg class="diagram" style="width:min(100%,470pt)" viewBox="0 0 720 390" role="img" aria-label="2021 年 AM 调制后 Y(e^{jω}) 的频谱图">
+<defs><marker id="arrow-am-output" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker></defs>
+<path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-output)" d="M72 286H662"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-output)" d="M367 314V58"/>
+<path data-role="am-output-spectrum" fill="none" stroke="#0f8b8d" stroke-width="3" stroke-linejoin="round" d="M132 286L196 128L260 286 M474 286L538 128L602 286"/>
+<path data-role="shifted-copy-minus" fill="none" stroke="#b56b2e" stroke-width="1.4" stroke-dasharray="5 4" d="M196 286V128"/><path data-role="shifted-copy-plus" fill="none" stroke="#b56b2e" stroke-width="1.4" stroke-dasharray="5 4" d="M538 286V128"/>
+''' + _math_label(374, 49, 120, 36, r'Y(e^{j\omega})', size=18) + _math_label(343, 107, 42, 32, r'\frac12', size=15) + _math_label(508, 107, 42, 32, r'\frac12', size=15) + _math_label(124, 296, 100, 32, r'-\omega_c-\omega_0', size=14) + _math_label(232, 296, 100, 32, r'-\omega_c+\omega_0', size=14) + _math_label(302, 296, 110, 32, r'0', size=15) + _math_label(450, 296, 100, 32, r'\omega_c-\omega_0', size=14) + _math_label(560, 296, 100, 32, r'\omega_c+\omega_0', size=14) + _math_label(647, 263, 48, 34, r'\omega', size=18) + r'''<text x="73" y="353" fill="#52616b" font-family="Microsoft YaHei, sans-serif" font-size="14">两个幅度缩小为原谱一半的搬移副本</text></svg>'''
 
 
 def training_html() -> str:
@@ -41,7 +73,7 @@ def training_html() -> str:
 <p>七、离散因果 LTI 系统的系统函数 \(H(z)\) 的零极点图如图所示，其中 \(h[0]=2\)。</p>
 <p class="indent">（1）求系统函数 \(H(z)\) 及收敛域；</p><p class="indent">（2）判断是否稳定；</p><p class="indent">（3）求单位脉冲响应 \(h(n)\)；</p><p class="indent">（4）求出系统的差分方程。</p><figure>{_zero_pole_svg()}<figcaption>零极点图</figcaption></figure></section>
 <section class="exam-page"><div class="exam-head"><span>2021 年真题</span><span>详解见 P.18</span></div>
-<p>六、（AM 调制）已知离散时间信号 \(x(n)\)，其傅里叶变换 \(X(e^{{j\omega}})\) 如图（b）所示，该信号被一个正弦序列调制，如图（a）所示：</p>
+<p>六、（AM 调制）已知离散时间信号 \(x(n)\)，其傅里叶变换 \(X(e^{{j\omega}})\) 如图（a）所示，该信号被一个正弦序列调制，如图（b）所示：</p>
 <figure>{_am_svg()}</figure><p class="indent">1．写出 \(y(n)\) 的傅里叶变换 \(Y(e^{{j\omega}})\)，并画出其频谱图；</p>
 <p class="indent">2．图（c）是一个解调系统，其中 \(H(e^{{j\omega}})=\begin{{cases}}G,&|\omega|<\omega_{{cp}},\\0,&\text{{其他}}.\end{{cases}}\) 若使 \(\hat x(n)=x(n)\)，\(G\) 应取何值？</p>
 <p class="indent">3．为保证从 \(y(n)\) 中恢复出 \(x(n)\)，\(\omega_c\) 和 \(\omega_{{cp}}\) 应满足什么关系？</p></section>
@@ -59,9 +91,9 @@ def answers_html() -> str:
 <p>因系统因果，收敛域为极点外侧 \(|z|>2\)。又因 \(h[0]=2\)，将 \(H(z)\) 在 \(z^{-1}\) 的幂级数中展开，常数项就是 \(K\)，故 \(K=2\)。</p><div class="formula">\[H(z)=\frac{2}{1-2z^{-1}},\qquad \operatorname{ROC}:|z|>2.\]</div>
 <p>于是</p><div class="formula">\[h(n)=2\cdot2^n u(n)=2^{n+1}u(n).\]</div><p>收敛域不包含单位圆，故系统不稳定。由 \((1-2z^{-1})Y(z)=2X(z)\) 直接得到差分方程：</p><div class="formula">\[y(n)-2y(n-1)=2x(n).\]</div></section>
 <section class="answer"><h2>2021 年真题：调制、解调与恢复条件</h2><p>调制信号为 \(y(n)=x(n)\cos(\omega_cn)\)。利用余弦的指数展开与 DTFT 的频移性质，得到</p><div class="formula">\[Y(e^{j\omega})=\frac{1}{2}X\!\left(e^{j(\omega-\omega_c)}\right)+\frac{1}{2}X\!\left(e^{j(\omega+\omega_c)}\right).\]</div>
-<p>因此 \(Y(e^{j\omega})\) 是原谱的两份、各缩小为一半的副本，分别移到 \(+\omega_c\) 与 \(-\omega_c\) 附近，并以 \(2\pi\) 为周期重复。</p><p>解调相乘后有</p><div class="formula">\[y(n)\cos(\omega_cn+\theta_c)=\frac{\cos\theta_c}{2}x(n)+\frac12x(n)\cos(2\omega_cn+\theta_c).\]</div>
+<p>因此 \(Y(e^{j\omega})\) 是原谱的两份、各缩小为一半的副本，分别移到 \(+\omega_c\) 与 \(-\omega_c\) 附近，并以 \(2\pi\) 为周期重复。</p><figure>''' + _am_output_spectrum_svg() + r'''<figcaption>调制后的两个谱副本：中心频率为 \(\pm\omega_c\)，每份幅度为原谱的 \(1/2\)。</figcaption></figure><p>解调相乘后有</p><div class="formula">\[y(n)\cos(\omega_cn+\theta_c)=\frac{\cos\theta_c}{2}x(n)+\frac12x(n)\cos(2\omega_cn+\theta_c).\]</div>
 <p>低通滤波器只保留第一项，故 \(\hat x(n)=\frac{G\cos\theta_c}{2}x(n)\)。只要 \(\cos\theta_c\ne0\)，应取</p><div class="formula">\[G=\frac{2}{\cos\theta_c}.\]</div>
-<p>设原谱的主值支撑为 \(|\omega|\leq\omega_0\)。为使调制后的两个谱副本不重叠且解调时低通滤波器能隔离基带，需满足</p><div class="formula">\[\omega_0<\omega_c<\pi-\omega_0,\qquad \omega_0<\omega_{cp}<2\omega_c-\omega_0.\]</div></section>
+<p>设原谱的主值支撑为 \(|\omega|\leq\omega_0\)。为使调制后的两个谱副本不重叠，必须有 \(\omega_0<\omega_c<\pi-\omega_0\)。解调后的高频副本中心位于 \(\pm2\omega_c\)（按 \(2\pi\) 周期折返），故低通滤波器还必须在保留基带的同时排除两侧副本：</p><div class="formula">\[\omega_0<\omega_{cp}<\min\!\left\{2\omega_c-\omega_0,\;2\pi-2\omega_c-\omega_0\right\}.\]</div></section>
 <section class="answer"><h2>2025 年真题：频响、幅相特性与频移</h2><p>令输入为单位脉冲，即得</p><div class="formula">\[h_1(n)=\frac14[\delta(n)-\delta(n-1)+\delta(n+2)-\delta(n-3)].\]</div>
 <p>代入 DTFT 定义：</p><div class="formula">\[\begin{aligned}H_1(e^{j\omega})&=\frac14\left(1-e^{-j\omega}+e^{j2\omega}-e^{-j3\omega}\right)\\&=j e^{-j\omega/2}\sin\!\left(\frac{3\omega}{2}\right)\cos\omega.\end{aligned}\]</div>
 <p>因此</p><div class="formula">\[|H_1(e^{j\omega})|=\left|\sin\!\left(\frac{3\omega}{2}\right)\cos\omega\right|.\]</div>
@@ -78,8 +110,34 @@ def write_html(output: Path) -> Path:
     return output
 
 
+def rendered_dom(html: Path) -> str:
+    """Return this component after MathJax has typeset every formula."""
+    profile = html.parent / "edge-profile"
+    completed = subprocess.run(
+        [
+            str(EDGE), "--headless=new", "--disable-gpu", f"--user-data-dir={profile}",
+            "--virtual-time-budget=10000", "--dump-dom", html.resolve().as_uri(),
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    return completed.stdout
+
+
+def assert_mathjax_ready(dom: str) -> None:
+    if "<mjx-container" not in dom:
+        raise RuntimeError("MathJax did not render the 2021 AM formulae")
+    remaining = [token for token in (r"\(", r"\)", r"\[", r"\]") if token in dom]
+    if remaining:
+        raise RuntimeError("MathJax left raw formula delimiters: " + ", ".join(remaining))
+
+
 def render_pdf(output: Path) -> Path:
     html = write_html(output.with_suffix(".html"))
+    assert_mathjax_ready(rendered_dom(html))
     subprocess.run([str(EDGE), "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=10000", f"--print-to-pdf={output.resolve()}", html.resolve().as_uri()], check=True)
     return output
 

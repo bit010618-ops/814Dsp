@@ -35,7 +35,7 @@ def test_am_svg_has_safe_canvas_for_spectrum_and_coherent_demodulation():
 
     svg = _am_svg()
 
-    assert 'viewBox="0 0 540 420"' in svg
+    assert 'viewBox="0 0 680 700"' in svg
     assert '(c) 相干解调与低通恢复' in svg
-    assert 'y="318"' in svg
-    assert 'y="356"' in svg
+    assert 'data-role="input-periodic-spectrum"' in svg
+    assert 'data-role="coherent-demodulator"' in svg
