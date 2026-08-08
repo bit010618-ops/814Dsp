@@ -7,7 +7,8 @@ def test_batch_five_preserves_2013_bilateral_z_transform_prompt(tmp_path: Path):
     html = component.write_html(tmp_path / "batch-five.html").read_text(encoding="utf-8")
 
     assert "2013 年真题" in html
-    assert "五、已知" in html
+    assert "第二组·第 5 小题：已知" in html
+    assert "2013 年真题·第二组第 5 小题" in html
     assert r"x[n]=\left(\frac13\right)^n u[n]+\left(\frac12\right)^n u[-n-1]" in html
     assert r"求 \(x[n]\) 的 \(z\) 变换 \(X(z)\)" in html
 

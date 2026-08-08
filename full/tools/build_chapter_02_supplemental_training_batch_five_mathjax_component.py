@@ -25,7 +25,7 @@ def training_html() -> str:
     return r'''<section class="exam-page">
 <h1>第二章补充真题（续）</h1>
 <div class="exam-head"><span>2013 年真题</span><span>详解见 P.____</span></div>
-<p>五、已知 \(\displaystyle x[n]=\left(\frac13\right)^n u[n]+\left(\frac12\right)^n u[-n-1]\)，求 \(x[n]\) 的 \(z\) 变换 \(X(z)\)。</p>
+<p>第二组·第 5 小题：已知 \(\displaystyle x[n]=\left(\frac13\right)^n u[n]+\left(\frac12\right)^n u[-n-1]\)，求 \(x[n]\) 的 \(z\) 变换 \(X(z)\)。</p>
 </section>'''
 
 
@@ -33,7 +33,7 @@ def answers_html() -> str:
     """Give the two-sided z-transform and ROC derivation in full."""
     return r'''<section>
 <h1>真题整理详解（续）</h1>
-<h2>2013 年真题：双边序列的 \(z\) 变换</h2>
+<h2>2013 年真题·第二组第 5 小题：双边序列的 \(z\) 变换</h2>
 <p>将序列按右边序列与左边序列分开处理：</p>
 <div class="formula">\[
 x[n]=x_1[n]+x_2[n],\qquad
