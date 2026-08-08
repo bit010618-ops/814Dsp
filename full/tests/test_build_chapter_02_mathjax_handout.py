@@ -33,6 +33,10 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert r"H(z)=0.18\frac{1-z^{-2}}{1+0.64z^{-2}}" in html
     assert 'aria-label="2024 年第二章真题的零极点图"' in html
     assert 'aria-label="2024 年第二章真题的幅频响应"' in html
+    assert "2023 年真题" in html
+    assert "八、设某 LSTI 系统的差分方程" in html
+    assert r"\left|H(e^{j\omega})\right|=2\left|\sin\omega\right|" in html
+    assert 'aria-label="2023 年第八题的相频响应"' in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
