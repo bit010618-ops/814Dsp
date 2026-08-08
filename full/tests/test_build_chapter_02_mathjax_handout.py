@@ -54,6 +54,8 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert r"x[n]=u[n]-u[n-7]" in html
     assert r"\left|X(e^{j\omega})\right|=\left|\frac{\sin\left(\frac{7\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}\right|" in html
     assert 'aria-label="2025 年第四题的 DTFT 幅度谱"' in html
+    assert "八、已知某因果稳定的 LSI 系统" in html
+    assert r"h_2[n]=(-1)^nh_1[n]" in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
