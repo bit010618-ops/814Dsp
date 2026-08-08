@@ -37,6 +37,10 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "八、设某 LSTI 系统的差分方程" in html
     assert r"\left|H(e^{j\omega})\right|=2\left|\sin\omega\right|" in html
     assert 'aria-label="2023 年第八题的相频响应"' in html
+    assert "2020 年真题" in html
+    assert "四、设 LTI 系统的频率响应为" in html
+    assert r"H\!\left(e^{j\frac{\pi}{2}}\right)&=" in html
+    assert r"\\&=4\cos\left(\frac{\pi n}{2}\right)" in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
