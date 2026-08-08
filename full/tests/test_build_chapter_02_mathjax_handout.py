@@ -59,6 +59,10 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert "七、离散因果 LTI 系统的系统函数" in html
     assert r"H(z)=\frac{2}{1-2z^{-1}}=\frac{2z}{z-2}" in html
     assert 'aria-label="2015 年第七题的零极点图"' in html
+    assert "2017 年真题" in html
+    assert r"H(z)=\frac{z^{-1}}{1-z^{-1}-z^{-2}}" in html
+    assert r"\operatorname{ROC}:\frac{\sqrt5-1}{2}<\left|z\right|<\frac{1+\sqrt5}{2}" in html
+    assert 'aria-label="2017 年第十题的零极点图"' in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
