@@ -56,6 +56,9 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert 'aria-label="2025 年第四题的 DTFT 幅度谱"' in html
     assert "八、已知某因果稳定的 LSI 系统" in html
     assert r"h_2[n]=(-1)^nh_1[n]" in html
+    assert "七、离散因果 LTI 系统的系统函数" in html
+    assert r"H(z)=\frac{2}{1-2z^{-1}}=\frac{2z}{z-2}" in html
+    assert 'aria-label="2015 年第七题的零极点图"' in html
     assert 'class="header"' not in html
     assert 'counter(page)' not in html
     assert 'class="running-header"' not in html
