@@ -10,6 +10,9 @@ def test_dit_fft_component_preserves_decimation_butterfly_cost_and_bit_reversal(
     assert r"x_1(r)=x(2r)" in html
     assert r"X(k)&=X_1(k)+W_N^kX_2(k)" in html
     assert r"\frac{N}{2}\log_2N" in html
+    assert r"W_N^p=W_N^{J2^{M-L}}" in html
+    assert r"A_L(J)&=A_{L-1}(J)+A_{L-1}(J+B)W_N^p" in html
+    assert r"A_L(J+B)&=A_{L-1}(J)-A_{L-1}(J+B)W_N^p" in html
     assert "码位倒序" in html
     assert "0.013824" in html
     assert "MATLAB" not in html

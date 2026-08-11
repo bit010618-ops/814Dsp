@@ -64,6 +64,20 @@ T_{\mathrm{FFT}}
 
 <h2>原位计算、旋转因子与码位倒序</h2>
 <p>每一级蝶形都由同一批 (N) 个复数数据两两运算得到新的 (N) 个数据，因此中间结果可写回同一数组，称为原位计算（同址计算）。第 (L) 级共有 (N/2) 个蝶形，并出现 (2^{L-1}) 类旋转因子；旋转因子按 (W_N^{J2^{M-L}}) 的规律重复，(J=0,1,\ldots,2^{L-1}-1)。</p>
+<h3>第 \(L\) 级原位蝶形运算</h3>
+<p>令两输入数据的间距为 \(B=2^{L-1}\)。对 \(N=2^M\) 的基-2 DIT-FFT，第 \(L\) 级使用的旋转因子指数为 \(p=J\cdot2^{M-L}\)，从而：</p>
+<div class="formula">\[
+W_N^p=W_N^{J2^{M-L}},
+\qquad J=0,1,\ldots,2^{L-1}-1.
+\]</div>
+<div class="formula">\[
+\begin{aligned}
+A_L(J)&=A_{L-1}(J)+A_{L-1}(J+B)W_N^p,\\
+A_L(J+B)&=A_{L-1}(J)-A_{L-1}(J+B)W_N^p,\\
+B&=2^{L-1},\qquad L=1,2,\ldots,M.
+\end{aligned}
+\]</div>
+<p>这里 \(A_L(J)\) 表示第 \(L\) 级运算后数组第 \(J\) 个元素的值。两式必须先使用第 \(L-1\) 级的两个输入值，再同时写回对应位置，才能保持原位计算的蝶形含义。</p>
 <p>对 (N=8) 的 DIT 原位实现，输入的自然序号应按二进制码位倒序重排为：</p>
 <table class="table"><thead><tr><th>自然序号 (n)</th><th>二进制</th><th>码位倒序</th><th>倒序位置 (n')</th></tr></thead><tbody>
 <tr><td>0</td><td>000</td><td>000</td><td>0</td></tr><tr><td>1</td><td>001</td><td>100</td><td>4</td></tr><tr><td>2</td><td>010</td><td>010</td><td>2</td></tr><tr><td>3</td><td>011</td><td>110</td><td>6</td></tr><tr><td>4</td><td>100</td><td>001</td><td>1</td></tr><tr><td>5</td><td>101</td><td>101</td><td>5</td></tr><tr><td>6</td><td>110</td><td>011</td><td>3</td></tr><tr><td>7</td><td>111</td><td>111</td><td>7</td></tr>
