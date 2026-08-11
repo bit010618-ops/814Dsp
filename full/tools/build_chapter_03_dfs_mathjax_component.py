@@ -49,6 +49,16 @@ W_N=e^{-j\frac{2\pi}{N}},\qquad W_N^{k+N}=W_N^k.
 <div class="formula">\[
 \widetilde{X}(k)=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{N}}.
 \]</div>
+<h3>采样参数与频域离散的对应</h3>
+<p>把连续时间信号每隔 [[T]] 采样一次，并以 [[N]] 个样值构成一个周期时，记录周期与频率取样间隔由同一组参数确定：</p>
+<div class="formula">\[
+T_0=NT,\qquad f_s=\frac{1}{T},\qquad F_0=\frac{1}{T_0},\qquad f_s=NF_0.
+\]</div>
+<div class="formula">\[
+\Omega_s=2\pi f_s=\frac{2\pi}{T},\qquad
+\Omega_0=2\pi F_0=\frac{2\pi}{T_0},\qquad
+\frac{k}{N}=\frac{\omega}{2\pi}=\frac{f}{f_s}=\frac{\Omega}{\Omega_s}.
+\]</div>
 <p>相反地，DFS 系数经过反变换恢复一周期内的样值，并按 [[N]] 周期延拓。时间与频率的周期性形成严格对偶，后续判断循环卷积、频域抽样或零填充时都需要先确认这个周期 [[N]]。</p>
 
 <h2>DFS 的基本性质</h2>
