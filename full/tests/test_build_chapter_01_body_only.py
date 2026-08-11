@@ -20,5 +20,6 @@ def test_chapter_one_body_only_uses_mathjax_body_components_without_training(tmp
     assert "MATLAB" not in html
     assert "drawImage" not in html
     assert "钢琴音频" in html
+    assert r"时间间隔 \(T\) 等间隔取样" in html
     assert r"\frac{f_s}{4}" in html
     assert r"\frac{f_s}{16}" in html

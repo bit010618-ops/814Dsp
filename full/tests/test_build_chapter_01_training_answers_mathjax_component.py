@@ -10,6 +10,9 @@ def test_selected_training_answers_use_one_mathjax_document(tmp_path: Path):
     assert "mathjax@3" in html
     assert "page-break-after:always" in html
     assert r"\frac{Y(z)}{X(z)}" in html
+    assert r"\frac{0.35+0.175z^{-1}-0.03z^{-2}}{1-0.4z^{-2}}" in html
+    assert r"y[n]-0.4y[n-2]" in html
+    assert r"\frac{\sqrt{10}}{5}" in html
     assert r"(f_1*f_2)(n)" in html
     # All 2019 explanatory formulas must retain their inline MathJax
     # delimiters; a previous escaping error leaked literal source notation.
