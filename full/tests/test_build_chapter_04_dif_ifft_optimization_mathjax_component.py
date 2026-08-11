@@ -7,6 +7,7 @@ def test_dif_ifft_and_optimization_component_preserves_all_remaining_chapter_top
     html = component.write_html(tmp_path / "chapter-04-dif-ifft.html").read_text(encoding="utf-8")
 
     assert "4.3 基于频率抽取的基-2-FFT 快速算法原理" in html
+    assert r"x(n)+(-1)^k x\left(n+\frac{N}{2}\right)" in html
     assert r"X(2r)" in html and r"X(2r+1)" in html
     assert "输入正序、输出码位倒序" in html
     assert "4.4 快速傅里叶反变换的实现方法" in html

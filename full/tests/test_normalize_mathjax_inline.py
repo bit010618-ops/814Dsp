@@ -24,3 +24,12 @@ def test_does_not_rewrap_function_tokens_inside_a_parenthesized_math_group():
     assert r"\(X(0),\ldots,X(7)\)" in html
     assert r"\(\(x(0)\)" not in html
     assert r"\(\(X(0)\)" not in html
+
+
+def test_does_not_rewrap_parentheses_inside_existing_inline_math():
+    html = normalize_legacy_inline_math(
+        r"<p>由 \(W_N^{kN/2}=e^{-j\pi k}=(-1)^k\) 可得。</p>"
+    )
+
+    assert r"\(W_N^{kN/2}=e^{-j\pi k}=(-1)^k\)" in html
+    assert r"\(W_N^{kN/2}=e^{-j\pi k}=\(-1\)^k\)" not in html

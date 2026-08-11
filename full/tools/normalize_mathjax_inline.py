@@ -24,6 +24,13 @@ _INLINE_MATH = re.compile(r"(\\\(.*?\\\))", re.DOTALL)
 
 def _normalize_prose(fragment: str) -> str:
     """Wrap only compact ASCII mathematical fragments in MathJax delimiters."""
+    protected: list[str] = []
+
+    def protect_inline(match: re.Match[str]) -> str:
+        protected.append(match.group(0))
+        return f"@@INLINE_MATH_{len(protected) - 1}@@"
+
+    fragment = _INLINE_MATH.sub(protect_inline, fragment)
     fragment = _PARENTHESIZED_MATH.sub(
         lambda match: rf"\({match.group(1)}\)", fragment
     )
@@ -32,7 +39,10 @@ def _normalize_prose(fragment: str) -> str:
         parts[index] = _FUNCTION_STYLE_MATH.sub(
             lambda match: rf"\({match.group(1)}\)", parts[index]
         )
-    return "".join(parts)
+    normalized = "".join(parts)
+    for index, inline in enumerate(protected):
+        normalized = normalized.replace(f"@@INLINE_MATH_{index}@@", inline)
+    return normalized
 
 
 def normalize_legacy_inline_math(content: str) -> str:

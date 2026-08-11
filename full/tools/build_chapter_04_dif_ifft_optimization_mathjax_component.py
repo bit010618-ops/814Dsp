@@ -22,6 +22,12 @@ def write_html(output: Path) -> Path:
 <p>基-2 频率抽取 FFT（DIF-FFT）同样要求 (N=2^M)，但它不先按时间索引奇偶拆分输入，而是先把频域输出按偶、奇频率索引拆分。输入序列在前后两半之间作蝶形组合，再分别作 (N/2) 点 FFT。</p>
 <p>将 (N) 点 DFT 的时域求和以前后半段配对，可定义：</p>
 <div class="formula">\[
+X(k)=\sum_{n=0}^{N/2-1}
+\left[x(n)+(-1)^k x\left(n+\frac{N}{2}\right)\right]W_N^{kn},
+\qquad 0\leq k\leq N-1.
+\]</div>
+<p>这里利用了 \(W_N^{kN/2}=e^{-j\pi k}=(-1)^k\)。因此当 \(k\) 为偶数或奇数时，括号内分别自然产生“和”或“差”，这正是 DIF 蝶形先相加／相减、再在差分支路乘旋转因子的来源。</p>
+<div class="formula">\[
 \begin{aligned}
 x_1(n)&=x(n)+x\left(n+\frac{N}{2}\right),\\
 x_2(n)&=\left[x(n)-x\left(n+\frac{N}{2}\right)\right]W_N^n,
