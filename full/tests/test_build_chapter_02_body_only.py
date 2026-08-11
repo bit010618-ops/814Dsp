@@ -14,6 +14,9 @@ def test_chapter_two_body_only_assembly_excludes_training_and_answers(tmp_path: 
     ):
         assert heading in html
     assert html.count("<main>") == 1
+    assert "<h1>第二章 z 变换与 LSI 系统频域分析</h1>" in html
+    assert html.count("<h1>") == 1
+    assert "<h2>2.1 z 变换的基本概念</h2>" in html
     assert "真题" not in html
     assert "MATLAB" not in html
     assert "page-break-after:always" not in html
