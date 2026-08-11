@@ -83,6 +83,12 @@ H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega
 &&\text{（奇对称）}.
 \end{aligned}
 \]</div>
+<h3>例题</h3>
+<p>设某线性相位 FIR 数字滤波器的 \(h(n)\) 为实序列，它的三个零点是 \(z=-1,\quad z=0.5,\quad z=0.5e^{j\pi/4}\)。试确定该滤波器可能存在的其余零点，并求最低阶数及最小群延迟。</p>
+<p>解：实序列零点先按共轭成对，再按单位圆镜像成对。因此其余零点为 \(0.5e^{-j\pi/4}\)、\(2\)、\(2e^{j\pi/4}\)、\(2e^{-j\pi/4}\)。连同已知零点共七个，故：</p>
+<div class="formula">\[
+N-1=7,\qquad \tau=\frac{N-1}{2}=3.5.
+\]</div>
 
 <h3>四种线性相位类型</h3>
 <table class="table"><thead><tr><th>类型</th><th>对称性与长度</th><th>端点约束</th><th>可实现的典型响应</th></tr></thead><tbody>
