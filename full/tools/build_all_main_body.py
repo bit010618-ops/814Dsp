@@ -44,8 +44,12 @@ h4{break-after:avoid;color:#315d7c;font-size:11.5pt;font-weight:400;margin:10pt 
 p{margin:5pt 0 8pt}
 .formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}
 figure{break-inside:avoid;margin:12pt auto;text-align:center}
+.chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9pt;align-items:start}
+.chart-grid figure{width:100%;margin:6pt auto 10pt}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9pt;align-items:start}
+.grid svg{width:100%;height:auto}
 svg{max-width:100%;height:auto}
-@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
+@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}.chart-grid,.grid{grid-template-columns:1fr}}
 </style>
 """
 

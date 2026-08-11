@@ -25,3 +25,6 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert "真题" not in html
     assert "MATLAB" not in html
     assert "page-break-after:always" not in html
+    assert ".chart-grid{display:grid" in html
+    assert "grid-template-columns:repeat(2,minmax(0,1fr))" in html
+    assert ".grid{display:grid" in html
