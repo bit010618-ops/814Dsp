@@ -23,6 +23,8 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert r"y(n)&=\sum_{m=0}^{M}b_m w(n-m)" in html
     assert r"H(z)=\left(1-z^{-N}\right)\frac{1}{N}" in html
     assert r"H_k(z)=\frac{H(k)}{1-W_N^{-k}z^{-1}}" in html
+    assert r"H_r(z)=\left(1-r^N z^{-N}\right)\frac{1}{N}" in html
+    assert r"z_k=re^{j2\pi k/N}" in html
     assert r"L=M+N-1" in html
     assert r"N=2L+1" in html
     assert r"x(n-m)\pm x(n-2L+m)" in html
