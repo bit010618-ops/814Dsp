@@ -45,6 +45,17 @@ N^2=13095^2=171479025.
 <li>利用旋转因子 (W_N^{nk}) 的周期性、对称性和重复性，合并重复的乘法项。</li>
 <li>把一个长点数 DFT 分解为若干短点数 DFT，再按规则组合；由于平方量级的长变换被拆分，主导运算量可以显著降低。</li>
 </ol>
+<h3>旋转因子的可复用结构</h3>
+<div class="formula">\[
+\left(W_N^{nk}\right)^*=W_N^{-nk}=W_N^{(N-n)k}=W_N^{n(N-k)}.
+\]</div>
+<div class="formula">\[
+W_N^{nk}=W_N^{(N+n)k}=W_N^{n(N+k)},\qquad
+W_N^{nk}=W_{mN}^{mnk}=W_{N/m}^{nk/m}.
+\]</div>
+<div class="formula">\[
+W_N^0=W_N^N=1,\qquad W_N^{N/2}=-1,\qquad W_N^{k+N/2}=-W_N^k.
+\]</div>
 <p>快速傅里叶变换（FFT）正是以上思路的系统实现。Cooley 与 Tukey 在 1965 年提出的快速算法使 DFT 运算速度得到数量级提升。后续将讨论两类基 2 结构：时间抽取法 DIT（Decimation-In-Time）与频率抽取法 DIF（Decimation-In-Frequency）。</p>
 </main>
 """
