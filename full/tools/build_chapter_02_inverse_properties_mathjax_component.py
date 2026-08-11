@@ -22,6 +22,8 @@ def write_html(output: Path) -> Path:
 <h2>部分分式展开法</h2>
 <p>先将 \(X(z)\) 因式分解为简单分式，再依据每一项的 ROC 选择右边或左边序列。若极点互异，可通过代入极点或系数比较确定系数；重极点保留相应高阶分式，多项式部分对应有限长冲激组合。</p>
 <div class="formula">\[X(z)=\sum_k\frac{A_k}{1-p_kz^{-1}}+\sum_{m=0}^{M}B_mz^{-m}\]</div>
+<p>对单极点 \(p_k\)，相应简单分式的系数由留数直接给出：</p>
+<div class="formula">\[A_k=\left.\left(1-p_kz^{-1}\right)X(z)\right|_{z=p_k}\]</div>
 <p>例：设 \(X(z)=\frac{z^2}{(z-2)(z-0.5)}\)，ROC 为 \(\left|z\right|>2\)。分解后：</p>
 <div class="formula">\[X(z)=\frac{4}{3}\frac{z}{z-2}-\frac{1}{3}\frac{z}{z-0.5}\]</div>
 <p>ROC 位于最大极点之外，故两项均取右边序列：</p>
@@ -33,6 +35,8 @@ def write_html(output: Path) -> Path:
 <p>使用 z 域性质时，ROC 不是附属信息：线性组合、移位和卷积后的 ROC 以原收敛域为基础判定；零极点相消时，最终 ROC 可能扩大。</p>
 <h2>线性与移位</h2>
 <div class="formula">\[\mathcal{Z}\{ax(n)+by(n)\}=aX(z)+bY(z),\qquad \mathcal{Z}\{x(n-m)\}=z^{-m}X(z)\]</div>
+<p>线性性质还可直接得到右边余弦序列的 z 变换：</p>
+<div class="formula">\[x(n)=\cos(\omega_0n)u(n)\quad\Longrightarrow\quad X(z)=\frac{1-\cos(\omega_0)z^{-1}}{1-2\cos(\omega_0)z^{-1}+z^{-2}},\qquad \left|z\right|>1\]</div>
 <p>例如 \(x(n)=u(n)-u(n-3)=\delta(n)+\delta(n-1)+\delta(n-2)\)，故：</p>
 <div class="formula">\[X(z)=1+z^{-1}+z^{-2},\qquad \text{ROC：}\left|z\right|>0\]</div>
 <p>应先写出相加或相减后的最终时间序列，再判定 ROC，不能机械地仅对原单边序列 ROC 求交。</p>
@@ -43,6 +47,7 @@ def write_html(output: Path) -> Path:
 <p>当 \(\left|b\right|<\left|a\right|\) 时，相消后的 ROC 可从 \(\left|z\right|>\left|a\right|\) 扩大为 \(\left|z\right|>\left|b\right|\)。</p>
 <h2>其他常用性质</h2>
 <div class="formula">\[\mathcal{Z}\{x(-n)\}=X(z^{-1}),\qquad \mathcal{Z}\{a^nx(n)\}=X(a^{-1}z),\qquad \mathcal{Z}\{nx(n)\}=-z\frac{\mathrm{d}X(z)}{\mathrm{d}z}\]</div>
+<div class="formula">\[\mathcal{Z}\{x^*(n)\}=X^*(z^*)\]</div>
 <p>固定的判定顺序是：先列 \(X(z)\) 与 ROC；再做性质运算；最后依据化简后的表达式和时域支持范围重新确定最终 ROC。</p>
 </main>"""
     output.write_text(f'<!doctype html><meta charset="utf-8"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}', encoding="utf-8")

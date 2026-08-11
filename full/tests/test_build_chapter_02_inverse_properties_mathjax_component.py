@@ -12,5 +12,8 @@ def test_inverse_and_properties_component_is_one_mathjax_flow(tmp_path: Path):
     assert r"\mathcal{Z}\{x(n-m)\}=z^{-m}X(z)" in html
     assert r"Y(z)=X(z)H(z)" in html
     assert r"\mathcal{Z}\{nx(n)\}=-z\frac{\mathrm{d}X(z)}{\mathrm{d}z}" in html
+    assert r"A_k=\left.\left(1-p_kz^{-1}\right)X(z)\right|_{z=p_k}" in html
+    assert r"x(n)=\cos(\omega_0n)u(n)" in html
+    assert r"\mathcal{Z}\{x^*(n)\}=X^*(z^*)" in html
     assert "drawImage" not in html
     assert "<image" not in html
