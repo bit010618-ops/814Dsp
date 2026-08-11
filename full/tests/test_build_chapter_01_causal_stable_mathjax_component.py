@@ -8,6 +8,6 @@ def test_causal_stable_uses_complete_mathjax_without_formula_images(tmp_path: Pa
     assert r"h(n)=0\quad(n<0)" in page
     assert r"|x(n)|\leq M<\infty" in page
     assert r"\sum_{n=-\infty}^{\infty}|h(n)|=q<\infty" in page
-    assert ".causal-intro{break-after:page}" in page
+    assert "break-after:page" not in page
     assert "<image" not in page
     assert "drawImage" not in page

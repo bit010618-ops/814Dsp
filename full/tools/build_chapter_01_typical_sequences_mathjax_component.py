@@ -133,7 +133,6 @@ p { margin:0 0 9pt; }
 figcaption { text-align:center; color:#596875; font-size:9pt; margin-top:2pt; }
 .chart-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9pt; }
 .chart-grid figure:last-child { grid-column:1 / -1; }
-.next-page { break-before:page; }
 @media screen and (max-width:560px) { body { font-size:10.5pt; } .chapter { width:100%; max-width:100%; } .chart { margin-left:0; margin-right:0; } .chart-grid { grid-template-columns:1fr; } .chart-grid figure:last-child { grid-column:auto; } }
 </style>__CONTENT__</html>"""
     output.write_text(template.replace("__MATHJAX__", MATHJAX).replace("__CONTENT__", content), encoding="utf-8")

@@ -17,5 +17,5 @@ def test_typical_sequences_component_uses_mathjax_and_real_svg(tmp_path: Path):
     assert page.count("<svg") >= 7
     assert 'data-index="-2"' in page
     assert 'class="next-page"' in page
-    assert ".next-page { break-before:page; }" in page
+    assert "break-before:page" not in page
     assert "MATLAB" not in page

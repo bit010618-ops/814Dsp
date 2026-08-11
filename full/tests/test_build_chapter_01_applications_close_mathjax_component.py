@@ -12,7 +12,7 @@ def test_applications_close_uses_mathjax_and_data_driven_wheel_diagram(tmp_path:
     assert r"f_s\geq2f_h" in html
     assert "wagon_wheel_svg" in html
     assert 'class="apps-intro"' in html
-    assert ".apps-intro{break-after:page}" in html
+    assert "break-after:page" not in html
     assert "figure{break-inside:avoid;" in html
     assert "<svg" in html
     assert "drawImage" not in html

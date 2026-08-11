@@ -69,7 +69,6 @@ h3 { color:#315d7c; font-size:12.5pt; font-weight:400; margin:16pt 0 6pt; }
 p { margin:0 0 9pt; }
 .formula { background:#f4f7f8; border-radius:5pt; padding:9pt 14pt; margin:10pt 0 13pt; overflow-x:auto; overflow-y:hidden; text-align:center; }
 .formula mjx-container[display="true"] { margin:0 !important; }
-.handoff-lede { break-after:page; }
 @media screen and (max-width:560px) { body { font-size:10.5pt; } .chapter { width:100%; max-width:100%; } }
 </style>__CONTENT__</html>"""
     output.write_text(

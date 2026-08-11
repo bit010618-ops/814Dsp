@@ -32,7 +32,7 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[r_{xy}(n)=x(n)*y(-n),\qquad r_{yx}(n)=y(n)*x(-n)\]</div>
 <div class="formula">\[r_{xx}(n)=x(n)*x(-n)\]</div>
 <p>若 \(y(n)=x(n-2)+w(n)\)，其中 \(w(n)\) 为零均值噪声，则 \(r_{yx}(n)\) 在 \(n=2\) 附近出现显著峰值；这表明 \(y(n)\) 与延迟两点的 \(x(n)\) 最相似。</p></section></main>"""
-    template = r"""<!doctype html><html lang="zh-CN"><meta charset="utf-8"><script>window.MathJax={tex:{packages:{'[+]':['ams']}}};</script><script defer src="__MATHJAX__"></script><style>@page{size:A4;margin:18mm 18mm 20mm}body{font:11pt/1.75 "Microsoft YaHei",serif;color:#1f2933}.chapter{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.properties-intro{break-after:page}</style>__CONTENT__</html>"""
+    template = r"""<!doctype html><html lang="zh-CN"><meta charset="utf-8"><script>window.MathJax={tex:{packages:{'[+]':['ams']}}};</script><script defer src="__MATHJAX__"></script><style>@page{size:A4;margin:18mm 18mm 20mm}body{font:11pt/1.75 "Microsoft YaHei",serif;color:#1f2933}.chapter{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}</style>__CONTENT__</html>"""
     output.write_text(template.replace("__MATHJAX__", MATHJAX).replace("__CONTENT__", content), encoding="utf-8")
     return output
 

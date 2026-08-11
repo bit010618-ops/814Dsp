@@ -10,6 +10,6 @@ def test_convolution_properties_use_complete_mathjax_without_formula_images(tmp_
     assert r"N_1+N_3\leq n\leq N_2+N_4" in page
     assert r"\\&=x(n)+\alpha x(n-R)" in page
     assert r"r_{xy}(n)=x(n)*y(-n)" in page
-    assert ".properties-intro{break-after:page}" in page
+    assert "break-after:page" not in page
     assert "<image" not in page
     assert "drawImage" not in page

@@ -13,6 +13,6 @@ def test_time_invariance_component_uses_complete_mathjax_without_formula_images(
     assert r"x(2n-2k)\ne x(2n-k)" in page
     assert r"\frac{1}{M_2-M_1+1}" in page
     assert 'class="handoff-lede"' in page
-    assert "break-after:page" in page
+    assert "break-after:page" not in page
     assert "<image" not in page
     assert "drawImage" not in page
