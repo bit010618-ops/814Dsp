@@ -127,6 +127,18 @@ z=\frac{1+sT/2}{1-sT/2}.
 \qquad
 \omega=2\arctan\frac{\Omega T}{2}.
 \]</div>
+<p>更一般地，可通过常数 [[C]] 调整模拟、数字频率的对应位置：</p>
+<div class="formula">\[
+s=C\frac{1-z^{-1}}{1+z^{-1}},
+\qquad
+\Omega=C\tan\frac{\omega}{2}.
+\]</div>
+<p>若希望低频处近似保持线性对应，取 [[C=2/T]]；若希望指定数字频率 [[\omega_0]] 精确对应模拟频率 [[\Omega_0]]，则按预畸变条件取：</p>
+<div class="formula">\[
+C=\frac{\Omega_0}{\tan(\omega_0/2)},
+\qquad
+\Omega_0=C\tan\frac{\omega_0}{2}.
+\]</div>
 <p>该映射无混叠，但频率不再线性对应，故需要预畸变：将数字指标频率先转换为模拟频率，再设计模拟原型。低频近似下 [[\tan(\omega/2)\approx\omega/2]]，对应较接近线性；频率越高，畸变越不能忽略。</p>
 
 <h2>6.5 IIR 数字滤波器设计方法小结</h2>
