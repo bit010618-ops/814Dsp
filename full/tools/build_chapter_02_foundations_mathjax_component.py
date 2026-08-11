@@ -82,6 +82,25 @@ a^n u(n), & \left|z\right|>\left|a\right|,\\
 \end{cases}
 \]</div>
 <p>右边序列的 ROC 位于最外极点之外；左边序列的 ROC 位于最内极点之内；双边序列的 ROC 是两个极点圆之间的环域。有限长序列的 ROC 通常覆盖全部有限 z 平面，是否包含零点或无穷远点取决于其时间支持范围。</p>
+<h2>四种典型序列的 ROC 形状</h2>
+<p>把时间支持范围与 ROC 对照，可以避免只看代数式而误判序列类型。有限长序列的 ROC 不含有限极点；右边序列的 ROC 向无穷远延伸；左边序列的 ROC 向原点延伸；双边序列的 ROC 被两个极点圆夹在中间。</p>
+<div class="formula">\[
+\begin{aligned}
+\text{有限长序列：}\;&0<\left|z\right|<\infty,\\
+\text{右边序列：}\;&\left|z\right|>\left|p_{\max}\right|,\\
+\text{左边序列：}\;&\left|z\right|<\left|p_{\min}\right|,\\
+\text{双边序列：}\;&\left|p_i\right|<\left|z\right|<\left|p_{i+1}\right|.
+\end{aligned}
+\]</div>
+<p>若有限长序列只含非负时间样本，ROC 包含无穷远点而可能不含原点；若只含非正时间样本，ROC 包含原点而可能不含无穷远点。这里的 \(p_{\max}\) 与 \(p_{\min}\) 分别表示模最大的有限极点和模最小的有限极点。</p>
+<h2>给定极点时 ROC 的可能性</h2>
+<p>对于有理型 \(X(z)\)，ROC 只能是由极点圆划分出的区域，不能穿过极点。若全部极点的模依次为 \(\left|p_1\right|<\left|p_2\right|<\cdots<\left|p_M\right|\)，可能的 ROC 依次对应左边、双边或右边序列：</p>
+<div class="formula">\[
+\left|z\right|<\left|p_1\right|,\quad
+\left|p_1\right|<\left|z\right|<\left|p_2\right|,\quad\ldots,\quad
+\left|z\right|>\left|p_M\right|.
+\]</div>
+<p>因此，给出 \(X(z)\) 时还必须给出 ROC；给出因果性时，ROC 取最外极点之外；给出稳定性时，ROC 必须包含单位圆。这个顺序与后续由系统函数判断因果、稳定和频率响应的步骤保持一致。</p>
 <h2>z 反变换与判定顺序</h2>
 <p>由 \(X(z)\) 求 \(x(n)\) 称为 z 反变换。本质上是根据 ROC 把 \(X(z)\) 展开成合适方向的幂级数，再读取 \(z^{-n}\) 的系数。常用方法包括围线积分、部分分式展开和幂级数展开。</p>
 <div class="formula">\[x(n)=\frac{1}{2\pi j}\oint_C X(z)z^{n-1}\,\mathrm{d}z\]</div>
