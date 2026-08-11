@@ -21,6 +21,9 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"\theta(\omega)&=-\tau\omega" in html
     assert r"\theta(\omega)&=\beta_0-\tau\omega" in html
     assert r"\beta_0&=\pm\frac{\pi}{2}" in html
+    assert r"H(\omega)\cos(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\cos(\omega n)" in html
+    assert r"H(\omega)\sin(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\sin(\omega n)" in html
+    assert r"\sum_{n=0}^{N-1}h(n)\sin\!\left[(n-\tau)\omega\right]=0" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html

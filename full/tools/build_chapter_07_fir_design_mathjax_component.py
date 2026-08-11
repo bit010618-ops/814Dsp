@@ -36,6 +36,17 @@ H\!\left(e^{j\omega}\right)&=\pm\left|H\!\left(e^{j\omega}\right)\right|e^{j\the
 \theta(\omega)&=\beta_0-\tau\omega,& \beta_0&=\pm\frac{\pi}{2} &&\text{（第二类线性相位）}.
 \end{aligned}
 \]</div>
+<p>对第一类线性相位，把频率响应分别按实部和虚部比较，可得到便于推导单位脉冲响应对称性的两条关系：</p>
+<div class="formula">\[
+\begin{aligned}
+H(\omega)\cos(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\cos(\omega n),\\
+H(\omega)\sin(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\sin(\omega n).
+\end{aligned}
+\]</div>
+<p>两式消去振幅响应，得到对任意 \(\omega\) 都成立的条件：</p>
+<div class="formula">\[
+\sum_{n=0}^{N-1}h(n)\sin\!\left[(n-\tau)\omega\right]=0.
+\]</div>
 <div class="formula">\[
 h(n)=\pm h(N-1-n),\qquad 0\leq n\leq N-1.
 \]</div>
