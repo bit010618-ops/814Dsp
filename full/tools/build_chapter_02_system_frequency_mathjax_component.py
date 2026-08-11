@@ -61,10 +61,15 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H(e^{j\omega})=\sum_{n=-\infty}^{\infty}h(n)e^{-j\omega n}=H(z)\big|_{z=e^{j\omega}}\]</div>
 <p>它由幅频响应与相频响应共同构成：</p>
 <div class="formula">\[H(e^{j\omega})=\left|H(e^{j\omega})\right|e^{j\angle H(e^{j\omega})}\]</div>
+<p>幅度响应常用分贝表示，以便直接比较增益和衰减：</p>
+<div class="formula">\[G_{\mathrm{dB}}(\omega)=20\log_{10}\left|H(e^{j\omega})\right|\]</div>
+<p>因此 \(0\,\mathrm{dB}\) 对应单位增益；\(20\,\mathrm{dB}\) 对应十倍幅度增益；\(-20\,\mathrm{dB}\) 对应十分之一幅度。</p>
 <p>若输入为复指数 [[x(n)=e^{j\omega_0n}]]，输出仍为同频率复指数：</p>
 <div class="formula">\[y(n)=H(e^{j\omega_0})e^{j\omega_0n}\]</div>
 <p>对实正弦输入 [[x(n)=A\cos(\omega_0n+\varphi)]]，频率不变；输出幅度乘以 [[|H(e^{j\omega_0})|]]，相位增加 [[\angle H(e^{j\omega_0})]]。纯延时 [[n_d]] 个样本只改变相位：</p>
 <div class="formula">\[H(e^{j\omega})=e^{-j\omega n_d},\qquad \left|H(e^{j\omega})\right|=1,\quad \angle H(e^{j\omega})=-\omega n_d\]</div>
+<p>相频响应随频率的斜率对应群延迟；对理想延时系统，所有频率分量具有相同的群延迟：</p>
+<div class="formula">\[\tau_g(\omega)=-\frac{\mathrm{d}}{\mathrm{d}\omega}\angle H(e^{j\omega}),\qquad \tau_g(\omega)=n_d\quad\text{（理想延时）}\]</div>
 <h2>三点平均系统</h2>
 <p>对 [[y(n)=\frac{x(n)+x(n-1)+x(n-2)}{3}]]，频率响应为：</p>
 <div class="formula">\[H(e^{j\omega})=\frac{1+e^{-j\omega}+e^{-j2\omega}}{3}\]</div>
@@ -73,6 +78,8 @@ def write_html(output: Path) -> Path:
 <p>设系统函数的零点为 [[c_r]]、极点为 [[d_r]]，增益为 [[A]]。令单位圆上的频率点 [[B=e^{j\omega}]] 随 [[\omega]] 转动，则零极点分解给出：</p>
 <div class="formula">\[H(z)=A\frac{\prod_r(z-c_r)}{\prod_r(z-d_r)}\]</div>
 <div class="formula">\[\left|H(e^{j\omega})\right|=\left|A\right|\frac{\prod_r\left|B-C_r\right|}{\prod_r\left|B-D_r\right|},\qquad B=e^{j\omega}\]</div>
+<p>若分子、分母以 \(z\) 表示时的次数分别为 \(N\)、\(M\)，把单位圆上的频率点代入后，额外幂次只影响相位：</p>
+<div class="formula">\[H(e^{j\omega})=Ae^{j(N-M)\omega}\frac{\prod_r\left(e^{j\omega}-c_r\right)}{\prod_r\left(e^{j\omega}-d_r\right)}\]</div>
 <p>因此，频率点靠近极点时分母变小，幅度形成峰；靠近零点时分子变小，幅度形成谷。单位圆上的零点对应完全抑制的频率；单位圆上的极点会导致不稳定，故稳定系统的极点不能在单位圆上。</p>
 __Z_PLANE__
 <h2>一阶系统与梳状零点</h2>

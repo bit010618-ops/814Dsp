@@ -11,6 +11,9 @@ def test_system_frequency_and_geometry_are_reflowed_with_real_svg(tmp_path: Path
     assert r"h(n)=0,\qquad n<0" in html
     assert r"\sum_{n=-\infty}^{\infty}\left|h(n)\right|<\infty" in html
     assert r"H(e^{j\omega})=\sum_{n=-\infty}^{\infty}h(n)e^{-j\omega n}" in html
+    assert r"20\log_{10}\left|H(e^{j\omega})\right|" in html
+    assert r"\tau_g(\omega)=-\frac{\mathrm{d}}{\mathrm{d}\omega}\angle H(e^{j\omega})" in html
+    assert r"e^{j(N-M)\omega}" in html
     assert r"\left|H(e^{j\omega})\right|=\left|A\right|" in html
     assert '<svg' in html
     assert 'marker-end="url(#arrow)"' in html

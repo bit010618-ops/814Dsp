@@ -31,6 +31,9 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H(z)=\frac{z-1}{2z}=\frac{1}{2}(1-z^{-1}),\qquad y(n)=\frac{1}{2}[x(n)-x(n-1)]\]</div>
 <p>另一类低通设计是在 [[z=a]]、[[0&lt;a&lt;1]] 处放一个靠近 [[z=1]] 的极点；极点越接近单位圆，低频增强越明显，但必须严格留在单位圆内以保证稳定：</p>
 <div class="formula">\[H(z)=\frac{1-a}{z-a},\qquad 0&lt;a&lt;1\]</div>
+<p>把通带截止频率定义为幅度下降到 \(-3\,\mathrm{dB}\) 的频率 \(\omega_c\)，则：</p>
+<div class="formula">\[\cos\omega_c=\frac{4a-a^2-1}{2a}\]</div>
+<p>当 \(a\) 靠近 1 时，截止频率的近似关系为 \(\omega_c\approx1-a\)。因此极点越靠近单位圆，通带越窄、低频选择性越强。</p>
 <h2>数字谐振器</h2>
 <p>数字谐振器把输入频谱中靠近某一固有频率的成分显著增强。二阶实系数谐振器通常在单位圆内、角度为 [[\pm\omega_0]] 的位置配置一对共轭极点：</p>
 <div class="formula">\[p_{1,2}=re^{\pm j\omega_0},\qquad 0&lt;r&lt;1\]</div>
