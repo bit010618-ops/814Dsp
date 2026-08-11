@@ -32,3 +32,17 @@ def test_2002_dft_idft_convolution_question_keeps_the_unspecified_length_explici
     assert r"x_3(n)=x_1(n)\mathbin{\circledast}_N x_2(n)" in answer
     assert r"N\geq5+3-1=7" in answer
     assert r"\left\{1,\frac{3}{2},\frac{7}{4},\frac{7}{8},\frac{7}{16},\frac{3}{16},\frac{1}{16}\right\}" in answer
+
+
+def test_2002_frequency_resolution_question_has_the_required_zero_padding_calculation(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-03-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-03-answers.html").read_text(encoding="utf-8")
+
+    assert "2002 年真题（第十题）" in question
+    assert r"T=0.15\,\mathrm{s}" in question
+    assert r"\Delta\Omega=\frac{2\pi}{NT}" in answer
+    assert r"N>\frac{2\pi}{2\times0.15}" in answer
+    assert r"N\geq21" in answer
+    assert r"N=32" in answer

@@ -25,6 +25,9 @@ def write_training_html(output: Path) -> Path:
 <div class="exam-head"><span>2002 年真题</span><span>详解见 P.____</span></div>
 <p>九、已知 \(x_1(n)=\left(\frac{1}{2}\right)^n,\ 0\leq n\leq4\)，\(x_2(n)=1,\ 0\leq n\leq2\)，且 \(X_1(K)=\operatorname{DFT}[x_1(n)]\)，\(X_2(K)=\operatorname{DFT}[x_2(n)]\)，求 \(x_3(n)=\operatorname{IDFT}\left[X_1(K)X_2(K)\right]\)。</p>
 <div class="writing-space"></div>
+<div class="exam-head"><span>2002 年真题（第十题）</span><span>详解见 P.____</span></div>
+<p>十、已知序列 \(h(n)\) 是 \(h(t)\) 的 9 点取样 \(0\leq n\leq8\)，取样间隔 \(T=0.15\,\mathrm{s}\)，问如何用 DFT 计算其频谱，使频谱分辨率高于 \(2\,\mathrm{rad/s}\)？</p>
+<div class="writing-space"></div>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -74,6 +77,23 @@ x_3(n)=\left\{1,\frac{3}{2},\frac{7}{4},\frac{7}{8},\frac{7}{16},\frac{3}{16},\f
 \qquad 0\leq n\leq6.
 \]</div>
 <p>若实际 DFT 点数小于 7，应将这七个线性卷积样值按该 \(N\) 点周期折回相加，得到相应的循环卷积结果。</p>
+<h2>2002 年真题（第十题）</h2>
+<p>已知序列 \(h(n)\) 是 \(h(t)\) 的 9 点取样 \(0\leq n\leq8\)，取样间隔 \(T=0.15\,\mathrm{s}\)，问如何用 DFT 计算其频谱，使频谱分辨率高于 \(2\,\mathrm{rad/s}\)？</p>
+<div class="answer-step"><strong>第 1 步：写出 DFT 的角频率间隔。</strong>对 \(N\) 点 DFT，模拟角频率的取样间隔为：</div>
+<div class="formula">\[
+\Delta\Omega=\frac{2\pi}{NT}.
+\]</div>
+<div class="answer-step"><strong>第 2 步：由分辨率要求确定点数。</strong>“高于 \(2\,\mathrm{rad/s}\)”即要求频率间隔小于 \(2\,\mathrm{rad/s}\)，故：</div>
+<div class="formula">\[
+\frac{2\pi}{N\times0.15}<2
+\quad\Longrightarrow\quad
+N>\frac{2\pi}{2\times0.15}\approx20.94.
+\]</div>
+<p>因此取 \(N\geq21\)。为了使用常用的基 2 FFT，可将原有 9 点样值后补零，取 \(N=32\) 点 DFT。此时：</p>
+<div class="formula">\[
+\Delta\Omega=\frac{2\pi}{32\times0.15}\approx1.309\,\mathrm{rad/s}<2\,\mathrm{rad/s}.
+\]</div>
+<p>零填充使频域取样点更密，便于观察频谱；原始有效记录仍为 9 个样本，应同时保留这一点以区分频谱显示加密与记录长度带来的本征分辨能力。</p>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
