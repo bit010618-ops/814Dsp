@@ -12,5 +12,7 @@ def test_frequency_sampling_component_covers_periodic_summation_and_recovery(tmp
     assert r"\sum_{r=-\infty}^{\infty}x(n-rN)" in html
     assert r"N\geq M" in html
     assert r"X(z)=\sum_{n=0}^{M-1}x(n)z^{-n}" in html
+    assert r"X(z)=\frac{1-z^{-N}}{N}" in html
+    assert r"\Phi_k(z)=\frac{1}{N}\frac{1-z^{-N}}{1-W_N^{-k}z^{-1}}" in html
     assert "时域混叠" in html
     assert "MATLAB" not in html

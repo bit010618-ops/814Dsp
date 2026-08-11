@@ -48,6 +48,15 @@ N\geq M,
 <div class="formula">\[
 X(z)=\sum_{n=0}^{M-1}x(n)z^{-n}.
 \]</div>
+<p>由单位圆上等间隔的 [[N]] 个频率样值还可直接写出插值恢复式：</p>
+<div class="formula">\[
+X(z)=\frac{1-z^{-N}}{N}
+\sum_{k=0}^{N-1}\frac{X(k)}{1-W_N^{-k}z^{-1}}
+=\sum_{k=0}^{N-1}X(k)\Phi_k(z),
+\qquad
+\Phi_k(z)=\frac{1}{N}\frac{1-z^{-N}}{1-W_N^{-k}z^{-1}}.
+\]</div>
+<p>每个插值函数在单位圆的 [[N]] 个等间隔频率位置具有选择性；因此，当 [[N\geq M]] 时，频率样值可唯一确定有限长序列的 [[z]] 变换。</p>
 <p>令 [[z=e^{j\omega}]]，便得到整个连续频率轴上的 DTFT：</p>
 <div class="formula">\[
 X\left(e^{j\omega}\right)=\sum_{n=0}^{M-1}x(n)e^{-j\omega n}.
