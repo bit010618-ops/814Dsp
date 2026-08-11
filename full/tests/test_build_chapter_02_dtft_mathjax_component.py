@@ -11,6 +11,8 @@ def test_dtft_and_conjugate_content_is_one_reflowed_mathjax_document(tmp_path: P
     assert r"x(n)=\frac{1}{2\pi}\int_{-\pi}^{\pi}X(e^{j\omega})e^{j\omega n}\,\mathrm{d}\omega" in html
     assert r"X(e^{j(\omega+2\pi k)})=X(e^{j\omega})" in html
     assert r"\mathcal{F}\{\operatorname{Re}[x(n)]\}=X_e(e^{j\omega})" in html
+    assert r"\mathcal{F}\{x_e(n)\}=\operatorname{Re}\{X(e^{j\omega})\}" in html
+    assert r"\mathcal{F}\{x_o(n)\}=j\operatorname{Im}\{X(e^{j\omega})\}" in html
     assert r"\(x(n)\)" in html
     assert r"\(z=e^{j\omega}\)" in html
     assert r"\(h_o(-1)=-\frac{1}{2}\)" in html

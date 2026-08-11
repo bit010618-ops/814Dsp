@@ -8,6 +8,8 @@ def test_system_frequency_and_geometry_are_reflowed_with_real_svg(tmp_path: Path
     assert "mathjax@3" in html
     assert "page-break-after:always" not in html
     assert r"H(z)=\frac{Y(z)}{X(z)}=\mathcal{Z}\{h(n)\}" in html
+    assert r"h(n)=0,\qquad n<0" in html
+    assert r"\sum_{n=-\infty}^{\infty}\left|h(n)\right|<\infty" in html
     assert r"H(e^{j\omega})=\sum_{n=-\infty}^{\infty}h(n)e^{-j\omega n}" in html
     assert r"\left|H(e^{j\omega})\right|=\left|A\right|" in html
     assert '<svg' in html

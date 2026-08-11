@@ -55,6 +55,8 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[\arg X(e^{j\omega})=-\arg X(e^{-j\omega})\]</div>
 <p>在变换对中，实部与虚部也分别对应共轭对称和共轭反对称分量：</p>
 <div class="formula">\[\mathcal{F}\{\operatorname{Re}[x(n)]\}=X_e(e^{j\omega}),\qquad \mathcal{F}\{j\operatorname{Im}[x(n)]\}=X_o(e^{j\omega})\]</div>
+<p>反过来，时域的共轭对称与共轭反对称分量分别给出频谱的实部与虚部：</p>
+<div class="formula">\[\mathcal{F}\{x_e(n)\}=\operatorname{Re}\{X(e^{j\omega})\},\qquad \mathcal{F}\{x_o(n)\}=j\operatorname{Im}\{X(e^{j\omega})\}\]</div>
 <h2>例题：由实部恢复实因果序列</h2>
 <p><strong>例题</strong>：设 [[h(n)]] 为实因果序列，且 [[H_R(e^{j\omega})=1+\cos\omega]]，求 [[h(n)]] 与 [[H(e^{j\omega})]]。</p>
 <h3>解</h3>
