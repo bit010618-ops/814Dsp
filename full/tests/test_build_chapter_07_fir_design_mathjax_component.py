@@ -52,6 +52,9 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"\tau=\frac{N-1}{2}=16" in html
     assert r"\sin\!\left[0.3\pi(n-16)\right]" in html
     assert r"R_{33}(n)" in html
+    assert r"\sin\!\left[\pi(n-\tau)\right]-\sin\!\left[\omega_c(n-\tau)\right]" in html
+    assert r"\sin\!\left[\omega_2(n-\tau)\right]-\sin\!\left[\omega_1(n-\tau)\right]" in html
+    assert r"\sin\!\left[\pi(n-\tau)\right]+\sin\!\left[\omega_1(n-\tau)\right]-\sin\!\left[\omega_2(n-\tau)\right]" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html

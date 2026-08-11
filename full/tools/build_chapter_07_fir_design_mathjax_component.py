@@ -188,6 +188,16 @@ h(n)=
 \left[0.54-0.46\cos\!\left(\frac{n\pi}{16}\right)\right]R_{33}(n).
 \]</div>
 <p>最后必须复核实际幅频响应的通带、阻带和过渡带；若不满足指标，应改变长度或窗形重新设计。</p>
+<h3>高通、带通与带阻的理想单位抽样响应</h3>
+<p>高通和带阻的线性相位设计通常取 [[N]] 为奇数。它们可以由全通、低通响应直接相减或相加；带通则由两个低通响应相减得到。令 [[\tau=(N-1)/2]]，三类理想单位抽样响应为：</p>
+<div class="formula">\[
+\begin{aligned}
+h_{\mathrm{hp}}(n)&=\frac{\sin\!\left[\pi(n-\tau)\right]-\sin\!\left[\omega_c(n-\tau)\right]}{\pi(n-\tau)},\\
+h_{\mathrm{bp}}(n)&=\frac{\sin\!\left[\omega_2(n-\tau)\right]-\sin\!\left[\omega_1(n-\tau)\right]}{\pi(n-\tau)},\\
+h_{\mathrm{bs}}(n)&=\frac{\sin\!\left[\pi(n-\tau)\right]+\sin\!\left[\omega_1(n-\tau)\right]-\sin\!\left[\omega_2(n-\tau)\right]}{\pi(n-\tau)}.
+\end{aligned}
+\]</div>
+<p>在 [[n=\tau]] 处各式应取极限值，再乘所选窗函数。带通设计的过渡带宽取两侧过渡带宽中的较小值；带阻可理解为高通与低通响应之和。</p>
 
 <h2>7.3 利用频率采样法设计 FIR 滤波器</h2>
 <p>频率采样法在等间隔频点指定目标频响样值 [[H(k)]]，再用 IDFT 唯一确定有限长冲激响应：</p>
