@@ -103,7 +103,18 @@ y(n)&=x\left((n-3)\bmod4\right)R_4(n)\\
 \]</div>
 
 <h2>循环共轭对称与循环卷积</h2>
-<p>实序列的 DFT 满足循环共轭对称关系 [[X(k)=X^*((-k)\bmod N)]]。计算实序列 DFT 时，只需直接计算约半数频点，其余频点可由该关系复核。</p>
+<p>DFT 的周期性使共轭对称也必须按模 [[N]] 理解。任一 [[N]] 点主值序列可分解为循环共轭对称分量与循环共轭反对称分量：</p>
+<div class="formula">\[
+\begin{aligned}
+x_{\mathrm{ep}}(n)&=\frac{1}{2}\left[x(n)+x^*\left((N-n)\bmod N\right)\right],\\
+x_{\mathrm{op}}(n)&=\frac{1}{2}\left[x(n)-x^*\left((N-n)\bmod N\right)\right].
+\end{aligned}
+\]</div>
+<p>它们分别对应频域的实部与虚部。特别地，实序列的 DFT 满足循环共轭对称关系：</p>
+<div class="formula">\[
+X(k)=X^*\left((N-k)\bmod N\right),\qquad 0\leq k\leq N-1.
+\]</div>
+<p>计算实序列 DFT 时，只需直接计算约半数频点，其余频点可由该关系复核。</p>
 <p>两个 [[N]] 点序列的循环卷积定义为：</p>
 <div class="formula">\[
 y(n)=x_1(n)\mathbin{\circledast}_N x_2(n)

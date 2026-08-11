@@ -12,6 +12,9 @@ def test_dft_component_covers_definition_periodicity_and_circular_operations(tmp
     assert r"X(k)=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{N}}" in html
     assert r"例题：序列 \(R_4(n)\) 的 DTFT、8 点 DFT 与 16 点 DFT" in html
     assert r"x\left((n-n_0)\bmod N\right)" in html
+    assert r"x_{\mathrm{ep}}(n)&=\frac{1}{2}" in html
+    assert r"x_{\mathrm{op}}(n)&=\frac{1}{2}" in html
+    assert r"X(k)=X^*\left((N-k)\bmod N\right)" in html
     assert r"\begin{aligned}" in html
     assert "MATLAB" not in html
 
