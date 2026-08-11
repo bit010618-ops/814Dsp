@@ -116,7 +116,23 @@ H_{\mathrm{IV}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\sin\!\left[\left(m-\frac{1}{2}\ri
 <div class="formula">\[
 h(n)=h_d(n)w(n).
 \]</div>
+<p>取长度为 [[N]] 的矩形窗时，截断序列与其频率响应分别为：</p>
+<div class="formula">\[
+R_N(n)=
+\begin{cases}
+1, & 0\le n\le N-1,\\
+0, & \text{其他}.
+\end{cases}
+\qquad
+W_R\!\left(e^{j\omega}\right)
+=\frac{1-e^{-j\omega N}}{1-e^{-j\omega}}
+=e^{-j\omega\frac{N-1}{2}}\frac{\sin(N\omega/2)}{\sin(\omega/2)}.
+\]</div>
 <p>时域相乘对应频域卷积，因此加窗会形成过渡带并产生振荡起伏。增加 [[N]] 会缩窄主瓣、减小过渡带宽，但同一窗形的主旁瓣能量比例并不因此改变；选窗则主要控制阻带衰减。矩形、三角、汉宁、海明和布莱克曼窗的典型阻带衰减依次增强，而对应过渡带通常变宽。</p>
+<p>矩形窗频谱主瓣的第一零点间隔约为 [[4\pi/N]]，因此理想截止频率 [[\omega_c]] 附近会被展宽为过渡带，典型范围可写为：</p>
+<div class="formula">\[
+\omega_c-\frac{2\pi}{N}\lesssim\omega\lesssim\omega_c+\frac{2\pi}{N}.
+\]</div>
 <p>设计步骤是：由通/阻带边界取理想截止频率；写出 [[h_d(n)]]；按阻带衰减选择窗型；由过渡带宽确定 [[N]]；计算 [[h(n)]] 并复核频响。线性相位高通与带阻设计通常要求 [[N]] 为奇数，避免结构固有的端点零值与指标冲突。</p>
 
 <table class="table"><thead><tr><th>窗函数</th><th>主瓣宽度</th><th>旁瓣峰值</th><th>典型过渡带宽</th><th>典型阻带最小衰减</th></tr></thead><tbody>

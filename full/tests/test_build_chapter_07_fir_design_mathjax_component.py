@@ -38,6 +38,10 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"H_{\mathrm{IV}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\sin\!\left[\left(m-\frac{1}{2}\right)\omega\right]" in html
     assert r"z=-1,\quad z=0.5,\quad z=0.5e^{j\pi/4}" in html
     assert r"N-1=7,\qquad \tau=\frac{N-1}{2}=3.5" in html
+    assert "R_N(n)=\n\\begin{cases}" in html
+    assert r"\frac{1-e^{-j\omega N}}{1-e^{-j\omega}}" in html
+    assert r"e^{-j\omega\frac{N-1}{2}}\frac{\sin(N\omega/2)}{\sin(\omega/2)}" in html
+    assert r"\omega_c-\frac{2\pi}{N}\lesssim\omega\lesssim\omega_c+\frac{2\pi}{N}" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html
