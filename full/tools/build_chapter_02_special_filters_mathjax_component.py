@@ -31,6 +31,16 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H(z)=\frac{z-1}{2z}=\frac{1}{2}(1-z^{-1}),\qquad y(n)=\frac{1}{2}[x(n)-x(n-1)]\]</div>
 <p>另一类低通设计是在 [[z=a]]、[[0&lt;a&lt;1]] 处放一个靠近 [[z=1]] 的极点；极点越接近单位圆，低频增强越明显，但必须严格留在单位圆内以保证稳定：</p>
 <div class="formula">\[H(z)=\frac{1-a}{z-a},\qquad 0&lt;a&lt;1\]</div>
+<h2>数字谐振器</h2>
+<p>数字谐振器把输入频谱中靠近某一固有频率的成分显著增强。二阶实系数谐振器通常在单位圆内、角度为 [[\pm\omega_0]] 的位置配置一对共轭极点：</p>
+<div class="formula">\[p_{1,2}=re^{\pm j\omega_0},\qquad 0&lt;r&lt;1\]</div>
+<p>极点角度决定通带中心频率 [[\omega_0]]；半径 [[r]] 决定选择性。[[r]] 越接近 1，极点越接近单位圆，谐振峰越尖、带宽越窄。若同时要求在直流与最高频率处完全抑制，可在 [[z=1]]、[[z=-1]] 处配置零点，得到一类二阶带通结构：</p>
+<div class="formula">\[H(z)=G\frac{1-z^{-2}}{1-2r\cos\omega_0\,z^{-1}+r^2z^{-2}}\]</div>
+<p>其中 [[G]] 用中心频率处的目标幅度确定；[[r]] 则由给定带宽或指定频率处的幅度条件确定。设计后必须检查极点半径小于 1，才能保证因果稳定。</p>
+<h2>DTMF 双音多频信号</h2>
+<p>电话按键的 DTMF 信号由一个低频组频率与一个高频组频率叠加而成。低频组为 697、770、852、941 Hz，高频组为 1209、1336、1477、1633 Hz。每个按键对应唯一的一对频率；例如按键 8 对应 852 Hz 和 1336 Hz。</p>
+<div class="formula">\[x(n)=A_1\cos(\omega_1n+\varphi_1)+A_2\cos(\omega_2n+\varphi_2),\qquad \omega_i=2\pi\frac{f_i}{f_s}\]</div>
+<p>生成某个按键信号时，可分别用两个中心频率对应的数字谐振器选择所需频率，再将两路输出相加。判读题目时先由采样频率换算数字频率，再确认两个通带中心分别落在对应低频组和高频组频率上。</p>
 <h2>数字陷波器</h2>
 <p>陷波器用于消除特定窄带干扰。若要抑制数字频率 [[\omega_0]]，必须在单位圆上成对放置共轭零点，才能保证实系数：</p>
 <div class="formula">\[z=e^{\pm j\omega_0},\qquad \omega_0=2\pi\frac{f_0}{f_s}\]</div>
@@ -52,6 +62,17 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[\arg H(e^{j\omega})=\arg H_{\min}(e^{j\omega})+\arg H_{\mathrm{ap}}(e^{j\omega})\]</div>
 <div class="formula">\[\operatorname{grd}\{H(e^{j\omega})\}=\operatorname{grd}\{H_{\min}(e^{j\omega})\}+\operatorname{grd}\{H_{\mathrm{ap}}(e^{j\omega})\}\]</div>
 <p>全通部分只额外引入相位滞后和正群延迟，因此最小相位部分具有最小相位滞后、最小群延迟和最小能量延迟。分解时，将单位圆内的零极点归入 [[H_{\min}(z)]]，单位圆外的零点通过共轭倒易配对组成 [[H_{\mathrm{ap}}(z)]]。</p>
+<h2>工程中常用的滤波方法</h2>
+<p>下列方法用于离散采样数据的预处理，重点在于理解适用的干扰类型与参数选择，而非程序实现。</p>
+<h3>限幅滤波</h3>
+<p>设 [[E]] 为两次采样允许的最大偏差。若新样值与上一次有效输出相差过大，则以旧输出代替新样值，因而可抑制偶发脉冲干扰：</p>
+<div class="formula">\[y(n)=\begin{cases}x(n),&\left|x(n)-y(n-1)\right|\le E,\\y(n-1),&\left|x(n)-y(n-1)\right|&gt;E.\end{cases}\]</div>
+<p>阈值过小会误删信号的真实突变；阈值过大则难以去除干扰。</p>
+<h3>中值滤波与滑动平均</h3>
+<p>中值滤波把连续 [[N]] 个采样值排序后取中间值，对孤立异常点有效；滑动平均则取一个局部窗口内的算术平均，能平滑高频波动，但对脉冲干扰的抑制较弱：</p>
+<div class="formula">\[y(n)=\operatorname{med}\left\{x(n-M),\ldots,x(n),\ldots,x(n+M)\right\}\]</div>
+<div class="formula">\[y(n)=\frac{1}{M_1+M_2+1}\sum_{k=-M_1}^{M_2}x(n-k)\]</div>
+<p>中值平均可先删除一个最大值和一个最小值，再对其余样值取均值；限幅平均可先作限幅，再作滑动平均。加权平均中离当前时刻越近的样值通常赋予更大的权重，灵敏度提高的同时平滑能力会下降。</p>
 <h2>本节检查顺序</h2>
 <p>先把目标频率换成数字频率，再按“零点抑制、极点增强”的规则确定位置；随后检查共轭对称以保证实系数、检查全部极点位于单位圆内以保证稳定；最后根据是否保幅判断是否属于全通，并根据零极点位置判断是否最小相位。</p>
 </main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
