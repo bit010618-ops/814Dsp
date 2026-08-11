@@ -15,6 +15,8 @@ def test_dif_ifft_and_optimization_component_preserves_all_remaining_chapter_top
     assert "4.5 进一步减少运算量的措施" in html
     assert "四类蝶形单元" in html
     assert "线性调频 z 变换" in html
+    assert r"x(n)A^{-n}W^{nk}" in html
+    assert r"nk=\frac{1}{2}\left[n^2+k^2-(k-n)^2\right]" in html
     assert "高斯的遗憾" in html
     assert "MATLAB" not in html
 
