@@ -42,6 +42,10 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"\frac{1-e^{-j\omega N}}{1-e^{-j\omega}}" in html
     assert r"e^{-j\omega\frac{N-1}{2}}\frac{\sin(N\omega/2)}{\sin(\omega/2)}" in html
     assert r"\omega_c-\frac{2\pi}{N}\lesssim\omega\lesssim\omega_c+\frac{2\pi}{N}" in html
+    assert "w_{\\mathrm{tri}}(n)&=\n\\begin{cases}" in html
+    assert r"w_{\mathrm{Han}}(n)&=\frac{1}{2}\left[1-\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n)" in html
+    assert r"w_{\mathrm{Ham}}(n)&=\left[0.54-0.46\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n)" in html
+    assert r"w_{\mathrm{Blk}}(n)&=\left[0.42-0.5\cos\!\left(\frac{2\pi n}{N-1}\right)+0.08\cos\!\left(\frac{4\pi n}{N-1}\right)\right]R_N(n)" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html

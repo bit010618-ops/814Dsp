@@ -128,6 +128,19 @@ W_R\!\left(e^{j\omega}\right)
 =\frac{1-e^{-j\omega N}}{1-e^{-j\omega}}
 =e^{-j\omega\frac{N-1}{2}}\frac{\sin(N\omega/2)}{\sin(\omega/2)}.
 \]</div>
+<p>常用窗函数都在 [[0\le n\le N-1]] 内定义；它们以更宽的主瓣换取更低的旁瓣。三角窗、汉宁窗、海明窗和布莱克曼窗可统一写为：</p>
+<div class="formula">\[
+\begin{aligned}
+w_{\mathrm{tri}}(n)&=
+\begin{cases}
+\dfrac{2n}{N-1}, & 0\le n\le\dfrac{N-1}{2},\\
+2-\dfrac{2n}{N-1}, & \dfrac{N-1}{2}<n\le N-1,
+\end{cases}\\[3pt]
+w_{\mathrm{Han}}(n)&=\frac{1}{2}\left[1-\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n),\\
+w_{\mathrm{Ham}}(n)&=\left[0.54-0.46\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n),\\
+w_{\mathrm{Blk}}(n)&=\left[0.42-0.5\cos\!\left(\frac{2\pi n}{N-1}\right)+0.08\cos\!\left(\frac{4\pi n}{N-1}\right)\right]R_N(n).
+\end{aligned}
+\]</div>
 <p>时域相乘对应频域卷积，因此加窗会形成过渡带并产生振荡起伏。增加 [[N]] 会缩窄主瓣、减小过渡带宽，但同一窗形的主旁瓣能量比例并不因此改变；选窗则主要控制阻带衰减。矩形、三角、汉宁、海明和布莱克曼窗的典型阻带衰减依次增强，而对应过渡带通常变宽。</p>
 <p>矩形窗频谱主瓣的第一零点间隔约为 [[4\pi/N]]，因此理想截止频率 [[\omega_c]] 附近会被展宽为过渡带，典型范围可写为：</p>
 <div class="formula">\[
