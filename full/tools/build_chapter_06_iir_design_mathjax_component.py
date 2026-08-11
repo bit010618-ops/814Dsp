@@ -53,9 +53,13 @@ def write_html(output: Path) -> Path:
 \]</div>
 <p>在 [[\Omega=\Omega_c]] 处幅度为 [[1/\sqrt2]]，即 3 dB 截止点。阶数越大，通带到阻带的过渡越陡，但结构越复杂。为了构成因果稳定滤波器，应从幅度平方函数的 [[2N]] 个极点中选取 [[s]] 平面左半平面的 [[N]] 个极点。</p>
 <div class="formula">\[
-H_a(s)=\frac{K}{\prod_{k=1}^{N}(s-s_k)},
-\qquad
-\operatorname{Re}(s_k)<0.
+\begin{aligned}
+H_a(s)H_a(-s)&=\frac{1}{1+\left(\frac{s}{j\Omega_c}\right)^{2N}},\\
+s_k&=\Omega_c e^{j\pi\left(\frac12+\frac{2k+1}{2N}\right)},
+\qquad k=0,1,\ldots,2N-1,\\
+H_a(s)&=\frac{\Omega_c^N}{\prod_{k=0}^{N-1}(s-s_k)},
+\qquad \operatorname{Re}(s_k)<0.
+\end{aligned}
 \]</div>
 <p>以 [[p=s/\Omega_c]] 作频率归一化后，先由通带 [[\Omega_p,\alpha_p]] 与阻带 [[\Omega_s,\alpha_s]] 求阶数：</p>
 <div class="formula">\[
