@@ -20,6 +20,14 @@ def write_html(output: Path) -> Path:
 <h1>第七章 FIR 数字滤波器设计</h1>
 <h2>7.1 线性相位 FIR 数字滤波器的条件和特点</h2>
 <p>FIR 滤波器可严格实现线性相位。若长度为 [[N]] 的实序列冲激响应满足关于 [[(N-1)/2]] 的偶对称或奇对称，则相位可写成线性项加常数，群延迟为常数。其充要对称条件为：</p>
+<p>理想延时说明了线性相位的含义：所有频率分量只经历同一延时 [[\tau]]，不会因相对时移不同而改变波形形状。</p>
+<div class="formula">\[
+\begin{aligned}
+h(n)&=\delta(n-\tau),& y(n)&=x(n-\tau),\\
+H\!\left(e^{j\omega}\right)&=e^{-j\tau\omega},&
+\tau_g(\omega)&=-\frac{\mathrm{d}\theta(\omega)}{\mathrm{d}\omega}=\tau.
+\end{aligned}
+\]</div>
 <div class="formula">\[
 h(n)=\pm h(N-1-n),\qquad 0\leq n\leq N-1.
 \]</div>

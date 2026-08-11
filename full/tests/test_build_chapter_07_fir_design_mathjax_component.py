@@ -14,6 +14,9 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     )
     positions = [html.index(title) for title in titles]
     assert positions == sorted(positions)
+    assert r"h(n)&=\delta(n-\tau)" in html
+    assert r"H\!\left(e^{j\omega}\right)&=e^{-j\tau\omega}" in html
+    assert r"\tau_g(\omega)&=-\frac{\mathrm{d}\theta(\omega)}{\mathrm{d}\omega}=\tau" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html
