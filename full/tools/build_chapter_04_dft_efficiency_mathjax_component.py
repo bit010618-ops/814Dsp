@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
 from full.tools.render_mathjax_formula import MATHJAX
 
 
@@ -47,6 +48,7 @@ N^2=13095^2=171479025.
 <p>快速傅里叶变换（FFT）正是以上思路的系统实现。Cooley 与 Tukey 在 1965 年提出的快速算法使 DFT 运算速度得到数量级提升。后续将讨论两类基 2 结构：时间抽取法 DIT（Decimation-In-Time）与频率抽取法 DIF（Decimation-In-Frequency）。</p>
 </main>
 """
+    content = normalize_legacy_inline_math(content)
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output

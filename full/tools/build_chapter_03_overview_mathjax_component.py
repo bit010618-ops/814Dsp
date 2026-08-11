@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
 from full.tools.render_mathjax_formula import MATHJAX
 
 
@@ -30,7 +31,7 @@ def write_html(output: Path) -> Path:
 <p>时域周期性会导致频域离散性；频域周期性会导致时域离散性。DFS 恰好位于“离散时间、离散频率”的一格，因此它在两个域内都带有周期结构。</p>
 
 <h2>从傅里叶级数到傅里叶变换</h2>
-<p>对周期为 (T_0) 的连续时间信号，基本角频率为 (Omega_0=2pi/T_0)。其频谱只出现在谐波频点 (kOmega_0) 上，频点间隔由 (T_0) 决定：</p>
+<p>对周期为 [[T_0]] 的连续时间信号，基本角频率为 [[\Omega_0=2\pi/T_0]]。其频谱只出现在谐波频点 [[k\Omega_0]] 上，频点间隔由 [[T_0]] 决定：</p>
 <div class="formula">\[
 T_0\uparrow\quad\Longrightarrow\quad\Omega_0=\frac{2\pi}{T_0}\downarrow.
 \]</div>
@@ -41,12 +42,15 @@ T_0\uparrow\quad\Longrightarrow\quad\Omega_0=\frac{2\pi}{T_0}\downarrow.
 <div class="formula">\[
 \omega=\Omega T,\qquad \Omega=\frac{\omega}{T}.
 \]</div>
-<p>采样会使离散时间序列的频谱以 (2pi) 为周期重复。若原模拟频谱在折叠频率以内，(X(e^{j\omega})) 可理解为 (X(j\Omega)) 在数字频率轴上的周期延拓，并带有与采样间隔相关的幅度缩放。减小 (T) 会提高采样频率、扩大可无混叠观察的频率范围。</p>
+<p>采样会使离散时间序列的频谱以 [[2\pi]] 为周期重复。若原模拟频谱在折叠频率以内，[[X(e^{j\omega})]] 可理解为 [[X(j\Omega)]] 在数字频率轴上的周期延拓，并带有与采样间隔相关的幅度缩放。减小 [[T]] 会提高采样频率、扩大可无混叠观察的频率范围。</p>
 
 <h2>本章的计算视角</h2>
 <p>频域把时域卷积化为乘积，因此常将复杂的时域计算转换到频域完成，再经反变换回到时域。离散形式允许使用有限个样本和快速算法完成计算；但使用任何有限点变换前，必须区分清楚线性卷积、循环卷积、记录长度与频率取样间隔。</p>
 </main>
 """
+    content = normalize_legacy_inline_math(
+        content.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+    )
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output

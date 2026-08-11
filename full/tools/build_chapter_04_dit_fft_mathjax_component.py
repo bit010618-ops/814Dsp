@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
 from full.tools.render_mathjax_formula import MATHJAX
 
 
@@ -70,6 +71,7 @@ T_{\mathrm{FFT}}
 <p>故输入存储顺序为 (x(0),x(4),x(2),x(6),x(1),x(5),x(3),x(7))，完成各级蝶形后输出 (X(0),\ldots,X(7)) 为自然顺序。这一规则必须与“时间抽取”对应：DIT 是输入倒序、输出正序。</p>
 </main>
 """
+    content = normalize_legacy_inline_math(content)
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output

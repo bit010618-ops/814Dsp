@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
 from full.tools.render_mathjax_formula import MATHJAX
 
 
@@ -133,7 +134,8 @@ X_{16}(k)=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{16}}.
 \]</div>
 <p>两者采样自同一条 DTFT。16 点 DFT 的谱线更密，但并未因补零而改变原四点记录的频率分辨能力。</p>
 </main>
-""".replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+    """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+    content = normalize_legacy_inline_math(content)
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output
