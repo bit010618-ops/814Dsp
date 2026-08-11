@@ -47,6 +47,13 @@ H(\omega)\sin(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\sin(\omega n).
 <div class="formula">\[
 \sum_{n=0}^{N-1}h(n)\sin\!\left[(n-\tau)\omega\right]=0.
 \]</div>
+<p>当有限长序列的支撑区间为 \(0\leq n\leq N-1\) 时，对称中心为 \(\tau=(N-1)/2\)。第一类线性相位要求 \(h(n)\) 关于该中心偶对称，因此：</p>
+<div class="formula">\[
+\tau=\frac{N-1}{2},
+\qquad
+h(n)=h(N-1-n),
+\qquad 0\leq n\leq N-1.
+\]</div>
 <div class="formula">\[
 h(n)=\pm h(N-1-n),\qquad 0\leq n\leq N-1.
 \]</div>
