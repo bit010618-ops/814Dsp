@@ -19,6 +19,7 @@ _FUNCTION_STYLE_MATH = re.compile(
     r"([A-Za-z](?:_[A-Za-z0-9]+)?\([^()<>\n]*\))"
     r"(?![A-Za-z0-9_])"
 )
+_INLINE_MATH = re.compile(r"(\\\(.*?\\\))", re.DOTALL)
 
 
 def _normalize_prose(fragment: str) -> str:
@@ -26,9 +27,12 @@ def _normalize_prose(fragment: str) -> str:
     fragment = _PARENTHESIZED_MATH.sub(
         lambda match: rf"\({match.group(1)}\)", fragment
     )
-    return _FUNCTION_STYLE_MATH.sub(
-        lambda match: rf"\({match.group(1)}\)", fragment
-    )
+    parts = _INLINE_MATH.split(fragment)
+    for index in range(0, len(parts), 2):
+        parts[index] = _FUNCTION_STYLE_MATH.sub(
+            lambda match: rf"\({match.group(1)}\)", parts[index]
+        )
+    return "".join(parts)
 
 
 def normalize_legacy_inline_math(content: str) -> str:

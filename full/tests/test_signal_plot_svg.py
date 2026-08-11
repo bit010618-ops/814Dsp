@@ -21,6 +21,7 @@ def test_stem_svg_uses_real_data_coordinates_and_textbook_axes(tmp_path: Path):
     assert result == output
     assert "<svg" in svg
     assert 'viewBox="' in svg
+    assert 'height="auto"' not in svg
     assert "单位抽样序列" in svg
     assert "marker-end" in svg
     assert "stem-line" in svg

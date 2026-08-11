@@ -13,3 +13,14 @@ def test_normalizes_inline_formulae_without_touching_display_formulae():
     assert r"\(W_N^r=\pm1\)" in html
     assert r"\(N=2^M\)" in html
     assert r"\[\log_2(512)\]" in html
+
+
+def test_does_not_rewrap_function_tokens_inside_a_parenthesized_math_group():
+    html = normalize_legacy_inline_math(
+        r"<p>输入顺序为 (x(0),x(4))，输出为 (X(0),\ldots,X(7))。</p>"
+    )
+
+    assert r"\(x(0),x(4)\)" in html
+    assert r"\(X(0),\ldots,X(7)\)" in html
+    assert r"\(\(x(0)\)" not in html
+    assert r"\(\(X(0)\)" not in html

@@ -52,7 +52,7 @@ def render_stem_svg(
             f'<circle class="sample-marker" data-index="{index}" cx="{x:.2f}" cy="{y:.2f}" r="4.6"/>'
         )
 
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" style="max-width:720px;display:block" viewBox="0 0 {width} {height}" role="img" aria-label="{escape(title)}">
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:720px;display:block" viewBox="0 0 {width} {height}" role="img" aria-label="{escape(title)}">
 <defs><marker id="axis-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#284B63"/></marker></defs>
 <style>
 .axis {{ stroke:#284B63; stroke-width:2; fill:none; }}
