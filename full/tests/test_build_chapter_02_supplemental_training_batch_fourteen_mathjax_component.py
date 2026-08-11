@@ -12,5 +12,13 @@ def test_batch_fourteen_preserves_2015_pole_zero_question_and_solution(tmp_path:
     assert r"\operatorname{ROC}:\left|z\right|>2" in html
     assert r"h[n]=2^{n+1}u[n]" in html
     assert r"y[n]-2y[n-1]=2x[n]" in html
-    assert 'aria-label="2015 年第七题的零极点图"' in html
+    assert 'aria-label="2013 年第八题与 2015 年第七题的零极点图"' in html
     assert 'data-role="zero"' in html and 'data-role="pole"' in html
+
+
+def test_batch_fourteen_identifies_the_same_question_as_2013_and_2015(tmp_path: Path):
+    from full.tools import build_chapter_02_supplemental_training_batch_fourteen_mathjax_component as component
+
+    html = component.write_html(tmp_path / "batch-fourteen.html").read_text(encoding="utf-8")
+
+    assert "2013、2015 年真题" in html
