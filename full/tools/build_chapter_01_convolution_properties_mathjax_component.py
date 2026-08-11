@@ -18,7 +18,7 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[x(n)*h(n)=h(n)*x(n)\]</div>
  </section>
 <section>
-<div class="formula">\[[x(n)*h_1(n)]*h_2(n)=x(n)*[h_1(n)*h_2(n)]\]</div>
+<div class="formula">\[\bigl[x(n)*h_1(n)\bigr]*h_2(n)=x(n)*\bigl[h_1(n)*h_2(n)\bigr]\]</div>
 <div class="formula">\[x(n)*[h_1(n)+h_2(n)]=x(n)*h_1(n)+x(n)*h_2(n)\]</div>
 <h2>有限支持序列的卷积区间</h2><p>例 1：有两个序列 \(x(n)\) 和 \(h(n)\)。\(x(n)\) 不为零的区间为 \(N_1\leq n\leq N_2\)，\(h(n)\) 不为零的区间为 \(N_3\leq n\leq N_4\)。设 \(y(n)=x(n)*h(n)\)，问 \(y(n)\) 不为零的区间为：______。</p>
 <div class="formula">\[x(m)\ne0:\ N_1\leq m\leq N_2,\qquad h(n-m)\ne0:\ n-N_4\leq m\leq n-N_3\]</div>
