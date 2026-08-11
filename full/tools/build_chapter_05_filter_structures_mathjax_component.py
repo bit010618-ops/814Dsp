@@ -139,6 +139,18 @@ h(n)=-h(N-1-n), & \text{奇对称},
 \qquad 0\leq n\leq N-1.
 \]</div>
 <p>对称性允许将关于中心成对的抽头先相加或相减，再乘共同系数，从而减少乘法次数。[[N]] 为奇数和偶数时中心抽头的处理不同；偶对称对应加法组合，奇对称对应减法组合。线性相位（及广义线性相位）系统具有常数群延迟，能在不过度扭曲波形形状的前提下完成频率选择。</p>
+<p>令 [[N=2L+1]]。除中心抽头外，成对样本的实现可统一为：</p>
+<div class="formula">\[
+\begin{aligned}
+y(n)={}&\sum_{m=0}^{L-1}h(m)\left[x(n-m)\pm x(n-2L+m)\right]\\
+&+h(L)x(n-L).
+\end{aligned}
+\]</div>
+<p>其中偶对称取加号；奇对称取减号，且奇对称时 [[h(L)=0]]，所以中心支路不参与输出。令 [[N=2L]] 时没有中心抽头，全部项均为成对组合：</p>
+<div class="formula">\[
+y(n)=\sum_{m=0}^{L-1}h(m)\left[x(n-m)\pm x(n-2L+1+m)\right].
+\]</div>
+<p>两种长度下都先完成对称样本的加法或减法，再乘以一组独立系数；这正是线性相位 FIR 结构能够减少乘法器数量的原因。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''

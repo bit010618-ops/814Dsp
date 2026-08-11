@@ -24,5 +24,9 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert r"H(z)=\left(1-z^{-N}\right)\frac{1}{N}" in html
     assert r"H_k(z)=\frac{H(k)}{1-W_N^{-k}z^{-1}}" in html
     assert r"L=M+N-1" in html
+    assert r"N=2L+1" in html
+    assert r"x(n-m)\pm x(n-2L+m)" in html
+    assert r"N=2L" in html
+    assert r"x(n-m)\pm x(n-2L+1+m)" in html
     assert "MATLAB" not in html
     assert "真题" not in html
