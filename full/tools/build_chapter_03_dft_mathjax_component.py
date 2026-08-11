@@ -70,6 +70,23 @@ W_N^{-n k_0}x(n)
 \quad\longleftrightarrow\quad
 X\left((k-k_0)\bmod N\right).
 \]</div>
+<h3>例题：8 点圆周移位与反褶</h3>
+<p>已知序列 (x(n)=\{1,2,3,4\})，其中第一个样值对应 (n=0)。将它补零为 8 点主值序列后，分别求下列圆周运算的主值序列。</p>
+<div class="formula">\[
+\begin{aligned}
+x\left((n)\bmod8\right)R_8(n)&=\{1,2,3,4,0,0,0,0\},\\
+x\left((n+2)\bmod8\right)R_8(n)&=\{3,4,0,0,0,0,1,2\},\\
+x\left((n-2)\bmod8\right)R_8(n)&=\{0,0,1,2,3,4,0,0\},\\
+x\left((-n)\bmod8\right)R_8(n)&=\{1,0,0,0,0,4,3,2\},\\
+x\left((-n+2)\bmod8\right)R_8(n)&=\{3,2,1,0,0,0,0,4\},\\
+x\left((-n-2)\bmod8\right)R_8(n)&=\{0,0,0,4,3,2,1,0\}.
+\end{aligned}
+\]</div>
+<p>例如对最后一式取 (n=3)，有：</p>
+<div class="formula">\[
+x\left((-3-2)\bmod8\right)=x\left((-5)\bmod8\right)=x(3)=4.
+\]</div>
+<p>这个检验说明圆周反褶不是把有限长列表直接倒写：应先完成 8 周期延拓，再按模 8 的下标取值。</p>
 
 <h2>循环共轭对称与循环卷积</h2>
 <p>实序列的 DFT 满足循环共轭对称关系 [[X(k)=X^*((-k)\bmod N)]]。计算实序列 DFT 时，只需直接计算约半数频点，其余频点可由该关系复核。</p>
