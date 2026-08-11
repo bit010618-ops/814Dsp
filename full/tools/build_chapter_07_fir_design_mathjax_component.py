@@ -54,6 +54,12 @@ H(\omega)\sin(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\sin(\omega n).
 h(n)=h(N-1-n),
 \qquad 0\leq n\leq N-1.
 \]</div>
+<p>第二类线性相位含有 \(\beta_0=\pm\pi/2\) 的常数相位偏置。相同的实虚部比较给出：</p>
+<div class="formula">\[
+\sum_{n=0}^{N-1}h(n)\sin\!\left[\beta_0+(n-\tau)\omega\right]=0,
+\qquad
+h(n)=-h(N-1-n).
+\]</div>
 <div class="formula">\[
 h(n)=\pm h(N-1-n),\qquad 0\leq n\leq N-1.
 \]</div>

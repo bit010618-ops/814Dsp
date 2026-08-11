@@ -26,6 +26,8 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"\sum_{n=0}^{N-1}h(n)\sin\!\left[(n-\tau)\omega\right]=0" in html
     assert r"\tau=\frac{N-1}{2}" in html
     assert r"h(n)=h(N-1-n)" in html
+    assert r"\sum_{n=0}^{N-1}h(n)\sin\!\left[\beta_0+(n-\tau)\omega\right]=0" in html
+    assert r"h(n)=-h(N-1-n)" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html
