@@ -9,12 +9,13 @@ from full.tools import build_chapter_03_dfs_mathjax_component as dfs
 from full.tools import build_chapter_03_dft_mathjax_component as dft
 from full.tools import build_chapter_03_frequency_sampling_mathjax_component as frequency_sampling
 from full.tools import build_chapter_03_lsi_output_mathjax_component as lsi
+from full.tools import build_chapter_03_overview_mathjax_component as overview
 from full.tools import build_chapter_03_spectrum_analysis_mathjax_component as spectrum_analysis
 from full.tools import build_chapter_03_training_mathjax_component as training
 from full.tools.render_mathjax_formula import MATHJAX
 
 
-BODY_COMPONENTS = (dfs, dft, lsi, frequency_sampling, spectrum_analysis)
+BODY_COMPONENTS = (overview, dfs, dft, lsi, frequency_sampling, spectrum_analysis)
 
 STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}

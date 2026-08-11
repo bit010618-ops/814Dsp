@@ -6,6 +6,7 @@ def test_chapter_three_assembler_keeps_source_order_and_training_separate(tmp_pa
 
     html = handout.write_html(tmp_path / "chapter-03.html").read_text(encoding="utf-8")
 
+    assert "四类傅里叶描述的坐标关系" in html
     positions = [html.index(title) for title in (
         "3.1 离散傅里叶级数及其性质",
         "3.2 离散傅里叶变换的定义及性质",
