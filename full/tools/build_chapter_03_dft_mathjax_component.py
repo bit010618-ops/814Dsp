@@ -87,6 +87,19 @@ x\left((-n-2)\bmod8\right)R_8(n)&=\{0,0,0,4,3,2,1,0\}.
 x\left((-3-2)\bmod8\right)=x\left((-5)\bmod8\right)=x(3)=4.
 \]</div>
 <p>这个检验说明圆周反褶不是把有限长列表直接倒写：应先完成 8 周期延拓，再按模 8 的下标取值。</p>
+<h3>例题：由频域相位因子恢复圆周移位序列</h3>
+<p>若 (X(k)) 是序列 (x(n)=\left\{1,\frac{3}{4},\frac{2}{4},\frac{1}{4}\right\}) 的 4 点 DFT，第一个样值对应 (n=0)。若 (Y(k)) 是 (y(n)) 的 4 点 DFT，且：</p>
+<div class="formula">\[
+Y(k)=W_4^{3k}X(k),
+\]</div>
+<p>根据时域圆周移位性质，先保留 4 周期性，再在主值区间取值：</p>
+<div class="formula">\[
+\begin{aligned}
+y(n)&=x\left((n-3)\bmod4\right)R_4(n)\\
+&=x\left((n+1)\bmod4\right)R_4(n)\\
+&=\left\{\frac{3}{4},\frac{2}{4},\frac{1}{4},1\right\},\qquad 0\leq n\leq3.
+\end{aligned}
+\]</div>
 
 <h2>循环共轭对称与循环卷积</h2>
 <p>实序列的 DFT 满足循环共轭对称关系 [[X(k)=X^*((-k)\bmod N)]]。计算实序列 DFT 时，只需直接计算约半数频点，其余频点可由该关系复核。</p>

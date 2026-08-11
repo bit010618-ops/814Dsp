@@ -25,3 +25,5 @@ def test_dft_component_preserves_the_eight_point_circular_shift_example(tmp_path
     assert r"x\left((n+2)\bmod8\right)" in html
     assert r"\{3,4,0,0,0,0,1,2\}" in html
     assert r"x\left((-3-2)\bmod8\right)=x\left((-5)\bmod8\right)=x(3)=4" in html
+    assert r"Y(k)=W_4^{3k}X(k)" in html
+    assert r"\left\{\frac{3}{4},\frac{2}{4},\frac{1}{4},1\right\}" in html
