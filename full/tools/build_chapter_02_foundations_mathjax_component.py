@@ -101,10 +101,6 @@ a^n u(n), & \left|z\right|>\left|a\right|,\\
 \left|z\right|>\left|p_M\right|.
 \]</div>
 <p>因此，给出 \(X(z)\) 时还必须给出 ROC；给出因果性时，ROC 取最外极点之外；给出稳定性时，ROC 必须包含单位圆。这个顺序与后续由系统函数判断因果、稳定和频率响应的步骤保持一致。</p>
-<h2>z 反变换与判定顺序</h2>
-<p>由 \(X(z)\) 求 \(x(n)\) 称为 z 反变换。本质上是根据 ROC 把 \(X(z)\) 展开成合适方向的幂级数，再读取 \(z^{-n}\) 的系数。常用方法包括围线积分、部分分式展开和幂级数展开。</p>
-<div class="formula">\[x(n)=\frac{1}{2\pi j}\oint_C X(z)z^{n-1}\,\mathrm{d}z\]</div>
-<p>对有理型 \(X(z)\)，先找有限极点；再由右边、左边或双边性质确定 ROC；最后检查单位圆是否在 ROC 内，以判断稳定性与频率响应是否存在。若 ROC 位于最外极点之外，按 \(z^{-1}\) 的降幂展开；若 ROC 位于最内极点之内，按 \(z\) 的升幂展开。</p>
 <h2>例题：同一代数式与不同收敛域</h2>
 <p>设 \(X(z)=\frac{1}{1-az^{-1}}\)。当 \(\left|z\right|>\left|a\right|\) 时，按 \(z^{-1}\) 的降幂展开，得到 \(x(n)=a^n u(n)\)；当 \(\left|z\right|<\left|a\right|\) 时，按 \(z\) 的升幂展开，得到 \(x(n)=-a^n u(-n-1)\)。代数式相同而 ROC 不同，时间支持范围也不同。</p>
 <div class="formula">\[x(n)=\delta(n)\quad\Longrightarrow\quad X(z)=1,\qquad \text{ROC：全 z 平面}\]</div>

@@ -20,3 +20,6 @@ def test_chapter_two_body_only_assembly_excludes_training_and_answers(tmp_path: 
     assert "真题" not in html
     assert "MATLAB" not in html
     assert "page-break-after:always" not in html
+    # The inverse-transform definition belongs to the dedicated inverse
+    # component; assembling the body must not repeat its contour formula.
+    assert html.count(r"\oint_C X(z)z^{n-1}\,\mathrm{d}z") == 1
