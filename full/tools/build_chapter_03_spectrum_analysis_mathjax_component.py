@@ -40,6 +40,10 @@ f_s\geq2f_h.
 </ol>
 <h2>例题：参数选取</h2>
 <p>某 FFT 处理器要求采样点数为 2 的整数幂。若频率分辨率要求为 [[F_0\leq10\,\mathrm{Hz}]]，信号最高频率不超过 [[4\,\mathrm{kHz}]]，则先取 [[T_0\geq0.1\,\mathrm{s}]]，再取 [[f_s\geq8\,\mathrm{kHz}]]。相应点数 [[N=T_0f_s\geq800]]，向上取 1024 点；此时 [[T=1/8000\,\mathrm{s}]]，[[T_0=1024T=0.128\,\mathrm{s}]]，实际频率间隔为 [[F_0=7.8125\,\mathrm{Hz}]]。</p>
+<h2>傅里叶的故事</h2>
+<p>傅里叶分析得名于法国数学家让·巴普蒂斯·约瑟夫·傅里叶（1768—1830）。在他之前，人们已经知道可用三角函数描述周期现象；欧拉研究声波传播时进一步使用正弦分解，拉格朗日也将相关思想用于天体轨道的观察与预测。</p>
+<p>1807 年，傅里叶提交有关热传播的论文，主张周期信号可以由适当的正弦分量组合表示。这一观点当时引起争议，特别是对于不连续信号能否分解的问题。后来他在《热的解析理论》（1822）中系统阐述了这些思想；狄利克雷等数学家给出了相应的严格条件，通常称为狄利克雷条件。</p>
+<p>这一历史提醒我们：频谱图不是只为“看见峰值”，还要结合采样、截断、加窗和变换条件解释峰值为什么出现、为什么展宽，以及所得结论的适用范围。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     html = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
