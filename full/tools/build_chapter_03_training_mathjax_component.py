@@ -22,6 +22,9 @@ def write_training_html(output: Path) -> Path:
 <div class="exam-head"><span>2003 年真题</span><span>详解见 P.____</span></div>
 <p>七、用 DFT 对模拟信号进行谱分析，设模拟信号 \(x_a(t)\) 的最高频率为 200 Hz，以 Nyquist 频率采样得到时域离散序列 \(x(n)=x_a(nT)\)，要求频率分辨率为 10 Hz，求序列 \(x(n)\) 的离散傅里叶变换 \(X(k)\) 各 \(k\) 点对应的数字频率 \(\omega_k\)（弧）和模拟频率 \(f_k\)（Hz）的值。</p>
 <div class="writing-space"></div>
+<div class="exam-head"><span>2002 年真题</span><span>详解见 P.____</span></div>
+<p>九、已知 \(x_1(n)=\left(\frac{1}{2}\right)^n,\ 0\leq n\leq4\)，\(x_2(n)=1,\ 0\leq n\leq2\)，且 \(X_1(K)=\operatorname{DFT}[x_1(n)]\)，\(X_2(K)=\operatorname{DFT}[x_2(n)]\)，求 \(x_3(n)=\operatorname{IDFT}\left[X_1(K)X_2(K)\right]\)。</p>
+<div class="writing-space"></div>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -54,6 +57,23 @@ f_k=kF_0=10k\,\mathrm{Hz},
 \qquad k=0,1,\ldots,39.
 \]</div>
 <p>因此，\(k=0\) 对应直流，\(k=20\) 对应 Nyquist 频率 \(200\,\mathrm{Hz}\)。在 DFT 的一个周期内，\(k=21,\ldots,39\) 也可按负频率解释为 \(f_k=(k-40)\times10\,\mathrm{Hz}\)。</p>
+<h2>2002 年真题</h2>
+<p>已知 \(x_1(n)=\left(\frac{1}{2}\right)^n,\ 0\leq n\leq4\)，\(x_2(n)=1,\ 0\leq n\leq2\)，且 \(X_1(K)=\operatorname{DFT}[x_1(n)]\)，\(X_2(K)=\operatorname{DFT}[x_2(n)]\)，求 \(x_3(n)=\operatorname{IDFT}\left[X_1(K)X_2(K)\right]\)。</p>
+<div class="answer-step"><strong>第 1 步：识别 DFT 域乘法。</strong>由 DFT 的循环卷积性质：</div>
+<div class="formula">\[
+x_3(n)=x_1(n)\mathbin{\circledast}_N x_2(n).
+\]</div>
+<p>原题没有给出 DFT 点数 \(N\)，故不能把答案擅自写成唯一的固定数列；一般答案应按所用 \(N\) 点的循环卷积理解。</p>
+<div class="answer-step"><strong>第 2 步：给出无混叠的常用情形。</strong>两序列长度分别为 5 与 3。若希望结果等于线性卷积，必须满足：</div>
+<div class="formula">\[
+N\geq5+3-1=7.
+\]</div>
+<p>此时逐项相加得到：</p>
+<div class="formula">\[
+x_3(n)=\left\{1,\frac{3}{2},\frac{7}{4},\frac{7}{8},\frac{7}{16},\frac{3}{16},\frac{1}{16}\right\},
+\qquad 0\leq n\leq6.
+\]</div>
+<p>若实际 DFT 点数小于 7，应将这七个线性卷积样值按该 \(N\) 点周期折回相加，得到相应的循环卷积结果。</p>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")

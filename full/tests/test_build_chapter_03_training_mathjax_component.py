@@ -16,3 +16,19 @@ def test_priority_2003_question_preserves_statement_and_detailed_solution(tmp_pa
     assert r"N=\frac{f_s}{F_0}=40" in answer
     assert r"\omega_k=\frac{2\pi k}{N}=\frac{2\pi k}{40}=\frac{\pi k}{20}" in answer
     assert r"f_k=kF_0=10k\,\mathrm{Hz}" in answer
+
+
+def test_2002_dft_idft_convolution_question_keeps_the_unspecified_length_explicit(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-03-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-03-answers.html").read_text(encoding="utf-8")
+
+    assert "2002 年真题" in question
+    assert r"x_1(n)=\left(\frac{1}{2}\right)^n" in question
+    assert r"0\leq n\leq4" in question
+    assert r"x_2(n)=1" in question
+    assert r"x_3(n)=\operatorname{IDFT}\left[X_1(K)X_2(K)\right]" in question
+    assert r"x_3(n)=x_1(n)\mathbin{\circledast}_N x_2(n)" in answer
+    assert r"N\geq5+3-1=7" in answer
+    assert r"\left\{1,\frac{3}{2},\frac{7}{4},\frac{7}{8},\frac{7}{16},\frac{3}{16},\frac{1}{16}\right\}" in answer
