@@ -11,4 +11,7 @@ def test_overview_component_uses_mathjax_for_frequency_bridge_formulae(tmp_path:
     assert "四类傅里叶描述的坐标关系" in html
     assert r"\(\Omega_0=2\pi/T_0\)" in html
     assert r"\(X(e^{j\omega})\)" in html
+    assert r"\(T_0\) 无限增大" in html
+    assert r"\(T\) 变为序列" in html
+    assert r"\(\Omega\) 与数字角频率 \(\omega\)" in html
     assert "(Omega_0=2pi/T_0)" not in html

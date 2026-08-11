@@ -38,7 +38,7 @@ T_0\uparrow\quad\Longrightarrow\quad\Omega_0=\frac{2\pi}{T_0}\downarrow.
 <p>当 (T_0) 无限增大时，频谱取样间隔趋于零，离散的傅里叶级数频谱过渡为连续的傅里叶变换频谱。虽然相邻频点的数值可能相同，频率位置不同仍对应不同的物理谐波分量，不能只比较系数数值而忽略频率坐标。</p>
 
 <h2>从连续时间频谱到 DTFT</h2>
-<p>连续信号以采样间隔 (T) 变为序列后，模拟角频率 (Omega) 与数字角频率 (omega) 的关系为：</p>
+<p>连续信号以采样间隔 [[T]] 变为序列后，模拟角频率 [[\Omega]] 与数字角频率 [[\omega]] 的关系为：</p>
 <div class="formula">\[
 \omega=\Omega T,\qquad \Omega=\frac{\omega}{T}.
 \]</div>
