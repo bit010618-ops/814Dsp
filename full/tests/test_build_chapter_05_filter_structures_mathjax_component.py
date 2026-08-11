@@ -19,6 +19,8 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     positions = [html.index(title) for title in expected]
     assert positions == sorted(positions)
     assert r"H(z)=\frac{\sum_{m=0}^{M}b_m z^{-m}}{1+\sum_{n=1}^{N}a_n z^{-n}}" in html
+    assert r"w(n)&=x(n)-\sum_{r=1}^{N}a_r w(n-r)" in html
+    assert r"y(n)&=\sum_{m=0}^{M}b_m w(n-m)" in html
     assert r"H(z)=\left(1-z^{-N}\right)\frac{1}{N}" in html
     assert r"H_k(z)=\frac{H(k)}{1-W_N^{-k}z^{-1}}" in html
     assert r"L=M+N-1" in html
