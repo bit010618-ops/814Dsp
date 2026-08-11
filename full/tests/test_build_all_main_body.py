@@ -19,6 +19,9 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
         assert heading in html
     assert html.count("<main>") == 1
     assert html.count('class="chapter-start"') == 8
+    assert html.count("<h1>") == 8
+    assert "<h1>第四章 快速傅里叶变换</h1>" in html
+    assert "<h2>4.1 直接计算 DFT 的问题及改进途径</h2>" in html
     assert "真题" not in html
     assert "MATLAB" not in html
     assert "page-break-after:always" not in html

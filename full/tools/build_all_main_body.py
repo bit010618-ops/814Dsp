@@ -40,6 +40,7 @@ main{max-width:174mm;margin:auto}
 h1{break-after:avoid;color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}
 h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}
 h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}
+h4{break-after:avoid;color:#315d7c;font-size:11.5pt;font-weight:400;margin:10pt 0 3pt}
 p{margin:5pt 0 8pt}
 .formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}
 figure{break-inside:avoid;margin:12pt auto;text-align:center}
@@ -62,6 +63,25 @@ def _render_component_bodies(components: tuple, directory: Path) -> str:
         path = component.write_html(directory / f"{component.__name__.split('.')[-1]}.html")
         bodies.append(_main_body(path.read_text(encoding="utf-8")))
     return "\n".join(bodies)
+
+
+def _demote_headings(body: str) -> str:
+    def replace(match: re.Match[str]) -> str:
+        closing, level = match.group(1), int(match.group(2))
+        return f"<{closing}h{level + 1}>"
+
+    return re.sub(r"<(/?)h([1-3])>", replace, body)
+
+
+def _keep_first_heading_as_chapter_title(body: str) -> str:
+    match = re.search(r"<h1>.*?</h1>", body, flags=re.DOTALL)
+    if not match:
+        raise ValueError("chapter body is missing its chapter title")
+    return f"{match.group(0)}{_demote_headings(body[match.end():])}"
+
+
+def _with_chapter_title(title: str, body: str) -> str:
+    return f"<h1>{title}</h1>{_demote_headings(body)}"
 
 
 def _chapters() -> list[str]:
@@ -92,6 +112,9 @@ def _chapters() -> list[str]:
             _render_component_bodies((chapter_seven,), temporary),
             _render_component_bodies((chapter_eight,), temporary),
         ]
+    raw[0] = _keep_first_heading_as_chapter_title(raw[0])
+    raw[2] = _keep_first_heading_as_chapter_title(raw[2])
+    raw[3] = _with_chapter_title("第四章 快速傅里叶变换", raw[3])
     return raw
 
 
