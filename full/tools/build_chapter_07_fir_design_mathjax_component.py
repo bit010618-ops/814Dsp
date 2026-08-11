@@ -28,6 +28,14 @@ H\!\left(e^{j\omega}\right)&=e^{-j\tau\omega},&
 \tau_g(\omega)&=-\frac{\mathrm{d}\theta(\omega)}{\mathrm{d}\omega}=\tau.
 \end{aligned}
 \]</div>
+<p>一般线性相位频率响应可分成振幅响应与相位响应两部分。第一类的相位只有延时项；第二类除延时项外，还带有恒定的四分之一圆周相位偏置：</p>
+<div class="formula">\[
+\begin{aligned}
+H\!\left(e^{j\omega}\right)&=\pm\left|H\!\left(e^{j\omega}\right)\right|e^{j\theta(\omega)},\\
+\theta(\omega)&=-\tau\omega &&\text{（第一类线性相位）},\\
+\theta(\omega)&=\beta_0-\tau\omega,& \beta_0&=\pm\frac{\pi}{2} &&\text{（第二类线性相位）}.
+\end{aligned}
+\]</div>
 <div class="formula">\[
 h(n)=\pm h(N-1-n),\qquad 0\leq n\leq N-1.
 \]</div>
