@@ -28,6 +28,11 @@ def write_training_html(output: Path) -> Path:
 <div class="exam-head"><span>2002 年真题（第十题）</span><span>详解见 P.____</span></div>
 <p>十、已知序列 \(h(n)\) 是 \(h(t)\) 的 9 点取样 \(0\leq n\leq8\)，取样间隔 \(T=0.15\,\mathrm{s}\)，问如何用 DFT 计算其频谱，使频谱分辨率高于 \(2\,\mathrm{rad/s}\)？</p>
 <div class="writing-space"></div>
+<div class="exam-head"><span>2004 年真题</span><span>详解见 P.____</span></div>
+<p>十、设 \(x(t)\) 的最高频率 \(f_h\) 不超过 3 Hz，现用 \(f_s=100\,\mathrm{Hz}\) 对 \(x(t)\) 取样 256 点，得到 \(x(n)\)。</p>
+<p>（1）对 \(x(n)\) 做 DFT 时，所能得到的最大频率分辨率是多少？</p>
+<p>（2）如果信号由三个正弦组成，其频率分别是 \(f_1=2\,\mathrm{Hz}\)，\(f_2=2.02\,\mathrm{Hz}\)，\(f_3=2.07\,\mathrm{Hz}\)，即 \(x(t)=\sin(2\pi f_1t)+\sin(2\pi f_2t)+\sin(2\pi f_3t)\)，求取样后的 \(x(n)\) 的 DFT 简图。</p>
+<div class="writing-space"></div>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -94,6 +99,18 @@ N>\frac{2\pi}{2\times0.15}\approx20.94.
 \Delta\Omega=\frac{2\pi}{32\times0.15}\approx1.309\,\mathrm{rad/s}<2\,\mathrm{rad/s}.
 \]</div>
 <p>零填充使频域取样点更密，便于观察频谱；原始有效记录仍为 9 个样本，应同时保留这一点以区分频谱显示加密与记录长度带来的本征分辨能力。</p>
+<h2>2004 年真题</h2>
+<p>设 \(x(t)\) 的最高频率 \(f_h\) 不超过 3 Hz，现用 \(f_s=100\,\mathrm{Hz}\) 对 \(x(t)\) 取样 256 点，得到 \(x(n)\)。</p>
+<div class="answer-step"><strong>（1）频谱间隔。</strong>DFT 的频率分辨率（频谱间隔）为：</div>
+<div class="formula">\[
+F_0=\frac{f_s}{N}=\frac{100}{256}=0.390625\,\mathrm{Hz}.
+\]</div>
+<div class="answer-step"><strong>（2）三正弦的 DFT 观察结果。</strong>三条谱线都位于 2 Hz 附近；最大频差为：</div>
+<div class="formula">\[
+\left|f_3-f_1\right|=0.07\,\mathrm{Hz}<F_0.
+\]</div>
+<p>因此在该 256 点记录下，三条正弦分量不能作为三条独立谱线分辨。正频率一侧的主要能量集中在最接近 2 Hz 的 DFT 栅栏 \(k\approx2/F_0=5.12\) 附近，负频率一侧出现相应的共轭对称能量；由于频率没有恰落在栅栏上，会伴随谱泄漏。简图应画成 \(k\approx5\) 附近的一团相邻谱线及其负频率对称部分，而不是三根可分开的谱线。</p>
+<p>若要分辨这些分量，必须延长有效记录时间以减小 \(F_0\)，而非仅把已有 256 点后面补零。</p>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
