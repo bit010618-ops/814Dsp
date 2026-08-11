@@ -91,6 +91,18 @@ H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega
 <tr><td>III</td><td>奇对称，[[N]] 为奇数</td><td>[[H(0)=H(\pi)=0]]</td><td>带通及需要奇对称响应的场合</td></tr>
 <tr><td>IV</td><td>奇对称，[[N]] 为偶数</td><td>[[H(0)=0]]</td><td>高通、带通</td></tr>
 </tbody></table>
+<h3>四类结构的幅度函数</h3>
+<p>利用成对的抽头可把四类结构分别写成余弦级数或正弦级数。下式中的 \(H_{\mathrm{I}}\) 至 \(H_{\mathrm{IV}}\) 表示提出线性相位因子之后的实值幅度函数：</p>
+<div class="formula">\[
+\begin{aligned}
+N=2M+1:\qquad
+H_{\mathrm{I}}(\omega)&=h(M)+2\sum_{m=1}^{M}h(M-m)\cos(m\omega),\\
+H_{\mathrm{III}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\sin(m\omega),\\
+N=2M:\qquad
+H_{\mathrm{II}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\cos\!\left[\left(m-\frac{1}{2}\right)\omega\right],\\
+H_{\mathrm{IV}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\sin\!\left[\left(m-\frac{1}{2}\right)\omega\right].
+\end{aligned}
+\]</div>
 <p>四种类型的区别来自对称性及长度奇偶性。设计前必须先核对通带是否包含 [[\omega=0]] 或 [[\omega=\pi]]；若结构在该端点被强制为零，就不能用来实现端点处要求非零增益的理想响应。</p>
 
 <h2>7.2 利用窗函数法设计 FIR 滤波器</h2>
