@@ -63,6 +63,10 @@ L_0=M+N_2-1.
 <div class="formula">\[
 7+3-1=9,\qquad N\geq9.
 \]</div>
+<h2>例题：DFT 卷积的无混叠区间</h2>
+<p>对 50 点长序列 [[x(n)]], [[0\leq n\leq49]] 和 20 点长序列 [[h(n)]], [[0\leq n\leq19]] 分别做 50 点的 DFT，得到 [[X(k)]] 和 [[H(k)]]，令 [[Y(k)=X(k)H(k)]], [[0\leq k\leq49]]，[[y(n)]] 是 [[Y(k)]] 的 50 点 IDFT 的值，则 [[n]] 在______范围内时，[[y(n)]] 的结果与 [[x(n)]] 和 [[h(n)]] 线性卷积的结果一致。</p>
+<p>（A）[[19\leq n\leq48]]　（B）[[19\leq n\leq49]]　（C）[[20\leq n\leq49]]　（D）[[20\leq n\leq68]]。</p>
+<p>解：线性卷积长度为 [[50+20-1=69]]，而 50 点圆周卷积把末尾的 19 个样本折回主值区间前端。因此前 [[19]] 个样本发生时域混叠，[[19\leq n\leq49]] 的 31 个样本未受折回项影响，故选择（B）。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     html = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
