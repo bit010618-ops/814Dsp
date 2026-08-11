@@ -69,6 +69,20 @@ H(z)=\sum_{n=0}^{N-1}h(n)z^{-n},
 \qquad
 z_i\text{ 为零点 }\Longrightarrow z_i^*,\ \frac{1}{z_i},\ \frac{1}{z_i^*}\text{ 也按重数出现。}
 \]</div>
+<p>由关于中心的偶对称或奇对称直接换元，可得系统函数的倒数对称关系：</p>
+<div class="formula">\[
+H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right).
+\]</div>
+<p>令 \(z=e^{j\omega}\) 后，可把与延时有关的线性相位提出，余下的 \(H_0(\omega)\) 决定幅度响应：</p>
+<div class="formula">\[
+\begin{aligned}
+H\!\left(e^{j\omega}\right)&=e^{-j\frac{N-1}{2}\omega}H_0(\omega),\\
+H_0(\omega)&=\sum_{n=0}^{N-1}h(n)\cos\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]
+&&\text{（偶对称）},\\
+H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]
+&&\text{（奇对称）}.
+\end{aligned}
+\]</div>
 
 <h3>四种线性相位类型</h3>
 <table class="table"><thead><tr><th>类型</th><th>对称性与长度</th><th>端点约束</th><th>可实现的典型响应</th></tr></thead><tbody>

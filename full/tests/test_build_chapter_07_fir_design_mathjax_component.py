@@ -28,6 +28,10 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"h(n)=h(N-1-n)" in html
     assert r"\sum_{n=0}^{N-1}h(n)\sin\!\left[\beta_0+(n-\tau)\omega\right]=0" in html
     assert r"h(n)=-h(N-1-n)" in html
+    assert r"H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right)" in html
+    assert r"H\!\left(e^{j\omega}\right)&=e^{-j\frac{N-1}{2}\omega}H_0(\omega)" in html
+    assert r"H_0(\omega)&=\sum_{n=0}^{N-1}h(n)\cos\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]" in html
+    assert r"H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html
