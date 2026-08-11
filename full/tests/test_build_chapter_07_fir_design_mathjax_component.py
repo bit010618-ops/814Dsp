@@ -46,6 +46,12 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"w_{\mathrm{Han}}(n)&=\frac{1}{2}\left[1-\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n)" in html
     assert r"w_{\mathrm{Ham}}(n)&=\left[0.54-0.46\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n)" in html
     assert r"w_{\mathrm{Blk}}(n)&=\left[0.42-0.5\cos\!\left(\frac{2\pi n}{N-1}\right)+0.08\cos\!\left(\frac{4\pi n}{N-1}\right)\right]R_N(n)" in html
+    assert r"\omega_p&=2\pi\frac{f_p}{f_s}=0.2\pi" in html
+    assert r"\Delta\omega&=\left|\omega_{st}-\omega_p\right|=0.2\pi" in html
+    assert r"N=\frac{6.6\pi}{\Delta\omega}=\frac{6.6\pi}{0.2\pi}=33" in html
+    assert r"\tau=\frac{N-1}{2}=16" in html
+    assert r"\sin\!\left[0.3\pi(n-16)\right]" in html
+    assert r"R_{33}(n)" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
     assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html

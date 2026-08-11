@@ -157,7 +157,19 @@ w_{\mathrm{Blk}}(n)&=\left[0.42-0.5\cos\!\left(\frac{2\pi n}{N-1}\right)+0.08\co
 </tbody></table>
 <h3>例题</h3>
 <p>请设计一个线性相位 FIR 低通滤波器，技术指标如下：（1）抽样频率为 [[f_s=15\text{ kHz}]]；（2）通带截止频率为 [[f_p=1.5\text{ kHz}]]；（3）阻带截止频率为 [[f_{st}=3\text{ kHz}]]；（4）阻带衰减不小于 50 dB。</p>
-<p>解：先把模拟频率换为数字角频率，得到 [[\omega_p=0.2\pi]]、[[\omega_{st}=0.4\pi]]，并取过渡带中心作为理想截止频率 [[\omega_c=0.3\pi]]。阻带指标不小于 50 dB，应选择海明窗（典型阻带衰减约 53 dB）。由海明窗的过渡带宽近似关系确定长度 [[N]]，再以 [[\tau=(N-1)/2]] 写出理想低通冲激响应并乘窗：</p>
+<p>解：先把模拟频率换为数字角频率，并取通、阻带边界的中心作为理想截止频率：</p>
+<div class="formula">\[
+\begin{aligned}
+\omega_p&=2\pi\frac{f_p}{f_s}=0.2\pi, & \omega_{st}&=2\pi\frac{f_{st}}{f_s}=0.4\pi,\\
+\omega_c&=\frac{\omega_p+\omega_{st}}{2}=0.3\pi, & \Delta\omega&=\left|\omega_{st}-\omega_p\right|=0.2\pi.
+\end{aligned}
+\]</div>
+<p>阻带指标为 50 dB，应选择典型阻带衰减约为 53 dB 的海明窗。由海明窗的过渡带宽近似关系可定出长度和群延迟：</p>
+<div class="formula">\[
+N=\frac{6.6\pi}{\Delta\omega}=\frac{6.6\pi}{0.2\pi}=33,
+\qquad
+\tau=\frac{N-1}{2}=16.
+\]</div>
 <div class="formula">\[
 h_d(n)=
 \begin{cases}
@@ -165,6 +177,15 @@ h_d(n)=
 \dfrac{\omega_c}{\pi}, & n=\tau,
 \end{cases}
 \qquad h(n)=h_d(n)w_{\mathrm{Ham}}(n).
+\]</div>
+<p>代入本题的截止频率、长度及海明窗，可得实际 FIR 系数：</p>
+<div class="formula">\[
+h(n)=
+\begin{cases}
+\dfrac{\sin\!\left[0.3\pi(n-16)\right]}{\pi(n-16)}, & n\ne16,\\
+0.3, & n=16,
+\end{cases}
+\left[0.54-0.46\cos\!\left(\frac{n\pi}{16}\right)\right]R_{33}(n).
 \]</div>
 <p>最后必须复核实际幅频响应的通带、阻带和过渡带；若不满足指标，应改变长度或窗形重新设计。</p>
 
