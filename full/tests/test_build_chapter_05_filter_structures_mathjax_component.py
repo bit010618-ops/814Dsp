@@ -1,0 +1,24 @@
+from pathlib import Path
+
+
+def test_chapter_five_component_covers_filter_structure_body_without_training(tmp_path: Path):
+    from full.tools import build_chapter_05_filter_structures_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-05.html").read_text(encoding="utf-8")
+
+    expected = (
+        "5.1 数字滤波器概述",
+        "5.2 IIR 数字滤波器结构",
+        "直接 I 型与直接 II 型",
+        "级联型、并联型与转置型 IIR 结构",
+        "5.3 FIR 数字滤波器结构",
+        "抽头延迟线直接型",
+        "快速卷积型结构",
+        "线性相位型结构",
+    )
+    positions = [html.index(title) for title in expected]
+    assert positions == sorted(positions)
+    assert r"H(z)=\frac{\sum_{m=0}^{M}b_m z^{-m}}{1+\sum_{n=1}^{N}a_n z^{-n}}" in html
+    assert r"L=M+N-1" in html
+    assert "MATLAB" not in html
+    assert "真题" not in html
