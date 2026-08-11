@@ -20,6 +20,8 @@ def render_stem_svg(
     y_limits: tuple[float, float],
 ) -> Path:
     """Render a coordinate-driven discrete sequence as textbook-style SVG."""
+    x_label = x_label.strip() or "n"
+    y_label = y_label.strip() or "幅值"
     width, height = 720, 420
     left, right, top, bottom = 82, 670, 64, 348
     x_min, x_max = x_limits
