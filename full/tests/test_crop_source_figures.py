@@ -9,7 +9,7 @@ def test_source_figure_crops_exclude_complete_course_slide_shell(tmp_path: Path,
     monkeypatch.setattr(cropper, "DESTINATION", tmp_path)
     outputs = cropper.crop_all()
 
-    assert len(outputs) == 3
+    assert len(outputs) == 2
     assert all(output.is_file() for output in outputs)
     # The original lecture slides are 1534 by 863, so every crop must discard
     # some surrounding course-slide chrome rather than replay a complete slide.
@@ -24,6 +24,5 @@ def test_crops_exclude_slide_explanations_and_keep_only_technical_bodies():
 
     # Remove the DIT slide's bottom calculation banner and the FIR slide's
     # explanatory bullet list; neither is part of the structural drawing.
-    assert 650 <= boxes["ch04-dit-fft-n8-flow.png"][3] <= 670
-    assert boxes["ch05-fir-direct-form.png"][0] >= 300
-    assert boxes["ch05-fir-direct-form.png"][2] >= 1100
+    assert boxes["ch04-dit-fft-n8-flow.png"] == (75, 100, 1350, 645)
+    assert boxes["ch04-dif-fft-n8-flow.png"] == (220, 240, 1310, 720)

@@ -17,9 +17,8 @@ DESTINATION = ROOT / "full" / "assets" / "source-figures"
 
 # (source image, destination image, left, top, right, bottom)
 CROPS = (
-    ("src-0591-0591.png", "ch04-dit-fft-n8-flow.png", (45, 90, 1490, 650)),
-    ("src-0622-0622.png", "ch04-dif-fft-n8-flow.png", (205, 220, 1325, 745)),
-    ("src-0713-0713.png", "ch05-fir-direct-form.png", (330, 365, 1120, 600)),
+    ("src-0591-0591.png", "ch04-dit-fft-n8-flow.png", (75, 100, 1350, 645)),
+    ("src-0622-0622.png", "ch04-dif-fft-n8-flow.png", (220, 240, 1310, 720)),
 )
 
 

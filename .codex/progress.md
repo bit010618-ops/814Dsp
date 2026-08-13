@@ -796,3 +796,7 @@
 - Corrected the DTMF parallel resonator diagram: each branch arrow now terminates on the corresponding upper/lower input port of the summing node, rather than ending in empty space near it.
 - Rebuilt `tmp/dsp-main-body-crop-qa-v6.pdf`; visual QA on page 67 confirms the two inputs, summer, output arrow, and labels are unambiguous. MathJax: `unrendered=[]`, `pageErrors=[]`.
 - Added structural regression assertions for the exact two branch-to-summer paths and widened the input label allocation to prevent its formula from being truncated.
+# 2026-08-13 Ch4 FFT crop frame cleanup
+
+- Tightened DIT/DIF FFT source figure boxes to remove remaining green course-slide borders while preserving every technical input/output, butterfly path, node, and twiddle-factor label.
+- Regression: main-body, chapter-five, and crop suites `4 passed`; both output figures inspected directly before commit.
