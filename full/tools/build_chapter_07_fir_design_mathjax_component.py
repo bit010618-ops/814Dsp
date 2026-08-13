@@ -69,6 +69,17 @@ H(z)=\sum_{n=0}^{N-1}h(n)z^{-n},
 \qquad
 z_i\text{ 为零点 }\Longrightarrow z_i^*,\ \frac{1}{z_i},\ \frac{1}{z_i^*}\text{ 也按重数出现。}
 \]</div>
+<figure class="diagram"><figcaption>FIR 滤波的时域与频域对应关系</figcaption>
+<svg class="fir-flow-svg" viewBox="0 0 920 310" role="img" aria-label="FIR 时域卷积与频域相乘对应关系图">
+<defs><marker id="fir-flow-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6z" fill="#174b73"/></marker></defs>
+<rect class="box" x="64" y="42" width="210" height="68" rx="8"/><foreignObject class="math-foreign" x="94" y="54" width="150" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(h(n)\)</div></foreignObject><text class="caption" x="169" y="101" text-anchor="middle">有限长冲激响应</text>
+<path class="arrow" d="M18 144H360"/><foreignObject class="math-foreign" x="20" y="112" width="60" height="25"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n)\)</div></foreignObject><rect class="box" x="360" y="115" width="190" height="58" rx="8"/><text class="label" x="455" y="151" text-anchor="middle">时域卷积</text><path class="arrow" d="M550 144H886"/><foreignObject class="math-foreign" x="690" y="112" width="190" height="25"><div xmlns="http://www.w3.org/1999/xhtml">\(y(n)=x(n)*h(n)\)</div></foreignObject>
+<path class="arrow" d="M169 112V220"/><text class="label" x="183" y="185">DTFT</text><path class="arrow" d="M454 174V220"/><text class="label" x="468" y="199">DTFT</text>
+<rect class="freq-box" x="64" y="230" width="210" height="60" rx="8"/><foreignObject class="math-foreign" x="80" y="245" width="178" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(H(e^{j\omega})\)</div></foreignObject>
+<rect class="freq-box" x="360" y="230" width="190" height="60" rx="8"/><text class="label" x="455" y="267" text-anchor="middle">频域相乘</text>
+<rect class="freq-box" x="660" y="230" width="210" height="60" rx="8"/><foreignObject class="math-foreign" x="666" y="245" width="198" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(Y(e^{j\omega})=X(e^{j\omega})H(e^{j\omega})\)</div></foreignObject>
+<path class="arrow" d="M274 260H356"/><path class="arrow" d="M550 260H656"/>
+</svg></figure>
 <p>由关于中心的偶对称或奇对称直接换元，可得系统函数的倒数对称关系：</p>
 <div class="formula">\[
 H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right).
@@ -89,6 +100,25 @@ H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega
 <div class="formula">\[
 N-1=7,\qquad \tau=\frac{N-1}{2}=3.5.
 \]</div>
+<figure class="diagram"><figcaption>FIR 系统函数的零极点结构</figcaption>
+<svg class="fir-pz-svg" viewBox="0 0 720 320" role="img" aria-label="FIR 零极点图">
+<defs><marker id="fir-pz-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6z" fill="#174b73"/></marker></defs>
+<path class="axis" d="M70 160H380" marker-end="url(#fir-pz-arrow)"/><path class="axis" d="M225 295V28" marker-end="url(#fir-pz-arrow)"/><circle class="unit" cx="225" cy="160" r="105"/>
+<text class="label" x="390" y="181">Re[z]</text><text class="label" x="240" y="41">Im[z]</text><text class="caption" x="225" y="312" text-anchor="middle">单位圆</text>
+<circle class="zero" cx="120" cy="160" r="8"/><circle class="zero" cx="277" cy="160" r="8"/><circle class="zero" cx="262" cy="123" r="8"/><circle class="zero" cx="262" cy="197" r="8"/><circle class="zero" cx="330" cy="86" r="8"/><circle class="zero" cx="330" cy="234" r="8"/>
+<path class="pole" d="M216 151L234 169M234 151L216 169"/><text class="caption" x="238" y="151">原点极点 N−1 重</text>
+<text class="caption" x="78" y="184">−1</text><text class="caption" x="268" y="184">0.5</text><text class="caption" x="337" y="78">2e^{jπ/4}</text><text class="caption" x="337" y="252">2e^{−jπ/4}</text>
+<text class="label" x="470" y="100">实系数：零点成共轭对</text><text class="label" x="470" y="142">线性相位：关于单位圆镜像</text><text class="label" x="470" y="184">FIR：全部极点在原点</text><text class="label" x="470" y="226">因此系统必稳定</text>
+</svg></figure>
+
+<figure class="diagram"><figcaption>有限长冲激响应的对称中心</figcaption>
+<svg class="fir-symmetry-svg" viewBox="0 0 920 270" role="img" aria-label="奇偶长度 FIR 冲激响应对称示意图">
+<text class="label" x="230" y="26" text-anchor="middle">偶对称，N 为奇数，τ=5</text><text class="label" x="690" y="26" text-anchor="middle">偶对称，N 为偶数，τ=4.5</text>
+<path class="axis" d="M50 180H410"/><path class="axis" d="M510 180H870"/><path class="mirror" d="M230 45V225"/><path class="mirror" d="M690 45V225"/>
+<g class="stem"><path d="M80 180V145M115 180V160M150 180V130M195 180V155M230 180V110M265 180V155M310 180V130M345 180V160M380 180V145"/><path d="M540 180V145M575 180V160M610 180V130M655 180V155M725 180V155M770 180V130M805 180V160M840 180V145"/></g>
+<g class="dot"><circle cx="80" cy="145" r="4"/><circle cx="115" cy="160" r="4"/><circle cx="150" cy="130" r="4"/><circle cx="195" cy="155" r="4"/><circle cx="230" cy="110" r="4"/><circle cx="265" cy="155" r="4"/><circle cx="310" cy="130" r="4"/><circle cx="345" cy="160" r="4"/><circle cx="380" cy="145" r="4"/><circle cx="540" cy="145" r="4"/><circle cx="575" cy="160" r="4"/><circle cx="610" cy="130" r="4"/><circle cx="655" cy="155" r="4"/><circle cx="725" cy="155" r="4"/><circle cx="770" cy="130" r="4"/><circle cx="805" cy="160" r="4"/><circle cx="840" cy="145" r="4"/></g>
+<text class="caption" x="230" y="250" text-anchor="middle">样值相对于整数对称中心成对出现</text><text class="caption" x="690" y="250" text-anchor="middle">对称中心位于两个样本之间</text>
+</svg></figure>
 
 <h3>四种线性相位类型</h3>
 <table class="table"><thead><tr><th>类型</th><th>对称性与长度</th><th>端点约束</th><th>可实现的典型响应</th></tr></thead><tbody>
@@ -130,12 +160,14 @@ W_R\!\left(e^{j\omega}\right)
 \]</div>
 <p>常用窗函数都在 [[0\le n\le N-1]] 内定义；它们以更宽的主瓣换取更低的旁瓣。三角窗、汉宁窗、海明窗和布莱克曼窗可统一写为：</p>
 <div class="formula">\[
-\begin{aligned}
-w_{\mathrm{tri}}(n)&=
+w_{\mathrm{tri}}(n)=
 \begin{cases}
 \dfrac{2n}{N-1}, & 0\le n\le\dfrac{N-1}{2},\\
-2-\dfrac{2n}{N-1}, & \dfrac{N-1}{2}<n\le N-1,
-\end{cases}\\[3pt]
+2-\dfrac{2n}{N-1}, & \dfrac{N-1}{2}&lt;n\le N-1.
+\end{cases}
+\]</div>
+<div class="formula formula-wide">\[
+\begin{aligned}
 w_{\mathrm{Han}}(n)&=\frac{1}{2}\left[1-\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n),\\
 w_{\mathrm{Ham}}(n)&=\left[0.54-0.46\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n),\\
 w_{\mathrm{Blk}}(n)&=\left[0.42-0.5\cos\!\left(\frac{2\pi n}{N-1}\right)+0.08\cos\!\left(\frac{4\pi n}{N-1}\right)\right]R_N(n).
@@ -209,7 +241,7 @@ h(n)&=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk},\qquad n=0,1,\ldots,N-1.
 \end{aligned}
 \]</div>
 <p>若要求线性相位，频域采样值的幅度和相位也必须满足冲激响应对称性的约束。设 [[\tau=(N-1)/2]]，四类情形的采样值关系如下：</p>
-<div class="formula">\[
+<div class="formula formula-wide">\[
 \begin{aligned}
 h(n)=h(N-1-n),\ N\text{ 为奇数}:&\qquad H_k=H_{N-k},\quad H(\omega)\text{ 以 }0,\pi,2\pi\text{ 呈偶对称},\\
 h(n)=h(N-1-n),\ N\text{ 为偶数}:&\qquad H_k=-H_{N-k},\quad H(\omega)\text{ 以 }\pi\text{ 呈奇对称},\quad H(\pi)=0,\\
@@ -225,6 +257,15 @@ H\!\left(e^{j\omega}\right)&=\sum_{k=0}^{N-1}H(k)\Phi\!\left(\omega-\frac{2\pi}{
 \Phi(\omega)&=\frac{\sin(\omega N/2)}{N\sin(\omega/2)}e^{-j\omega(N-1)/2}.
 \end{aligned}
 \]</div>
+<figure class="diagram"><figcaption>频率采样点与过渡带起伏</figcaption>
+<svg class="fir-sampling-svg" viewBox="0 0 920 320" role="img" aria-label="频率采样法低通 FIR 响应与过渡带图">
+<defs><marker id="fir-sampling-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6z" fill="#174b73"/></marker></defs>
+<path class="transition" d="M465 36H520V270H465z"/><path class="axis" d="M58 270H876" marker-end="url(#fir-sampling-arrow)"/><path class="axis" d="M58 270V34" marker-end="url(#fir-sampling-arrow)"/><text class="label" x="884" y="291">ω</text><text class="label" x="29" y="49">H(ω)</text>
+<path class="ideal" d="M75 72H470V270H855"/><path class="response" d="M75 72 C145 65 175 81 230 70 S322 88 370 67 S430 90 466 72 C485 92 492 220 525 252 S565 222 598 258 S648 235 684 264 S733 242 770 265 S820 247 855 264"/>
+<g class="stem"><path d="M75 270V72M122 270V72M169 270V72M216 270V72M263 270V72M310 270V72M357 270V72M404 270V72M451 270V72M498 270V270M545 270V270M592 270V270M639 270V270M686 270V270M733 270V270M780 270V270M827 270V270"/></g>
+<g class="dot"><circle cx="75" cy="72" r="4"/><circle cx="122" cy="72" r="4"/><circle cx="169" cy="72" r="4"/><circle cx="216" cy="72" r="4"/><circle cx="263" cy="72" r="4"/><circle cx="310" cy="72" r="4"/><circle cx="357" cy="72" r="4"/><circle cx="404" cy="72" r="4"/><circle cx="451" cy="72" r="4"/><circle cx="498" cy="270" r="4"/><circle cx="545" cy="270" r="4"/><circle cx="592" cy="270" r="4"/><circle cx="639" cy="270" r="4"/><circle cx="686" cy="270" r="4"/><circle cx="733" cy="270" r="4"/><circle cx="780" cy="270" r="4"/><circle cx="827" cy="270" r="4"/></g>
+<text class="caption" x="270" y="54" text-anchor="middle">通带取样值</text><text class="caption" x="492" y="302" text-anchor="middle">过渡带：无取样点</text><text class="caption" x="690" y="242" text-anchor="middle">内插引起的阻带起伏</text><text class="caption" x="470" y="291">0.5π</text><text class="caption" x="848" y="291">π</text>
+</svg></figure>
 <p>理想频响变化越陡，不连续点附近的肩峰和起伏越明显。若过渡带没有采样点，通带会产生波动，阻带衰减也会较差；增加采样点或在过渡带安排非零的过渡采样值可显著改善结果。设计时不可只让通带、阻带采样点“对上”，还应检查采样点之间由内插得到的真实频响。</p>
 
 <h3>例题</h3>

@@ -33,8 +33,10 @@ def render_stem_svg(
     py = lambda value: _map(value, y_min, y_max, bottom, top)
     x_axis = py(0) if y_min <= 0 <= y_max else bottom
     y_axis = px(0) if x_min <= 0 <= x_max else left
-    axis_clearance = 12 if 0 in samples else 0
-    plotted_y_axis = y_axis - axis_clearance if 0 in samples else y_axis
+    # The vertical axis is the n=0 axis.  Do not create a second, displaced
+    # "zero axis" beside a sample at n=0: the stem and axis intentionally
+    # share the same mathematical coordinate.
+    plotted_y_axis = y_axis
 
     ticks = []
     for index in range(int(x_min), int(x_max) + 1):
@@ -65,7 +67,7 @@ def render_stem_svg(
 </style>
 <text class="title" data-title-label-clearance="true" x="{width / 2:.2f}" y="34">{escape(title)}</text>
 <line class="axis" data-axis="horizontal" x1="{left - 12}" y1="{x_axis:.2f}" x2="{right + 24}" y2="{x_axis:.2f}" marker-end="url(#axis-arrow)"/>
-<line class="axis" data-axis="vertical" data-first-sample-clearance="{"true" if 0 in samples else "false"}" x1="{plotted_y_axis:.2f}" y1="{bottom + 13}" x2="{plotted_y_axis:.2f}" y2="{top - 18}" marker-end="url(#axis-arrow)"/>
+<line class="axis" data-axis="vertical" data-first-sample-clearance="false" x1="{plotted_y_axis:.2f}" y1="{bottom + 13}" x2="{plotted_y_axis:.2f}" y2="{top - 18}" marker-end="url(#axis-arrow)"/>
 {''.join(ticks)}
 {''.join(stems)}
 <text class="axis-label" x="{right + 34}" y="{x_axis + 7:.2f}">{escape(x_label)}</text>

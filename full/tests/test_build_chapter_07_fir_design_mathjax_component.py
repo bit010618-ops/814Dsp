@@ -38,11 +38,25 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"H_{\mathrm{IV}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\sin\!\left[\left(m-\frac{1}{2}\right)\omega\right]" in html
     assert r"z=-1,\quad z=0.5,\quad z=0.5e^{j\pi/4}" in html
     assert r"N-1=7,\qquad \tau=\frac{N-1}{2}=3.5" in html
+    assert 'class="fir-flow-svg"' in html
+    assert 'class="fir-symmetry-svg"' in html
+    assert 'class="fir-pz-svg"' in html
+    assert 'class="fir-sampling-svg"' in html
+    assert "FIR 滤波的时域与频域对应关系" in html
+    assert "有限长冲激响应的对称中心" in html
+    assert "FIR 系统函数的零极点结构" in html
+    assert "频率采样点与过渡带起伏" in html
+    assert 'foreignObject class="math-foreign"' in html
+    assert r"\(H(e^{j\omega})\)" in html
+    assert r"\(Y(e^{j\omega})=X(e^{j\omega})H(e^{j\omega})\)" in html
     assert "R_N(n)=\n\\begin{cases}" in html
     assert r"\frac{1-e^{-j\omega N}}{1-e^{-j\omega}}" in html
     assert r"e^{-j\omega\frac{N-1}{2}}\frac{\sin(N\omega/2)}{\sin(\omega/2)}" in html
     assert r"\omega_c-\frac{2\pi}{N}\lesssim\omega\lesssim\omega_c+\frac{2\pi}{N}" in html
-    assert "w_{\\mathrm{tri}}(n)&=\n\\begin{cases}" in html
+    assert "w_{\\mathrm{tri}}(n)=\n\\begin{cases}" in html
+    assert r"\dfrac{2n}{N-1}, & 0\le n\le\dfrac{N-1}{2}" in html
+    assert r"2-\dfrac{2n}{N-1}, & \dfrac{N-1}{2}&lt;n\le N-1" in html
+    assert 'class="formula formula-wide"' in html
     assert r"w_{\mathrm{Han}}(n)&=\frac{1}{2}\left[1-\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n)" in html
     assert r"w_{\mathrm{Ham}}(n)&=\left[0.54-0.46\cos\!\left(\frac{2\pi n}{N-1}\right)\right]R_N(n)" in html
     assert r"w_{\mathrm{Blk}}(n)&=\left[0.42-0.5\cos\!\left(\frac{2\pi n}{N-1}\right)+0.08\cos\!\left(\frac{4\pi n}{N-1}\right)\right]R_N(n)" in html

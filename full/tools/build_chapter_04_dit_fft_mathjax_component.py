@@ -36,6 +36,10 @@ X\left(k+\frac{N}{2}\right)&=X_1(k)-W_N^kX_2(k),
 \]</div>
 <p>这对“加、减”输出构成一个标准蝶形。每个蝶形包含一次旋转因子乘法和两次复数加法；其中 (W_N^k=e^{-j2\pi k/N}) 称为旋转因子。</p>
 
+<figure class="source-figure">
+<img src="../assets/source-figures/ch04-dit-fft-n8-flow.png" alt="基-2 DIT-FFT 算法蝶形流图，N 等于 8">
+<figcaption>图 4-1 基-2 DIT-FFT 算法蝶形流图（N=8）</figcaption>
+</figure>
 <h2>递归分解与运算量</h2>
 <p>一次分解把一个 (N) 点 DFT 化为两个 (N/2) 点 DFT 和 (N/2) 个蝶形。继续对每个子序列按奇偶下标分解，直至得到 2 点 DFT。对于 (N=8=2^3)，共有 3 级，每一级有 (N/2=4) 个蝶形，总复数乘法数为：</p>
 <div class="formula">\[

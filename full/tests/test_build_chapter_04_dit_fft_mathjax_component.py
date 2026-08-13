@@ -15,4 +15,6 @@ def test_dit_fft_component_preserves_decimation_butterfly_cost_and_bit_reversal(
     assert r"A_L(J+B)&=A_{L-1}(J)-A_{L-1}(J+B)W_N^p" in html
     assert "码位倒序" in html
     assert "0.013824" in html
+    assert 'src="../assets/source-figures/ch04-dit-fft-n8-flow.png"' in html
+    assert "DIT-FFT 算法蝶形流图（N=8）" in html
     assert "MATLAB" not in html

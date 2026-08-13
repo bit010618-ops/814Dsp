@@ -18,6 +18,8 @@ def test_dif_ifft_and_optimization_component_preserves_all_remaining_chapter_top
     assert r"x(n)A^{-n}W^{nk}" in html
     assert r"nk=\frac{1}{2}\left[n^2+k^2-(k-n)^2\right]" in html
     assert "高斯的遗憾" in html
+    assert 'src="../assets/source-figures/ch04-dif-fft-n8-flow.png"' in html
+    assert "DIF-FFT 算法蝶形流图（N=8）" in html
     assert "MATLAB" not in html
 
 

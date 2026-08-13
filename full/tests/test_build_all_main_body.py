@@ -28,3 +28,11 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert ".chart-grid{display:grid" in html
     assert "grid-template-columns:repeat(2,minmax(0,1fr))" in html
     assert ".grid{display:grid" in html
+    assert ".mapping th,.mapping td,.table th,.table td{border:.45pt solid" in html
+    assert ".source-figure.compact{max-width:156mm}" in html
+    assert ".formula mjx-container[display=\"true\"]" in html
+    assert ".structure-svg .wire{fill:none;stroke:#174b73" in html
+    assert ".structure-svg .block{fill:#f4f7f8;stroke:#0d8794" in html
+    assert ".spectrum-svg .replica{fill:none;stroke-width:3" in html
+    assert ".chain-svg .chain-box{fill:#f4f7f8;stroke:#b08d57" in html
+    assert ".wheel-svg .wheel-rim{fill:none;stroke:#b6342d" in html

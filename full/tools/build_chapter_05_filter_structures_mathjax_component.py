@@ -58,6 +58,10 @@ y(n)=\sum_{m=0}^{M}b_m x(n-m)-\sum_{n=1}^{N}a_n y(n-n).
 
 <h3>直接 I 型与直接 II 型</h3>
 <p>直接 I 型按差分方程直接实现：输入 [[x(n)]] 经 [[M]] 节延时链形成横向前向网络，输出 [[y(n)]] 经 [[N]] 节延时链形成反馈网络。它的信号意义最直观，但需要两条延时链。</p>
+<figure class="source-figure">
+<img src="../assets/source-figures/ch05-direct-form-i.png" alt="IIR 直接 I 型滤波器结构图">
+<figcaption>图 5-1 IIR 直接 I 型结构</figcaption>
+</figure>
 <p>直接 II 型把两条延时链合并为共享状态延时链，因此在通常的 [[M=N]] 情形下延时单元数可由 [[M+N]] 降至 [[\max(M,N)]]。合并虽节省存储，却使内部状态的动态范围和有限字长效应更值得注意。</p>
 <p>令共享延时链的输出为内部状态 [[w(n)]]，直接 II 型的两步计算为：</p>
 <div class="formula">\[
@@ -83,9 +87,17 @@ H(z)=A\prod_{r=1}^{R}
 \]</div>
 <p>这种安排便于按零极点控制各节特性，也便于对每节单独缩放。并联型则对部分分式展开，把同一输入分到若干支路，支路输出在求和节点汇总；它特别适合由若干谐振节叠加构造频率选择性。转置型来自实系数 LSI 流图：将所有支路方向反转、支路增益不变，并交换输入输出位置，传输函数保持不变。</p>
 <p>选择 IIR 结构时，不能只看“实现了同一个 [[H(z)]]”。同一系统函数的不同结构在溢出敏感度、量化误差、极限环、内部状态幅度与调试便利性上都可能不同。</p>
+<figure class="source-figure compact">
+<img src="../assets/source-figures/ch05-cascade-form.png" alt="IIR 二阶节级联结构图">
+<figcaption>图 5-2 IIR 二阶节级联结构</figcaption>
+</figure>
 
 <h3>应用：双音多频信号</h3>
 <p>电话按键的双音多频（DTMF）信号由一个低频组和一个高频组中的两个正弦分量叠加而成。并联型结构可把单位冲激输入分别送入两个二阶谐振支路，再在求和节点合成输出；各支路的极点位置直接决定所选频率。该例说明并联型便于控制极点，适合谐振器叠加，但不适合需要精确控制传输零点的陷波或窄带带阻滤波器。</p>
+<figure class="source-figure">
+<img src="../assets/source-figures/ch05-parallel-form.png" alt="DTMF 并联型 IIR 滤波器结构图">
+<figcaption>图 5-3 并联型结构示例：双音多频信号</figcaption>
+</figure>
 
 <h2>5.3 FIR 数字滤波器结构</h2>
 <p>FIR 滤波器的单位冲激响应只在有限个样点非零。因果 FIR 的 [[H(z)]] 只含有限次 [[z^{-1}]] 多项式，极点全部位于 [[z=0]]，因此本身稳定；常见直接实现没有输出到输入的反馈。</p>
@@ -97,9 +109,17 @@ y(n)=\sum_{m=0}^{N-1}h(m)x(n-m).
 
 <h3>抽头延迟线直接型</h3>
 <p>直接型又称横向滤波器或抽头延迟线结构：输入依次通过 [[z^{-1}]] 延时链，每个抽头乘以 [[h(m)]] 后相加。优点是简单、直观、运算速度快，且系数就是冲激响应样值；不足是不能直接把零点以分节方式控制。</p>
+<figure class="source-figure">
+<img src="../assets/source-figures/ch05-fir-direct-form.png" alt="FIR 抽头延迟线直接型结构图">
+<figcaption>图 5-4 FIR 抽头延迟线直接型结构</figcaption>
+</figure>
 
 <h3>FIR 级联型、频率抽样型与谐振器型</h3>
 <p>当需要控制传输零点时，可将 [[H(z)]] 分解为实系数一阶或二阶因子并级联实现。与直接型相比，级联型通常需要更多系数和乘法，但零点控制更方便。频率抽样型从有限个频率样值出发构造系统，适合频率取样设计；谐振器型可由多个谐振单元并联形成，梳状滤波器中的零点与各谐振支路极点之间的抵消关系必须逐项检查。</p>
+<figure class="source-figure">
+<img src="../assets/source-figures/ch05-fir-cascade-form.png" alt="FIR 二阶节级联型结构图">
+<figcaption>图 5-5 FIR 二阶节级联型结构</figcaption>
+</figure>
 
 <h3>频率采样型的插值结构</h3>
 <p>对单位圆上的 [[N]] 个频率样值 [[H(k)]]，频率采样型可直接写成下列插值形式：</p>
@@ -115,6 +135,10 @@ H_1(z)=1-z^{-N},
 H_k(z)=\frac{H(k)}{1-W_N^{-k}z^{-1}}.
 \]</div>
 <p>其中 [[H_1(z)]] 是梳状滤波器，后级为由 [[N]] 个一阶谐振器组成的谐振器柜；梳状滤波器的每个单位圆零点会与对应谐振支路的极点相抵消，从而实现所给的频率样值。</p>
+<figure class="source-figure">
+<img src="../assets/source-figures/ch05-frequency-sampling-form.png" alt="频率采样型 FIR 滤波器插值结构图">
+<figcaption>图 5-6 频率采样型 FIR 滤波器的插值结构</figcaption>
+</figure>
 
 <p>频率采样结构由梳状滤波器和谐振器柜级联组成。对 [[N]] 个频率采样值 [[H(k)]]，可用 IDFT 关系构造有限长冲激响应：</p>
 <div class="formula">\[
@@ -136,6 +160,10 @@ z_k=re^{j2\pi k/N}.
 L=M+N-1.
 \]</div>
 <p>将两个序列分别补零到 [[L]] 点后进行 [[L]] 点 FFT，相乘并作 [[L]] 点 IFFT，即可用圆周卷积等价地得到线性卷积。长序列处理中还应结合重叠相加法或重叠保留法分块，保证每一块的 FFT 长度避免循环混叠。</p>
+<figure class="source-figure compact">
+<img src="../assets/source-figures/ch05-fast-convolution-form.png" alt="快速卷积型 FIR 滤波器结构框图">
+<figcaption>图 5-7 快速卷积型 FIR 滤波器结构</figcaption>
+</figure>
 
 <h3>线性相位型结构</h3>
 <p>线性相位 FIR 的冲激响应关于中心点满足偶对称或奇对称：</p>
