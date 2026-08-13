@@ -27,7 +27,7 @@ def write_html(output: Path) -> Path:
 X(k)=\sum_{n=0}^{N-1}x(n)W_N^{nk},\qquad k=0,1,\ldots,N-1.
 \]</div>
 <p>计算一个 (X(k)) 需要 (N) 次复数乘法和 (N-1) 次复数加法；计算全部 (N) 个频点则得到：</p>
-<table class="counts"><thead><tr><th>对象</th><th>复数乘法</th><th>复数加法</th></tr></thead><tbody>
+<table class="table counts"><thead><tr><th>对象</th><th>复数乘法</th><th>复数加法</th></tr></thead><tbody>
 <tr><td>一个 (X(k))</td><td>(N)</td><td>(N-1)</td></tr>
 <tr><td>(N) 点 DFT</td><td>(N^2)</td><td>(N(N-1))</td></tr>
 </tbody></table>

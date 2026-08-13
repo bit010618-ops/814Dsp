@@ -51,6 +51,7 @@ p{margin:5pt 0 8pt}
 figure{break-inside:avoid;margin:12pt auto;text-align:center}
 .source-figure{max-width:100%;padding:0;background:#fff;border:1px solid #d8e0e5;border-radius:5pt;overflow:hidden}
 .source-figure.compact{max-width:156mm}
+.source-figure-flow{break-inside:auto;max-width:156mm;margin:8pt auto}
 .source-figure img{display:block;width:100%;height:auto}
 .source-figure figcaption{padding:5pt 8pt 6pt;color:#486d8b;font-size:9.5pt;text-align:center;background:#fbfcfd}
 .chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9pt;align-items:start}

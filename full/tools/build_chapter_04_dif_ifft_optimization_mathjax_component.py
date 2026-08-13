@@ -44,7 +44,7 @@ X(2r+1)&=\sum_{n=0}^{N/2-1}x_2(n)W_{N/2}^{nr},
 \]</div>
 <p>递归进行该分解即可得到基-2 DIF-FFT。DIT 与 DIF 的总计算量相同，都可以原位计算，也都包含码位倒序；差别主要在顺序：DIF 是输入正序、输出码位倒序，DIT 则相反。两者的蝶形形式也略有不同，不能把旋转因子放在错误的支路上。</p>
 
-<figure class="source-figure">
+<figure class="source-figure source-figure-flow">
 <img src="../assets/source-figures/ch04-dif-fft-n8-flow.png" alt="基-2 DIF-FFT 算法蝶形流图，N 等于 8">
 <figcaption>图 4-2 基-2 DIF-FFT 算法蝶形流图（N=8）</figcaption>
 </figure>

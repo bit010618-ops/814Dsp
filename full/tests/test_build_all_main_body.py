@@ -30,6 +30,7 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert ".grid{display:grid" in html
     assert ".mapping th,.mapping td,.table th,.table td{border:.45pt solid" in html
     assert ".source-figure.compact{max-width:156mm}" in html
+    assert ".source-figure-flow{break-inside:auto;max-width:156mm;margin:8pt auto}" in html
     assert ".formula mjx-container[display=\"true\"]" in html
     assert ".structure-svg .wire{fill:none;stroke:#174b73" in html
     assert ".structure-svg .block{fill:#f4f7f8;stroke:#0d8794" in html

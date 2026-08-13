@@ -15,6 +15,7 @@ def test_chapter_four_efficiency_component_preserves_direct_dft_counts(tmp_path:
     assert r"\left(W_N^{nk}\right)^*=W_N^{-nk}" in html
     assert r"W_N^{nk}=W_N^{(N+n)k}=W_N^{n(N+k)}" in html
     assert r"W_N^{N/2}=-1" in html
+    assert '<table class="table counts">' in html
     assert ",mathrm" not in html
     assert "DIT" in html and "DIF" in html
     assert "MATLAB" not in html

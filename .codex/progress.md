@@ -821,6 +821,13 @@
 - Added the shared `.signal-svg .hold` rule: unfilled teal stroke, 3pt-equivalent line width and rounded joins. The waveform now remains a genuine staircase with separate sampled stems, points and time ticks.
 - Verification: targeted component/full-body tests `2 passed`; rebuilt/stamped PDF reports MathJax `unrendered=[]`, `pageErrors=[]`. Rendered A4 page 28 at 150 dpi confirms the corrected textbook-style graphic.
 
+# 2026-08-14 Chapter-four visual audit and pagination repair
+
+- Inspected all fourth-chapter main-body pages (56--63). Both DIT/DIF butterfly flows preserve their full technical content and labels; no crop, overlap, raw MathJax source, or formula error was found.
+- Converted the direct-DFT computation-count block on page 56 to the shared ruled-table class, restoring every horizontal and vertical grid line.
+- Allowed the DIF butterfly figure to continue naturally into the remaining space on page 60 rather than forcing the whole figure to the following page. The continued figure and its caption remain complete and readable on page 61, eliminating the otherwise non-chapter-end blank area.
+- Exporter diagnosis: a blocked CDN MathJax defer script prevented the local PDF helper from reaching `networkidle`. The local QA helper now aborts that CDN request before navigation and loads the local MathJax copy, so PDF QA completes normally. Verification: targeted tests `4 passed`; export reports `math=2812`, `unrendered=[]`, `pageErrors=[]`; rendered pages 56, 60 and 61 visually checked.
+
 # 2026-08-14 Chapter-two visual audit
 
 - Rendered and inspected every main-body page of chapter two (pages 31--43) at A4 scale. The s--z mapping, unit circle, pole-zero distance figure, all standard LaTeX formulas, limiter cases and typography are clear with no overlap, crop, black fill or missing technical graphic.
