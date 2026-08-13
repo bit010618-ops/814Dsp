@@ -815,6 +815,12 @@
 - Reduced only the continuation chart maximum width from 560px to 500px. This retains legible A4 graphics but lets the real-exponential section heading, formula and lead paragraph flow onto page 8; the complete paired stem figures then begin page 9.
 - Verification: targeted assembly/component tests `2 passed`; rebuilt body reports MathJax `unrendered=[]`, `pageErrors=[]`. Rendered stamped pages 8--9 at 150 dpi show natural content flow without clipping, overlap, or raw formula source.
 
+# 2026-08-14 Zero-order-hold assembled SVG repair
+
+- Chapter-one page-28 audit found that the zero-order-hold component generated a correct data-driven step path but its `.hold` style was absent from the shared full-book stylesheet. SVG default fill therefore produced an opaque black area instead of a line waveform.
+- Added the shared `.signal-svg .hold` rule: unfilled teal stroke, 3pt-equivalent line width and rounded joins. The waveform now remains a genuine staircase with separate sampled stems, points and time ticks.
+- Verification: targeted component/full-body tests `2 passed`; rebuilt/stamped PDF reports MathJax `unrendered=[]`, `pageErrors=[]`. Rendered A4 page 28 at 150 dpi confirms the corrected textbook-style graphic.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.

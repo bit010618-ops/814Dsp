@@ -78,6 +78,7 @@ svg{max-width:100%;height:auto}
 .signal-svg .axis{fill:none;stroke:#174b73;stroke-width:2}
 .signal-svg .guide{fill:none;stroke:#174b73;stroke-width:1.45}.signal-svg .overlap{fill:none;stroke:#b13a3a;stroke-width:3}.signal-svg .separated,.signal-svg .replica{fill:none;stroke:#0f8b8d;stroke-width:3;stroke-linejoin:round}.signal-svg .passband{fill:none;stroke:#b08d57;stroke-width:2.2}.signal-svg .band-fill{fill:#dceff0;stroke:#0f8b8d;stroke-width:2}.signal-svg .dimension{fill:none;stroke:#b08d57;stroke-width:1.7}.signal-svg .plain-label,.signal-svg .figure-note{fill:#486d8b;font:16px "Microsoft YaHei",sans-serif}.signal-svg .bad-note{fill:#b13a3a;font:16px "Microsoft YaHei",sans-serif}.signal-svg .good-note{fill:#0f8b8d;font:16px "Microsoft YaHei",sans-serif}.signal-svg .sinc-primary{fill:none;stroke:#0f8b8d;stroke-width:3}.signal-svg .sinc-secondary{fill:none;stroke:#78babc;stroke-width:2}.signal-svg .sample-dot{fill:#b56b2e}
 .signal-svg .stem{stroke:#b45309;stroke-width:2}
+.signal-svg .hold{fill:none;stroke:#0f8b8d;stroke-width:3;stroke-linejoin:round}
 .signal-svg .dot{fill:#b45309}.signal-svg .tick{stroke:#174b73;stroke-width:1.3}
 .signal-svg .label{fill:#374c5b;font:16px "Microsoft YaHei",sans-serif}
 .signal-svg .conv-line{fill:none;stroke:#008f95;stroke-width:3}

@@ -12,6 +12,10 @@ def test_analog_digital_chain_uses_mathjax_and_structured_vector_diagrams(tmp_pa
     assert r"f_s=\frac{1}{T}" in html
     assert "analog_digital_chain_svg" in html
     assert "zero_order_hold_svg" in html
+    assert 'class="hold"' in html
+    assert 'class="hold" d="M' in html
+    assert 'class="hold" d="M0' not in html
+    assert 'class="hold" d="M108.0' in html
     assert "<svg" in html
     assert "drawImage" not in html
     assert "<image" not in html
