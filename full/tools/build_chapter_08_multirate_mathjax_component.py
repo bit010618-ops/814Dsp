@@ -157,6 +157,15 @@ y(n)&=\left\{\ldots,x_1(0),x_2(0),x_3(0),x_1(1),x_2(1),x_3(1),\ldots\right\},\\
 y(n)&=y_1(n)+y_2(n)+y_3(n).
 \end{aligned}
 \]</div>
+<h3>频分复用</h3>
+<p>频分复用先把各路基带信号分别上采样，再用低通、带通和高通滤波器把它们安排到互不重叠的频带，最后相加传输。接收端按相同的频带分离，再恢复各支路；滤波器带宽与采样率必须共同保证各子带不发生混叠。</p>
+<div class="formula">\[
+\begin{aligned}
+X_i\!\left(e^{j3\omega}\right)&=X_i\!\left(e^{j\omega}\right)\big|_{\omega\mapsto3\omega},\qquad i=1,2,3,\\
+y(n)&=G_1(z)x_1^{\uparrow3}(n)+G_2(z)x_2^{\uparrow3}(n)+G_3(z)x_3^{\uparrow3}(n),\\
+G_1(z),\ G_2(z),\ G_3(z)&\text{ 分别为低通、带通和高通滤波器。}
+\end{aligned}
+\]</div>
 <h3>音频采样率转换</h3>
 <p>常见音频系统同时使用 44.1 kHz、48 kHz、32 kHz、96 kHz 和 192 kHz 等采样率。若制作链路与播放标准不同，需要使用采样率转换器进行有理数倍重采样；当兼容 CD 音频时，还应注意采样率转换与位深转换是两个独立环节，不能混为一谈。</p>
 <p>44.1 kHz 源于早期 PCM 录制设备与视频扫描体制的匹配：在 PAL 与 NTSC 两种体制下，分别有</p>

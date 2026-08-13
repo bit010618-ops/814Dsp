@@ -30,6 +30,8 @@ def test_chapter_eight_component_covers_multirate_main_body(tmp_path: Path):
     assert r"y(n)&=\left\{\ldots,x_1(0),x_2(0),x_3(0)" in html
     assert "频分复用" in html
     assert r"y(n)&=y_1(n)+y_2(n)+y_3(n)" in html
+    assert r"X_i\!\left(e^{j3\omega}\right)" in html
+    assert r"G_1(z),\ G_2(z),\ G_3(z)" in html
     assert r"44100=294\cdot50\cdot3" in html
     assert "MATLAB" not in html
     assert "真题" not in html
