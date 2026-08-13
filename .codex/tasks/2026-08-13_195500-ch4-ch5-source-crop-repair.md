@@ -20,6 +20,12 @@ Audit course-slide figure crops in chapters four and five. A crop must retain th
 
 Never keep iterating a risky crop. If removing slide chrome would cut formulas, arrows, labels, or structure, use a clean vector redraw instead.
 
+## 2026-08-13 follow-up: diagram-port validation
+
+- User visual QA correctly identified that the two parallel resonator output arrows merely approached the summing node. They were changed to terminate precisely at its upper and lower left-side input ports.
+- The formerly partial FIR direct-form course crop was also replaced with a full programmable transversal diagram rather than retaining a clipped delay line.
+- Page 67 was rebuilt and inspected at 180 dpi. The two DTMF branches now enter the summer, and the input formula is fully visible.
+
 ## Next action
 
 Continue page-by-page audit of remaining source-derived figures in the main body before returning to the frozen training and appendix sections.

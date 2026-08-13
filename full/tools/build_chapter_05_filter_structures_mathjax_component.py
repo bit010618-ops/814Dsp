@@ -18,12 +18,15 @@ p{margin:5pt 0 8pt;orphans:3;widows:3}
 .table{border-collapse:collapse;width:100%;margin:10pt 0 12pt}.table th,.table td{border-bottom:.4pt solid #d6dde2;padding:6pt 7pt;text-align:left;vertical-align:top}.table th{color:#315d7c;font-weight:500;background:#f4f7f8}
 .steps{padding-left:1.5em;margin:5pt 0 8pt}.steps li{margin:3pt 0}
 .structure-svg{display:block;width:100%;height:auto;background:#fbfcfd;border:1px solid #d8e0e5;border-radius:5pt}
-.structure-svg .wire{fill:none;stroke:#174b73;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.structure-svg .block{fill:#f4f7f8;stroke:#0d8794;stroke-width:2}.structure-svg .sum{fill:#fff;stroke:#174b73;stroke-width:2.4}.structure-svg .branch{fill:#174b73}.structure-svg .label{fill:#315d7c;font:16px "Microsoft YaHei",sans-serif}.structure-svg .math-label div{height:100%;display:flex;align-items:center;justify-content:center;color:#172b3a;font-size:17px}
+.structure-svg .wire{fill:none;stroke:#174b73;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.structure-svg .block{fill:#f4f7f8;stroke:#0d8794;stroke-width:2}.structure-svg .sum{fill:#fff;stroke:#174b73;stroke-width:2.4}.structure-svg .branch{fill:#174b73}.structure-svg .label{fill:#315d7c;font:16px "Microsoft YaHei",sans-serif}.structure-svg .math-label div{height:100%;display:flex;align-items:center;justify-content:center;color:#172b3a;font-size:17px;white-space:nowrap;overflow:visible}
 @media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}.table{font-size:9.5pt}}
 </style>"""
 
 
 def _math(x: float, y: float, width: float, text: str) -> str:
+    if text in {"h(N-2)", "h(N-1)"}:
+        x -= 11
+        width = 80
     return f'<foreignObject class="math-label" x="{x}" y="{y}" width="{width}" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\\({text}\\)</div></foreignObject>'
 
 
@@ -37,8 +40,13 @@ def iir_cascade_svg() -> str:
     return f'''<svg class="structure-svg" data-diagram="iir-cascade-form" viewBox="0 0 900 250" role="img" aria-label="IIR 二阶节级联结构图"><defs><marker id="cascade-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">IIR 二阶节级联结构</text><path class="wire" marker-end="url(#cascade-arrow)" d="M55 130H165"/><rect class="block" x="165" y="84" width="155" height="92" rx="6"/><path class="wire" marker-end="url(#cascade-arrow)" d="M320 130H382"/><rect class="block" x="382" y="84" width="155" height="92" rx="6"/><path class="wire" marker-end="url(#cascade-arrow)" d="M537 130H599"/><rect class="block" x="599" y="84" width="155" height="92" rx="6"/><path class="wire" marker-end="url(#cascade-arrow)" d="M754 130H846"/><text class="label" x="351" y="137" text-anchor="middle">⋯</text>{_math(22,95,70,'x(n)')}{_math(185,102,115,'H_1(z)')}{_math(402,102,115,'H_2(z)')}{_math(619,102,115,'H_R(z)')}{_math(808,95,68,'y(n)')}<text class="label" x="242" y="160" text-anchor="middle">二阶节</text><text class="label" x="459" y="160" text-anchor="middle">二阶节</text><text class="label" x="676" y="160" text-anchor="middle">二阶节</text></svg>'''
 
 
+def fir_direct_form_svg() -> str:
+    """Complete transversal FIR: delay line, taps, gains, and the final summer."""
+    return f'''<svg class="structure-svg" data-diagram="fir-direct-form" viewBox="0 0 900 360" role="img" aria-label="FIR 抽头延迟线直接型结构图"><defs><marker id="fir-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">FIR 抽头延迟线直接型结构</text><path class="wire" marker-end="url(#fir-arrow)" d="M52 100H170"/><path class="wire" marker-end="url(#fir-arrow)" d="M170 100H300"/><path class="wire" marker-end="url(#fir-arrow)" d="M300 100H430"/><path class="wire" marker-end="url(#fir-arrow)" d="M430 100H560"/><path class="wire" marker-end="url(#fir-arrow)" d="M560 100H690"/><circle class="branch" cx="82" cy="100" r="4"/><circle class="branch" cx="170" cy="100" r="4"/><circle class="branch" cx="300" cy="100" r="4"/><circle class="branch" cx="430" cy="100" r="4"/><circle class="branch" cx="560" cy="100" r="4"/><circle class="branch" cx="690" cy="100" r="4"/><rect class="block" x="184" y="74" width="74" height="52" rx="5"/><rect class="block" x="314" y="74" width="74" height="52" rx="5"/><rect class="block" x="574" y="74" width="74" height="52" rx="5"/><path class="wire" d="M82 100V170"/><path class="wire" d="M170 100V170"/><path class="wire" d="M300 100V170"/><path class="wire" d="M430 100V170"/><path class="wire" d="M560 100V170"/><path class="wire" d="M690 100V170"/><rect class="block" x="55" y="170" width="56" height="42" rx="4"/><rect class="block" x="143" y="170" width="56" height="42" rx="4"/><rect class="block" x="273" y="170" width="56" height="42" rx="4"/><rect class="block" x="403" y="170" width="56" height="42" rx="4"/><rect class="block" x="533" y="170" width="56" height="42" rx="4"/><rect class="block" x="663" y="170" width="56" height="42" rx="4"/><path class="wire" d="M83 212V262H754"/><path class="wire" d="M171 212V262"/><path class="wire" d="M301 212V262"/><path class="wire" d="M431 212V262"/><path class="wire" d="M561 212V262"/><path class="wire" d="M691 212V262"/><circle class="sum" cx="790" cy="262" r="32"/><text class="label" x="790" y="270" text-anchor="middle">Σ</text><path class="wire" marker-end="url(#fir-arrow)" d="M822 262H858"/>{_math(20,65,60,'x(n)')}{_math(190,82,62,'z^{-1}')}{_math(320,82,62,'z^{-1}')}{_math(580,82,62,'z^{-1}')}{_math(54,174,58,'h(0)')}{_math(142,174,58,'h(1)')}{_math(272,174,58,'h(2)')}{_math(402,174,58,'h(m)')}{_math(532,174,58,'h(N-2)')}{_math(662,174,58,'h(N-1)')}{_math(835,228,58,'y(n)')}<text class="label" x="490" y="105" text-anchor="middle">⋯</text><text class="label" x="490" y="198" text-anchor="middle">⋯</text></svg>'''
+
+
 def dtmf_parallel_svg() -> str:
-    return f'''<svg class="structure-svg" data-diagram="dtmf-parallel-form" viewBox="0 0 900 330" role="img" aria-label="双音多频并联谐振器结构图"><defs><marker id="d2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">双音多频信号的两支路并联谐振器</text><path class="wire" marker-end="url(#d2)" d="M58 165H150V98H240"/><path class="wire" marker-end="url(#d2)" d="M150 165V232H240"/><circle class="branch" cx="150" cy="165" r="5"/><rect class="block" x="240" y="65" width="180" height="66" rx="6"/><rect class="block" x="240" y="199" width="180" height="66" rx="6"/><path class="wire" marker-end="url(#d2)" d="M420 98H555"/><path class="wire" marker-end="url(#d2)" d="M420 232H555"/><circle class="sum" cx="595" cy="165" r="33"/><text class="label" x="595" y="172" text-anchor="middle">Σ</text><path class="wire" marker-end="url(#d2)" d="M628 165H838"/><text class="label" x="330" y="92" text-anchor="middle">谐振支路 1</text><text class="label" x="330" y="226" text-anchor="middle">谐振支路 2</text>{_math(23,130,72,'x(n)=\\delta(n)')}{_math(255,94,150,'H_1(z)')}{_math(255,228,150,'H_2(z)')}{_math(800,130,68,'y(n)')}{_math(438,67,100,'\\omega_1')}{_math(438,240,100,'\\omega_2')}</svg>'''
+    return f'''<svg class="structure-svg" data-diagram="dtmf-parallel-form" viewBox="0 0 900 330" role="img" aria-label="双音多频并联谐振器结构图"><defs><marker id="d2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">双音多频信号的两支路并联谐振器</text><path class="wire" marker-end="url(#d2)" d="M58 165H150V98H240"/><path class="wire" marker-end="url(#d2)" d="M150 165V232H240"/><circle class="branch" cx="150" cy="165" r="5"/><rect class="block" x="240" y="65" width="180" height="66" rx="6"/><rect class="block" x="240" y="199" width="180" height="66" rx="6"/><path class="wire" marker-end="url(#d2)" d="M420 98H555V145H562"/><path class="wire" marker-end="url(#d2)" d="M420 232H555V185H562"/><circle class="sum" cx="595" cy="165" r="33"/><text class="label" x="595" y="172" text-anchor="middle">Σ</text><path class="wire" marker-end="url(#d2)" d="M628 165H838"/><text class="label" x="330" y="92" text-anchor="middle">谐振支路 1</text><text class="label" x="330" y="226" text-anchor="middle">谐振支路 2</text>{_math(0,130,120,'x(n)=\\delta(n)')}{_math(255,94,150,'H_1(z)')}{_math(255,228,150,'H_2(z)')}{_math(800,130,68,'y(n)')}{_math(438,67,100,'\\omega_1')}{_math(438,240,100,'\\omega_2')}</svg>'''
 
 
 def fir_cascade_svg() -> str:
@@ -141,8 +149,8 @@ y(n)=\sum_{m=0}^{N-1}h(m)x(n-m).
 
 <h3>抽头延迟线直接型</h3>
 <p>直接型又称横向滤波器或抽头延迟线结构：输入依次通过 [[z^{-1}]] 延时链，每个抽头乘以 [[h(m)]] 后相加。优点是简单、直观、运算速度快，且系数就是冲激响应样值；不足是不能直接把零点以分节方式控制。</p>
-<figure class="source-figure">
-<img src="../assets/source-figures/ch05-fir-direct-form.png" alt="FIR 抽头延迟线直接型结构图">
+<figure>
+__FIR_DIRECT_FORM__
 <figcaption>图 5-4 FIR 抽头延迟线直接型结构</figcaption>
 </figure>
 
@@ -224,6 +232,7 @@ y(n)=\sum_{m=0}^{L-1}h(m)\left[x(n-m)\pm x(n-2L+1+m)\right].
     content = (content
         .replace("__IIR_DIRECT_FORM__", iir_direct_form_svg())
         .replace("__IIR_CASCADE__", iir_cascade_svg())
+        .replace("__FIR_DIRECT_FORM__", fir_direct_form_svg())
         .replace("__DTMF_PARALLEL__", dtmf_parallel_svg())
         .replace("__FIR_CASCADE__", fir_cascade_svg())
         .replace("__FREQUENCY_SAMPLING__", frequency_sampling_svg())

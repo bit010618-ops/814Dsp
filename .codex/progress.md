@@ -791,3 +791,8 @@
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.
 - Verification: chapter-five/crop tests `6 passed`; rebuilt `tmp/dsp-main-body-crop-qa-v2.pdf` with MathJax `unrendered=[]`, `pageErrors=[]`; rendered affected A4 page and visually verified no cut technical content or course-slide shell.
 - Next: audit remaining source-derived figures in the main body using the same per-image rule, then continue the main body before frozen training/appendix work.
+# 2026-08-13 DTMF summing-node port correction
+
+- Corrected the DTMF parallel resonator diagram: each branch arrow now terminates on the corresponding upper/lower input port of the summing node, rather than ending in empty space near it.
+- Rebuilt `tmp/dsp-main-body-crop-qa-v6.pdf`; visual QA on page 67 confirms the two inputs, summer, output arrow, and labels are unambiguous. MathJax: `unrendered=[]`, `pageErrors=[]`.
+- Added structural regression assertions for the exact two branch-to-summer paths and widened the input label allocation to prevent its formula from being truncated.
