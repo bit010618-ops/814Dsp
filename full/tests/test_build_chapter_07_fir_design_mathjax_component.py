@@ -68,5 +68,9 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"\theta_k=\pm\frac{\pi}{2}-\frac{N-1}{N}\pi k" in html
     assert r"H\!\left(e^{j\omega}\right)&=\sum_{k=0}^{N-1}H(k)\Phi\!\left(\omega-\frac{2\pi}{N}k\right)" in html
     assert r"\Phi(\omega)&=\frac{\sin(\omega N/2)}{N\sin(\omega/2)}e^{-j\omega(N-1)/2}" in html
+    assert r"\delta_p&=\frac{10^{\alpha_p/20}-1}{10^{\alpha_p/20}+1}" in html
+    assert r"\delta_s&=10^{-\alpha_s/20}" in html
+    assert r"\max_{\omega\in\mathcal{B}}\left|E(\omega)\right|" in html
+    assert "无关区域的宽度不能为零" in html
     assert "MATLAB" not in html
     assert "真题" not in html

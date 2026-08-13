@@ -233,13 +233,21 @@ H\!\left(e^{j\omega}\right)&=\sum_{k=0}^{N-1}H(k)\Phi\!\left(\omega-\frac{2\pi}{
 <p>减小误差的一种直接方式是在过渡带增加采样点。经验结果是：不加过渡采样点时阻带衰减约为 20 dB；加入一个值约为 0.3904 的过渡采样点时约为 44--54 dB；加入两个值约为 0.5886、0.1065 的过渡采样点时约为 65--75 dB。</p>
 
 <h2>7.4 利用等波纹逼近法设计 FIR 滤波器</h2>
-<p>等波纹最佳逼近采用加权切比雪夫准则：在给定长度与线性相位约束下，使逼近区域内加权误差的最大值最小，并让极大误差近似均匀分布。设 [[H_d(\omega)]] 为理想广义幅度、[[H_g(\omega)]] 为设计结果，则：</p>
+<p>等波纹最佳逼近是一种优化设计方法：在给定滤波器长度与线性相位约束下，使逼近区域内加权误差的最大值最小，且极大误差在整个逼近频段近似均匀分布。设 [[H_d(\omega)]] 为理想广义幅度、[[H_g(\omega)]] 为实际设计的广义幅度，则：</p>
 <div class="formula">\[
-E(\omega)=W(\omega)\left[H_d(\omega)-H_g(\omega)\right],
-\qquad
-\min\max_{\omega\in\mathcal{B}}\left|E(\omega)\right|.
+\begin{aligned}
+E(\omega)&=W(\omega)\left|H_d(\omega)-H_g(\omega)\right|,\\
+\mathop{\min}_{\vphantom{\omega}}\ \max_{\omega\in\mathcal{B}}\left|E(\omega)\right|.&
+\end{aligned}
 \]</div>
-<p>加权函数 [[W(\omega)]] 越大，对应频段的逼近精度越高。通带和阻带是逼近区域，过渡带是不要求精确逼近的无关区域；无关区宽度不能为零。Remez 多重交换迭代通过交替更新极值频点求取 [[h(n)]]，能分别控制通带与阻带波纹，常比窗函数法和基本频率采样法以更短长度达到同一指标。</p>
+<p>加权函数 [[W(\omega)]] 越大，对应频段的逼近精度越高。通带和阻带是逼近区域，过渡带是不要求精确逼近的无关区域；无关区域的宽度不能为零。Remez 多重交换迭代以加权切比雪夫准则求取 [[h(n)]]，可分别控制通带和阻带的波纹幅度，通常比窗函数法和基本频率采样法以更短长度达到同一指标。</p>
+<p>给定通带波纹 [[\alpha_p]] 与阻带衰减 [[\alpha_s]] 时，常先将指标换算为线性容限：</p>
+<div class="formula">\[
+\begin{aligned}
+\delta_p&=\frac{10^{\alpha_p/20}-1}{10^{\alpha_p/20}+1},\\
+\delta_s&=10^{-\alpha_s/20}.
+\end{aligned}
+\]</div>
 <table class="table"><thead><tr><th>方法</th><th>直接控制量</th><th>主要特征</th></tr></thead><tbody><tr><td>窗函数法</td><td>窗型与长度</td><td>过程直观；过渡带与旁瓣受窗函数制约。</td></tr><tr><td>频率采样法</td><td>离散频响样值</td><td>便于指定关键频点；需处理采样点间插误差。</td></tr><tr><td>等波纹逼近</td><td>误差权重与长度</td><td>在给定长度下最大加权误差最小；通、阻带可独立加权。</td></tr></tbody></table>
 <h3>例题</h3>
 <p>用窗函数法和等波纹最佳逼近法分别设计一个线性相位 FIR 带阻滤波器。指标如下：通带下截止频率 [[\omega_{lp}=0.2\pi]]，阻带下截止频率 [[\omega_{ls}=0.35\pi]]；阻带上截止频率 [[\omega_{us}=0.65\pi]]，通带上截止频率 [[\omega_{up}=0.8\pi]]，[[\alpha_p=1\text{ dB}]]，[[\alpha_s=60\text{ dB}]]。</p>
