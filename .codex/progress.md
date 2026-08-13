@@ -806,3 +806,10 @@
 - Replaced all four retained chapter-eight course-slide crops with clean, self-contained SVG teaching figures: twofold-decimation spectrum transformation, anti-alias decimation, interpolation, and rational-rate conversion.
 - Removed slide frames, background texture, institution marks, and teaching callouts; arrows terminate on actual module boundaries. Corrected a first-pass lower spectrum overflow before acceptance.
 - Verification: main-body/chapter-eight/crop suites `3 passed`; `tmp/ch08-diagram-qa-v2.pdf` rendered with MathJax `unrendered=[]`, `pageErrors=[]`, and its affected pages were visually checked at A4 resolution.
+
+# 2026-08-13 Main-body multirate SVG assembly repair
+
+- Root cause: chapter-eight vector figures were styled correctly in their standalone component, but the full-book assembler did not carry the component-local `.multirate-svg` rules into the shared document stylesheet. The spectrum paths therefore inherited SVG defaults and rendered as black filled areas in the assembled PDF.
+- Repair: added the complete multirate SVG style family to the full-book stylesheet and a regression assertion that verifies both spectrum stroke rules exist in assembled HTML.
+- Verification: targeted regression suite `2 passed`; rebuilt `tmp/dsp-main-body-visual-audit-v8.pdf` with MathJax `unrendered=[]` and `pageErrors=[]`; visually inspected assembled pages 86--90 at A4 resolution. The decimation spectrum, decimator, interpolator, rational-rate converter, formulas, and table now render cleanly with no black fill, cropping, overlap, or raw formula source.
+- Next: continue the page-density audit. Non-chapter-end low-density pages must be reflowed by carrying suitable following content upward; only chapter-ending and one-question training pages may retain a large writing area.

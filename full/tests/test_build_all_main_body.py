@@ -36,3 +36,5 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert ".spectrum-svg .replica{fill:none;stroke-width:3" in html
     assert ".chain-svg .chain-box{fill:#f4f7f8;stroke:#b08d57" in html
     assert ".wheel-svg .wheel-rim{fill:none;stroke:#b6342d" in html
+    assert ".multirate-svg .spectrum-a{fill:none;stroke:#0d8794" in html
+    assert ".multirate-svg .spectrum-b{fill:none;stroke:#b56b2e" in html
