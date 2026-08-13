@@ -31,9 +31,29 @@ y(n)=x(Mn),\qquad F_s'=\frac{F_s}{M}.
 Y\!\left(e^{j\omega}\right)=\frac{1}{M}
 \sum_{r=0}^{M-1}X\!\left(e^{j(\omega-2\pi r)/M}\right).
 \]</div>
+<div class="formula">\[
+X_d\!\left(e^{j\omega}\right)=\frac{1}{M}
+\sum_{r=0}^{M-1}X\!\left(e^{j(\omega/M-2\pi r/M)}\right).
+\]</div>
+<div class="formula">\[
+X_d\!\left(e^{j\omega}\right)=
+\frac{1}{2}X\!\left(e^{j\omega/2}\right)+
+\frac{1}{2}X\!\left(e^{j(\omega/2-\pi)}\right).
+\]</div>
 <p>上式可看作将原频谱按 [[M]] 段分解、移位并相加后再缩放。故抽取后表现为频谱拉伸、移位、求和与幅度缩小。为避免相加后的谱副本重叠，必须满足</p>
 <div class="formula">\[
 X\!\left(e^{j\omega}\right)=0,\qquad \frac{\pi}{M}\leq\left|\omega\right|\leq\pi.
+\]</div>
+<div class="formula">\[
+\begin{aligned}
+H_d\!\left(e^{j\omega}\right)&=
+\begin{cases}
+1, & 0\leq\left|\omega\right|<\pi/M,\\
+0, & \pi/M\leq\left|\omega\right|\leq\pi,
+\end{cases}\\
+w(n)&=\sum_{k=-\infty}^{\infty}h_d(k)x(n-k),\\
+x_d(n)&=w(Mn).
+\end{aligned}
 \]</div>
 <p>因此若原信号带宽未限制在 [[\pi/M]] 以内，抽取后会产生不可逆混叠。正确结构是先用抗混叠低通滤波器限制带宽，再接 [[\downarrow M]] 抽取器；不能把低通滤波器放在抽取之后当作补救。</p>
 
@@ -53,21 +73,45 @@ X\!\left(e^{j\omega}\right)=0,\qquad \frac{\pi}{M}\leq\left|\omega\right|\leq\pi
 <div class="formula">\[
 v(n)=\sum_{k=0}^{40}h(k)x(n-k),\qquad y(n)=v(8n).
 \]</div>
+<div class="formula">\[
+\begin{aligned}
+w(n)&=\frac{1}{2}\left[1-\cos\!\left(\frac{\pi n}{20}\right)\right]R_{41}(n),\\
+h(n)&=\frac{\sin\!\left[\frac{\pi}{8}(n-20)\right]}{\pi(n-20)}
+\cdot\frac{1}{2}\left[1-\cos\!\left(\frac{\pi n}{20}\right)\right]R_{41}(n),\\
+x_d(n)&=\sum_{k=0}^{40}h(k)x(8n-k).
+\end{aligned}
+\]</div>
 
 <h2>8.2 信号的整数倍内插</h2>
 <p>[[L]] 倍内插使采样率提高 [[L]] 倍。第一步在相邻原样本间插入 [[L-1]] 个零：</p>
 <div class="formula">\[
-y(n)=\sum_{k=-\infty}^{\infty}x(k)\delta(n-kL),
-\qquad F_s'=LF_s.
+\begin{aligned}
+y(n)&=\sum_{k=-\infty}^{\infty}x(k)\delta(n-kL),\\
+x_p(n)&=\begin{cases}
+x(n/L), & n=0,\ \pm L,\ \pm2L,\ldots,\\
+0, & \text{其他 } n,
+\end{cases}\\
+F_s'&=LF_s.
+\end{aligned}
 \]</div>
 <p>零插入不会自动产生新的平滑样本，而是在频域形成镜像谱：</p>
 <div class="formula">\[
 Y\!\left(e^{j\omega}\right)=X\!\left(e^{j\omega L}\right).
 \]</div>
+<div class="formula">\[
+\begin{aligned}
+H_i\!\left(e^{j\omega}\right)&=\begin{cases}
+L, & 0\leq\left|\omega\right|<\pi/L,\\
+0, & \pi/L\leq\left|\omega\right|\leq\pi,
+\end{cases}\\
+h_i(n)&=\frac{\sin(\pi n/L)}{\pi n/L}.
+\end{aligned}
+\]</div>
 <p>随后必须使用插值低通滤波器去除镜像，并补偿增益。理想插值器在 [[|\omega|\leq\pi/L]] 内增益为 [[L]]，其他频段为零；这样可保留原谱并获得较高采样率序列。</p>
 <p>将插零序列通过插值滤波器后，时域关系为卷积：</p>
 <div class="formula">\[
-x_i(n)=\sum_{k=-\infty}^{\infty}y(k)h_i(n-k).
+x_i(n)=\sum_{k=-\infty}^{\infty}x(k)
+\frac{\sin\!\left[\pi(n-kL)/L\right]}{\pi(n-kL)/L}.
 \]</div>
 <p>其中 [[h_i(n)]] 是抗影像滤波器的单位脉冲响应。插零本身并未完成平滑重构；只有低通滤波器去除额外的 [[L-1]] 个影像频谱后，内插后的样值才对应于所需的较高采样率信号。</p>
 
@@ -88,15 +132,38 @@ H(z)=\sum_{r=0}^{M-1}z^{-r}E_r\!\left(z^M\right).
 
 <h3>单级与多级采样频率变换</h3>
 <p>单级有理数倍变换采用“[[\uparrow L]] [[\longrightarrow]] 低通滤波 [[\longrightarrow]] [[\downarrow M]]”的结构。低通滤波器同时承担抗影像和抗混叠任务；当 [[L]] 或 [[M]] 很大时，所需截止频率很低，滤波器阶数和计算量会显著增大。</p>
+<div class="formula">\[
+H\!\left(e^{j\omega}\right)=
+\begin{cases}
+L, & 0\leq\left|\omega\right|<\omega_c,\\
+0, & \omega_c\leq\left|\omega\right|\leq\pi,
+\end{cases}
+\qquad
+\omega_c=\min\!\left(\frac{\pi}{L},\frac{\pi}{M}\right).
+\]</div>
 <p>此时应把 [[L/M]] 分解为若干较小因子的乘积，构成多级采样率变换系统。各级在较宽的过渡带内工作，能显著降低每一级滤波器的设计代价；各级的倍率乘积必须仍等于总变换比。</p>
+<div class="formula">\[
+\frac{147}{160}=\frac{7}{8}\cdot\frac{7}{5}\cdot\frac{3}{4}.
+\]</div>
 
 <h2>8.5 多采样率系统的应用</h2>
 <h3>语音系统中的采样率转换</h3>
 <p>在语音系统中，可先以较高采样率完成 A/D 变换，再利用数字低通滤波器和抽取器降低处理采样率；输出端则通过内插、低通滤波和 D/A 变换恢复到所需的模拟输出采样率。这样可把难以实现的高选择性模拟抗混叠滤波任务，转移为较易精确设计的数字滤波任务。</p>
 <h3>时分复用与频分复用</h3>
 <p>时分复用将多个序列按时间交织成一路数据流，接收端再按时隙分离各路序列；频分复用则把不同信号安排在不同频带，经低通、带通或高通滤波器分离。多采样率结构能使各子带按其实际带宽选用合适采样率，从而减少总传输量和计算量。</p>
+<div class="formula">\[
+\begin{aligned}
+y(n)&=\left\{\ldots,x_1(0),x_2(0),x_3(0),x_1(1),x_2(1),x_3(1),\ldots\right\},\\
+y(n)&=y_1(n)+y_2(n)+y_3(n).
+\end{aligned}
+\]</div>
 <h3>音频采样率转换</h3>
 <p>常见音频系统同时使用 44.1 kHz、48 kHz、32 kHz、96 kHz 和 192 kHz 等采样率。若制作链路与播放标准不同，需要使用采样率转换器进行有理数倍重采样；当兼容 CD 音频时，还应注意采样率转换与位深转换是两个独立环节，不能混为一谈。</p>
+<p>44.1 kHz 源于早期 PCM 录制设备与视频扫描体制的匹配：在 PAL 与 NTSC 两种体制下，分别有</p>
+<div class="formula">\[
+44100=294\cdot50\cdot3,\qquad 44056=245\cdot59.94\cdot3.
+\]</div>
+<p>实际录制与播放中，应尽量选择整数倍采样率的转换链路；若必须在 44.1 kHz 与 48 kHz 系列之间转换，则需要通过有理数倍采样率转换器完成重采样。位深降低属于量化格式转换，不能把它当成采样率转换的一部分。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
