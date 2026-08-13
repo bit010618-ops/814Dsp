@@ -22,19 +22,19 @@ def feedback_structure_svg() -> str:
   <g class="wire" marker-end="url(#arrow)">
     <path d="M45 88 H170"/><path d="M290 88 H398"/>
     <path d="M474 88 H785"/>
-    <path d="M660 104 V205"/><path d="M540 205 H460"/>
+    <path d="M660 104 V205 H620"/><path d="M520 205 H460"/>
     <path d="M340 205 H305 V122 H398"/>
   </g>
   <circle class="sum" cx="436" cy="88" r="38"/>
   <text class="sum-sign" x="422" y="82">+</text>
   <text class="sum-sign" x="422" y="112">−</text>
   <rect class="block" x="170" y="55" width="120" height="66" rx="8"/>
-  <rect class="block" x="540" y="172" width="120" height="66" rx="8"/>
+  <rect class="block" x="520" y="172" width="100" height="66" rx="8"/>
   <rect class="block" x="340" y="172" width="120" height="66" rx="8"/>
   <g class="math-label">
     <foreignObject x="55" y="47" width="90" height="40"><div>\(x(n)\)</div></foreignObject>
     <foreignObject x="195" y="69" width="70" height="38"><div>\(b_0\)</div></foreignObject>
-    <foreignObject x="560" y="186" width="82" height="38"><div>\(z^{-1}\)</div></foreignObject>
+    <foreignObject x="530" y="186" width="82" height="38"><div>\(z^{-1}\)</div></foreignObject>
     <foreignObject x="360" y="186" width="80" height="38"><div>\(-a_1\)</div></foreignObject>
     <foreignObject x="720" y="47" width="90" height="40"><div>\(y(n)\)</div></foreignObject>
   </g>

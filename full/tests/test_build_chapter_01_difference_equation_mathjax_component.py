@@ -21,5 +21,9 @@ def test_difference_equation_component_uses_mathjax_and_a_real_svg_structure_dia
     assert r"y(n)=b_0x(n)-a_1y(n-1)" in html
     assert "feedback_structure_svg" in source
     assert "<svg" in source
+    # The feedback branch must enter the delay block through a real right-side
+    # port: the vertical descent itself is not an arrow into the block.
+    assert 'M660 104 V205 H620' in source
+    assert '<rect class="block" x="520" y="172" width="100" height="66"' in source
     assert "drawImage" not in source
     assert "ImageReader" not in source

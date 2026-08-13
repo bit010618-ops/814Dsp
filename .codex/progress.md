@@ -786,6 +786,12 @@
 - 采样脉冲、\(H_1(f)\)、基带频谱和副本频谱均以真实 SVG 坐标重绘。首轮视觉检查发现脉冲图内的周期/脉宽辅助文字彼此压住，已定位为重复标注占用同一绘图区，移除重复图内标注并保留题干数据；复渲染后无重叠，新增回归断言禁止此类标注回归。
 - 详解使用 MathJax `cases` 和完整频域推导：\(B=5\,\mathrm{kHz}\)、\(C_k=\frac14\operatorname{Sa}(k/4)\)、副本间隔 \(25\,\mathrm{kHz}\)，以及经 \(2\cos(2\pi f_st)\)、\(5\,\mathrm{kHz}\) 低通和 \(2/\operatorname{Sa}(1/4)\) 增益恢复的级联结构。
 - 定向回归 `34 passed`（仅既有 pytest 缓存权限警告）；临时 A4 PDF 的题页第 31 页与详解第 22--23 页经 180 dpi 检查，无公式源码、裁切、重叠或异常留白。未覆盖正式 PDF，未提交或推送。
+## 2026-08-13 Difference-equation feedback port correction
+
+- User reported that the feedback arrow in the first-order difference-equation diagram ended in empty space rather than at the delay block.
+- Root cause: the vertical wire itself carried an arrowhead but did not reach the module. The structure now explicitly routes output branch -> vertical segment -> horizontal segment into the `z^{-1}` right-side port -> gain block -> negative summer input.
+- Regression passed; `tmp/dsp-main-body-arrow-port-v13.pdf` has MathJax `unrendered=[]`, `pageErrors=[]`, and visual QA on page 21 confirms all arrows terminate on real ports.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.

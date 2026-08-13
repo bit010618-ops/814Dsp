@@ -18,4 +18,10 @@
 
 ## Next
 
+## 2026-08-13 Feedback-loop port correction
+
+- User reported the feedback arrow in the first-order difference-equation structure diagram ended in empty space instead of the delay block.
+- Root cause: the vertical feedback path used an arrow marker before reaching the `z^{-1}` module. Replaced it with a true right-side port connection: output branch -> vertical path -> horizontal path -> delay block -> gain block -> negative summing input.
+- Verification: targeted regression test passed; the rebuilt full-book A4 PDF `tmp/dsp-main-body-arrow-port-v13.pdf` rendered MathJax with `unrendered=[]`, `pageErrors=[]`, and visual inspection of page 21 confirmed that all feedback arrows end on real ports.
+
 继续整书正文的页级密度审计；仅当页尾不是章节末尾或训练书写页时，才把后续的非重复内容向上续排。
