@@ -798,6 +798,11 @@
 - This avoids a fixed-page-number map and avoids browser fixed-position header collisions: Chromium lays out the body first, then ReportLab/PyPDF writes only in the reserved margins.
 - Visual QA: rendered page 1 and the chapter-two start page 31; header, chapter label, rule, and page number are sharp and do not overlap the body. The same stamped run contains all 90 body pages.
 
+# 2026-08-14 Circular-index notation
+
+- Per feedback, replaced every body occurrence of the inline `mod N` circular-index notation with the requested parenthesized index plus outer period subscript, such as `x((n-n_0))_N` and `x^*((N-n))_N`.
+- Visual QA on regenerated page 49 verifies that the period subscript attaches to the complete parenthesized index. Full export reports MathJax `unrendered=[]`, `pageErrors=[]`; the assembled body HTML no longer contains `mod N` notation.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.

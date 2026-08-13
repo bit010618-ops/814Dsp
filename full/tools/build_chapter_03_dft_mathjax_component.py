@@ -28,7 +28,7 @@ def write_html(output: Path) -> Path:
 <p>DFT 面向有限长序列。把长度为 [[N]] 的主值序列视作一个 [[N]] 周期序列的一个周期，DFS 的变换对就限制为有限个样值，从而得到 DFT 与 IDFT。</p>
 
 <h2>有限长序列的周期延拓</h2>
-<p>设 [[x(n)]] 仅在 [[0\leq n\leq N-1]] 给定。其周期延拓可写为 [[\widetilde{x}(n)=x((n)\bmod N)]]；[[x(n)]] 称为主值序列，区间 [[0\leq n\leq N-1]] 称为主值区间。DFT 的每一步都隐含这一周期性，不能把越界下标当作普通的零值而忽略折回。</p>
+<p>设 [[x(n)]] 仅在 [[0\leq n\leq N-1]] 给定。其周期延拓可写为 [[\widetilde{x}(n)=x((n))_N]]；[[x(n)]] 称为主值序列，区间 [[0\leq n\leq N-1]] 称为主值区间。DFT 的每一步都隐含这一周期性，不能把越界下标当作普通的零值而忽略折回。</p>
 
 <h2>DFT 与 IDFT</h2>
 <p>令 [[W_N=e^{-j2\pi/N}]]，[[x(n)]] 的 [[N]] 点 DFT 定义为：</p>
@@ -61,7 +61,7 @@ aX_1(k)+bX_2(k).
 \]</div>
 <p>循环移位的正确顺序是：先把有限长序列作 [[N]] 周期延拓，再移位，最后在主值区间取值。时域循环移位与频域线性相位因子对应：</p>
 <div class="formula">\[
-x\left((n-n_0)\bmod N\right)
+x\left((n-n_0)\right)_N
 \quad\longleftrightarrow\quad
 W_N^{k n_0}X(k).
 \]</div>
@@ -69,23 +69,23 @@ W_N^{k n_0}X(k).
 <div class="formula">\[
 W_N^{-n k_0}x(n)
 \quad\longleftrightarrow\quad
-X\left((k-k_0)\bmod N\right).
+X\left((k-k_0)\right)_N.
 \]</div>
 <h3>例题：8 点圆周移位与反褶</h3>
 <p>已知序列 (x(n)=\{1,2,3,4\})，其中第一个样值对应 (n=0)。将它补零为 8 点主值序列后，分别求下列圆周运算的主值序列。</p>
 <div class="formula">\[
 \begin{aligned}
-x\left((n)\bmod8\right)R_8(n)&=\{1,2,3,4,0,0,0,0\},\\
-x\left((n+2)\bmod8\right)R_8(n)&=\{3,4,0,0,0,0,1,2\},\\
-x\left((n-2)\bmod8\right)R_8(n)&=\{0,0,1,2,3,4,0,0\},\\
-x\left((-n)\bmod8\right)R_8(n)&=\{1,0,0,0,0,4,3,2\},\\
-x\left((-n+2)\bmod8\right)R_8(n)&=\{3,2,1,0,0,0,0,4\},\\
-x\left((-n-2)\bmod8\right)R_8(n)&=\{0,0,0,4,3,2,1,0\}.
+x\left((n)\right)_8R_8(n)&=\{1,2,3,4,0,0,0,0\},\\
+x\left((n+2)\right)_8R_8(n)&=\{3,4,0,0,0,0,1,2\},\\
+x\left((n-2)\right)_8R_8(n)&=\{0,0,1,2,3,4,0,0\},\\
+x\left((-n)\right)_8R_8(n)&=\{1,0,0,0,0,4,3,2\},\\
+x\left((-n+2)\right)_8R_8(n)&=\{3,2,1,0,0,0,0,4\},\\
+x\left((-n-2)\right)_8R_8(n)&=\{0,0,0,4,3,2,1,0\}.
 \end{aligned}
 \]</div>
 <p>例如对最后一式取 (n=3)，有：</p>
 <div class="formula">\[
-x\left((-3-2)\bmod8\right)=x\left((-5)\bmod8\right)=x(3)=4.
+x\left((-3-2)\right)_8=x\left((-5)\right)_8=x(3)=4.
 \]</div>
 <p>这个检验说明圆周反褶不是把有限长列表直接倒写：应先完成 8 周期延拓，再按模 8 的下标取值。</p>
 <h3>例题：由频域相位因子恢复圆周移位序列</h3>
@@ -96,8 +96,8 @@ Y(k)=W_4^{3k}X(k),
 <p>根据时域圆周移位性质，先保留 4 周期性，再在主值区间取值：</p>
 <div class="formula">\[
 \begin{aligned}
-y(n)&=x\left((n-3)\bmod4\right)R_4(n)\\
-&=x\left((n+1)\bmod4\right)R_4(n)\\
+y(n)&=x\left((n-3)\right)_4R_4(n)\\
+&=x\left((n+1)\right)_4R_4(n)\\
 &=\left\{\frac{3}{4},\frac{2}{4},\frac{1}{4},1\right\},\qquad 0\leq n\leq3.
 \end{aligned}
 \]</div>
@@ -106,19 +106,19 @@ y(n)&=x\left((n-3)\bmod4\right)R_4(n)\\
 <p>DFT 的周期性使共轭对称也必须按模 [[N]] 理解。任一 [[N]] 点主值序列可分解为循环共轭对称分量与循环共轭反对称分量：</p>
 <div class="formula">\[
 \begin{aligned}
-x_{\mathrm{ep}}(n)&=\frac{1}{2}\left[x(n)+x^*\left((N-n)\bmod N\right)\right],\\
-x_{\mathrm{op}}(n)&=\frac{1}{2}\left[x(n)-x^*\left((N-n)\bmod N\right)\right].
+x_{\mathrm{ep}}(n)&=\frac{1}{2}\left[x(n)+x^*\left((N-n)\right)_N\right],\\
+x_{\mathrm{op}}(n)&=\frac{1}{2}\left[x(n)-x^*\left((N-n)\right)_N\right].
 \end{aligned}
 \]</div>
 <p>它们分别对应频域的实部与虚部。特别地，实序列的 DFT 满足循环共轭对称关系：</p>
 <div class="formula">\[
-X(k)=X^*\left((N-k)\bmod N\right),\qquad 0\leq k\leq N-1.
+X(k)=X^*\left((N-k)\right)_N,\qquad 0\leq k\leq N-1.
 \]</div>
 <p>计算实序列 DFT 时，只需直接计算约半数频点，其余频点可由该关系复核。</p>
 <p>两个 [[N]] 点序列的循环卷积定义为：</p>
 <div class="formula">\[
 y(n)=x_1(n)\mathbin{\circledast}_N x_2(n)
-=\sum_{m=0}^{N-1}x_1(m)x_2\left((n-m)\bmod N\right).
+=\sum_{m=0}^{N-1}x_1(m)x_2\left((n-m)\right)_N.
 \]</div>
 <p>它与频域逐点相乘相对应：</p>
 <div class="formula">\[

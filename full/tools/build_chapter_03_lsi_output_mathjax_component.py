@@ -27,7 +27,7 @@ N\geq N_1+N_2-1
 \]</div>
 <p>时，主值区间内的循环卷积才与线性卷积完全相同；当 [[N]] 不足时，线性卷积尾部会折回并叠加到前部。</p>
 <div class="formula">\[
-y(n)=\operatorname{IDFT}_N\{X(k)H(k)\}=y_l\left((n)\bmod N\right).
+y(n)=\operatorname{IDFT}_N\{X(k)H(k)\}=y_l\left((n)\right)_N.
 \]</div>
 
 <h2>计算路线的选择</h2>
