@@ -792,6 +792,12 @@
 - Root cause: the vertical wire itself carried an arrowhead but did not reach the module. The structure now explicitly routes output branch -> vertical segment -> horizontal segment into the `z^{-1}` right-side port -> gain block -> negative summer input.
 - Regression passed; `tmp/dsp-main-body-arrow-port-v13.pdf` has MathJax `unrendered=[]`, `pageErrors=[]`, and visual QA on page 21 confirms all arrows terminate on real ports.
 
+# 2026-08-13 Main-body running headers and folios
+
+- The assembled main-body PDF had correct A4 content but no final running furniture. Added a reusable PDF post-processing layer that infers each page's chapter from the actual browser-paginated page text, then overlays the fixed left header `数字信号处理讲义`, the current chapter title at upper right, and the true folio centered at the foot.
+- This avoids a fixed-page-number map and avoids browser fixed-position header collisions: Chromium lays out the body first, then ReportLab/PyPDF writes only in the reserved margins.
+- Visual QA: rendered page 1 and the chapter-two start page 31; header, chapter label, rule, and page number are sharp and do not overlap the body. The same stamped run contains all 90 body pages.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.
