@@ -200,14 +200,32 @@ h_{\mathrm{bs}}(n)&=\frac{\sin\!\left[\pi(n-\tau)\right]+\sin\!\left[\omega_1(n-
 <p>在 [[n=\tau]] 处各式应取极限值，再乘所选窗函数。带通设计的过渡带宽取两侧过渡带宽中的较小值；带阻可理解为高通与低通响应之和。</p>
 
 <h2>7.3 利用频率采样法设计 FIR 滤波器</h2>
-<p>频率采样法在等间隔频点指定目标频响样值 [[H(k)]]，再用 IDFT 唯一确定有限长冲激响应：</p>
+<p>频率采样法对理想频率响应作等间隔采样，并将采样值作为实际 FIR 数字滤波器频率特性的抽样值。由这 [[N]] 个频域样值可唯一确定一个长度为 [[N]] 的单位脉冲响应：</p>
 <div class="formula">\[
-h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk},
-\qquad
-H(k)=H\!\left(e^{j2\pi k/N}\right).
+\begin{aligned}
+H(k)&=H_d(k)=H_d\!\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi}{N}k},\\
+\omega_k&=\frac{2\pi}{N}k,\qquad k=0,1,\ldots,N-1,\\
+h(n)&=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk},\qquad n=0,1,\ldots,N-1.
+\end{aligned}
 \]</div>
-<p>若要求线性相位，[[H(k)]] 的幅度和相位必须满足与偶/奇对称、长度奇偶一致的约束。低通示例中，[[N=33]] 为奇数时应选第一类线性相位；第二类奇对称会强制 [[H(0)=H(\pi)=0]]，不适合一般低通。</p>
-<p>频率采样点之间由内插关系连接。理想频响变化越陡，不连续点附近的肩峰和起伏越明显；增加采样点或在过渡带安排非零的过渡采样值可显著改善阻带衰减。设计时不可只让通带、阻带采样点“对上”，还应检查采样点之间的真实频响。</p>
+<p>若要求线性相位，频域采样值的幅度和相位也必须满足冲激响应对称性的约束。设 [[\tau=(N-1)/2]]，四类情形的采样值关系如下：</p>
+<div class="formula">\[
+\begin{aligned}
+h(n)=h(N-1-n),\ N\text{ 为奇数}:&\qquad H_k=H_{N-k},\quad H(\omega)\text{ 以 }0,\pi,2\pi\text{ 呈偶对称},\\
+h(n)=h(N-1-n),\ N\text{ 为偶数}:&\qquad H_k=-H_{N-k},\quad H(\omega)\text{ 以 }\pi\text{ 呈奇对称},\quad H(\pi)=0,\\
+h(n)=-h(N-1-n),\ N\text{ 为奇数}:&\qquad H_k=-H_{N-k},\quad H(\omega)\text{ 以 }0,\pi,2\pi\text{ 呈奇对称},\quad H(0)=H(\pi)=0,\\
+h(n)=-h(N-1-n),\ N\text{ 为偶数}:&\qquad H_k=H_{N-k},\quad H(\omega)\text{ 以 }\pi\text{ 呈偶对称},\quad H(0)=0.
+\end{aligned}
+\]</div>
+<p>偶对称时，采样相位为 [[\theta_k=-\frac{N-1}{N}\pi k]]；奇对称时，采样相位为 [[\theta_k=\pm\frac{\pi}{2}-\frac{N-1}{N}\pi k]]。低通示例中，[[N=33]] 为奇数且直流处需有非零增益，故应选 I 型线性相位；奇对称情形会强制 [[H(0)=H(\pi)=0]]，不适合一般低通。</p>
+<p>频率采样点之间并非直线连接，而是由内插函数叠加恢复：</p>
+<div class="formula">\[
+\begin{aligned}
+H\!\left(e^{j\omega}\right)&=\sum_{k=0}^{N-1}H(k)\Phi\!\left(\omega-\frac{2\pi}{N}k\right),\\
+\Phi(\omega)&=\frac{\sin(\omega N/2)}{N\sin(\omega/2)}e^{-j\omega(N-1)/2}.
+\end{aligned}
+\]</div>
+<p>理想频响变化越陡，不连续点附近的肩峰和起伏越明显。若过渡带没有采样点，通带会产生波动，阻带衰减也会较差；增加采样点或在过渡带安排非零的过渡采样值可显著改善结果。设计时不可只让通带、阻带采样点“对上”，还应检查采样点之间由内插得到的真实频响。</p>
 
 <h3>例题</h3>
 <p>利用频率采样法，设计一个线性相位低通 FIR 数字滤波器，其理想幅频特性如下：已知 [[\omega_c=0.5\pi]]，采样点数为奇数 [[N=33]]。试求各采样点的幅值 [[H_k]] 及相位 [[\theta_k]]，也即求频域采样值 [[H(k)]]。</p>

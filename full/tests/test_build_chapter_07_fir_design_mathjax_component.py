@@ -57,6 +57,16 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"\sin\!\left[\pi(n-\tau)\right]+\sin\!\left[\omega_1(n-\tau)\right]-\sin\!\left[\omega_2(n-\tau)\right]" in html
     assert r"h(n)=\pm h(N-1-n)" in html
     assert r"h(n)=h_d(n)w(n)" in html
-    assert r"h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html
+    assert r"h(n)&=\frac{1}{N}\sum_{k=0}^{N-1}H(k)W_N^{-nk}" in html
+    assert r"H(k)&=H_d(k)=H_d\!\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi}{N}k}" in html
+    assert r"\omega_k&=\frac{2\pi}{N}k,\qquad k=0,1,\ldots,N-1" in html
+    assert r"H_k=H_{N-k}" in html
+    assert r"H_k=-H_{N-k}" in html
+    assert r"H(\pi)=0" in html
+    assert r"H(0)=H(\pi)=0" in html
+    assert r"\theta_k=-\frac{N-1}{N}\pi k" in html
+    assert r"\theta_k=\pm\frac{\pi}{2}-\frac{N-1}{N}\pi k" in html
+    assert r"H\!\left(e^{j\omega}\right)&=\sum_{k=0}^{N-1}H(k)\Phi\!\left(\omega-\frac{2\pi}{N}k\right)" in html
+    assert r"\Phi(\omega)&=\frac{\sin(\omega N/2)}{N\sin(\omega/2)}e^{-j\omega(N-1)/2}" in html
     assert "MATLAB" not in html
     assert "真题" not in html
