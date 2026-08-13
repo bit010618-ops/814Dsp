@@ -803,6 +803,12 @@
 - Per feedback, replaced every body occurrence of the inline `mod N` circular-index notation with the requested parenthesized index plus outer period subscript, such as `x((n-n_0))_N` and `x^*((N-n))_N`.
 - Visual QA on regenerated page 49 verifies that the period subscript attaches to the complete parenthesized index. Full export reports MathJax `unrendered=[]`, `pageErrors=[]`; the assembled body HTML no longer contains `mod N` notation.
 
+# 2026-08-14 Stem-axis clearance
+
+- First-chapter page-2 audit found that the generic stem SVG placed the drawn y-axis exactly on a real `n=0` sample. This contradicted the established textbook-plot rule that the first stem, origin label, and y-axis must not overlap.
+- The real-coordinate SVG renderer now leaves `n=0` at its exact tick coordinate but moves the visual vertical axis left by `0.32` sample interval only when a zero-index sample exists. The behavior is guarded by a regression test.
+- Verification: `6 passed`; rebuilt and stamped 90-page body reports MathJax `unrendered=[]`, `pageErrors=[]`. Rendered A4 page 2 at 150 dpi confirms the axis, zero tick and impulse stem are separate and readable.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.
