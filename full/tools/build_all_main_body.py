@@ -56,7 +56,7 @@ figure{break-inside:avoid;margin:12pt auto;text-align:center}
 .chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9pt;align-items:start}
 .chart-grid figure{width:100%;margin:6pt auto 10pt}
 .typical-sequence-continuation .chart{break-inside:auto;margin:6pt auto 8pt}
-.typical-sequence-continuation .chart svg{max-width:560px!important}
+.typical-sequence-continuation .chart svg{max-width:500px!important}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9pt;align-items:start}
 .grid svg{width:100%;height:auto}
 svg{max-width:100%;height:auto}

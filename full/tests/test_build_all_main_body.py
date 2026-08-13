@@ -40,4 +40,4 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert ".multirate-svg .spectrum-b{fill:none;stroke:#b56b2e" in html
     assert "typical-sequence-continuation" in html
     assert ".typical-sequence-continuation .chart{break-inside:auto" in html
-    assert ".typical-sequence-continuation .chart svg{max-width:560px!important}" in html
+    assert ".typical-sequence-continuation .chart svg{max-width:500px!important}" in html

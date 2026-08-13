@@ -809,6 +809,12 @@
 - The real-coordinate SVG renderer now leaves `n=0` at its exact tick coordinate but moves the visual vertical axis left by `0.32` sample interval only when a zero-index sample exists. The behavior is guarded by a regression test.
 - Verification: `6 passed`; rebuilt and stamped 90-page body reports MathJax `unrendered=[]`, `pageErrors=[]`. Rendered A4 page 2 at 150 dpi confirms the axis, zero tick and impulse stem are separate and readable.
 
+# 2026-08-14 Chapter-one pagination audit
+
+- Audited the first chapter through page 12 after the stem correction. Page 8 had a non-chapter-end large blank after the rectangle-sequence figure, despite the next section safely fitting in the remaining space.
+- Reduced only the continuation chart maximum width from 560px to 500px. This retains legible A4 graphics but lets the real-exponential section heading, formula and lead paragraph flow onto page 8; the complete paired stem figures then begin page 9.
+- Verification: targeted assembly/component tests `2 passed`; rebuilt body reports MathJax `unrendered=[]`, `pageErrors=[]`. Rendered stamped pages 8--9 at 150 dpi show natural content flow without clipping, overlap, or raw formula source.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.
