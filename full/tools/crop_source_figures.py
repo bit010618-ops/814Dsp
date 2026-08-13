@@ -17,23 +17,13 @@ DESTINATION = ROOT / "full" / "assets" / "source-figures"
 
 # (source image, destination image, left, top, right, bottom)
 CROPS = (
-    ("src-0591-0591.png", "ch04-dit-fft-n8-flow.png", (150, 100, 1360, 850)),
+    ("src-0591-0591.png", "ch04-dit-fft-n8-flow.png", (45, 90, 1490, 650)),
     ("src-0622-0622.png", "ch04-dif-fft-n8-flow.png", (205, 220, 1325, 745)),
-    ("src-0673-0673.png", "ch05-direct-form-i.png", (120, 350, 1420, 825)),
-    ("src-0692-0692.png", "ch05-cascade-form.png", (85, 260, 1450, 805)),
-    ("src-0699-0699.png", "ch05-parallel-form.png", (0, 0, 1534, 830)),
-    ("src-0713-0713.png", "ch05-fir-direct-form.png", (160, 350, 1260, 810)),
-    ("src-0714-0714.png", "ch05-fir-cascade-form.png", (160, 300, 1260, 830)),
-    ("src-0720-0720.png", "ch05-frequency-sampling-form.png", (160, 180, 1400, 830)),
-    ("src-0731-0731.png", "ch05-fast-convolution-form.png", (115, 150, 1430, 745)),
+    ("src-0713-0713.png", "ch05-fir-direct-form.png", (330, 365, 1120, 600)),
 )
 
 
-COURSE_MARK_MASKS = {
-    # This figure uses the full slide width for formulas and callouts.  Remove
-    # only the isolated course mark, not the mathematical content beside it.
-    "ch05-parallel-form.png": (1260, 0, 1534, 88),
-}
+COURSE_MARK_MASKS = {}
 
 
 def crop_all() -> list[Path]:

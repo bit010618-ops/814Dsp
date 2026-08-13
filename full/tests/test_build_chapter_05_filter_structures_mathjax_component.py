@@ -31,15 +31,27 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert r"N=2L" in html
     assert r"x(n-m)\pm x(n-2L+1+m)" in html
     for asset in (
-        "ch05-direct-form-i.png",
-        "ch05-cascade-form.png",
-        "ch05-parallel-form.png",
         "ch05-fir-direct-form.png",
+    ):
+        assert f'src="../assets/source-figures/{asset}"' in html
+    for diagram in (
+        "iir-direct-form-i",
+        "iir-cascade-form",
+        "dtmf-parallel-form",
+        "fir-cascade-form",
+        "frequency-sampling-form",
+        "fast-convolution-form",
+    ):
+        assert f'data-diagram="{diagram}"' in html
+    for asset in (
+        "ch05-cascade-form.png",
+        "ch05-direct-form-i.png",
+        "ch05-parallel-form.png",
         "ch05-fir-cascade-form.png",
         "ch05-frequency-sampling-form.png",
         "ch05-fast-convolution-form.png",
     ):
-        assert f'src="../assets/source-figures/{asset}"' in html
-    assert 'class="source-figure compact"' in html
+        assert asset not in html
+    assert 'class="source-figure"' in html
     assert "MATLAB" not in html
     assert "真题" not in html

@@ -17,8 +17,40 @@ p{margin:5pt 0 8pt;orphans:3;widows:3}
 .formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}
 .table{border-collapse:collapse;width:100%;margin:10pt 0 12pt}.table th,.table td{border-bottom:.4pt solid #d6dde2;padding:6pt 7pt;text-align:left;vertical-align:top}.table th{color:#315d7c;font-weight:500;background:#f4f7f8}
 .steps{padding-left:1.5em;margin:5pt 0 8pt}.steps li{margin:3pt 0}
+.structure-svg{display:block;width:100%;height:auto;background:#fbfcfd;border:1px solid #d8e0e5;border-radius:5pt}
+.structure-svg .wire{fill:none;stroke:#174b73;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.structure-svg .block{fill:#f4f7f8;stroke:#0d8794;stroke-width:2}.structure-svg .sum{fill:#fff;stroke:#174b73;stroke-width:2.4}.structure-svg .branch{fill:#174b73}.structure-svg .label{fill:#315d7c;font:16px "Microsoft YaHei",sans-serif}.structure-svg .math-label div{height:100%;display:flex;align-items:center;justify-content:center;color:#172b3a;font-size:17px}
 @media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}.table{font-size:9.5pt}}
 </style>"""
+
+
+def _math(x: float, y: float, width: float, text: str) -> str:
+    return f'<foreignObject class="math-label" x="{x}" y="{y}" width="{width}" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\\({text}\\)</div></foreignObject>'
+
+
+def iir_direct_form_svg() -> str:
+    """Formal direct-I layout: two complete delay chains and a standard summer."""
+    return f'''<svg class="structure-svg" data-diagram="iir-direct-form-i" viewBox="0 0 900 340" role="img" aria-label="IIR 直接 I 型结构图"><defs><marker id="d1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">直接 I 型：前向延时链与反馈延时链</text><path class="wire" marker-end="url(#d1)" d="M55 112H150"/><path class="wire" marker-end="url(#d1)" d="M150 112H245"/><path class="wire" marker-end="url(#d1)" d="M245 112H340"/><path class="wire" marker-end="url(#d1)" d="M340 112H540"/><path class="wire" marker-end="url(#d1)" d="M610 112H830"/><circle class="sum" cx="575" cy="112" r="35"/><text class="label" x="575" y="119" text-anchor="middle">Σ</text><circle class="branch" cx="150" cy="112" r="4"/><circle class="branch" cx="245" cy="112" r="4"/><circle class="branch" cx="340" cy="112" r="4"/><path class="wire" d="M150 112V184H540"/><path class="wire" d="M245 112V210H540"/><path class="wire" d="M340 112V236H540"/><path class="wire" marker-end="url(#d1)" d="M745 112V280H475"/><path class="wire" marker-end="url(#d1)" d="M475 280V147H548"/><path class="wire" marker-end="url(#d1)" d="M665 112V305H410"/><path class="wire" marker-end="url(#d1)" d="M410 305V138H544"/><rect class="block" x="173" y="165" width="56" height="38" rx="4"/><rect class="block" x="268" y="191" width="56" height="38" rx="4"/><rect class="block" x="363" y="217" width="56" height="38" rx="4"/><rect class="block" x="475" y="261" width="72" height="38" rx="4"/><rect class="block" x="410" y="286" width="72" height="38" rx="4"/>{_math(34,77,50,'x(n)')}{_math(817,77,55,'y(n)')}{_math(120,76,60,'z^{-1}')}{_math(215,76,60,'z^{-1}')}{_math(310,76,60,'z^{-1}')}{_math(174,166,54,'b_1')}{_math(269,192,54,'b_2')}{_math(364,218,54,'b_M')}{_math(483,262,58,'-a_1')}{_math(418,287,58,'-a_N')}</svg>'''
+
+
+def iir_cascade_svg() -> str:
+    """Formal cascade realization: identical second-order blocks in a left-to-right chain."""
+    return f'''<svg class="structure-svg" data-diagram="iir-cascade-form" viewBox="0 0 900 250" role="img" aria-label="IIR 二阶节级联结构图"><defs><marker id="cascade-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">IIR 二阶节级联结构</text><path class="wire" marker-end="url(#cascade-arrow)" d="M55 130H165"/><rect class="block" x="165" y="84" width="155" height="92" rx="6"/><path class="wire" marker-end="url(#cascade-arrow)" d="M320 130H382"/><rect class="block" x="382" y="84" width="155" height="92" rx="6"/><path class="wire" marker-end="url(#cascade-arrow)" d="M537 130H599"/><rect class="block" x="599" y="84" width="155" height="92" rx="6"/><path class="wire" marker-end="url(#cascade-arrow)" d="M754 130H846"/><text class="label" x="351" y="137" text-anchor="middle">⋯</text>{_math(22,95,70,'x(n)')}{_math(185,102,115,'H_1(z)')}{_math(402,102,115,'H_2(z)')}{_math(619,102,115,'H_R(z)')}{_math(808,95,68,'y(n)')}<text class="label" x="242" y="160" text-anchor="middle">二阶节</text><text class="label" x="459" y="160" text-anchor="middle">二阶节</text><text class="label" x="676" y="160" text-anchor="middle">二阶节</text></svg>'''
+
+
+def dtmf_parallel_svg() -> str:
+    return f'''<svg class="structure-svg" data-diagram="dtmf-parallel-form" viewBox="0 0 900 330" role="img" aria-label="双音多频并联谐振器结构图"><defs><marker id="d2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="34" text-anchor="middle">双音多频信号的两支路并联谐振器</text><path class="wire" marker-end="url(#d2)" d="M58 165H150V98H240"/><path class="wire" marker-end="url(#d2)" d="M150 165V232H240"/><circle class="branch" cx="150" cy="165" r="5"/><rect class="block" x="240" y="65" width="180" height="66" rx="6"/><rect class="block" x="240" y="199" width="180" height="66" rx="6"/><path class="wire" marker-end="url(#d2)" d="M420 98H555"/><path class="wire" marker-end="url(#d2)" d="M420 232H555"/><circle class="sum" cx="595" cy="165" r="33"/><text class="label" x="595" y="172" text-anchor="middle">Σ</text><path class="wire" marker-end="url(#d2)" d="M628 165H838"/><text class="label" x="330" y="92" text-anchor="middle">谐振支路 1</text><text class="label" x="330" y="226" text-anchor="middle">谐振支路 2</text>{_math(23,130,72,'x(n)=\\delta(n)')}{_math(255,94,150,'H_1(z)')}{_math(255,228,150,'H_2(z)')}{_math(800,130,68,'y(n)')}{_math(438,67,100,'\\omega_1')}{_math(438,240,100,'\\omega_2')}</svg>'''
+
+
+def fir_cascade_svg() -> str:
+    return f'''<svg class="structure-svg" data-diagram="fir-cascade-form" viewBox="0 0 900 230" role="img" aria-label="FIR 二阶节级联型结构图"><defs><marker id="d3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="32" text-anchor="middle">FIR 二阶节级联型结构</text><path class="wire" marker-end="url(#d3)" d="M60 120H170"/><rect class="block" x="170" y="75" width="150" height="90" rx="6"/><path class="wire" marker-end="url(#d3)" d="M320 120H385"/><rect class="block" x="385" y="75" width="150" height="90" rx="6"/><path class="wire" marker-end="url(#d3)" d="M535 120H600"/><rect class="block" x="600" y="75" width="150" height="90" rx="6"/><path class="wire" marker-end="url(#d3)" d="M750 120H842"/><text class="label" x="353" y="128" text-anchor="middle">⋯</text>{_math(25,85,65,'x(n)')}{_math(195,100,100,'H_1(z)')}{_math(410,100,100,'H_2(z)')}{_math(625,100,100,'H_{N/2}(z)')}{_math(808,85,65,'y(n)')}</svg>'''
+
+
+def frequency_sampling_svg() -> str:
+    return f'''<svg class="structure-svg" data-diagram="frequency-sampling-form" viewBox="0 0 900 270" role="img" aria-label="频率采样型 FIR 插值结构图"><defs><marker id="d4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="32" text-anchor="middle">频率采样型 FIR 的梳状滤波器与谐振器柜</text><path class="wire" marker-end="url(#d4)" d="M55 140H185"/><rect class="block" x="185" y="102" width="155" height="76" rx="6"/><path class="wire" marker-end="url(#d4)" d="M340 140H440"/><rect class="block" x="440" y="78" width="220" height="124" rx="6"/><path class="wire" marker-end="url(#d4)" d="M660 140H842"/><text class="label" x="262" y="132" text-anchor="middle">梳状滤波器</text><text class="label" x="550" y="121" text-anchor="middle">N 个一阶谐振器</text><text class="label" x="550" y="157" text-anchor="middle">并联组成谐振器柜</text>{_math(20,106,70,'x(n)')}{_math(202,145,120,'H_1(z)=1-z^{-N}')}{_math(458,172,185,'\\frac{1}{N}\\sum_{k=0}^{N-1}H_k(z)')}{_math(800,106,70,'y(n)')}</svg>'''
+
+
+def fast_convolution_svg() -> str:
+    return f'''<svg class="structure-svg" data-diagram="fast-convolution-form" viewBox="0 0 900 310" role="img" aria-label="快速卷积型 FIR 结构框图"><defs><marker id="d5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="30" text-anchor="middle">FFT 快速卷积结构</text><path class="wire" marker-end="url(#d5)" d="M58 98H135"/><rect class="block" x="135" y="65" width="130" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M265 98H350"/><rect class="block" x="350" y="65" width="120" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M470 98H565V132H615"/><path class="wire" marker-end="url(#d5)" d="M58 214H135"/><rect class="block" x="135" y="181" width="130" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M265 214H350"/><rect class="block" x="350" y="181" width="120" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M470 214H565V158H615"/><circle class="sum" cx="650" cy="145" r="28"/><text class="label" x="650" y="152" text-anchor="middle">×</text><path class="wire" marker-end="url(#d5)" d="M678 145H730"/><rect class="block" x="730" y="112" width="105" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M835 145H880"/><text class="label" x="200" y="104" text-anchor="middle">补零至 L 点</text><text class="label" x="410" y="104" text-anchor="middle">L 点 FFT</text><text class="label" x="200" y="220" text-anchor="middle">补零至 L 点</text><text class="label" x="410" y="220" text-anchor="middle">L 点 FFT</text><text class="label" x="782" y="151" text-anchor="middle">L 点 IFFT</text>{_math(15,63,70,'x(n)')}{_math(15,180,70,'h(n)')}{_math(848,110,52,'y(n)')}</svg>'''
 
 
 def write_html(output: Path) -> Path:
@@ -58,8 +90,8 @@ y(n)=\sum_{m=0}^{M}b_m x(n-m)-\sum_{n=1}^{N}a_n y(n-n).
 
 <h3>直接 I 型与直接 II 型</h3>
 <p>直接 I 型按差分方程直接实现：输入 [[x(n)]] 经 [[M]] 节延时链形成横向前向网络，输出 [[y(n)]] 经 [[N]] 节延时链形成反馈网络。它的信号意义最直观，但需要两条延时链。</p>
-<figure class="source-figure">
-<img src="../assets/source-figures/ch05-direct-form-i.png" alt="IIR 直接 I 型滤波器结构图">
+<figure>
+__IIR_DIRECT_FORM__
 <figcaption>图 5-1 IIR 直接 I 型结构</figcaption>
 </figure>
 <p>直接 II 型把两条延时链合并为共享状态延时链，因此在通常的 [[M=N]] 情形下延时单元数可由 [[M+N]] 降至 [[\max(M,N)]]。合并虽节省存储，却使内部状态的动态范围和有限字长效应更值得注意。</p>
@@ -87,15 +119,15 @@ H(z)=A\prod_{r=1}^{R}
 \]</div>
 <p>这种安排便于按零极点控制各节特性，也便于对每节单独缩放。并联型则对部分分式展开，把同一输入分到若干支路，支路输出在求和节点汇总；它特别适合由若干谐振节叠加构造频率选择性。转置型来自实系数 LSI 流图：将所有支路方向反转、支路增益不变，并交换输入输出位置，传输函数保持不变。</p>
 <p>选择 IIR 结构时，不能只看“实现了同一个 [[H(z)]]”。同一系统函数的不同结构在溢出敏感度、量化误差、极限环、内部状态幅度与调试便利性上都可能不同。</p>
-<figure class="source-figure compact">
-<img src="../assets/source-figures/ch05-cascade-form.png" alt="IIR 二阶节级联结构图">
+<figure>
+__IIR_CASCADE__
 <figcaption>图 5-2 IIR 二阶节级联结构</figcaption>
 </figure>
 
 <h3>应用：双音多频信号</h3>
 <p>电话按键的双音多频（DTMF）信号由一个低频组和一个高频组中的两个正弦分量叠加而成。并联型结构可把单位冲激输入分别送入两个二阶谐振支路，再在求和节点合成输出；各支路的极点位置直接决定所选频率。该例说明并联型便于控制极点，适合谐振器叠加，但不适合需要精确控制传输零点的陷波或窄带带阻滤波器。</p>
-<figure class="source-figure">
-<img src="../assets/source-figures/ch05-parallel-form.png" alt="DTMF 并联型 IIR 滤波器结构图">
+<figure>
+__DTMF_PARALLEL__
 <figcaption>图 5-3 并联型结构示例：双音多频信号</figcaption>
 </figure>
 
@@ -116,8 +148,8 @@ y(n)=\sum_{m=0}^{N-1}h(m)x(n-m).
 
 <h3>FIR 级联型、频率抽样型与谐振器型</h3>
 <p>当需要控制传输零点时，可将 [[H(z)]] 分解为实系数一阶或二阶因子并级联实现。与直接型相比，级联型通常需要更多系数和乘法，但零点控制更方便。频率抽样型从有限个频率样值出发构造系统，适合频率取样设计；谐振器型可由多个谐振单元并联形成，梳状滤波器中的零点与各谐振支路极点之间的抵消关系必须逐项检查。</p>
-<figure class="source-figure">
-<img src="../assets/source-figures/ch05-fir-cascade-form.png" alt="FIR 二阶节级联型结构图">
+<figure>
+__FIR_CASCADE__
 <figcaption>图 5-5 FIR 二阶节级联型结构</figcaption>
 </figure>
 
@@ -135,8 +167,8 @@ H_1(z)=1-z^{-N},
 H_k(z)=\frac{H(k)}{1-W_N^{-k}z^{-1}}.
 \]</div>
 <p>其中 [[H_1(z)]] 是梳状滤波器，后级为由 [[N]] 个一阶谐振器组成的谐振器柜；梳状滤波器的每个单位圆零点会与对应谐振支路的极点相抵消，从而实现所给的频率样值。</p>
-<figure class="source-figure">
-<img src="../assets/source-figures/ch05-frequency-sampling-form.png" alt="频率采样型 FIR 滤波器插值结构图">
+<figure>
+__FREQUENCY_SAMPLING__
 <figcaption>图 5-6 频率采样型 FIR 滤波器的插值结构</figcaption>
 </figure>
 
@@ -160,8 +192,8 @@ z_k=re^{j2\pi k/N}.
 L=M+N-1.
 \]</div>
 <p>将两个序列分别补零到 [[L]] 点后进行 [[L]] 点 FFT，相乘并作 [[L]] 点 IFFT，即可用圆周卷积等价地得到线性卷积。长序列处理中还应结合重叠相加法或重叠保留法分块，保证每一块的 FFT 长度避免循环混叠。</p>
-<figure class="source-figure compact">
-<img src="../assets/source-figures/ch05-fast-convolution-form.png" alt="快速卷积型 FIR 滤波器结构框图">
+<figure>
+__FAST_CONVOLUTION__
 <figcaption>图 5-7 快速卷积型 FIR 滤波器结构</figcaption>
 </figure>
 
@@ -189,6 +221,13 @@ y(n)=\sum_{m=0}^{L-1}h(m)\left[x(n-m)\pm x(n-2L+1+m)\right].
 <p>两种长度下都先完成对称样本的加法或减法，再乘以一组独立系数；这正是线性相位 FIR 结构能够减少乘法器数量的原因。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+    content = (content
+        .replace("__IIR_DIRECT_FORM__", iir_direct_form_svg())
+        .replace("__IIR_CASCADE__", iir_cascade_svg())
+        .replace("__DTMF_PARALLEL__", dtmf_parallel_svg())
+        .replace("__FIR_CASCADE__", fir_cascade_svg())
+        .replace("__FREQUENCY_SAMPLING__", frequency_sampling_svg())
+        .replace("__FAST_CONVOLUTION__", fast_convolution_svg()))
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output
