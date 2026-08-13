@@ -826,6 +826,11 @@
 - Rendered and inspected every main-body page of chapter two (pages 31--43) at A4 scale. The s--z mapping, unit circle, pole-zero distance figure, all standard LaTeX formulas, limiter cases and typography are clear with no overlap, crop, black fill or missing technical graphic.
 - Page 43 is the chapter-end page, so its remaining writing space is intentional. No source change was needed; the audit itself is recorded and committed as a verified milestone.
 
+# 2026-08-14 Chapter-three visual audit
+
+- Rendered and inspected pages 44--55 at A4 scale. The Fourier-domain mapping table retains visible rows and columns; DFS/DFT, frequency-sampling and all long formulas are whole MathJax expressions; circular indices use the confirmed outer-subscript notation.
+- No clipping, collision, raw formula source, missing graphic or non-chapter-end large blank was found. Page 55 is intentionally the chapter-end page.
+
 # 2026-08-13 Ch4/Ch5 source-figure crop repair
 
 - Replaced the unsafe IIR second-order cascade course-slide crop with a full formal SVG. Tightened the DIT butterfly crop to exclude residual slide banner while retaining all technical content.
