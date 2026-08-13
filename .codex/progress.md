@@ -828,6 +828,12 @@
 - Allowed the DIF butterfly figure to continue naturally into the remaining space on page 60 rather than forcing the whole figure to the following page. The continued figure and its caption remain complete and readable on page 61, eliminating the otherwise non-chapter-end blank area.
 - Exporter diagnosis: a blocked CDN MathJax defer script prevented the local PDF helper from reaching `networkidle`. The local QA helper now aborts that CDN request before navigation and loads the local MathJax copy, so PDF QA completes normally. Verification: targeted tests `4 passed`; export reports `math=2812`, `unrendered=[]`, `pageErrors=[]`; rendered pages 56, 60 and 61 visually checked.
 
+# 2026-08-14 Circular-index notation verification
+
+- Reader-facing circular indices must never use `mod N`, `\bmod N` or `\operatorname{mod}`. The period is written as the subscript of the complete parenthesized index: `x\left((n+m)\right)_N`; for the conjugate-symmetry form, `x^*\left((N-n)\right)_N`.
+- Regenerated the chapter-three/four output and the chapter-three LSI output to eliminate stale cached renderings. Active source and regenerated outputs contain no old notation.
+- Visual A4 QA on page 49 confirms the outer period subscript attaches to the full index parentheses and remains readable without overlap.
+
 # 2026-08-14 Chapter-two visual audit
 
 - Rendered and inspected every main-body page of chapter two (pages 31--43) at A4 scale. The s--z mapping, unit circle, pole-zero distance figure, all standard LaTeX formulas, limiter cases and typography are clear with no overlap, crop, black fill or missing technical graphic.
