@@ -33,12 +33,17 @@ def test_chapter_eight_component_covers_multirate_main_body(tmp_path: Path):
     assert r"X_i\!\left(e^{j3\omega}\right)" in html
     assert r"G_1(z),\ G_2(z),\ G_3(z)" in html
     assert r"44100=294\cdot50\cdot3" in html
-    for filename in (
-        "ch08-decimation-spectrum.png",
-        "ch08-decimator-structure.png",
-        "ch08-interpolator-structure.png",
-        "ch08-rational-converter.png",
+    # Chapter-eight diagrams are lecture-native SVGs: no slide frame, watermark,
+    # coloured teaching callouts, or raster crop may leak into the handout.
+    for figure_id in (
+        "decimation-spectrum-transform",
+        "decimator-cascade",
+        "interpolator-cascade",
+        "rational-rate-converter",
     ):
-        assert f"../assets/source-figures/{filename}" in html
+        assert f'id="{figure_id}"' in html
+    assert "../assets/source-figures/ch08-" not in html
+    # The lower-right “amplitude halved” spectrum remains inside its own panel.
+    assert 'M560 411L590 359L620 411' in html
     assert "MATLAB" not in html
     assert "真题" not in html

@@ -10,6 +10,55 @@ STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt;orphans:3;widows:3}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.table{border-collapse:collapse;width:100%;margin:10pt 0 12pt}.table th,.table td{border-bottom:.4pt solid #d6dde2;padding:6pt 7pt;text-align:left;vertical-align:top}.table th{color:#315d7c;font-weight:500;background:#f4f7f8}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}.table{font-size:9.5pt}}</style>"""
 
 
+DIAGRAM_STYLE = r'''<style>
+.multirate-svg{display:block;width:100%;height:auto;background:#fbfcfd;border:1px solid #d8e0e5;border-radius:5pt}
+.multirate-svg .wire{fill:none;stroke:#174b73;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.multirate-svg .block{fill:#f4f7f8;stroke:#0d8794;stroke-width:2}.multirate-svg .label{fill:#315d7c;font:17px "Microsoft YaHei",sans-serif}.multirate-svg .annotation{fill:#587083;font:14px "Microsoft YaHei",sans-serif}.multirate-svg .axis{fill:none;stroke:#315d7c;stroke-width:1.7;stroke-linecap:round}.multirate-svg .spectrum-a{fill:none;stroke:#0d8794;stroke-width:2.4;stroke-linejoin:round}.multirate-svg .spectrum-b{fill:none;stroke:#b56b2e;stroke-width:2.4;stroke-linejoin:round}.multirate-svg .panel{fill:#fff;stroke:#d8e0e5;stroke-width:1.2}.multirate-svg .math-label div{height:100%;display:flex;align-items:center;justify-content:center;color:#172b3a;font-size:17px;white-space:nowrap;overflow:visible}
+</style>'''
+
+
+def _math(x: float, y: float, width: float, text: str, height: float = 32) -> str:
+    return f'<foreignObject class="math-label" x="{x}" y="{y}" width="{width}" height="{height}"><div xmlns="http://www.w3.org/1999/xhtml">\\({text}\\)</div></foreignObject>'
+
+
+def _arrow(marker: str) -> str:
+    return f'<defs><marker id="{marker}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs>'
+
+
+def decimation_spectrum_svg() -> str:
+    """Clean four-stage frequency-domain relationship for twofold decimation."""
+    return f'''<svg class="multirate-svg" id="decimation-spectrum-transform" viewBox="0 0 900 510" role="img" aria-label="二倍抽取的频谱移位、求和、降幅和拉伸关系">{_arrow('dec-spectrum-arrow')}
+<text class="label" x="450" y="32" text-anchor="middle">二倍抽取的频谱变换过程</text>
+<rect class="panel" x="48" y="66" width="340" height="160" rx="5"/><rect class="panel" x="512" y="66" width="340" height="160" rx="5"/><rect class="panel" x="512" y="282" width="340" height="160" rx="5"/><rect class="panel" x="48" y="282" width="340" height="160" rx="5"/>
+<text class="annotation" x="218" y="91" text-anchor="middle">原频谱</text><text class="annotation" x="682" y="91" text-anchor="middle">移位并求和</text><text class="annotation" x="682" y="307" text-anchor="middle">幅度缩小为一半</text><text class="annotation" x="218" y="307" text-anchor="middle">拉伸后频谱</text>
+<path class="axis" marker-end="url(#dec-spectrum-arrow)" d="M82 195H352"/><path class="axis" marker-end="url(#dec-spectrum-arrow)" d="M546 195H816"/><path class="axis" marker-end="url(#dec-spectrum-arrow)" d="M546 411H816"/><path class="axis" marker-end="url(#dec-spectrum-arrow)" d="M82 411H352"/>
+<path class="spectrum-a" d="M96 195L130 142L164 195M190 195L220 119L250 195M276 195L310 142L344 195"/>
+<path class="spectrum-a" d="M560 195L590 142L620 195M668 195L698 142L728 195M776 195L806 142L836 195"/><path class="spectrum-b" d="M614 195L644 142L674 195M722 195L752 142L782 195"/>
+<path class="spectrum-a" d="M560 411L590 359L620 411M668 411L698 359L728 411M776 411L806 359L836 411"/><path class="spectrum-b" d="M614 411L644 359L674 411M722 411L752 359L782 411"/>
+<path class="spectrum-a" d="M96 411L130 359L164 411M190 411L220 335L250 411M276 411L310 359L344 411"/>
+<path class="wire" marker-end="url(#dec-spectrum-arrow)" d="M405 145H493"/><text class="annotation" x="449" y="132" text-anchor="middle">移位、求和</text><path class="wire" marker-end="url(#dec-spectrum-arrow)" d="M682 237V268"/><text class="annotation" x="697" y="257">降幅</text><path class="wire" marker-end="url(#dec-spectrum-arrow)" d="M495 362H405"/><text class="annotation" x="450" y="349" text-anchor="middle">拉伸</text>
+{_math(95,198,250,'-2\\pi\\quad -\\pi\\quad 0\\quad \\pi\\quad 2\\pi')}{_math(562,198,250,'-2\\pi\\quad -\\pi\\quad 0\\quad \\pi\\quad 2\\pi')}{_math(562,414,250,'-2\\pi\\quad -\\pi\\quad 0\\quad \\pi\\quad 2\\pi')}{_math(95,414,250,'-2\\pi\\quad -\\pi\\quad 0\\quad \\pi\\quad 2\\pi')}
+</svg>'''
+
+
+def decimator_svg() -> str:
+    return f'''<svg class="multirate-svg" id="decimator-cascade" viewBox="0 0 900 260" role="img" aria-label="抗混叠滤波器与M倍抽取器级联结构">{_arrow('decimator-arrow')}
+<text class="label" x="450" y="34" text-anchor="middle">抗混叠滤波与抽取器的级联结构</text><path class="wire" marker-end="url(#decimator-arrow)" d="M70 132H212"/><rect class="block" x="212" y="87" width="180" height="90" rx="6"/><path class="wire" marker-end="url(#decimator-arrow)" d="M392 132H493"/><rect class="block" x="493" y="87" width="104" height="90" rx="45"/><path class="wire" marker-end="url(#decimator-arrow)" d="M597 132H828"/>
+{_math(26,91,95,'x(n)')}{_math(233,103,138,'h_d(n)')}{_math(507,103,75,'\\downarrow M')}{_math(780,91,88,'x_d(n)')}<text class="annotation" x="72" y="174">采样率：f_s</text><text class="annotation" x="236" y="201">抗混叠低通滤波器</text><text class="annotation" x="725" y="174">采样率：f_s/M</text></svg>'''
+
+
+def interpolator_svg() -> str:
+    return f'''<svg class="multirate-svg" id="interpolator-cascade" viewBox="0 0 900 260" role="img" aria-label="L倍上采样器与抗镜像滤波器级联结构">{_arrow('interpolator-arrow')}
+<text class="label" x="450" y="34" text-anchor="middle">插零与插值低通滤波器的级联结构</text><path class="wire" marker-end="url(#interpolator-arrow)" d="M70 132H210"/><rect class="block" x="210" y="87" width="104" height="90" rx="45"/><path class="wire" marker-end="url(#interpolator-arrow)" d="M314 132H418"/><rect class="block" x="418" y="87" width="190" height="90" rx="6"/><path class="wire" marker-end="url(#interpolator-arrow)" d="M608 132H828"/>
+{_math(26,91,95,'x(n)')}{_math(224,103,75,'\\uparrow L')}{_math(444,103,138,'h_i(n)')}{_math(781,91,88,'x_i(n)')}<text class="annotation" x="72" y="174">采样率：f_s</text><text class="annotation" x="438" y="201">抗镜像插值低通滤波器</text><text class="annotation" x="722" y="174">采样率：L f_s</text></svg>'''
+
+
+def rational_converter_svg() -> str:
+    return f'''<svg class="multirate-svg" id="rational-rate-converter" viewBox="0 0 900 300" role="img" aria-label="L比M有理数倍采样率转换及多级分解结构">{_arrow('rational-arrow')}
+<text class="label" x="450" y="34" text-anchor="middle">有理数倍采样率变换的标准结构</text><path class="wire" marker-end="url(#rational-arrow)" d="M60 142H178"/><rect class="block" x="178" y="96" width="100" height="92" rx="46"/><path class="wire" marker-end="url(#rational-arrow)" d="M278 142H380"/><rect class="block" x="380" y="96" width="170" height="92" rx="6"/><path class="wire" marker-end="url(#rational-arrow)" d="M550 142H650"/><rect class="block" x="650" y="96" width="100" height="92" rx="46"/><path class="wire" marker-end="url(#rational-arrow)" d="M750 142H844"/>
+{_math(18,101,90,'x(n)')}{_math(191,112,74,'\\uparrow L')}{_math(400,111,130,'H(z)')}{_math(664,112,74,'\\downarrow M')}{_math(802,101,85,'x_d(n)')}<text class="annotation" x="465" y="219" text-anchor="middle">低通滤波器同时负责抗镜像与抗混叠</text>{_math(332,242,240,'f_s^\\prime=\\frac{L}{M}f_s')}</svg>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -179,6 +228,13 @@ G_1(z),\ G_2(z),\ G_3(z)&\text{ 分别为低通、带通和高通滤波器。}
 <p>实际录制与播放中，应尽量选择整数倍采样率的转换链路；若必须在 44.1 kHz 与 48 kHz 系列之间转换，则需要通过有理数倍采样率转换器完成重采样。位深降低属于量化格式转换，不能把它当成采样率转换的一部分。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
-    document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
+    content = (
+        content
+        .replace('<figure class="source-figure compact"><img src="../assets/source-figures/ch08-decimation-spectrum.png" alt="二倍抽取时的频谱移位、求和与拉伸"><figcaption>图 8-1　二倍抽取的频谱变换过程</figcaption></figure>', f'<figure>{decimation_spectrum_svg()}<figcaption>图 8-1　二倍抽取的频谱变换过程</figcaption></figure>')
+        .replace('<figure class="source-figure compact"><img src="../assets/source-figures/ch08-decimator-structure.png" alt="抗混叠滤波器与抽取器级联结构"><figcaption>图 8-2　抗混叠滤波与抽取器的级联结构</figcaption></figure>', f'<figure>{decimator_svg()}<figcaption>图 8-2　抗混叠滤波与抽取器的级联结构</figcaption></figure>')
+        .replace('<figure class="source-figure compact"><img src="../assets/source-figures/ch08-interpolator-structure.png" alt="上采样与插值低通滤波器的级联结构"><figcaption>图 8-3　插零与插值低通滤波器的级联结构</figcaption></figure>', f'<figure>{interpolator_svg()}<figcaption>图 8-3　插零与插值低通滤波器的级联结构</figcaption></figure>')
+        .replace('<figure class="source-figure compact"><img src="../assets/source-figures/ch08-rational-converter.png" alt="L比M有理数倍采样率变换结构"><figcaption>图 8-4　有理数倍采样率变换的标准结构</figcaption></figure>', f'<figure>{rational_converter_svg()}<figcaption>图 8-4　有理数倍采样率变换的标准结构</figcaption></figure>')
+    )
+    document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{DIAGRAM_STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output

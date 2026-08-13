@@ -800,3 +800,9 @@
 
 - Tightened DIT/DIF FFT source figure boxes to remove remaining green course-slide borders while preserving every technical input/output, butterfly path, node, and twiddle-factor label.
 - Regression: main-body, chapter-five, and crop suites `4 passed`; both output figures inspected directly before commit.
+
+# 2026-08-13 Ch8 vector figure audit
+
+- Replaced all four retained chapter-eight course-slide crops with clean, self-contained SVG teaching figures: twofold-decimation spectrum transformation, anti-alias decimation, interpolation, and rational-rate conversion.
+- Removed slide frames, background texture, institution marks, and teaching callouts; arrows terminate on actual module boundaries. Corrected a first-pass lower spectrum overflow before acceptance.
+- Verification: main-body/chapter-eight/crop suites `3 passed`; `tmp/ch08-diagram-qa-v2.pdf` rendered with MathJax `unrendered=[]`, `pageErrors=[]`, and its affected pages were visually checked at A4 resolution.
