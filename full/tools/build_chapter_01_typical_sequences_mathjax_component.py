@@ -74,7 +74,7 @@ u(n)=
     __STEP__
     </div>
   </section>
-  <section>
+  <section class="typical-sequence-continuation">
     <h2>矩形序列</h2>
     <div class="formula">\[
 R_N(n)=

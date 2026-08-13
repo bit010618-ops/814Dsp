@@ -813,3 +813,10 @@
 - Repair: added the complete multirate SVG style family to the full-book stylesheet and a regression assertion that verifies both spectrum stroke rules exist in assembled HTML.
 - Verification: targeted regression suite `2 passed`; rebuilt `tmp/dsp-main-body-visual-audit-v8.pdf` with MathJax `unrendered=[]` and `pageErrors=[]`; visually inspected assembled pages 86--90 at A4 resolution. The decimation spectrum, decimator, interpolator, rational-rate converter, formulas, and table now render cleanly with no black fill, cropping, overlap, or raw formula source.
 - Next: continue the page-density audit. Non-chapter-end low-density pages must be reflowed by carrying suitable following content upward; only chapter-ending and one-question training pages may retain a large writing area.
+
+# 2026-08-13 典型序列分页续排
+
+- 审核发现正文第 8 页在单位阶跃图后仍有可用空间，却将后续“矩形序列”整体误推到下一页；这不符合正文应自然续排、不得机械按块换页的规则。
+- 调整典型序列段的图形续排规则：保留矩形序列标题、公式和说明在上页，完整坐标图在下页续排；并缩小续排图至仍清晰可打印的尺寸。第 9 页同时承接矩形图、实指数双图与正弦定义，内容密度恢复自然。
+- 复核了原先的第 70、75 页：它们分别是第五、六章的章末页，符合章末可留较大空白的例外，未作无必要挤压。
+- 验证：正文构建回归通过；`tmp/dsp-main-body-visual-audit-v12.pdf` MathJax `unrendered=[]`、`pageErrors=[]`，第 8--9 页 A4 视觉检查无公式裁切、图形切割或重叠。
