@@ -40,6 +40,7 @@ X_d\!\left(e^{j\omega}\right)=
 \frac{1}{2}X\!\left(e^{j\omega/2}\right)+
 \frac{1}{2}X\!\left(e^{j(\omega/2-\pi)}\right).
 \]</div>
+<figure class="source-figure compact"><img src="../assets/source-figures/ch08-decimation-spectrum.png" alt="二倍抽取时的频谱移位、求和与拉伸"><figcaption>图 8-1　二倍抽取的频谱变换过程</figcaption></figure>
 <p>上式可看作将原频谱按 [[M]] 段分解、移位并相加后再缩放。故抽取后表现为频谱拉伸、移位、求和与幅度缩小。为避免相加后的谱副本重叠，必须满足</p>
 <div class="formula">\[
 X\!\left(e^{j\omega}\right)=0,\qquad \frac{\pi}{M}\leq\left|\omega\right|\leq\pi.
@@ -56,6 +57,7 @@ x_d(n)&=w(Mn).
 \end{aligned}
 \]</div>
 <p>因此若原信号带宽未限制在 [[\pi/M]] 以内，抽取后会产生不可逆混叠。正确结构是先用抗混叠低通滤波器限制带宽，再接 [[\downarrow M]] 抽取器；不能把低通滤波器放在抽取之后当作补救。</p>
+<figure class="source-figure compact"><img src="../assets/source-figures/ch08-decimator-structure.png" alt="抗混叠滤波器与抽取器级联结构"><figcaption>图 8-2　抗混叠滤波与抽取器的级联结构</figcaption></figure>
 
 <h3>例题</h3>
 <p>已知信号 [[x(n)]] 的取样频率 [[f_s=2f_h]]，[[f_h]] 为信号最高频率。设计一个将取样率降低到 [[1/8]] 的抽取器系统。</p>
@@ -113,6 +115,7 @@ h_i(n)&=\frac{\sin(\pi n/L)}{\pi n/L}.
 x_i(n)=\sum_{k=-\infty}^{\infty}x(k)
 \frac{\sin\!\left[\pi(n-kL)/L\right]}{\pi(n-kL)/L}.
 \]</div>
+<figure class="source-figure compact"><img src="../assets/source-figures/ch08-interpolator-structure.png" alt="上采样与插值低通滤波器的级联结构"><figcaption>图 8-3　插零与插值低通滤波器的级联结构</figcaption></figure>
 <p>其中 [[h_i(n)]] 是抗影像滤波器的单位脉冲响应。插零本身并未完成平滑重构；只有低通滤波器去除额外的 [[L-1]] 个影像频谱后，内插后的样值才对应于所需的较高采样率信号。</p>
 
 <h2>8.3 抽取与内插的频域关系</h2>
@@ -129,6 +132,7 @@ F_s'=\frac{L}{M}F_s.
 H(z)=\sum_{r=0}^{M-1}z^{-r}E_r\!\left(z^M\right).
 \]</div>
 <p>多相结构把原来会在抽取后丢弃的中间运算移除，并允许滤波器和采样率变换器交换位置或合并。实现时仍需逐项核对：上采样/下采样倍数、滤波器位置、各相位支路和输出采样率必须一致；任何一处颠倒都会改变频谱并造成混叠或镜像残留。</p>
+<figure class="source-figure compact"><img src="../assets/source-figures/ch08-rational-converter.png" alt="L比M有理数倍采样率变换结构"><figcaption>图 8-4　有理数倍采样率变换的标准结构</figcaption></figure>
 
 <h3>单级与多级采样频率变换</h3>
 <p>单级有理数倍变换采用“[[\uparrow L]] [[\longrightarrow]] 低通滤波 [[\longrightarrow]] [[\downarrow M]]”的结构。低通滤波器同时承担抗影像和抗混叠任务；当 [[L]] 或 [[M]] 很大时，所需截止频率很低，滤波器阶数和计算量会显著增大。</p>
