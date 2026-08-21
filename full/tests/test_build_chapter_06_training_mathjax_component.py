@@ -7,7 +7,7 @@ def test_2007_bilinear_stability_proof_is_kept_as_a_sixth_chapter_question(tmp_p
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 1
+    assert question.count('class="exam-page"') >= 1
     assert "2007 年真题" in question
     assert "八、证明：时间连续的稳定系统经双线性变换后得到的离散系统仍然是稳定系统；反之亦真。" in question
     assert r"s=\frac{2}{T}\frac{z-1}{z+1}" in question
@@ -15,3 +15,22 @@ def test_2007_bilinear_stability_proof_is_kept_as_a_sixth_chapter_question(tmp_p
     assert r"&=\frac{2}{T}\frac{\left|z\right|^2-1}{\left|z+1\right|^2}" in answer
     assert "左半平面" in answer
     assert "单位圆内" in answer
+
+
+def test_2021_bilinear_butterworth_design_question_keeps_original_specification(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 2
+    assert "2021 年真题" in question
+    assert "八、采用双线性变换法设计一个贝特沃斯低通滤波器" in question
+    assert r"f_p\,\mathrm{Hz}" in question
+    assert r"f_s\,\mathrm{Hz}" in question
+    assert r"\alpha_p\,\mathrm{dB}" in question
+    assert r"\alpha_s\,\mathrm{dB}" in question
+    assert r"\Omega_p&=\frac{2}{T}\tan\left(\frac{\omega_p}{2}\right)" in answer
+    assert r"=\frac{2}{T}\tan\left(\pi f_pT\right)" in answer
+    assert r"N=\left\lceil" in answer
+    assert r"H(z)=H_a\left(\frac{2}{T}\frac{z-1}{z+1}\right)" in answer
