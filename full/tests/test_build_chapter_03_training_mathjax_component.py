@@ -62,3 +62,29 @@ def test_2004_frequency_resolution_question_keeps_all_three_sine_frequencies(tmp
     assert r"f_3=2.07\,\mathrm{Hz}" in question
     assert r"F_0=\frac{f_s}{N}=\frac{100}{256}=0.390625\,\mathrm{Hz}" in answer
     assert r"\left|f_3-f_1\right|=0.07\,\mathrm{Hz}<F_0" in answer
+
+
+def test_2005_five_point_dft_question_and_answer_keep_periodic_aliasing(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "questions.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "answers.html").read_text(encoding="utf-8")
+
+    assert "2005 年真题" in question
+    assert r"2\delta(n-5)" in question
+    assert r"\mathbin{\circledast}_5" in answer
+    assert r"y(n)=\{6,6,9,9,6\}" in answer
+
+
+def test_2005_question_uses_complete_latex_for_every_math_fragment(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "questions.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "answers.html").read_text(encoding="utf-8")
+
+    assert r"\(x(n)=\delta(n)+3\delta(n-1)+3\delta(n-2)+2\delta(n-5)\)" in question
+    assert r"\(h(n)=\delta(n)+\delta(n-1)+\delta(n-2)+\delta(n-3)\)" in question
+    assert r"\(X(K)\)" in question
+    assert r"\(H(K)\)" in question
+    assert r"\(Y(K)=X(K)H(K)\)" in question
+    assert "(delta(n-5))" not in answer
