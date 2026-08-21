@@ -61,7 +61,7 @@ def test_2004_frequency_resolution_question_keeps_all_three_sine_frequencies(tmp
     assert r"f_2=2.02\,\mathrm{Hz}" in question
     assert r"f_3=2.07\,\mathrm{Hz}" in question
     assert r"F_0=\frac{f_s}{N}=\frac{100}{256}=0.390625\,\mathrm{Hz}" in answer
-    assert r"\left|f_3-f_1\right|=0.07\,\mathrm{Hz}<F_0" in answer
+    assert r"\left|f_3-f_1\right|=0.07\,\mathrm{Hz}&lt;F_0" in answer
 
 
 def test_2005_five_point_dft_question_and_answer_keep_periodic_aliasing(tmp_path: Path):
@@ -96,3 +96,19 @@ def test_every_chapter_three_training_question_has_its_own_exam_page(tmp_path: P
     question = component.write_training_html(tmp_path / "questions.html").read_text(encoding="utf-8")
 
     assert question.count('class="exam-page"') == 5
+
+
+def test_2002_frequency_resolution_answer_closes_its_display_formula(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    answer = component.write_answers_html(tmp_path / "answers.html").read_text(encoding="utf-8")
+
+    assert "N>\\frac{2\\pi}{2\\times0.15}\\approx20.94.\n\\]</div>" in answer
+
+
+def test_2004_frequency_resolution_formula_escapes_the_less_than_sign(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    answer = component.write_answers_html(tmp_path / "answers.html").read_text(encoding="utf-8")
+
+    assert r"\left|f_3-f_1\right|=0.07\,\mathrm{Hz}&lt;F_0." in answer
