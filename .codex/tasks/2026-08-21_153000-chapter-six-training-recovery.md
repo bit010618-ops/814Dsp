@@ -30,3 +30,8 @@
 - 原卷物理第 45 页视觉核对确认题干为“八、采用双线性变换法设计一个贝特沃斯低通滤波器，技术指标为：通带下限频率为 \(f_p\,\mathrm{Hz}\)，阻带上限为 \(f_s\,\mathrm{Hz}\)，通带最大衰减为 \(\alpha_p\,\mathrm{dB}\)，阻带最小衰减为 \(\alpha_s\,\mathrm{dB}\)，取样周期为 \(T\)，试写出设计的具体步骤。”原卷“贝特沃斯”用词保留，未擅自规范化。
 - 详解按预畸变、由衰减确定最小阶数、选择模拟原型截止频率、双线性代换四步展开；关键式均由单个 MathJax 公式整体渲染。
 - 组件与总装配回归 4 passed。全书候选 PDF 为 120 页，导出 math=3518、unrendered=[]、pageErrors=[]；160 dpi 复核第 108 页训练题及第 119--120 页详解，无水印、公式源码、重叠或裁切。
+
+## Delivery status
+
+- 本地提交：860d818 Add chapter six Butterworth training。
+- 推送受本机 Git 凭据阻塞：schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS。未写入、读取或尝试绕过任何凭据；待正常 GitHub 登录凭据恢复后执行常规推送。
