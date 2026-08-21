@@ -19,6 +19,7 @@ from full.tools import build_chapter_01_training_mathjax_component as chapter_on
 from full.tools import build_chapter_02_supplemental_training_mathjax_component as chapter_two_supplemental
 from full.tools import build_chapter_02_training_mathjax_component as chapter_two_training
 from full.tools import build_chapter_03_training_mathjax_component as chapter_three_training
+from full.tools import build_chapter_03_supplemental_training_batch_one_mathjax_component as chapter_three_batch_one
 from full.tools import build_chapter_04_training_mathjax_component as chapter_four_training
 from full.tools import build_chapter_05_training_mathjax_component as chapter_five_training
 from full.tools import build_chapter_06_training_mathjax_component as chapter_six_training
@@ -83,6 +84,7 @@ def _training_fragments(directory: Path) -> list[str]:
         chapter_two_supplemental.training_html(),
         *(component.training_html() for component in CHAPTER_TWO_SUPPLEMENTAL_BATCHES),
         _component_main(chapter_three_training.write_training_html, directory / "chapter-03-training.html"),
+        _component_main(chapter_three_batch_one.write_training_html, directory / "chapter-03-batch-one-training.html"),
         _component_main(chapter_four_training.write_training_html, directory / "chapter-04-training.html"),
         _component_main(chapter_five_training.write_training_html, directory / "chapter-05-training.html"),
         _component_main(chapter_six_training.write_training_html, directory / "chapter-06-training.html"),
@@ -106,6 +108,7 @@ def _answer_fragments(directory: Path) -> list[str]:
         chapter_two_supplemental.answers_html(),
         *(component.answers_html() for component in CHAPTER_TWO_SUPPLEMENTAL_BATCHES),
         _component_main(chapter_three_training.write_answers_html, directory / "chapter-03-answers.html"),
+        _component_main(chapter_three_batch_one.write_answers_html, directory / "chapter-03-batch-one-answers.html"),
         _component_main(chapter_four_training.write_answers_html, directory / "chapter-04-answers.html"),
         _component_main(chapter_five_training.write_answers_html, directory / "chapter-05-answers.html"),
         _component_main(chapter_six_training.write_answers_html, directory / "chapter-06-answers.html"),

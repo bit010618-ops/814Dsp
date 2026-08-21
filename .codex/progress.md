@@ -989,3 +989,9 @@
 - Added the remaining eight verified chapter-seven training questions and their consolidated detailed answers: 2007 (window-function effect and frequency sampling), 2015, 2016, 2017, 2019, 2021 and 2024.
 - The 2007 frequency-sampling question retains the original response condition through a clean, watermark-free textbook coordinate plot; the associated comb-filter/resonator-bank realization is a formal SVG. The assembled book now contains 110 training question pages.
 - Verification: six focused suites report `41 passed`; assembled HTML checks confirm two frequency-sampling realization figures, one target-response plot, no reader-facing `mod N`, and no watermark text. New PDF visual QA remains blocked by the known local headless GPU backend failure and is not claimed as complete.
+
+# 2026-08-21 Chapter-three supplemental training batch one
+
+- Added six source-checked DFT questions and detailed answers: 2003 cyclic-shift and IIR IDFT judgement items; 2006 ten-point DFT/circular convolution and overlap-save count; 2007 finite-sequence unit-circle sampling and spectral-leakage explanation.
+- Circular indices use the required outer period subscript notation, and every formula in the new questions and answers is an intact MathJax expression.
+- Verification: eight focused component/full-assembly suites report `51 passed`. The assembled handout has 116 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
