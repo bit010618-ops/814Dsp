@@ -1031,3 +1031,9 @@
 - Added the source-checked 2003 DFT spectrum-analysis question, preserving its wording and providing the complete Nyquist sampling, DFT-length, digital-frequency and signed analog-frequency mapping.
 - The signed-frequency mapping uses a standard LaTeX `cases` formula; reader-facing circular-index notation remains free of `mod N`.
 - Verification: fifteen focused component/full-assembly suites report `59 passed`. The assembled handout has 135 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch eight
+
+- Added the source-checked 2025 four-point DFT question and its conjugate-symmetric/conjugate-antisymmetric decomposition.
+- The answer retains exact four-point values and uses the required outer-period subscript in \(X^*\left((-k)\right)_4\), never a `mod N` operator.
+- Verification: sixteen focused component/full-assembly suites report `60 passed`. The assembled handout has 136 training question pages; static checks found no reader-facing `mod N` or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
