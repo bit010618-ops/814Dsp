@@ -16,6 +16,7 @@ from full.tools import build_chapter_01_training_answers_mathjax_component as ch
 from full.tools import build_chapter_01_training_mathjax_component as chapter_one_training
 from full.tools import build_chapter_02_training_mathjax_component as chapter_two_training
 from full.tools import build_chapter_03_training_mathjax_component as chapter_three_training
+from full.tools import build_chapter_04_training_mathjax_component as chapter_four_training
 from full.tools.render_mathjax_formula import MATHJAX
 
 
@@ -31,6 +32,9 @@ STYLE = build_all_main_body.STYLE + r"""
 .answer-section h1:first-child{break-before:auto}
 .answer-step{break-inside:avoid;margin:8pt 0}
 .answer-step strong{color:#315d7c}
+.fft-flow{break-inside:avoid;margin:12pt 0}
+.fft-flow img{display:block;width:100%;height:auto;border:.5pt solid #d6dde2;background:#fff}
+.fft-flow figcaption{color:#52616b;text-align:center;margin-top:5pt;font-size:9.5pt}
 </style>
 """
 
@@ -51,6 +55,7 @@ def _training_fragments(directory: Path) -> list[str]:
         _component_main(chapter_one_training.write_html, directory / "chapter-01-training.html"),
         chapter_two_training.training_html(),
         _component_main(chapter_three_training.write_training_html, directory / "chapter-03-training.html"),
+        _component_main(chapter_four_training.write_training_html, directory / "chapter-04-training.html"),
     ]
 
 
@@ -59,6 +64,7 @@ def _answer_fragments(directory: Path) -> list[str]:
         _component_main(chapter_one_answers.write_html, directory / "chapter-01-answers.html"),
         chapter_two_training.answers_html(),
         _component_main(chapter_three_training.write_answers_html, directory / "chapter-03-answers.html"),
+        _component_main(chapter_four_training.write_answers_html, directory / "chapter-04-answers.html"),
     ]
 
 
@@ -79,7 +85,7 @@ def _document(body: str, training: str, answers: str) -> str:
 
 
 def write_html(output: Path) -> Path:
-    """Write the first full-book assembly using only verified chapter 1--3 training."""
+    """Write the full-book assembly using verified chapter 1--4 training."""
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="dsp-full-handout-") as temporary:
         directory = Path(temporary)
