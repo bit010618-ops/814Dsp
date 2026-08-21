@@ -878,3 +878,9 @@
 - 调整典型序列段的图形续排规则：保留矩形序列标题、公式和说明在上页，完整坐标图在下页续排；并缩小续排图至仍清晰可打印的尺寸。第 9 页同时承接矩形图、实指数双图与正弦定义，内容密度恢复自然。
 - 复核了原先的第 70、75 页：它们分别是第五、六章的章末页，符合章末可留较大空白的例外，未作无必要挤压。
 - 验证：正文构建回归通过；`tmp/dsp-main-body-visual-audit-v12.pdf` MathJax `unrendered=[]`、`pageErrors=[]`，第 8--9 页 A4 视觉检查无公式裁切、图形切割或重叠。
+
+# 2026-08-21 Chapter-five direct-I structure repair
+
+- Root cause: the direct-I difference equation reused `n` as both the free sample index and the feedback summation index; the original SVG omitted the undelayed `b_0` path and its crowded routing did not permit a reliable reverse reading of the equation.
+- Rebuilt the figure as a formal, layered Direct-I realization: an upper feedforward delay chain with `b_0,b_1,b_2,\ldots,b_M` taps, a lower right-to-left feedback delay chain with `-a_1,-a_2,\ldots,-a_N` taps, and a single standard summing node. Added `figure{break-inside:avoid}` so a technical figure and its caption cannot be split between A4 pages.
+- Verification: targeted component, chapter-five-to-eight, and full-body assembly tests `3 passed`. Exported `tmp/dsp-main-body-ch5-structure-v3-stamped.pdf` with MathJax `unrendered=[]`, `pageErrors=[]`; rendered pages 64--67 show the full figure on page 65 with no overlap, crop, or broken formula.

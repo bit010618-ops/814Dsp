@@ -19,6 +19,7 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     positions = [html.index(title) for title in expected]
     assert positions == sorted(positions)
     assert r"H(z)=\frac{\sum_{m=0}^{M}b_m z^{-m}}{1+\sum_{n=1}^{N}a_n z^{-n}}" in html
+    assert r"y(n)=\sum_{m=0}^{M}b_m x(n-m)-\sum_{r=1}^{N}a_r y(n-r)" in html
     assert r"w(n)&=x(n)-\sum_{r=1}^{N}a_r w(n-r)" in html
     assert r"y(n)&=\sum_{m=0}^{M}b_m w(n-m)" in html
     assert r"H(z)=\left(1-z^{-N}\right)\frac{1}{N}" in html
@@ -43,6 +44,14 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
         assert f'data-diagram="{diagram}"' in html
     assert "M420 98H555V145H562" in html
     assert "M420 232H555V185H562" in html
+    assert "figure{break-inside:avoid" in html
+    # A direct-I diagram must include its undelayed b_0 path, delayed b_m
+    # tap paths, and separate feedback paths.  It must be traceable back to
+    # the displayed difference equation instead of merely looking plausible.
+    assert "b_0" in html
+    assert "M88 80V135H128" in html
+    assert "M260 80V170H278" in html
+    assert "M840 225V395H722" in html
     assert 'x="0" y="130" width="120"' in html
     assert "h(N-2)" in html and "h(N-1)" in html
     for asset in (
