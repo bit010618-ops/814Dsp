@@ -1001,3 +1001,9 @@
 - Added eight source-checked DFT/DFS questions and answers: 2013/2014 real-even periodic DFS coefficients, 2015 z-domain sampling and circular-convolution length, and 2016 spectral decimation, cosine DFT, picket-fence effect, and real-sequence packing.
 - The packed-real-sequence solution uses the required complete outer-period index notation and every mathematical expression is a complete MathJax unit.
 - Verification: nine focused component/full-assembly suites report `52 passed`. The assembled handout now has 124 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch three
+
+- Added five source-checked DFT questions and detailed answers: 2017 DFT time shift/circular convolution, five-point circular convolution and frequency-resolution design, plus 2019 and 2020 picket-fence-effect questions.
+- Every circular index now uses the required outer-period subscript notation; all formulas are complete MathJax units and the original question wording is retained.
+- Verification: ten focused component/full-assembly suites report `53 passed`. The assembled handout has 129 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
