@@ -43,8 +43,15 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert 'class="fir-pz-svg"' in html
     assert 'class="fir-sampling-svg"' in html
     assert "FIR 滤波的时域与频域对应关系" in html
+    assert "FIR 幅频响应决定频率成分的去留" in html
+    assert 'class="fir-spectrum-selection-svg"' in html
+    assert 'aria-label="输入频谱、FIR 幅频响应与输出频谱关系图"' in html
+    assert r"\(-\omega_c\)" in html
+    assert r"\(\left|H\right|\)" in html
     assert "有限长冲激响应的对称中心" in html
     assert "FIR 系统函数的零极点结构" in html
+    assert "镜像零点" in html
+    assert '<text class="caption" x="337" y="78">2e^' not in html
     assert "频率采样点与过渡带起伏" in html
     assert 'foreignObject class="math-foreign"' in html
     assert r"\(H(e^{j\omega})\)" in html

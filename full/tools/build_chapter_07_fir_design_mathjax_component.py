@@ -80,6 +80,19 @@ z_i\text{ 为零点 }\Longrightarrow z_i^*,\ \frac{1}{z_i},\ \frac{1}{z_i^*}\tex
 <rect class="freq-box" x="660" y="230" width="210" height="60" rx="8"/><foreignObject class="math-foreign" x="666" y="245" width="198" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(Y(e^{j\omega})=X(e^{j\omega})H(e^{j\omega})\)</div></foreignObject>
 <path class="arrow" d="M274 260H356"/><path class="arrow" d="M550 260H656"/>
 </svg></figure>
+<figure class="diagram"><figcaption>FIR 幅频响应决定频率成分的去留</figcaption>
+<svg class="fir-spectrum-selection-svg" viewBox="0 0 920 350" role="img" aria-label="输入频谱、FIR 幅频响应与输出频谱关系图">
+<defs><marker id="fir-select-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6z" fill="#174b73"/></marker></defs>
+<text class="label" x="155" y="32" text-anchor="middle">输入频谱</text><text class="label" x="460" y="32" text-anchor="middle">低通 FIR 幅频响应</text><text class="label" x="765" y="32" text-anchor="middle">输出频谱</text>
+<path class="axis" d="M42 276H275" marker-end="url(#fir-select-arrow)"/><path class="axis" d="M70 292V60" marker-end="url(#fir-select-arrow)"/>
+<path class="input-spectrum" d="M78 276L112 245L138 156L165 245L194 276M194 276L215 258L237 205L258 258L272 276"/>
+<text class="caption" x="36" y="78">幅度</text><foreignObject class="math-foreign" x="255" y="282" width="28" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(\omega\)</div></foreignObject><text class="caption" x="138" y="323" text-anchor="middle">低频与高频均存在</text>
+<path class="axis" d="M347 276H580" marker-end="url(#fir-select-arrow)"/><path class="axis" d="M375 292V60" marker-end="url(#fir-select-arrow)"/>
+<path class="passband" d="M392 276V114H510V276Z"/><path class="filter-response" d="M382 276H392V114H510V276H570"/>
+<path class="cutoff" d="M392 114V276M510 114V276"/><foreignObject class="math-foreign" x="366" y="282" width="52" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(-\omega_c\)</div></foreignObject><foreignObject class="math-foreign" x="492" y="282" width="36" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(\omega_c\)</div></foreignObject><foreignObject class="math-foreign" x="329" y="60" width="40" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(\left|H\right|\)</div></foreignObject><foreignObject class="math-foreign" x="560" y="282" width="28" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(\omega\)</div></foreignObject><text class="caption" x="451" y="323" text-anchor="middle">仅保留通带频率成分</text>
+<path class="axis" d="M652 276H885" marker-end="url(#fir-select-arrow)"/><path class="axis" d="M680 292V60" marker-end="url(#fir-select-arrow)"/>
+<path class="output-spectrum" d="M688 276L720 250L748 156L775 250L802 276"/><text class="caption" x="646" y="78">幅度</text><foreignObject class="math-foreign" x="865" y="282" width="28" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(\omega\)</div></foreignObject><text class="caption" x="765" y="323" text-anchor="middle">高频分量被抑制</text>
+</svg></figure>
 <p>由关于中心的偶对称或奇对称直接换元，可得系统函数的倒数对称关系：</p>
 <div class="formula">\[
 H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right).
@@ -107,7 +120,7 @@ N-1=7,\qquad \tau=\frac{N-1}{2}=3.5.
 <text class="label" x="390" y="181">Re[z]</text><text class="label" x="240" y="41">Im[z]</text><text class="caption" x="225" y="312" text-anchor="middle">单位圆</text>
 <circle class="zero" cx="120" cy="160" r="8"/><circle class="zero" cx="277" cy="160" r="8"/><circle class="zero" cx="262" cy="123" r="8"/><circle class="zero" cx="262" cy="197" r="8"/><circle class="zero" cx="330" cy="86" r="8"/><circle class="zero" cx="330" cy="234" r="8"/>
 <path class="pole" d="M216 151L234 169M234 151L216 169"/><text class="caption" x="238" y="151">原点极点 N−1 重</text>
-<text class="caption" x="78" y="184">−1</text><text class="caption" x="268" y="184">0.5</text><text class="caption" x="337" y="78">2e^{jπ/4}</text><text class="caption" x="337" y="252">2e^{−jπ/4}</text>
+<text class="caption" x="78" y="184">−1</text><text class="caption" x="268" y="184">0.5</text><text class="caption" x="337" y="78">镜像零点</text><text class="caption" x="337" y="252">镜像零点</text>
 <text class="label" x="470" y="100">实系数：零点成共轭对</text><text class="label" x="470" y="142">线性相位：关于单位圆镜像</text><text class="label" x="470" y="184">FIR：全部极点在原点</text><text class="label" x="470" y="226">因此系统必稳定</text>
 </svg></figure>
 
