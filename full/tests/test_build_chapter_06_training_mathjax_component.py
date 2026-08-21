@@ -61,7 +61,7 @@ def test_2005_analog_system_question_is_whole_and_has_frequency_response_plot(tm
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 4
+    assert question.count('class="exam-page"') >= 4
     assert "2005 年真题" in question
     assert r"H(s)=\frac{5s+6}{s^3+5s^2+6s}" in question
     assert r"（5）设 \(T_s=0.2\)，写出该系统的离散传递函数 \(H(z)\)。" in question
@@ -70,3 +70,18 @@ def test_2005_analog_system_question_is_whole_and_has_frequency_response_plot(tm
     assert r"H'(s)=\frac{1}{T}\sum_{k=-\infty}^{\infty}H\left(s-jk\Omega_s\right)" in answer
     assert r"H(z)" in answer
     assert r"&=\frac{1}{1-z^{-1}}" in answer
+
+
+def test_2005_iir_reverse_design_question_keeps_both_independent_methods(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 5
+    assert "2005 年真题（第十二题）" in question
+    assert r"H(z)=\frac{2}{1-0.5z^{-1}}-\frac{1}{1-0.25z^{-1}}" in question
+    assert r"脉冲响应不变法设计，\(T_s=2\)" in question
+    assert r"双线性变换法设计，\(T_s=2\)" in question
+    assert r"H_{\mathrm{ii}}(s)=\frac{1}{s+\frac{\ln2}{2}}-\frac{\frac12}{s+\ln2}" in answer
+    assert r"&=\frac{8(s+1)^2}{(3s+1)(5s+3)}" in answer

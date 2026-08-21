@@ -154,6 +154,15 @@ H(s)=\frac{5s+6}{s^3+5s^2+6s}.
 <p>（4）若将该系统离散化（以周期 \(T\) 均匀抽样），写出抽样后系统的传递函数 \(H'(s)\) 和原传递函数 \(H(s)\) 的关系；</p>
 <p>（5）设 \(T_s=0.2\)，写出该系统的离散传递函数 \(H(z)\)。</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2005 年真题（第十二题）</span><span>详解见 P.____</span></div>
+<p>十二、一个数字滤波器的系统函数为：</p>
+<div class="formula">\[
+H(z)=\frac{2}{1-0.5z^{-1}}-\frac{1}{1-0.25z^{-1}}.
+\]</div>
+<p>（1）假设该滤波器用脉冲响应不变法设计，\(T_s=2\)，求可作为模拟滤波器的模拟滤波器的一个系统函数；</p>
+<p>（2）假设该滤波器用双线性变换法设计，\(T_s=2\)，求可作为原型的模拟滤波器的一个系统函数；</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -289,6 +298,34 @@ H(z)
 \end{aligned}
 \]</div>
 <p>该式的三个极点分别为 \(1\)、\(e^{-0.4}\) 与 \(e^{-0.6}\)，与模拟极点 \(0\)、\(-2\)、\(-3\) 的指数映射一一对应。</p>
+<h2>2005 年真题（第十二题）</h2>
+<p>十二、一个数字滤波器的系统函数为 \(H(z)=\frac{2}{1-0.5z^{-1}}-\frac{1}{1-0.25z^{-1}}\)。</p>
+<div class="answer-step"><strong>（1）脉冲响应不变法。</strong>先由系统函数直接读出离散冲激响应：</div>
+<div class="formula">\[
+h[n]=2\left(0.5\right)^nu[n]-\left(0.25\right)^nu[n].
+\]</div>
+<p>取 \(T_s=2\)。对每个一阶极点用 \(z_k=e^{s_kT_s}\) 反推，且冲激响应不变关系为 \(h[n]=T_sh_a(nT_s)\)。于是：</p>
+<div class="formula">\[
+\begin{aligned}
+s_1&=\frac{\ln0.5}{2}=-\frac{\ln2}{2}, & C_1&=\frac{2}{2}=1,\\
+s_2&=\frac{\ln0.25}{2}=-\ln2, & C_2&=-\frac{1}{2}.
+\end{aligned}
+\]</div>
+<p>因此可取的一个模拟系统函数为：</p>
+<div class="formula">\[
+H_{\mathrm{ii}}(s)=\frac{1}{s+\frac{\ln2}{2}}-\frac{\frac12}{s+\ln2}.
+\]</div>
+<div class="answer-step"><strong>（2）双线性变换法。</strong>在 \(T_s=2\) 时，反代换为 \(z^{-1}=\frac{1-s}{1+s}\)。逐项代入原数字系统函数：</div>
+<div class="formula">\[
+\begin{aligned}
+H_{\mathrm{bl}}(s)
+&=\frac{2}{1-0.5\frac{1-s}{1+s}}
+-\frac{1}{1-0.25\frac{1-s}{1+s}}\\
+&=\frac{4(1+s)}{1+3s}-\frac{4(1+s)}{3+5s}\\
+&=\frac{8(s+1)^2}{(3s+1)(5s+3)}.
+\end{aligned}
+\]</div>
+<p>该原型的极点为 \(-\frac13\) 与 \(-\frac35\)，均在左半平面；双线性变换将其映射到单位圆内，因而对应数字系统稳定。</p>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())
