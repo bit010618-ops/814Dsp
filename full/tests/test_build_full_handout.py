@@ -30,3 +30,19 @@ def test_full_handout_uses_only_pending_page_references(tmp_path: Path):
     assert "详解见 P.____" in html
     assert "详解见 P.59" not in html
     assert "详解见 P.18" not in html
+
+
+def test_full_handout_includes_existing_chapter_one_and_two_supplemental_training_and_answers(
+    tmp_path: Path,
+):
+    from full.tools.build_full_handout import write_html
+
+    html = write_html(tmp_path / "dsp-full-handout.html").read_text(encoding="utf-8")
+
+    # 已有的章末训练不能只停留在独立组件中：它们必须进入最终全书装配。
+    assert "2002 年真题：单频正弦信号采样" in html
+    assert "2007 年真题：常数序列的 DTFT" in html
+    # 当前已复核的第 1--6 章训练总数为 95 道；第 7、8 章及清单缺项后续补齐。
+    assert html.count('class="exam-head"') == 95
+    # 书末详解同样要装配，不能只装题面。
+    assert "真题整理详解（续）" in html

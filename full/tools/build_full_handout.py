@@ -4,6 +4,7 @@ from __future__ import annotations
 import re
 import sys
 import tempfile
+from importlib import import_module
 from pathlib import Path
 
 
@@ -13,13 +14,29 @@ if str(ROOT) not in sys.path:
 
 from full.tools import build_all_main_body
 from full.tools import build_chapter_01_training_answers_mathjax_component as chapter_one_answers
+from full.tools import build_chapter_01_supplemental_mathjax_component as chapter_one_supplemental
 from full.tools import build_chapter_01_training_mathjax_component as chapter_one_training
+from full.tools import build_chapter_02_supplemental_training_mathjax_component as chapter_two_supplemental
 from full.tools import build_chapter_02_training_mathjax_component as chapter_two_training
 from full.tools import build_chapter_03_training_mathjax_component as chapter_three_training
 from full.tools import build_chapter_04_training_mathjax_component as chapter_four_training
 from full.tools import build_chapter_05_training_mathjax_component as chapter_five_training
 from full.tools import build_chapter_06_training_mathjax_component as chapter_six_training
 from full.tools.render_mathjax_formula import MATHJAX
+
+
+_CHAPTER_TWO_BATCH_NAMES = (
+    "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+    "eighteen", "nineteen", "twenty", "twenty_one", "twenty_two", "twenty_three",
+    "twenty_four", "twenty_five",
+)
+CHAPTER_TWO_SUPPLEMENTAL_BATCHES = tuple(
+    import_module(
+        f"full.tools.build_chapter_02_supplemental_training_batch_{name}_mathjax_component"
+    )
+    for name in _CHAPTER_TWO_BATCH_NAMES
+)
 
 
 STYLE = build_all_main_body.STYLE + r"""
@@ -55,7 +72,13 @@ def _component_main(writer: object, output: Path) -> str:
 def _training_fragments(directory: Path) -> list[str]:
     return [
         _component_main(chapter_one_training.write_html, directory / "chapter-01-training.html"),
+        _component_main(
+            chapter_one_supplemental.write_questions_html,
+            directory / "chapter-01-supplemental-training.html",
+        ),
         chapter_two_training.training_html(),
+        chapter_two_supplemental.training_html(),
+        *(component.training_html() for component in CHAPTER_TWO_SUPPLEMENTAL_BATCHES),
         _component_main(chapter_three_training.write_training_html, directory / "chapter-03-training.html"),
         _component_main(chapter_four_training.write_training_html, directory / "chapter-04-training.html"),
         _component_main(chapter_five_training.write_training_html, directory / "chapter-05-training.html"),
@@ -66,7 +89,13 @@ def _training_fragments(directory: Path) -> list[str]:
 def _answer_fragments(directory: Path) -> list[str]:
     return [
         _component_main(chapter_one_answers.write_html, directory / "chapter-01-answers.html"),
+        _component_main(
+            chapter_one_supplemental.write_answers_html,
+            directory / "chapter-01-supplemental-answers.html",
+        ),
         chapter_two_training.answers_html(),
+        chapter_two_supplemental.answers_html(),
+        *(component.answers_html() for component in CHAPTER_TWO_SUPPLEMENTAL_BATCHES),
         _component_main(chapter_three_training.write_answers_html, directory / "chapter-03-answers.html"),
         _component_main(chapter_four_training.write_answers_html, directory / "chapter-04-answers.html"),
         _component_main(chapter_five_training.write_answers_html, directory / "chapter-05-answers.html"),
@@ -91,7 +120,7 @@ def _document(body: str, training: str, answers: str) -> str:
 
 
 def write_html(output: Path) -> Path:
-    """Write the full-book assembly using verified chapter 1--4 training."""
+    """Write the full-book assembly using every currently verified training component."""
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="dsp-full-handout-") as temporary:
         directory = Path(temporary)
