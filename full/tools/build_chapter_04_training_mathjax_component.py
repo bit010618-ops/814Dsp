@@ -25,6 +25,10 @@ def write_training_html(output: Path) -> Path:
 <div class="exam-head"><span>2017 年真题</span><span>详解见 P.____</span></div>
 <p>5.画出 8 点按时间抽样的基-2FFT 算法的流程运动图。</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2022 年真题</span><span>详解见 P.____</span></div>
+<p>3、现有一长度为 N 的序列 \(x[n]\)，试用一次 \(N/2\) 点的 FFT 计算其 N 点 DFT，写出其计算过程。</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -52,6 +56,39 @@ W_8&=e^{-j\frac{2\pi}{8}}.
 <figcaption>8 点按时间抽取的基-2 FFT 算法流程图</figcaption>
 </figure>
 <div class="answer-step"><strong>第 3 步：读图检查。</strong>图中的三列从左到右依次为第 1 级、第 2 级、第 3 级，每一级均有 \(N/2=4\) 个蝶形。旋转因子标在对应的差分支路上；最后一级分别使用 \(W_8^0,W_8^1,W_8^2,W_8^3\)。因此该图满足基-2 DIT-FFT 的输入倒序、输出正序和三级递归结构。</div>
+<h2>2022 年真题</h2>
+<p>3、现有一长度为 N 的序列 \(x[n]\)，试用一次 \(N/2\) 点的 FFT 计算其 N 点 DFT，写出其计算过程。</p>
+<div class="answer-step"><strong>第 1 步：说明一次半长 FFT 的适用前提。</strong>将题中的序列按实值序列处理。令 \(L=N/2\)，把偶、奇下标样值分别写为：</div>
+<div class="formula">\[
+\begin{aligned}
+a[n]&=x[2n],&
+b[n]&=x[2n+1],&
+0\leq n\leq L-1.
+\end{aligned}
+\]</div>
+<p>若 \(x[n]\) 为任意复序列，两个半长序列不能仅凭一次复数 FFT 完全拆回；以下是“一个实序列的一次 \(N/2\) 点 FFT”标准实现。</p>
+<div class="answer-step"><strong>第 2 步：把两组实序列打包。</strong>构造一条长度为 \(L\) 的复序列并作一次 \(L\) 点 FFT：</div>
+<div class="formula">\[
+\begin{aligned}
+c[n]&=a[n]+jb[n],\\
+C[k]&=\operatorname{FFT}_L\{c[n]\}=A[k]+jB[k].
+\end{aligned}
+\]</div>
+<div class="answer-step"><strong>第 3 步：由共轭对称性拆回两组半长 DFT。</strong>因 \(a[n]\)、\(b[n]\) 都是实序列，其 DFT 具有共轭对称性。由 \(C[k]\) 和 \(C^*\left((L-k)\right)_L\) 得：</div>
+<div class="formula">\[
+\begin{aligned}
+A[k]&=\frac{1}{2}\left(C[k]+C^*\left((L-k)\right)_L\right),\\
+B[k]&=\frac{1}{2j}\left(C[k]-C^*\left((L-k)\right)_L\right),\qquad 0\leq k\leq L-1.
+\end{aligned}
+\]</div>
+<div class="answer-step"><strong>第 4 步：合成为 N 点 DFT。</strong>按时间抽取蝶形合成两半频谱：</div>
+<div class="formula">\[
+\begin{aligned}
+X[k]&=A[k]+W_N^kB[k],\\
+X[k+L]&=A[k]-W_N^kB[k],\qquad 0\leq k\leq L-1.
+\end{aligned}
+\]</div>
+<p>这样只调用一次长度为 \(N/2\) 的复数 FFT；其余为共轭、加减和旋转因子乘法，即可得到 \(N\) 点 DFT 的全部 \(N\) 个频点。</p>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
