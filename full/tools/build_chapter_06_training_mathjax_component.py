@@ -216,6 +216,11 @@ H(p)=\frac{1}{p^2+\sqrt{2}p+1},\qquad N=2,\qquad \omega_c=0.5\pi,\qquad T=2.
 <p>试求：</p>
 <p>（1）\(\Omega_c\)；（2）\(H_a(s)\)；（3）\(H(z)\)。</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2007 年真题</span><span>详解见 P.____</span></div>
+<p>十、简答题</p>
+<p>（3）脉冲响应不变法和双线性变换法在频率转换的线性关系方面有什么区别？</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -456,6 +461,20 @@ H(z)
 \end{aligned}
 \]</div>
 <p>该式已经是以 \(z^{-1}\) 写出的二阶 IIR 系统函数；若需读差分方程系数，可再将分母常数项归一化。</p>
+<h2>2007 年真题</h2>
+<p>十、（3）两种方法的频率对应关系不同。</p>
+<div class="answer-step"><strong>脉冲响应不变法。</strong>由 \(z=e^{sT}\)，在 \(s=j\Omega\) 上有</div>
+<div class="formula">\[
+\omega=\Omega T.
+\]</div>
+<p>因此从模拟角频率到数字角频率是<strong>线性</strong>比例关系：模拟频率轴上等宽的频率间隔映射为数字频率轴上等宽的间隔。但数字频率以 \(2\pi\) 为周期，模拟频谱会以 \(\Omega_s=2\pi/T\) 为间隔复制，故高频分量可能折叠产生混叠。</p>
+<div class="answer-step"><strong>双线性变换法。</strong>由 \(s=\frac{2}{T}\frac{z-1}{z+1}\)，在单位圆上有</div>
+<div class="formula">\[
+\omega=2\tan^{-1}\left(\frac{\Omega T}{2}\right),
+\qquad
+\Omega=\frac{2}{T}\tan\left(\frac{\omega}{2}\right).
+\]</div>
+<p>这是<strong>非线性</strong>频率变换：整个 \(\Omega\in(-\infty,\infty)\) 一一压缩到 \(\omega\in(-\pi,\pi)\)，因而没有频谱混叠；代价是频率轴发生扭曲，特别是高频区压缩更明显。设计时可用预畸变使指定边缘频率精确对应。</p>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())

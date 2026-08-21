@@ -137,10 +137,23 @@ def test_2022_second_order_butterworth_question_keeps_all_three_linked_parts(tmp
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 9
+    assert question.count('class="exam-page"') >= 9
     assert "2022 年真题" in question
     assert r"H(p)=\frac{1}{p^2+\sqrt{2}p+1}" in question
     assert "（1）\\(\\Omega_c\\)；（2）\\(H_a(s)\\)；（3）\\(H(z)\\)。" in question
     assert r"\Omega_c=\frac{2}{T}\tan" in answer
     assert r"H_a(s)" in answer
     assert r"(2+\sqrt{2})+(2-\sqrt{2})z^{-2}" in answer
+
+
+def test_2007_frequency_mapping_short_answer_keeps_both_methods(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 10
+    assert "脉冲响应不变法和双线性变换法在频率转换的线性关系方面有什么区别？" in question
+    assert r"\omega=\Omega T" in answer
+    assert r"\omega=2\tan^{-1}" in answer
+    assert "非线性" in answer and "预畸变" in answer
