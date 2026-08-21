@@ -1025,3 +1025,9 @@
 - Added the source-checked 2024 real-even finite-sequence DFT question and its paired-term cancellation proof for the Nyquist-index value.
 - The question wording is retained and all derivations are complete MathJax formula units.
 - Verification: thirteen focused component/full-assembly suites report `56 passed`. The assembled handout has 134 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch seven
+
+- Added the source-checked 2003 DFT spectrum-analysis question, preserving its wording and providing the complete Nyquist sampling, DFT-length, digital-frequency and signed analog-frequency mapping.
+- The signed-frequency mapping uses a standard LaTeX `cases` formula; reader-facing circular-index notation remains free of `mod N`.
+- Verification: fifteen focused component/full-assembly suites report `59 passed`. The assembled handout has 135 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
