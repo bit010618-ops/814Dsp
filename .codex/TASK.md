@@ -8,7 +8,7 @@
 
 # Next action
 
-- 按 `full/source/exam_training_manifest.json` 补齐尚缺的 18 道真题训练与详解，继续优先第 3 章余下 3 道；所有题干按原卷保留，跨章节题按依赖规则放置，最终统一回填“详解见 P.××”。
+- 按 `full/source/exam_training_manifest.json` 补齐尚缺的 17 道真题训练与详解，继续优先第 3 章余下 2 道；所有题干按原卷保留，跨章节题按依赖规则放置，最终统一回填“详解见 P.××”。
 
 # Allowed paths
 

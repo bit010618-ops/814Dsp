@@ -1049,3 +1049,8 @@
 - Added the source-checked 2025 real-symmetry DFT special-frequency question, retaining both original subparts and their separate pairwise-cancellation proofs.
 - The answer uses standard display MathJax, including the \(k=N/2\) phase factor and complete finite sums.
 - Verification: eighteen focused component/full-assembly suites report `62 passed`. The assembled handout has 138 training question pages; static checks found no reader-facing `mod N` or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch eleven
+
+- Added the source-checked 2007 targeted-frequency DFT question and its 512-point zero-padding solution.
+- The detailed answer gives the exact 16 Hz bin spacing and selects (X(50)) for 800 Hz.
