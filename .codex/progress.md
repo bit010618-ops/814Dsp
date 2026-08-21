@@ -1037,3 +1037,9 @@
 - Added the source-checked 2025 four-point DFT question and its conjugate-symmetric/conjugate-antisymmetric decomposition.
 - The answer retains exact four-point values and uses the required outer-period subscript in \(X^*\left((-k)\right)_4\), never a `mod N` operator.
 - Verification: sixteen focused component/full-assembly suites report `60 passed`. The assembled handout has 136 training question pages; static checks found no reader-facing `mod N` or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch nine
+
+- Added the source-checked 2025 DTFT-sampling/4-point-IDFT question and its periodic time-domain summation proof.
+- The detailed answer obtains \(y(n)=\frac{16}{15}\left(\frac{1}{2}\right)^n\) for the four-point principal sequence, with complete MathJax alignment.
+- Verification: seventeen focused component/full-assembly suites report `61 passed`. The assembled handout has 137 training question pages; static checks found no reader-facing `mod N` or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
