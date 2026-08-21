@@ -18,3 +18,8 @@
 ## Result
 
 当前有效讲义源码已符合图片所示记法；本次补充最终样式确认与持久化记录，不改变循环运算的数学含义。
+
+## Delivery
+
+- 本地提交：`c20cb2a Record circular index notation preference`。
+- 已正常推送至 `origin/main`。

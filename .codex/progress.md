@@ -1,5 +1,7 @@
 # 当前进度：全文数字信号处理讲义
 
+> 2026-08-21 推送成功：循环索引图片格式确认提交 `c20cb2a` 已正常推送至 `origin/main`；仅包含该项规则记录、任务记录和项目进度记录。
+
 > 2026-08-21 循环索引图片格式最终确认：以用户提供的 `x((n+m))_N` 样式为准，所有读者可见的循环索引统一采用完整圆括号外的周期下标；有效正文源中未发现 `mod N`、`\bmod N`、`\operatorname{mod} N`、`\mathrm{mod} N` 或 `\pmod N`。本次仅补充持久化需求记录；相位主值等非循环模运算不改动。
 
 > 2026-08-21 提交与推送：第六章 IIR 正文图形本地提交为 38ac16a（Add chapter six IIR design diagrams）。常规 git push origin main 继续失败于同一项本机 Git 凭据错误 SEC_E_NO_CREDENTIALS；未读取或绕过凭据。
