@@ -122,10 +122,25 @@ def test_2017_bilinear_lowpass_question_keeps_original_wording_and_symbolic_orde
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 8
+    assert question.count('class="exam-page"') >= 8
     assert "2017 年真题" in question
     assert "只要求写出表达式，不用计算" in question
     assert r"\Omega_p\)、\(\Omega_s" in question
     assert "\\Omega=\\frac{2}{T}\\tan" in answer
     assert "N=\\left\\lceil" in answer
     assert r"10^{15/10}-1" in answer
+
+
+def test_2022_second_order_butterworth_question_keeps_all_three_linked_parts(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 9
+    assert "2022 年真题" in question
+    assert r"H(p)=\frac{1}{p^2+\sqrt{2}p+1}" in question
+    assert "（1）\\(\\Omega_c\\)；（2）\\(H_a(s)\\)；（3）\\(H(z)\\)。" in question
+    assert r"\Omega_c=\frac{2}{T}\tan" in answer
+    assert r"H_a(s)" in answer
+    assert r"(2+\sqrt{2})+(2-\sqrt{2})z^{-2}" in answer

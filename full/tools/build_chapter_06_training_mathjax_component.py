@@ -207,6 +207,15 @@ H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}.
 <p>1. 取 \(T=1\,\mathrm{s}\)，用双线性变换法计算相应低通的技术指标 \(\Omega_p\)、\(\Omega_s\)；</p>
 <p>2. 计算阶数 \(N\)。</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2022 年真题</span><span>详解见 P.____</span></div>
+<p>六、利用双线性变换法设计二阶巴特沃斯低通滤波器，已知二阶巴特沃斯归一化传输函数为</p>
+<div class="formula">\[
+H(p)=\frac{1}{p^2+\sqrt{2}p+1},\qquad N=2,\qquad \omega_c=0.5\pi,\qquad T=2.
+\]</div>
+<p>试求：</p>
+<p>（1）\(\Omega_c\)；（2）\(H_a(s)\)；（3）\(H(z)\)。</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -421,6 +430,32 @@ N=\left\lceil
 }
 \right\rceil.
 \]</div>
+<h2>2022 年真题</h2>
+<p>六、先按双线性变换的预畸变关系，把数字截止频率换算为模拟截止频率：</p>
+<div class="formula">\[
+\Omega_c=\frac{2}{T}\tan\left(\frac{\omega_c}{2}\right)
+=\tan\left(\frac{\pi}{4}\right)=1.
+\]</div>
+<p>归一化原型的变量满足 \(p=s/\Omega_c\)。因此模拟低通原型为</p>
+<div class="formula">\[
+\begin{aligned}
+H_a(s)
+&=H\!\left(\frac{s}{\Omega_c}\right)\\
+&=\frac{\Omega_c^2}{s^2+\sqrt{2}\Omega_c s+\Omega_c^2}\\
+&=\frac{1}{s^2+\sqrt{2}s+1}.
+\end{aligned}
+\]</div>
+<p>因 \(T=2\)，双线性代换简化为 \(s=\frac{1-z^{-1}}{1+z^{-1}}\)。令 \(q=z^{-1}\)，整体代入并通分：</p>
+<div class="formula">\[
+\begin{aligned}
+H(z)
+&=\frac{(1+q)^2}
+{(1-q)^2+\sqrt{2}(1-q)(1+q)+(1+q)^2}\\
+&=\frac{1+2z^{-1}+z^{-2}}
+{(2+\sqrt{2})+(2-\sqrt{2})z^{-2}}.
+\end{aligned}
+\]</div>
+<p>该式已经是以 \(z^{-1}\) 写出的二阶 IIR 系统函数；若需读差分方程系数，可再将分母常数项归一化。</p>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())
