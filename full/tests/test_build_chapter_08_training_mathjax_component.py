@@ -22,4 +22,3 @@ def test_chapter_eight_training_keeps_all_audited_questions_and_answers(tmp_path
     assert "完整LaTeX源码" not in training
     assert "时分复用" in answers
     assert "频域复制" in answers
-
