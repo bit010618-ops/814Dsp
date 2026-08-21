@@ -15,6 +15,8 @@ def test_full_handout_orders_body_training_then_answers(tmp_path: Path):
     assert "2017 年真题" in html
     assert 'data-diagram="dit-radix-2-eight-point-flow"' in html
     assert ".fft-flow img{display:block;width:100%;height:auto" in html
+    assert "第五章 分章强化训练" in html
+    assert "IIR 滤波器的级联型和并联型结构特点" in html
 
 
 def test_full_handout_uses_only_pending_page_references(tmp_path: Path):
