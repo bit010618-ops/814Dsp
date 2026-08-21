@@ -10,7 +10,7 @@ def test_2017_eight_point_dit_fft_training_keeps_the_original_question_and_has_a
     assert "2017 年真题" in question
     assert "5.画出 8 点按时间抽样的基-2FFT 算法的流程运动图。" in question
     assert "详解见 P.____" in question
-    assert question.count('class="exam-page"') == 2
+    assert question.count('class="exam-page"') == 3
     assert 'data-diagram="dit-radix-2-eight-point-flow"' in answer
     assert "第 1 级" in answer
     assert "第 2 级" in answer
@@ -28,10 +28,27 @@ def test_2022_one_half_length_fft_question_is_kept_as_an_independent_fourth_chap
     question = component.write_training_html(tmp_path / "chapter-04-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-04-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 2
+    assert question.count('class="exam-page"') == 3
     assert "2022 年真题" in question
     assert r"3、现有一长度为 N 的序列 \(x[n]\)，试用一次 \(N/2\) 点的 FFT 计算其 N 点 DFT，写出其计算过程。" in question
     assert r"c[n]&=a[n]+jb[n]" in answer
     assert r"C[k]&=\operatorname{FFT}_L\{c[n]\}=A[k]+jB[k]" in answer
     assert r"A[k]&=\frac{1}{2}\left(C[k]+C^*\left((L-k)\right)_L\right)" in answer
     assert r"B[k]&=\frac{1}{2j}\left(C[k]-C^*\left((L-k)\right)_L\right)" in answer
+
+
+def test_2004_overlap_add_question_and_count_are_preserved(tmp_path: Path):
+    from full.tools import build_chapter_04_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-04-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-04-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 3
+    assert "2004 年真题" in question
+    assert "一个 300 点的序列与单位取样长度为 60 点的线性非移变滤波器作线性卷积" in question
+    assert "128 点的 FFT 和 IFFT" in question
+    assert "重叠相加法" in question
+    assert r"M=128-60+1=69" in answer
+    assert r"K=\left\lceil\frac{300}{69}\right\rceil=5" in answer
+    assert r"N_{\mathrm{FFT}}&=1+K=6" in answer
+    assert r"N_{\mathrm{IFFT}}&=K=5" in answer

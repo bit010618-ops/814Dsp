@@ -29,6 +29,10 @@ def write_training_html(output: Path) -> Path:
 <div class="exam-head"><span>2022 年真题</span><span>详解见 P.____</span></div>
 <p>3、现有一长度为 N 的序列 \(x[n]\)，试用一次 \(N/2\) 点的 FFT 计算其 N 点 DFT，写出其计算过程。</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2004 年真题</span><span>详解见 P.____</span></div>
+<p>十一、一个 300 点的序列与单位取样长度为 60 点的线性非移变滤波器作线性卷积，为提高计算效率，该滤波器用 128 点的 FFT 和 IFFT 实现。若采用重叠相加法，为完成此滤波计算，需调用多少次 FFT 运算和 IFFT 运算。</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -89,6 +93,25 @@ X[k+L]&=A[k]-W_N^kB[k],\qquad 0\leq k\leq L-1.
 \end{aligned}
 \]</div>
 <p>这样只调用一次长度为 \(N/2\) 的复数 FFT；其余为共轭、加减和旋转因子乘法，即可得到 \(N\) 点 DFT 的全部 \(N\) 个频点。</p>
+<h2>2004 年真题</h2>
+<p>十一、一个 300 点的序列与单位取样长度为 60 点的线性非移变滤波器作线性卷积，为提高计算效率，该滤波器用 128 点的 FFT 和 IFFT 实现。若采用重叠相加法，为完成此滤波计算，需调用多少次 FFT 运算和 IFFT 运算。</p>
+<div class="answer-step"><strong>第 1 步：确定每段可输入的新样本数。</strong>重叠相加法中，若 FFT 长度为 \(L\)，滤波器长度为 \(N_2\)，每段输入长度必须满足 \(M+N_2-1\leq L\)。本题取最大不混叠段长：</div>
+<div class="formula">\[
+M=128-60+1=69.
+\]</div>
+<div class="answer-step"><strong>第 2 步：确定输入需要分成几段。</strong>300 点输入按每段 69 个新样本划分，最后一段允许补零，因此段数为：</div>
+<div class="formula">\[
+K=\left\lceil\frac{300}{69}\right\rceil=5.
+\]</div>
+<p>前四段各有 69 个有效样本，最后一段有 \(300-4\times69=24\) 个有效样本；两类段都补零至 128 点后再作变换。</p>
+<div class="answer-step"><strong>第 3 步：分别计数。</strong>滤波器 \(h[n]\) 的 128 点 FFT 只需预先计算一次。5 个输入分段各需一次 128 点 FFT，并各自经频域相乘后作一次 128 点 IFFT：</div>
+<div class="formula">\[
+\begin{aligned}
+N_{\mathrm{FFT}}&=1+K=6,\\
+N_{\mathrm{IFFT}}&=K=5.
+\end{aligned}
+\]</div>
+<p>故完成该滤波计算共调用 6 次 FFT 运算和 5 次 IFFT 运算。这里不能把滤波器的频谱重复计算 5 次；重叠相加法的关键正是先预存一次 \(H[k]\)，再供各输入分段复用。</p>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
