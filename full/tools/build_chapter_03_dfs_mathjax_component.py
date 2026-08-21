@@ -76,7 +76,7 @@ W_N^{kn_0}\widetilde{X}(k),\qquad
 \quad\longleftrightarrow\quad
 \widetilde{X}(k-k_0).
 \]</div>
-<p>周期移位和频移均按模 [[N]] 理解。周期卷积把时域卷积与频域逐点相乘对应起来：</p>
+<p>周期移位和频移均按 [[N]] 周期理解。周期卷积把时域卷积与频域逐点相乘对应起来：</p>
 <div class="formula">\[
 \widetilde{y}(n)=\widetilde{x}_1(n)\mathbin{\circledast}_N\widetilde{x}_2(n)
 \quad\longleftrightarrow\quad
