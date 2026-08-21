@@ -27,6 +27,10 @@ In progress.
 - `full/tests/test_build_full_handout.py`、`test_build_all_main_body.py` 与第一章补充训练组件回归共 38 项通过。
 - 全书装配顺序、待回填页码占位、既有训练题面与书末详解均保持受测约束。
 
+## Milestone
+
+- 训练装配提交 `0f223ae`（`Assemble verified chapter training components`）已推送至 `origin/main`。
+
 ## Next action
 
 从第 8 章的 4 道和第 7 章的 11 道开始，按原卷题干补齐训练页与书末详解；完成每批后再进行统一分页与 PDF 视觉验收。
