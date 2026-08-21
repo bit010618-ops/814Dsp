@@ -22,6 +22,7 @@ from full.tools import build_chapter_03_training_mathjax_component as chapter_th
 from full.tools import build_chapter_04_training_mathjax_component as chapter_four_training
 from full.tools import build_chapter_05_training_mathjax_component as chapter_five_training
 from full.tools import build_chapter_06_training_mathjax_component as chapter_six_training
+from full.tools import build_chapter_07_training_mathjax_component as chapter_seven_training
 from full.tools import build_chapter_08_training_mathjax_component as chapter_eight_training
 from full.tools.render_mathjax_formula import MATHJAX
 
@@ -84,6 +85,7 @@ def _training_fragments(directory: Path) -> list[str]:
         _component_main(chapter_four_training.write_training_html, directory / "chapter-04-training.html"),
         _component_main(chapter_five_training.write_training_html, directory / "chapter-05-training.html"),
         _component_main(chapter_six_training.write_training_html, directory / "chapter-06-training.html"),
+        _component_main(chapter_seven_training.write_training_html, directory / "chapter-07-training.html"),
         _component_main(chapter_eight_training.write_training_html, directory / "chapter-08-training.html"),
     ]
 
@@ -102,6 +104,7 @@ def _answer_fragments(directory: Path) -> list[str]:
         _component_main(chapter_four_training.write_answers_html, directory / "chapter-04-answers.html"),
         _component_main(chapter_five_training.write_answers_html, directory / "chapter-05-answers.html"),
         _component_main(chapter_six_training.write_answers_html, directory / "chapter-06-answers.html"),
+        _component_main(chapter_seven_training.write_answers_html, directory / "chapter-07-answers.html"),
         _component_main(chapter_eight_training.write_answers_html, directory / "chapter-08-answers.html"),
     ]
 
