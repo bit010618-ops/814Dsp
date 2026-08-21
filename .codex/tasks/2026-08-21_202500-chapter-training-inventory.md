@@ -27,10 +27,16 @@ In progress.
 - `full/tests/test_build_full_handout.py`、`test_build_all_main_body.py` 与第一章补充训练组件回归共 38 项通过。
 - 全书装配顺序、待回填页码占位、既有训练题面与书末详解均保持受测约束。
 
+## Chapter 8 completion
+
+- 已逐页核对 2013、2015、2016、2020 年的第八章归属题，完成 4 道题面与书末详解；其中两道多采样率题的带水印图已重绘为无水印系统链和教材式频谱图。
+- `build_full_handout.py` 已接入第八章训练和详解；候选全书题面现为 99 道。
+- 组件、全书装配和既有正文回归共 39 项通过；仍待浏览器恢复后进行 PDF 视觉验收。
+
 ## Milestone
 
 - 训练装配提交 `0f223ae`（`Assemble verified chapter training components`）已推送至 `origin/main`。
 
 ## Next action
 
-从第 8 章的 4 道和第 7 章的 11 道开始，按原卷题干补齐训练页与书末详解；完成每批后再进行统一分页与 PDF 视觉验收。
+继续补齐第 7 章 11 道题，按原卷题干制作单题训练页与书末详解；完成每批后再进行统一分页与 PDF 视觉验收。

@@ -8,7 +8,7 @@
 
 # Next action
 
-- 按 `full/source/exam_training_manifest.json` 补齐尚缺的 61 道真题训练与详解，优先第七、八章；所有题干按原卷保留，跨章节题按依赖规则放置，最终统一回填“详解见 P.××”。
+- 按 `full/source/exam_training_manifest.json` 补齐尚缺的 57 道真题训练与详解，当前优先第七章；所有题干按原卷保留，跨章节题按依赖规则放置，最终统一回填“详解见 P.××”。
 
 # Allowed paths
 
@@ -32,7 +32,7 @@
 
 # Current risks
 
-- 尚缺 61 道训练/详解、真题图重绘、全书分页、答案索引回填和附录尚未完成；当前机器的 Edge/Chromium headless GPU 缓存故障暂时阻断新的 PDF 视觉验收。
+- 尚缺 57 道训练/详解、真题图重绘、全书分页、答案索引回填和附录尚未完成；当前机器的 Edge/Chromium headless GPU 缓存故障暂时阻断新的 PDF 视觉验收。
 - 工作区有既有未提交组件与诊断文件，提交前必须逐项隔离。
 
 # Detailed task source

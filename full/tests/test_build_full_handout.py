@@ -42,7 +42,9 @@ def test_full_handout_includes_existing_chapter_one_and_two_supplemental_trainin
     # 已有的章末训练不能只停留在独立组件中：它们必须进入最终全书装配。
     assert "2002 年真题：单频正弦信号采样" in html
     assert "2007 年真题：常数序列的 DTFT" in html
-    # 当前已复核的第 1--6 章训练总数为 95 道；第 7、8 章及清单缺项后续补齐。
-    assert html.count('class="exam-head"') == 95
+    # 第八章已补入 4 道：其余第七章及清单缺项后续补齐。
+    assert html.count('class="exam-head"') == 99
+    assert "第八章 分章强化训练" in html
+    assert "说明时分复用工作原理并举例。" in html
     # 书末详解同样要装配，不能只装题面。
     assert "真题整理详解（续）" in html
