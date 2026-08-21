@@ -62,6 +62,11 @@ def _answer_fragments(directory: Path) -> list[str]:
     ]
 
 
+def _normalize_answer_refs(fragment: str) -> str:
+    """Defer every printed answer page number until final whole-book pagination."""
+    return re.sub(r"详解见 P\.(?:\d+|____)", "详解见 P.____", fragment)
+
+
 def _document(body: str, training: str, answers: str) -> str:
     return (
         '<!doctype html><html lang="zh-CN"><meta charset="utf-8">'
@@ -80,7 +85,10 @@ def write_html(output: Path) -> Path:
         directory = Path(temporary)
         body_path = build_all_main_body.write_html(directory / "main-body.html")
         body = _main_body(body_path.read_text(encoding="utf-8"))
-        training = "\n".join(_training_fragments(directory))
+        training = "\n".join(
+            _normalize_answer_refs(fragment)
+            for fragment in _training_fragments(directory)
+        )
         answers = "\n".join(_answer_fragments(directory))
     output.write_text(_document(body, training, answers), encoding="utf-8")
     return output
