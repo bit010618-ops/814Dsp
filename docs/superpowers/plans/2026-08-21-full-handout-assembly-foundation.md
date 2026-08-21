@@ -10,6 +10,19 @@
 
 ---
 
+### Task 0: 训练组件公式预检与迁移
+
+**Files:**
+
+- Modify: `full/tools/build_chapter_03_training_mathjax_component.py`
+- Modify: `full/tests/test_build_chapter_03_training_mathjax_component.py`
+
+- [ ] Step 1 — 先写失败回归，要求 2005 年题干中的 `x(n)`、`h(n)`、`X(K)`、`H(K)`、`Y(K)` 和 `y(n)` 均出现于 `\(...\)` 或 `\[...\]` 的完整 LaTeX 公式内，且题干不得含有普通文本形式的 `(x(n)=` 或 `(delta(n-5))`。
+- [ ] Step 2 — 运行 `& $py -m pytest -p no:cacheprovider full/tests/test_build_chapter_03_training_mathjax_component.py`，预期因当前遗留的普通圆括号公式而失败。
+- [ ] Step 3 — 只把遗留的数学片段改为完整行内 LaTeX；不改真题中文文字、数字、题号、符号含义或题目顺序。
+- [ ] Step 4 — 重新运行同一测试，预期全部通过；随后用 MathJax DOM 导出检查目标题干不残留源码。
+- [ ] Step 5 — 仅提交该组件和其测试，提交信息为 `Render chapter three training formulas`。
+
 ### Task 1: 建立全书装配入口
 
 **Files:**

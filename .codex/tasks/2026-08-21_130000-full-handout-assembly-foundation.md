@@ -14,3 +14,14 @@
 
 - 不重做已审计的八章正文。
 - 不在本里程碑中凭空补写第 4--8 章真题详解；将按题库逐题迁移。
+
+## Plan review
+
+- 已确认装配前存在阻断项：第三章旧训练组件的 2005 年题干和详解仍有少数普通圆括号数学片段，违反统一 MathJax 公式规则。
+- 因此先以测试锁定并迁移该组件，之后才允许它进入全书装配；不能将旧组件视为可直接交付。
+
+## Completed preflight
+
+- 已将 2005 年 5 点 DFT 题干和详解中的全部遗留数学片段改为完整行内 LaTeX，未改动题干的中文文字、题号、数字或数学含义。
+- 先行回归按预期失败，修复后 `full/tests/test_build_chapter_03_training_mathjax_component.py` 为 6 passed。
+- 本地 MathJax 导出报告 `unrendered=[]`、`pageErrors=[]`；A4 预览确认 2005 题干中的序列、DFT/IDFT 和结果均为正式数学排版。
