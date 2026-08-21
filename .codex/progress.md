@@ -884,3 +884,8 @@
 - Root cause: the direct-I difference equation reused `n` as both the free sample index and the feedback summation index; the original SVG omitted the undelayed `b_0` path and its crowded routing did not permit a reliable reverse reading of the equation.
 - Rebuilt the figure as a formal, layered Direct-I realization: an upper feedforward delay chain with `b_0,b_1,b_2,\ldots,b_M` taps, a lower right-to-left feedback delay chain with `-a_1,-a_2,\ldots,-a_N` taps, and a single standard summing node. Added `figure{break-inside:avoid}` so a technical figure and its caption cannot be split between A4 pages.
 - Verification: targeted component, chapter-five-to-eight, and full-body assembly tests `3 passed`. Exported `tmp/dsp-main-body-ch5-structure-v3-stamped.pdf` with MathJax `unrendered=[]`, `pageErrors=[]`; rendered pages 64--67 show the full figure on page 65 with no overlap, crop, or broken formula.
+
+# 2026-08-21 Chapter-six page audit
+
+- Rendered and inspected all main-body pages of chapter six (pages 71--75) at A4 scale. The Butterworth and frequency-transform equations, impulse-invariance and bilinear-transform equations, examples, comparison table, headers and folios are clear and fully rendered.
+- No raw LaTeX, clipping, overlaps, missing grids, or non-chapter-end large blank space was found. Page 75 is the chapter-end exception and its writing area is intentional.
