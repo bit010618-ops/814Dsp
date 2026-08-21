@@ -983,3 +983,9 @@
 - Fixed the remaining non-chapter-end whitespace defect around the zero-order-hold waveform. The previous `figure` rule pushed the whole chart after its explanatory lead, leaving page 27 underfilled. Allowing arbitrary splits instead separated the caption from the chart, so that attempt was rejected.
 - The dedicated `zero-order-hold-flow` class now retains its caption and chart as one unit at a print-legible 145 mm maximum width. The full unit fits at the end of page 27; the formula and following explanation flow naturally on page 28. A 160 dpi visual check confirms both pages are dense, clear, and uncut.
 - Verification: targeted suite `2 passed`; rebuilt `tmp/dsp-main-body-ch1-reflow-v2.pdf` reports `math=2858`, `unrendered=[]`, `pageErrors=[]`.
+
+# 2026-08-21 Chapter-seven supplemental training completion
+
+- Added the remaining eight verified chapter-seven training questions and their consolidated detailed answers: 2007 (window-function effect and frequency sampling), 2015, 2016, 2017, 2019, 2021 and 2024.
+- The 2007 frequency-sampling question retains the original response condition through a clean, watermark-free textbook coordinate plot; the associated comb-filter/resonator-bank realization is a formal SVG. The assembled book now contains 110 training question pages.
+- Verification: six focused suites report `41 passed`; assembled HTML checks confirm two frequency-sampling realization figures, one target-response plot, no reader-facing `mod N`, and no watermark text. New PDF visual QA remains blocked by the known local headless GPU backend failure and is not claimed as complete.
