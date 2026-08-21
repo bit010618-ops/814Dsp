@@ -40,6 +40,7 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert ".multirate-svg .spectrum-a{fill:none;stroke:#0d8794" in html
     assert ".multirate-svg .spectrum-b{fill:none;stroke:#b56b2e" in html
     assert ".signal-svg .hold{fill:none;stroke:#0f8b8d;stroke-width:3" in html
+    assert ".zero-order-hold-flow{break-inside:avoid;max-width:145mm}" in html
     assert "typical-sequence-continuation" in html
     assert ".typical-sequence-continuation .chart{break-inside:auto" in html
     assert ".typical-sequence-continuation .chart svg{max-width:500px!important}" in html

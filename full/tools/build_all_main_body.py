@@ -49,6 +49,7 @@ p{margin:5pt 0 8pt}
 .mapping th,.mapping td,.table th,.table td{border:.45pt solid #b9c6cf;padding:6pt 7pt;text-align:left;vertical-align:top}
 .mapping th,.table th{color:#315d7c;font-weight:600;background:#f4f7f8}
 figure{break-inside:avoid;margin:12pt auto;text-align:center}
+.zero-order-hold-flow{break-inside:avoid;max-width:145mm}
 .source-figure{max-width:100%;padding:0;background:#fff;border:1px solid #d8e0e5;border-radius:5pt;overflow:hidden}
 .source-figure.compact{max-width:156mm}
 .source-figure-flow{break-inside:auto;max-width:156mm;margin:8pt auto}

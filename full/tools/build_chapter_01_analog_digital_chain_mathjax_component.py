@@ -132,7 +132,7 @@ def write_html(output: Path) -> Path:
   <section>
     <h2>数模转换与零阶保持</h2>
     <p>数模转换器把各个离散数值依次送入保持电路。最常见的零阶保持在两个采样时刻之间维持前一个样值不变，因而得到阶梯状的连续时间波形。</p>
-    <figure><figcaption>零阶保持：样值在下一个采样时刻到来前保持不变</figcaption>__HOLD__</figure>
+    <figure class="zero-order-hold-flow"><figcaption>零阶保持：样值在下一个采样时刻到来前保持不变</figcaption>__HOLD__</figure>
     <div class="formula">\[
       y(n)\longrightarrow y_0(t)\longrightarrow y_a(t)
     \]</div>

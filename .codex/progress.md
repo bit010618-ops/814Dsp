@@ -960,3 +960,10 @@
 - Rechecked the source-model count against the body component: `full/source/chapter_08.json` contains 47 source pages and 47 transcribed pages. In the current A4 export, sections 8.1--8.5 begin on pages 86, 88, 89, 90 and 91 respectively.
 - Rendered and visually reviewed every chapter-eight body page (86--91) at 160 dpi. Formulas, ruled table, spectrum transformation graphic and all three multirate system diagrams are clean: no raw TeX, black fill, crop, collision, non-chapter-end large blank, slide shell or watermark was found.
 - The following page starts the frozen training section, so its intentional one-question writing space is not treated as a body-layout defect. Targeted component regression passed (`1 passed`).
+
+# 2026-08-21 Chapter-one full A4 audit and zero-order-hold reflow
+
+- Rendered and inspected all 30 first-chapter body pages. The MathJax formulas, `cases` structures, stem/continuous signal diagrams, sampling spectra, block diagrams and headers are clean; no raw TeX, overlap, crop, black fill or non-chapter-end technical-figure loss was found.
+- Fixed the remaining non-chapter-end whitespace defect around the zero-order-hold waveform. The previous `figure` rule pushed the whole chart after its explanatory lead, leaving page 27 underfilled. Allowing arbitrary splits instead separated the caption from the chart, so that attempt was rejected.
+- The dedicated `zero-order-hold-flow` class now retains its caption and chart as one unit at a print-legible 145 mm maximum width. The full unit fits at the end of page 27; the formula and following explanation flow naturally on page 28. A 160 dpi visual check confirms both pages are dense, clear, and uncut.
+- Verification: targeted suite `2 passed`; rebuilt `tmp/dsp-main-body-ch1-reflow-v2.pdf` reports `math=2858`, `unrendered=[]`, `pageErrors=[]`.
