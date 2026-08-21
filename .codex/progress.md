@@ -1043,3 +1043,9 @@
 - Added the source-checked 2025 DTFT-sampling/4-point-IDFT question and its periodic time-domain summation proof.
 - The detailed answer obtains \(y(n)=\frac{16}{15}\left(\frac{1}{2}\right)^n\) for the four-point principal sequence, with complete MathJax alignment.
 - Verification: seventeen focused component/full-assembly suites report `61 passed`. The assembled handout has 137 training question pages; static checks found no reader-facing `mod N` or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch ten
+
+- Added the source-checked 2025 real-symmetry DFT special-frequency question, retaining both original subparts and their separate pairwise-cancellation proofs.
+- The answer uses standard display MathJax, including the \(k=N/2\) phase factor and complete finite sums.
+- Verification: eighteen focused component/full-assembly suites report `62 passed`. The assembled handout has 138 training question pages; static checks found no reader-facing `mod N` or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
