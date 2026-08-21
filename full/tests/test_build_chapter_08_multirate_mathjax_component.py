@@ -45,5 +45,15 @@ def test_chapter_eight_component_covers_multirate_main_body(tmp_path: Path):
     assert "../assets/source-figures/ch08-" not in html
     # The lower-right “amplitude halved” spectrum remains inside its own panel.
     assert 'M560 411L590 359L620 411' in html
+    # Every spectrum panel has a complete textbook coordinate system: a
+    # horizontal frequency axis and a separate upward amplitude axis.
+    for vertical_axis in (
+        'M96 195V112',
+        'M560 195V112',
+        'M560 411V328',
+        'M96 411V328',
+    ):
+        assert vertical_axis in html
+    assert html.count('>幅度</text>') == 4
     assert "MATLAB" not in html
     assert "真题" not in html

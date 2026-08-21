@@ -894,3 +894,9 @@
 
 - Rendered and inspected all main-body pages of chapter seven (pages 76--84) at A4 scale. Linear-phase derivations, standard `cases` formulas, FIR zero-pole, time/frequency correspondence, symmetry, and frequency-sampling figures all render clearly with no missing graphic, black fill, collision or clipping.
 - The two classification/comparison tables retain all horizontal and vertical rules. Formula descriptions use `\text{...}` within their complete MathJax expressions, rather than raw mathematical-mode Chinese. Page 84 is the chapter-end exception; its writing space is intentional.
+
+# 2026-08-21 Chapter-eight page audit and spectrum-axis repair
+
+- Rendered and inspected all main-body pages of chapter eight (pages 85--90). Its multirate formulas, tables, anti-alias/interpolation/rational-rate system diagrams and page furniture have no black fill, crop, collision or raw formula source.
+- The four panels in figure 8-1 were the remaining coordinate-axis exception: each had a frequency axis but lacked a vertical amplitude axis. Added a separate upward amplitude axis and label to every panel, with paths that remain clear of the triangular spectra and tick labels. A regression locks all four axes and labels.
+- Verification: targeted component, chapter-five-to-eight and full-main-body assembly tests `3 passed`. Regenerated and stamped PDF reports `unrendered=[]`, `pageErrors=[]`; its A4 page 86 was visually checked. This completes the current main-body chapter audit; training, consolidated detailed answers and appendices remain intentionally frozen pending the requested next phase.
