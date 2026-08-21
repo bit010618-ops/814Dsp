@@ -78,10 +78,25 @@ def test_2005_iir_reverse_design_question_keeps_both_independent_methods(tmp_pat
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 5
+    assert question.count('class="exam-page"') >= 5
     assert "2005 年真题（第十二题）" in question
     assert r"H(z)=\frac{2}{1-0.5z^{-1}}-\frac{1}{1-0.25z^{-1}}" in question
     assert r"脉冲响应不变法设计，\(T_s=2\)" in question
     assert r"双线性变换法设计，\(T_s=2\)" in question
     assert r"H_{\mathrm{ii}}(s)=\frac{1}{s+\frac{\ln2}{2}}-\frac{\frac12}{s+\ln2}" in answer
     assert r"&=\frac{8(s+1)^2}{(3s+1)(5s+3)}" in answer
+
+
+def test_2006_minimum_phase_mapping_question_keeps_shared_system_condition(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 6
+    assert "2006 年真题（第十一题）" in question
+    assert r"H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}" in question
+    assert "脉冲响应不变法能否保证最小相位模拟滤波器映射为最小相位数字滤波器？为什么？" in question
+    assert r"z=\frac{1+sT/2}{1-sT/2}" in answer
+    assert "不能仅由脉冲响应不变法保证" in answer
+    assert "z=-1" in answer

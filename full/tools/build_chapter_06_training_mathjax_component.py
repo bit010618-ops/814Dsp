@@ -163,6 +163,15 @@ H(z)=\frac{2}{1-0.5z^{-1}}-\frac{1}{1-0.25z^{-1}}.
 <p>（1）假设该滤波器用脉冲响应不变法设计，\(T_s=2\)，求可作为模拟滤波器的模拟滤波器的一个系统函数；</p>
 <p>（2）假设该滤波器用双线性变换法设计，\(T_s=2\)，求可作为原型的模拟滤波器的一个系统函数；</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2006 年真题（第十一题）</span><span>详解见 P.____</span></div>
+<p>十一、如果一个模拟滤波器的所有极点和零点都在 \(s\) 左平面内，那么这个模拟滤波器具有最小相位，一个数字滤波器的所有极点和零点都在单位圆内，那么这个数字滤波器具有最小相位。设模拟滤波器的系统函数为：</p>
+<div class="formula">\[
+H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}.
+\]</div>
+<p>（1）请用脉冲响应不变法把模拟滤波器 \(H(s)\) 映射为数字滤波器 \(H(z)\)。请问脉冲响应不变法能否保证最小相位模拟滤波器映射为最小相位数字滤波器？为什么？</p>
+<p>（2）请用双线性变换法把模拟滤波器 \(H(s)\) 映射为数字滤波器 \(H(z)\)。请问双线性变换法能否保证将最小相位模拟滤波器映射为最小相位数字滤波器？为什么？</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -326,6 +335,19 @@ H_{\mathrm{bl}}(s)
 \end{aligned}
 \]</div>
 <p>该原型的极点为 \(-\frac13\) 与 \(-\frac35\)，均在左半平面；双线性变换将其映射到单位圆内，因而对应数字系统稳定。</p>
+<h2>2006 年真题（第十一题）</h2>
+<p>十一、设最小相位模拟滤波器 \(H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}\)。</p>
+<div class="answer-step"><strong>（1）脉冲响应不变法。</strong>连续冲激响应为 \(h_a(t)=\sum_{k=1}^{P}A_ke^{s_kt}u(t)\)。取样周期为 \(T\) 时，按 \(h[n]=T h_a(nT)\) 得：</div>
+<div class="formula">\[
+H_{\mathrm{ii}}(z)=\sum_{k=1}^{P}\frac{TA_k}{1-e^{s_kT}z^{-1}}.
+\]</div>
+<p>极点 \(s_k\) 映射为 \(e^{s_kT}\)，故左半平面极点进入单位圆内；但上式的零点由全部支路相加后的分子共同决定，并非模拟零点的逐点映射。因此，<strong>不能仅由脉冲响应不变法保证</strong>最小相位性；它还会引入频谱周期复制，零点位置须另行检查。</p>
+<div class="answer-step"><strong>（2）双线性变换法。</strong>使用完整代换：</div>
+<div class="formula">\[
+H_{\mathrm{bl}}(z)=H\!\left(\frac{2}{T}\frac{z-1}{z+1}\right),\qquad
+z=\frac{1+sT/2}{1-sT/2}.
+\]</div>
+<p>对每个有限极点和有限零点，该分式变换将 \(\operatorname{Re}\{s\}<0\) 一一映射为 \(\left|z\right|<1\)，所以当模拟原型的有限零极点均在左半平面时，双线性变换保留这一最小相位结构。严格采用“零点必须在单位圆内”的定义时，还须注意严格真分式在代换后可能出现 \(z=-1\) 的零点（对应模拟域无穷远处的零点）；此时需结合课程对边界零点的约定或选取等阶原型判断。</p>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())
