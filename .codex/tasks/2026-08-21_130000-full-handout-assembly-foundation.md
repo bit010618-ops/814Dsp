@@ -25,3 +25,4 @@
 - 已将 2005 年 5 点 DFT 题干和详解中的全部遗留数学片段改为完整行内 LaTeX，未改动题干的中文文字、题号、数字或数学含义。
 - 先行回归按预期失败，修复后 `full/tests/test_build_chapter_03_training_mathjax_component.py` 为 6 passed。
 - 本地 MathJax 导出报告 `unrendered=[]`、`pageErrors=[]`；A4 预览确认 2005 题干中的序列、DFT/IDFT 和结果均为正式数学排版。
+- 第三章的五道训练题现各自占用独立训练页；视觉复核 2005 年题页确认公式清楚、无重叠或裁切，并保留其余空白作答。
