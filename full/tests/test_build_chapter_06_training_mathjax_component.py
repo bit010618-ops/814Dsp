@@ -42,7 +42,7 @@ def test_2023_iir_conversion_question_stays_whole_with_both_required_structures(
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 3
+    assert question.count('class="exam-page"') >= 3
     assert "2023 年真题" in question
     assert r"H(s)=\frac{2}{s^2+4s+3}" in question
     assert "脉冲响应不变法和双线性变换法各自的特点" in question
@@ -53,3 +53,20 @@ def test_2023_iir_conversion_question_stays_whole_with_both_required_structures(
     assert r"{15-2z^{-1}-z^{-2}}" in answer
     assert "频谱混叠" in answer
     assert "频率扭曲" in answer
+
+
+def test_2005_analog_system_question_is_whole_and_has_frequency_response_plot(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 4
+    assert "2005 年真题" in question
+    assert r"H(s)=\frac{5s+6}{s^3+5s^2+6s}" in question
+    assert r"（5）设 \(T_s=0.2\)，写出该系统的离散传递函数 \(H(z)\)。" in question
+    assert r"h(t)=\left(1+2e^{-2t}-3e^{-3t}\right)u(t)" in answer
+    assert 'data-diagram="analog-lowpass-magnitude-response"' in answer
+    assert r"H'(s)=\frac{1}{T}\sum_{k=-\infty}^{\infty}H\left(s-jk\Omega_s\right)" in answer
+    assert r"H(z)" in answer
+    assert r"&=\frac{1}{1-z^{-1}}" in answer

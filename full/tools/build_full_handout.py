@@ -25,7 +25,7 @@ from full.tools.render_mathjax_formula import MATHJAX
 STYLE = build_all_main_body.STYLE + r"""
 <style>
 .training-section{break-before:page}
-.exam-page{break-before:page;min-height:230mm}
+.exam-page{break-before:page;break-inside:avoid;page-break-inside:avoid;min-height:230mm}
 .exam-page:first-child{break-before:auto}
 .exam-head{display:flex;justify-content:space-between;gap:18pt;color:#52616b;margin:0 0 10pt;break-after:avoid}
 .writing-space{min-height:105mm}

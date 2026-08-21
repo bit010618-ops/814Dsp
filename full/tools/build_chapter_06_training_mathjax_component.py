@@ -1,6 +1,7 @@
 """Chapter-six IIR transformation training and consolidated answer components."""
 from __future__ import annotations
 
+import math
 from pathlib import Path
 
 from full.tools.render_mathjax_formula import MATHJAX
@@ -82,6 +83,46 @@ def _direct_form_ii_diagram() -> str:
 </svg>'''
 
 
+def _analog_lowpass_magnitude_plot() -> str:
+    left, right, top, bottom = 100, 830, 50, 280
+    min_w, max_w = 0.05, 10.0
+    samples = []
+    for index in range(181):
+        ratio = index / 180
+        omega = 10 ** (math.log10(min_w) + ratio * (math.log10(max_w) - math.log10(min_w)))
+        magnitude = math.sqrt((25 * omega * omega + 36) / (omega * omega * (omega * omega + 4) * (omega * omega + 9)))
+        decibels = 20 * math.log10(magnitude)
+        samples.append((ratio, decibels))
+    lower_db, upper_db = -28.0, 26.0
+    points = []
+    for ratio, decibels in samples:
+        x = left + (right - left) * ratio
+        y = bottom - (max(lower_db, min(upper_db, decibels)) - lower_db) / (upper_db - lower_db) * (bottom - top)
+        points.append(f"{x:.1f},{y:.1f}")
+    tick_parts = []
+    for omega, label in ((0.1, "0.1"), (1.0, "1"), (10.0, "10")):
+        ratio = (math.log10(omega) - math.log10(min_w)) / (math.log10(max_w) - math.log10(min_w))
+        x = left + (right - left) * ratio
+        tick_parts.append(
+            f'<line x1="{x:.1f}" y1="{bottom}" x2="{x:.1f}" y2="{bottom + 8}" stroke="#174b73" stroke-width="1.5"/>'
+            f'<text x="{x:.1f}" y="{bottom + 28}" text-anchor="middle" fill="#52616b" style="font:15px serif">{label}</text>'
+        )
+    return f'''<svg data-diagram="analog-lowpass-magnitude-response" viewBox="0 0 900 340" role="img" aria-label="模拟系统幅频响应图" style="display:block;width:100%;max-width:160mm;height:auto;margin:10pt auto">
+<defs><marker id="analog-mag-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8Z" fill="#174b73"/></marker></defs>
+<text x="450" y="27" text-anchor="middle" fill="#263746" style="font:17px Microsoft YaHei,sans-serif">幅频响应（横轴为对数刻度）</text>
+<line x1="{left - 12}" y1="{bottom}" x2="{right + 24}" y2="{bottom}" stroke="#174b73" stroke-width="2" marker-end="url(#analog-mag-arrow)"/>
+<line x1="{left}" y1="{bottom + 8}" x2="{left}" y2="{top - 15}" stroke="#174b73" stroke-width="2" marker-end="url(#analog-mag-arrow)"/>
+<line x1="{left}" y1="{top + 6}" x2="{left + 35}" y2="{top + 6}" stroke="#b56b2e" stroke-width="2" stroke-dasharray="5 4"/>
+<polyline points="{' '.join(points)}" fill="none" stroke="#0d8794" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="{left + 12}" y="{top + 30}" fill="#b56b2e" style="font:14px Microsoft YaHei,sans-serif">ω→0⁺ 时趋于无穷大</text>
+<text x="{right - 36}" y="{bottom - 12}" fill="#486d8b" style="font:14px Microsoft YaHei,sans-serif">高频趋于 0</text>
+<text x="{left - 15}" y="{bottom + 25}" text-anchor="end" fill="#52616b" style="font:15px serif">0</text>
+{''.join(tick_parts)}
+{_math(right + 28, bottom - 22, 50, '\\omega')}
+<foreignObject x="18" y="70" width="90" height="40"><div xmlns="http://www.w3.org/1999/xhtml" style="font:16px serif;text-align:center">\\(\\left|H(j\\omega)\\right|\\)</div></foreignObject>
+</svg>'''
+
+
 def write_training_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -100,6 +141,18 @@ def write_training_html(output: Path) -> Path:
 <p>（1）用脉冲响应不变法将其转化为数字滤波器，写出系统函数 \(H(z)\) 表达式，并画出 IIR 数字滤波器的并联型结构图（采样间隔取 \(T=1\)）。</p>
 <p>（2）用双线性变换法将其转化为数字滤波器，写出 \(H(z)\) 表达式，并画出 IIR 数字滤波器的直接 II 型结构图（采样间隔取 \(T=1\)）。</p>
 <p>（3）简述脉冲响应不变法和双线性变换法各自的特点。</p>
+<div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2005 年真题</span><span>详解见 P.____</span></div>
+<p>八、已知一线性系统的传递函数为</p>
+<div class="formula">\[
+H(s)=\frac{5s+6}{s^3+5s^2+6s}.
+\]</div>
+<p>（1）求该系统的单位冲激响应 \(h(t)\)；</p>
+<p>（2）求该系统的频域传递函数 \(H(j\omega)\)；</p>
+<p>（3）粗略画出该系统的频率特性图，并判定其性质为高通、低通、还是带通？</p>
+<p>（4）若将该系统离散化（以周期 \(T\) 均匀抽样），写出抽样后系统的传递函数 \(H'(s)\) 和原传递函数 \(H(s)\) 的关系；</p>
+<p>（5）设 \(T_s=0.2\)，写出该系统的离散传递函数 \(H(z)\)。</p>
 <div class="writing-space"></div></section>
 </main>
 """
@@ -198,9 +251,48 @@ H_{\mathrm{bl}}(z)
 <p>将分母归一化后，直接 II 型的前向系数为 \(b_0=\frac{2}{15}\)、\(b_1=\frac{4}{15}\)、\(b_2=\frac{2}{15}\)，反馈接入系数为 \(\frac{2}{15}\)、\(\frac{1}{15}\)。共享两级延时，得到：</p>
     <!-- bilinear-direct-form-ii-iir -->
 <div class="answer-step"><strong>（3）两种方法的特点。</strong>脉冲响应不变法在时域保留取样时刻的冲激响应样值，极点映射为 \(z_k=e^{s_kT}\)，但连续频率响应会按采样频率周期复制，可能产生频谱混叠，因此更适用于模拟原型的高频部分可忽略的情形。双线性变换将整个 \(j\Omega\) 轴一一映射到单位圆，不产生频谱混叠，但存在频率扭曲；通过设计前的预畸变，可使关键边缘频率精确对应。</div>
+<h2>2005 年真题</h2>
+<p>八、已知一线性系统的传递函数为 \(H(s)=\frac{5s+6}{s^3+5s^2+6s}\)。</p>
+<p>（1）求该系统的单位冲激响应 \(h(t)\)；（2）求该系统的频域传递函数 \(H(j\omega)\)；（3）粗略画出该系统的频率特性图，并判定其性质为高通、低通、还是带通？（4）若将该系统离散化（以周期 \(T\) 均匀抽样），写出抽样后系统的传递函数 \(H'(s)\) 和原传递函数 \(H(s)\) 的关系；（5）设 \(T_s=0.2\)，写出该系统的离散传递函数 \(H(z)\)。</p>
+<div class="answer-step"><strong>（1）部分分式展开与冲激响应。</strong>先因式分解并展开：</div>
+<div class="formula">\[
+\begin{aligned}
+H(s)&=\frac{5s+6}{s(s+2)(s+3)}\\
+&=\frac{1}{s}+\frac{2}{s+2}-\frac{3}{s+3}.
+\end{aligned}
+\]</div>
+<p>因此因果单位冲激响应为：</p>
+<div class="formula">\[
+h(t)=\left(1+2e^{-2t}-3e^{-3t}\right)u(t).
+\]</div>
+<div class="answer-step"><strong>（2）频域传递函数与幅频特性。</strong>令 \(s=j\omega\)，有：</div>
+<div class="formula">\[
+\begin{aligned}
+H(j\omega)&=\frac{6+j5\omega}{j\omega(j\omega+2)(j\omega+3)},\\
+\left|H(j\omega)\right|
+&=\sqrt{\frac{25\omega^2+36}{\omega^2(\omega^2+4)(\omega^2+9)}}.
+\end{aligned}
+\]</div>
+<p>当 \(\omega\to0^+\) 时，\(\left|H(j\omega)\right|\to\infty\)；当 \(\omega\to\infty\) 时，\(\left|H(j\omega)\right|\to0\)。按频率选择性它是低通系统；但它在 \(s=0\) 有极点，严格说不是 BIBO 稳定系统。</p>
+<!-- analog-lowpass-magnitude-response -->
+<div class="answer-step"><strong>（4）周期抽样后的连续域关系。</strong>令 \(\Omega_s=\frac{2\pi}{T}\)。冲激串抽样使连续域频谱以 \(\Omega_s\) 为间隔复制：</div>
+<div class="formula">\[
+H'(s)=\frac{1}{T}\sum_{k=-\infty}^{\infty}H\left(s-jk\Omega_s\right).
+\]</div>
+<div class="answer-step"><strong>（5）取 \(T_s=0.2\) 的离散传递函数。</strong>按冲激响应不变的取样关系 \(h[n]=h(nT_s)\)，有：</div>
+<div class="formula">\[
+\begin{aligned}
+H(z)
+&=\frac{1}{1-z^{-1}}
++\frac{2}{1-e^{-0.4}z^{-1}}
+-\frac{3}{1-e^{-0.6}z^{-1}}.
+\end{aligned}
+\]</div>
+<p>该式的三个极点分别为 \(1\)、\(e^{-0.4}\) 与 \(e^{-0.6}\)，与模拟极点 \(0\)、\(-2\)、\(-3\) 的指数映射一一对应。</p>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())
     content = content.replace("<!-- bilinear-direct-form-ii-iir -->", _direct_form_ii_diagram())
+    content = content.replace("<!-- analog-lowpass-magnitude-response -->", _analog_lowpass_magnitude_plot())
     output.write_text(_document(content), encoding="utf-8")
     return output
