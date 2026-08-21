@@ -889,3 +889,8 @@
 
 - Rendered and inspected all main-body pages of chapter six (pages 71--75) at A4 scale. The Butterworth and frequency-transform equations, impulse-invariance and bilinear-transform equations, examples, comparison table, headers and folios are clear and fully rendered.
 - No raw LaTeX, clipping, overlaps, missing grids, or non-chapter-end large blank space was found. Page 75 is the chapter-end exception and its writing area is intentional.
+
+# 2026-08-21 Chapter-seven page audit
+
+- Rendered and inspected all main-body pages of chapter seven (pages 76--84) at A4 scale. Linear-phase derivations, standard `cases` formulas, FIR zero-pole, time/frequency correspondence, symmetry, and frequency-sampling figures all render clearly with no missing graphic, black fill, collision or clipping.
+- The two classification/comparison tables retain all horizontal and vertical rules. Formula descriptions use `\text{...}` within their complete MathJax expressions, rather than raw mathematical-mode Chinese. Page 84 is the chapter-end exception; its writing space is intentional.
