@@ -201,6 +201,12 @@ H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}.
 <div class="exam-head"><span>2015 年真题</span><span>详解见 P.____</span></div>
 <p>二、画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频率。</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2017 年真题</span><span>详解见 P.____</span></div>
+<p>九、设计低通数字滤波器，要求频率低于 \(0.2\pi\,\mathrm{rad}\) 时，容许幅度误差在 \(2\,\mathrm{dB}\) 以内；要求频率 \(0.3\pi\) 到 \(\pi\) 之间的阻带最大衰减大于 \(15\,\mathrm{dB}\)，计算下列参数（只要求写出表达式，不用计算）：</p>
+<p>1. 取 \(T=1\,\mathrm{s}\)，用双线性变换法计算相应低通的技术指标 \(\Omega_p\)、\(\Omega_s\)；</p>
+<p>2. 计算阶数 \(N\)。</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -380,6 +386,41 @@ z=\frac{1+sT/2}{1-sT/2}.
 <h2>2015 年真题</h2>
 <p>二、理想滤波器的通带幅度取 \(1\)，阻带幅度取 \(0\)。低通与高通各有一个截止角频率 \(\omega_c\)；带通与带阻由 \(\omega_1\)、\(\omega_2\) 确定两个边缘频率，且 \(0<\omega_1<\omega_2\)。四种标准幅频响应如下：</p>
 <!-- four-ideal-filter-responses -->
+<h2>2017 年真题</h2>
+<p>九、双线性变换的预畸变关系为</p>
+<div class="formula">\[
+\Omega=\frac{2}{T}\tan\left(\frac{\omega}{2}\right).
+\]</div>
+<p>题设 \(T=1\,\mathrm{s}\)、\(\omega_p=0.2\pi\)、\(\omega_s=0.3\pi\)，故相应模拟低通原型的边缘频率为</p>
+<div class="formula">\[
+\Omega_p=2\tan\left(0.1\pi\right),\qquad
+\Omega_s=2\tan\left(0.15\pi\right).
+\]</div>
+<p>令通带最大衰减 \(\alpha_p=2\,\mathrm{dB}\)，阻带最小衰减 \(\alpha_s=15\,\mathrm{dB}\)。对巴特沃斯低通原型，阶数必须满足</p>
+<div class="formula">\[
+N\ge
+\frac{
+\ln\!\left(
+\dfrac{10^{\alpha_s/10}-1}{10^{\alpha_p/10}-1}
+\right)
+}{
+2\ln\!\left(\dfrac{\Omega_s}{\Omega_p}\right)
+}.
+\]</div>
+<p>因此所需最小阶数写为</p>
+<div class="formula">\[
+N=\left\lceil
+\frac{
+\ln\!\left(
+\dfrac{10^{15/10}-1}{10^{2/10}-1}
+\right)
+}{
+2\ln\!\left(
+\dfrac{\tan(0.15\pi)}{\tan(0.1\pi)}
+\right)
+}
+\right\rceil.
+\]</div>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())

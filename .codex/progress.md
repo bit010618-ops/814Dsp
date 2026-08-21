@@ -1,5 +1,7 @@
 # 当前进度：全文数字信号处理讲义
 
+> 2026-08-21 第六章真题训练第八项：2017 年第九题“低通数字滤波器的双线性变换预畸变与阶数”已按原题纳入。详解给出 \(\Omega_p=2\tan(0.1\pi)\)、\(\Omega_s=2\tan(0.15\pi)\) 和按 \(2\,\mathrm{dB}\)/\(15\,\mathrm{dB}\) 指标写出的巴特沃斯最小阶数表达式；不代入数值计算。组件与总装配 10 passed；132 页候选 PDF 导出 math=3814、unrendered=[]、pageErrors=[]，160 dpi 实查训练题与两页详解无公式源码、重叠、裁切或错误分页。
+
 > 2026-08-21 第六章真题训练第七项：2015 年第二题“四类理想频率滤波器的幅频响应”已按原题纳入。书末详解使用真实坐标轴与矢量路径重绘理想低通、高通、带通、带阻；带通和带阻各以独立刻度标注 \(\omega_1\)、\(\omega_2\)，不再合并为居中标签。组件、第三章循环记号与总装配 11 passed；130 页候选 PDF 导出 math=3778、unrendered=[]、pageErrors=[]，160 dpi 实查题面与详解无水印、公式源码、重叠或裁切。
 
 > 2026-08-21 提交与推送：第六章第七项本地提交为 `64bc702`（`Add chapter six ideal response training`）。常规 `git push origin main` 仍被本机 Git 凭据管理器阻止：`schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS`；未读取或尝试绕过任何凭据。

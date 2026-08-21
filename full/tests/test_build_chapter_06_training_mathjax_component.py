@@ -108,9 +108,24 @@ def test_2015_ideal_filter_question_has_four_redrawn_magnitude_responses(tmp_pat
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 7
+    assert question.count('class="exam-page"') >= 7
     assert "2015 年真题" in question
     assert "画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频率。" in question
     assert 'data-diagram="four-ideal-filter-responses"' in answer
     assert "理想低通" in answer and "理想高通" in answer
     assert "理想带通" in answer and "理想带阻" in answer
+
+
+def test_2017_bilinear_lowpass_question_keeps_original_wording_and_symbolic_order(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 8
+    assert "2017 年真题" in question
+    assert "只要求写出表达式，不用计算" in question
+    assert r"\Omega_p\)、\(\Omega_s" in question
+    assert "\\Omega=\\frac{2}{T}\\tan" in answer
+    assert "N=\\left\\lceil" in answer
+    assert r"10^{15/10}-1" in answer
