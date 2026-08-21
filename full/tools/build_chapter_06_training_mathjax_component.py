@@ -221,6 +221,12 @@ H(p)=\frac{1}{p^2+\sqrt{2}p+1},\qquad N=2,\qquad \omega_c=0.5\pi,\qquad T=2.
 <p>十、简答题</p>
 <p>（3）脉冲响应不变法和双线性变换法在频率转换的线性关系方面有什么区别？</p>
 <div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2025 年真题</span><span>详解见 P.____</span></div>
+<p>5. 脉冲响应不变法和双线性变换法是设计离散时间滤波器的两种方法，两种方法都是将一个连续时间系统函数 \(H_c(s)\) 变换为一个离散时间系统函数 \(H(z)\)，假设 \(H_1(z),H_2(z)\) 和 \(H(z)\) 分别是 \(H_{c1}(s),H_{c2}(s)\) 和 \(H_c(s)\) 的变换形式。</p>
+<p>（1）\(H_c(s)=H_{c1}(s)+H_{c2}(s)\)，则有 \(H(z)=H_1(z)+H_2(z)\)，请问脉冲响应不变法能满足该条件吗？双线性变换法能满足该条件吗？</p>
+<p>（2）\(H_c(s)=H_{c1}(s)\cdot H_{c2}(s)\)，则有 \(H(z)=H_1(z)\cdot H_2(z)\)，请问脉冲响应不变法能满足该条件吗？双线性变换法能满足该条件吗？</p>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -475,6 +481,34 @@ H(z)
 \Omega=\frac{2}{T}\tan\left(\frac{\omega}{2}\right).
 \]</div>
 <p>这是<strong>非线性</strong>频率变换：整个 \(\Omega\in(-\infty,\infty)\) 一一压缩到 \(\omega\in(-\pi,\pi)\)，因而没有频谱混叠；代价是频率轴发生扭曲，特别是高频区压缩更明显。设计时可用预畸变使指定边缘频率精确对应。</p>
+<h2>2025 年真题</h2>
+<p>5、两种映射对“相加”和“相乘”的保持性质不同。</p>
+<div class="answer-step"><strong>（1）相加关系。</strong>脉冲响应不变法满足线性性。若 \(h_{c}(t)=h_{c1}(t)+h_{c2}(t)\)，则</div>
+<div class="formula">\[
+h[n]=T h_c(nT)=T h_{c1}(nT)+T h_{c2}(nT)=h_1[n]+h_2[n],
+\]</div>
+<p>因此 \(H(z)=H_1(z)+H_2(z)\)，脉冲响应不变法<strong>满足</strong>该条件。双线性变换只是对系统函数作同一代换，故</p>
+<div class="formula">\[
+H(z)=H_c\!\left(\frac{2}{T}\frac{z-1}{z+1}\right)
+=H_{c1}\!\left(\frac{2}{T}\frac{z-1}{z+1}\right)
++H_{c2}\!\left(\frac{2}{T}\frac{z-1}{z+1}\right),
+\]</div>
+<p>所以双线性变换法也<strong>满足</strong>相加关系。</p>
+<div class="answer-step"><strong>（2）相乘关系。</strong>连续系统函数相乘对应时域冲激响应卷积：</div>
+<div class="formula">\[
+h_c(t)=h_{c1}(t)*h_{c2}(t).
+\]</div>
+<p>一般情况下，在连续卷积结果上取样不等于两条取样序列的离散卷积；两者之间还受抽样尺度和频谱周期复制的影响。因此脉冲响应不变法<strong>一般不满足</strong> \(H(z)=H_1(z)H_2(z)\)。</p>
+<p>双线性变换对有理函数的乘积保持代数同态：</p>
+<div class="formula">\[
+\begin{aligned}
+H(z)
+&=H_{c1}\!\left(\frac{2}{T}\frac{z-1}{z+1}\right)
+H_{c2}\!\left(\frac{2}{T}\frac{z-1}{z+1}\right)\\
+&=H_1(z)H_2(z).
+\end{aligned}
+\]</div>
+<p>故双线性变换法<strong>满足</strong>相乘（级联）关系。</p>
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())

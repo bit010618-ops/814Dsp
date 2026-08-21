@@ -152,8 +152,22 @@ def test_2007_frequency_mapping_short_answer_keeps_both_methods(tmp_path: Path):
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 10
+    assert question.count('class="exam-page"') >= 10
     assert "脉冲响应不变法和双线性变换法在频率转换的线性关系方面有什么区别？" in question
     assert r"\omega=\Omega T" in answer
     assert r"\omega=2\tan^{-1}" in answer
     assert "非线性" in answer and "预畸变" in answer
+
+
+def test_2025_iir_mapping_addition_and_cascade_properties(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 11
+    assert "脉冲响应不变法和双线性变换法是设计离散时间滤波器的两种方法" in question
+    assert r"H_c(s)=H_{c1}(s)\cdot H_{c2}(s)" in question
+    assert "脉冲响应不变法满足" in answer
+    assert "一般不满足" in answer
+    assert r"H(z)=H_1(z)H_2(z)" in answer
