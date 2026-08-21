@@ -123,6 +123,31 @@ def _analog_lowpass_magnitude_plot() -> str:
 </svg>'''
 
 
+def _ideal_filter_response_panels() -> str:
+    panels = [
+        ("理想低通", "M70 148V66H155V148", "\\omega_c", 155),
+        ("理想高通", "M70 148H155V66H270", "\\omega_c", 155),
+        ("理想带通", "M70 148H125V66H215V148", "\\omega_1,\\;\\omega_2", 170),
+        ("理想带阻", "M70 66H125V148H215V66H270", "\\omega_1,\\;\\omega_2", 170),
+    ]
+    parts = []
+    for index, (title, curve, cutoff, cutoff_x) in enumerate(panels):
+        col, row = index % 2, index // 2
+        x0, y0 = 30 + col * 350, 30 + row * 220
+        if "," in cutoff:
+            ticks = '''<line x1="125" y1="148" x2="125" y2="164" stroke="#174b73" stroke-width="1.3"/><line x1="215" y1="148" x2="215" y2="164" stroke="#174b73" stroke-width="1.3"/>
+<foreignObject x="91" y="164" width="68" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\\(\\omega_1\\)</div></foreignObject><foreignObject x="181" y="164" width="68" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\\(\\omega_2\\)</div></foreignObject>'''
+        else:
+            ticks = f'''<line x1="{cutoff_x}" y1="148" x2="{cutoff_x}" y2="164" stroke="#174b73" stroke-width="1.3"/><foreignObject x="{cutoff_x-42}" y="164" width="110" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\\({cutoff}\\)</div></foreignObject>'''
+        parts.append(f'''<g transform="translate({x0},{y0})"><text x="170" y="20" text-anchor="middle" fill="#315d7c" style="font:17px Microsoft YaHei,sans-serif">{title}</text>
+<path d="M38 148H292" fill="none" stroke="#174b73" stroke-width="1.8" marker-end="url(#ideal-arrow)"/><path d="M70 170V42" fill="none" stroke="#174b73" stroke-width="1.8" marker-end="url(#ideal-arrow)"/>
+<path d="{curve}" fill="none" stroke="#0d8794" stroke-width="3" stroke-linejoin="round"/>
+{ticks}
+<foreignObject x="286" y="126" width="36" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font:16px serif">\\(\\omega\\)</div></foreignObject>
+<foreignObject x="28" y="38" width="48" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif">\\(1\\)</div></foreignObject></g>''')
+    return '<svg data-diagram="four-ideal-filter-responses" viewBox="0 0 740 470" role="img" aria-label="理想低通、高通、带通和带阻滤波器幅频响应" style="display:block;width:100%;max-width:165mm;height:auto;margin:10pt auto"><defs><marker id="ideal-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0L8,4L0,8Z" fill="#174b73"/></marker></defs>' + ''.join(parts) + '</svg>'
+
+
 def write_training_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -171,6 +196,10 @@ H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}.
 \]</div>
 <p>（1）请用脉冲响应不变法把模拟滤波器 \(H(s)\) 映射为数字滤波器 \(H(z)\)。请问脉冲响应不变法能否保证最小相位模拟滤波器映射为最小相位数字滤波器？为什么？</p>
 <p>（2）请用双线性变换法把模拟滤波器 \(H(s)\) 映射为数字滤波器 \(H(z)\)。请问双线性变换法能否保证将最小相位模拟滤波器映射为最小相位数字滤波器？为什么？</p>
+<div class="writing-space"></div></section>
+<section class="exam-page">
+<div class="exam-head"><span>2015 年真题</span><span>详解见 P.____</span></div>
+<p>二、画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频率。</p>
 <div class="writing-space"></div></section>
 </main>
 """
@@ -348,10 +377,14 @@ H_{\mathrm{bl}}(z)=H\!\left(\frac{2}{T}\frac{z-1}{z+1}\right),\qquad
 z=\frac{1+sT/2}{1-sT/2}.
 \]</div>
 <p>对每个有限极点和有限零点，该分式变换将 \(\operatorname{Re}\{s\}<0\) 一一映射为 \(\left|z\right|<1\)，所以当模拟原型的有限零极点均在左半平面时，双线性变换保留这一最小相位结构。严格采用“零点必须在单位圆内”的定义时，还须注意严格真分式在代换后可能出现 \(z=-1\) 的零点（对应模拟域无穷远处的零点）；此时需结合课程对边界零点的约定或选取等阶原型判断。</p>
+<h2>2015 年真题</h2>
+<p>二、理想滤波器的通带幅度取 \(1\)，阻带幅度取 \(0\)。低通与高通各有一个截止角频率 \(\omega_c\)；带通与带阻由 \(\omega_1\)、\(\omega_2\) 确定两个边缘频率，且 \(0<\omega_1<\omega_2\)。四种标准幅频响应如下：</p>
+<!-- four-ideal-filter-responses -->
 </main>
 """
     content = content.replace("<!-- impulse-invariance-parallel-iir -->", _parallel_iir_diagram())
     content = content.replace("<!-- bilinear-direct-form-ii-iir -->", _direct_form_ii_diagram())
     content = content.replace("<!-- analog-lowpass-magnitude-response -->", _analog_lowpass_magnitude_plot())
+    content = content.replace("<!-- four-ideal-filter-responses -->", _ideal_filter_response_panels())
     output.write_text(_document(content), encoding="utf-8")
     return output

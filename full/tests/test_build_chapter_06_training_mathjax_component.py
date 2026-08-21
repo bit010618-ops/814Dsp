@@ -93,10 +93,24 @@ def test_2006_minimum_phase_mapping_question_keeps_shared_system_condition(tmp_p
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 6
+    assert question.count('class="exam-page"') >= 6
     assert "2006 年真题（第十一题）" in question
     assert r"H(s)=\sum_{k=1}^{P}\frac{A_k}{s-s_k}" in question
     assert "脉冲响应不变法能否保证最小相位模拟滤波器映射为最小相位数字滤波器？为什么？" in question
     assert r"z=\frac{1+sT/2}{1-sT/2}" in answer
     assert "不能仅由脉冲响应不变法保证" in answer
     assert "z=-1" in answer
+
+
+def test_2015_ideal_filter_question_has_four_redrawn_magnitude_responses(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 7
+    assert "2015 年真题" in question
+    assert "画出理想低通、高通、带通、带阻频率滤波器的幅频响应，要求标出截止频率。" in question
+    assert 'data-diagram="four-ideal-filter-responses"' in answer
+    assert "理想低通" in answer and "理想高通" in answer
+    assert "理想带通" in answer and "理想带阻" in answer
