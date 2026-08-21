@@ -23,7 +23,7 @@ def test_2021_bilinear_butterworth_design_question_keeps_original_specification(
     question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
     answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
 
-    assert question.count('class="exam-page"') == 2
+    assert question.count('class="exam-page"') >= 2
     assert "2021 年真题" in question
     assert "八、采用双线性变换法设计一个贝特沃斯低通滤波器" in question
     assert r"f_p\,\mathrm{Hz}" in question
@@ -34,3 +34,22 @@ def test_2021_bilinear_butterworth_design_question_keeps_original_specification(
     assert r"=\frac{2}{T}\tan\left(\pi f_pT\right)" in answer
     assert r"N=\left\lceil" in answer
     assert r"H(z)=H_a\left(\frac{2}{T}\frac{z-1}{z+1}\right)" in answer
+
+
+def test_2023_iir_conversion_question_stays_whole_with_both_required_structures(tmp_path: Path):
+    from full.tools import build_chapter_06_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "chapter-06-training.html").read_text(encoding="utf-8")
+    answer = component.write_answers_html(tmp_path / "chapter-06-answers.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 3
+    assert "2023 年真题" in question
+    assert r"H(s)=\frac{2}{s^2+4s+3}" in question
+    assert "脉冲响应不变法和双线性变换法各自的特点" in question
+    assert 'data-diagram="impulse-invariance-parallel-iir"' in answer
+    assert 'data-diagram="bilinear-direct-form-ii-iir"' in answer
+    assert r"H_{\mathrm{ii}}(z)&=\frac{1}{1-e^{-1}z^{-1}}-\frac{1}{1-e^{-3}z^{-1}}" in answer
+    assert r"H_{\mathrm{bl}}(z)" in answer
+    assert r"{15-2z^{-1}-z^{-2}}" in answer
+    assert "频谱混叠" in answer
+    assert "频率扭曲" in answer
