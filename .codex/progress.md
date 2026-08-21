@@ -1013,3 +1013,9 @@
 - Added three source-checked DFT questions and detailed answers: 2020 frequency decimation/2-point IDFT, circular time shift and six-point circular convolution, and 2023 frequency-domain multiplication.
 - All circular indices retain the required outer-period subscript notation; every formula is a complete MathJax unit and the original question wording is retained.
 - Verification: eleven focused component/full-assembly suites report `54 passed`. The assembled handout has 132 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch five
+
+- Added the source-checked 2023 overlap-save question and detailed answer, including the segment count and exact first/last retained-input blocks.
+- The original question wording is retained; every derivation is a complete MathJax expression with no reader-facing modular-operator notation.
+- Verification: twelve focused component/full-assembly suites report `55 passed`. The assembled handout has 133 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
