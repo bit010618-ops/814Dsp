@@ -1019,3 +1019,9 @@
 - Added the source-checked 2023 overlap-save question and detailed answer, including the segment count and exact first/last retained-input blocks.
 - The original question wording is retained; every derivation is a complete MathJax expression with no reader-facing modular-operator notation.
 - Verification: twelve focused component/full-assembly suites report `55 passed`. The assembled handout has 133 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-21 Chapter-three supplemental training batch six
+
+- Added the source-checked 2024 real-even finite-sequence DFT question and its paired-term cancellation proof for the Nyquist-index value.
+- The question wording is retained and all derivations are complete MathJax formula units.
+- Verification: thirteen focused component/full-assembly suites report `56 passed`. The assembled handout has 134 training question pages; static checks found no reader-facing `mod N`, malformed raw-math fragments, or watermark text. PDF visual QA remains deferred because of the known local headless GPU backend fault.
