@@ -7,7 +7,7 @@ from full.tools.render_mathjax_formula import MATHJAX
 
 
 STYLE = r"""<style>
-@page{size:A4;margin:21mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:20pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.exam-head{display:flex;justify-content:space-between;gap:18pt;color:#52616b;margin:0 0 10pt}.formula{break-inside:avoid;padding:7pt 4pt;margin:8pt 0;text-align:center;overflow-x:auto}.writing-space{min-height:105mm}.answer-step{break-inside:avoid;margin:8pt 0}.answer-step strong{color:#315d7c}@media(max-width:560px){body{font-size:10.5pt}}</style>"""
+@page{size:A4;margin:21mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:20pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.exam-page{break-before:page;min-height:230mm}.exam-page:first-child{break-before:auto}.exam-head{display:flex;justify-content:space-between;gap:18pt;color:#52616b;margin:0 0 10pt}.formula{break-inside:avoid;padding:7pt 4pt;margin:8pt 0;text-align:center;overflow-x:auto}.writing-space{min-height:105mm}.answer-step{break-inside:avoid;margin:8pt 0}.answer-step strong{color:#315d7c}@media(max-width:560px){body{font-size:10.5pt}}</style>"""
 
 
 def _document(content: str) -> str:
@@ -18,24 +18,28 @@ def write_training_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
 <main>
-<h1>第三章 分章强化训练</h1>
+<section class="exam-page"><h1>第三章 分章强化训练</h1>
 <div class="exam-head"><span>2003 年真题</span><span>详解见 P.____</span></div>
 <p>七、用 DFT 对模拟信号进行谱分析，设模拟信号 \(x_a(t)\) 的最高频率为 200 Hz，以 Nyquist 频率采样得到时域离散序列 \(x(n)=x_a(nT)\)，要求频率分辨率为 10 Hz，求序列 \(x(n)\) 的离散傅里叶变换 \(X(k)\) 各 \(k\) 点对应的数字频率 \(\omega_k\)（弧）和模拟频率 \(f_k\)（Hz）的值。</p>
-<div class="writing-space"></div>
+<div class="writing-space"></div></section>
+<section class="exam-page">
 <div class="exam-head"><span>2002 年真题</span><span>详解见 P.____</span></div>
 <p>九、已知 \(x_1(n)=\left(\frac{1}{2}\right)^n,\ 0\leq n\leq4\)，\(x_2(n)=1,\ 0\leq n\leq2\)，且 \(X_1(K)=\operatorname{DFT}[x_1(n)]\)，\(X_2(K)=\operatorname{DFT}[x_2(n)]\)，求 \(x_3(n)=\operatorname{IDFT}\left[X_1(K)X_2(K)\right]\)。</p>
-<div class="writing-space"></div>
+<div class="writing-space"></div></section>
+<section class="exam-page">
 <div class="exam-head"><span>2002 年真题（第十题）</span><span>详解见 P.____</span></div>
 <p>十、已知序列 \(h(n)\) 是 \(h(t)\) 的 9 点取样 \(0\leq n\leq8\)，取样间隔 \(T=0.15\,\mathrm{s}\)，问如何用 DFT 计算其频谱，使频谱分辨率高于 \(2\,\mathrm{rad/s}\)？</p>
-<div class="writing-space"></div>
+<div class="writing-space"></div></section>
+<section class="exam-page">
 <div class="exam-head"><span>2005 年真题</span><span>详解见 P.____</span></div>
 <p>九、已知两个序列：\(x(n)=\delta(n)+3\delta(n-1)+3\delta(n-2)+2\delta(n-5)\)，\(h(n)=\delta(n)+\delta(n-1)+\delta(n-2)+\delta(n-3)\)。其中 \(X(K)\) 和 \(H(K)\) 分别是 \(x(n)\) 和 \(h(n)\) 的 5 点 DFT，对 \(Y(K)=X(K)H(K)\) 做 IDFT，得到序列 \(y(n)\)，求 \(y(n)\)。</p>
-<div class="writing-space"></div>
+<div class="writing-space"></div></section>
+<section class="exam-page">
 <div class="exam-head"><span>2004 年真题</span><span>详解见 P.____</span></div>
 <p>十、设 \(x(t)\) 的最高频率 \(f_h\) 不超过 3 Hz，现用 \(f_s=100\,\mathrm{Hz}\) 对 \(x(t)\) 取样 256 点，得到 \(x(n)\)。</p>
 <p>（1）对 \(x(n)\) 做 DFT 时，所能得到的最大频率分辨率是多少？</p>
 <p>（2）如果信号由三个正弦组成，其频率分别是 \(f_1=2\,\mathrm{Hz}\)，\(f_2=2.02\,\mathrm{Hz}\)，\(f_3=2.07\,\mathrm{Hz}\)，即 \(x(t)=\sin(2\pi f_1t)+\sin(2\pi f_2t)+\sin(2\pi f_3t)\)，求取样后的 \(x(n)\) 的 DFT 简图。</p>
-<div class="writing-space"></div>
+<div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")

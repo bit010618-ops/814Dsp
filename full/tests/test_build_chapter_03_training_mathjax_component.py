@@ -88,3 +88,11 @@ def test_2005_question_uses_complete_latex_for_every_math_fragment(tmp_path: Pat
     assert r"\(H(K)\)" in question
     assert r"\(Y(K)=X(K)H(K)\)" in question
     assert "(delta(n-5))" not in answer
+
+
+def test_every_chapter_three_training_question_has_its_own_exam_page(tmp_path: Path):
+    from full.tools import build_chapter_03_training_mathjax_component as component
+
+    question = component.write_training_html(tmp_path / "questions.html").read_text(encoding="utf-8")
+
+    assert question.count('class="exam-page"') == 5
