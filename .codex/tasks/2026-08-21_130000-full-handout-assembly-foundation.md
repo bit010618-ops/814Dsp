@@ -26,3 +26,4 @@
 - 先行回归按预期失败，修复后 `full/tests/test_build_chapter_03_training_mathjax_component.py` 为 6 passed。
 - 本地 MathJax 导出报告 `unrendered=[]`、`pageErrors=[]`；A4 预览确认 2005 题干中的序列、DFT/IDFT 和结果均为正式数学排版。
 - 第三章的五道训练题现各自占用独立训练页；视觉复核 2005 年题页确认公式清楚、无重叠或裁切，并保留其余空白作答。
+- 全书候选导出首次被公式门禁拦截；根因是 2004 年详解展示公式的 `<F_0` 未 HTML 转义，浏览器将其视为标签。已以回归锁定并改为 `&lt;F_0`；第三章组件 9 项测试通过，单独答案 PDF 报告 `unrendered=[]`、`pageErrors=[]`。
