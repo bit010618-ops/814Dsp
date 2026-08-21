@@ -954,3 +954,9 @@
 - Rendered and inspected all main-body pages of chapter eight (pages 85--90). Its multirate formulas, tables, anti-alias/interpolation/rational-rate system diagrams and page furniture have no black fill, crop, collision or raw formula source.
 - The four panels in figure 8-1 were the remaining coordinate-axis exception: each had a frequency axis but lacked a vertical amplitude axis. Added a separate upward amplitude axis and label to every panel, with paths that remain clear of the triangular spectra and tick labels. A regression locks all four axes and labels.
 - Verification: targeted component, chapter-five-to-eight and full-main-body assembly tests `3 passed`. Regenerated and stamped PDF reports `unrendered=[]`, `pageErrors=[]`; its A4 page 86 was visually checked. This completes the current main-body chapter audit; training, consolidated detailed answers and appendices remain intentionally frozen pending the requested next phase.
+
+# 2026-08-21 Chapter-eight full coverage recheck
+
+- Rechecked the source-model count against the body component: `full/source/chapter_08.json` contains 47 source pages and 47 transcribed pages. In the current A4 export, sections 8.1--8.5 begin on pages 86, 88, 89, 90 and 91 respectively.
+- Rendered and visually reviewed every chapter-eight body page (86--91) at 160 dpi. Formulas, ruled table, spectrum transformation graphic and all three multirate system diagrams are clean: no raw TeX, black fill, crop, collision, non-chapter-end large blank, slide shell or watermark was found.
+- The following page starts the frozen training section, so its intentional one-question writing space is not treated as a body-layout defect. Targeted component regression passed (`1 passed`).
