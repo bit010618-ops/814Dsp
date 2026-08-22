@@ -6,6 +6,14 @@ from pathlib import Path
 from full.tools.render_mathjax_formula import MATHJAX
 
 
+QUESTION_IDS = (
+    "2013-q九-whole",
+    "2015-q八-whole",
+    "2016-qintro-brief2",
+    "2020-qintro-brief3",
+)
+
+
 STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}
 body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}

@@ -1113,3 +1113,9 @@
 - The component emits nine clean single-question training pages and centralized detailed answers. The two 8-point DIT questions retain an algorithm flow diagram; the 2023 flow also labels the specified input values after bit reversal. All answer mathematics is emitted as complete MathJax LaTex strings.
 - Added a manifest-ID coverage test and full-book assembly checks. Verification: the chapter-four supplemental component, existing chapter-four component and full-handout suites report `8 passed`; `py_compile` and `git diff --check` pass. Pytest cache write warnings stem from a pre-existing denied `.pytest_cache`; a unique task-local `--basetemp` was used successfully.
 - The standalone Chromium visual render still cannot start because its GPU process terminates even with `--disable-gpu`, matching the known Edge failure. No visual-QA completion claim is made for this new component; the defect remains queued for a separate rendering-environment repair rather than repeated browser retries.
+
+# 2026-08-22 Late-chapter question-ID coverage audit
+
+- Added a manifest-backed coverage test for the remaining training chapters. It records the rendered IDs in the fifth-, seventh-priority-, seventh-supplemental- and eighth-chapter components instead of inferring completeness from question-page counts.
+- Result: chapter five covers 1/1 IDs; chapter seven covers 11/11 IDs across priority and supplemental pages; chapter eight covers 4/4 IDs. No question is missing or duplicated across those chapter assignments.
+- Verification: the manifest audit, all four affected component suites and the full-handout suite report `9 passed`; all affected builders also pass `py_compile`.

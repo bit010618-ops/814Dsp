@@ -6,6 +6,13 @@ from pathlib import Path
 from full.tools.build_chapter_08_training_mathjax_component import STYLE, _document
 
 
+QUESTION_IDS = (
+    "2022-q九-whole",
+    "2024-dsp-p4",
+    "2025-q九-whole",
+)
+
+
 def write_training_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""

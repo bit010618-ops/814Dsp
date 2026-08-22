@@ -6,6 +6,18 @@ from pathlib import Path
 from full.tools.build_chapter_08_training_mathjax_component import STYLE, _document
 
 
+QUESTION_IDS = (
+    "2007-q十-p1",
+    "2007-q十二-whole",
+    "2015-qintro-p8",
+    "2016-q九-whole",
+    "2017-q八-whole",
+    "2019-q五-whole",
+    "2021-q九-whole",
+    "2024-fir-second",
+)
+
+
 def _math(x: int, y: int, width: int, text: str, height: int = 34) -> str:
     return (
         f'<foreignObject x="{x}" y="{y}" width="{width}" height="{height}">'
