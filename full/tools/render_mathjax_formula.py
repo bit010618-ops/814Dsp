@@ -11,7 +11,8 @@ import subprocess
 from pathlib import Path
 
 EDGE = Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
-MATHJAX = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+ROOT = Path(__file__).resolve().parents[2]
+MATHJAX = (ROOT / "full" / "vendor" / "mathjax" / "es5" / "tex-mml-chtml.js").as_uri()
 
 
 def document(

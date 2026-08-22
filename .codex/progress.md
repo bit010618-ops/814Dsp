@@ -1141,3 +1141,9 @@
 
 - The assembled handout currently loads MathJax only from `https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js`. No local `tex-mml-chtml.js` or equivalent MathJax distribution is present in the bundled Node runtime or either installed browser profile.
 - Therefore an offline, filtered, or failed CDN load would leave the standard MathJax delimiters and LaTeX source visible instead of rendered mathematics, matching the previously reported raw-formula symptom. A final export solution must vendor a verified local MathJax distribution before page-map generation; this is coupled to the pending non-Chromium PDF-export architecture and is not safe to simulate with ordinary HTML text.
+
+# 2026-08-22 Local MathJax installation and offline source switch
+
+- With user approval, vendored the official npm package `mathjax@3.2.2` under `full/vendor/mathjax/`, including its license and all required ES5 component assets. The primary `tex-mml-chtml.js` file is present with SHA-256 `300480069078B5892D2363A2B65E2DFBBF30FE5C80F83EDBFECF4610FD093862`.
+- The sole handout formula-rendering entry point now computes a local `file:` URI from the repository path, so all body, training and answer builders inherit an offline MathJax script without individually reintroducing CDN URLs.
+- Verification: wrote the local-asset expectation first and observed it fail against the former HTTPS CDN source; after switching the shared entry point, formula, body-builder and full-handout suites report `7 passed`. The regenerated full handout contains one local MathJax script reference and zero CDN references. PDF visual validation is still pending the separately unresolved browser GPU export failure.
