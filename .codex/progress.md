@@ -1078,3 +1078,9 @@
 - Added the source-checked 2007 sampling-spectrum question. Its question system is reconstructed as a clean multiplier-plus-sequence-generator diagram, preserving the original \(x(t)\), \(T\), impulse train and both requested calculations without retaining source watermarks.
 - The detailed answer gives the triangular \(X(\omega)\), periodic \(X_p(\omega)\), the \(2\pi\)-periodic DTFT, and the requested values \(10^{-3}\) and \(2\). All conditional formulas use standard MathJax `cases` syntax.
 - Verification: chapter-one batch-one/batch-two and full-handout suites report `7 passed`; `git diff --check` is clean; both generated SVG documents parse successfully and contain their expected axes, arrows and MathJax label regions. Edge screenshot generation remains unavailable, so this is not counted as completed visual QA.
+
+# 2026-08-22 Chapter-one supplemental training batch three
+
+- Added the source-checked 2025 periodic-pulse sampling question, retaining its \(T_s=10^{-2}\,\mathrm{s}\), \(\tau\ll T_s\), amplitude, period and pulse-width conditions. The original watermarked waveform was replaced by a clean coordinate plot.
+- The answer distinguishes the finite-width pulse-train \(\operatorname{Sa}\)-weighted replicas from ideal-impulse equal-amplitude replicas, and explicitly concludes that the full square wave is not bandlimited. All reader-visible fractions, including \(\omega_s=\frac{2\pi}{T_s}\), use standard LaTeX fractions.
+- Verification: all chapter-one supplemental and full-handout suites report `9 passed`; `git diff --check` is clean; both generated SVG documents parse successfully with complete axes, arrows and label regions. Visual browser screenshot QA remains pending because the local Edge renderer does not write screenshots.
