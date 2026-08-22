@@ -13,8 +13,25 @@ if (!inputPath || !outputPath) {
 const mathjaxPath = path.resolve(__dirname, "..", "vendor", "mathjax", "es5", "node-main.js");
 const mathjax = require(mathjaxPath);
 
+function decodeHtmlEntitiesInLatex(latex) {
+  const entities = {
+    amp: "&",
+    gt: ">",
+    lt: "<",
+    quot: '"',
+    "#39": "'",
+  };
+  let decoded = latex;
+  for (let pass = 0; pass < 2; pass += 1) {
+    const next = decoded.replace(/&(amp|gt|lt|quot|#39);/g, (_, name) => entities[name]);
+    if (next === decoded) break;
+    decoded = next;
+  }
+  return decoded;
+}
+
 function renderFormula(MathJax, latex, display) {
-  const node = MathJax.tex2svg(latex.trim(), { display });
+  const node = MathJax.tex2svg(decodeHtmlEntitiesInLatex(latex).trim(), { display });
   return MathJax.startup.adaptor
     .outerHTML(node)
     .replace('<svg ', '<svg class="mathjax-svg" ')
@@ -29,8 +46,16 @@ function externalizeSvgForeignObjectMath(document) {
       if (!mathSvg) {
         return foreignObject;
       }
-      const encoded = Buffer.from(mathSvg[0], "utf8").toString("base64");
-      return `<image${attributes} preserveAspectRatio="xMidYMid meet" href="data:image/svg+xml;base64,${encoded}"/>`;
+      const opening = mathSvg[0].match(/^<svg\b([^>]*)>/i);
+      if (!opening) {
+        return foreignObject;
+      }
+      const mathAttributes = opening[1].replace(
+        /\s(?:width|height|style)="[^"]*"/gi,
+        "",
+      );
+      const inner = mathSvg[0].slice(opening[0].length, -"</svg>".length);
+      return `<svg${attributes}${mathAttributes} preserveAspectRatio="xMidYMid meet">${inner}</svg>`;
     },
   );
 }
@@ -89,7 +114,9 @@ mathjax
     const staticStyle = '<style data-mathjax-static-style="true">mjx-container{font-size:17.5pt}mjx-container[display="true"]{font-size:18pt}mjx-container[display="true"] svg.mathjax-svg{max-width:100%;height:auto}</style>';
     const styled = isolated.includes('</head>')
       ? isolated.replace('</head>', `${staticStyle}</head>`)
-      : `${staticStyle}${isolated}`;
+      : /<body\b[^>]*>/i.test(isolated)
+        ? isolated.replace(/<body\b[^>]*>/i, (bodyTag) => `${staticStyle}${bodyTag}`)
+        : isolated.replace(/<html\b[^>]*>/i, (htmlTag) => `${htmlTag}${staticStyle}`);
     fs.writeFileSync(outputPath, styled, "utf8");
   })
   .catch((error) => {

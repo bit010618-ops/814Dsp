@@ -86,6 +86,7 @@ STYLE = build_all_main_body.STYLE + r"""
 .fft-flow img{display:block;width:100%;height:auto;border:.5pt solid #d6dde2;background:#fff}
 .fft-flow svg{display:block;width:100%;height:auto;border:.5pt solid #d6dde2;background:#fff}
 .fft-flow figcaption{color:#52616b;text-align:center;margin-top:5pt;font-size:9.5pt}
+.formula-lead{break-after:avoid;color:#52616b;font-size:10.5pt;margin:9pt 0 3pt}
 </style>
 """
 
@@ -186,6 +187,62 @@ def _normalize_answer_refs(fragment: str) -> str:
     return re.sub(r"详解见 P\.(?:\d+|____)", "详解见 P.____", fragment)
 
 
+_FORMULA_OR_HEADING = re.compile(
+    r"<h[1-4](?:\s[^>]*)?>(?P<heading>.*?)</h[1-4]>|"
+    r'(?P<formula><div class="formula(?:\s[^"]*)?">(?P<formula_body>.*?)</div>)',
+    flags=re.DOTALL,
+)
+
+
+def _formula_lead(formula: str, heading: str) -> str:
+    """Describe a display formula in Chinese when nearby prose does not name it."""
+    title = re.sub(r"<[^>]+>", "", heading)
+    title = html.unescape(title).strip()
+    latex = re.sub(r"<[^>]+>", "", formula)
+    label = build_all_main_body._formula_name(latex, title or "本节")
+    return f"{label}："
+
+
+def _has_formula_context(rendered: str) -> bool:
+    paragraph = re.search(r"<p(?:\s[^>]*)?>(.*?)</p>\s*$", rendered, flags=re.DOTALL)
+    if paragraph is None:
+        return False
+    text = re.sub(r"<[^>]+>", "", paragraph.group(1))
+    return bool(re.search(r"(?:为|如下|满足|得到|写成|可表示为|条件是|关系是)[：:]?\s*$", text))
+
+
+def _has_explicit_formula_name(rendered: str) -> bool:
+    """A chapter formula table already supplies its own reader-facing name."""
+    return bool(
+        re.search(r'<p class="formula-name">.*?</p>\s*$', rendered, flags=re.DOTALL)
+    )
+
+
+def _with_formula_leads(fragment: str) -> str:
+    """Keep formulas readable by naming their purpose before the formula box."""
+    output: list[str] = []
+    cursor = 0
+    heading = ""
+    for match in _FORMULA_OR_HEADING.finditer(fragment):
+        between = fragment[cursor:match.start()]
+        output.append(between)
+        if match.group("heading") is not None:
+            heading = match.group("heading")
+            output.append(match.group(0))
+        else:
+            # Only the immediately preceding paragraph can introduce this formula;
+            # rebuilding the complete 600-page fragment here would be quadratic.
+            rendered = "".join(output[-6:])
+            if not _has_explicit_formula_name(between) and not _has_formula_context(rendered):
+                output.append(
+                    f'<p class="formula-lead">{html.escape(_formula_lead(match.group("formula"), heading))}</p>'
+                )
+            output.append(match.group("formula"))
+        cursor = match.end()
+    output.append(fragment[cursor:])
+    return "".join(output)
+
+
 def _exam_navigation_html() -> str:
     """Render the audited question manifest as the paper-book lookup appendix."""
     manifest = json.loads(EXAM_TRAINING_MANIFEST.read_text(encoding="utf-8"))
@@ -227,10 +284,10 @@ def _document(
     body: str, training: str, appendices: str, navigation: str, answers: str
 ) -> str:
     return (
-        '<!doctype html><html lang="zh-CN"><meta charset="utf-8">'
+        '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<script>window.MathJax={tex:{packages:{"[+]": ["ams"]}}};</script>'
-        f'<script defer src="{MATHJAX}"></script>{STYLE}{build_appendices.STYLE}'
+        f'<script defer src="{MATHJAX}"></script>{STYLE}<style>{build_appendices.STYLE}</style></head>'
         f'<body><main>{body}<section class="training-section">{training}</section>{appendices}{navigation}'
         '<section class="answer-section"><div class="appendix-f">'
         "<h1>附录 F：华理 814 历年 DSP 真题整理详解</h1>"
@@ -244,17 +301,17 @@ def write_html(output: Path) -> Path:
     with tempfile.TemporaryDirectory(prefix="dsp-full-handout-") as temporary:
         directory = Path(temporary)
         body_path = build_all_main_body.write_html(directory / "main-body.html")
-        body = _main_body(body_path.read_text(encoding="utf-8"))
+        body = _with_formula_leads(_main_body(body_path.read_text(encoding="utf-8")))
         training = "\n".join(
             _normalize_answer_refs(fragment)
             for fragment in _training_fragments(directory)
         )
-        answers = "\n".join(_answer_fragments(directory))
+        answers = _with_formula_leads("\n".join(_answer_fragments(directory)))
     output.write_text(
         _document(
             body,
             training,
-            build_appendices.pre_answer_appendices_html(body),
+            _with_formula_leads(build_appendices.pre_answer_appendices_html(body)),
             _exam_navigation_html(),
             answers,
         ),

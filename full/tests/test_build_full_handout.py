@@ -23,6 +23,33 @@ def test_full_handout_orders_body_training_then_answers(tmp_path: Path):
     assert ".exam-page{break-before:page;break-inside:avoid;page-break-inside:avoid;min-height:230mm}" in html
 
 
+def test_full_handout_places_all_styles_in_an_explicit_head_before_the_printed_body(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+
+    assert "<head>" in html
+    assert html.index(".appendix{break-before:page}") < html.index("</head>")
+    assert html.index("</head>") < html.index("<body>")
+
+
+def test_full_handout_does_not_duplicate_a_chapter_formula_summary_name_as_a_formula_lead(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+
+    assert not re.search(r'<p class="formula-name">[^<]*</p>\s*<p class="formula-lead">', html)
+
+
+def test_full_handout_never_uses_an_anonymous_formula_result_label(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+
+    assert "本段推导的结果表达式" not in html
+    assert not re.search(r'class="formula-(?:lead|name)">[^<]*(?:计算关系|核心关系)', html)
+
+
 def test_full_handout_uses_only_pending_page_references(tmp_path: Path):
     from full.tools import build_full_handout
 
@@ -73,6 +100,10 @@ def test_full_handout_includes_the_confirmed_appendix_set(tmp_path: Path):
     assert positions == sorted(positions)
     assert html.count('class="appendix-formula-group"') == 8
     assert html.count('class="appendix-c-question"') == 8
+    assert "\x0c" not in html
+    assert r"\(\frac{2}{3}f_s\)" in html
+    assert '.formula-lead{break-after:avoid' in html
+    assert 'class="formula-lead">连续信号的离散采样关系（用于把连续时间信号转为离散序列）：' in html
     assert "系统性质判断模板" in html
     assert "DFT 计算与循环卷积模板" in html
     assert "最后两分钟检查表" in html

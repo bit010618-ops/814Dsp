@@ -33,11 +33,11 @@ from full.tools.render_mathjax_formula import MATHJAX
 
 STYLE = r"""
 <style>
-@page{size:A4;margin:24mm 18mm 20mm}
+@page{size:A4;margin:24mm 18mm 20mm;@top-left{content:"数字信号处理讲义";color:#486d8b;font:9pt "Microsoft YaHei",serif;border-bottom:.45pt solid #c59d6e;padding-bottom:3pt}@top-right{content:string(running-title,first);color:#52616b;font:9pt "Microsoft YaHei",serif;border-bottom:.45pt solid #c59d6e;padding-bottom:3pt}@bottom-center{content:counter(page);color:#52616b;font:9pt "Times New Roman",serif}}
 body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}
 main{max-width:174mm;margin:auto}
 .chapter-start+.chapter-start{break-before:page}
-h1{break-after:avoid;color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}
+h1{string-set:running-title content(text);break-after:avoid;color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}
 h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}
 h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}
 h4{break-after:avoid;color:#315d7c;font-size:11.5pt;font-weight:400;margin:10pt 0 3pt}
@@ -47,6 +47,7 @@ p{margin:5pt 0 8pt}
 .formula mjx-container[display="true"]{max-width:100%;margin:0 auto!important}
 .chapter-formula-summary{break-before:auto}
 .chapter-formula-summary>p{color:#486d8b;margin:0 0 10pt}
+.chapter-formula-summary .formula-name{break-after:avoid;color:#52616b;font-size:10.5pt;margin:9pt 0 3pt}
 .chapter-formula-summary .formula{break-inside:avoid}
 .mapping,.table{border-collapse:collapse;width:100%;margin:10pt 0 12pt;break-inside:avoid}
 .mapping th,.mapping td,.table th,.table td{border:.45pt solid #b9c6cf;padding:6pt 7pt;text-align:left;vertical-align:top}
@@ -132,27 +133,101 @@ def _with_chapter_title(title: str, body: str) -> str:
     return f"<h1>{title}</h1>{_demote_headings(body)}"
 
 
+def _formula_name(formula: str, heading: str) -> str:
+    """Return a reader-facing name that says what a core formula is used for."""
+    compact = re.sub(r"\s+", "", formula).replace(r"\geq", r"\ge").replace(r"\leq", r"\le")
+    if "x(n)=x_a(nT)" in compact:
+        return "连续信号的离散采样关系（用于把连续时间信号转为离散序列）"
+    if "f_s\\ge2f_h" in compact:
+        return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
+    if "X_s(j\\Omega)" in compact and "\\sum" in compact:
+        return "周期冲激采样的频谱复制关系（用于判断采样后频谱副本的位置和间隔）"
+    if "X(e^{j\\omega})" in compact and "\\frac{1}{T}" in compact and "\\sum" in compact:
+        return "连续时间频谱到离散时间频谱的映射关系（用于把模拟频谱换算到数字频域）"
+    if "W(e^{j\\omega})=X(e^{j(\\omega-\\pi)})" in compact:
+        return "离散时间频移关系（用于说明时域交替变号会使频谱平移 π）"
+    if "Y(e^{j\\omega})" in compact and "\\begin{cases}" in compact:
+        return "滤波后的输出频谱（用于给出通带内外的频谱幅度）"
+    if "\\Deltaf_0" in compact and "f_s=2\\Deltaf_0" in compact:
+        return "采样频率的可行性条件（用于判断哪些采样频率不会产生频谱混叠）"
+    if "H_r(j\\Omega)" in compact and "\\begin{cases}" in compact:
+        return "理想低通重构滤波器的频率响应（用于保留中心频谱副本并抑制其他副本）"
+    if "h_r(t)=" in compact and "\\sin" in compact:
+        return "理想低通重构滤波器的冲激响应（用于在时域实现理想低通重构）"
+    if "44100" in compact and "f_s" in compact:
+        return "不同采样率下的可保留频率（用于比较采样率降低对信号细节的影响）"
+    if "E_x=" in compact and "\\int" in compact:
+        return "能量信号的频域能量关系（用于由频谱判定信号能量是否有限）"
+    if "X^*(e^{j\\omega})=X(e^{-j\\omega})" in compact:
+        return "实序列频谱的共轭对称关系（用于由正频率部分判断负频率部分）"
+    if "\\left|z\\right|=1" in compact and "ROC" in compact:
+        return "BIBO 稳定性的 ROC 条件（用于判断收敛域是否包含单位圆）"
+    if "\\left|a\\right|\\ne1" in compact and "\\left|b\\right|\\ne1" in compact:
+        return "极点避开单位圆的条件（用于排除单位圆上的极点）"
+    if "H(e^{j\\omega})" in compact:
+        return "系统的频率响应表达式（用于求系统对各频率分量的幅度和相位作用）"
+    if "H(z)=\\frac{Y(z)}{X(z)}" in compact or "H(z)=\\mathcal{Z}" in compact:
+        return "系统函数的定义（用于在 z 域描述输入与输出的关系）"
+    if "h(n)=0" in compact and "n<0" in compact:
+        return "因果系统的单位脉冲响应条件（用于判断系统是否只依赖当前和过去输入）"
+    if "\\sum" in compact and "|h(n)|" in compact and "\\infty" in compact:
+        return "BIBO 稳定性判据（用于判断有界输入是否产生有界输出）"
+    if "y(n)" in compact and ("y(n-1)" in compact or "y(n-2)" in compact):
+        return "线性常系数差分方程（用于由输入和历史输出递推计算当前输出）"
+    if "X[k]=" in compact and "W_N" in compact and "\\sum" in compact:
+        return "离散傅里叶变换定义（用于把有限长序列分解为离散频率分量）"
+    if "x[n]=" in compact and "X[k]" in compact and "\\sum" in compact:
+        return "离散傅里叶反变换定义（用于由离散频谱重建时域序列）"
+    if "W_N" in compact and "=" in compact:
+        return "DFT 旋转因子关系（用于统一表示 DFT 中的复指数基函数）"
+    if "\\delta" in compact and "\\begin{cases}" in compact:
+        return "单位脉冲序列的定义（用于表示仅在指定时刻取非零值的离散序列）"
+    if "\\omega=2\\tan^{-1}" in compact:
+        return "双线性变换的频率映射关系（用于把模拟角频率映射到数字角频率）"
+    if "\\int" in compact:
+        return "积分表达式（用于由连续变量的累积关系求得结果）"
+    if "y(n)" in compact and "\\sum" in compact:
+        return "离散卷积和（用于由输入和单位脉冲响应计算输出序列）"
+    if "\\sum" in compact:
+        return "级数求和式（用于把各离散分量累加为所需结果）"
+    topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
+    topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)
+    topic = re.sub(r"^\d{4}\s*年真题\s*[：:]\s*", "", topic)
+    topic = topic.replace("（续）", "").replace("(续)", "").strip(" ：:")
+    if not topic or topic in {"真题整理详解", "本章公式总表"}:
+        topic = "本题"
+    return f"{topic}中的推导公式（用于将已知条件整理为可代入的结果）"
+
+
 def _formula_summary(body: str) -> str:
     """Collect each chapter's reader-visible formulas for its closing reference."""
     # SVG labels are figure annotations, not standalone chapter formulas.  The
     # surrounding text and formula blocks remain part of the summary source.
     text = re.sub(r"<svg\b.*?</svg>", "", body, flags=re.DOTALL)
-    candidates = [
-        *re.findall(r"\\\[(.*?)\\\]", text, flags=re.DOTALL),
-        *re.findall(r"\\\((.*?)\\\)", text, flags=re.DOTALL),
-    ]
-    formulas: list[str] = []
+    tokens = re.compile(
+        r"<h[1-4](?:\s[^>]*)?>(?P<heading>.*?)</h[1-4]>|"
+        r"\\\[(?P<display>.*?)\\\]",
+        flags=re.DOTALL,
+    )
+    formulas: list[tuple[str, str]] = []
     seen: set[str] = set()
-    for formula in candidates:
+    heading = "本章核心"
+    for token in tokens.finditer(text):
+        if token.group("heading") is not None:
+            heading = re.sub(r"<[^>]+>", "", token.group("heading")).strip() or heading
+            continue
+        formula = token.group("display")
         normalized = re.sub(r"\s+", " ", formula).strip()
         if not normalized or normalized in seen:
             continue
         seen.add(normalized)
-        formulas.append(normalized)
+        formulas.append((normalized, _formula_name(normalized, heading)))
     if not formulas:
         raise ValueError("chapter body contains no extractable formulas")
     formula_blocks = "\n".join(
-        f'<div class="formula">\\[\n{formula}\n\\]</div>' for formula in formulas
+        f'<p class="formula-name">{label}：</p>'
+        f'<div class="formula">\\[\n{formula}\n\\]</div>'
+        for formula, label in formulas
     )
     return (
         '<section class="chapter-formula-summary"><h2>本章公式总表</h2>'

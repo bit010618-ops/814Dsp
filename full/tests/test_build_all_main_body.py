@@ -2,6 +2,32 @@ from pathlib import Path
 import re
 
 
+def test_formula_names_state_the_formula_name_and_its_reader_facing_use():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(r"\[f_s\geq2f_h\]", "离散时间信号的由来") == (
+        "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
+    )
+    assert _formula_name(r"\[W(e^{j\omega})=X(e^{j(\omega-\pi)})\]", "真题详解") == (
+        "离散时间频移关系（用于说明时域交替变号会使频谱平移 π）"
+    )
+    assert _formula_name(r"\[Y(e^{j\omega})=\begin{cases}\frac{1}{T},&0.5\pi\leq|\omega|\leq\pi\\0,&\text{其他}\end{cases}\]", "真题详解") == (
+        "滤波后的输出频谱（用于给出通带内外的频谱幅度）"
+    )
+    assert _formula_name(r"\[\Delta f_0'=\frac{f_h}{r}\geq\Delta f_0,\quad r\in\mathbb{Z},\quad f_s=2\Delta f_0'\]", "采样") == (
+        "采样频率的可行性条件（用于判断哪些采样频率不会产生频谱混叠）"
+    )
+    assert _formula_name(r"\[H_r(j\Omega)=\begin{cases}T,&|\Omega|\leq\frac{\Omega_s}{2}\\0,&|\Omega|>\frac{\Omega_s}{2}\end{cases}\]", "重构") == (
+        "理想低通重构滤波器的频率响应（用于保留中心频谱副本并抑制其他副本）"
+    )
+    assert _formula_name(r"\[E_x=\frac{1}{2\pi}\int_{-\pi}^{\pi}|X(e^{j\omega})|^2\,\mathrm{d}\omega<\infty\]", "能量") == (
+        "能量信号的频域能量关系（用于由频谱判定信号能量是否有限）"
+    )
+    assert _formula_name(r"\[X^*(e^{j\omega})=X(e^{-j\omega})\]", "实序列性") == (
+        "实序列频谱的共轭对称关系（用于由正频率部分判断负频率部分）"
+    )
+
+
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
 
@@ -48,6 +74,10 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert 'data-first-sample-clearance=' not in html
     assert 'data-origin-at-zero="true"' in html
     assert 'data-origin-label="true"' in html
+    assert '@top-left{content:"数字信号处理讲义"' in html
+    assert '@top-right{content:string(running-title,first)' in html
+    assert '@bottom-center{content:counter(page)' in html
+    assert 'string-set:running-title content(text)' in html
 
 
 def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_end(tmp_path: Path):
@@ -60,6 +90,7 @@ def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_en
     )
     assert len(summaries) == 8
     assert html.count("本章公式总表") == 8
+    assert 'class="formula-name">连续信号的离散采样关系（用于把连续时间信号转为离散序列）：' in html
     assert all(r"\[" in summary and r"\]" in summary for summary in summaries)
     assert "x(n)=x_a(nT)" in summaries[0]
     assert "H(z)" in summaries[1]
