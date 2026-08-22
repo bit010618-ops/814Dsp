@@ -20,3 +20,23 @@ def test_chapter_seven_priority_training_keeps_three_original_questions_and_answ
     assert "海明窗" in answers
     assert "最小群延迟" in answers
     assert "阻带衰减" in answers
+
+
+def test_chapter_seven_priority_training_uses_mathjax_for_inline_math(tmp_path: Path):
+    from full.tools import build_chapter_07_training_mathjax_component as component
+
+    training = component.write_training_html(tmp_path / "chapter-07-training.html").read_text(
+        encoding="utf-8"
+    )
+    answers = component.write_answers_html(tmp_path / "chapter-07-answers.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert r"\(\omega_{s1}\)" in training
+    assert r"\(h(n)\)" in training
+    assert r"\(\Theta(\omega)\)" in training
+    assert r"\(\omega=2\pi f/f_s\)" in answers
+    assert r"\(h(n)\)" in answers
+    assert r"(omega_{s1})" not in training
+    assert r"(h(n))" not in training
+    assert r"(omega=2\pi f/f_s)" not in answers

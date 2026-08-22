@@ -31,7 +31,7 @@ def test_stem_svg_uses_real_data_coordinates_and_textbook_axes(tmp_path: Path):
     assert "<image" not in svg
 
 
-def test_stem_svg_keeps_the_vertical_axis_clear_of_the_zero_sample(tmp_path: Path):
+def test_stem_svg_places_the_vertical_axis_at_the_zero_sample_and_labels_the_origin_once(tmp_path: Path):
     output = tmp_path / "zero-first.svg"
 
     render_stem_svg(
@@ -47,12 +47,14 @@ def test_stem_svg_keeps_the_vertical_axis_clear_of_the_zero_sample(tmp_path: Pat
     svg = output.read_text(encoding="utf-8")
     assert 'data-index="0"' in svg
     assert 'data-axis="vertical"' in svg
-    assert 'data-first-sample-clearance="true"' in svg
+    assert 'data-origin-at-zero="true"' in svg
+    assert 'data-origin-label="true"' in svg
     axis_match = re.search(r'<line class="axis" data-axis="vertical"[^>]*x1="([0-9.]+)"', svg)
     stem_match = re.search(r'<line class="stem-line" data-index="0" x1="([0-9.]+)"', svg)
     assert axis_match is not None
     assert stem_match is not None
-    assert float(axis_match.group(1)) < float(stem_match.group(1))
+    assert float(axis_match.group(1)) == float(stem_match.group(1))
+    assert not re.search(r'<text class="tick-label"[^>]*>0</text>', svg)
 
 
 def test_stem_svg_reserves_a_distinct_safe_zone_for_title_and_vertical_label(tmp_path: Path):

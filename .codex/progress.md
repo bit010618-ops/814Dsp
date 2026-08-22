@@ -1097,6 +1097,14 @@
 - Chapter four has 12 manifest IDs but currently covers only `2017-q六-p5`, `2022-q五-p3`, and `2004-q十一-whole`. The confirmed missing IDs are `2024-dsp-p5`, `2007-q十一-whole`, `2007-q十三-p2`, `2015-qintro-p5`, `2015-qintro-p6`, `2017-q六-p4`, `2020-qintro-p1`, `2020-qintro-p5`, and `2023-dsp-p5`.
 - Next action: add these nine chapter-four questions and detailed answers, using source-page verification for every original question text and required FFT flow figures.
 
+# 2026-08-22 Global stem-origin correction and chapter formula-summary requirement
+
+- Corrected the shared render_stem_svg primitive: the vertical axis now always passes exactly through the mathematical \(n=0\) coordinate. It is no longer shifted left to make a separate zero sample appear clear.
+- The zero label is emitted once as an origin label in the fourth quadrant; zero is omitted from the ordinary horizontal-tick label list, so no false zero axis or duplicate zero label can appear.
+- Regenerated the eight-chapter main-body HTML from the shared component. Static audit confirms all generated shared stem figures use the data-origin-at-zero marker and none retain the old first-sample-clearance marker.
+- Added the hard delivery requirement that every chapter end with a complete chapter formula summary, rendered as standard MathJax / LaTeX formulas before that chapter’s training pages.
+- Verification: shared-stem and full-main-body assembly suites report 6 passed; the separate chapter-seven priority-training suite reports 2 passed after converting its inline formulas to MathJax delimiters. py_compile passes for the modified SVG and chapter-seven component modules. Browser PDF visual inspection remains pending because of the known local headless GPU backend failure.
+
 # 2026-08-22 Chapter-four supplemental training completion
 
 - Rendered and visually read the original 2007 pp. 22–23, 2015 p. 29, 2017 p. 37, 2020 p. 40, 2023 p. 50 and 2024 p. 54 exam pages before transcription. Added all nine audited chapter-four units: `2007-q十一-whole`, `2007-q十三-p2`, `2015-qintro-p5`, `2015-qintro-p6`, `2017-q六-p4`, `2020-qintro-p1`, `2020-qintro-p5`, `2023-dsp-p5`, and `2024-dsp-p5`.

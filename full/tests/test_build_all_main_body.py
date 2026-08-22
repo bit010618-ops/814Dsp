@@ -44,3 +44,6 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert "typical-sequence-continuation" in html
     assert ".typical-sequence-continuation .chart{break-inside:auto" in html
     assert ".typical-sequence-continuation .chart svg{max-width:500px!important}" in html
+    assert 'data-first-sample-clearance=' not in html
+    assert 'data-origin-at-zero="true"' in html
+    assert 'data-origin-label="true"' in html

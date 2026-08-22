@@ -33,21 +33,26 @@ def render_stem_svg(
     py = lambda value: _map(value, y_min, y_max, bottom, top)
     x_axis = py(0) if y_min <= 0 <= y_max else bottom
     y_axis = px(0) if x_min <= 0 <= x_max else left
-    # A stem at n=0 must remain completely legible.  Keep the mathematical
-    # zero tick at its true coordinate, but place the drawn vertical axis a
-    # fraction of one sample interval to its left so the y-axis, the zero
-    # stem and the origin label never sit on top of one another.
-    zero_sample_clearance = 0 in samples and x_min <= 0 <= x_max
-    sample_interval = abs(px(1) - px(0))
-    plotted_y_axis = y_axis - 0.32 * sample_interval if zero_sample_clearance else y_axis
+    # The vertical axis is the zero-index coordinate.  Do not shift it to
+    # make room for the n=0 stem: that would create a false second “zero
+    # axis”.  The origin label is offset into the fourth quadrant instead.
+    has_visible_origin = x_min <= 0 <= x_max and y_min <= 0 <= y_max
 
     ticks = []
     for index in range(int(x_min), int(x_max) + 1):
         x = px(index)
+        if index == 0 and has_visible_origin:
+            continue
         ticks.append(
             f'<line class="tick" x1="{x:.2f}" y1="{x_axis - 5:.2f}" x2="{x:.2f}" y2="{x_axis + 5:.2f}"/>'
             f'<text class="tick-label" x="{x:.2f}" y="{x_axis + 25:.2f}">{index}</text>'
         )
+    origin_label = (
+        f'<text class="origin-label" data-origin-label="true" x="{y_axis + 10:.2f}" '
+        f'y="{x_axis + 25:.2f}" text-anchor="start">0</text>'
+        if has_visible_origin
+        else ""
+    )
 
     stems = []
     for index, value in sorted(samples.items()):
@@ -63,6 +68,7 @@ def render_stem_svg(
 .axis {{ stroke:#284B63; stroke-width:2; fill:none; }}
 .tick {{ stroke:#284B63; stroke-width:1.4; }}
 .tick-label {{ fill:#40515e; font-family:"Noto Serif CJK SC","Microsoft YaHei",serif; font-size:15px; text-anchor:middle; }}
+.origin-label {{ fill:#40515e; font-family:"Noto Serif CJK SC","Microsoft YaHei",serif; font-size:15px; }}
 .axis-label {{ fill:#1F2933; font-family:serif; font-size:20px; }}
 .title {{ fill:#1E4F79; font-family:"Noto Serif CJK SC","Microsoft YaHei",serif; font-size:22px; text-anchor:middle; }}
 .stem-line {{ stroke:#008F95; stroke-width:2.6; }}
@@ -70,11 +76,12 @@ def render_stem_svg(
 </style>
 <text class="title" data-title-label-clearance="true" x="{width / 2:.2f}" y="34">{escape(title)}</text>
 <line class="axis" data-axis="horizontal" x1="{left - 12}" y1="{x_axis:.2f}" x2="{right + 24}" y2="{x_axis:.2f}" marker-end="url(#axis-arrow)"/>
-<line class="axis" data-axis="vertical" data-first-sample-clearance="{str(zero_sample_clearance).lower()}" x1="{plotted_y_axis:.2f}" y1="{bottom + 13}" x2="{plotted_y_axis:.2f}" y2="{top - 18}" marker-end="url(#axis-arrow)"/>
+<line class="axis" data-axis="vertical" data-origin-at-zero="{str(has_visible_origin).lower()}" x1="{y_axis:.2f}" y1="{bottom + 13}" x2="{y_axis:.2f}" y2="{top - 18}" marker-end="url(#axis-arrow)"/>
 {''.join(ticks)}
 {''.join(stems)}
+{origin_label}
 <text class="axis-label" x="{right + 34}" y="{x_axis + 7:.2f}">{escape(x_label)}</text>
-<text class="axis-label" x="{plotted_y_axis + 10:.2f}" y="{top + 24}">{escape(y_label)}</text>
+<text class="axis-label" x="{y_axis + 10:.2f}" y="{top + 24}">{escape(y_label)}</text>
 </svg>'''
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(svg, encoding="utf-8")
