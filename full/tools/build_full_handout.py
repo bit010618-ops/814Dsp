@@ -280,6 +280,20 @@ def _exam_navigation_html() -> str:
     )
 
 
+def _anchor_answer_headings(fragment: str) -> str:
+    """Give each book-end answer a stable target for final page references."""
+    index = 0
+
+    def replace(match: re.Match[str]) -> str:
+        nonlocal index
+        index += 1
+        answer_id = f"answer-{index:03d}"
+        attributes = match.group("attributes")
+        return f'<h2{attributes} id="{answer_id}" data-answer-id="{answer_id}">'
+
+    return re.sub(r"<h2(?P<attributes>[^>]*)>", replace, fragment)
+
+
 def _document(
     body: str, training: str, appendices: str, navigation: str, answers: str
 ) -> str:
@@ -306,7 +320,9 @@ def write_html(output: Path) -> Path:
             _normalize_answer_refs(fragment)
             for fragment in _training_fragments(directory)
         )
-        answers = _with_formula_leads("\n".join(_answer_fragments(directory)))
+        answers = _anchor_answer_headings(
+            _with_formula_leads("\n".join(_answer_fragments(directory)))
+        )
     output.write_text(
         _document(
             body,

@@ -78,6 +78,18 @@ def test_full_handout_places_exam_navigation_before_appendix_f_answers(tmp_path:
     assert len(navigation_ids) == 156
     assert len(set(navigation_ids)) == 156
     assert "第八章" in html
+
+
+def test_full_handout_gives_every_detailed_answer_heading_a_stable_anchor(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+    answer_html = html[html.index('<section class="answer-section">'):]
+    answer_ids = re.findall(r'data-answer-id="(answer-\d{3})"', answer_html)
+
+    assert len(answer_ids) == 150
+    assert answer_ids[0] == "answer-001"
+    assert len(set(answer_ids)) == len(answer_ids)
     assert "详解见 P.待回填" in html
 
 

@@ -1184,3 +1184,9 @@
 
 - Further reduced generic “数学等式关系” labels by using the current semantic knowledge-point title after removing chapter/section numbering; for example, an otherwise unclassified DFT formula is now “DFT 的基本性质的关系式（用于说明该性质中各变量的对应关系）”.
 - Added red-green coverage for both a listed discrete sequence and a numbered section heading. After full-HTML rebuild, 1,208 labels contain zero chapter-number labels and zero “中的推导公式”; only 35 context-free mathematical equalities retain the structural fallback. Relevant regression suites: `20 passed`.
+
+# 2026-08-22 Detailed-answer anchors for final pagination
+
+- Added stable `answer-001` through `answer-150` identifiers to every detailed-answer heading in the book-end answer section. These anchors are invisible in the printed handout and form the authoritative targets for the next page-map pass.
+- Created the anchor assertion first, observed the expected failure, then applied the smallest assembler change. All formula, assembly and MathJax regression suites report `21 passed`.
+- The audited question bank has 156 assigned training units and the answer section has 150 answer headings, confirming that the final map must permit a small number of intentionally shared detailed answers rather than assume one-to-one title counts.
