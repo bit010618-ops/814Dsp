@@ -16,6 +16,7 @@ from full.tools import build_all_main_body
 from full.tools import build_chapter_01_training_answers_mathjax_component as chapter_one_answers
 from full.tools import build_chapter_01_supplemental_mathjax_component as chapter_one_supplemental
 from full.tools import build_chapter_01_training_mathjax_component as chapter_one_training
+from full.tools import build_chapter_01_supplemental_training_batch_one_mathjax_component as chapter_one_batch_one
 from full.tools import build_chapter_02_supplemental_training_mathjax_component as chapter_two_supplemental
 from full.tools import build_chapter_02_training_mathjax_component as chapter_two_training
 from full.tools import build_chapter_03_training_mathjax_component as chapter_three_training
@@ -92,6 +93,7 @@ def _training_fragments(directory: Path) -> list[str]:
             chapter_one_supplemental.write_questions_html,
             directory / "chapter-01-supplemental-training.html",
         ),
+        chapter_one_batch_one.training_html(),
         chapter_two_training.training_html(),
         chapter_two_supplemental.training_html(),
         *(component.training_html() for component in CHAPTER_TWO_SUPPLEMENTAL_BATCHES),
@@ -128,6 +130,7 @@ def _answer_fragments(directory: Path) -> list[str]:
             chapter_one_supplemental.write_answers_html,
             directory / "chapter-01-supplemental-answers.html",
         ),
+        chapter_one_batch_one.answers_html(),
         chapter_two_training.answers_html(),
         chapter_two_supplemental.answers_html(),
         *(component.answers_html() for component in CHAPTER_TWO_SUPPLEMENTAL_BATCHES),

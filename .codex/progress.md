@@ -1066,3 +1066,9 @@
 - Added the source-checked 2021 whole DFT question with all four original subparts: six-point DFT, ten-point frequency-grid convolution, unit-circle six-point sampling, and spectrum leakage.
 - The detailed answer derives each six-point DFT value, computes the non-aliased convolution \(\{1,3,6,10,14,18,15,11,6\}\), gives the six-point IDFT periodic summation, and explains leakage suppression without altering the question text.
 - Verification: the targeted chapter 1/3/7/8 and full-assembly regression suite reports `71 passed`. The assembled handout has 141 training question pages; static checks found no reader-facing `mod N`, `\bmod N`, `\operatorname{mod}`, or `\mathrm{mod}`. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-22 Chapter-one supplemental training batch one
+
+- Added the source-checked 2016 impulse-sampling question and its full answer: sampling-period derivation, sampled \(\operatorname{Sa}(2t)\) waveform, and non-overlapping periodic spectrum replicas.
+- The question preserves the original “麦奎斯特频率” wording. The answer uses intact MathJax formulas and separate, data-driven SVG figures for the time waveform and frequency replicas.
+- Verification: focused component and full-handout tests report `5 passed`; full assembly now has 142 rendered training-page heads. Headless Edge launched an isolated profile but failed to write its requested screenshot, so visual rendering of this new answer remains explicitly pending rather than claimed complete.
