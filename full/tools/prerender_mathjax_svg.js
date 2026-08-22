@@ -36,7 +36,7 @@ mathjax
       'svg{max-width:100%;height:auto}',
       'svg:not(.mathjax-svg){max-width:100%;height:auto}',
     );
-    const staticStyle = '<style data-mathjax-static-style="true">mjx-container{font-size:17.5pt}mjx-container[display="true"]{font-size:18pt}</style>';
+    const staticStyle = '<style data-mathjax-static-style="true">mjx-container{font-size:17.5pt}mjx-container[display="true"]{font-size:18pt}mjx-container[display="true"] svg.mathjax-svg{max-width:100%;height:auto}</style>';
     const styled = isolated.includes('</head>')
       ? isolated.replace('</head>', `${staticStyle}</head>`)
       : `${staticStyle}${isolated}`;

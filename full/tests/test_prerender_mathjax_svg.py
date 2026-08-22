@@ -30,5 +30,6 @@ def test_prerender_replaces_a_complete_cases_formula_with_mathjax_svg(tmp_path: 
     assert 'svg:not(.mathjax-svg){max-width:100%;height:auto}' in rendered
     assert 'mjx-container{font-size:17.5pt}' in rendered
     assert 'mjx-container[display="true"]{font-size:18pt}' in rendered
+    assert 'mjx-container[display="true"] svg.mathjax-svg{max-width:100%;height:auto}' in rendered
     assert r'\begin{cases}' not in rendered
     assert 'data-mathjax-static="true"' in rendered
