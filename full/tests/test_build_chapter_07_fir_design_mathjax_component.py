@@ -95,3 +95,5 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert "无关区域的宽度不能为零" in html
     assert "MATLAB" not in html
     assert "真题" not in html
+    assert ".table th,.table td{border:.45pt solid #b9c6cf" in html
+    assert html.count('<table class="table">') == 3

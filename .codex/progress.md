@@ -1122,3 +1122,10 @@
 - Added a manifest-backed coverage test for the remaining training chapters. It records the rendered IDs in the fifth-, seventh-priority-, seventh-supplemental- and eighth-chapter components instead of inferring completeness from question-page counts.
 - Result: chapter five covers 1/1 IDs; chapter seven covers 11/11 IDs across priority and supplemental pages; chapter eight covers 4/4 IDs. No question is missing or duplicated across those chapter assignments.
 - Verification: the manifest audit, all four affected component suites and the full-handout suite report `9 passed`; all affected builders also pass `py_compile`.
+
+# 2026-08-22 Complete generated stem-origin audit and chapter-seven table normalization
+
+- Re-audited every generated discrete stem implementation and rebuilt the full handout. All 33 visible discrete plots now mark the actual \(n=0\) axis with `data-origin-at-zero`, carry exactly one fourth-quadrant origin label, and contain neither the former first-sample-clearance marker nor a separately rendered ordinary zero tick.
+- The remaining custom chapter-one convolution builders now use the same exact \(n=0\) vertical-axis convention. Legacy ReportLab helpers only offset their label text; they are not used by the assembled handout and do not move a coordinate axis.
+- Normalized the chapter-seven standalone table stylesheet with the complete horizontal-and-vertical textbook grid used by the full book; each table is kept together when possible. This prevents the standalone chapter view from silently losing the borders supplied by the final assembler.
+- Verification: first created a failing component assertion for the standalone full-grid table rule, then applied the single style fix. Chapter-seven, body-builder and full-handout suites report `6 passed`; `py_compile` and both body/full HTML rebuilds pass. Static full-handout audit reports 33 origin-axis markers, 33 origin labels, and zero legacy clearance/left-offset/duplicate-zero-tick markers. Browser/PDF visual QA remains pending because the local headless Chromium/Edge renderer is still unavailable.
