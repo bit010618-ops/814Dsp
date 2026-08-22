@@ -126,10 +126,11 @@ def test_formula_name_identifies_a_listed_discrete_sequence():
     assert label == "离散序列的数列表达（用于列出各离散时刻的样值）"
 
 
-def test_formula_name_uses_a_semantic_section_topic_without_the_chapter_number():
+def test_formula_name_explains_the_reader_use_for_a_section_specific_formula():
     from full.tools.build_all_main_body import _formula_name
 
     label = _formula_name(r"A=B", "第三章 3.2 DFT 的基本性质")
 
-    assert label == "DFT 的基本性质的关系式（用于说明该性质中各变量的对应关系）"
+    assert label == "DFT 基本性质关系（用于根据时域运算快速推导对应的频域结果）"
     assert "第三章" not in label
+    assert "用于说明该性质中各变量的对应关系" not in label
