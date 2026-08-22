@@ -1060,3 +1060,9 @@
 - Added the source-checked 2024 four-point DFT question, preserving the original request for every \(X(k)\) value and for \(X_{\mathrm{ep}}(k)\).
 - The detailed answer writes \(x(n)=\{2,0,2,0\}\), derives \(X(k)=2+2(-1)^k\), lists all four DFT values, and computes the even part with \(X^*\left((-k)\right)_4\); reader-facing circular indices remain in the required outer-period-subscript form.
 - Verification: the targeted chapter 1/3/7/8 and full-assembly regression suite reports `70 passed`. The assembled handout has 140 training question pages; static checks found no reader-facing `mod N`, `\bmod N`, `\operatorname{mod}`, or `\mathrm{mod}`. PDF visual QA remains deferred because of the known local headless GPU backend fault.
+
+# 2026-08-22 Chapter-three supplemental training batch thirteen
+
+- Added the source-checked 2021 whole DFT question with all four original subparts: six-point DFT, ten-point frequency-grid convolution, unit-circle six-point sampling, and spectrum leakage.
+- The detailed answer derives each six-point DFT value, computes the non-aliased convolution \(\{1,3,6,10,14,18,15,11,6\}\), gives the six-point IDFT periodic summation, and explains leakage suppression without altering the question text.
+- Verification: the targeted chapter 1/3/7/8 and full-assembly regression suite reports `71 passed`. The assembled handout has 141 training question pages; static checks found no reader-facing `mod N`, `\bmod N`, `\operatorname{mod}`, or `\mathrm{mod}`. PDF visual QA remains deferred because of the known local headless GPU backend fault.
