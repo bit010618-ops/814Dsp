@@ -45,7 +45,7 @@ p{margin:5pt 0 8pt}
 .formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}
 .formula-wide{padding:8pt 10pt;font-size:9.5pt}
 .formula mjx-container[display="true"]{max-width:100%;margin:0 auto!important}
-.chapter-formula-summary{break-before:page}
+.chapter-formula-summary{break-before:auto}
 .chapter-formula-summary>p{color:#486d8b;margin:0 0 10pt}
 .chapter-formula-summary .formula{break-inside:avoid}
 .mapping,.table{border-collapse:collapse;width:100%;margin:10pt 0 12pt;break-inside:avoid}

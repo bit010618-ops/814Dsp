@@ -63,3 +63,12 @@ def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_en
     assert all(r"\[" in summary and r"\]" in summary for summary in summaries)
     assert "x(n)=x_a(nT)" in summaries[0]
     assert "H(z)" in summaries[1]
+
+
+def test_formula_summary_flows_into_preceding_page_when_space_remains(tmp_path: Path):
+    from full.tools.build_all_main_body import write_html
+
+    html = write_html(tmp_path / "dsp-main-body.html").read_text(encoding="utf-8")
+
+    assert ".chapter-formula-summary{break-before:page}" not in html
+    assert ".chapter-formula-summary{break-before:auto}" in html
