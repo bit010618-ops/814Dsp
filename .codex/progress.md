@@ -1084,3 +1084,9 @@
 - Added the source-checked 2025 periodic-pulse sampling question, retaining its \(T_s=10^{-2}\,\mathrm{s}\), \(\tau\ll T_s\), amplitude, period and pulse-width conditions. The original watermarked waveform was replaced by a clean coordinate plot.
 - The answer distinguishes the finite-width pulse-train \(\operatorname{Sa}\)-weighted replicas from ideal-impulse equal-amplitude replicas, and explicitly concludes that the full square wave is not bandlimited. All reader-visible fractions, including \(\omega_s=\frac{2\pi}{T_s}\), use standard LaTeX fractions.
 - Verification: all chapter-one supplemental and full-handout suites report `9 passed`; `git diff --check` is clean; both generated SVG documents parse successfully with complete axes, arrows and label regions. Visual browser screenshot QA remains pending because the local Edge renderer does not write screenshots.
+
+# 2026-08-22 Chapter-one question-ID coverage audit
+
+- Added an explicit manifest-coverage test instead of inferring completeness from the number of rendered training pages. It compares all 41 chapter-one IDs in `exam_training_manifest.json` with the priority component, existing supplemental component and the three newly added source-checked batches.
+- Result: expected 41, covered 41, missing none, extra none. The 2016, 2007 and 2025 whole questions close the prior gap.
+- Verification: the chapter-one coverage test plus all three supplemental batch suites and full-handout suite report `10 passed`; `git diff --check` is clean. The next training audit must use question IDs for chapters 4 and 6 as well.
