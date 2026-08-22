@@ -16,6 +16,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from full.tools import build_all_main_body
+from full.tools import build_appendices
 from full.tools import build_chapter_01_training_answers_mathjax_component as chapter_one_answers
 from full.tools import build_chapter_01_supplemental_mathjax_component as chapter_one_supplemental
 from full.tools import build_chapter_01_training_mathjax_component as chapter_one_training
@@ -221,16 +222,18 @@ def _exam_navigation_html() -> str:
     )
 
 
-def _document(body: str, training: str, navigation: str, answers: str) -> str:
+def _document(
+    body: str, training: str, appendices: str, navigation: str, answers: str
+) -> str:
     return (
         '<!doctype html><html lang="zh-CN"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<script>window.MathJax={tex:{packages:{"[+]": ["ams"]}}};</script>'
-        f'<script defer src="{MATHJAX}"></script>{STYLE}'
-        f'<body><main>{body}<section class="training-section">{training}</section>{navigation}'
+        f'<script defer src="{MATHJAX}"></script>{STYLE}{build_appendices.STYLE}'
+        f'<body><main>{body}<section class="training-section">{training}</section>{appendices}{navigation}'
         '<section class="answer-section"><div class="appendix-f">'
         "<h1>附录 F：华理 814 历年 DSP 真题整理详解</h1>"
-        f"{answers}</div></section></main></body></html>"
+        f"{answers}</div></section>{build_appendices.appendix_i_html()}</main></body></html>"
     )
 
 
@@ -247,7 +250,14 @@ def write_html(output: Path) -> Path:
         )
         answers = "\n".join(_answer_fragments(directory))
     output.write_text(
-        _document(body, training, _exam_navigation_html(), answers), encoding="utf-8"
+        _document(
+            body,
+            training,
+            build_appendices.pre_answer_appendices_html(body),
+            _exam_navigation_html(),
+            answers,
+        ),
+        encoding="utf-8",
     )
     return output
 

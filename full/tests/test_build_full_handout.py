@@ -50,6 +50,30 @@ def test_full_handout_places_exam_navigation_before_appendix_f_answers(tmp_path:
     assert "详解见 P.待回填" in html
 
 
+def test_full_handout_includes_the_confirmed_appendix_set(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+
+    titles = (
+        "附录 A：常用公式与变换对速查",
+        "附录 B：考研标准答题模板",
+        "附录 C：分章综合训练与详细解答",
+        "附录 D：考前高频公式与检查表",
+        "附录 E：华理 814 真题考点导航",
+        "附录 F：华理 814 历年 DSP 真题整理详解",
+        "附录 I：全书自测与考场检查",
+    )
+    positions = [html.index(title) for title in titles]
+
+    assert positions == sorted(positions)
+    assert html.count('class="appendix-formula-group"') == 8
+    assert html.count('class="appendix-c-question"') == 8
+    assert "系统性质判断模板" in html
+    assert "DFT 计算与循环卷积模板" in html
+    assert "最后两分钟检查表" in html
+
+
 def test_full_handout_includes_existing_chapter_one_and_two_supplemental_training_and_answers(
     tmp_path: Path,
 ):
