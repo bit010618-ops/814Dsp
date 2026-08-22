@@ -42,8 +42,8 @@ def test_full_handout_includes_existing_chapter_one_and_two_supplemental_trainin
     # 已有的章末训练不能只停留在独立组件中：它们必须进入最终全书装配。
     assert "2002 年真题：单频正弦信号采样" in html
     assert "2007 年真题：常数序列的 DTFT" in html
-    # 第三章新增十三批共 31 道补充题、第七章重点题 3 道、补充题 8 道与第八章 4 道均已进入全书装配。
-    assert html.count('class="exam-head"') == 144
+    # 第四章补齐 9 道源卷核对题后，所有新增训练和书末详解都必须进入全书装配。
+    assert html.count('class="exam-head"') == 153
     assert "2016 年真题：冲激采样与频谱复制" in html
     assert "第三章 补充真题（第一批）" in html
     assert "第三章 补充真题（第二批）" in html
@@ -59,6 +59,10 @@ def test_full_handout_includes_existing_chapter_one_and_two_supplemental_trainin
     assert "第三章 补充真题（第十二批）" in html
     assert "第三章 补充真题（第十三批）" in html
     assert "DFT 为 1024 点的重叠保留法" in html
+    assert "第四章 补充真题" in html
+    assert "一个 8000 点的序列与线性时不变滤波器线性卷积" in html
+    assert 'data-diagram="dit-eight-point-values-flow"' in html
+    assert ".fft-flow svg{display:block;width:100%;height:auto" in html
     assert "第七章 分章强化训练" in html
     assert "利用窗函数法设计数字带阻滤波器" in html
     assert "第七章 补充真题" in html

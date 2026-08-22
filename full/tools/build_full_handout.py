@@ -36,6 +36,7 @@ from full.tools import build_chapter_03_supplemental_training_batch_eleven_mathj
 from full.tools import build_chapter_03_supplemental_training_batch_twelve_mathjax_component as chapter_three_batch_twelve
 from full.tools import build_chapter_03_supplemental_training_batch_thirteen_mathjax_component as chapter_three_batch_thirteen
 from full.tools import build_chapter_04_training_mathjax_component as chapter_four_training
+from full.tools import build_chapter_04_supplemental_training_batch_one_mathjax_component as chapter_four_batch_one
 from full.tools import build_chapter_05_training_mathjax_component as chapter_five_training
 from full.tools import build_chapter_06_training_mathjax_component as chapter_six_training
 from full.tools import build_chapter_07_training_mathjax_component as chapter_seven_training
@@ -72,6 +73,7 @@ STYLE = build_all_main_body.STYLE + r"""
 .answer-step strong{color:#315d7c}
 .fft-flow{break-inside:avoid;margin:12pt 0}
 .fft-flow img{display:block;width:100%;height:auto;border:.5pt solid #d6dde2;background:#fff}
+.fft-flow svg{display:block;width:100%;height:auto;border:.5pt solid #d6dde2;background:#fff}
 .fft-flow figcaption{color:#52616b;text-align:center;margin-top:5pt;font-size:9.5pt}
 </style>
 """
@@ -116,6 +118,7 @@ def _training_fragments(directory: Path) -> list[str]:
         _component_main(chapter_three_batch_twelve.write_training_html, directory / "chapter-03-batch-twelve-training.html"),
         _component_main(chapter_three_batch_thirteen.write_training_html, directory / "chapter-03-batch-thirteen-training.html"),
         _component_main(chapter_four_training.write_training_html, directory / "chapter-04-training.html"),
+        _component_main(chapter_four_batch_one.write_training_html, directory / "chapter-04-batch-one-training.html"),
         _component_main(chapter_five_training.write_training_html, directory / "chapter-05-training.html"),
         _component_main(chapter_six_training.write_training_html, directory / "chapter-06-training.html"),
         _component_main(chapter_seven_training.write_training_html, directory / "chapter-07-training.html"),
@@ -155,6 +158,7 @@ def _answer_fragments(directory: Path) -> list[str]:
         _component_main(chapter_three_batch_twelve.write_answers_html, directory / "chapter-03-batch-twelve-answers.html"),
         _component_main(chapter_three_batch_thirteen.write_answers_html, directory / "chapter-03-batch-thirteen-answers.html"),
         _component_main(chapter_four_training.write_answers_html, directory / "chapter-04-answers.html"),
+        _component_main(chapter_four_batch_one.write_answers_html, directory / "chapter-04-batch-one-answers.html"),
         _component_main(chapter_five_training.write_answers_html, directory / "chapter-05-answers.html"),
         _component_main(chapter_six_training.write_answers_html, directory / "chapter-06-answers.html"),
         _component_main(chapter_seven_training.write_answers_html, directory / "chapter-07-answers.html"),
