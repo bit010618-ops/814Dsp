@@ -32,6 +32,24 @@ def test_full_handout_uses_only_pending_page_references(tmp_path: Path):
     assert "详解见 P.18" not in html
 
 
+def test_full_handout_places_exam_navigation_before_appendix_f_answers(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+
+    training = html.index('<section class="training-section">')
+    navigation = html.index('<section class="appendix appendix-e">')
+    answers = html.index('<section class="answer-section">')
+
+    assert training < navigation < answers
+    assert "附录 E：华理 814 真题考点导航" in html
+    assert '<div class="appendix-f">' in html
+    assert "附录 F：华理 814 历年 DSP 真题整理详解" in html
+    assert html.count('data-exam-navigation="true"') == 156
+    assert "第八章" in html
+    assert "详解见 P.待回填" in html
+
+
 def test_full_handout_includes_existing_chapter_one_and_two_supplemental_training_and_answers(
     tmp_path: Path,
 ):

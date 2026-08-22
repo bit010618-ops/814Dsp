@@ -1,6 +1,8 @@
 """Assemble the completed eight-chapter body with reusable training and answers."""
 from __future__ import annotations
 
+import html
+import json
 import re
 import sys
 import tempfile
@@ -9,6 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+EXAM_TRAINING_MANIFEST = ROOT / "full" / "source" / "exam_training_manifest.json"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -69,6 +72,13 @@ STYLE = build_all_main_body.STYLE + r"""
 .answer-section{break-before:page}
 .answer-section h1{break-before:page}
 .answer-section h1:first-child{break-before:auto}
+.appendix{break-before:page}
+.appendix h1{break-before:auto}
+.appendix h2{break-before:auto;margin-top:16pt}
+.appendix-e .table{border-collapse:collapse;width:100%;margin:8pt 0 14pt;font-size:9.5pt}
+.appendix-e .table th,.appendix-e .table td{border:.45pt solid #b9c6cf;padding:5pt 6pt;text-align:left;vertical-align:top}
+.appendix-e .table th{background:#f4f7f8;color:#315d7c;font-weight:600}
+.appendix-e .table .page-ref{white-space:nowrap}
 .answer-step{break-inside:avoid;margin:8pt 0}
 .answer-step strong{color:#315d7c}
 .fft-flow{break-inside:avoid;margin:12pt 0}
@@ -175,14 +185,52 @@ def _normalize_answer_refs(fragment: str) -> str:
     return re.sub(r"详解见 P\.(?:\d+|____)", "详解见 P.____", fragment)
 
 
-def _document(body: str, training: str, answers: str) -> str:
+def _exam_navigation_html() -> str:
+    """Render the audited question manifest as the paper-book lookup appendix."""
+    manifest = json.loads(EXAM_TRAINING_MANIFEST.read_text(encoding="utf-8"))
+    chapter_sections: list[str] = []
+    for chapter in manifest["chapters"]:
+        chapter_rows: list[str] = []
+        for bucket, kind in (
+            ("priority_questions", "重点精练"),
+            ("supplemental_questions", "补充真题"),
+        ):
+            for question in chapter[bucket]:
+                locator = html.escape(question["source_locator"])
+                chapter_rows.append(
+                    '<tr data-exam-navigation="true">'
+                    f'<td>{question["year"]} 年</td><td>{kind}</td><td>{locator}</td>'
+                    '<td class="page-ref">详解见 P.待回填</td></tr>'
+                )
+        if not chapter_rows:
+            continue
+        number = chapter["chapter"]
+        chapter_sections.append(
+            f"<h2>第{number}章</h2>"
+            "<table class=\"table\"><thead><tr>"
+            "<th>年份</th><th>训练位置</th><th>题目</th><th>详解</th>"
+            "</tr></thead><tbody>"
+            f"{''.join(chapter_rows)}</tbody></table>"
+        )
+    if not chapter_sections:
+        raise ValueError("exam training manifest contains no navigation entries")
+    return (
+        '<section class="appendix appendix-e"><h1>附录 E：华理 814 真题考点导航</h1>'
+        "<p>按章节、年份和训练位置检索；全部页码将在全书最终分页后统一回填。</p>"
+        f"{''.join(chapter_sections)}</section>"
+    )
+
+
+def _document(body: str, training: str, navigation: str, answers: str) -> str:
     return (
         '<!doctype html><html lang="zh-CN"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<script>window.MathJax={tex:{packages:{"[+]": ["ams"]}}};</script>'
         f'<script defer src="{MATHJAX}"></script>{STYLE}'
-        f'<body><main>{body}<section class="training-section">{training}</section>'
-        f'<section class="answer-section">{answers}</section></main></body></html>'
+        f'<body><main>{body}<section class="training-section">{training}</section>{navigation}'
+        '<section class="answer-section"><div class="appendix-f">'
+        "<h1>附录 F：华理 814 历年 DSP 真题整理详解</h1>"
+        f"{answers}</div></section></main></body></html>"
     )
 
 
@@ -198,7 +246,9 @@ def write_html(output: Path) -> Path:
             for fragment in _training_fragments(directory)
         )
         answers = "\n".join(_answer_fragments(directory))
-    output.write_text(_document(body, training, answers), encoding="utf-8")
+    output.write_text(
+        _document(body, training, _exam_navigation_html(), answers), encoding="utf-8"
+    )
     return output
 
 

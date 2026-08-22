@@ -1,5 +1,7 @@
 # 当前进度：全文数字信号处理讲义
 
+> 2026-08-22 附录 E/F 装配：全书装配器已从 `exam_training_manifest.json` 自动生成“附录 E：华理 814 真题考点导航”，按八章列出全部 156 个唯一审计单元的年份、训练位置、题目与待回填详解页码；原集中详解区已明确为“附录 F：华理 814 历年 DSP 真题整理详解”。导航在分章训练后、附录 F 前，避免与正文或题页混排。全书装配与正文公式总表回归 6 项通过；离线 HTML 中 CDN 引用为 0。最终 PDF 页码和附录 A/B/C/D/I 仍未完成。
+
 > 2026-08-22 本地 MathJax 实测：已将 MathJax 3.2.2 的官方 ES5 发行包置于 `full/vendor/mathjax/`，公式脚本改为本地 `file:` URI；Node 直接渲染 `\delta(n)=\begin{cases}1,&n=0\\0,&n\ne0\end{cases}` 返回正式 `mjx-container` 数学结构，未保留 `\begin{cases}` 源码。离线公式渲染链已闭环；浏览器 PDF 导出仍是独立的 GPU 进程故障，尚未据此宣称解决。
 
 > 2026-08-21 第七章重点训练提交：`0251bee`（Add chapter seven FIR training）已推送至 `origin/main`；仅含三道重点 FIR 训练及详解、全书装配接入、回归测试和任务记录。
