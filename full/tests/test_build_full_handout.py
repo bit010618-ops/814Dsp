@@ -43,7 +43,7 @@ def test_full_handout_includes_existing_chapter_one_and_two_supplemental_trainin
     assert "2002 年真题：单频正弦信号采样" in html
     assert "2007 年真题：常数序列的 DTFT" in html
     # 第三章新增十三批共 31 道补充题、第七章重点题 3 道、补充题 8 道与第八章 4 道均已进入全书装配。
-    assert html.count('class="exam-head"') == 142
+    assert html.count('class="exam-head"') == 143
     assert "2016 年真题：冲激采样与频谱复制" in html
     assert "第三章 补充真题（第一批）" in html
     assert "第三章 补充真题（第二批）" in html

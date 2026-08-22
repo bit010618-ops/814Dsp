@@ -1072,3 +1072,9 @@
 - Added the source-checked 2016 impulse-sampling question and its full answer: sampling-period derivation, sampled \(\operatorname{Sa}(2t)\) waveform, and non-overlapping periodic spectrum replicas.
 - The question preserves the original “麦奎斯特频率” wording. The answer uses intact MathJax formulas and separate, data-driven SVG figures for the time waveform and frequency replicas.
 - Verification: focused component and full-handout tests report `5 passed`; full assembly now has 142 rendered training-page heads. Headless Edge launched an isolated profile but failed to write its requested screenshot, so visual rendering of this new answer remains explicitly pending rather than claimed complete.
+
+# 2026-08-22 Chapter-one supplemental training batch two
+
+- Added the source-checked 2007 sampling-spectrum question. Its question system is reconstructed as a clean multiplier-plus-sequence-generator diagram, preserving the original \(x(t)\), \(T\), impulse train and both requested calculations without retaining source watermarks.
+- The detailed answer gives the triangular \(X(\omega)\), periodic \(X_p(\omega)\), the \(2\pi\)-periodic DTFT, and the requested values \(10^{-3}\) and \(2\). All conditional formulas use standard MathJax `cases` syntax.
+- Verification: chapter-one batch-one/batch-two and full-handout suites report `7 passed`; `git diff --check` is clean; both generated SVG documents parse successfully and contain their expected axes, arrows and MathJax label regions. Edge screenshot generation remains unavailable, so this is not counted as completed visual QA.
