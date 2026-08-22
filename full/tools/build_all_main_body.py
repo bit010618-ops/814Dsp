@@ -180,6 +180,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "离散傅里叶反变换定义（用于由离散频谱重建时域序列）"
     if "W_N" in compact and "=" in compact:
         return "DFT 旋转因子关系（用于统一表示 DFT 中的复指数基函数）"
+    if "\\{" in compact and ("x_" in compact or "x(n)" in compact):
+        return "离散序列的数列表达（用于列出各离散时刻的样值）"
     if "\\delta" in compact and "\\begin{cases}" in compact:
         return "单位脉冲序列的定义（用于表示仅在指定时刻取非零值的离散序列）"
     if "\\omega=2\\tan^{-1}" in compact:
@@ -198,6 +200,12 @@ def _formula_name(formula: str, heading: str) -> str:
         return "离散卷积和（用于由输入和单位脉冲响应计算输出序列）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
+    topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
+    topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)
+    topic = re.sub(r"^\d{4}\s*年真题\s*[：:]\s*", "", topic)
+    topic = topic.replace("（续）", "").replace("(续)", "").strip(" ：:")
+    if topic and topic not in {"真题整理详解", "本章公式总表", "例题", "解", "反例"}:
+        return f"{topic}的关系式（用于说明该性质中各变量的对应关系）"
     return "数学等式关系（用于把已知量代入并求得目标量）"
 
 

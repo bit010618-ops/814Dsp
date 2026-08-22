@@ -1179,3 +1179,8 @@
 - Removed the remaining fallback that turned a heading such as “第三章 傅里叶变换” into “……中的推导公式”. Formula labels now classify common transformation structures directly (continuous-/discrete-time Fourier transform, z transform and Laplace transform), and the final fallback is structural rather than chapter-based.
 - Added a red-green regression asserting that the Fourier integral is named “连续时间傅里叶变换定义” and states its time-to-frequency purpose. Relevant formula/export suites: `18 passed`.
 - Rebuilt `full/outputs/dsp_full_handout.html`; scan result: 1,208 formula labels, zero occurrences of “核心关系”“中的推导公式”“第 X 章” or “某年真题的计算关系”. Final static MathJax/PDF rebuild remains coupled to page-reference backfill.
+
+# 2026-08-22 Formula labels use semantic topics when needed
+
+- Further reduced generic “数学等式关系” labels by using the current semantic knowledge-point title after removing chapter/section numbering; for example, an otherwise unclassified DFT formula is now “DFT 的基本性质的关系式（用于说明该性质中各变量的对应关系）”.
+- Added red-green coverage for both a listed discrete sequence and a numbered section heading. After full-HTML rebuild, 1,208 labels contain zero chapter-number labels and zero “中的推导公式”; only 35 context-free mathematical equalities retain the structural fallback. Relevant regression suites: `20 passed`.
