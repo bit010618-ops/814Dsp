@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
@@ -47,3 +48,18 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert 'data-first-sample-clearance=' not in html
     assert 'data-origin-at-zero="true"' in html
     assert 'data-origin-label="true"' in html
+
+
+def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_end(tmp_path: Path):
+    from full.tools.build_all_main_body import write_html
+
+    html = write_html(tmp_path / "dsp-main-body.html").read_text(encoding="utf-8")
+
+    summaries = re.findall(
+        r'<section class="chapter-formula-summary">(.*?)</section>', html, flags=re.DOTALL
+    )
+    assert len(summaries) == 8
+    assert html.count("本章公式总表") == 8
+    assert all(r"\[" in summary and r"\]" in summary for summary in summaries)
+    assert "x(n)=x_a(nT)" in summaries[0]
+    assert "H(z)" in summaries[1]

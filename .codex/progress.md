@@ -1104,6 +1104,8 @@
 - Regenerated the eight-chapter main-body HTML from the shared component. Static audit confirms all generated shared stem figures use the data-origin-at-zero marker and none retain the old first-sample-clearance marker.
 - Added the hard delivery requirement that every chapter end with a complete chapter formula summary, rendered as standard MathJax / LaTeX formulas before that chapter’s training pages.
 - Verification: shared-stem and full-main-body assembly suites report 6 passed; the separate chapter-seven priority-training suite reports 2 passed after converting its inline formulas to MathJax delimiters. py_compile passes for the modified SVG and chapter-seven component modules. Browser PDF visual inspection remains pending because of the known local headless GPU backend failure.
+- Implemented the chapter formula-summary generator in the eight-chapter body builder. It strips SVG-only labels, collects display and inline MathJax formulas from each chapter, de-duplicates exact repeats, and inserts a forced-page-break formula summary before the next chapter or the training section.
+- Verification after integration: all relevant assembly, shared-plot and chapter-seven MathJax suites report 12 passed. Regenerated main-body and full-handout HTML each contain exactly 8 formula-summary sections; the full-handout static audit reports zero old first-sample-clearance markers.
 
 # 2026-08-22 Chapter-four supplemental training completion
 

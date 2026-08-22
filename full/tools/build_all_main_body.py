@@ -45,6 +45,9 @@ p{margin:5pt 0 8pt}
 .formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}
 .formula-wide{padding:8pt 10pt;font-size:9.5pt}
 .formula mjx-container[display="true"]{max-width:100%;margin:0 auto!important}
+.chapter-formula-summary{break-before:page}
+.chapter-formula-summary>p{color:#486d8b;margin:0 0 10pt}
+.chapter-formula-summary .formula{break-inside:avoid}
 .mapping,.table{border-collapse:collapse;width:100%;margin:10pt 0 12pt;break-inside:avoid}
 .mapping th,.mapping td,.table th,.table td{border:.45pt solid #b9c6cf;padding:6pt 7pt;text-align:left;vertical-align:top}
 .mapping th,.table th{color:#315d7c;font-weight:600;background:#f4f7f8}
@@ -129,6 +132,35 @@ def _with_chapter_title(title: str, body: str) -> str:
     return f"<h1>{title}</h1>{_demote_headings(body)}"
 
 
+def _formula_summary(body: str) -> str:
+    """Collect each chapter's reader-visible formulas for its closing reference."""
+    # SVG labels are figure annotations, not standalone chapter formulas.  The
+    # surrounding text and formula blocks remain part of the summary source.
+    text = re.sub(r"<svg\b.*?</svg>", "", body, flags=re.DOTALL)
+    candidates = [
+        *re.findall(r"\\\[(.*?)\\\]", text, flags=re.DOTALL),
+        *re.findall(r"\\\((.*?)\\\)", text, flags=re.DOTALL),
+    ]
+    formulas: list[str] = []
+    seen: set[str] = set()
+    for formula in candidates:
+        normalized = re.sub(r"\s+", " ", formula).strip()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        formulas.append(normalized)
+    if not formulas:
+        raise ValueError("chapter body contains no extractable formulas")
+    formula_blocks = "\n".join(
+        f'<div class="formula">\\[\n{formula}\n\\]</div>' for formula in formulas
+    )
+    return (
+        '<section class="chapter-formula-summary"><h2>本章公式总表</h2>'
+        '<p>以下汇总本章正文中出现的公式；重复公式仅列一次。</p>'
+        f"{formula_blocks}</section>"
+    )
+
+
 def _chapters() -> list[str]:
     with tempfile.TemporaryDirectory(prefix="dsp-all-main-body-") as directory:
         temporary = Path(directory)
@@ -160,7 +192,7 @@ def _chapters() -> list[str]:
     raw[0] = _keep_first_heading_as_chapter_title(raw[0])
     raw[2] = _keep_first_heading_as_chapter_title(raw[2])
     raw[3] = _with_chapter_title("第四章 快速傅里叶变换", raw[3])
-    return raw
+    return [f"{body}{_formula_summary(body)}" for body in raw]
 
 
 def write_html(output: Path) -> Path:
