@@ -1173,3 +1173,9 @@
 - Replaced generic lead text such as “第 X 章核心关系”“某年真题的计算关系”“求和计算关系” with formula-specific Chinese names and purposes. Examples include the Nyquist sampling condition, the discrete-time frequency-shift relation, the ideal low-pass reconstruction response, and the frequency-domain energy relation.
 - Hardened the MathJax source pipeline to decode HTML comparison entities inside LaTeX and removed a control-character source error. The static source audit is zero MathJax errors and zero form-feed characters, preventing the former black substitution blocks.
 - Added TDD coverage for formula name-plus-purpose labels and for no duplicate label in chapter formula tables. Current relevant regression suites: `16 passed`. The regenerated full PDF is under final representative-page visual review; page-reference backfill and all-book pagination remain open.
+
+# 2026-08-22 Formula labels name the formula, not its chapter
+
+- Removed the remaining fallback that turned a heading such as “第三章 傅里叶变换” into “……中的推导公式”. Formula labels now classify common transformation structures directly (continuous-/discrete-time Fourier transform, z transform and Laplace transform), and the final fallback is structural rather than chapter-based.
+- Added a red-green regression asserting that the Fourier integral is named “连续时间傅里叶变换定义” and states its time-to-frequency purpose. Relevant formula/export suites: `18 passed`.
+- Rebuilt `full/outputs/dsp_full_handout.html`; scan result: 1,208 formula labels, zero occurrences of “核心关系”“中的推导公式”“第 X 章” or “某年真题的计算关系”. Final static MathJax/PDF rebuild remains coupled to page-reference backfill.

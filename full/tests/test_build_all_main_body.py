@@ -103,3 +103,13 @@ def test_formula_summary_flows_into_preceding_page_when_space_remains(tmp_path: 
 
     assert ".chapter-formula-summary{break-before:page}" not in html
     assert ".chapter-formula-summary{break-before:auto}" in html
+
+
+def test_formula_names_describe_the_formula_instead_of_its_chapter():
+    from full.tools.build_all_main_body import _formula_name
+
+    label = _formula_name(r"X(\omega)=\int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,\mathrm{d}t", "第三章 傅里叶变换")
+
+    assert label == "连续时间傅里叶变换定义（用于把时域连续信号变换到频域）"
+    assert "第三章" not in label
+    assert "核心关系" not in label

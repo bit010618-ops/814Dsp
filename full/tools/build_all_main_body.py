@@ -184,19 +184,21 @@ def _formula_name(formula: str, heading: str) -> str:
         return "单位脉冲序列的定义（用于表示仅在指定时刻取非零值的离散序列）"
     if "\\omega=2\\tan^{-1}" in compact:
         return "双线性变换的频率映射关系（用于把模拟角频率映射到数字角频率）"
+    if "\\int" in compact and "e^{-j\\omega" in compact:
+        return "连续时间傅里叶变换定义（用于把时域连续信号变换到频域）"
+    if "\\sum" in compact and "e^{-j\\omega" in compact:
+        return "离散时间傅里叶变换定义（用于把离散序列变换到连续频率域）"
+    if "\\sum" in compact and "z^{-" in compact:
+        return "z 变换定义（用于把离散序列表示为 z 域函数）"
+    if "\\mathcal{L}" in compact or ("\\int" in compact and "e^{-st}" in compact):
+        return "拉普拉斯变换定义（用于把连续时间信号表示为 s 域函数）"
     if "\\int" in compact:
-        return "积分表达式（用于由连续变量的累积关系求得结果）"
+        return "连续时间积分关系（用于按连续变量累计各部分贡献）"
     if "y(n)" in compact and "\\sum" in compact:
         return "离散卷积和（用于由输入和单位脉冲响应计算输出序列）"
     if "\\sum" in compact:
-        return "级数求和式（用于把各离散分量累加为所需结果）"
-    topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
-    topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)
-    topic = re.sub(r"^\d{4}\s*年真题\s*[：:]\s*", "", topic)
-    topic = topic.replace("（续）", "").replace("(续)", "").strip(" ：:")
-    if not topic or topic in {"真题整理详解", "本章公式总表"}:
-        topic = "本题"
-    return f"{topic}中的推导公式（用于将已知条件整理为可代入的结果）"
+        return "离散时间求和关系（用于把各离散分量累加为所需结果）"
+    return "数学等式关系（用于把已知量代入并求得目标量）"
 
 
 def _formula_summary(body: str) -> str:
