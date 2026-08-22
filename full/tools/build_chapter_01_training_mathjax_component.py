@@ -40,12 +40,21 @@ def training_stem_svg(values: dict[int, float], label: str) -> str:
     left, step, base, scale = 95, 105, 165, 48
     x = lambda n: left + (n - lo) * step
     stems = "\n".join(f'<path class="stem" d="M{x(n)} {base}V{base-v*scale}"/><circle class="dot" cx="{x(n)}" cy="{base-v*scale}" r="4"/>' for n, v in ordered)
-    ticks = "\n".join(f'<path class="tick" d="M{x(n)} {base-5}V{base+5}"/><text class="ticktext" x="{x(n)}" y="{base+26}" text-anchor="middle">{n}</text>' for n in range(lo, hi + 1))
+    ticks = "\n".join(
+        f'<path class="tick" data-index="{n}" d="M{x(n)} {base-5}V{base+5}"/>'
+        f'<text class="ticktext" data-index="{n}" x="{x(n)}" y="{base+26}" text-anchor="middle">{n}</text>'
+        for n in range(lo, hi + 1)
+        if n != 0
+    )
+    origin_label = (
+        f'<text class="ticktext" data-origin-label="true" x="{x(0) + 10}" '
+        f'y="{base + 26}" text-anchor="start">0</text>'
+    )
     return f"""<!-- training_stem_svg: samples derived from supplied values -->
 <svg class="signal-svg" viewBox="0 0 860 270" role="img" aria-label="{label} 离散序列">
  <defs><marker id="stemarrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#174b73"/></marker></defs>
- <path class="axis" d="M48 {base}H814" marker-end="url(#stemarrow)"/><path class="axis" d="M{x(0)} 230V38" marker-end="url(#stemarrow)"/>
- {ticks}{stems}<g class="math"><foreignObject x="{x(0)+8}" y="24" width="70" height="34"><div>\\({label}\\)</div></foreignObject><foreignObject x="814" y="{base-19}" width="28" height="30"><div>\\(n\\)</div></foreignObject></g>
+ <path class="axis" d="M48 {base}H814" marker-end="url(#stemarrow)"/><path class="axis" data-origin-at-zero="true" d="M{x(0)} 230V38" marker-end="url(#stemarrow)"/>
+ {ticks}{stems}{origin_label}<g class="math"><foreignObject x="{x(0)+8}" y="24" width="70" height="34"><div>\\({label}\\)</div></foreignObject><foreignObject x="814" y="{base-19}" width="28" height="30"><div>\\(n\\)</div></foreignObject></g>
 </svg>"""
 
 

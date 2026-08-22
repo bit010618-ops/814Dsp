@@ -20,6 +20,9 @@ def test_training_component_uses_mathjax_and_standard_svg_diagrams(tmp_path: Pat
     assert r"\(z^{-1}\)" in html
     assert "z⁻¹" not in html
     assert "training_stem_svg" in html
+    assert html.count('data-origin-label="true"') == 2
+    assert 'data-origin-at-zero="true"' in html
+    assert 'data-index="0" class="ticktext"' not in html
     assert "<svg" in html
     assert "drawImage" not in html
     assert "<image" not in html

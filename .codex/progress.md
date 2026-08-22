@@ -1107,6 +1107,7 @@
 - Implemented the chapter formula-summary generator in the eight-chapter body builder. It strips SVG-only labels, collects display and inline MathJax formulas from each chapter, de-duplicates exact repeats, and inserts a forced-page-break formula summary before the next chapter or the training section.
 - Verification after integration: all relevant assembly, shared-plot and chapter-seven MathJax suites report 12 passed. Regenerated main-body and full-handout HTML each contain exactly 8 formula-summary sections; the full-handout static audit reports zero old first-sample-clearance markers.
 - Follow-up global audit: regenerated outputs contain 23 shared stem-origin markers and 23 matching fourth-quadrant origin labels in both the main body and full handout; both outputs contain zero old clearance markers and zero shifted-axis logic markers.
+- Also corrected the independent chapter-one 2019 convolution training plot to omit the ordinary zero tick and label the actual (n=0) axis once in the fourth quadrant. The chapter-one supplemental 2016/2021 convolution plot implementations use the same origin treatment in the current worktree; their source file already contains unrelated uncommitted task work and is deliberately left unstaged for a later isolated commit.
 
 # 2026-08-22 Chapter-four supplemental training completion
 
