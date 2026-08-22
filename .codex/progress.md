@@ -1054,3 +1054,9 @@
 
 - Added the source-checked 2007 targeted-frequency DFT question and its 512-point zero-padding solution.
 - The detailed answer gives the exact 16 Hz bin spacing and selects (X(50)) for 800 Hz.
+
+# 2026-08-22 Chapter-three supplemental training batch twelve
+
+- Added the source-checked 2024 four-point DFT question, preserving the original request for every \(X(k)\) value and for \(X_{\mathrm{ep}}(k)\).
+- The detailed answer writes \(x(n)=\{2,0,2,0\}\), derives \(X(k)=2+2(-1)^k\), lists all four DFT values, and computes the even part with \(X^*\left((-k)\right)_4\); reader-facing circular indices remain in the required outer-period-subscript form.
+- Verification: the targeted chapter 1/3/7/8 and full-assembly regression suite reports `70 passed`. The assembled handout has 140 training question pages; static checks found no reader-facing `mod N`, `\bmod N`, `\operatorname{mod}`, or `\mathrm{mod}`. PDF visual QA remains deferred because of the known local headless GPU backend fault.
