@@ -1136,3 +1136,8 @@
 - The 153 remaining `详解见 P.____` instances are intentional final-pagination placeholders. They cannot be replaced safely until the exact final PDF page map exists.
 - Isolated the current browser-export failure from the document content: Chromium fails even on `about:blank` with a fresh workspace-local profile, both with GPU disabled and with the SwiftShader software backend. In every case the GPU child exits with `-1073741790` while opening `GPUPersistentCache/DawnGraphiteCache`; the renderer never reaches HTML or MathJax. This is now treated as an external rendering-environment failure, not a page-layout defect; no further flag-by-flag retries will be used.
 - Verification: body, full-handout, shared-stem and late-training-manifest suites report `11 passed`; all three core builders pass `py_compile`. Final PDF page-reference backfill and visual QA remain pending a separate, stable PDF export architecture.
+
+# 2026-08-22 Offline mathematics-rendering audit
+
+- The assembled handout currently loads MathJax only from `https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js`. No local `tex-mml-chtml.js` or equivalent MathJax distribution is present in the bundled Node runtime or either installed browser profile.
+- Therefore an offline, filtered, or failed CDN load would leave the standard MathJax delimiters and LaTeX source visible instead of rendered mathematics, matching the previously reported raw-formula symptom. A final export solution must vendor a verified local MathJax distribution before page-map generation; this is coupled to the pending non-Chromium PDF-export architecture and is not safe to simulate with ordinary HTML text.
