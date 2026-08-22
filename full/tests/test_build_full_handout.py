@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 
 def test_full_handout_orders_body_training_then_answers(tmp_path: Path):
@@ -46,6 +47,9 @@ def test_full_handout_places_exam_navigation_before_appendix_f_answers(tmp_path:
     assert '<div class="appendix-f">' in html
     assert "附录 F：华理 814 历年 DSP 真题整理详解" in html
     assert html.count('data-exam-navigation="true"') == 156
+    navigation_ids = re.findall(r'data-exam-id="([^"]+)"', html)
+    assert len(navigation_ids) == 156
+    assert len(set(navigation_ids)) == 156
     assert "第八章" in html
     assert "详解见 P.待回填" in html
 

@@ -198,8 +198,9 @@ def _exam_navigation_html() -> str:
         ):
             for question in chapter[bucket]:
                 locator = html.escape(question["source_locator"])
+                exam_id = html.escape(question["id"], quote=True)
                 chapter_rows.append(
-                    '<tr data-exam-navigation="true">'
+                    f'<tr data-exam-navigation="true" data-exam-id="{exam_id}">'
                     f'<td>{question["year"]} 年</td><td>{kind}</td><td>{locator}</td>'
                     '<td class="page-ref">详解见 P.待回填</td></tr>'
                 )
