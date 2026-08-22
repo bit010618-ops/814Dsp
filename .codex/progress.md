@@ -1090,3 +1090,9 @@
 - Added an explicit manifest-coverage test instead of inferring completeness from the number of rendered training pages. It compares all 41 chapter-one IDs in `exam_training_manifest.json` with the priority component, existing supplemental component and the three newly added source-checked batches.
 - Result: expected 41, covered 41, missing none, extra none. The 2016, 2007 and 2025 whole questions close the prior gap.
 - Verification: the chapter-one coverage test plus all three supplemental batch suites and full-handout suite report `10 passed`; `git diff --check` is clean. The next training audit must use question IDs for chapters 4 and 6 as well.
+
+# 2026-08-22 Chapter-four and chapter-six question-ID audit
+
+- Audited the manifest IDs against the rendered chapter components rather than counting `exam-head` elements. Chapter six is complete: its 13 manifest IDs are represented by 11 training heads because the two 2005 subparts and the two 2006 subparts are correctly grouped by common original question.
+- Chapter four has 12 manifest IDs but currently covers only `2017-q六-p5`, `2022-q五-p3`, and `2004-q十一-whole`. The confirmed missing IDs are `2024-dsp-p5`, `2007-q十一-whole`, `2007-q十三-p2`, `2015-qintro-p5`, `2015-qintro-p6`, `2017-q六-p4`, `2020-qintro-p1`, `2020-qintro-p5`, and `2023-dsp-p5`.
+- Next action: add these nine chapter-four questions and detailed answers, using source-page verification for every original question text and required FFT flow figures.
