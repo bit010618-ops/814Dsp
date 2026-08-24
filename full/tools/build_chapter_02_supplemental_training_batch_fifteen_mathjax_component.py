@@ -33,9 +33,9 @@ def _system_svg() -> str:
 <g fill="#fff" stroke="#164e78" stroke-width="2.2"><rect x="115" y="43" width="155" height="70" rx="2"/><rect x="454" y="43" width="126" height="70" rx="2"/><rect x="650" y="43" width="108" height="70" rx="2"/><circle cx="364" cy="78" r="27"/></g>
 <g stroke="#164e78" stroke-width="2" marker-end="url(#arrow)"><path d="M192 151V115"/><path d="M364 151V108"/><path d="M704 151V115"/></g>
 <g fill="#1f2933" font-family="Microsoft YaHei, sans-serif" font-size="18" text-anchor="middle"><text x="192" y="73">理想 A/D</text><text x="192" y="98">转化器</text><text x="517" y="70">数字滤波器</text><text x="704" y="73">理想 D/A</text><text x="704" y="98">转化器</text></g>
-<g fill="#1f2933" font-family="Cambria Math, serif" font-size="21" text-anchor="middle"><text x="70" y="67">x(t)</text><text x="302" y="67">x[n]</text><text x="420" y="67">w[n]</text><text x="615" y="67">y[n]</text><text x="776" y="67">y(t)</text><text x="192" y="177">T</text><text x="364" y="177">(−1)ⁿ</text><text x="704" y="177">T</text></g>
+<g fill="#1f2933" font-family="Cambria Math, serif" font-size="21" text-anchor="middle"><text x="70" y="67">x(t)</text><text x="302" y="67">x[n]</text><text x="420" y="67">w[n]</text><text x="615" y="67">y[n]</text><text x="776" y="67">y(t)</text><text x="192" y="177">T</text><text x="704" y="177">T</text></g>
 <g stroke="#b56b2e" stroke-width="2.5"><path d="M351 65L377 91M377 65L351 91"/></g>
-''' + _math_label(461, 76, 112, 28, r'H(e^{j\omega})', 16) + r'''</svg><figcaption>2025 年第七题第 4 小题的处理结构：采样后先乘以 −1 的离散幂实现频移，再经数字滤波和理想 D/A 转换。</figcaption></figure>'''
+''' + _math_label(461, 76, 112, 28, r'H(e^{j\omega})', 16) + _math_label(328, 158, 72, 28, r'(-1)^n', 17) + r'''</svg><figcaption>2025 年第七题第 4 小题的处理结构：采样后先乘以 −1 的离散幂实现频移，再经数字滤波和理想 D/A 转换。</figcaption></figure>'''
 
 
 def _source_response_svg() -> str:

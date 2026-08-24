@@ -46,4 +46,6 @@ def test_batch_fifteen_draws_all_four_frequency_panels_with_separate_passbands()
 
     for role in ('sampled-spectrum', 'shifted-spectrum', 'filtered-spectrum', 'reconstructed-spectrum'):
         assert f'data-role="{role}"' in figure
-    assert r'H(e^{j\omega})' in component._system_svg()
+    system = component._system_svg()
+    assert r'H(e^{j\omega})' in system
+    assert r'\((-1)^n\)' in system
