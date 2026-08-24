@@ -1286,3 +1286,9 @@
 - The chapter-eight output retains separated \(\pi\), \(\omega\), spectrum-height and vertical-axis labels after the global exporter change; no source-formula text remains in the training question.
 - Verification: `pytest full/tests/test_build_chapter_08_training_mathjax_component.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch8-readable-labels-green` -> `6 passed`, plus visual inspection of regenerated offline-MathJax A4 pages.
 - Next action: audit the remaining seven queue items, then rebuild a new whole-book candidate PDF so all reviewed figure repairs are assessed in their actual assembled layout.
+
+# 2026-08-24 Test-environment note after figure-audit commit
+
+- Commit `948c136` contains the four verified queue-status updates and the readable-label adjustment for the chapter-eight source figure.
+- The broader selected suite produced `10 passed, 1 deselected, 1 failed`; the one failure was `test_2021_am_question_keeps_all_formulae_in_mathjax_after_typesetting`, before assertions, because local Edge headless exited with `2147483651`. This is the same host-level Edge launch condition seen in the feedback-diagram browser-DOM test, not a formula or SVG assertion failure.
+- The independent offline-MathJax pre-render plus WeasyPrint PDF export and visual inspection remain the valid artifact-level checks for these four figures while Edge headless is unavailable.
