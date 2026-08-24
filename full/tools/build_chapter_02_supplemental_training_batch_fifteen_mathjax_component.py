@@ -15,8 +15,15 @@ h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2
 h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}
 p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}
 .exam-page{break-before:page;min-height:230mm}.exam-head{display:flex;justify-content:space-between;align-items:baseline;color:#52616b;margin:0 0 10pt}
-figure{break-inside:avoid;margin:10pt auto;text-align:center}svg{width:min(100%,470pt);height:auto}figcaption{color:#315d7c;font-size:9.5pt;margin-top:3pt}
+figure{break-inside:avoid;margin:10pt auto;text-align:center}figure > svg:not(.mathjax-svg){width:min(100%,470pt);height:auto}figcaption{color:#315d7c;font-size:9.5pt;margin-top:3pt}
 </style>'''
+
+
+def _math_label(x: float, y: float, width: float, height: float, latex: str, size: int = 16) -> str:
+    return (f'<foreignObject x="{x:g}" y="{y:g}" width="{width:g}" height="{height:g}">'
+            '<div xmlns="http://www.w3.org/1999/xhtml" '
+            f'style="height:100%;display:flex;align-items:center;justify-content:center;font-size:{size}px">'
+            f'\\({latex}\\)</div></foreignObject>')
 
 
 def _system_svg() -> str:
@@ -25,17 +32,17 @@ def _system_svg() -> str:
 <g fill="none" stroke="#164e78" stroke-width="2.4" marker-end="url(#arrow)"><path d="M24 78H115"/><path d="M270 78H336"/><path d="M391 78H454"/><path d="M580 78H650"/><path d="M758 78H786"/></g>
 <g fill="#fff" stroke="#164e78" stroke-width="2.2"><rect x="115" y="43" width="155" height="70" rx="2"/><rect x="454" y="43" width="126" height="70" rx="2"/><rect x="650" y="43" width="108" height="70" rx="2"/><circle cx="364" cy="78" r="27"/></g>
 <g stroke="#164e78" stroke-width="2" marker-end="url(#arrow)"><path d="M192 151V115"/><path d="M364 151V108"/><path d="M704 151V115"/></g>
-<g fill="#1f2933" font-family="Microsoft YaHei, sans-serif" font-size="18" text-anchor="middle"><text x="192" y="73">理想 A/D</text><text x="192" y="98">转化器</text><text x="517" y="87">数字滤波器</text><text x="704" y="73">理想 D/A</text><text x="704" y="98">转化器</text></g>
-<g fill="#1f2933" font-family="Cambria Math, serif" font-size="21" text-anchor="middle"><text x="70" y="67">x(t)</text><text x="302" y="67">x[n]</text><text x="420" y="67">w[n]</text><text x="615" y="67">y[n]</text><text x="776" y="67">y(t)</text><text x="517" y="88">H(eʲω)</text><text x="192" y="177">T</text><text x="364" y="177">(−1)ⁿ</text><text x="704" y="177">T</text></g>
+<g fill="#1f2933" font-family="Microsoft YaHei, sans-serif" font-size="18" text-anchor="middle"><text x="192" y="73">理想 A/D</text><text x="192" y="98">转化器</text><text x="517" y="70">数字滤波器</text><text x="704" y="73">理想 D/A</text><text x="704" y="98">转化器</text></g>
+<g fill="#1f2933" font-family="Cambria Math, serif" font-size="21" text-anchor="middle"><text x="70" y="67">x(t)</text><text x="302" y="67">x[n]</text><text x="420" y="67">w[n]</text><text x="615" y="67">y[n]</text><text x="776" y="67">y(t)</text><text x="192" y="177">T</text><text x="364" y="177">(−1)ⁿ</text><text x="704" y="177">T</text></g>
 <g stroke="#b56b2e" stroke-width="2.5"><path d="M351 65L377 91M377 65L351 91"/></g>
-</svg><figcaption>2025 年第七题第 4 小题的处理结构：采样后先乘以 −1 的离散幂实现频移，再经数字滤波和理想 D/A 转换。</figcaption></figure>'''
+''' + _math_label(461, 76, 112, 28, r'H(e^{j\omega})', 16) + r'''</svg><figcaption>2025 年第七题第 4 小题的处理结构：采样后先乘以 −1 的离散幂实现频移，再经数字滤波和理想 D/A 转换。</figcaption></figure>'''
 
 
 def _source_response_svg() -> str:
     return r'''<figure><svg data-source-candidate-id="2025-q七-01" viewBox="0 0 760 230" role="img" aria-label="输入连续频谱与数字滤波器频率响应">
 <defs><marker id="axis" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#164e78"/></marker></defs>
-<g transform="translate(25 20)"><text x="155" y="18" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei" font-size="17">输入连续频谱</text><g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis)"><path d="M10 135H300"/><path d="M155 152V35"/></g><path d="M67 135V69H243V135" fill="none" stroke="#008f92" stroke-width="3"/><g fill="#1f2933" font-family="Cambria Math" font-size="17"><text x="148" y="31">X(jΩ)</text><text x="302" y="151">Ω</text><text x="57" y="157">−600π</text><text x="145" y="157">0</text><text x="219" y="157">600π</text><text x="163" y="66">1</text></g></g>
-<g transform="translate(410 20)"><text x="155" y="18" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei" font-size="17">数字滤波器频率响应</text><g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis)"><path d="M10 135H300"/><path d="M155 152V35"/></g><path d="M68 135V82H112V135M198 135V82H242V135" fill="none" stroke="#008f92" stroke-width="3"/><g fill="#1f2933" font-family="Cambria Math" font-size="17"><text x="148" y="31">H(eʲω)</text><text x="302" y="151">ω</text><text x="55" y="157">−π</text><text x="93" y="157">−0.5π</text><text x="145" y="157">0</text><text x="196" y="157">0.5π</text><text x="239" y="157">π</text><text x="163" y="79">1</text></g></g>
+<g transform="translate(25 20)"><text x="155" y="16" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei" font-size="17">输入连续频谱</text><g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis)"><path d="M10 135H300"/><path d="M155 152V35"/></g><path d="M67 135V69H243V135" fill="none" stroke="#008f92" stroke-width="3"/><g fill="#1f2933" font-family="Cambria Math" font-size="17"><text x="168" y="51">X(jΩ)</text><text x="302" y="151">Ω</text><text x="57" y="157">−600π</text><text x="145" y="157">0</text><text x="219" y="157">600π</text><text x="163" y="66">1</text></g></g>
+<g transform="translate(410 20)"><text x="155" y="16" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei" font-size="17">数字滤波器频率响应</text><g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis)"><path d="M10 135H300"/><path d="M155 152V35"/></g><path d="M68 135V82H112V135M198 135V82H242V135" fill="none" stroke="#008f92" stroke-width="3"/><g fill="#1f2933" font-family="Cambria Math" font-size="17"><text x="168" y="51">H(eʲω)</text><text x="302" y="151">ω</text><text x="55" y="157">−π</text><text x="93" y="157">−0.5π</text><text x="145" y="157">0</text><text x="196" y="157">0.5π</text><text x="239" y="157">π</text><text x="163" y="79">1</text></g></g>
 </svg><figcaption>题图中的输入连续频谱及数字滤波器的幅频响应。</figcaption></figure>'''
 
 
@@ -44,8 +51,9 @@ def _answer_spectra_svg() -> str:
 <defs><marker id="axis2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#164e78"/></marker></defs>
 <g font-family="Microsoft YaHei" fill="#315d7c" font-size="17"><text x="190" y="22" text-anchor="middle">x[n] 的频谱</text><text x="570" y="22" text-anchor="middle">w[n] 的频谱</text><text x="190" y="222" text-anchor="middle">y[n] 的频谱</text><text x="570" y="222" text-anchor="middle">y(t) 的频谱</text></g>
 <g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis2)"><path d="M35 145H335"/><path d="M185 162V50"/><path d="M425 145H725"/><path d="M575 162V50"/><path d="M35 345H335"/><path d="M185 362V250"/><path d="M425 345H725"/><path d="M575 362V250"/></g>
-<g fill="none" stroke="#008f92" stroke-width="3"><path d="M95 145V85H275V145"/><path d="M425 145V85H485V145M665 145V85H725"/><path d="M425 345V285H485V345M665 345V285H725"/><path d="M470 345V285H505V345M645 345V285H680V345"/></g>
-<g fill="#1f2933" font-family="Cambria Math" font-size="16"><text x="338" y="160">ω</text><text x="728" y="160">ω</text><text x="338" y="360">ω</text><text x="728" y="360">Ω</text><text x="88" y="164">−0.6π</text><text x="178" y="164">0</text><text x="260" y="164">0.6π</text><text x="422" y="164">−π</text><text x="470" y="164">−0.4π</text><text x="650" y="164">0.4π</text><text x="708" y="164">π</text><text x="422" y="364">−π</text><text x="470" y="364">−0.5π</text><text x="650" y="364">0.5π</text><text x="708" y="364">π</text><text x="448" y="364">−1000π</text><text x="505" y="364">−500π</text><text x="645" y="364">500π</text><text x="686" y="364">1000π</text></g>
+<g fill="none" stroke="#008f92" stroke-width="3"><path data-role="sampled-spectrum" d="M95 145V85H275V145"/><path data-role="shifted-spectrum" d="M425 145V85H515V145M635 145V85H725V145"/><path data-role="filtered-spectrum" d="M35 345V285H110V345M260 345V285H335V345"/><path data-role="reconstructed-spectrum" d="M445 345V285H500V345M650 345V285H705V345"/></g>
+<g fill="#1f2933" font-family="Cambria Math" font-size="15"><text x="338" y="160">ω</text><text x="728" y="160">ω</text><text x="338" y="360">ω</text><text x="728" y="360">Ω</text><text x="88" y="164">−0.6π</text><text x="178" y="164">0</text><text x="260" y="164">0.6π</text><text x="422" y="164">−π</text><text x="495" y="164">−0.4π</text><text x="620" y="164">0.4π</text><text x="718" y="164">π</text><text x="28" y="364">−π</text><text x="88" y="364">−0.5π</text><text x="250" y="364">0.5π</text><text x="328" y="364">π</text></g>
+<g fill="#1f2933" font-family="Cambria Math" font-size="12"><text x="427" y="364">−1000π</text><text x="485" y="364">−500π</text><text x="640" y="364">500π</text><text x="694" y="364">1000π</text></g>
 </svg><figcaption>四个频谱均按同一幅度比例绘制；在各频带的内部幅度为 1。</figcaption></figure>'''
 
 

@@ -30,3 +30,20 @@ def test_batch_fifteen_is_included_in_the_reusable_chapter_two_collection():
     from full.tools import build_chapter_02_supplemental_training_batch_fifteen_mathjax_component as component
 
     assert component in handout.COMPONENTS
+
+
+def test_batch_fifteen_does_not_resize_inline_mathjax_svg_as_a_diagram():
+    from full.tools import build_chapter_02_supplemental_training_batch_fifteen_mathjax_component as component
+
+    assert 'figure > svg:not(.mathjax-svg)' in component.STYLE
+    assert 'svg{width:min(100%,470pt)' not in component.STYLE
+
+
+def test_batch_fifteen_draws_all_four_frequency_panels_with_separate_passbands():
+    from full.tools import build_chapter_02_supplemental_training_batch_fifteen_mathjax_component as component
+
+    figure = component._answer_spectra_svg()
+
+    for role in ('sampled-spectrum', 'shifted-spectrum', 'filtered-spectrum', 'reconstructed-spectrum'):
+        assert f'data-role="{role}"' in figure
+    assert r'H(e^{j\omega})' in component._system_svg()
