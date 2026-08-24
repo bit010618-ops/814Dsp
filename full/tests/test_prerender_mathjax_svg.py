@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import subprocess
 from pathlib import Path
 
@@ -45,7 +46,7 @@ def test_prerender_converts_static_math_inside_svg_foreign_object_to_a_placed_ma
     source = tmp_path / "source.html"
     target = tmp_path / "target.html"
     source.write_text(
-        '<html><body><svg viewBox="0 0 100 40"><foreignObject x="10" y="5" width="70" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\\(H(e^{j\\omega})\\)</div></foreignObject></svg></body></html>',
+        '<html><body><svg viewBox="0 0 100 40"><foreignObject x="10" y="5" width="70" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:16px">\\(H(e^{j\\omega})\\)</div></foreignObject></svg></body></html>',
         encoding="utf-8",
     )
 
@@ -59,7 +60,14 @@ def test_prerender_converts_static_math_inside_svg_foreign_object_to_a_placed_ma
     assert result.returncode == 0, result.stderr
     rendered = target.read_text(encoding="utf-8")
     assert '<foreignObject' not in rendered
-    assert '<svg x="10" y="5" width="70" height="30"' in rendered
+    # The source rectangle is a layout slot, not a request to stretch a
+    # MathJax glyph to that full width and height.  In diagrams that made
+    # labels huge and caused them to overlap axes and curves.
+    assert '<svg x="10" y="5" width="70" height="30"' not in rendered
+    placed = re.search(r'<svg x="([0-9.]+)" y="([0-9.]+)" width="([0-9.]+)" height="([0-9.]+)"', rendered)
+    assert placed is not None
+    assert float(placed.group(3)) < 70
+    assert float(placed.group(4)) < 30
     assert 'class="mathjax-svg"' in rendered
     assert 'href="data:image/svg+xml;base64,' not in rendered
     assert 'H(e^{j\\omega})' not in rendered

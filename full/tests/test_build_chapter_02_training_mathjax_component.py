@@ -17,3 +17,7 @@ def test_chapter_two_priority_training_preserves_questions_and_mathjax(tmp_path:
     assert "水印" not in html
     assert "page-break-after:always" not in html
     assert ".answer{break-before" not in html
+    # Diagram sizing must not target MathJax's inline SVGs.  Otherwise an
+    # inline expression inherits the 500pt diagram width in static PDF export.
+    assert "figure > svg:not(.mathjax-svg){width:min(100%,500pt);height:auto}" in html
+    assert "svg{width:min(100%,500pt);height:auto}" not in html

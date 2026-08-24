@@ -1270,3 +1270,11 @@
 - Exported the repaired A4 training page and visually verified that both feedback arrows now enter the summing node rather than pointing at empty space.
 - Verification: `pytest full/tests/test_build_chapter_02_supplemental_training_batch_four_mathjax_component.py -q -k 'not browser_dom' --basetemp tmp/.codex-test-feedback-port-arrows-green` -> `2 passed, 1 deselected`. The browser-DOM test remains environment-blocked by a local Edge exit code, but the offline MathJax-prerendered PDF was the artifact visually inspected.
 - Next action: continue the source-figure audit with the chapter-two zero-pole and AM system figures, then collect these visual repairs into the next full-book candidate export.
+
+# 2026-08-24 Global SVG MathJax label sizing repair
+
+- A second-chapter visual export uncovered a cross-cutting defect: when a MathJax formula inside an SVG `foreignObject` was externalized for offline PDF output, the full layout slot width and height became the formula SVG viewport. Inline labels such as `H(z)` then expanded to diagram width and destroyed page layout.
+- Added a red-green exporter regression. The externalizer now retains the formula's intrinsic MathJax aspect and scales it from the original foreign-object font size, centering the resulting label inside its reserved SVG slot instead of stretching it to fill the slot.
+- Re-exported the chapter-two zero-pole and AM pages. The formerly page-sized inline formulae now render at label size; the AM spectrum's axis labels, peak label and π/ω annotations are readable and separated. The chapter-two source CSS now scopes diagram sizing to figure SVGs rather than all SVGs, so ordinary inline MathJax SVGs cannot inherit diagram width.
+- Verification: `pytest full/tests/test_prerender_mathjax_svg.py full/tests/test_build_chapter_02_training_mathjax_component.py -q --basetemp tmp/.codex-test-static-svg-math-size-green` -> `6 passed`; visual inspection performed on the regenerated offline-MathJax A4 PDF pages.
+- Next action: commit the shared exporter fix, then rerender the previously reviewed chapter-eight graph and continue the remaining figure queue before the full-book export.

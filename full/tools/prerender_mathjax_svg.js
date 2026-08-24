@@ -49,6 +49,29 @@ function renderFormula(MathJax, latex, display) {
     .replace('<mjx-container ', '<mjx-container data-mathjax-static="true" '));
 }
 
+function numericAttribute(attributes, name) {
+  const match = attributes.match(new RegExp(`\\b${name}="(-?[0-9.]+)(?:px)?"`, "i"));
+  return match ? Number(match[1]) : null;
+}
+
+function ptAttribute(attributes, name) {
+  const match = attributes.match(new RegExp(`\\b${name}="(-?[0-9.]+)pt"`, "i"));
+  return match ? Number(match[1]) : null;
+}
+
+function replaceNumericAttribute(attributes, name, value) {
+  const formatted = Number(value.toFixed(3)).toString();
+  const pattern = new RegExp(`(\\b${name}=")(-?[0-9.]+)(?:px)?(")`, "i");
+  return pattern.test(attributes)
+    ? attributes.replace(pattern, `$1${formatted}$3`)
+    : `${attributes} ${name}="${formatted}"`;
+}
+
+function sourceFontSizePx(content) {
+  const match = content.match(/font-size\s*:\s*([0-9.]+)px/i);
+  return match ? Number(match[1]) : 16;
+}
+
 function externalizeSvgForeignObjectMath(document) {
   return document.replace(
     /<foreignObject\b([^>]*)>([\s\S]*?)<\/foreignObject>/gi,
@@ -66,6 +89,29 @@ function externalizeSvgForeignObjectMath(document) {
         "",
       );
       const inner = mathSvg[0].slice(opening[0].length, -"</svg>".length);
+      const slotX = numericAttribute(attributes, "x");
+      const slotY = numericAttribute(attributes, "y");
+      const slotWidth = numericAttribute(attributes, "width");
+      const slotHeight = numericAttribute(attributes, "height");
+      const nativeWidthPt = ptAttribute(opening[1], "width");
+      const nativeHeightPt = ptAttribute(opening[1], "height");
+      // A foreignObject uses its own CSS font size.  After conversion, keeping
+      // its entire rectangle as the nested SVG's viewport stretches every
+      // glyph to fill a diagram label slot.  Recreate the original font-sized
+      // box from MathJax's intrinsic physical size and center it in that slot.
+      if (
+        slotX !== null && slotY !== null && slotWidth !== null && slotHeight !== null
+        && nativeWidthPt !== null && nativeHeightPt !== null
+      ) {
+        const scale = sourceFontSizePx(content) / 24;
+        const width = nativeWidthPt * (4 / 3) * scale;
+        const height = nativeHeightPt * (4 / 3) * scale;
+        let placed = replaceNumericAttribute(attributes, "width", width);
+        placed = replaceNumericAttribute(placed, "height", height);
+        placed = replaceNumericAttribute(placed, "x", slotX + (slotWidth - width) / 2);
+        placed = replaceNumericAttribute(placed, "y", slotY + (slotHeight - height) / 2);
+        return `<svg${placed}${mathAttributes} preserveAspectRatio="xMidYMid meet">${inner}</svg>`;
+      }
       return `<svg${attributes}${mathAttributes} preserveAspectRatio="xMidYMid meet">${inner}</svg>`;
     },
   );
