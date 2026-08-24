@@ -4,10 +4,7 @@
   "audited_chapters": [1, 2, 3, 4, 5, 6, 7, 8],
   "status": "partially_verified_component_identity_mapping",
   "evidence": "题目 ID 取自已审计章节的训练组件；答案锚点取自同一组件、同一题干顺序的书末详解标题。第二、三章另逐项核对题干、公式数据和详解内容；同题重复的旧片段不作为第二个导航目标。",
-  "unresolved_question_ids": [
-    "2006-q十-whole",
-    "2007-q九-p4"
-  ],
+  "unresolved_question_ids": [],
   "verified_mappings": {
     "2002-q七-whole": "answer-001",
     "2006-q七-whole": "answer-002",
@@ -53,6 +50,7 @@
     "2015-q七-whole": "answer-042",
     "2021-q六-whole": "answer-043",
     "2025-q八-whole": "answer-044",
+    "2006-q十-whole": "answer-066",
     "2002-qintro-p3": "answer-045",
     "2003-q八-whole": "answer-077",
     "2003-q九-p2": "answer-046",
@@ -88,6 +86,7 @@
     "2025-q四-whole": "answer-065",
     "2025-q七-p4": "answer-068",
     "2003-q七-whole": "answer-079",
+    "2007-q九-p4": "answer-108",
     "2021-q七-whole": "answer-114",
     "2023-dsp-p4": "answer-106",
     "2002-q九-whole": "answer-080",

@@ -12,7 +12,7 @@
     "2005-q十-whole": "full/tools/build_chapter_02_supplemental_training_batch_two_mathjax_component.py",
     "2005-q十一-whole": "full/tools/build_chapter_02_supplemental_training_mathjax_component.py",
     "2006-qintro-p10": "full/tools/build_chapter_02_supplemental_training_mathjax_component.py",
-    "2006-q十-whole": "full/tools/build_chapter_02_supplemental_training_mathjax_component.py",
+    "2006-q十-whole": "full/tools/build_chapter_02_supplemental_training_batch_thirteen_mathjax_component.py",
     "2007-qintro-p2": "full/tools/build_chapter_02_supplemental_training_batch_twenty_five_mathjax_component.py",
     "2007-q九-p3": "full/tools/build_chapter_02_supplemental_training_mathjax_component.py",
     "2013-qintro-p2-5": "full/tools/build_chapter_02_supplemental_training_batch_twenty_two_mathjax_component.py",
@@ -39,6 +39,6 @@
     "2024-lsi-difference": "full/tools/build_chapter_02_supplemental_training_batch_eleven_mathjax_component.py",
     "2025-q四-whole": "full/tools/build_chapter_02_supplemental_training_batch_twelve_mathjax_component.py",
     "2025-q七-p4": "full/tools/build_chapter_02_supplemental_training_batch_fifteen_mathjax_component.py",
-    "2025-q八-whole": "full/tools/build_chapter_02_supplemental_training_batch_thirteen_mathjax_component.py"
+    "2025-q八-whole": "full/tools/build_chapter_02_training_mathjax_component.py"
   }
 }

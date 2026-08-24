@@ -1221,3 +1221,11 @@
 - Mapping coverage is now 154/156. The two unresolved IDs are `2006-q十-whole` and `2007-q九-p4`: the current answer section lacks a matching detailed solution for each, so their navigation links remain deliberately absent.
 - Verification: `pytest full/tests/test_exam_answer_anchor_audit.py full/tests/test_build_full_handout.py -q --basetemp tmp/.codex-test-anchor-map-green` → `11 passed`.
 - Next action: source-check and add the two missing detailed answers before final Appendix E and page-number backfill.
+
+# 2026-08-24 Missing detailed-answer completion
+
+- Source-checked and restored the two genuine omissions: `2006-q十-whole` (piecewise DTFT magnitude-spectrum inversion) and `2007-q九-p4` (the unaffected range of an 80-point circular convolution). The original question wording is preserved; neither item is replaced with a similar question.
+- Repurposed only the two legacy duplicate answer slots, `answer-066` and `answer-108`, so the existing 150-answer anchor sequence and all other answer navigation remain stable. The identity audit is now 156/156 with no unresolved question ID.
+- Each new display formula has an explicit name and concrete purpose rather than a chapter label, including the inverse-DTFT integral, periodic-folding relation, low-index folding sum, and unaffected-interval criterion.
+- Verification: targeted component, mapping, catalog, and full-handout suites pass (`14 passed`); the generated full HTML contains 150 answer anchors and exactly one occurrence of each new semantic formula label.
+- Next action: backfill appendix E and all training-page answer references from this complete audited mapping, then generate and visually QA the final PDF. Push remains blocked by the external account usage limit.

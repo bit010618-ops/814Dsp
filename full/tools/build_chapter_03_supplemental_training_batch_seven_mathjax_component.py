@@ -11,8 +11,8 @@ def write_training_html(output: Path) -> Path:
     content = r"""
 <main>
 <section class="exam-page"><h1>第三章 补充真题（第七批）</h1>
-<div class="exam-head"><span>2003 年真题</span><span>详解见 P.____</span></div>
-<p>七、用 DFT 对模拟信号进行谱分析，设模拟信号 \(x_a(t)\) 的最高频率为 \(200\,\mathrm{Hz}\)，以 Nyquist 频率采样得到时域离散序列 \(x(n)=x_a(nT)\)，要求频率分辨率为 \(10\,\mathrm{Hz}\)，求序列 \(x(n)\) 的离散傅里叶变换 \(X(k)\) 各 \(k\) 点对应的数字频率 \(\omega_k\)（弧）和模拟频率 \(f_k\)（Hz）的值。</p><div class="writing-space"></div></section>
+<div class="exam-head"><span>2007 年真题（填空题第 4 小题）</span><span>详解见 P.____</span></div>
+<p>九、填空题。（4）设序列 \(x(n)=R_{100}(n)\)，\(h(n)=R_{10}(n)\)，\(y(n)=x(n)\mathbin{\circledast}_{80}h(n)\)，问 \(y(n)\) 在哪些点上的值等于 \(x(n)\) 和 \(h(n)\) 线性卷积的结果？答________。</p><div class="writing-space"></div></section>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
@@ -23,28 +23,23 @@ def write_answers_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
 <main><h1>真题整理详解（第三章补充）</h1>
-<h2>2003 年真题</h2>
-<p>最高模拟频率为 \(200\,\mathrm{Hz}\)，按 Nyquist 频率采样，采样频率与采样周期为：</p>
+<h2>2007 年真题（填空题第 4 小题）</h2>
+<p>两个矩形序列的线性卷积长度为 \(100+10-1=109\)，其非零支撑为 \(0\le n\le108\)。</p>
+<p class="formula-name">循环卷积的周期折回关系（用于判断折回叠加）</p>
 <div class="formula">\[
-f_s=400\,\mathrm{Hz}=2\times200\,\mathrm{Hz},\qquad T=\frac{1}{400}\,\mathrm{s}.
+y_{80}[n]=\sum_{r=-\infty}^{\infty}y_{\mathrm{lin}}[n-80r].
 \]</div>
-<p>频率分辨率就是相邻 DFT 频率采样点的间隔，故 DFT 长度为：</p>
+<p>当 \(0\le n\le28\) 时，有后段 \(y_{\mathrm{lin}}[n+80]\) 折回并叠加。</p>
+<p class="formula-name">低索引区的折回叠加式（用于计算发生混叠的卷积样点）</p>
 <div class="formula">\[
-F_0=\frac{f_s}{N}=10\,\mathrm{Hz},\qquad N=\frac{400}{10}=40.
+y_{80}[n]=y_{\mathrm{lin}}[n]+y_{\mathrm{lin}}[n+80],\qquad 0\le n\le28.
 \]</div>
-<p>对 \(N=40\) 点 DFT，\(k=0,1,\ldots,39\) 对应的数字频率为：</p>
+<p>当 \(80\le n\le108\) 时，有前段 \(y_{\mathrm{lin}}[n-80]\) 叠加。因此只有中间不发生折叠的样点与线性卷积一致：</p>
+<p class="formula-name">未折回区间判据（用于确定与线性卷积一致的样点）</p>
 <div class="formula">\[
-\omega_k=\frac{2\pi k}{40}=\frac{k\pi}{20}\quad\text{（弧）}.
+y_{80}[n]=y_{\mathrm{lin}}[n],\qquad 29\le n\le79.
 \]</div>
-<p>模拟频率按 DFT 的通常频率标记分为正频率和负频率两段：</p>
-<div class="formula">\[
-f_k=
-\begin{cases}
-k\times10\,\mathrm{Hz}, & k=0,1,\ldots,20,\\
-(k-40)\times10\,\mathrm{Hz}, & k=21,22,\ldots,39.
-\end{cases}
-\]</div>
-<p>因此 \(k=0\) 对应直流，\(k=1\) 至 \(20\) 依次对应 \(10\) 至 \(200\,\mathrm{Hz}\)，而 \(k=21\) 至 \(39\) 依次对应 \(-190\) 至 \(-10\,\mathrm{Hz}\)。</p>
+<p>填：\(29\le n\le79\)。</p>
 </main>
 """
     output.write_text(_document(content), encoding="utf-8")
