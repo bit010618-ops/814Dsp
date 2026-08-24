@@ -24,12 +24,15 @@ def test_audited_chapter_anchor_mapping_uses_manifest_ids_and_existing_answer_ta
     mapping = audit["verified_mappings"]
 
     assert audit["scope"] == "partial_chapter_identity_mapping"
-    assert audited_chapters == [1, 4]
-    assert len(mapping) == 53
+    assert audited_chapters == [1, 4, 5, 6, 7, 8]
+    assert len(mapping) == 82
     assert set(mapping) == manifest_ids
     assert set(mapping.values()) == {
         *(f"answer-{index:03d}" for index in range(1, 42)),
         *(f"answer-{index:03d}" for index in range(115, 124)),
+        "answer-124",
+        *(f"answer-{index:03d}" for index in range(125, 136)),
+        *(f"answer-{index:03d}" for index in range(136, 151)),
     }
 
     from full.tools import build_full_handout

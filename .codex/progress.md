@@ -1209,3 +1209,8 @@
 
 - Extended the audit map to all 12 chapter-four manifest IDs. They resolve to nine verified detailed-answer anchors (`answer-115` through `answer-123`); three pairs of independent subparts correctly share their parent-question answer.
 - Identity-map regression and full-handout assembly tests remain green (`11 passed`). Audited coverage is now 53 of 156 question IDs; Appendix E remains intentionally unfilled until all chapters are equivalent.
+
+# 2026-08-24 Late-chapter and IIR answer-identity audit
+
+- Added all fifth-, sixth-, seventh- and eighth-chapter manifest IDs to the answer-anchor audit. The sixth chapter's 13 IDs correctly map to 11 answers because each 2005/2006 two-part original question shares one detailed solution.
+- Audited mapping now covers 82 of 156 IDs across chapters 1 and 4–8. The next evidence-gated work is chapter two and chapter three; no reader-visible partial Appendix E backfill is permitted.
