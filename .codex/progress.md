@@ -1214,3 +1214,10 @@
 
 - Added all fifth-, sixth-, seventh- and eighth-chapter manifest IDs to the answer-anchor audit. The sixth chapter's 13 IDs correctly map to 11 answers because each 2005/2006 two-part original question shares one detailed solution.
 - Audited mapping now covers 82 of 156 IDs across chapters 1 and 4–8. The next evidence-gated work is chapter two and chapter three; no reader-visible partial Appendix E backfill is permitted.
+
+# 2026-08-24 Chapter-two and chapter-three answer-identity audit
+
+- Mapped 72 additional manifest IDs by matching each training question's identifier, prompt, answer title, and decisive formula/data to its book-end anchor. Legacy repeated answer fragments were not treated as extra question identities.
+- Mapping coverage is now 154/156. The two unresolved IDs are `2006-q十-whole` and `2007-q九-p4`: the current answer section lacks a matching detailed solution for each, so their navigation links remain deliberately absent.
+- Verification: `pytest full/tests/test_exam_answer_anchor_audit.py full/tests/test_build_full_handout.py -q --basetemp tmp/.codex-test-anchor-map-green` → `11 passed`.
+- Next action: source-check and add the two missing detailed answers before final Appendix E and page-number backfill.

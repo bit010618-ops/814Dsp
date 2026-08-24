@@ -24,16 +24,23 @@ def test_audited_chapter_anchor_mapping_uses_manifest_ids_and_existing_answer_ta
     mapping = audit["verified_mappings"]
 
     assert audit["scope"] == "partial_chapter_identity_mapping"
-    assert audited_chapters == [1, 4, 5, 6, 7, 8]
-    assert len(mapping) == 82
-    assert set(mapping) == manifest_ids
-    assert set(mapping.values()) == {
-        *(f"answer-{index:03d}" for index in range(1, 42)),
-        *(f"answer-{index:03d}" for index in range(115, 124)),
-        "answer-124",
-        *(f"answer-{index:03d}" for index in range(125, 136)),
-        *(f"answer-{index:03d}" for index in range(136, 151)),
+    unresolved = {
+        "2006-q十-whole",
+        "2007-q九-p4",
     }
+
+    assert audited_chapters == [1, 2, 3, 4, 5, 6, 7, 8]
+    assert audit["unresolved_question_ids"] == sorted(unresolved)
+    assert len(mapping) == 154
+    assert set(mapping) == manifest_ids - unresolved
+    # These choices intentionally target the answer paired with the rendered
+    # training page, not a later duplicate legacy answer fragment.
+    assert mapping["2025-q八-whole"] == "answer-044"
+    assert mapping["2015-q七-whole"] == "answer-042"
+    assert mapping["2003-q八-whole"] == "answer-077"
+    assert mapping["2003-q九-p2"] == "answer-046"
+    assert mapping["2003-q七-whole"] == "answer-079"
+    assert mapping["2024-dsp-p1"] == "answer-113"
 
     from full.tools import build_full_handout
 
