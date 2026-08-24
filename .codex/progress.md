@@ -1246,3 +1246,5 @@
 - Visual QA rendered and inspected representative formula, table, DIT-FFT, filter-structure, training, appendix-navigation and detailed-answer pages. No formula source, missing-image warning, black replacement block or formula-size collapse was observed in those samples. PDF exporter emitted only duplicate SVG marker-name warnings.
 - Verification: `pytest full/tests/test_backfill_answer_page_references.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q` -> `15 passed`; final PDF -> 533 pages, 150 answer anchors.
 - Next action: commit this PDF/export and regression fix as a task-scoped milestone, then attempt the configured push once; keep progressing only after preserving unrelated dirty work.
+
+- Milestone committed as `4550f28` (`Export full handout with readable MathJax formulas`) and successfully pushed to `origin/main`.
