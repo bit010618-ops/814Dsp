@@ -69,7 +69,7 @@ def write_html(output: Path) -> Path:
     <div class="formula">\[
     x_1(n)=\{1,2,3,4,5\},\qquad
     x_2(n)=\{1,2,3,4,5\},\qquad
-    x_3(n)=\{0,0,1,2,3\}.
+    x_3(n)=\{0,0,1,2,3,4,5\}.
     \]</div>
     <div class="formula">\[x_4(n)=A\sin(\omega n+\varphi),\quad n\in(-\infty,\infty)\]</div>
   </section>
