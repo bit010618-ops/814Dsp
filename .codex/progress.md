@@ -1329,3 +1329,9 @@
 - Rendered the actual 2022 A/D--(h[n])--D/A source-question page. The main signal flow is left-to-right with explicit arrowheads; input/output labels, the sampling-period mark, filter cutoff and the triangular input spectrum are all visible and separated.
 - The spectrum has a complete horizontal axis, a zero-aligned vertical axis, a single origin label, and clear ±1 kHz marks. No watermark, surrounding courseware strip, black fill, formula source, crop or label collision was observed. Queue item `2022-q七-01` is verified.
 - Next action: audit `2025-q六-01` before moving the first-chapter source-figure queue to the all-book rebuild stage.
+
+# 2026-08-24 2025 sampling figure formula-source repair
+
+- The 2025 finite-width pulse-sampling frequency-plot title embedded `\\operatorname{Sa}` directly in an SVG text node. That violates the global rule that reader-visible mathematics must be rendered as complete MathJax/LaTeX rather than literal source text.
+- Added a failing regression, then replaced the title with an equivalent pure-Chinese explanation; the mathematical `\\operatorname{Sa}` relation remains in the adjacent complete MathJax display formula. The targeted component suite now passes (`2 passed`).
+- The figure remains pending static-A4 visual validation before its queue status may be promoted.

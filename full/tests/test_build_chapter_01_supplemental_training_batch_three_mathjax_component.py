@@ -16,6 +16,7 @@ def test_chapter_one_batch_three_preserves_the_2025_pulse_sampling_question_and_
     assert r"X_s(\omega)=\frac{\tau}{T_s}" in answer
     assert r"X_{s,\delta}(\omega)=\frac{1}{T_s}" in answer
     assert 'data-plot="2025-pulse-sampling-spectrum"' in answer
+    assert r"\operatorname{Sa}" not in batch._pulse_sampling_spectrum_svg()
 
 
 def test_chapter_one_batch_three_is_assembled_in_the_full_handout(tmp_path):
