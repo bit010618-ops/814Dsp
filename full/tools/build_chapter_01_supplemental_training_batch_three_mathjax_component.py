@@ -11,6 +11,7 @@ def _bipolar_square_wave_svg() -> str:
 <path class="s25-axis" d="M58 176H807" marker-end="url(#s25-wave-arrow)"/><path class="s25-axis" d="M430 304V55" marker-end="url(#s25-wave-arrow)"/>
 <path class="s25-wave" d="M90 78H185V274H280V78H375V274H470V78H565V274H660V78H755"/>
 <foreignObject x="795" y="182" width="35" height="28"><div xmlns="http://www.w3.org/1999/xhtml">\(t\)</div></foreignObject><foreignObject x="438" y="56" width="75" height="28"><div xmlns="http://www.w3.org/1999/xhtml">\(x(t)\)</div></foreignObject>
+<foreignObject x="438" y="183" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml">\(0\)</div></foreignObject>
 <foreignObject x="440" y="80" width="38" height="28"><div xmlns="http://www.w3.org/1999/xhtml">\(5\)</div></foreignObject><foreignObject x="440" y="252" width="45" height="28"><div xmlns="http://www.w3.org/1999/xhtml">\(-5\)</div></foreignObject>
 <path class="s25-axis" d="M470 318H565"/><path class="s25-axis" d="M470 311V325M565 311V325"/><foreignObject x="484" y="316" width="85" height="30"><div xmlns="http://www.w3.org/1999/xhtml">\(T_0/2\)</div></foreignObject>
 <foreignObject x="100" y="292" width="250" height="32"><div xmlns="http://www.w3.org/1999/xhtml">\(T_0=0.1\,\mathrm{s}\)</div></foreignObject>

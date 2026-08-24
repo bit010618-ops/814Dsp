@@ -11,6 +11,7 @@ def test_chapter_one_batch_three_preserves_the_2025_pulse_sampling_question_and_
     assert r"\tau\ll T_s" in question
     assert "是否满足采样定理" in question
     assert 'data-plot="2025-bipolar-square-wave"' in question
+    assert '<foreignObject x="438" y="183" width="32" height="28"><div xmlns="http://www.w3.org/1999/xhtml">\\(0\\)</div></foreignObject>' in question
     assert r"\omega_s=\frac{2\pi}{T_s}=200\pi\,\mathrm{rad}\,\mathrm{s}^{-1}" in answer
     assert r"S(\omega)=2\pi\frac{\tau}{T_s}" in answer
     assert r"X_s(\omega)=\frac{\tau}{T_s}" in answer

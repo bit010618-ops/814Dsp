@@ -1335,3 +1335,9 @@
 - The 2025 finite-width pulse-sampling frequency-plot title embedded `\\operatorname{Sa}` directly in an SVG text node. That violates the global rule that reader-visible mathematics must be rendered as complete MathJax/LaTeX rather than literal source text.
 - Added a failing regression, then replaced the title with an equivalent pure-Chinese explanation; the mathematical `\\operatorname{Sa}` relation remains in the adjacent complete MathJax display formula. The targeted component suite now passes (`2 passed`).
 - The figure remains pending static-A4 visual validation before its queue status may be promoted.
+
+# 2026-08-24 Chapter-one 2025 pulse-sampling visual audit
+
+- Exported the 2025 question and detailed-answer figures through local MathJax pre-rendering and WeasyPrint, then visually checked both A4 pages. The square-wave origin has one lower-right `0`; its axes, amplitude labels and period marks are clear.
+- The three frequency-domain panels have visible coordinate axes, distinct finite-width envelope and ideal-impulse stems, unambiguous labels, no raw LaTeX, no black fill, no crop and no watermark. Queue item `2025-q六-01` is verified.
+- With `2016-qintro-01`, `2019-q二-01`, `2021-qintro-01`, `2022-q七-01` and `2025-q六-01` verified, all first-chapter source-figure queue items are now complete. Next action: audit remaining second-chapter queue figures, then rebuild the whole-book candidate PDF.
