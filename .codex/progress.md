@@ -1300,3 +1300,5 @@
 - Static A4 PDF audit also exposed an export-specific defect: outer-page CSS was not reliably inherited by inline SVGs, so the same plot could lose its axis and stem lines, while an unstyled polyline was filled black. The repaired source inlines the curve, axis, tick and stem paint attributes. Visual PDF inspection confirmed the black fill is gone and the coordinate lines render instead of arrowheads alone.
 - Verification: `pytest full/tests/test_chapter_one_zero_axis_contract.py full/tests/test_chapter_one_convolution_origin_axes.py full/tests/test_signal_plot_svg.py -q --basetemp tmp/.codex-test-origin-axis-final` -> `8 passed`; offline MathJax plus WeasyPrint export was rendered and inspected.
 - Next action: commit this scoped first-chapter coordinate repair, then continue the remaining original-figure audit before the next whole-book candidate export.
+
+- Completed milestone: commit `692e694` (`Repair zero-origin sampling diagram`) was pushed successfully to `origin/main`.
