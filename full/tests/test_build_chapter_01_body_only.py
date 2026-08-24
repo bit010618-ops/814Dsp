@@ -42,3 +42,16 @@ def test_opening_keeps_the_four_sampling_rate_waveform_comparison(tmp_path: Path
     # printable source must therefore carry visual attributes on the shapes.
     assert '<rect fill="#ffffff" stroke="#c4ced6"' in html
     assert '<path fill="none" stroke="#174b73"' in html
+
+
+def test_opening_keeps_the_continuous_to_discrete_signal_mapping_figure(tmp_path: Path):
+    """Source page 7's sampling correspondence must remain visible, not prose only."""
+    from full.tools.build_chapter_01_body_only import write_html
+
+    html = write_html(tmp_path / "chapter-one-body.html").read_text(encoding="utf-8")
+
+    assert 'class="continuous-discrete-mapping"' in html
+    assert 'data-role="continuous-signal"' in html
+    assert 'data-role="discrete-samples"' in html
+    assert 'data-role="sampling-arrow"' in html
+    assert "连续时间信号到离散序列的对应关系" in html
