@@ -23,3 +23,22 @@ def test_chapter_one_body_only_uses_mathjax_body_components_without_training(tmp
     assert r"时间间隔 \(T\) 等间隔取样" in html
     assert r"\frac{f_s}{4}" in html
     assert r"\frac{f_s}{16}" in html
+
+
+def test_opening_keeps_the_four_sampling_rate_waveform_comparison(tmp_path: Path):
+    """The source's sampling-rate comparison is a required knowledge figure, not prose only."""
+    from full.tools.build_chapter_01_body_only import write_html
+
+    html = write_html(tmp_path / "chapter-one-body.html").read_text(encoding="utf-8")
+
+    assert 'class="sampling-rate-comparison"' in html
+    for role in ("continuous-waveform", "quarter-rate", "eighth-rate", "sixteenth-rate"):
+        assert f'data-role="{role}"' in html
+    assert "不同采样频率下钢琴乐曲的赏析" in html
+    # The four short rows must fit the opening page's remaining A4 space;
+    # otherwise figure avoidance creates a conspicuous blank page tail.
+    assert 'viewBox="0 0 980 330"' in html
+    # WeasyPrint ignores CSS fill/stroke declarations on SVG primitives; the
+    # printable source must therefore carry visual attributes on the shapes.
+    assert '<rect fill="#ffffff" stroke="#c4ced6"' in html
+    assert '<path fill="none" stroke="#174b73"' in html
