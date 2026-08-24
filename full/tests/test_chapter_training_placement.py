@@ -39,3 +39,14 @@ def test_legacy_exam_inline_math_is_normalized_before_pdf_render(tmp_path) -> No
     assert r"\(X(e^{j\omega})\)" in html
     assert "(omega_m=\\frac{\\pi}{6})" not in html
     assert r"\(\omega_m=\frac{\pi}{6}\)" in html
+
+
+def test_exam_writing_space_does_not_force_an_empty_following_page(tmp_path) -> None:
+    """The optional answer area must never migrate to its own blank page."""
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "handout.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert ".writing-space{min-height:0}" in html

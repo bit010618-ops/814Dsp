@@ -71,7 +71,7 @@ STYLE = build_all_main_body.STYLE + r"""
 .exam-page:first-child{break-before:auto}
 .chapter-exam-first{break-before:auto;page-break-before:auto}
 .exam-head{display:flex;justify-content:space-between;gap:18pt;color:#52616b;margin:0 0 10pt;break-after:avoid}
-.writing-space{min-height:105mm}
+.writing-space{min-height:0}
 .answer-section{break-before:page}
 .answer-section h1{break-before:page}
 .answer-section h1:first-child{break-before:auto}
