@@ -4,6 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from full.tools.render_mathjax_formula import MATHJAX
+from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
 
 
 QUESTION_IDS = (
@@ -48,10 +49,10 @@ def _multirate_chain() -> str:
 <text x="272" y="113" text-anchor="middle" fill="#263746" style="font:17px Microsoft YaHei,sans-serif">零值插入</text><text x="790" y="113" text-anchor="middle" fill="#263746" style="font:17px Microsoft YaHei,sans-serif">采样</text>
 {_math(33,66,92,'x[n]')}{_math(366,66,76,'g[n]')}{_math(490,84,104,'H(e^{j\\omega})')}{_math(638,66,76,'\\omega[n]')}{_math(864,66,76,'y[n]')}
 <text x="480" y="205" text-anchor="middle" fill="#315d7c" style="font:17px Microsoft YaHei,sans-serif">给定输入频谱</text>
-<line x1="165" y1="408" x2="780" y2="408" stroke="#174b73" stroke-width="2" marker-end="url(#mr-arrow)"/><line x1="472" y1="450" x2="472" y2="250" stroke="#174b73" stroke-width="2" marker-end="url(#mr-arrow)"/>
+<line x1="165" y1="408" x2="820" y2="408" stroke="#174b73" stroke-width="2" marker-end="url(#mr-arrow)"/><line x1="472" y1="450" x2="472" y2="250" stroke="#174b73" stroke-width="2" marker-end="url(#mr-arrow)"/>
 <path d="M318 408L472 286L626 408" fill="none" stroke="#0d8794" stroke-width="3" stroke-linejoin="round"/>
 <line x1="318" y1="408" x2="318" y2="420" stroke="#174b73" stroke-width="1.5"/><line x1="626" y1="408" x2="626" y2="420" stroke="#174b73" stroke-width="1.5"/><line x1="165" y1="408" x2="165" y2="420" stroke="#174b73" stroke-width="1.5"/><line x1="780" y1="408" x2="780" y2="420" stroke="#174b73" stroke-width="1.5"/>
-{_math(300,420,48,'-\\frac{\\pi}{2}')}{_math(608,420,48,'\\frac{\\pi}{2}')}{_math(145,420,42,'-\\pi')}{_math(760,420,42,'\\pi')}{_math(478,413,38,'0')}{_math(435,252,70,'X(e^{j\\omega})')}{_math(795,389,35,'\\omega')}{_math(447,267,42,'1')}
+{_math(300,420,48,'-\\frac{\\pi}{2}')}{_math(608,420,48,'\\frac{\\pi}{2}')}{_math(145,420,42,'-\\pi')}{_math(760,420,42,'\\pi')}{_math(478,413,38,'0')}{_math(370,246,85,'X(e^{j\\omega})')}{_math(830,389,35,'\\omega')}{_math(435,267,26,'1')}
 <text x="472" y="486" text-anchor="middle" fill="#52616b" style="font:14px Microsoft YaHei,sans-serif">三角谱的支撑区间为 −π/2 至 π/2</text>
 </svg>'''
 
@@ -104,7 +105,7 @@ g[n],&n=0,\pm3,\pm6,\pm9,\ldots,\\
 <p>3.什么是多路复用。</p><div class="writing-space"></div></section>
 </main>
 """
-    output.write_text(_document(content), encoding="utf-8")
+    output.write_text(_document(normalize_legacy_inline_math(content)), encoding="utf-8")
     return output
 
 
@@ -147,7 +148,7 @@ Y(e^{j\omega})=\frac{1}{3}\sum_{r=0}^{2}V\!\left(e^{j\left(\omega-\frac{2\pi r}{
 <div class="answer-step"><strong>常见方式。</strong>按时间区分是时分复用；按不同频带区分是频分复用；还可按码型、波长或空间资源区分。无论采用哪一种，关键都是各路占用的资源在设计上可分离，避免互相干扰。</div>
 </main>
 """
-    output.write_text(_document(content), encoding="utf-8")
+    output.write_text(_document(normalize_legacy_inline_math(content)), encoding="utf-8")
     return output
 
 

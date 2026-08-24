@@ -1254,3 +1254,11 @@
 - Next action: commit this PDF/export and regression fix as a task-scoped milestone, then attempt the configured push once; keep progressing only after preserving unrelated dirty work.
 
 - Milestone committed as `4550f28` (`Export full handout with readable MathJax formulas`) and successfully pushed to `origin/main`.
+
+# 2026-08-24 Chapter-eight math and multirate diagram repair
+
+- Reproduced the chapter-eight standalone-export defect: the training component used legacy parenthesized inline formulas, while conversion to MathJax units occurred only during full-book assembly. This left raw LaTeX visible in a direct chapter PDF.
+- Applied the shared inline-math normalization at both chapter-eight component output boundaries, so a standalone chapter export follows the same complete-LaTeX-to-MathJax path as the full book. Regression coverage asserts the multirate question's frequency-domain expressions use MathJax delimiters.
+- Repositioned the multirate input-spectrum axis end and the `X(e^{j\omega})`, `1`, `\pi`, and `\omega` labels to prevent the prior label collisions. Exported and visually inspected the repaired A4 page: the question formulas render, the system chain is legible, and the spectrum labels are separated.
+- Verification: `pytest full/tests/test_build_chapter_08_training_mathjax_component.py full/tests/test_chapter_training_placement.py full/tests/test_exam_figure_queue_integration.py -q --basetemp tmp/.codex-test-ch8-inline-math-green` -> `5 passed`.
+- Next action: commit and push this narrowly scoped chapter-eight repair, then continue the visual audit/redraw queue for remaining programmatic DSP figures before the next full-book candidate export.
