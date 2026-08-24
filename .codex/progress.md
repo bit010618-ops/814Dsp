@@ -1302,3 +1302,11 @@
 - Next action: commit this scoped first-chapter coordinate repair, then continue the remaining original-figure audit before the next whole-book candidate export.
 
 - Completed milestone: commit `692e694` (`Repair zero-origin sampling diagram`) was pushed successfully to `origin/main`.
+
+# 2026-08-24 Chapter-one convolution stem visual audit
+
+- The 2016 convolution redraw had correctly matched the (n=0) vertical axis in source coordinates, but its axes, stems and ticks still depended on outer CSS. The static PDF export could therefore degrade into arrowheads or lose linework.
+- Added a red-green regression requiring direct SVG paint attributes for both 2016 and 2021 convolution figures, then inlined the axis, tick, stem and sample-dot paint in both renderers.
+- Exported the 2016 question page to offline-MathJax A4 PDF and visually checked both input panels: axes are visible, (n=0) shares each vertical axis, each origin is labelled once, positive/negative rods retain their data values and no watermark/black fill remains. Queue item `2016-qintro-01` is now verified.
+- Verification: `pytest full/tests/test_chapter_one_zero_axis_contract.py full/tests/test_chapter_one_convolution_origin_axes.py full/tests/test_signal_plot_svg.py -q --basetemp tmp/.codex-test-convolution-inline-green` -> `9 passed`.
+- Next action: continue the first-chapter source-figure queue with `2019-q二-01`, `2021-qintro-01`, `2022-q七-01` and `2025-q六-01` before rebuilding the all-book PDF candidate.

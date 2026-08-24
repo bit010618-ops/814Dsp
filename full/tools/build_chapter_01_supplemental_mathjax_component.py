@@ -134,11 +134,11 @@ def convolution_2016_svg(kind: str = "inputs") -> str:
         for index, value in zip(indices, values):
             x, y = left + (index - indices[0]) * step, base - value * 55
             if index != 0:
-                ticks.append(f'<line class="tick" data-index="{index}" x1="{x}" y1="{base-5}" x2="{x}" y2="{base+5}"/><text class="label" data-index="{index}" x="{x}" y="{base+27}" text-anchor="middle">{index}</text>')
-            stems.append(f'<line class="stem" x1="{x}" y1="{base}" x2="{x}" y2="{y}"/><circle class="dot" cx="{x}" cy="{y}" r="4"/><text class="label" x="{x}" y="{y-10 if value > 0 else y+24}" text-anchor="middle">{value}</text>')
+                ticks.append(f'<line class="tick" fill="none" stroke="#174b73" stroke-width="1.3" data-index="{index}" x1="{x}" y1="{base-5}" x2="{x}" y2="{base+5}"/><text class="label" data-index="{index}" x="{x}" y="{base+27}" text-anchor="middle">{index}</text>')
+            stems.append(f'<line class="stem" fill="none" stroke="#b45309" stroke-width="2" x1="{x}" y1="{base}" x2="{x}" y2="{y}"/><circle class="dot" fill="#b45309" cx="{x}" cy="{y}" r="4"/><text class="label" x="{x}" y="{y-10 if value > 0 else y+24}" text-anchor="middle">{value}</text>')
         return rf'''<g>
- <path class="axis" d="M{axis_start} {base}H{axis_end}" marker-end="url(#conv2016-arrow)"/>
- <path class="axis" data-origin-at-zero="true" d="M{axis_zero_x} {bottom}V{top}" marker-end="url(#conv2016-arrow)"/>
+ <path class="axis" fill="none" stroke="#174b73" stroke-width="2" d="M{axis_start} {base}H{axis_end}" marker-end="url(#conv2016-arrow)"/>
+ <path class="axis" data-origin-at-zero="true" fill="none" stroke="#174b73" stroke-width="2" d="M{axis_zero_x} {bottom}V{top}" marker-end="url(#conv2016-arrow)"/>
  {''.join(ticks)}{''.join(stems)}<text class="label" data-origin-label="true" x="{axis_zero_x+10}" y="{base+27}" text-anchor="start">0</text>
  <foreignObject x="{axis_end-2}" y="{base+13}" width="32" height="34"><div>\(n\)</div></foreignObject>
  <foreignObject x="{axis_zero_x+10}" y="{top-12}" width="90" height="34"><div>\({label}\)</div></foreignObject>
@@ -174,14 +174,14 @@ def convolution_2021_svg(kind: str = "inputs") -> str:
         for index in tick_range:
             x = left + (index - tick_range.start) * step
             if index != 0:
-                ticks.append(f'<line class="tick" data-index="{index}" x1="{x}" y1="{base-5}" x2="{x}" y2="{base+5}"/><text class="label" data-index="{index}" x="{x}" y="{base+29}" text-anchor="middle">{index}</text>')
+                ticks.append(f'<line class="tick" fill="none" stroke="#174b73" stroke-width="1.3" data-index="{index}" x1="{x}" y1="{base-5}" x2="{x}" y2="{base+5}"/><text class="label" data-index="{index}" x="{x}" y="{base+29}" text-anchor="middle">{index}</text>')
         for index, value in samples.items():
             x, y = left + (index - tick_range.start) * step, base - value * 48
             label_y = y - 10 if value > 0 else y + 25
-            stems.append(f'<line class="stem" x1="{x}" y1="{base}" x2="{x}" y2="{y}"/><circle class="dot" cx="{x}" cy="{y}" r="4"/><text class="label" x="{x}" y="{label_y}" text-anchor="middle">{value}</text>')
+            stems.append(f'<line class="stem" fill="none" stroke="#b45309" stroke-width="2" x1="{x}" y1="{base}" x2="{x}" y2="{y}"/><circle class="dot" fill="#b45309" cx="{x}" cy="{y}" r="4"/><text class="label" x="{x}" y="{label_y}" text-anchor="middle">{value}</text>')
         return rf'''<g>
- <path class="axis" d="M{axis_start} {base}H{axis_end}" marker-end="url(#conv2021-arrow)"/>
- <path class="axis" data-origin-at-zero="true" d="M{axis_zero_x} {bottom}V{top}" marker-end="url(#conv2021-arrow)"/>
+ <path class="axis" fill="none" stroke="#174b73" stroke-width="2" d="M{axis_start} {base}H{axis_end}" marker-end="url(#conv2021-arrow)"/>
+ <path class="axis" data-origin-at-zero="true" fill="none" stroke="#174b73" stroke-width="2" d="M{axis_zero_x} {bottom}V{top}" marker-end="url(#conv2021-arrow)"/>
  {''.join(ticks)}{''.join(stems)}<text class="label" data-origin-label="true" x="{axis_zero_x+10}" y="{base+29}" text-anchor="start">0</text>
  <foreignObject x="{axis_end-4}" y="{base+12}" width="32" height="34"><div>\(n\)</div></foreignObject>
  <foreignObject x="{axis_zero_x+10}" y="{top-14}" width="90" height="34"><div>\({label}\)</div></foreignObject>

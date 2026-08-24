@@ -21,3 +21,19 @@ def test_2019_sampling_spectrum_keeps_coordinate_axes_visible_without_outer_css(
 
     assert output.count('fill="none" stroke="#174b73" stroke-width="2"') == 2
     assert 'data-origin-at-zero="true"' in output
+
+
+def test_chapter_one_convolution_stems_inline_their_axis_and_sample_paint():
+    from full.tools.build_chapter_01_supplemental_mathjax_component import (
+        convolution_2016_svg,
+        convolution_2021_svg,
+    )
+
+    for output in (
+        convolution_2016_svg("inputs"),
+        convolution_2016_svg("output"),
+        convolution_2021_svg("inputs"),
+        convolution_2021_svg("output"),
+    ):
+        assert 'fill="none" stroke="#174b73" stroke-width="2"' in output
+        assert 'fill="none" stroke="#b45309" stroke-width="2"' in output
