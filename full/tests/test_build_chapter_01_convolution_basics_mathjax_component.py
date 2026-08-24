@@ -6,7 +6,7 @@ def test_convolution_basics_uses_mathjax_and_data_driven_stem_plots(tmp_path: Pa
 
     page = write_html(tmp_path / "convolution.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in page
+    assert "tex-mml-chtml.js" in page
     assert r"\sum_{m=-\infty}^{\infty}x(m)h(n-m)" in page
     assert r"x(n)*\delta(n-n_0)=x(n-n_0)" in page
     assert r"y(n)=h(n)+2h(n-1)" in page

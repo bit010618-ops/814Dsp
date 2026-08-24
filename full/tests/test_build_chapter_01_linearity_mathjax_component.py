@@ -6,7 +6,7 @@ def test_linearity_component_uses_complete_mathjax_without_formula_images(tmp_pa
 
     page = write_html(tmp_path / "linearity.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in page
+    assert "tex-mml-chtml.js" in page
     assert r"T[a x_1(n)+b x_2(n)]" in page
     assert r"\sum_{i=1}^{N}" in page
     assert r"(a x_1+b x_2)^2" in page
