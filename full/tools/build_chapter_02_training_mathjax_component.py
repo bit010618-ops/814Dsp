@@ -17,7 +17,7 @@ main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400
 
 
 def _zero_pole_svg() -> str:
-    return r'''<svg viewBox="0 0 540 290" role="img" aria-label="零极点图：原点零点、实轴 2 处极点与单位圆">
+    return r'''<svg data-source-candidate-id="2015-q七-01" viewBox="0 0 540 290" role="img" aria-label="零极点图：原点零点、实轴 2 处极点与单位圆">
 <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7z" fill="#234d70"/></marker></defs>
 <line x1="68" y1="145" x2="470" y2="145" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/><line x1="196" y1="236" x2="196" y2="46" stroke="#234d70" stroke-width="1.4" marker-end="url(#arrow)"/>
 <circle cx="196" cy="145" r="75" fill="none" stroke="#7d8d98" stroke-width="1.15" stroke-dasharray="4 3"/><circle cx="196" cy="145" r="6" fill="white" stroke="#0e7490" stroke-width="2"/><path d="M326 136l18 18m0-18l-18 18" stroke="#b56b2e" stroke-width="2.5"/>
@@ -44,7 +44,7 @@ def _am_svg() -> str:
         'M260 356L340 276L420 356 '
         'M508 356L548 276L588 356"/>'
     )
-    return r'''<svg class="diagram" viewBox="0 0 680 700" role="img" aria-label="2021 年 AM 调制题的调制框图、输入周期谱与相干解调框图">
+    return r'''<svg class="diagram" data-source-candidate-id="2021-q六-01" viewBox="0 0 680 700" role="img" aria-label="2021 年 AM 调制题的调制框图、输入周期谱与相干解调框图">
 <defs><marker id="arrow-am-source" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker></defs>
 <text x="52" y="42" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="18">(a) 正弦调制</text>
 <path data-role="am-modulator" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M95 96H282"/><circle cx="310" cy="96" r="28" fill="#fff" stroke="#174b73" stroke-width="2"/><path d="M294 80l32 32m0-32l-32 32" fill="none" stroke="#b56b2e" stroke-width="2.4"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M338 96H548"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-source)" d="M310 176V126"/>
@@ -59,7 +59,7 @@ def _am_svg() -> str:
 
 def _am_output_spectrum_svg() -> str:
     """Draw the modulated DTFT from the two exact frequency-shift copies."""
-    return r'''<svg class="diagram" style="width:min(100%,470pt)" viewBox="0 0 720 390" role="img" aria-label="2021 年 AM 调制后 Y(e^{jω}) 的频谱图">
+    return r'''<svg class="diagram" data-source-candidate-id="2021-q六-01" style="width:min(100%,470pt)" viewBox="0 0 720 390" role="img" aria-label="2021 年 AM 调制后 Y(e^{jω}) 的频谱图">
 <defs><marker id="arrow-am-output" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker></defs>
 <path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-output)" d="M72 286H662"/><path fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#arrow-am-output)" d="M367 314V58"/>
 <path data-role="am-output-spectrum" fill="none" stroke="#0f8b8d" stroke-width="3" stroke-linejoin="round" d="M132 286L196 128L260 286 M474 286L538 128L602 286"/>

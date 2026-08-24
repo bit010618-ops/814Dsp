@@ -26,7 +26,7 @@ def feedback_system_svg() -> str:
 
 def feedback_system_svg_v2() -> str:
     """Textbook feedback diagram with two separate gain blocks and summer ports."""
-    return r'''<svg class="diagram" viewBox="0 0 780 370" role="img" aria-label="2013 年第五题与 2015 年第四题的离散系统结构图">
+    return r'''<svg class="diagram" data-source-candidate-id="2015-q四-01" viewBox="0 0 780 370" role="img" aria-label="2013 年第五题与 2015 年第四题的离散系统结构图">
 <defs>
   <marker id="arrow-b4-v2-main" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker>
   <marker id="arrow-b4-v2-feedback" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#0f8b8d"/></marker>

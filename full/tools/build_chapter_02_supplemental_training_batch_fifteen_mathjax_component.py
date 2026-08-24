@@ -20,7 +20,7 @@ figure{break-inside:avoid;margin:10pt auto;text-align:center}svg{width:min(100%,
 
 
 def _system_svg() -> str:
-    return r'''<figure><svg viewBox="0 0 790 190" role="img" aria-label="连续时间信号经采样、频移、数字滤波和数模转换的系统框图">
+    return r'''<figure><svg data-source-candidate-id="2025-q七-01" viewBox="0 0 790 190" role="img" aria-label="连续时间信号经采样、频移、数字滤波和数模转换的系统框图">
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#164e78"/></marker></defs>
 <g fill="none" stroke="#164e78" stroke-width="2.4" marker-end="url(#arrow)"><path d="M24 78H115"/><path d="M270 78H336"/><path d="M391 78H454"/><path d="M580 78H650"/><path d="M758 78H786"/></g>
 <g fill="#fff" stroke="#164e78" stroke-width="2.2"><rect x="115" y="43" width="155" height="70" rx="2"/><rect x="454" y="43" width="126" height="70" rx="2"/><rect x="650" y="43" width="108" height="70" rx="2"/><circle cx="364" cy="78" r="27"/></g>
@@ -32,7 +32,7 @@ def _system_svg() -> str:
 
 
 def _source_response_svg() -> str:
-    return r'''<figure><svg viewBox="0 0 760 230" role="img" aria-label="输入连续频谱与数字滤波器频率响应">
+    return r'''<figure><svg data-source-candidate-id="2025-q七-01" viewBox="0 0 760 230" role="img" aria-label="输入连续频谱与数字滤波器频率响应">
 <defs><marker id="axis" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#164e78"/></marker></defs>
 <g transform="translate(25 20)"><text x="155" y="18" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei" font-size="17">输入连续频谱</text><g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis)"><path d="M10 135H300"/><path d="M155 152V35"/></g><path d="M67 135V69H243V135" fill="none" stroke="#008f92" stroke-width="3"/><g fill="#1f2933" font-family="Cambria Math" font-size="17"><text x="148" y="31">X(jΩ)</text><text x="302" y="151">Ω</text><text x="57" y="157">−600π</text><text x="145" y="157">0</text><text x="219" y="157">600π</text><text x="163" y="66">1</text></g></g>
 <g transform="translate(410 20)"><text x="155" y="18" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei" font-size="17">数字滤波器频率响应</text><g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis)"><path d="M10 135H300"/><path d="M155 152V35"/></g><path d="M68 135V82H112V135M198 135V82H242V135" fill="none" stroke="#008f92" stroke-width="3"/><g fill="#1f2933" font-family="Cambria Math" font-size="17"><text x="148" y="31">H(eʲω)</text><text x="302" y="151">ω</text><text x="55" y="157">−π</text><text x="93" y="157">−0.5π</text><text x="145" y="157">0</text><text x="196" y="157">0.5π</text><text x="239" y="157">π</text><text x="163" y="79">1</text></g></g>
@@ -40,7 +40,7 @@ def _source_response_svg() -> str:
 
 
 def _answer_spectra_svg() -> str:
-    return r'''<figure><svg viewBox="0 0 760 420" role="img" aria-label="采样、乘以负一的 n 次幂、滤波和数模转换后的频谱">
+    return r'''<figure><svg data-source-candidate-id="2025-q七-01" viewBox="0 0 760 420" role="img" aria-label="采样、乘以负一的 n 次幂、滤波和数模转换后的频谱">
 <defs><marker id="axis2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#164e78"/></marker></defs>
 <g font-family="Microsoft YaHei" fill="#315d7c" font-size="17"><text x="190" y="22" text-anchor="middle">x[n] 的频谱</text><text x="570" y="22" text-anchor="middle">w[n] 的频谱</text><text x="190" y="222" text-anchor="middle">y[n] 的频谱</text><text x="570" y="222" text-anchor="middle">y(t) 的频谱</text></g>
 <g stroke="#164e78" stroke-width="2" fill="none" marker-end="url(#axis2)"><path d="M35 145H335"/><path d="M185 162V50"/><path d="M425 145H725"/><path d="M575 162V50"/><path d="M35 345H335"/><path d="M185 362V250"/><path d="M425 345H725"/><path d="M575 362V250"/></g>

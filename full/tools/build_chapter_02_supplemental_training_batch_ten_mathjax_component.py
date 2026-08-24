@@ -22,7 +22,7 @@ def _math_label(x: float, y: float, width: float, height: float, latex: str, siz
 
 def flow_svg() -> str:
     """Programmatic textbook system graph for y[n] = x[n] - x[n-N]."""
-    return r'''<svg class="diagram" viewBox="0 0 720 350" role="img" aria-label="2022 年第八题的离散 LTI 系统流图">
+    return r'''<svg class="diagram" data-source-candidate-id="2022-q八-01" viewBox="0 0 720 350" role="img" aria-label="2022 年第八题的离散 LTI 系统流图">
 <defs><marker id="arrow-b10-flow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#174b73"/></marker></defs>
 <path fill="none" stroke="#174b73" stroke-width="2.5" marker-end="url(#arrow-b10-flow)" d="M58 116H486"/><path fill="none" stroke="#174b73" stroke-width="2.5" marker-end="url(#arrow-b10-flow)" d="M522 116H668"/>
 <circle cx="174" cy="116" r="5" fill="#174b73" data-role="branch-node"/><path fill="none" stroke="#174b73" stroke-width="2.5" marker-end="url(#arrow-b10-flow)" d="M174 121V238H260"/>

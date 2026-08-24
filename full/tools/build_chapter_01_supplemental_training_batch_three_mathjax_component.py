@@ -4,7 +4,7 @@ from __future__ import annotations
 
 def _bipolar_square_wave_svg() -> str:
     """Draw the original bipolar square wave using exact period and amplitude geometry."""
-    return r'''<svg class="signal-svg" data-plot="2025-bipolar-square-wave" viewBox="0 0 860 350" role="img" aria-label="幅度为正负五伏的周期方波">
+    return r'''<svg class="signal-svg" data-source-candidate-id="2025-q六-01" data-plot="2025-bipolar-square-wave" viewBox="0 0 860 350" role="img" aria-label="幅度为正负五伏的周期方波">
 <style>.s25-axis{fill:none;stroke:#174b73;stroke-width:2.2}.s25-wave{fill:none;stroke:#008d8c;stroke-width:2.8}.s25-title{fill:#315d7c;font-size:18px;font-family:"Microsoft YaHei",sans-serif}</style>
 <defs><marker id="s25-wave-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#174b73"/></marker></defs>
 <text x="430" y="28" class="s25-title" text-anchor="middle">题设双极性周期方波</text>
@@ -19,7 +19,7 @@ def _bipolar_square_wave_svg() -> str:
 
 def _pulse_sampling_spectrum_svg() -> str:
     """Show line spectrum, finite-pulse envelope and ideal-impulse replica contrast."""
-    return r'''<svg class="signal-svg" data-plot="2025-pulse-sampling-spectrum" viewBox="0 0 900 720" role="img" aria-label="有限宽周期脉冲采样与理想冲激采样频谱对比">
+    return r'''<svg class="signal-svg" data-source-candidate-id="2025-q六-01" data-plot="2025-pulse-sampling-spectrum" viewBox="0 0 900 720" role="img" aria-label="有限宽周期脉冲采样与理想冲激采样频谱对比">
 <style>.s25-axis{fill:none;stroke:#174b73;stroke-width:2.1}.s25-stem{stroke:#008d8c;stroke-width:2.4}.s25-ideal{stroke:#bf6500;stroke-width:2.4}.s25-env{fill:none;stroke:#8a6277;stroke-width:2;stroke-dasharray:6 4}.s25-title{fill:#315d7c;font-size:18px;font-family:"Microsoft YaHei",sans-serif}</style>
 <defs><marker id="s25-freq-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#174b73"/></marker></defs>
 <text x="450" y="30" class="s25-title" text-anchor="middle">方波与两种采样方式的频谱关系</text>

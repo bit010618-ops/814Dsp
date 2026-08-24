@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import re
 import sys
+import json
 from pathlib import Path
 from typing import Mapping
 
@@ -107,16 +108,20 @@ def extract_answer_page_map(pdf_path: Path) -> dict[str, int]:
 
 
 def main(argv: list[str]) -> int:
-    if len(argv) != 4:
+    if len(argv) not in {4, 5}:
         raise SystemExit(
-            "usage: backfill_answer_page_references.py INPUT_HTML FIRST_PASS_PDF OUTPUT_HTML"
+            "usage: backfill_answer_page_references.py INPUT_HTML FIRST_PASS_PDF OUTPUT_HTML [AUDIT_JSON]"
         )
     source_html = Path(argv[1])
     first_pass_pdf = Path(argv[2])
     output_html = Path(argv[3])
-    rendered = apply_page_map(
-        source_html.read_text(encoding="utf-8"), extract_answer_page_map(first_pass_pdf)
-    )
+    page_by_answer = extract_answer_page_map(first_pass_pdf)
+    rendered = apply_page_map(source_html.read_text(encoding="utf-8"), page_by_answer)
+    if len(argv) == 5:
+        audit = json.loads(Path(argv[4]).read_text(encoding="utf-8"))
+        rendered = apply_navigation_page_map(
+            rendered, audit["verified_mappings"], page_by_answer
+        )
     output_html.parent.mkdir(parents=True, exist_ok=True)
     output_html.write_text(rendered, encoding="utf-8")
     print(output_html)

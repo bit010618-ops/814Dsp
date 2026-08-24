@@ -17,6 +17,7 @@ if str(ROOT) not in sys.path:
 
 from full.tools import build_all_main_body
 from full.tools import build_appendices
+from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
 from full.tools import build_chapter_01_training_answers_mathjax_component as chapter_one_answers
 from full.tools import build_chapter_01_supplemental_mathjax_component as chapter_one_supplemental
 from full.tools import build_chapter_01_training_mathjax_component as chapter_one_training
@@ -65,9 +66,10 @@ CHAPTER_TWO_SUPPLEMENTAL_BATCHES = tuple(
 
 STYLE = build_all_main_body.STYLE + r"""
 <style>
-.training-section{break-before:page}
+.chapter-exam-section{break-before:page}
 .exam-page{break-before:page;break-inside:avoid;page-break-inside:avoid;min-height:230mm}
 .exam-page:first-child{break-before:auto}
+.chapter-exam-first{break-before:auto;page-break-before:auto}
 .exam-head{display:flex;justify-content:space-between;gap:18pt;color:#52616b;margin:0 0 10pt;break-after:avoid}
 .writing-space{min-height:105mm}
 .answer-section{break-before:page}
@@ -87,6 +89,7 @@ STYLE = build_all_main_body.STYLE + r"""
 .fft-flow svg{display:block;width:100%;height:auto;border:.5pt solid #d6dde2;background:#fff}
 .fft-flow figcaption{color:#52616b;text-align:center;margin-top:5pt;font-size:9.5pt}
 .formula-lead{break-after:avoid;color:#52616b;font-size:10.5pt;margin:9pt 0 3pt}
+.answer-page-ref{color:inherit;text-decoration:none;white-space:nowrap}
 </style>
 """
 
@@ -187,6 +190,37 @@ def _normalize_answer_refs(fragment: str) -> str:
     return re.sub(r"详解见 P\.(?:\d+|____)", "详解见 P.____", fragment)
 
 
+_CHAPTER_FRAGMENT_COUNTS = (5, 26, 14, 2, 1, 1, 2, 1)
+_CHINESE_CHAPTERS = ("第一", "第二", "第三", "第四", "第五", "第六", "第七", "第八")
+
+
+def _group_by_chapter(fragments: list[str]) -> list[list[str]]:
+    """Split the verified flat component order into its eight chapter buckets."""
+    if len(fragments) != sum(_CHAPTER_FRAGMENT_COUNTS):
+        raise ValueError("chapter fragment count no longer matches the audited assembly")
+    groups: list[list[str]] = []
+    cursor = 0
+    for count in _CHAPTER_FRAGMENT_COUNTS:
+        groups.append(fragments[cursor : cursor + count])
+        cursor += count
+    return groups
+
+
+def _remove_training_banner(fragment: str) -> str:
+    """Use one reader-facing chapter title instead of batch-specific H1 banners."""
+    return re.sub(r"<h1(?:\s[^>]*)?>.*?</h1>", "", fragment, count=1, flags=re.DOTALL)
+
+
+def _remove_answer_banner(fragment: str) -> str:
+    """Avoid repeating component-local answer banners under the final answer heading."""
+    return re.sub(
+        r"<h1(?:\s[^>]*)?>\s*真题整理详解[^<]*</h1>",
+        "",
+        fragment,
+        flags=re.DOTALL,
+    )
+
+
 _FORMULA_OR_HEADING = re.compile(
     r"<h[1-4](?:\s[^>]*)?>(?P<heading>.*?)</h[1-4]>|"
     r'(?P<formula><div class="formula(?:\s[^"]*)?">(?P<formula_body>.*?)</div>)',
@@ -280,31 +314,87 @@ def _exam_navigation_html() -> str:
     )
 
 
-def _anchor_answer_headings(fragment: str) -> str:
-    """Give each book-end answer a stable target for final page references."""
-    index = 0
+def _anchor_answer_headings(
+    fragment: str, start_index: int
+) -> tuple[str, list[tuple[str, str]]]:
+    """Give one answer fragment stable targets and return their years."""
+    index = start_index
+    records: list[tuple[str, str]] = []
 
     def replace(match: re.Match[str]) -> str:
         nonlocal index
         index += 1
         answer_id = f"answer-{index:03d}"
         attributes = match.group("attributes")
-        return f'<h2{attributes} id="{answer_id}" data-answer-id="{answer_id}">'
+        title = re.sub(r"<[^>]+>", "", match.group("title"))
+        year_match = re.search(r"(20\d{2})\s*年真题", html.unescape(title))
+        if year_match is None:
+            raise ValueError(f"answer heading has no year: {title}")
+        records.append((year_match.group(1), answer_id))
+        return (
+            f'<h2{attributes} id="{answer_id}" data-answer-id="{answer_id}">'
+            f'{match.group("title")}</h2>'
+        )
 
-    return re.sub(r"<h2(?P<attributes>[^>]*)>", replace, fragment)
+    anchored = re.sub(
+        r"<h2(?P<attributes>[^>]*)>(?P<title>.*?)</h2>",
+        replace,
+        fragment,
+        flags=re.DOTALL,
+    )
+    return anchored, records
 
 
-def _document(
-    body: str, training: str, appendices: str, navigation: str, answers: str
-) -> str:
+def _training_years(fragment: str) -> list[str]:
+    """Read the printed year immediately preceding each training page reference."""
+    years: list[str] = []
+    for match in re.finditer(r"详解见 P\.____", fragment):
+        context = re.sub(r"<[^>]+>", " ", fragment[max(0, match.start() - 500) : match.start()])
+        candidates = re.findall(r"(20\d{2})\s*年真题", context)
+        if not candidates:
+            raise ValueError("training page reference has no preceding exam year")
+        years.append(candidates[-1])
+    return years
+
+
+def _link_training_references(fragment: str, answer_records: list[tuple[str, str]]) -> str:
+    """Attach every printed page-reference placeholder to its same-component answer."""
+    by_year: dict[str, list[str]] = {}
+    for year, answer_id in answer_records:
+        by_year.setdefault(year, []).append(answer_id)
+    years = _training_years(fragment)
+    consumed: dict[str, int] = {}
+
+    def replace(match: re.Match[str]) -> str:
+        year = years.pop(0)
+        targets = by_year.get(year, [])
+        if not targets:
+            raise ValueError(f"training year {year} has no detailed-answer target")
+        occurrence = consumed.get(year, 0)
+        answer_id = targets[0] if len(targets) == 1 else targets[occurrence]
+        if len(targets) > 1 and occurrence >= len(targets):
+            raise ValueError(f"training year {year} has more references than answer headings")
+        consumed[year] = occurrence + 1
+        return (
+            f'<a class="answer-page-ref" href="#{answer_id}" '
+            f'data-answer-ref="{answer_id}">详解见 P.____</a>'
+        )
+
+    linked = re.sub(r"详解见 P\.____", replace, fragment)
+    if years:
+        raise ValueError("not every training reference was linked")
+    return linked
+
+
+def _document(body: str, appendices: str, navigation: str, answers: str) -> str:
     return (
         '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<script>window.MathJax={tex:{packages:{"[+]": ["ams"]}}};</script>'
         f'<script defer src="{MATHJAX}"></script>{STYLE}<style>{build_appendices.STYLE}</style></head>'
-        f'<body><main>{body}<section class="training-section">{training}</section>{appendices}{navigation}'
+        f'<body><main>{body}{appendices}{navigation}'
         '<section class="answer-section"><div class="appendix-f">'
-        "<h1>附录 F：华理 814 历年 DSP 真题整理详解</h1>"
+        "<h1>附录 F：真题整理详解</h1>"
         f"{answers}</div></section>{build_appendices.appendix_i_html()}</main></body></html>"
     )
 
@@ -314,19 +404,52 @@ def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="dsp-full-handout-") as temporary:
         directory = Path(temporary)
-        body_path = build_all_main_body.write_html(directory / "main-body.html")
-        body = _with_formula_leads(_main_body(body_path.read_text(encoding="utf-8")))
-        training = "\n".join(
-            _normalize_answer_refs(fragment)
-            for fragment in _training_fragments(directory)
+        chapter_bodies = [_with_formula_leads(body) for body in build_all_main_body._chapters()]
+        training_fragments = _group_by_chapter(
+            [_normalize_answer_refs(fragment) for fragment in _training_fragments(directory)]
         )
-        answers = _anchor_answer_headings(
-            _with_formula_leads("\n".join(_answer_fragments(directory)))
+        answer_fragments = _answer_fragments(directory)
+        anchored_answers: list[str] = []
+        answer_records_by_fragment: list[list[tuple[str, str]]] = []
+        answer_index = 0
+        for fragment in answer_fragments:
+            anchored, records = _anchor_answer_headings(_with_formula_leads(fragment), answer_index)
+            anchored_answers.append(anchored)
+            answer_records_by_fragment.append(records)
+            answer_index += len(records)
+        answer_records_by_chapter = _group_by_chapter(answer_records_by_fragment)
+        chapter_blocks: list[str] = []
+        for index, (chapter_body, question_group, record_group) in enumerate(
+            zip(chapter_bodies, training_fragments, answer_records_by_chapter), start=1
+        ):
+            training = "\n".join(
+                normalize_legacy_inline_math(
+                    _remove_training_banner(_link_training_references(fragment, records))
+                )
+                for fragment, records in zip(question_group, record_group)
+            )
+            title = _CHINESE_CHAPTERS[index - 1]
+            first_exam_page = '<section class="exam-page">'
+            if first_exam_page not in training:
+                raise ValueError(f"第 {index} 章真题整理缺少题面页")
+            training = training.replace(
+                first_exam_page,
+                f'<section class="exam-page chapter-exam-first"><h1>{title}章真题整理</h1>',
+                1,
+            )
+            chapter_blocks.append(
+                f'<section class="chapter-start">{chapter_body}'
+                f'<section class="chapter-exam-section">{training}</section>'
+                "</section>"
+            )
+        body = "\n".join(chapter_blocks)
+        answers = "\n".join(
+            normalize_legacy_inline_math(_remove_answer_banner(fragment))
+            for fragment in anchored_answers
         )
     output.write_text(
         _document(
             body,
-            training,
             _with_formula_leads(build_appendices.pre_answer_appendices_html(body)),
             _exam_navigation_html(),
             answers,

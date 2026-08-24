@@ -33,9 +33,16 @@ def training_system_svg() -> str:
 </svg>"""
 
 
-def training_stem_svg(values: dict[int, float], label: str) -> str:
+def training_stem_svg(
+    values: dict[int, float], label: str, *, source_candidate_id: str | None = None
+) -> str:
     """Create an integer-indexed textbook stem plot."""
     ordered = sorted(values.items())
+    candidate_attribute = (
+        f' data-source-candidate-id="{source_candidate_id}"'
+        if source_candidate_id
+        else ""
+    )
     lo, hi = ordered[0][0] - 1, ordered[-1][0] + 1
     left, step, base, scale = 95, 105, 165, 48
     x = lambda n: left + (n - lo) * step
@@ -51,7 +58,7 @@ def training_stem_svg(values: dict[int, float], label: str) -> str:
         f'y="{base + 26}" text-anchor="start">0</text>'
     )
     return f"""<!-- training_stem_svg: samples derived from supplied values -->
-<svg class="signal-svg" viewBox="0 0 860 270" role="img" aria-label="{label} 离散序列">
+<svg class="signal-svg"{candidate_attribute} viewBox="0 0 860 270" role="img" aria-label="{label} 离散序列">
  <defs><marker id="stemarrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#174b73"/></marker></defs>
  <path class="axis" d="M48 {base}H814" marker-end="url(#stemarrow)"/><path class="axis" data-origin-at-zero="true" d="M{x(0)} 230V38" marker-end="url(#stemarrow)"/>
  {ticks}{stems}{origin_label}<g class="math"><foreignObject x="{x(0)+8}" y="24" width="70" height="34"><div>\\({label}\\)</div></foreignObject><foreignObject x="814" y="{base-19}" width="28" height="30"><div>\\(n\\)</div></foreignObject></g>
@@ -60,8 +67,8 @@ def training_stem_svg(values: dict[int, float], label: str) -> str:
 
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
-    f1 = training_stem_svg({-2: 1, -1: 1, 0: 1, 1: 1, 2: 1}, "f_1(n)")
-    f2 = training_stem_svg({-1: 1, 0: 2, 1: -1, 2: 2, 3: -1}, "f_2(n)")
+    f1 = training_stem_svg({-2: 1, -1: 1, 0: 1, 1: 1, 2: 1}, "f_1(n)", source_candidate_id="2019-q二-01")
+    f2 = training_stem_svg({-1: 1, 0: 2, 1: -1, 2: 2, 3: -1}, "f_2(n)", source_candidate_id="2019-q二-01")
     content = r"""
 <main>
  <section class="exam-page"><h1>第一章 分章强化训练</h1><div class="exam-head"><span>2002 年真题</span><span>详解见 P.59</span></div>

@@ -35,7 +35,7 @@ def _math(x: int, y: int, width: int, text: str, height: int = 34) -> str:
 
 def _multirate_chain() -> str:
     """Redraw the source chain and input spectrum without its watermark/template."""
-    return f'''<svg class="diagram" data-diagram="multirate-zero-insertion-chain" viewBox="0 0 960 520" role="img" aria-label="零值插入、低通滤波和周期采样的多采样率系统及输入频谱">
+    return f'''<svg class="diagram" data-source-candidate-id="2015-q八-01" data-diagram="multirate-zero-insertion-chain" viewBox="0 0 960 520" role="img" aria-label="零值插入、低通滤波和周期采样的多采样率系统及输入频谱">
 <defs><marker id="mr-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0L9,4.5L0,9Z" fill="#174b73"/></marker></defs>
 <text x="480" y="30" text-anchor="middle" fill="#263746" style="font:17px Microsoft YaHei,sans-serif">零值插入、低通滤波与周期采样链</text>
 <path d="M75 105H190" fill="none" stroke="#174b73" stroke-width="2.4" marker-end="url(#mr-arrow)"/>
