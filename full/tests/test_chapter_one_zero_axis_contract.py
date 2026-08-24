@@ -37,3 +37,13 @@ def test_chapter_one_convolution_stems_inline_their_axis_and_sample_paint():
     ):
         assert 'fill="none" stroke="#174b73" stroke-width="2"' in output
         assert 'fill="none" stroke="#b45309" stroke-width="2"' in output
+
+
+def test_2019_training_stems_keep_axes_and_samples_in_static_pdf_exports():
+    from full.tools.build_chapter_01_training_mathjax_component import training_stem_svg
+
+    output = training_stem_svg({-1: 1, 0: 2, 1: -1}, "f_2(n)")
+
+    assert output.count('fill="none" stroke="#174b73" stroke-width="2"') == 2
+    assert 'fill="none" stroke="#b45309" stroke-width="2"' in output
+    assert 'data-origin-label="true"' in output

@@ -1310,3 +1310,10 @@
 - Exported the 2016 question page to offline-MathJax A4 PDF and visually checked both input panels: axes are visible, (n=0) shares each vertical axis, each origin is labelled once, positive/negative rods retain their data values and no watermark/black fill remains. Queue item `2016-qintro-01` is now verified.
 - Verification: `pytest full/tests/test_chapter_one_zero_axis_contract.py full/tests/test_chapter_one_convolution_origin_axes.py full/tests/test_signal_plot_svg.py -q --basetemp tmp/.codex-test-convolution-inline-green` -> `9 passed`.
 - Next action: continue the first-chapter source-figure queue with `2019-q二-01`, `2021-qintro-01`, `2022-q七-01` and `2025-q六-01` before rebuilding the all-book PDF candidate.
+
+# 2026-08-24 Chapter-one 2019 convolution figure audit
+
+- Repaired the 2019 convolution stem renderer to inline axis, tick, stem and sample-dot paint attributes. This is the same static-PDF compatibility correction already proven on the 2016 figure.
+- Exported and visually inspected the actual A4 2019 training page: both (f_1(n)) and (f_2(n)) show full axes, visible integer stems, a single origin label per plot, (n=0) on the vertical axis, no offset zero axis, no duplicate zero labels, no raw LaTeX and no watermark/black fill.
+- Queue item `2019-q二-01` is now verified. Regression: `pytest full/tests/test_chapter_one_zero_axis_contract.py full/tests/test_build_chapter_01_training_mathjax_component.py full/tests/test_chapter_one_convolution_origin_axes.py -q --basetemp tmp/.codex-test-2019-inline-green` had 5 relevant assertions pass; the only separate old-suite failure was the obsolete CDN-string assertion (`mathjax@3`) against the intentional local MathJax deployment.
+- Next action: audit `2021-qintro-01` and remaining first-chapter source figures, then regenerate the whole-book candidate PDF.
