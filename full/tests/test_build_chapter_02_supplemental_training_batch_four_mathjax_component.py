@@ -41,8 +41,10 @@ def test_batch_four_feedback_branches_use_separate_gain_blocks_and_summer_ports(
     assert 'data-port="bottom"' in html
     first_return = re.search(r'<path(?=[^>]*data-role="feedback-first-return")[^>]*>', html).group(0)
     second_return = re.search(r'<path(?=[^>]*data-role="feedback-second-return")[^>]*>', html).group(0)
-    assert 'marker-end' not in first_return
-    assert 'marker-end' not in second_return
+    # Feedback paths must visibly enter distinct summing-node ports; a bare
+    # line terminating on the node edge is ambiguous in the printed handout.
+    assert 'marker-end="url(#arrow-b4-v2-feedback)"' in first_return
+    assert 'marker-end="url(#arrow-b4-v2-feedback)"' in second_return
 
 
 def test_batch_four_browser_dom_has_no_raw_math_delimiters(tmp_path: Path):

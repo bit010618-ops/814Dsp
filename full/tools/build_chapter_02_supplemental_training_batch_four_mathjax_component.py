@@ -50,13 +50,13 @@ def feedback_system_svg_v2() -> str:
 <rect data-role="feedback-first-gain" x="435" y="213" width="80" height="44" rx="5" fill="#f4f7f8" stroke="#0f8b8d" stroke-width="2"/>
 <foreignObject x="435" y="213" width="80" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="height:44px;display:flex;align-items:center;justify-content:center;font-size:17px">\(\frac{5}{2}\)</div></foreignObject>
 <path data-role="feedback-first-output" fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)" d="M435 235H390"/>
-<path data-role="feedback-first-return" data-port="lower-left" fill="none" stroke="#0f8b8d" stroke-width="2" d="M390 235H150V142H180"/>
+<path data-role="feedback-first-return" data-port="lower-left" fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)" d="M390 235H150V142H180"/>
 
 <path fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)" d="M742 165V310H515"/>
 <rect data-role="feedback-second-gain" x="435" y="288" width="80" height="44" rx="5" fill="#f4f7f8" stroke="#0f8b8d" stroke-width="2"/>
 <foreignObject x="435" y="288" width="80" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="height:44px;display:flex;align-items:center;justify-content:center;font-size:17px">\(-1\)</div></foreignObject>
 <path data-role="feedback-second-output" fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)" d="M435 310H390"/>
-<path data-role="feedback-second-return" data-port="bottom" fill="none" stroke="#0f8b8d" stroke-width="2" d="M390 310H205V152"/>
+<path data-role="feedback-second-return" data-port="bottom" fill="none" stroke="#0f8b8d" stroke-width="2" marker-end="url(#arrow-b4-v2-feedback)" d="M390 310H205V152"/>
 
 <text x="36" y="356" fill="#52616b" font-family="Microsoft YaHei, sans-serif" font-size="13">每个延时器均为一拍延时；主信号流自左向右。</text>
 </svg>'''

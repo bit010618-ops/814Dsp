@@ -1262,3 +1262,11 @@
 - Repositioned the multirate input-spectrum axis end and the `X(e^{j\omega})`, `1`, `\pi`, and `\omega` labels to prevent the prior label collisions. Exported and visually inspected the repaired A4 page: the question formulas render, the system chain is legible, and the spectrum labels are separated.
 - Verification: `pytest full/tests/test_build_chapter_08_training_mathjax_component.py full/tests/test_chapter_training_placement.py full/tests/test_exam_figure_queue_integration.py -q --basetemp tmp/.codex-test-ch8-inline-math-green` -> `5 passed`.
 - Next action: commit and push this narrowly scoped chapter-eight repair, then continue the visual audit/redraw queue for remaining programmatic DSP figures before the next full-book candidate export.
+
+# 2026-08-24 Chapter-two feedback-diagram port repair
+
+- Visual export of the `2015-q四-01` redraw confirmed the two feedback paths ended as bare lines at the summer boundary, making their intended input ports ambiguous on paper.
+- Added separate arrowheads to the lower-left and bottom summer-port paths; the branch gains and two delay stages remain separate. A regression first failed against the former bare paths, then passed after the smallest SVG change.
+- Exported the repaired A4 training page and visually verified that both feedback arrows now enter the summing node rather than pointing at empty space.
+- Verification: `pytest full/tests/test_build_chapter_02_supplemental_training_batch_four_mathjax_component.py -q -k 'not browser_dom' --basetemp tmp/.codex-test-feedback-port-arrows-green` -> `2 passed, 1 deselected`. The browser-DOM test remains environment-blocked by a local Edge exit code, but the offline MathJax-prerendered PDF was the artifact visually inspected.
+- Next action: continue the source-figure audit with the chapter-two zero-pole and AM system figures, then collect these visual repairs into the next full-book candidate export.
