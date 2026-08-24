@@ -1199,3 +1199,8 @@
 - Exported a 568-page offline-MathJax PDF. WeasyPrint reports no image or layout errors. Visual checks at answer pages 415 and 560 confirm correctly rendered LaTeX and formula labels that state what the formula is used for, not a chapter heading.
 - Verified 153 printed training-page references against 150 PDF answer anchors: no missing target and no page mismatch; answer pages span P.415–P.567.
 - Remains: map Appendix E navigation rows to audited detailed-answer anchors, then rerun final PDF and its visual/link audit. GitHub push is pending the external account-usage limit; no push retry was attempted.
+
+# 2026-08-24 Chapter-one navigation identity audit
+
+- Built the first auditable input to Appendix E backfill: all 41 chapter-one manifest IDs map exactly to `answer-001` through `answer-041`. The test verifies the manifest ID set, the continuous answer-anchor set and actual generated full-handout anchors together (`11 passed` with the full-handout suite).
+- The mapping is intentionally marked partial. No Appendix E reader-visible page number is filled until every chapter has the same identity evidence.
