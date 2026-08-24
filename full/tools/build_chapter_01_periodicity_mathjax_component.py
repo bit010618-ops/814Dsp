@@ -24,10 +24,18 @@ def write_html(output: Path) -> Path:
     <div class="formula">\[x(n)=A\sin(n\omega+\varphi),\qquad N\omega=2k\pi\]</div>
     <p>由 \(x(n+N)=A\sin[(n+N)\omega+\varphi]\) 可知，只有当 \(N\omega\) 是 \(2\pi\) 的整数倍时，相移才不改变每一个样值。</p>
     <div class="formula">\[N=\frac{2\pi k}{\omega},\qquad k\in\mathbb{Z}_{+}\]</div>
+    <h3>整数周期的情形</h3>
+    <p>当 \(\frac{2\pi}{\omega}\) 本身为整数时，取 \(k=1\) 即得到基本周期。它也说明：在一个连续信号周期内以间隔 \(T\) 取到的样值数，正是离散序列的周期。</p>
+    <p>例：求 \(x(n)=A\cos(0.01\pi n)\) 的周期。</p>
+    <div class="formula">\[x(n)=A\cos(0.01\pi n),\qquad \frac{2\pi}{\omega}=\frac{2\pi}{0.01\pi}=200,\qquad N=200\]</div>
+    <p>因为 \(\frac{2\pi}{\omega}=200\) 为整数，故该序列的基本周期为 \(200\)。</p>
     <h2>由频率求基本周期</h2>
     <h3>有理性判据</h3>
     <div class="formula">\[\frac{2\pi}{\omega}=\frac{N}{k},\qquad N,k\in\mathbb{Z}_{+},\qquad \gcd(N,k)=1\]</div>
     <p>当 \(\frac{2\pi}{\omega}\) 为整数时，基本周期就是该整数；当它是既约分数 \(\frac{N}{k}\) 时，基本周期为分子 \(N\)；若它是无理数，序列无周期。</p>
+    <p>例：求 \(x(n)=A\cos\left(\frac{3\pi}{7}n\right)\) 的周期。</p>
+    <div class="formula">\[x(n)=A\cos\left(\frac{3\pi}{7}n\right),\qquad \frac{2\pi}{\omega}=\frac{2\pi}{3\pi/7}=\frac{14}{3},\qquad N=14\]</div>
+    <p>\(\frac{14}{3}\) 已为既约分数，故基本周期取分子 \(N=14\)。若 \(\frac{2\pi}{\omega}\) 为无理数，则不存在整数 \(k\) 使上式给出整数 \(N\)，相应序列无周期。</p>
   </section>
   <section>
     <h3>例：由数字角频率判断周期</h3>
@@ -43,6 +51,8 @@ def write_html(output: Path) -> Path:
     <h3>组合序列的处理</h3>
     <p>先找出每个含 \(n\) 的正弦、余弦或复指数分量的数字角频率，再分别求基本周期。对 \(\sin(\omega_1n)+\sin(\omega_2n)\)，总周期为 \(\operatorname{lcm}(N_1,N_2)\)。</p>
     <p>对 \(\sin(\omega_1n)\sin(\omega_2n)\)，先利用积化和差公式得到 \(\omega_a=\left|\omega_1+\omega_2\right|\) 与 \(\omega_b=\left|\omega_1-\omega_2\right|\)，再取各周期的最小公倍数。含 \(n\) 的系数或非零实指数包络会破坏周期性。</p>
+    <h3>先排除不可能有周期的形式</h3>
+    <p>在求角频率前，应先识别是否带有随 \(n\) 增长或衰减的包络。\(n\sin(\omega n+\varphi)\)、\(a^n u(n)\)、\(e^{(\sigma+j\omega)n}\)（\(\sigma\ne0\)）以及 \(\sin(\omega n+\varphi)u(n)\) 均不可能是周期序列。</p>
     <h3>调幅序列的频率成分</h3>
     <div class="formula">\[x(n)=A[1+m\cos(\omega_Ln)]\cos(\omega_Hn)\]</div>
     <p>该式可写成载波分量和两个边带分量，数字角频率分别为 \(\omega_H\)、\(\omega_H+\omega_L\)、\(\omega_H-\omega_L\)。因此应分别检查三个分量的周期，再取最小公倍数。</p>
