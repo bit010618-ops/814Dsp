@@ -1292,3 +1292,11 @@
 - Commit `948c136` contains the four verified queue-status updates and the readable-label adjustment for the chapter-eight source figure.
 - The broader selected suite produced `10 passed, 1 deselected, 1 failed`; the one failure was `test_2021_am_question_keeps_all_formulae_in_mathjax_after_typesetting`, before assertions, because local Edge headless exited with `2147483651`. This is the same host-level Edge launch condition seen in the feedback-diagram browser-DOM test, not a formula or SVG assertion failure.
 - The independent offline-MathJax pre-render plus WeasyPrint PDF export and visual inspection remain the valid artifact-level checks for these four figures while Edge headless is unavailable.
+
+# 2026-08-24 Coordinate-origin and static-SVG visibility repair
+
+- Recorded the global coordinate rule: in every coordinate figure, the vertical axis/horizontal-axis intersection is the sole zero-index location; the origin label appears once at the lower right and no separate zero axis or offset zero sample is allowed.
+- Repaired the 2019 sampling answer figure where the lower time-domain axis was ten SVG units left of its zero sample. The y-axis and (t=0) sample now share one coordinate; the duplicate tick label was removed, leaving one origin label.
+- Static A4 PDF audit also exposed an export-specific defect: outer-page CSS was not reliably inherited by inline SVGs, so the same plot could lose its axis and stem lines, while an unstyled polyline was filled black. The repaired source inlines the curve, axis, tick and stem paint attributes. Visual PDF inspection confirmed the black fill is gone and the coordinate lines render instead of arrowheads alone.
+- Verification: `pytest full/tests/test_chapter_one_zero_axis_contract.py full/tests/test_chapter_one_convolution_origin_axes.py full/tests/test_signal_plot_svg.py -q --basetemp tmp/.codex-test-origin-axis-final` -> `8 passed`; offline MathJax plus WeasyPrint export was rendered and inspected.
+- Next action: commit this scoped first-chapter coordinate repair, then continue the remaining original-figure audit before the next whole-book candidate export.

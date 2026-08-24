@@ -208,21 +208,22 @@ def sampling_2019_svg(kind: str) -> str:
         for n in range(-7, 8):
             t, value, px = n * math.pi / 6, sa(n * math.pi / 6), x(n * math.pi / 6)
             py = bottom_base - 94 * value
-            samples.append(f'<line class="stem" x1="{px:.1f}" y1="{bottom_base}" x2="{px:.1f}" y2="{py:.1f}" marker-end="url(#s19-arrow)"/>')
+            samples.append(f'<line class="stem" fill="none" stroke="#b45309" stroke-width="2" x1="{px:.1f}" y1="{bottom_base}" x2="{px:.1f}" y2="{py:.1f}" marker-end="url(#s19-arrow)"/>')
         ticks = "".join(
-            f'<line class="tick" x1="{x(t):.1f}" y1="{bottom_base-5}" x2="{x(t):.1f}" y2="{bottom_base+5}"/><foreignObject x="{x(t)-26:.1f}" y="{bottom_base+12}" width="52" height="30"><div>\\({label}\\)</div></foreignObject>'
+            f'<line class="tick" fill="none" stroke="#174b73" stroke-width="1.3" x1="{x(t):.1f}" y1="{bottom_base-5}" x2="{x(t):.1f}" y2="{bottom_base+5}"/><foreignObject x="{x(t)-26:.1f}" y="{bottom_base+12}" width="52" height="30"><div>\\({label}\\)</div></foreignObject>'
             for t, label in ((-math.pi/6, r"-T_s"), (0, "0"), (math.pi/6, r"T_s"))
+            if t != 0
         )
         return rf'''<!-- sampling_2019_svg: Sa(2t) curve and impulse samples use exact coordinates -->
 <svg class="signal-svg" data-plot="2019-sa-sampling-time" viewBox="0 0 870 430" role="img" aria-label="Sa(2t) 与冲激采样序列">
  {marker}
  <text class="label" x="435" y="28" text-anchor="middle">原信号与冲激串采样</text>
- <path class="axis" d="M{left} {top_base}H{right}" marker-end="url(#s19-arrow)"/><path class="axis" d="M{x(0):.1f} {top_base+82}V42" marker-end="url(#s19-arrow)"/>
- <polyline class="conv-line" points="{curve}"/>
+ <path class="axis" fill="none" stroke="#174b73" stroke-width="2" d="M{left} {top_base}H{right}" marker-end="url(#s19-arrow)"/><path class="axis" fill="none" stroke="#174b73" stroke-width="2" d="M{x(0):.1f} {top_base+82}V42" marker-end="url(#s19-arrow)"/>
+ <polyline fill="none" stroke="#008f95" stroke-width="3" points="{curve}"/>
  <foreignObject x="{right-2}" y="{top_base+9}" width="32" height="28"><div>\(t\)</div></foreignObject><foreignObject x="{right-170}" y="42" width="148" height="32"><div>\(f(t)=\operatorname{{Sa}}(2t)\)</div></foreignObject>
- <path class="axis" d="M{left} {bottom_base}H{right}" marker-end="url(#s19-arrow)"/><path class="axis" d="M{x(0)-10:.1f} {bottom_base+60}V{bottom_base-116}" marker-end="url(#s19-arrow)"/>
+ <path class="axis" fill="none" stroke="#174b73" stroke-width="2" d="M{left} {bottom_base}H{right}" marker-end="url(#s19-arrow)"/><path class="axis" data-origin-at-zero="true" fill="none" stroke="#174b73" stroke-width="2" d="M{x(0):.1f} {bottom_base+60}V{bottom_base-116}" marker-end="url(#s19-arrow)"/>
  {''.join(samples)}{ticks}
- <foreignObject x="{right-2}" y="{bottom_base+9}" width="32" height="28"><div>\(t\)</div></foreignObject><foreignObject x="{right-124}" y="{bottom_base-112}" width="94" height="30"><div>\(f_s(t)\)</div></foreignObject>
+ <foreignObject x="{x(0)+7:.1f}" y="{bottom_base+12}" width="32" height="28"><div>\(0\)</div></foreignObject><foreignObject x="{right-2}" y="{bottom_base+9}" width="32" height="28"><div>\(t\)</div></foreignObject><foreignObject x="{right-124}" y="{bottom_base-112}" width="94" height="30"><div>\(f_s(t)\)</div></foreignObject>
 </svg>'''
     left, right, base, top = 58, 812, 226, 70
     x_min, x_max = -27, 27
@@ -232,7 +233,7 @@ def sampling_2019_svg(kind: str) -> str:
         for k in range(-2, 3)
     )
     ticks = "".join(
-        f'<line class="tick" x1="{x(value):.1f}" y1="{base-5}" x2="{x(value):.1f}" y2="{base+5}"/><foreignObject x="{x(value)-32:.1f}" y="{base+11}" width="64" height="30"><div>\\({label}\\)</div></foreignObject>'
+        f'<line class="tick" fill="none" stroke="#174b73" stroke-width="1.3" x1="{x(value):.1f}" y1="{base-5}" x2="{x(value):.1f}" y2="{base+5}"/><foreignObject x="{x(value)-32:.1f}" y="{base+11}" width="64" height="30"><div>\\({label}\\)</div></foreignObject>'
         for value, label in ((-12, r"-\omega_s"), (0, "0"), (12, r"\omega_s"))
     )
     return rf'''<!-- sampling_2019_svg: periodic replicas of F(j omega), with exact period omega_s=12 -->
@@ -240,7 +241,7 @@ def sampling_2019_svg(kind: str) -> str:
  {marker}
  <text class="label" x="435" y="28" text-anchor="middle">冲激采样后的周期频谱</text>
  {bands}
- <path class="axis" d="M{left} {base}H{right}" marker-end="url(#s19-arrow)"/><path class="axis" d="M{x(0):.1f} {base+40}V{top}" marker-end="url(#s19-arrow)"/>
+ <path class="axis" fill="none" stroke="#174b73" stroke-width="2" d="M{left} {base}H{right}" marker-end="url(#s19-arrow)"/><path class="axis" data-origin-at-zero="true" fill="none" stroke="#174b73" stroke-width="2" d="M{x(0):.1f} {base+40}V{top}" marker-end="url(#s19-arrow)"/>
  {ticks}
  <foreignObject x="{right-2}" y="{base+8}" width="42" height="28"><div>\(\omega\)</div></foreignObject><foreignObject x="{right-168}" y="60" width="128" height="34"><div>\(F_s(j\omega)\)</div></foreignObject>
 </svg>'''
