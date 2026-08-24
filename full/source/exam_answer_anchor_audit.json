@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "scope": "partial_chapter_identity_mapping",
+  "scope": "full_chapter_identity_mapping",
   "audited_chapters": [1, 2, 3, 4, 5, 6, 7, 8],
-  "status": "partially_verified_component_identity_mapping",
+  "status": "complete_identity_mapping",
   "evidence": "题目 ID 取自已审计章节的训练组件；答案锚点取自同一组件、同一题干顺序的书末详解标题。第二、三章另逐项核对题干、公式数据和详解内容；同题重复的旧片段不作为第二个导航目标。",
   "unresolved_question_ids": [],
   "verified_mappings": {

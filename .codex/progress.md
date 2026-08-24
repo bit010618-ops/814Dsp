@@ -1229,3 +1229,10 @@
 - Each new display formula has an explicit name and concrete purpose rather than a chapter label, including the inverse-DTFT integral, periodic-folding relation, low-index folding sum, and unaffected-interval criterion.
 - Verification: targeted component, mapping, catalog, and full-handout suites pass (`14 passed`); the generated full HTML contains 150 answer anchors and exactly one occurrence of each new semantic formula label.
 - Next action: backfill appendix E and all training-page answer references from this complete audited mapping, then generate and visually QA the final PDF. Push remains blocked by the external account usage limit.
+
+# 2026-08-24 Appendix E identity-based backfill
+
+- The audit metadata now truthfully marks the mapping as complete: all 156 training IDs resolve to verified answer anchors and no unresolved item remains.
+- Added `apply_navigation_page_map`: it resolves each Appendix E `data-exam-id` to the audited answer anchor, then to the page read from the first-pass PDF. It validates all 156 navigation rows are replaced and rejects missing identities/pages; it never relies on table row order.
+- Verification: backfill, full identity mapping, and full-handout suites pass (`13 passed`). Final PDF authoring is waiting on the required artifact-operation marker: the marker script is absent from this workspace and the default `node` command is unavailable. Source and tests are committed independently; no PDF success is claimed.
+- Next action: when the marker tooling is available, build a first-pass offline-MathJax PDF, extract answer target pages, apply both training and Appendix E page maps, rebuild, and render-check the final PDF. Push remains blocked by the external account usage limit.

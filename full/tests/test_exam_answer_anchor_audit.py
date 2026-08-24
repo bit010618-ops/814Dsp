@@ -23,7 +23,8 @@ def test_audited_chapter_anchor_mapping_uses_manifest_ids_and_existing_answer_ta
     }
     mapping = audit["verified_mappings"]
 
-    assert audit["scope"] == "partial_chapter_identity_mapping"
+    assert audit["scope"] == "full_chapter_identity_mapping"
+    assert audit["status"] == "complete_identity_mapping"
     assert audited_chapters == [1, 2, 3, 4, 5, 6, 7, 8]
     assert audit["unresolved_question_ids"] == []
     assert len(mapping) == 156

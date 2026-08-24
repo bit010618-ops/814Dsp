@@ -13,6 +13,13 @@ _LINKED_REFERENCE = re.compile(
     r'详解见 P\.____(?P<suffix></a>)'
 )
 
+_NAVIGATION_PAGE_REFERENCE = re.compile(
+    r'(?P<prefix><tr\b(?=[^>]*\bdata-exam-navigation="true")'
+    r'(?=[^>]*\bdata-exam-id="(?P<exam_id>[^"]+)")[^>]*>.*?'
+    r'<td class="page-ref">)详解见 P\.待回填(?P<suffix></td>.*?</tr>)',
+    flags=re.DOTALL,
+)
+
 
 def apply_page_map(html_text: str, page_by_answer: Mapping[str, int]) -> str:
     """Replace only linked training placeholders with their printed answer pages."""
@@ -32,6 +39,37 @@ def apply_page_map(html_text: str, page_by_answer: Mapping[str, int]) -> str:
     result = _LINKED_REFERENCE.sub(replace, html_text)
     if _LINKED_REFERENCE.search(result):
         raise ValueError("a linked training page reference was not backfilled")
+    return result
+
+
+def apply_navigation_page_map(
+    html_text: str,
+    answer_by_exam_id: Mapping[str, str],
+    page_by_answer: Mapping[str, int],
+) -> str:
+    """Backfill Appendix E pages using audited question IDs, never table-row order."""
+
+    expected_rows = html_text.count('data-exam-navigation="true"')
+
+    def replace(match: re.Match[str]) -> str:
+        exam_id = match.group("exam_id")
+        try:
+            answer_id = answer_by_exam_id[exam_id]
+        except KeyError as error:
+            raise ValueError(f"missing audited answer target for {exam_id}") from error
+        try:
+            page = page_by_answer[answer_id]
+        except KeyError as error:
+            raise ValueError(f"missing printed page for {answer_id}") from error
+        if page < 1:
+            raise ValueError(f"invalid printed page for {answer_id}: {page}")
+        return f'{match.group("prefix")}详解见 P.{page}{match.group("suffix")}'
+
+    result, replacements = _NAVIGATION_PAGE_REFERENCE.subn(replace, html_text)
+    if replacements != expected_rows:
+        raise ValueError(
+            f"backfilled {replacements} appendix navigation rows, expected {expected_rows}"
+        )
     return result
 
 
