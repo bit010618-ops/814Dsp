@@ -1323,3 +1323,9 @@
 - Rendered the actual 2021 source-question A4 page rather than inferring correctness from component reuse. The two input stem panels retain their original integer locations and values, full axes, one origin label per panel, and no watermarks, black fill, missing rods or overlapping axis labels.
 - The `n=0` coordinate is the vertical axis in each panel; the second input's zero value is correctly represented by the baseline rather than an invented nonzero stem. Queue item `2021-qintro-01` is verified.
 - Next action: audit the first-chapter A/D chain (`2022-q七-01`) and finite-width pulse-sampling figures (`2025-q六-01`) using the same static PDF visual gate.
+
+# 2026-08-24 Chapter-one A/D--D/A chain visual audit
+
+- Rendered the actual 2022 A/D--(h[n])--D/A source-question page. The main signal flow is left-to-right with explicit arrowheads; input/output labels, the sampling-period mark, filter cutoff and the triangular input spectrum are all visible and separated.
+- The spectrum has a complete horizontal axis, a zero-aligned vertical axis, a single origin label, and clear ±1 kHz marks. No watermark, surrounding courseware strip, black fill, formula source, crop or label collision was observed. Queue item `2022-q七-01` is verified.
+- Next action: audit `2025-q六-01` before moving the first-chapter source-figure queue to the all-book rebuild stage.

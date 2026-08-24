@@ -73,7 +73,7 @@
       "handout_action": "redraw",
       "preserve": "输入频谱、A/D—h(n)—D/A 框图、采样周期 T、截止频率与各信号标注",
       "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
-      "status": "pending_redraw_or_repair"
+      "status": "verified_after_static_pdf_visual_audit"
     },
     {
       "source_candidate_id": "2025-q六-01",
