@@ -50,6 +50,8 @@ p{margin:5pt 0 8pt}
 .chapter-formula-summary .formula-name{break-after:avoid;color:#52616b;font-size:10.5pt;margin:9pt 0 3pt}
 .chapter-formula-summary .formula{break-inside:avoid}
 .mapping,.table{border-collapse:collapse;width:100%;margin:10pt 0 12pt;break-inside:avoid}
+.table{break-inside:auto}
+.table tr{break-inside:avoid}
 .mapping th,.mapping td,.table th,.table td{border:.45pt solid #b9c6cf;padding:6pt 7pt;text-align:left;vertical-align:top}
 .mapping th,.table th{color:#315d7c;font-weight:600;background:#f4f7f8}
 figure{break-inside:avoid;margin:12pt auto;text-align:center}

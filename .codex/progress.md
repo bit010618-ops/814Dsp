@@ -1236,3 +1236,13 @@
 - Added `apply_navigation_page_map`: it resolves each Appendix E `data-exam-id` to the audited answer anchor, then to the page read from the first-pass PDF. It validates all 156 navigation rows are replaced and rejects missing identities/pages; it never relies on table row order.
 - Verification: backfill, full identity mapping, and full-handout suites pass (`13 passed`). Final PDF authoring is waiting on the required artifact-operation marker: the marker script is absent from this workspace and the default `node` command is unavailable. Source and tests are committed independently; no PDF success is claimed.
 - Next action: when the marker tooling is available, build a first-pass offline-MathJax PDF, extract answer target pages, apply both training and Appendix E page maps, rebuild, and render-check the final PDF. Push remains blocked by the external account usage limit.
+
+# 2026-08-24 Final offline-MathJax PDF export and visual QA
+
+- Used the bundled Node runtime and completed the required PDF artifact marker. Rebuilt the full handout, prerendered every LaTeX block with MathJax SVG, and generated a 533-page A4 PDF at `full/outputs/数字信号处理讲义_最终页码回填版.pdf`.
+- Diagnosed and corrected a WeasyPrint-specific formula bug: SVG dimensions expressed as `ex` collapsed to tiny unreadable fragments. The prerenderer now converts MathJax SVG dimensions and vertical alignment to physical points while retaining complete MathJax SVG rendering; regression tests cover the fix.
+- Corrected long-table pagination so Appendix E starts with its first navigation table rather than leaving a title-only page. Its final reader-facing note says the pages have already been backfilled.
+- Final page-map audit: all 150 detailed-answer anchors are present; the stable answer range is P.391-P.532. All 156 Appendix E rows and every linked training reference are mapped through the audited question identity map rather than row order.
+- Visual QA rendered and inspected representative formula, table, DIT-FFT, filter-structure, training, appendix-navigation and detailed-answer pages. No formula source, missing-image warning, black replacement block or formula-size collapse was observed in those samples. PDF exporter emitted only duplicate SVG marker-name warnings.
+- Verification: `pytest full/tests/test_backfill_answer_page_references.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q` -> `15 passed`; final PDF -> 533 pages, 150 answer anchors.
+- Next action: commit this PDF/export and regression fix as a task-scoped milestone, then attempt the configured push once; keep progressing only after preserving unrelated dirty work.

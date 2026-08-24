@@ -16,6 +16,7 @@ def test_apply_page_map_replaces_only_linked_training_placeholders():
 
 def test_apply_navigation_page_map_uses_audited_question_identity_not_row_order():
     html = (
+        '<p>按章节、年份和训练位置检索；全部页码将在全书最终分页后统一回填。</p>'
         '<tr data-exam-navigation="true" data-exam-id="second"><td class="page-ref">详解见 P.待回填</td></tr>'
         '<tr data-exam-navigation="true" data-exam-id="first"><td class="page-ref">详解见 P.待回填</td></tr>'
     )
@@ -28,3 +29,5 @@ def test_apply_navigation_page_map_uses_audited_question_identity_not_row_order(
 
     assert result.index("详解见 P.417") < result.index("详解见 P.415")
     assert "P.待回填" not in result
+    assert "页码已按最终成品回填。" in result
+    assert "将在全书最终分页后统一回填" not in result

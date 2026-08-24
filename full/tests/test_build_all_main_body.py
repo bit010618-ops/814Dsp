@@ -56,6 +56,8 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert "grid-template-columns:repeat(2,minmax(0,1fr))" in html
     assert ".grid{display:grid" in html
     assert ".mapping th,.mapping td,.table th,.table td{border:.45pt solid" in html
+    assert ".table{break-inside:auto}" in html
+    assert ".table tr{break-inside:avoid}" in html
     assert ".source-figure.compact{max-width:156mm}" in html
     assert ".source-figure-flow{break-inside:auto;max-width:156mm;margin:8pt auto}" in html
     assert ".formula mjx-container[display=\"true\"]" in html

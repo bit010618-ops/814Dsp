@@ -12,6 +12,7 @@ if (!inputPath || !outputPath) {
 
 const mathjaxPath = path.resolve(__dirname, "..", "vendor", "mathjax", "es5", "node-main.js");
 const mathjax = require(mathjaxPath);
+const MATHJAX_EX_TO_PT = 7.5;
 
 function decodeHtmlEntitiesInLatex(latex) {
   const entities = {
@@ -30,12 +31,22 @@ function decodeHtmlEntitiesInLatex(latex) {
   return decoded;
 }
 
+function physicalizeMathJaxSvgUnits(markup) {
+  // WeasyPrint collapses SVG dimensions expressed in `ex` when the SVG is
+  // emitted outside a browser layout engine.  MathJax uses 1ex ~= 0.43em;
+  // with our 17.5--18pt formula baseline, 7.5pt preserves its intended size.
+  const toPoints = (_, value) => `${(Number(value) * MATHJAX_EX_TO_PT).toFixed(3)}pt`;
+  return markup
+    .replace(/\b(width|height)="(-?[0-9.]+)ex"/g, (_, property, value) => `${property}="${toPoints(null, value)}"`)
+    .replace(/vertical-align:\s*(-?[0-9.]+)ex/g, (_, value) => `vertical-align: ${toPoints(null, value)}`);
+}
+
 function renderFormula(MathJax, latex, display) {
   const node = MathJax.tex2svg(decodeHtmlEntitiesInLatex(latex).trim(), { display });
-  return MathJax.startup.adaptor
+  return physicalizeMathJaxSvgUnits(MathJax.startup.adaptor
     .outerHTML(node)
     .replace('<svg ', '<svg class="mathjax-svg" ')
-    .replace('<mjx-container ', '<mjx-container data-mathjax-static="true" ');
+    .replace('<mjx-container ', '<mjx-container data-mathjax-static="true" '));
 }
 
 function externalizeSvgForeignObjectMath(document) {
@@ -111,7 +122,10 @@ mathjax
       'svg{max-width:100%;height:auto}',
       'svg:not(.mathjax-svg){max-width:100%;height:auto}',
     );
-    const staticStyle = '<style data-mathjax-static-style="true">mjx-container{font-size:17.5pt}mjx-container[display="true"]{font-size:18pt}mjx-container[display="true"] svg.mathjax-svg{max-width:100%;height:auto}</style>';
+    // Keep the SVG height attribute emitted by MathJax.  WeasyPrint honors
+    // that intrinsic height, whereas a CSS `height:auto` collapses many
+    // MathJax SVG formulae to an unreadable sliver in the exported PDF.
+    const staticStyle = '<style data-mathjax-static-style="true">mjx-container{font-size:17.5pt}mjx-container[display="true"]{font-size:18pt}mjx-container[display="true"] svg.mathjax-svg{max-width:100%}</style>';
     const styled = isolated.includes('</head>')
       ? isolated.replace('</head>', `${staticStyle}</head>`)
       : /<body\b[^>]*>/i.test(isolated)

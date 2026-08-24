@@ -49,6 +49,10 @@ def apply_navigation_page_map(
 ) -> str:
     """Backfill Appendix E pages using audited question IDs, never table-row order."""
 
+    html_text = html_text.replace(
+        "全部页码将在全书最终分页后统一回填。",
+        "页码已按最终成品回填。",
+    )
     expected_rows = html_text.count('data-exam-navigation="true"')
 
     def replace(match: re.Match[str]) -> str:
