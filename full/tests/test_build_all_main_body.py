@@ -134,3 +134,20 @@ def test_formula_name_explains_the_reader_use_for_a_section_specific_formula():
     assert label == "DFT 基本性质关系（用于根据时域运算快速推导对应的频域结果）"
     assert "第三章" not in label
     assert "用于说明该性质中各变量的对应关系" not in label
+
+
+def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"F_s(j\Omega)=\frac{1}{T}\sum_{k=-\infty}^{\infty}F(j(\Omega-k\Omega_s))",
+        "采样与恢复",
+    ) == "周期冲激采样的频谱复制关系（用于确定采样后频谱副本的位置和间隔）"
+    assert _formula_name(
+        r"H(\Omega)=\begin{cases}T,&\left|\Omega\right|\le1000\pi\\0,&\left|\Omega\right|>1000\pi\end{cases}",
+        "采样与恢复",
+    ) == "理想低通滤波器的频率响应（用于保留目标频带并抑制其余频谱副本）"
+    assert _formula_name(
+        r"H(k)=\begin{cases}e^{-j\frac{14\pi}{15}k},&k=4,5,\ldots,11\\0,&k=0,1,2,3,12,13,14\end{cases}",
+        "15 点频率采样设计",
+    ) == "频率采样设计的目标样值（用于指定各离散频率点的幅度和相位）"

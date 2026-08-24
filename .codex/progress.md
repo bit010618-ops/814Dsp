@@ -1192,3 +1192,10 @@
 - Added stable `answer-001` through `answer-150` identifiers to every detailed-answer heading in the book-end answer section. These anchors are invisible in the printed handout and form the authoritative targets for the next page-map pass.
 - Created the anchor assertion first, observed the expected failure, then applied the smallest assembler change. All formula, assembly and MathJax regression suites report `21 passed`.
 - The audited question bank has 156 assigned training units and the answer section has 150 answer headings, confirming that the final map must permit a small number of intentionally shared detailed answers rather than assume one-to-one title counts.
+
+# 2026-08-24 Verified formula-purpose and answer-page milestone
+
+- Refined formula lead text to name the actual formula and explain its concrete use. The new regression covers periodic impulse-sampling spectrum copies, an ideal low-pass response, and frequency-sampling target values; all targeted formula, full-handout and page-backfill tests pass (`19 passed`).
+- Exported a 568-page offline-MathJax PDF. WeasyPrint reports no image or layout errors. Visual checks at answer pages 415 and 560 confirm correctly rendered LaTeX and formula labels that state what the formula is used for, not a chapter heading.
+- Verified 153 printed training-page references against 150 PDF answer anchors: no missing target and no page mismatch; answer pages span P.415–P.567.
+- Remains: map Appendix E navigation rows to audited detailed-answer anchors, then rerun final PDF and its visual/link audit. GitHub push is pending the external account-usage limit; no push retry was attempted.

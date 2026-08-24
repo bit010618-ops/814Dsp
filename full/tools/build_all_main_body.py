@@ -142,6 +142,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
         return "周期冲激采样的频谱复制关系（用于判断采样后频谱副本的位置和间隔）"
+    if "F_s(j\\Omega)" in compact and "\\sum" in compact:
+        return "周期冲激采样的频谱复制关系（用于确定采样后频谱副本的位置和间隔）"
     if "X(e^{j\\omega})" in compact and "\\frac{1}{T}" in compact and "\\sum" in compact:
         return "连续时间频谱到离散时间频谱的映射关系（用于把模拟频谱换算到数字频域）"
     if "W(e^{j\\omega})=X(e^{j(\\omega-\\pi)})" in compact:
@@ -152,6 +154,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "采样频率的可行性条件（用于判断哪些采样频率不会产生频谱混叠）"
     if "H_r(j\\Omega)" in compact and "\\begin{cases}" in compact:
         return "理想低通重构滤波器的频率响应（用于保留中心频谱副本并抑制其他副本）"
+    if "H(\\Omega)" in compact and "\\begin{cases}" in compact:
+        return "理想低通滤波器的频率响应（用于保留目标频带并抑制其余频谱副本）"
     if "h_r(t)=" in compact and "\\sin" in compact:
         return "理想低通重构滤波器的冲激响应（用于在时域实现理想低通重构）"
     if "44100" in compact and "f_s" in compact:
@@ -180,6 +184,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "离散傅里叶反变换定义（用于由离散频谱重建时域序列）"
     if "W_N" in compact and "=" in compact:
         return "DFT 旋转因子关系（用于统一表示 DFT 中的复指数基函数）"
+    if "H(k)=" in compact and "\\begin{cases}" in compact:
+        return "频率采样设计的目标样值（用于指定各离散频率点的幅度和相位）"
     if "\\{" in compact and ("x_" in compact or "x(n)" in compact):
         return "离散序列的数列表达（用于列出各离散时刻的样值）"
     if "\\delta" in compact and "\\begin{cases}" in compact:
