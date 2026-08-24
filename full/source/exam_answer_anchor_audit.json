@@ -1,8 +1,9 @@
 {
   "schema_version": 1,
-  "scope": "chapter_1",
+  "scope": "partial_chapter_identity_mapping",
+  "audited_chapters": [1, 4],
   "status": "partially_verified_component_identity_mapping",
-  "evidence": "题目 ID 取自第一章重点训练和补充题组件；答案锚点取自同一组件、同一题干顺序的书末详解标题。",
+  "evidence": "题目 ID 取自已审计章节的训练组件；答案锚点取自同一组件、同一题干顺序的书末详解标题。",
   "verified_mappings": {
     "2002-q七-whole": "answer-001",
     "2006-q七-whole": "answer-002",
@@ -44,6 +45,18 @@
     "2025-qintro-p4": "answer-038",
     "2016-q六-whole": "answer-039",
     "2007-q五-whole": "answer-040",
-    "2025-q六-whole": "answer-041"
+    "2025-q六-whole": "answer-041",
+    "2017-q六-p5": "answer-115",
+    "2022-q五-p3": "answer-116",
+    "2004-q十一-whole": "answer-117",
+    "2007-q十一-whole": "answer-118",
+    "2007-q十三-p2": "answer-118",
+    "2015-qintro-p5": "answer-119",
+    "2015-qintro-p6": "answer-119",
+    "2017-q六-p4": "answer-120",
+    "2020-qintro-p1": "answer-121",
+    "2020-qintro-p5": "answer-121",
+    "2023-dsp-p5": "answer-122",
+    "2024-dsp-p5": "answer-123"
   }
 }

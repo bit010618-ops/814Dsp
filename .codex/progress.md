@@ -1204,3 +1204,8 @@
 
 - Built the first auditable input to Appendix E backfill: all 41 chapter-one manifest IDs map exactly to `answer-001` through `answer-041`. The test verifies the manifest ID set, the continuous answer-anchor set and actual generated full-handout anchors together (`11 passed` with the full-handout suite).
 - The mapping is intentionally marked partial. No Appendix E reader-visible page number is filled until every chapter has the same identity evidence.
+
+# 2026-08-24 Chapter-four navigation identity audit
+
+- Extended the audit map to all 12 chapter-four manifest IDs. They resolve to nine verified detailed-answer anchors (`answer-115` through `answer-123`); three pairs of independent subparts correctly share their parent-question answer.
+- Identity-map regression and full-handout assembly tests remain green (`11 passed`). Audited coverage is now 53 of 156 question IDs; Appendix E remains intentionally unfilled until all chapters are equivalent.
