@@ -1317,3 +1317,9 @@
 - Exported and visually inspected the actual A4 2019 training page: both (f_1(n)) and (f_2(n)) show full axes, visible integer stems, a single origin label per plot, (n=0) on the vertical axis, no offset zero axis, no duplicate zero labels, no raw LaTeX and no watermark/black fill.
 - Queue item `2019-q二-01` is now verified. Regression: `pytest full/tests/test_chapter_one_zero_axis_contract.py full/tests/test_build_chapter_01_training_mathjax_component.py full/tests/test_chapter_one_convolution_origin_axes.py -q --basetemp tmp/.codex-test-2019-inline-green` had 5 relevant assertions pass; the only separate old-suite failure was the obsolete CDN-string assertion (`mathjax@3`) against the intentional local MathJax deployment.
 - Next action: audit `2021-qintro-01` and remaining first-chapter source figures, then regenerate the whole-book candidate PDF.
+
+# 2026-08-24 Chapter-one 2021 convolution figure audit
+
+- Rendered the actual 2021 source-question A4 page rather than inferring correctness from component reuse. The two input stem panels retain their original integer locations and values, full axes, one origin label per panel, and no watermarks, black fill, missing rods or overlapping axis labels.
+- The `n=0` coordinate is the vertical axis in each panel; the second input's zero value is correctly represented by the baseline rather than an invented nonzero stem. Queue item `2021-qintro-01` is verified.
+- Next action: audit the first-chapter A/D chain (`2022-q七-01`) and finite-width pulse-sampling figures (`2025-q六-01`) using the same static PDF visual gate.

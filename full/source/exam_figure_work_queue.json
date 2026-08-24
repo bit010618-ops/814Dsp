@@ -56,7 +56,7 @@
       "handout_action": "redraw",
       "preserve": "f1(n)、f2(n) 的抽样位置、幅值、坐标轴和 n=0 标注",
       "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
-      "status": "pending_redraw_or_repair"
+      "status": "verified_after_static_pdf_visual_audit"
     },
     {
       "source_candidate_id": "2022-q七-01",
