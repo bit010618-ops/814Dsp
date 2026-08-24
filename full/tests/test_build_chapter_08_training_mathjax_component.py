@@ -22,6 +22,9 @@ def test_chapter_eight_training_keeps_all_audited_questions_and_answers(tmp_path
     assert 'x="830" y="389"' in training
     assert 'x="370" y="246"' in training
     assert 'x="435" y="267"' in training
+    # The 960-unit diagram is printed at roughly half scale; 16px math labels
+    # become too small for an A4 handout after static SVG conversion.
+    assert 'font:22px serif;text-align:center' in training
     assert "水木观畴" not in training
     assert "详解见 P.____" in training
     assert "完整LaTeX源码" not in training

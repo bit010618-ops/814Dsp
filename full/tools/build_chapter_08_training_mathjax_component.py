@@ -29,7 +29,7 @@ def _document(content: str) -> str:
 def _math(x: int, y: int, width: int, text: str, height: int = 34) -> str:
     return (
         f'<foreignObject x="{x}" y="{y}" width="{width}" height="{height}">'
-        f'<div xmlns="http://www.w3.org/1999/xhtml" style="font:16px serif;text-align:center">\\({text}\\)</div>'
+        f'<div xmlns="http://www.w3.org/1999/xhtml" style="font:22px serif;text-align:center">\\({text}\\)</div>'
         '</foreignObject>'
     )
 

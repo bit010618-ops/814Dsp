@@ -1278,3 +1278,11 @@
 - Re-exported the chapter-two zero-pole and AM pages. The formerly page-sized inline formulae now render at label size; the AM spectrum's axis labels, peak label and π/ω annotations are readable and separated. The chapter-two source CSS now scopes diagram sizing to figure SVGs rather than all SVGs, so ordinary inline MathJax SVGs cannot inherit diagram width.
 - Verification: `pytest full/tests/test_prerender_mathjax_svg.py full/tests/test_build_chapter_02_training_mathjax_component.py -q --basetemp tmp/.codex-test-static-svg-math-size-green` -> `6 passed`; visual inspection performed on the regenerated offline-MathJax A4 PDF pages.
 - Next action: commit the shared exporter fix, then rerender the previously reviewed chapter-eight graph and continue the remaining figure queue before the full-book export.
+
+# 2026-08-24 Figure-queue visual audit: chapters two and eight
+
+- Re-rendered the chapter-eight multirate training page after the exporter repair. Its graph-label source font was raised from 16px to 22px for the 960-unit canvas, so printed formula labels remain readable without changing the established body or display-formula scale.
+- Performed static-PDF visual checks and promoted four reviewed redraws from pending to verified: `2015-q四-01` (two-delay feedback), `2015-q七-01` (zero-pole plane), `2021-q六-01` (AM modulation/demodulation) and `2015-q八-01` (multirate chain and triangular spectrum). Each was checked for watermark removal, required labels and diagram-specific structural correctness.
+- The chapter-eight output retains separated \(\pi\), \(\omega\), spectrum-height and vertical-axis labels after the global exporter change; no source-formula text remains in the training question.
+- Verification: `pytest full/tests/test_build_chapter_08_training_mathjax_component.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch8-readable-labels-green` -> `6 passed`, plus visual inspection of regenerated offline-MathJax A4 pages.
+- Next action: audit the remaining seven queue items, then rebuild a new whole-book candidate PDF so all reviewed figure repairs are assessed in their actual assembled layout.

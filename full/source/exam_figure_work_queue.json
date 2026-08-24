@@ -108,7 +108,7 @@
       "handout_action": "redraw",
       "preserve": "加法器、两级延时、5/2 与 -1 系数及 x[n]、y[n] 标注",
       "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
-      "status": "pending_redraw_or_repair"
+      "status": "verified_after_static_pdf_visual_audit"
     },
     {
       "source_candidate_id": "2015-q七-01",
@@ -125,7 +125,7 @@
       "handout_action": "redraw",
       "preserve": "单位圆、原点、实虚轴、极点位置及 1、2 坐标标注",
       "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
-      "status": "pending_redraw_or_repair"
+      "status": "verified_after_static_pdf_visual_audit"
     },
     {
       "source_candidate_id": "2021-q六-01",
@@ -143,7 +143,7 @@
       "handout_action": "redraw",
       "preserve": "输入频谱支撑区、调制器、低通 H(e^{jω})、相干解调器、ωc、ωcp、x(n)、y(n) 与输出标注",
       "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
-      "status": "pending_redraw_or_repair"
+      "status": "verified_after_static_pdf_visual_audit"
     },
     {
       "source_candidate_id": "2022-q八-01",
@@ -204,7 +204,7 @@
       "handout_action": "redraw",
       "preserve": "输入三角频谱、零值插入—H(e^{jω})—采样框图、x[n]、g[n]、ω[n]、y[n] 与截止频率",
       "verification": "渲染后逐幅核验：水印消失，且坐标、曲线、公式、单位、标签零丢失。",
-      "status": "pending_redraw_or_repair"
+      "status": "verified_after_static_pdf_visual_audit"
     }
   ]
 }
