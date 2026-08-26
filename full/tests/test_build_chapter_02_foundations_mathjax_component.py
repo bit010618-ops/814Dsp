@@ -6,7 +6,7 @@ def test_z_transform_foundations_component_uses_mathjax_and_vector_diagrams(tmp_
 
     html = write_html(tmp_path / "foundations.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert "page-break-after:always" not in html
     assert r"\sum_{n=-\infty}^{\infty}x(n)z^{-n}" in html
     assert r"\left|z\right|=e^{\sigma T}" in html
@@ -19,6 +19,10 @@ def test_z_transform_foundations_component_uses_mathjax_and_vector_diagrams(tmp_
     assert "(p_{\\max})" not in html
     assert "(X(z))" not in html
     assert "z_plane_svg" in html
+    assert r"\widehat{H}(s)&=\sum_{n=-\infty}^{\infty}h(n)e^{-snT}" in html
+    assert 'id="roc-support-diagram"' in html
+    assert 'aria-label="有限长、右边、左边与双边序列的收敛域示意图"' in html
+    assert 'x="531" y="365"' not in html
     assert "<svg" in html
     assert "drawImage" not in html
     assert "<image" not in html

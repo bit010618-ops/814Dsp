@@ -50,7 +50,46 @@ def z_plane_svg() -> str:
  <foreignObject x="714" y="54" width="64" height="31"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif">\(\operatorname{Im}\{z\}\)</div></foreignObject>
  <foreignObject x="786" y="99" width="88" height="33"><div xmlns="http://www.w3.org/1999/xhtml" style="font:17px serif">\(e^{j\omega}\)</div></foreignObject>
  <foreignObject x="601" y="330" width="207" height="32"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(\left|z\right|=1\)</div></foreignObject>
- <foreignObject x="531" y="365" width="350" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font:14px 'Microsoft YaHei', sans-serif;color:#52616b">两点相差 \(2\pi/T\)，映射到同一单位圆点</div></foreignObject>
+</svg>"""
+
+
+def roc_support_svg() -> str:
+    """Show the four source ROC shapes with real, equal-scale z-plane axes."""
+    return r"""<!-- roc_support_svg: four textbook z-plane ROC panels -->
+<svg id="roc-support-diagram" class="diagram" viewBox="0 0 920 500" role="img" aria-label="有限长、右边、左边与双边序列的收敛域示意图">
+ <defs>
+  <marker id="roc-axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#174b73"/></marker>
+ </defs>
+ <rect x="14" y="16" width="438" height="220" rx="8" fill="#fbfcfd" stroke="#d8e0e5"/>
+ <rect x="468" y="16" width="438" height="220" rx="8" fill="#fbfcfd" stroke="#d8e0e5"/>
+ <rect x="14" y="264" width="438" height="220" rx="8" fill="#fbfcfd" stroke="#d8e0e5"/>
+ <rect x="468" y="264" width="438" height="220" rx="8" fill="#fbfcfd" stroke="#d8e0e5"/>
+ <g font-family="Microsoft YaHei, sans-serif" fill="#315d7c" font-size="17">
+  <text x="36" y="46">有限长序列</text><text x="490" y="46">右边序列</text>
+  <text x="36" y="294">左边序列</text><text x="490" y="294">双边序列</text>
+ </g>
+ <!-- finite-duration: full finite z plane -->
+ <rect x="54" y="62" width="300" height="126" rx="4" fill="#d9f3ef" opacity=".55"/>
+ <path d="M74 126H340M208 202V60" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#roc-axis-arrow)"/>
+ <circle cx="208" cy="126" r="5" fill="#b56b2e"/><text x="220" y="120" fill="#52616b" font-size="15">原点</text>
+ <foreignObject x="66" y="194" width="290" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(0&lt;\left|z\right|&lt;\infty\)</div></foreignObject>
+ <!-- right-sided: the shaded exterior is the ROC, the pole circle is excluded -->
+ <path d="M528 64H794V188H528Z M662 68a58 58 0 1 0 0 116a58 58 0 1 0 0 -116Z" fill="#d9f3ef" fill-rule="evenodd" opacity=".65"/>
+ <path d="M528 126H794M662 202V60" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#roc-axis-arrow)"/>
+ <circle cx="662" cy="126" r="58" fill="none" stroke="#b56b2e" stroke-width="2" stroke-dasharray="6 4"/>
+ <circle cx="720" cy="126" r="5" fill="#b56b2e"/><text x="729" y="118" fill="#52616b" font-size="15">极点</text>
+ <foreignObject x="520" y="194" width="290" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(\left|z\right|&gt;\left|p_{\max}\right|\)</div></foreignObject>
+ <!-- left-sided: inner ROC -->
+ <path d="M74 374H340M208 450V308" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#roc-axis-arrow)"/>
+ <circle cx="208" cy="374" r="58" fill="#d9f3ef" opacity=".72" stroke="#0f8b8d" stroke-width="2" stroke-dasharray="6 4"/>
+ <circle cx="266" cy="374" r="5" fill="#b56b2e"/><text x="276" y="366" fill="#52616b" font-size="15">极点</text>
+ <foreignObject x="66" y="442" width="290" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(\left|z\right|&lt;\left|p_{\min}\right|\)</div></foreignObject>
+ <!-- two-sided: annular ROC -->
+ <path d="M528 374H794M662 450V308" fill="none" stroke="#174b73" stroke-width="2" marker-end="url(#roc-axis-arrow)"/>
+ <circle cx="662" cy="374" r="76" fill="#d9f3ef" opacity=".72" stroke="#0f8b8d" stroke-width="2" stroke-dasharray="6 4"/>
+ <circle cx="662" cy="374" r="38" fill="#fbfcfd" stroke="#0f8b8d" stroke-width="2" stroke-dasharray="6 4"/>
+ <circle cx="700" cy="374" r="5" fill="#b56b2e"/><circle cx="738" cy="374" r="5" fill="#b56b2e"/>
+ <foreignObject x="520" y="442" width="290" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="font:15px serif;text-align:center">\(\left|p_i\right|&lt;\left|z\right|&lt;\left|p_{i+1}\right|\)</div></foreignObject>
 </svg>"""
 
 
@@ -65,6 +104,14 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[z=e^{sT}=e^{\sigma T}e^{j\Omega T}\]</div>
 <p>序列 \(x(n)\) 的双边 z 变换定义为：</p>
 <div class="formula">\[X(z)=\sum_{n=-\infty}^{\infty}x(n)z^{-n}\]</div>
+<p>由采样冲激列的拉普拉斯变换可以直接得到 z 变换的来源：把 \(\widehat h(t)=\sum_n h(nT)\delta(t-nT)\) 代入拉普拉斯积分，便得到 \(z=e^{sT}\) 下的离散幂级数。</p>
+<div class="formula">\[
+\begin{aligned}
+\widehat{H}(s)&=\sum_{n=-\infty}^{\infty}h(n)e^{-snT}\\
+&=\sum_{n=-\infty}^{\infty}h(n)\left(e^{sT}\right)^{-n}
+=\sum_{n=-\infty}^{\infty}h(n)z^{-n}=H(z).
+\end{aligned}
+\]</div>
 <p>只有该级数绝对收敛的 \(z\) 才属于收敛域（ROC）。离散 LSI 系统的单位脉冲响应为 \(h(n)\) 时，\(H(z)=\mathcal{Z}\{h(n)\}\) 称为系统函数，并满足 \(Y(z)=H(z)X(z)\)。</p>
 <h2>s 平面与 z 平面的映射</h2>
 <p>由定义可得 \(\left|z\right|=e^{\sigma T}\)、\(\arg z=\Omega T\)。因此 s 平面的竖直线映射为 z 平面的圆，虚轴 \(\sigma=0\) 映射为单位圆；频率相差 \(\frac{2\pi}{T}\) 的点映射到同一 z 平面位置，这正是离散时间频域周期性的几何来源。</p>
@@ -84,6 +131,7 @@ a^n u(n), & \left|z\right|>\left|a\right|,\\
 <p>右边序列的 ROC 位于最外极点之外；左边序列的 ROC 位于最内极点之内；双边序列的 ROC 是两个极点圆之间的环域。有限长序列的 ROC 通常覆盖全部有限 z 平面，是否包含零点或无穷远点取决于其时间支持范围。</p>
 <h2>四种典型序列的 ROC 形状</h2>
 <p>把时间支持范围与 ROC 对照，可以避免只看代数式而误判序列类型。有限长序列的 ROC 不含有限极点；右边序列的 ROC 向无穷远延伸；左边序列的 ROC 向原点延伸；双边序列的 ROC 被两个极点圆夹在中间。</p>
+__ROC_SUPPORT__
 <div class="formula">\[
 \begin{aligned}
 \text{有限长序列：}\;&0<\left|z\right|<\infty,\\
@@ -104,7 +152,7 @@ a^n u(n), & \left|z\right|>\left|a\right|,\\
 <h2>例题：同一代数式与不同收敛域</h2>
 <p>设 \(X(z)=\frac{1}{1-az^{-1}}\)。当 \(\left|z\right|>\left|a\right|\) 时，按 \(z^{-1}\) 的降幂展开，得到 \(x(n)=a^n u(n)\)；当 \(\left|z\right|<\left|a\right|\) 时，按 \(z\) 的升幂展开，得到 \(x(n)=-a^n u(-n-1)\)。代数式相同而 ROC 不同，时间支持范围也不同。</p>
 <div class="formula">\[x(n)=\delta(n)\quad\Longrightarrow\quad X(z)=1,\qquad \text{ROC：全 z 平面}\]</div>
-</main>""".replace("__Z_PLANE__", z_plane_svg())
+</main>""".replace("__Z_PLANE__", z_plane_svg()).replace("__ROC_SUPPORT__", roc_support_svg())
     output.write_text(f'<!doctype html><meta charset="utf-8"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}', encoding="utf-8")
     return output
 
