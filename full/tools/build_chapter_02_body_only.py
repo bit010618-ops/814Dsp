@@ -25,7 +25,14 @@ from full.tools.render_mathjax_formula import MATHJAX
 COMPONENTS = (foundations, inverse_properties, dtft, system_frequency, special_filters)
 
 CHAPTER_TITLE = "第二章 z 变换与 LSI 系统频域分析"
-HEADING_STYLE = "<style>h4{break-after:avoid;color:#315d7c;font-size:11.5pt;font-weight:400;margin:10pt 0 3pt}</style>"
+HEADING_STYLE = """<style>
+h4{break-after:avoid;color:#315d7c;font-size:11.5pt;font-weight:400;margin:10pt 0 3pt}
+.property-table{width:100%;border-collapse:collapse;margin:10pt 0 15pt;font-size:9.5pt;line-height:1.55}
+.property-table tr{break-inside:avoid;page-break-inside:avoid}
+.property-table th,.property-table td{border:.6pt solid #8ca4b5;padding:6pt 5pt;vertical-align:middle}
+.property-table thead{background:#e8f0f4;color:#174c6f}
+.property-table th[scope=row]{color:#1e4f79;text-align:left;background:#f7fafb;white-space:nowrap}
+</style>"""
 
 
 def _demote_component_headings(body: str) -> str:
