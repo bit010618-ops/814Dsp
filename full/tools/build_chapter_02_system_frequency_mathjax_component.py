@@ -1,9 +1,14 @@
 """System function, frequency response and geometric reading in one MathJax flow."""
 from __future__ import annotations
 
+import base64
+from io import BytesIO
 import subprocess
 import sys
 from pathlib import Path
+
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.figure import Figure
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -15,27 +20,53 @@ from full.tools.render_mathjax_formula import EDGE, MATHJAX
 
 STYLE = r"""<style>
 @page{size:A4;margin:20mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}
-h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}figure{margin:12pt auto;text-align:center}svg{width:min(100%,470pt);height:auto}figcaption{color:#315d7c;font-size:9.5pt;margin-top:4pt}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
+h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}figure{margin:12pt auto;text-align:center}.diagram-plot{width:min(100%,470pt);height:auto}figcaption{color:#315d7c;font-size:9.5pt;margin-top:4pt}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
 </style>"""
 
 
-def z_plane_svg() -> str:
-    """A coordinate-driven geometric z-plane, with labels kept clear of data."""
-    return r'''<figure><svg viewBox="0 0 540 286" role="img" aria-label="单位圆、零点、极点与频率点 B 的 z 平面示意图">
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#234b6e"/></marker></defs>
-<rect x="4" y="4" width="532" height="278" rx="6" fill="#fbfcfd" stroke="#d8e0e5"/>
-<line x1="65" y1="144" x2="480" y2="144" stroke="#234b6e" stroke-width="1.5" marker-end="url(#arrow)"/>
-<line x1="270" y1="242" x2="270" y2="39" stroke="#234b6e" stroke-width="1.5" marker-end="url(#arrow)"/>
-<circle cx="270" cy="144" r="94" fill="none" stroke="#8aa5b5" stroke-width="1.4" stroke-dasharray="4 4"/>
-<line x1="270" y1="144" x2="336" y2="78" stroke="#008e96" stroke-width="1.2" stroke-dasharray="4 3"/>
-<line x1="336" y1="78" x2="350" y2="144" stroke="#b83a31" stroke-width="1.4"/>
-<circle cx="270" cy="144" r="3" fill="#234b6e"/>
-<circle cx="336" cy="78" r="4.5" fill="#008e96"/><text x="346" y="76" fill="#006d73" font-size="15" font-family="Microsoft YaHei">频率点 B</text>
-<circle cx="394" cy="144" r="8" fill="none" stroke="#008e96" stroke-width="2.2"/><text x="406" y="164" fill="#006d73" font-size="15" font-family="Microsoft YaHei">零点 C</text>
-<line x1="346" y1="140" x2="354" y2="148" stroke="#b83a31" stroke-width="2.3"/><line x1="354" y1="140" x2="346" y2="148" stroke="#b83a31" stroke-width="2.3"/><text x="358" y="130" fill="#9d302a" font-size="15" font-family="Microsoft YaHei">极点 D</text>
-<text x="486" y="163" fill="#234b6e" font-size="15" font-family="Microsoft YaHei">实轴</text><text x="278" y="34" fill="#234b6e" font-size="15" font-family="Microsoft YaHei">虚轴</text><text x="278" y="162" fill="#234b6e" font-size="13" font-family="Microsoft YaHei">0</text><text x="300" y="57" fill="#54758a" font-size="14" font-family="Microsoft YaHei">单位圆</text>
-<text x="346" y="112" fill="#b83a31" font-size="14" font-family="Microsoft YaHei">距离 |B−D|</text><text x="196" y="267" fill="#54758a" font-size="13" font-family="Microsoft YaHei">单位圆上的位置随频率转动</text>
-</svg><figcaption>单位圆上的频率点与零、极点的距离决定幅度的峰谷</figcaption></figure>'''
+def z_plane_plot() -> str:
+    """Render the z-plane from coordinates at print resolution, avoiding SVG/WeasyPrint corruption."""
+    fig = Figure(figsize=(7.1, 3.8), dpi=240, facecolor="#fbfcfd")
+    FigureCanvasAgg(fig)
+    ax = fig.add_axes((0.06, 0.14, 0.88, 0.77), facecolor="#fbfcfd")
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_xlim(-1.30, 1.38)
+    ax.set_ylim(-1.20, 1.20)
+    ax.axis("off")
+
+    axis_colour = "#234b6e"
+    unit_colour = "#8aa5b5"
+    zero_colour = "#008e96"
+    pole_colour = "#b83a31"
+    ax.annotate("", xy=(1.30, 0), xytext=(-1.22, 0), arrowprops={"arrowstyle": "-|>", "color": axis_colour, "lw": 1.4})
+    ax.annotate("", xy=(0, 1.13), xytext=(0, -1.10), arrowprops={"arrowstyle": "-|>", "color": axis_colour, "lw": 1.4})
+    ax.add_patch(__import__("matplotlib").patches.Circle((0, 0), 1, fill=False, ec=unit_colour, lw=1.3, ls=(0, (4, 3))))
+    ax.plot(0, 0, "o", color=axis_colour, ms=4)
+
+    b = (0.70, 0.70)
+    c = (1.03, 0.0)
+    d = (0.70, 0.0)
+    ax.plot((0, b[0]), (0, b[1]), color=zero_colour, lw=1.2, ls=(0, (4, 3)))
+    ax.plot((b[0], d[0]), (b[1], d[1]), color=pole_colour, lw=1.5)
+    ax.plot(*b, "o", color=zero_colour, ms=6)
+    ax.plot(*c, marker="o", mfc="#fbfcfd", mec=zero_colour, mew=2.0, ms=10)
+    ax.plot(*d, marker="x", color=pole_colour, mew=2.5, ms=11)
+
+    font = {"fontname": "Microsoft YaHei"}
+    ax.text(1.33, -0.10, "实轴", color=axis_colour, fontsize=11, ha="left", va="top", **font)
+    ax.text(0.06, 1.10, "虚轴", color=axis_colour, fontsize=11, ha="left", va="bottom", **font)
+    ax.text(0.06, -0.10, "0", color=axis_colour, fontsize=10, ha="left", va="top", **font)
+    ax.text(-0.68, 0.90, "单位圆", color="#54758a", fontsize=10, **font)
+    ax.text(b[0] + 0.08, b[1] + 0.02, "频率点 B", color="#006d73", fontsize=10.5, **font)
+    ax.text(c[0] - 0.02, -0.18, "零点 C", color="#006d73", fontsize=10.5, ha="center", **font)
+    ax.text(d[0] + 0.10, 0.12, "极点 D", color="#9d302a", fontsize=10.5, **font)
+    ax.text(0.78, 0.33, "距离 |B−D|", color=pole_colour, fontsize=10, **font)
+    ax.text(0, -1.10, "单位圆上的位置随频率转动", color="#54758a", fontsize=10, ha="center", **font)
+
+    payload = BytesIO()
+    fig.savefig(payload, format="png", dpi=240, facecolor=fig.get_facecolor(), bbox_inches="tight", pad_inches=0.04)
+    encoded = base64.b64encode(payload.getvalue()).decode("ascii")
+    return f'<figure><img class="diagram-plot" src="data:image/png;base64,{encoded}" alt="单位圆上的频率点与零、极点的距离决定幅度的峰谷"><figcaption>单位圆上的频率点与零、极点的距离决定幅度的峰谷</figcaption></figure>'
 
 
 def write_html(output: Path) -> Path:
@@ -43,18 +74,43 @@ def write_html(output: Path) -> Path:
     content = r'''
 <main>
 <h1>系统函数及其与系统性质的关系</h1>
-<p>对零状态 LSI 系统，输出是输入与单位脉冲响应的卷积；在 z 域中卷积化为乘法。因此系统函数定义为：</p>
+<p>对零状态 LSI 系统，输出是输入与单位脉冲响应的卷积；在 z 域中卷积化为乘法。系统函数定义（用于由输入输出关系刻画系统）为：</p>
 <div class="formula">\[H(z)=\frac{Y(z)}{X(z)}=\mathcal{Z}\{h(n)\}\]</div>
 <p>系统函数的收敛域与 [[h(n)]] 的收敛域相同。LSI 系统的因果性与 BIBO 稳定性可直接由单位脉冲响应判定：</p>
-<div class="formula">\[\text{因果：}\quad h(n)=0,\qquad n<0\]</div>
-<div class="formula">\[\text{稳定：}\quad \sum_{n=-\infty}^{\infty}\left|h(n)\right|<\infty\]</div>
+<p>因果系统的单位脉冲响应条件（用于判断当前输出是否只依赖当前及过去输入）为：</p>
+<div class="formula">\[h(n)=0,\qquad n<0\]</div>
+<p>BIBO 稳定性定义（用于判断有界输入是否只产生有界输出）为：</p>
+<div class="formula">\[\left|x(n)\right|\le M<\infty\ \Longrightarrow\ \left|y(n)\right|\le P<\infty\]</div>
+<p>LSI 系统的绝对可和判据（用于把稳定性转化为对单位脉冲响应的检验）为：</p>
+<div class="formula">\[\sum_{n=-\infty}^{\infty}\left|h(n)\right|<\infty\]</div>
 <p>因果系统的收敛域在最外极点之外；稳定系统要求单位圆落在收敛域中。因而，因果有理系统稳定的充要条件是全部极点严格位于单位圆内。</p>
-<h2>例题：由差分方程求系统函数</h2>
-<p><strong>例题</strong>：已知因果 LSI 系统满足 [[y(n)+0.2y(n-1)-0.24y(n-2)=x(n)+x(n-1)]]，求系统函数、收敛域、稳定性和单位脉冲响应。</p>
+<h2>例题：由单位脉冲响应判定因果与稳定</h2>
+<p><strong>例题</strong>：判断系统的因果稳定性： [[h(n)=\frac{1}{3}\left[\delta(n+1)+\delta(n)+\delta(n-1)\right] ]]</p>
 <h3>解</h3>
-<p>零状态 z 变换给出：</p>
-<div class="formula">\[H(z)=\frac{1+z^{-1}}{1+0.2z^{-1}-0.24z^{-2}}=\frac{1+z^{-1}}{(1-0.4z^{-1})(1+0.6z^{-1})}\]</div>
-<p>因系统因果，收敛域为 [[|z|&gt;0.6]]；单位圆在该区域内，因此系统稳定。部分分式展开后：</p>
+<p>因果性检查（用于排除含有未来输入项的系统）：</p>
+<div class="formula">\[h(-1)=\frac{1}{3}\ne 0\]</div>
+<p>因此该冲激响应在负时刻非零，系统<strong>非因果</strong>。稳定性检查（用于按绝对可和判据作结论）为：</p>
+<div class="formula">\[\sum_{n=-\infty}^{\infty}\left|h(n)\right|=\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=1<\infty\]</div>
+<p>所以系统稳定。对应的系统函数（用于从极点和收敛域再核对该结论）为：</p>
+<div class="formula">\[H(z)=\frac{1}{3}\left(z+1+z^{-1}\right)=\frac{z^2+z+1}{3z}\]</div>
+<p>该序列是有限长双边序列，故其收敛域为：</p>
+<div class="formula">\[\operatorname{ROC}:\quad 0<\left|z\right|<\infty\]</div>
+<p>单位圆在此收敛域中，与“系统稳定”的时域结论一致；同时收敛域不是最外极点之外的右边区域，与“系统非因果”的结论一致。</p>
+<h3>将上例改造成因果稳定系统</h3>
+<p>将原冲激响应延时一个样本，得到因果版本：</p>
+<div class="formula">\[h'(n)=\frac{1}{3}\left[\delta(n)+\delta(n-1)+\delta(n-2)\right]\]</div>
+<p>时移对应的系统函数关系（用于由原系统函数直接得到延时后的系统函数）为：</p>
+<div class="formula">\[H'(z)=H(z)z^{-1}=\frac{1}{3}\left(1+z^{-1}+z^{-2}\right)=\frac{z^2+z+1}{3z^2}\]</div>
+<p>因 [[h'(n)]] 在 [[n<0]] 时为零且仍绝对可和，改造后的系统因果且稳定；它的收敛域为：</p>
+<div class="formula">\[\operatorname{ROC}:\quad \left|z\right|>0\]</div>
+<h2>例题：由差分方程求系统函数</h2>
+<p><strong>例题</strong>：已知线性移不变因果系统的差分方程为：</p>
+<div class="formula">\[y(n)+0.2y(n-1)-0.24y(n-2)=x(n)+x(n-1)\]</div>
+<p>（1）求系统函数 [[H(z)]] 和系统收敛域。<br>（2）判别系统的稳定性。<br>（3）求系统的单位取样响应 [[h(n)]]。</p>
+<h3>解</h3>
+<p>零状态 z 变换得到的系统函数（用于读取零极点并确定收敛域）为：</p>
+<div class="formula">\[H(z)=\frac{1+z^{-1}}{1+0.2z^{-1}-0.24z^{-2}}=\frac{z(z+1)}{(z+0.6)(z-0.4)}\]</div>
+<p>因系统因果，收敛域为 [[|z|&gt;0.6]]；单位圆在该区域内，因此系统稳定。部分分式展开与反变换（用于求单位取样响应）后：</p>
 <div class="formula">\[h(n)=\left(\frac{7}{5}\,0.4^n-\frac{2}{5}(-0.6)^n\right)u(n)\]</div>
 <h1>系统频率响应的意义</h1>
 <p>频率响应是单位脉冲响应的 DTFT，也是系统函数在单位圆上的取值：</p>
@@ -89,7 +145,7 @@ __Z_PLANE__
 <p>对 [[H(z)=1-z^{-N}]]，单位圆上有 [[N]] 个等角度零点，频响为：</p>
 <div class="formula">\[\left|H(e^{j\omega})\right|=\left|1-e^{-jN\omega}\right|=2\left|\sin\frac{N\omega}{2}\right|\]</div>
 <p>零点出现在 [[\omega=2\pi k/N]]，因而形成等间隔衰减槽。读图时先让频率点沿单位圆转动：靠极点找峰、靠零点找谷，再检查极点是否全在单位圆内。</p>
-</main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_svg())
+</main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_plot())
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output
