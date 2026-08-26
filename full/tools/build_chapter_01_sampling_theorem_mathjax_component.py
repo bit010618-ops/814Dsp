@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import subprocess
+from math import pi, sin
 from pathlib import Path
 
 from full.tools.render_mathjax_formula import EDGE, MATHJAX
@@ -38,10 +39,51 @@ def spectrum_svg(*, overlap: bool) -> str:
 """
 
 
+def time_domain_sampling_svg() -> str:
+    """Generate the continuous-to-sampled time-domain diagram from data points."""
+    samples = [0.43, 0.61, 0.76, 0.73, 0.57, 0.38, 0.30]
+    xs = [106 + 38 * index for index in range(len(samples))]
+    curve_points = []
+    for step in range(61):
+        x = 86 + step * 4.4
+        phase = (x - 86) / 264 * 2.15 * pi
+        y = 224 - (46 + 69 * (0.5 + 0.5 * sin(phase)))
+        curve_points.append(f"{x:.1f},{y:.1f}")
+    left_stems = "".join(
+        f'<line x1="{x}" y1="224" x2="{x}" y2="{224 - 116 * value:.1f}" class="sample-guide"/>'
+        f'<circle cx="{x}" cy="{224 - 116 * value:.1f}" r="4.5" class="sample-point"/>'
+        for x, value in zip(xs, samples)
+    )
+    right_stems = "".join(
+        f'<line x1="{x + 404}" y1="224" x2="{x + 404}" y2="{224 - 116 * value:.1f}" class="stem"/>'
+        f'<circle cx="{x + 404}" cy="{224 - 116 * value:.1f}" r="4.5" class="sample-point"/>'
+        for x, value in zip(xs, samples)
+    )
+    return f'''<!-- time_domain_sampling_svg: continuous curve and exact sample values -->
+<svg id="time-domain-sampling-diagram" class="time-sampling-svg" viewBox="0 0 860 300" role="img" aria-label="理想时域采样示意图">
+  <title>连续时间信号在等间隔时刻被读取为离散样值</title>
+  <defs><marker id="time-axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs>
+  <rect x="18" y="18" width="824" height="258" rx="10" fill="#fbfcfd" stroke="#d8e0e5" stroke-width="2"/>
+  <text x="230" y="48" text-anchor="middle" class="diagram-heading">连续时间信号</text>
+  <text x="634" y="48" text-anchor="middle" class="diagram-heading">等间隔采样后的离散样值</text>
+  <path d="M66 224 H386" class="axis" marker-end="url(#time-axis-arrow)"/><path d="M86 244 V76" class="axis" marker-end="url(#time-axis-arrow)"/>
+  <path d="M470 224 H790" class="axis" marker-end="url(#time-axis-arrow)"/><path d="M490 244 V76" class="axis" marker-end="url(#time-axis-arrow)"/>
+  <polyline points="{' '.join(curve_points)}" class="continuous-curve"/>{left_stems}
+  {right_stems}
+  <text x="363" y="250" class="axis-label">t</text><text x="767" y="250" class="axis-label">t</text>
+  <text x="98" y="72" class="signal-label">xₐ(t)</text><text x="502" y="72" class="signal-label">x̂ₐ(t)</text>
+  <text x="126" y="267" class="tick-label">T</text><text x="202" y="267" class="tick-label">3T</text><text x="278" y="267" class="tick-label">5T</text>
+  <text x="530" y="267" class="tick-label">T</text><text x="606" y="267" class="tick-label">3T</text><text x="682" y="267" class="tick-label">5T</text>
+  <path d="M402 148 H455" class="sampling-arrow" marker-end="url(#time-axis-arrow)"/>
+  <text x="428" y="132" text-anchor="middle" class="sampling-label">每隔 T 读取一次</text>
+</svg>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     clean = spectrum_svg(overlap=False)
     overlap = spectrum_svg(overlap=True)
+    time_sampling = time_domain_sampling_svg()
     content = rf"""
 <main class="chapter">
   <header><h1>理想时域采样</h1></header>
@@ -53,6 +95,13 @@ def write_html(output: Path) -> Path:
     \]</div>
     <div class="formula">\[
       x(n)=x_a(nT),\qquad f_s=\frac{{1}}{{T}},\qquad \Omega_s=\frac{{2\pi}}{{T}}
+    \]</div>
+    <figure><figcaption>理想时域采样：连续曲线仅在等间隔时刻保留样值</figcaption>{time_sampling}</figure>
+    <h2>冲激列的频域表达</h2>
+    <p>周期冲激列在频域仍为周期冲激列；该式给出采样角频率与冲激间隔的对应关系。</p>
+    <div class="formula">\[
+      \delta_T(t)=\frac{{1}}{{T}}\sum_{{k=-\infty}}^{{\infty}}e^{{jk\Omega_s t}},
+      \qquad \Delta_T(j\Omega)=\Omega_s\sum_{{k=-\infty}}^{{\infty}}\delta(\Omega-k\Omega_s)
     \]</div>
     <h2>采样后的频域周期延拓</h2>
     <p>时域相乘对应频域卷积。冲激序列在频域仍为间隔 \(\Omega_s\) 的冲激序列，因此原信号频谱会以 \(\Omega_s\) 为周期被复制：</p>
@@ -88,6 +137,10 @@ def write_html(output: Path) -> Path:
     <div class="formula">\[
       \omega=\Omega T=2\pi\frac{{f}}{{f_s}}
     \]</div>
+    <p>连续角频率、普通频率与离散时间数字角频率的归一化换算关系为：</p>
+    <div class="formula">\[
+      \frac{{\Omega}}{{\Omega_s}}=\frac{{f}}{{f_s}}=\frac{{\omega}}{{2\pi}}
+    \]</div>
     <h2>抗混叠滤波</h2>
     <p>实际模拟信号进入模数转换器之前，通常先经过抗混叠滤波器。它的任务是限制输入带宽，使采样后的频谱副本彼此分离，从而避免不可逆的混叠。</p>
   </section>
@@ -107,6 +160,7 @@ figure{margin:10pt 0 12pt}figcaption{text-align:center;color:#486d8b;font-size:9
 .spectrum-svg{display:block;width:100%;height:auto;background:#fbfcfd;border:1px solid #d8e0e5;border-radius:5pt}
 .axis{fill:none;stroke:#174b73;stroke-width:2.1;stroke-linecap:round}.guide{stroke:#174b73;stroke-width:1.5}.replica{fill:none;stroke-width:3;stroke-linejoin:round}
 .math-label foreignObject div{height:100%;display:flex;justify-content:center;align-items:center;color:#172b3a;font-size:18px}
+.time-sampling-svg{display:block;width:100%;height:auto}.time-sampling-svg .axis{stroke:#174b73;stroke-width:2.1}.continuous-curve{fill:none;stroke:#0f8b8d;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.sample-guide{stroke:#9bb5c7;stroke-width:1.2;stroke-dasharray:4 4}.stem{stroke:#0f8b8d;stroke-width:2.8}.sample-point{fill:#c96f00}.diagram-heading{font:18px "Microsoft YaHei",sans-serif;fill:#315d7d}.axis-label,.signal-label{font:italic 20px "Times New Roman",serif;fill:#172b3a}.tick-label{font:16px "Times New Roman",serif;fill:#445767}.sampling-arrow{fill:none;stroke:#b56b2e;stroke-width:2.4}.sampling-label{font:14px "Microsoft YaHei",sans-serif;fill:#77512c}
 </style>__CONTENT__</html>"""
     output.write_text(
         template.replace("__MATHJAX__", MATHJAX).replace("__CONTENT__", content),
