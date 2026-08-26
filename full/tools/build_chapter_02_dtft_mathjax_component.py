@@ -46,8 +46,22 @@ def write_html(output: Path) -> Path:
 <h2>共轭对称与分解</h2>
 <p>若 [[x(n)=x^*(-n)]]，称为共轭对称；若 [[x(n)=-x^*(-n)]]，称为共轭反对称。任意序列可唯一分解为两部分：</p>
 <div class="formula">\[x_e(n)=\frac{1}{2}\left[x(n)+x^*(-n)\right],\qquad x_o(n)=\frac{1}{2}\left[x(n)-x^*(-n)\right]\]</div>
+<p>这两个分量相加即恢复原序列；把各分量写成实部与虚部，可以直接判断其奇偶结构：</p>
+<div class="formula">\[\begin{aligned}
+x_e(n)&=x_{er}(n)+jx_{ei}(n), & x_{er}(n)&=x_{er}(-n), & x_{ei}(n)&=-x_{ei}(-n),\\
+x_o(n)&=x_{or}(n)+jx_{oi}(n), & x_{or}(n)&=-x_{or}(-n), & x_{oi}(n)&=x_{oi}(-n).
+\end{aligned}\]</div>
+<p>也就是说：共轭对称分量的实部为偶函数、虚部为奇函数；共轭反对称分量的实部为奇函数、虚部为偶函数。这是判断复序列对称性的定义性条件。</p>
 <p>相应频域分量为：</p>
 <div class="formula">\[X_e(e^{j\omega})=\frac{1}{2}\left[X(e^{j\omega})+X^*(e^{-j\omega})\right],\quad X_o(e^{j\omega})=\frac{1}{2}\left[X(e^{j\omega})-X^*(e^{-j\omega})\right]\]</div>
+<p>频域分量的共轭对称性由正变换直接推出。例如，对实部 [[x_r(n)]] 的变换 [[X_r(e^{j\omega})]] 有：</p>
+<div class="formula">\[\begin{aligned}
+X_r^*(e^{-j\omega})
+&=\left[\sum_{n=-\infty}^{\infty}x_r(n)e^{j\omega n}\right]^*\\
+&=\sum_{n=-\infty}^{\infty}x_r(n)e^{-j\omega n}
+=X_r(e^{j\omega}).
+\end{aligned}\]</div>
+<p>因此，实部序列的 DTFT 是共轭对称的；同样可得 [[j x_i(n)]] 的 DTFT 是共轭反对称的。</p>
 <h2>实序列的频谱对称性</h2>
 <p>当 [[x(n)]] 为实序列时，频谱满足共轭对称关系；实部为偶函数、虚部为奇函数，幅度为偶函数，相位为奇函数：</p>
 <div class="formula">\[X(e^{j\omega})=X^*(e^{-j\omega}),\qquad \operatorname{Re}\{X(e^{j\omega})\}=\operatorname{Re}\{X(e^{-j\omega})\}\]</div>
@@ -57,6 +71,15 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[\mathcal{F}\{\operatorname{Re}[x(n)]\}=X_e(e^{j\omega}),\qquad \mathcal{F}\{j\operatorname{Im}[x(n)]\}=X_o(e^{j\omega})\]</div>
 <p>反过来，时域的共轭对称与共轭反对称分量分别给出频谱的实部与虚部：</p>
 <div class="formula">\[\mathcal{F}\{x_e(n)\}=\operatorname{Re}\{X(e^{j\omega})\},\qquad \mathcal{F}\{x_o(n)\}=j\operatorname{Im}\{X(e^{j\omega})\}\]</div>
+<p>上式可由分解公式逐行验证，说明它们分别用于从完整频谱提取实部与虚部对应的时域分量：</p>
+<div class="formula">\[\begin{aligned}
+\mathcal{F}\{x_e(n)\}
+&=\frac{1}{2}\left[X(e^{j\omega})+X^*(e^{j\omega})\right]
+=\operatorname{Re}\{X(e^{j\omega})\},\\
+\mathcal{F}\{x_o(n)\}
+&=\frac{1}{2}\left[X(e^{j\omega})-X^*(e^{j\omega})\right]
+=j\operatorname{Im}\{X(e^{j\omega})\}.
+\end{aligned}\]</div>
 <h2>例题：由实部恢复实因果序列</h2>
 <p><strong>例题</strong>：设 [[h(n)]] 为实因果序列，且 [[H_R(e^{j\omega})=1+\cos\omega]]，求 [[h(n)]] 与 [[H(e^{j\omega})]]。</p>
 <h3>解</h3>
