@@ -156,9 +156,19 @@ def write_html(output: Path) -> Path:
 \end{cases}\]</div>
 <p>若输入同时含有 \(0.25\pi\)、\(0.5\pi\) 与 \(0.85\pi\) 三个频率分量，则输出中靠近 \(0.85\pi\) 的分量会被显著抑制；这正是根据幅频响应判断“哪些频率通过、哪些频率衰减”的方法。</p>
 <h1>几何法画频率响应</h1>
+<h2>从累加器到稳定低通系统</h2>
+<p>先以累加器为例。累加器的差分方程（用于把当前输出与前一时刻输出相减）为：</p>
+<div class="formula">\[y(n)-y(n-1)=x(n),\qquad H(z)=\frac{z}{z-1}\]</div>
+<p>该系统在 \(z=1\) 有极点，极点落在单位圆上，因此频率点 \(B=e^{j\omega}\) 转到 \(\omega=0\) 时幅度趋于无穷；它不能作为稳定系统使用。把反馈系数改为 \(0.9\)，则：</p>
+<div class="formula">\[y(n)-0.9y(n-1)=x(n),\qquad H(z)=\frac{z}{z-0.9}\]</div>
+<p>此时极点移到单位圆内的正实轴上，\(\omega=0\) 附近距离极点最近，低频被增强；\(\omega=\pi\) 附近距离最远，高频被削弱。若再引入位于 \(z=-1\) 的零点，可得到：</p>
+<div class="formula">\[H(z)=\frac{1}{20}\frac{z+1}{z-0.9}\]</div>
+<p>零点位于单位圆的 \(-1\) 处，对应 \(\omega=\pi\) 的幅度为零；这个例子说明：将零点放在需要衰减的频率位置，能使系统形成更明确的滤波作用。</p>
 <p>设系统函数的零点为 [[c_r]]、极点为 [[d_r]]，增益为 [[A]]。令单位圆上的频率点 [[B=e^{j\omega}]] 随 [[\omega]] 转动，则零极点分解给出：</p>
 <div class="formula">\[H(z)=A\frac{\prod_r(z-c_r)}{\prod_r(z-d_r)}\]</div>
 <div class="formula">\[\left|H(e^{j\omega})\right|=\left|A\right|\frac{\prod_r\left|B-C_r\right|}{\prod_r\left|B-D_r\right|},\qquad B=e^{j\omega}\]</div>
+<p>其中的距离项来自从每个零点、极点指向单位圆频率点的向量（用于同时解释幅度和相位）：</p>
+<div class="formula">\[\overrightarrow{c_rB}=e^{j\omega}-c_r,\qquad \overrightarrow{d_rB}=e^{j\omega}-d_r\]</div>
 <p>若分子、分母以 \(z\) 表示时的次数分别为 \(N\)、\(M\)，把单位圆上的频率点代入后，额外幂次只影响相位：</p>
 <div class="formula">\[H(e^{j\omega})=Ae^{j(N-M)\omega}\frac{\prod_r\left(e^{j\omega}-c_r\right)}{\prod_r\left(e^{j\omega}-d_r\right)}\]</div>
 <p>因此，频率点靠近极点时分母变小，幅度形成峰；靠近零点时分子变小，幅度形成谷。单位圆上的零点对应完全抑制的频率；单位圆上的极点会导致不稳定，故稳定系统的极点不能在单位圆上。</p>
@@ -170,6 +180,18 @@ __Z_PLANE__
 <p>对 [[H(z)=1-z^{-N}]]，单位圆上有 [[N]] 个等角度零点，频响为：</p>
 <div class="formula">\[\left|H(e^{j\omega})\right|=\left|1-e^{-jN\omega}\right|=2\left|\sin\frac{N\omega}{2}\right|\]</div>
 <p>零点出现在 [[\omega=2\pi k/N]]，因而形成等间隔衰减槽。读图时先让频率点沿单位圆转动：靠极点找峰、靠零点找谷，再检查极点是否全在单位圆内。</p>
+<h2>原点零极点与纯延时</h2>
+<p>纯延时系统的系统函数（用于说明原点的零点、极点不改变幅度响应）为：</p>
+<div class="formula">\[H(e^{j\omega})=z^{-1}\big|_{z=e^{j\omega}}=e^{-j\omega}\]</div>
+<div class="formula">\[\left|H(e^{j\omega})\right|=1,\qquad \angle H(e^{j\omega})=-\omega\]</div>
+<p>因为单位圆上任一点到原点的距离恒为 \(1\)，原点的零点或极点不改变幅度；它们只带来线性相位。上式正是“一点延时只改变相位、不改变幅度”的频域表达。</p>
+<h2>例题：四抽头平均的零点分布</h2>
+<p><strong>例题</strong>：若 LSI 系统的差分方程为 \(y(n)=\frac{1}{2}\left[x(n)+x(n-4)\right]\)，求其幅频响应。</p>
+<p>该系统函数（用于从延时项直接读取零点与极点）为：</p>
+<div class="formula">\[H(z)=\frac{1}{2}\left(1+z^{-4}\right)=\frac{1}{2}\frac{z^4+1}{z^4}\]</div>
+<p>分母说明原点有四重极点，只影响相位；分子零点满足 \(z^4+1=0\)，即：</p>
+<div class="formula">\[z_k=e^{j\left(\frac{2\pi k}{4}+\frac{\pi}{4}\right)},\qquad k=0,1,2,3\]</div>
+<p>四个零点等角度分布在单位圆上，故对应频率处幅度为零；幅频响应可写为 \(\left|H(e^{j\omega})\right|=\left|\cos(2\omega)\right|\)。这给出了等间隔零点与等间隔衰减槽的一组具体对应。</p>
 </main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_plot())
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")

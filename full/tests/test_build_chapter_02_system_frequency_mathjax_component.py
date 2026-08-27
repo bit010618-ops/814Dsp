@@ -33,6 +33,14 @@ def test_system_frequency_and_geometry_are_reflowed_with_coordinate_plot(tmp_pat
     assert r"\frac{1}{3}e^{-j\omega}\frac{\sin\left(\frac{3\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}" in html
     assert r"0\le\omega<\frac{2\pi}{3}" in html
     assert r"\frac{2\pi}{3}\le\omega\le\pi" in html
+    assert r"H(z)=\frac{z}{z-1}" in html
+    assert r"H(z)=\frac{z}{z-0.9}" in html
+    assert r"H(z)=\frac{1}{20}\frac{z+1}{z-0.9}" in html
+    assert r"H(e^{j\omega})=z^{-1}\big|_{z=e^{j\omega}}=e^{-j\omega}" in html
+    assert r"\left|H(e^{j\omega})\right|=1,\qquad \angle H(e^{j\omega})=-\omega" in html
+    assert r"y(n)=\frac{1}{2}\left[x(n)+x(n-4)\right]" in html
+    assert r"H(z)=\frac{1}{2}\left(1+z^{-4}\right)=\frac{1}{2}\frac{z^4+1}{z^4}" in html
+    assert r"z_k=e^{j\left(\frac{2\pi k}{4}+\frac{\pi}{4}\right)},\qquad k=0,1,2,3" in html
     assert r"e^{j(N-M)\omega}" in html
     assert r"\left|H(e^{j\omega})\right|=\left|A\right|" in html
     assert "data:image/svg+xml" not in html
