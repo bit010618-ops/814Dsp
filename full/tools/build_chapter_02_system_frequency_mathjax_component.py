@@ -120,16 +120,41 @@ def write_html(output: Path) -> Path:
 <p>幅度响应常用分贝表示，以便直接比较增益和衰减：</p>
 <div class="formula">\[G_{\mathrm{dB}}(\omega)=20\log_{10}\left|H(e^{j\omega})\right|\]</div>
 <p>因此 \(0\,\mathrm{dB}\) 对应单位增益；\(20\,\mathrm{dB}\) 对应十倍幅度增益；\(-20\,\mathrm{dB}\) 对应十分之一幅度。</p>
+<h2>归一化角频率的换算</h2>
+<p>连续时间正弦在一个周期内包含 \(N_0=T_0/T\) 个采样点时，其连续角频率与离散时间归一化角频率的换算（用于在 \(\Omega\) 与 \(\omega\) 两个频率标度间转换）为：</p>
+<div class="formula">\[\omega=\Omega T=\frac{2\pi}{T_0}T=\frac{2\pi}{N_0}\]</div>
 <p>若输入为复指数 [[x(n)=e^{j\omega_0n}]]，输出仍为同频率复指数：</p>
 <div class="formula">\[y(n)=H(e^{j\omega_0})e^{j\omega_0n}\]</div>
 <p>对实正弦输入 [[x(n)=A\cos(\omega_0n+\varphi)]]，频率不变；输出幅度乘以 [[|H(e^{j\omega_0})|]]，相位增加 [[\angle H(e^{j\omega_0})]]。纯延时 [[n_d]] 个样本只改变相位：</p>
 <div class="formula">\[H(e^{j\omega})=e^{-j\omega n_d},\qquad \left|H(e^{j\omega})\right|=1,\quad \angle H(e^{j\omega})=-\omega n_d\]</div>
 <p>相频响应随频率的斜率对应群延迟；对理想延时系统，所有频率分量具有相同的群延迟：</p>
 <div class="formula">\[\tau_g(\omega)=-\frac{\mathrm{d}}{\mathrm{d}\omega}\angle H(e^{j\omega}),\qquad \tau_g(\omega)=n_d\quad\text{（理想延时）}\]</div>
-<h2>三点平均系统</h2>
-<p>对 [[y(n)=\frac{x(n)+x(n-1)+x(n-2)}{3}]]，频率响应为：</p>
-<div class="formula">\[H(e^{j\omega})=\frac{1+e^{-j\omega}+e^{-j2\omega}}{3}\]</div>
-<p>在 [[\omega=\frac{2\pi}{3}]] 处，三个相量之和为零，故该频率被完全抑制；低频附近幅度较大，说明它具有平滑、抑制高频干扰的低通特性。</p>
+<h2>例题：固定频率正弦通过一阶 LSI 系统</h2>
+<p><strong>例题</strong>：某 LSI 系统的系统函数如下：</p>
+<div class="formula">\[H(z)=0.05\frac{1+z^{-1}}{1-0.9z^{-1}}\]</div>
+<p>若系统的输入信号为：</p>
+<div class="formula">\[x(n)=\sin(0.01\pi n)\]</div>
+<p>试编程并分析系统的输出。</p>
+<h3>解</h3>
+<p>本讲义只保留该例的解析频域结论。将单位圆上的频率点代入系统函数，得到频率响应公式（用于计算该频率分量的幅度变化与相位变化）：</p>
+<div class="formula">\[H(e^{j\omega})=0.05\frac{1+e^{-j\omega}}{1-0.9e^{-j\omega}}\]</div>
+<p>该系统的等价差分方程（用于说明输出由当前输入、前一输入和前一输出共同决定）为：</p>
+<div class="formula">\[y(n)=0.9y(n-1)+0.05x(n)+0.05x(n-1)\]</div>
+<p>在 \(\omega_0=0.01\pi\) 处，有 \(\left|H(e^{j\omega_0})\right|\approx0.958\)、\(\angle H(e^{j\omega_0})\approx-0.290\,\mathrm{rad}\)。因此输出仍为同频率正弦，幅度仅略微减小且向后移相；在低频附近群延迟约为 9--10 个样本，符合该系统低通且带明显低频延时的特征。</p>
+<h2>例题：分析 3 点均值滤波系统的频率响应</h2>
+<p><strong>例题</strong>：分析 3 点均值滤波系统的频率响应。</p>
+<p>该系统的单位脉冲响应和等价时域表达式（用于说明它对相邻三个样本作算术平均）分别为：</p>
+<div class="formula">\[h(n)=\frac{1}{3}\left[\delta(n)+\delta(n-1)+\delta(n-2)\right]\]</div>
+<div class="formula">\[y(n)=\frac{1}{3}\left[x(n)+x(n-1)+x(n-2)\right]\]</div>
+<p>频率响应的化简式（用于读取幅度、相位和被完全抑制的频率）为：</p>
+<div class="formula">\[H(e^{j\omega})=\frac{1+e^{-j\omega}+e^{-j2\omega}}{3}=\frac{1}{3}e^{-j\omega}\frac{\sin\left(\frac{3\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}\]</div>
+<p>因此在 \(\omega=\frac{2\pi}{3}\) 处幅度为零，低频附近幅度较大，说明它具有平滑、抑制较高频分量的低通特性。主值相位（用于判断相位移位方向）为：</p>
+<div class="formula">\[\angle H(e^{j\omega})=
+\begin{cases}
+-\omega, & 0\le\omega<\frac{2\pi}{3},\\
+\pi-\omega, & \frac{2\pi}{3}\le\omega\le\pi.
+\end{cases}\]</div>
+<p>若输入同时含有 \(0.25\pi\)、\(0.5\pi\) 与 \(0.85\pi\) 三个频率分量，则输出中靠近 \(0.85\pi\) 的分量会被显著抑制；这正是根据幅频响应判断“哪些频率通过、哪些频率衰减”的方法。</p>
 <h1>几何法画频率响应</h1>
 <p>设系统函数的零点为 [[c_r]]、极点为 [[d_r]]，增益为 [[A]]。令单位圆上的频率点 [[B=e^{j\omega}]] 随 [[\omega]] 转动，则零极点分解给出：</p>
 <div class="formula">\[H(z)=A\frac{\prod_r(z-c_r)}{\prod_r(z-d_r)}\]</div>

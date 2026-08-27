@@ -22,6 +22,17 @@ def test_system_frequency_and_geometry_are_reflowed_with_coordinate_plot(tmp_pat
     assert r"H(e^{j\omega})=\sum_{n=-\infty}^{\infty}h(n)e^{-j\omega n}" in html
     assert r"20\log_{10}\left|H(e^{j\omega})\right|" in html
     assert r"\tau_g(\omega)=-\frac{\mathrm{d}}{\mathrm{d}\omega}\angle H(e^{j\omega})" in html
+    assert r"H(z)=0.05\frac{1+z^{-1}}{1-0.9z^{-1}}" in html
+    assert r"x(n)=\sin(0.01\pi n)" in html
+    assert r"H(e^{j\omega})=0.05\frac{1+e^{-j\omega}}{1-0.9e^{-j\omega}}" in html
+    assert "MATLAB" not in html
+    assert "freqz" not in html
+    assert r"\omega=\Omega T=\frac{2\pi}{T_0}T=\frac{2\pi}{N_0}" in html
+    assert r"h(n)=\frac{1}{3}\left[\delta(n)+\delta(n-1)+\delta(n-2)\right]" in html
+    assert r"y(n)=\frac{1}{3}\left[x(n)+x(n-1)+x(n-2)\right]" in html
+    assert r"\frac{1}{3}e^{-j\omega}\frac{\sin\left(\frac{3\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}" in html
+    assert r"0\le\omega<\frac{2\pi}{3}" in html
+    assert r"\frac{2\pi}{3}\le\omega\le\pi" in html
     assert r"e^{j(N-M)\omega}" in html
     assert r"\left|H(e^{j\omega})\right|=\left|A\right|" in html
     assert "data:image/svg+xml" not in html
