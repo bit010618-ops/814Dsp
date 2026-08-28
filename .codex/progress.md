@@ -1421,3 +1421,11 @@
 - Static MathJax-SVG/WeasyPrint A4 output was rasterized and visually checked on pages 1--3: table, coefficient integral, vertical fraction, summation bounds and cosine expansion are complete and readable with no raw TeX, clipping or overlap.
 - The combined Chapter 3-to-4 export also reported two pre-existing missing Chapter 4 FFT source-image paths; that unrelated visual defect is recorded for the later Chapter 4 figure-repair queue.
 - Next action: commit this narrow verified Chapter 3 addition, then continue source audit from the next Chapter 3 content block.
+
+# 2026-08-29 Chapter-five direct-II and transposed-structure completion
+
+- Audited courseware pages 676 and 706--707 before changing the Chapter 5 component. They establish a shared-delay direct-II realization and its second-order transposed form; the source screenshots were used only to verify signal-flow topology and were not embedded in the handout.
+- Added two editable, programmatic SVG diagrams: a direct-II canonical structure with one shared state-delay chain, and a second-order transposed direct-II structure with standard summers, delay blocks, branch points, coefficient blocks, and arrowed signal paths. Added the accompanying state equations with a Chinese explanation of their use, then renumbered subsequent Chapter 5 figure captions consistently.
+- Followed red-green testing: the initial component regression failed for both missing diagrams, then `pytest full/tests/test_build_chapter_05_filter_structures_mathjax_component.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch05-full-green` passed with `15 passed`.
+- Rebuilt the main body so the Chapter 5 formula summary includes the transposed-state recursion. Offline MathJax-SVG plus WeasyPrint A4 export was rasterized and inspected: no raw TeX, black fill, clipped figure, stray arrow, or label overlap in the new direct-II / transposed figures.
+- Next action: make the focused local commit, then continue the Chapter 5--8 source-figure audit and remaining whole-book natural-pagination work.

@@ -34,6 +34,8 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert 'src="../assets/source-figures/ch05-fir-direct-form.png"' not in html
     for diagram in (
         "iir-direct-form-i",
+        "iir-direct-form-ii",
+        "iir-transposed-direct-form-ii",
         "iir-cascade-form",
         "fir-direct-form",
         "dtmf-parallel-form",
@@ -52,6 +54,11 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert "M88 80V135H128" in html
     assert "M260 80V170H278" in html
     assert "M840 225V395H722" in html
+    # The shared-delay direct-II and its transpose are both real signal-flow
+    # diagrams, rather than prose-only mentions of those two structures.
+    assert "图 5-2 IIR 直接 II 型（典范型）结构" in html
+    assert "图 5-3 二阶转置型 IIR 结构" in html
+    assert r"v_1(n)&=b_1x(n)-a_1y(n)+v_2(n-1)" in html
     assert 'x="0" y="130" width="120"' in html
     assert "h(N-2)" in html and "h(N-1)" in html
     for asset in (
