@@ -71,9 +71,27 @@ x(n)=\frac{1}{N}\sum_{k=0}^{N-1}X(k)W_N^{-nk}.
 <h2>实序列的 FFT</h2>
 <p>若有两个 (N) 点实序列，可将一个序列作为复序列的实部，另一个作为虚部，经过一次 (N) 点 FFT 后，利用共轭对称性分离出各自的频谱。对于一个 (N) 点实序列，也可把偶序号样本与奇序号样本分别作为新序列的实部和虚部：</p>
 <div class="formula">\[
-y(n)=x(2n)+j\,x(2n+1),\qquad 0\leq n\leq\frac{N}{2}-1.
+\begin{aligned}
+x_1(n)&=x(2n),\\
+x_2(n)&=x(2n+1),\\
+y(n)&=x_1(n)+j\,x_2(n),
+\qquad 0\leq n\leq\frac{N}{2}-1.
+\end{aligned}
 \]</div>
-<p>对 (y(n)) 作一次 (N/2) 点 FFT，并以实序列的共轭对称性分解结果，可恢复偶、奇子序列的频谱，再经基-2 蝶形得到原 (N) 点序列的 DFT。这是以一次 (N/2) 点 FFT 完成一个 (N) 点实序列 FFT 的基本思路。</p>
+<p><strong>一次半长 FFT 的分离公式：</strong>对 (y(n)) 作一次 (N/2) 点 FFT 得 (Y(k)) 后，取其偶、奇共轭分量，即可恢复偶、奇子序列的频谱：</p>
+<div class="formula">\[
+\begin{aligned}
+X_1(k)&=Y_{\mathrm{ep}}(k),\\
+X_2(k)&=-jY_{\mathrm{op}}(k),
+\qquad 0\leq k\leq\frac{N}{2}-1.
+\end{aligned}
+\]</div>
+<p><strong>实序列频谱的共轭对称关系：</strong>原序列为实序列时，后半谱可由前半谱得到：</p>
+<div class="formula">\[
+X(N-k)=X^*(k),
+\qquad 0\leq k\leq\frac{N}{2}-1.
+\]</div>
+<p>将 (X_1(k)) 与 (X_2(k)) 代入 DIT 蝶形的加、减关系，即可得到 (X(k)) 的前、后半部分。这些公式说明，实序列的共轭对称性可使一个 (N) 点实序列的变换由一次 (N/2) 点复 FFT 完成。</p>
 
 <h2>高斯的遗憾</h2>
 <p>FFT 常称为 Cooley–Tukey 算法；但在此之前一个多世纪，高斯已在计算问题中提出过类似的快速思想。它在数字计算机时代才成为普遍重要的方法，说明算法价值既取决于数学结构，也取决于实际计算需求与技术条件。</p>

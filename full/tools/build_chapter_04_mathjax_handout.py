@@ -26,6 +26,7 @@ p{margin:5pt 0 8pt;orphans:3;widows:3}
 .counts th,.counts td,.table th,.table td{border-bottom:.4pt solid #d6dde2;padding:6pt 7pt;text-align:center}
 .counts th,.table th{color:#315d7c;font-weight:500;background:#f4f7f8}
 .steps{padding-left:1.5em;margin:5pt 0 8pt}.steps li{margin:3pt 0}
+.source-figure{break-inside:avoid;margin:12pt auto;text-align:center}.source-figure img{display:block;max-width:100%;height:auto;margin:0 auto}.source-figure figcaption{margin-top:4pt;color:#52616b;font-size:9.5pt}
 @media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}.counts,.table{font-size:9.5pt}}
 </style>"""
 

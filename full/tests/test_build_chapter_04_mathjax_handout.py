@@ -16,3 +16,4 @@ def test_chapter_four_body_assembler_keeps_41_to_45_in_source_order(tmp_path: Pa
     assert positions == sorted(positions)
     assert "真题" not in html
     assert "MATLAB" not in html
+    assert ".source-figure img{display:block;max-width:100%;height:auto;margin:0 auto}" in html

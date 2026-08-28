@@ -14,6 +14,10 @@ def test_dif_ifft_and_optimization_component_preserves_all_remaining_chapter_top
     assert r"\frac{1}{N}" in html
     assert "4.5 进一步减少运算量的措施" in html
     assert "四类蝶形单元" in html
+    assert r"y(n)&=x_1(n)+j\,x_2(n)" in html
+    assert r"X_1(k)&=Y_{\mathrm{ep}}(k)" in html
+    assert r"X_2(k)&=-jY_{\mathrm{op}}(k)" in html
+    assert r"X(N-k)=X^*(k)" in html
     assert "线性调频 z 变换" in html
     assert r"x(n)A^{-n}W^{nk}" in html
     assert r"nk=\frac{1}{2}\left[n^2+k^2-(k-n)^2\right]" in html
