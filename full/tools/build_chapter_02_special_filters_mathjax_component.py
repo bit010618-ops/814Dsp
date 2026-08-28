@@ -212,6 +212,9 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H_{\mathrm{ap}}(z)=A\frac{z^{-N}D(z^{-1})}{D(z)}=A\prod_{i=1}^{N}\frac{z^{-1}-p_i^*}{1-p_i z^{-1}}\]</div>
 <p>其零极点具有共轭倒易关系：每个极点 [[p_i]] 对应零点 [[1/p_i^*]]。稳定实系数全通滤波器在 [[0,\pi]] 内相位单调减小，群延迟为正。</p>
 <h2>最小相位滤波器</h2>
+<h3>逆系统与最小相位条件</h3>
+<p>逆系统用于抵消已知系统的传递作用：原系统与其逆系统级联后，整体输出应恢复为输入。其系统函数关系为：</p>
+<div class="formula">\[H_i(z)=\frac{1}{H(z)},\qquad H(z)H_i(z)=1\]</div>
 <p>若一个因果稳定系统及其逆系统都要求因果稳定，则原系统的全部零点和极点都必须位于单位圆内。这类系统称为最小相位系统。</p>
 <p>任何适当的因果稳定系统可分解为最小相位部分和全通部分：</p>
 <div class="formula">\[H(z)=H_{\min}(z)H_{\mathrm{ap}}(z)\]</div>
@@ -219,6 +222,13 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[\arg H(e^{j\omega})=\arg H_{\min}(e^{j\omega})+\arg H_{\mathrm{ap}}(e^{j\omega})\]</div>
 <div class="formula">\[\operatorname{grd}\{H(e^{j\omega})\}=\operatorname{grd}\{H_{\min}(e^{j\omega})\}+\operatorname{grd}\{H_{\mathrm{ap}}(e^{j\omega})\}\]</div>
 <p>全通部分只额外引入相位滞后和正群延迟，因此最小相位部分具有最小相位滞后、最小群延迟和最小能量延迟。分解时，将单位圆内的零极点归入 [[H_{\min}(z)]]，单位圆外的零点通过共轭倒易配对组成 [[H_{\mathrm{ap}}(z)]]。</p>
+<h3>例题</h3>
+<p>将单位圆外的零点折回单位圆内，可把一个因果稳定系统分解为最小相位部分和全通部分。对下式，零点 [[z=3]] 位于单位圆外，极点 [[z=3/4]] 位于单位圆内：</p>
+<div class="formula">\[H(z)=\frac{1-3z^{-1}}{1-\frac{3}{4}z^{-1}}\]</div>
+<p>下列最小相位因子把零点映射为 [[z=1/3]]，因此它的零极点均位于单位圆内：</p>
+<div class="formula">\[H_{\min}(z)=3\frac{z-\frac{1}{3}}{z-\frac{3}{4}}\]</div>
+<p>与之配对的全通因子不改变幅频响应，只补偿相位；二者相乘恰好恢复原系统：</p>
+<div class="formula">\[H_{\mathrm{ap}}(z)=\frac{z-3}{3z-1},\qquad H(z)=H_{\min}(z)H_{\mathrm{ap}}(z)\]</div>
 <h2>工程中常用的滤波方法</h2>
 <p>下列方法用于离散采样数据的预处理，重点在于理解适用的干扰类型与参数选择，而非程序实现。</p>
 <h3>限幅滤波</h3>

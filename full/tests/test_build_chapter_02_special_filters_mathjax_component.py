@@ -60,3 +60,14 @@ def test_special_filters_keep_source_design_conditions_and_notch_example(tmp_pat
     assert r"H(z)=\frac{1}{3.9}\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{z^2}" in html
     assert "有限字长会使陷波中心偏移" in html
     assert "Matlab" not in html and "MATLAB" not in html
+
+
+def test_special_filters_keep_inverse_system_and_minimum_phase_factorization(tmp_path: Path):
+    from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
+
+    html = write_html(tmp_path / "special-filters.html").read_text(encoding="utf-8")
+    assert r"H_i(z)=\frac{1}{H(z)}" in html
+    assert r"H(z)H_i(z)=1" in html
+    assert r"H(z)=\frac{1-3z^{-1}}{1-\frac{3}{4}z^{-1}}" in html
+    assert r"H_{\min}(z)=3\frac{z-\frac{1}{3}}{z-\frac{3}{4}}" in html
+    assert r"H_{\mathrm{ap}}(z)=\frac{z-3}{3z-1}" in html
