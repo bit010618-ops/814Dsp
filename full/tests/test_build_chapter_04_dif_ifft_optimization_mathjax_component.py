@@ -25,6 +25,10 @@ def test_dif_ifft_and_optimization_component_preserves_all_remaining_chapter_top
     assert 'src="../assets/source-figures/ch04-dif-fft-n8-flow.png"' in html
     assert '<figure class="source-figure source-figure-flow">' in html
     assert "DIF-FFT 算法蝶形流图（N=8）" in html
+    assert 'src="../assets/source-figures/ch04-czt-zplane-sampling.png"' in html
+    assert "CZT 在 z 平面上的螺线取样路径" in html
+    assert 'src="../assets/source-figures/ch04-czt-fft-convolution-flow.png"' in html
+    assert "CZT 的 FFT 卷积化计算流程" in html
     assert "MATLAB" not in html
 
 

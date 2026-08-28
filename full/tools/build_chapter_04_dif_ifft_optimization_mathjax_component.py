@@ -103,6 +103,10 @@ z_k=A_0W_0^{-k}e^{j\theta_0}e^{jk\varphi_0},
 \qquad k=0,1,\ldots,M-1.
 \]</div>
 <p>其中 (A_0) 表示起始半径，\(\theta_0\) 表示起始相角，\(\varphi_0\) 为相邻样点的角度差，\(W_0\) 控制螺线伸展率（课件约定 (W_0>1) 时螺线向内收缩）。CZT 可以借助布鲁斯坦等式把目标样点的计算转化为时域卷积，再用 FFT 和 IFFT 高效完成；卷积长度选择必须避免循环混叠，只取所需的 (M) 个有效输出样点。</p>
+<figure class="source-figure compact">
+<img src="../assets/source-figures/ch04-czt-zplane-sampling.png" alt="CZT 在 z 平面上从起始向量开始沿螺线等角取样">
+<figcaption>图 4-3　CZT 在 z 平面上的螺线取样路径</figcaption>
+</figure>
 <h3>布鲁斯坦等式与卷积化</h3>
 <p>为写出计算关系，可将取样点简写为 \(z_k=AW^{-k}\)。则 z 变换样值满足：</p>
 <div class="formula">\[
@@ -118,6 +122,10 @@ X(z_k)=W^{k^2/2}
 \left[x(n)A^{-n}W^{n^2/2}\right]W^{-(k-n)^2/2}.
 \]</div>
 <p>求和项因此成为两个序列的线性卷积形式。实现时先将卷积长度补到足以避免循环混叠的长度，再以 FFT、逐点相乘和 IFFT 求出结果，并只保留 \(k=0,1,\ldots,M-1\) 的有效样点。</p>
+<figure class="source-figure source-figure-flow">
+<img src="../assets/source-figures/ch04-czt-fft-convolution-flow.png" alt="CZT 以加权序列、两次 FFT、逐点相乘和 IFFT 完成卷积化计算的流程">
+<figcaption>图 4-4　CZT 的 FFT 卷积化计算流程</figcaption>
+</figure>
 <p>这样，CZT 在窄带高分辨率观察或非单位圆 z 变换取样时，能比“盲目扩大整段 DFT”更有针对性。</p>
 </main>
 """
