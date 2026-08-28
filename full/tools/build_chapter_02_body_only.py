@@ -32,6 +32,13 @@ h4{break-after:avoid;color:#315d7c;font-size:11.5pt;font-weight:400;margin:10pt 
 .property-table th,.property-table td{border:.6pt solid #8ca4b5;padding:6pt 5pt;vertical-align:middle}
 .property-table thead{background:#e8f0f4;color:#174c6f}
 .property-table th[scope=row]{color:#1e4f79;text-align:left;background:#f7fafb;white-space:nowrap}
+main table{width:100%;border-collapse:collapse;margin:9pt 0 13pt;font-size:10pt;line-height:1.5;break-inside:avoid;page-break-inside:avoid}
+main table tr{break-inside:avoid;page-break-inside:avoid}
+main table th,main table td{border:.55pt solid #8299aa;padding:5pt 6pt;vertical-align:middle;text-align:center}
+main table th{background:#eaf1f4;color:#1e4f79;font-weight:600}
+.figure{margin:11pt auto 13pt;text-align:center;break-inside:avoid;page-break-inside:avoid}
+.figure img{display:block;width:100%;max-width:148mm;height:auto;margin:auto;border:0}
+.figure figcaption{color:#536b7d;font-size:9.5pt;line-height:1.55;margin-top:4pt}
 </style>"""
 
 

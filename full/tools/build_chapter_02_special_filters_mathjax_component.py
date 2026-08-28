@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import subprocess
 import sys
+from base64 import b64encode
+from io import BytesIO
 from pathlib import Path
 
 
@@ -14,12 +16,128 @@ from full.tools.render_mathjax_formula import EDGE, MATHJAX
 
 
 STYLE = r"""<style>
-@page{size:A4;margin:20mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
+@page{size:A4;margin:20mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.figure{margin:11pt auto 13pt;text-align:center;break-inside:avoid}.figure img{display:block;width:100%;max-width:148mm;margin:auto;border:0}.figure figcaption{color:#536b7d;font-size:9.5pt;line-height:1.55;margin-top:4pt}table{border-collapse:collapse;width:100%;margin:9pt 0 12pt;font-size:10pt;break-inside:avoid}th,td{border:.55pt solid #8299aa;padding:4pt 6pt;text-align:center}th{background:#eaf1f4;color:#1e4f79;font-weight:600}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
 </style>"""
+
+
+def _png_uri(figure) -> str:
+    buffer = BytesIO()
+    figure.savefig(buffer, format="png", dpi=240, bbox_inches="tight", facecolor="white")
+    buffer.seek(0)
+    return "data:image/png;base64," + b64encode(buffer.read()).decode("ascii")
+
+
+def _render_first_order_lowpass_figures() -> dict[str, str]:
+    """Render the source example with data-driven, print-ready textbook plots."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    plt.rcParams.update({
+        "font.sans-serif": ["Microsoft YaHei", "SimHei", "DejaVu Sans"],
+        "axes.unicode_minus": False,
+        "mathtext.fontset": "stix",
+    })
+    axis_color = "#244f72"
+    stem_color = "#008e98"
+    marker_color = "#bd6d0a"
+
+    def discrete_axis(ax, xlim, ylim, xlabel, title, ticks):
+        ax.set_xlim(*xlim)
+        ax.set_ylim(*ylim)
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        ax.axhline(0, color=axis_color, lw=1.05, zorder=0)
+        ax.axvline(0, color=axis_color, lw=1.05, zorder=0)
+        dx = (xlim[1] - xlim[0]) * 0.035
+        dy = (ylim[1] - ylim[0]) * 0.07
+        ax.annotate("", xy=(xlim[1], 0), xytext=(xlim[1] - dx, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+        ax.annotate("", xy=(0, ylim[1]), xytext=(0, ylim[1] - dy), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+        ax.set_xticks(ticks)
+        ax.set_yticks([])
+        ax.tick_params(axis="x", length=3, colors="#596b78", labelsize=8)
+        ax.text(0.98, 0.04, xlabel, transform=ax.transAxes, ha="right", va="bottom", color=axis_color, fontsize=9)
+        ax.text(0.04, 0.94, "幅值", transform=ax.transAxes, ha="left", va="top", color=axis_color, fontsize=9)
+        ax.set_title(title, color="#1e4f79", fontsize=10, pad=7)
+
+    figures: dict[str, str] = {}
+    figure, ax = plt.subplots(figsize=(4.5, 3.65), constrained_layout=True)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    theta = np.linspace(0, 2 * np.pi, 600)
+    ax.plot(np.cos(theta), np.sin(theta), color="#8094a4", lw=1.2, ls="--", label="单位圆")
+    ax.axhline(0, color=axis_color, lw=1.1)
+    ax.axvline(0, color=axis_color, lw=1.1)
+    ax.annotate("", xy=(1.34, 0), xytext=(1.2, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.1})
+    ax.annotate("", xy=(0, 1.34), xytext=(0, 1.2), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.1})
+    ax.scatter([-1], [0], s=60, marker="o", facecolors="white", edgecolors=stem_color, linewidths=1.8, zorder=3)
+    ax.scatter([0.9], [0], s=82, marker="x", color=marker_color, linewidths=2.0, zorder=3)
+    ax.text(-1, -0.16, r"$-1$（零点）", ha="center", va="top", fontsize=9, color=stem_color)
+    ax.text(0.9, 0.14, r"$0.9$（极点）", ha="center", va="bottom", fontsize=9, color=marker_color)
+    ax.text(0.06, -0.14, "0", ha="left", va="top", fontsize=9, color="#596b78")
+    ax.text(1.3, 0.08, r"$\mathrm{Re}(z)$", ha="right", va="bottom", fontsize=10)
+    ax.text(0.08, 1.3, r"$\mathrm{Im}(z)$", ha="left", va="top", fontsize=10)
+    ax.set(xlim=(-1.38, 1.38), ylim=(-1.38, 1.38), aspect="equal")
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_title("一阶低通滤波器的零极点配置", color="#1e4f79", fontsize=11, pad=8)
+    figures["pole_zero"] = _png_uri(figure)
+    plt.close(figure)
+
+    fs = 1000.0
+    n = np.arange(100)
+    x = np.sin(2 * np.pi * 10 * n / fs) + np.sin(2 * np.pi * 250 * n / fs)
+    y = np.zeros_like(x)
+    for index in range(len(n)):
+        y[index] = 0.9 * (y[index - 1] if index else 0.0) + 0.05 * x[index] + 0.05 * (x[index - 1] if index else 0.0)
+
+    figure, axes = plt.subplots(2, 1, figsize=(6.8, 4.4), sharex=True, constrained_layout=True)
+    for ax, sequence, title, limits in (
+        (axes[0], x, "输入序列：10 Hz 与 250 Hz 叠加", (-2.2, 2.2)),
+        (axes[1], y, "输出序列：保留低频、抑制高频", (-1.15, 1.15)),
+    ):
+        markerline, stemlines, baseline = ax.stem(n, sequence, linefmt=stem_color, markerfmt="o", basefmt=" ")
+        markerline.set_markerfacecolor(marker_color)
+        markerline.set_markeredgecolor(marker_color)
+        markerline.set_markersize(2.9)
+        stemlines.set_linewidth(0.75)
+        discrete_axis(ax, (-4, 104), limits, r"$n$", title, [0, 20, 40, 60, 80, 100])
+    axes[0].tick_params(axis="x", labelbottom=False)
+    figures["time"] = _png_uri(figure)
+    plt.close(figure)
+
+    frequencies = np.fft.rfftfreq(len(n), d=1 / fs)
+    input_spectrum = np.abs(np.fft.rfft(x))
+    output_spectrum = np.abs(np.fft.rfft(y))
+    input_spectrum /= input_spectrum.max()
+    output_spectrum /= input_spectrum.max()
+    omega = 2 * np.pi * frequencies / fs
+    filter_amplitude = np.abs(0.05 * (1 + np.exp(-1j * omega)) / (1 - 0.9 * np.exp(-1j * omega)))
+    figure, axes = plt.subplots(3, 1, figsize=(6.8, 3.5), constrained_layout=True)
+    for ax, values, title, ylabel in (
+        (axes[0], input_spectrum, "输入序列的离散幅度谱", "归一化幅度"),
+        (axes[1], filter_amplitude, "一阶低通滤波器的幅频响应", "幅度"),
+        (axes[2], output_spectrum, "输出序列的离散幅度谱", "归一化幅度"),
+    ):
+        markerline, stemlines, baseline = ax.stem(frequencies, values, linefmt=stem_color, markerfmt="o", basefmt=" ")
+        markerline.set_markerfacecolor(marker_color)
+        markerline.set_markeredgecolor(marker_color)
+        markerline.set_markersize(3.2)
+        stemlines.set_linewidth(0.8)
+        discrete_axis(ax, (0, 520), (-0.05, 1.16 if title != "一阶低通滤波器的幅频响应" else 1.05), r"$f / \mathrm{Hz}$", title, [0, 100, 200, 300, 400, 500])
+        ax.text(0.04, 0.80, ylabel, transform=ax.transAxes, ha="left", va="top", color=axis_color, fontsize=8.5)
+    axes[0].axvline(10, color="#b56b2e", lw=0.8, ls=":")
+    axes[0].axvline(250, color="#b56b2e", lw=0.8, ls=":")
+    axes[2].axvline(10, color="#b56b2e", lw=0.8, ls=":")
+    figures["spectrum"] = _png_uri(figure)
+    plt.close(figure)
+    return figures
 
 
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
+    figures = _render_first_order_lowpass_figures()
     content = r'''
 <main>
 <h1>特殊滤波器的设计</h1>
@@ -29,11 +147,29 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H(z)=\frac{z+1}{2z}=\frac{1}{2}(1+z^{-1}),\qquad y(n)=\frac{1}{2}[x(n)+x(n-1)]\]</div>
 <p>在 [[\omega=0]] 处放零点可抑制直流和缓慢变化部分，得到最简单的高通器：</p>
 <div class="formula">\[H(z)=\frac{z-1}{2z}=\frac{1}{2}(1-z^{-1}),\qquad y(n)=\frac{1}{2}[x(n)-x(n-1)]\]</div>
-<p>另一类低通设计是在 [[z=a]]、[[0&lt;a&lt;1]] 处放一个靠近 [[z=1]] 的极点；极点越接近单位圆，低频增强越明显，但必须严格留在单位圆内以保证稳定：</p>
+<p>另一类低通设计是在 [[z=a]]、[[0&lt;a&lt;1]] 处放一个靠近 [[z=1]] 的极点；极点越接近单位圆，低频增强越明显，但必须严格留在单位圆内以保证稳定。单极点低通的系统函数为：</p>
 <div class="formula">\[H(z)=\frac{1-a}{z-a},\qquad 0&lt;a&lt;1\]</div>
+<p>若同时在 [[z=-1]] 布置零点，就能在保留低频增强能力的同时压低最高频率处的幅度。一阶低通的实用形式为：</p>
+<div class="formula">\[H(z)=\frac{1-a}{2}\frac{z+1}{z-a},\qquad 0&lt;a&lt;1\]</div>
+<figure class="figure"><img src="{{LOWPASS_POLE_ZERO}}" alt="一阶低通滤波器的零极点图"><figcaption>一阶低通滤波器的零极点图：零点位于 [[z=-1]]，极点位于 [[z=a]]；极点越接近单位圆，低频选择性越强。</figcaption></figure>
 <p>把通带截止频率定义为幅度下降到 \(-3\,\mathrm{dB}\) 的频率 \(\omega_c\)，则：</p>
 <div class="formula">\[\cos\omega_c=\frac{4a-a^2-1}{2a}\]</div>
-<p>当 \(a\) 靠近 1 时，截止频率的近似关系为 \(\omega_c\approx1-a\)。因此极点越靠近单位圆，通带越窄、低频选择性越强。</p>
+<p>等价地，截止频率可直接按下式确定：</p>
+<div class="formula">\[\omega_c=\arccos\left(\frac{2a}{1+a^2}\right)\]</div>
+<p>当 \(a\) 靠近 1 时，截止频率的近似关系为 \(\omega_c\approx1-a\)。因此极点越靠近单位圆，通带越窄、低频选择性越强。下表保留原课件给出的典型数值，带宽单位均为 rad：</p>
+<table><thead><tr><th>\(a\)</th><th>精确带宽 \(\omega_c\)</th><th>近似带宽 \(1-a\)</th></tr></thead><tbody><tr><td>0.60</td><td>0.49</td><td>0.40</td></tr><tr><td>0.70</td><td>0.35</td><td>0.30</td></tr><tr><td>0.80</td><td>0.22</td><td>0.20</td></tr><tr><td>0.85</td><td>0.16</td><td>0.15</td></tr><tr><td>0.90</td><td>0.10</td><td>0.10</td></tr><tr><td>0.95</td><td>0.05</td><td>0.05</td></tr></tbody></table>
+<h3>例题</h3>
+<p>假设模拟信号如下，设计一个一阶低通数字滤波器，将信号中的高频分量滤除。</p>
+<div class="formula">\[x(t)=\sin(2\pi\cdot10t)+\sin(2\pi\cdot250t)\]</div>
+<p>取采样频率 \(f_s=1000\,\mathrm{Hz}\)，则需保留的低频和需要滤除的高频对应数字频率分别为：</p>
+<div class="formula">\[\omega_1=2\pi\frac{10}{1000}=0.02\pi\approx0.0628\,\mathrm{rad},\qquad \omega_2=2\pi\frac{250}{1000}=0.5\pi\,\mathrm{rad}\]</div>
+<p>为了让低频成分通过而使高频成分衰减，截止频率应满足：</p>
+<div class="formula">\[0.0628&lt;\omega_c&lt;0.5\pi\]</div>
+<p>按近似带宽取 \(\omega_c\approx0.1\)，于是 \(a=0.9\)。所得系统函数和对应差分方程为：</p>
+<div class="formula">\[H(z)=0.05\frac{1+z^{-1}}{1-0.9z^{-1}}\]</div>
+<div class="formula">\[y(n)=0.9y(n-1)+0.05x(n)+0.05x(n-1)\]</div>
+<figure class="figure"><img src="{{LOWPASS_TIME}}" alt="10 Hz 与 250 Hz 输入、输出的离散序列对比"><figcaption>10 Hz 与 250 Hz 输入、输出的离散序列对比：离散样值使用标准 stem 图表示，输出中高频交替变化被明显压低。</figcaption></figure>
+<figure class="figure"><img src="{{LOWPASS_SPECTRUM}}" alt="一阶低通滤波前后的离散频谱"><figcaption>一阶低通滤波前后的离散频谱：10 Hz 分量通过，250 Hz 分量仅被一阶滤波器部分衰减；提高选择性需进一步缩小带宽或提高阶数。</figcaption></figure>
 <h2>数字谐振器</h2>
 <p>数字谐振器把输入频谱中靠近某一固有频率的成分显著增强。二阶实系数谐振器通常在单位圆内、角度为 [[\pm\omega_0]] 的位置配置一对共轭极点：</p>
 <div class="formula">\[p_{1,2}=re^{\pm j\omega_0},\qquad 0&lt;r&lt;1\]</div>
@@ -79,6 +215,10 @@ def write_html(output: Path) -> Path:
 <h2>本节检查顺序</h2>
 <p>先把目标频率换成数字频率，再按“零点抑制、极点增强”的规则确定位置；随后检查共轭对称以保证实系数、检查全部极点位于单位圆内以保证稳定；最后根据是否保幅判断是否属于全通，并根据零极点位置判断是否最小相位。</p>
 </main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+    content = (content
+               .replace("{{LOWPASS_POLE_ZERO}}", figures["pole_zero"])
+               .replace("{{LOWPASS_TIME}}", figures["time"])
+               .replace("{{LOWPASS_SPECTRUM}}", figures["spectrum"]))
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

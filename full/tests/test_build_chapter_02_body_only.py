@@ -22,6 +22,8 @@ def test_chapter_two_body_only_assembly_excludes_training_and_answers(tmp_path: 
     assert "page-break-after:always" not in html
     assert ".property-table th,.property-table td{border:" in html
     assert "border-collapse:collapse" in html
+    assert ".figure img{display:block;width:100%;max-width:148mm;" in html
+    assert "main table th,main table td{border:.55pt solid #8299aa;" in html
     # The inverse-transform definition belongs to the dedicated inverse
     # component; assembling the body must not repeat its contour formula.
     assert html.count(r"\oint_C X(z)z^{n-1}\,\mathrm{d}z") == 1
