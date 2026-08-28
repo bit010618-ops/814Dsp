@@ -1393,3 +1393,11 @@
 - Next action: commit this verified Chapter 2 completion unit, attempt the configured push once, then move to the next uncompleted main-body source block.
 
 - Committed as `94360dc` (`Complete chapter two minimum phase content`). The push attempt on 2026-08-28 was rejected before network upload by Windows credential manager: `SEC_E_NO_CREDENTIALS`. The verified local commit remains intact; no pull, rebase, reset, clean or force-push was performed.
+
+# 2026-08-28 Chapter-three Fourier-series bridge completion
+
+- Audited the Chapter 3 opening source pages that introduce the continuous-time Fourier-series bridge. Restored the rectangular-pulse-train Fourier-series coefficient, including its \(\tau/T_0\) amplitude factor and \(\operatorname{Sa}\) envelope, and restored the real-even signal expansion into a DC term plus cosine harmonics.
+- Added a red-green regression for both formulas. Component and Chapter 3-to-4 body tests pass: `3 passed`.
+- Static MathJax-SVG/WeasyPrint A4 output was rasterized and visually checked on pages 1--3: table, coefficient integral, vertical fraction, summation bounds and cosine expansion are complete and readable with no raw TeX, clipping or overlap.
+- The combined Chapter 3-to-4 export also reported two pre-existing missing Chapter 4 FFT source-image paths; that unrelated visual defect is recorded for the later Chapter 4 figure-repair queue.
+- Next action: commit this narrow verified Chapter 3 addition, then continue source audit from the next Chapter 3 content block.

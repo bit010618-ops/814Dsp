@@ -37,6 +37,18 @@ T_0\uparrow\quad\Longrightarrow\quad\Omega_0=\frac{2\pi}{T_0}\downarrow.
 \]</div>
 <p>当 (T_0) 无限增大时，频谱取样间隔趋于零，离散的傅里叶级数频谱过渡为连续的傅里叶变换频谱。虽然相邻频点的数值可能相同，频率位置不同仍对应不同的物理谐波分量，不能只比较系数数值而忽略频率坐标。</p>
 
+<h3>矩形脉冲列的谐波系数</h3>
+<p>对幅度为 1、宽度为 [[\tau]]、周期为 [[T_0]] 的实偶矩形脉冲列，下式给出每一个谐波频点的傅里叶级数系数；它说明脉冲宽度与周期之比决定直流分量和谱线包络：</p>
+<div class="formula">\[
+X(jk\Omega_0)=\frac{1}{T_0}\int_{-\tau/2}^{\tau/2}e^{-jk\Omega_0t}\,\mathrm{d}t
+=\frac{\tau}{T_0}\operatorname{Sa}\left(\frac{k\Omega_0\tau}{2}\right),
+\qquad \operatorname{Sa}(u)=\frac{\sin u}{u}.
+\]</div>
+<p>对于实偶的周期信号，负、正谐波系数相等且为实数，因此级数可合并成直流项与余弦谐波项。该式直接说明频域各离散谱线如何重构时域波形：</p>
+<div class="formula">\[
+\widetilde{x}(t)=X(j0)+\sum_{k=1}^{\infty}2X(jk\Omega_0)\cos(k\Omega_0t).
+\]</div>
+
 <h2>从连续时间频谱到 DTFT</h2>
 <p>连续信号以采样间隔 [[T]] 变为序列后，模拟角频率 [[\Omega]] 与数字角频率 [[\omega]] 的关系为：</p>
 <div class="formula">\[
