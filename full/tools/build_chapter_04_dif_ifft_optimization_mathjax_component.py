@@ -121,7 +121,30 @@ X(z_k)=W^{k^2/2}
 \sum_{n=0}^{N-1}
 \left[x(n)A^{-n}W^{n^2/2}\right]W^{-(k-n)^2/2}.
 \]</div>
-<p>求和项因此成为两个序列的线性卷积形式。实现时先将卷积长度补到足以避免循环混叠的长度，再以 FFT、逐点相乘和 IFFT 求出结果，并只保留 \(k=0,1,\ldots,M-1\) 的有效样点。</p>
+<p><strong>卷积化的两个序列：</strong>下面的定义把输入加权为 (g(n))，并将二次相位项写为 (h(n))；它们用于把 CZT 求和改写成标准线性卷积。</p>
+<div class="formula">\[
+\begin{aligned}
+g(n)&=x(n)A^{-n}W^{n^2/2},\
+h(n)&=W^{-n^2/2},\\
+X(z_k)&=W^{k^2/2}\,[g*h](k).
+\end{aligned}
+\]</div>
+<p><strong>避免循环混叠的补零定义：</strong>使用 FFT 计算这段线性卷积时，取 \(L\geq N+M-1\)，并将两序列扩展为同一长度：</p>
+<div class="formula">\[
+g_L(n)=
+\begin{cases}
+x(n)A^{-n}W^{n^2/2}, & 0\leq n\leq N-1,\\
+0, & N\leq n\leq L-1,
+\end{cases}
+\qquad
+h_L(n)=
+\begin{cases}
+W^{-n^2/2}, & 0\leq n\leq M-1,\\
+0, & M\leq n\leq L-N,\\
+W^{-(L-n)^2/2}, & L-N+1\leq n\leq L-1.
+\end{cases}
+\]</div>
+<p>求和项因此成为两个序列的线性卷积形式。以这两个长度为 \(L\) 的序列作圆周卷积时，前 \(M\) 个输出恰为无混叠的线性卷积结果；实现上依次进行 FFT、逐点相乘和 IFFT，再只保留 \(k=0,1,\ldots,M-1\) 的有效样点。</p>
 <figure class="source-figure source-figure-flow">
 <img src="../assets/source-figures/ch04-czt-fft-convolution-flow.png" alt="CZT 以加权序列、两次 FFT、逐点相乘和 IFFT 完成卷积化计算的流程">
 <figcaption>图 4-4　CZT 的 FFT 卷积化计算流程</figcaption>

@@ -21,6 +21,10 @@ def test_dif_ifft_and_optimization_component_preserves_all_remaining_chapter_top
     assert "线性调频 z 变换" in html
     assert r"x(n)A^{-n}W^{nk}" in html
     assert r"nk=\frac{1}{2}\left[n^2+k^2-(k-n)^2\right]" in html
+    assert r"g(n)&=x(n)A^{-n}W^{n^2/2}" in html
+    assert r"h(n)&=W^{-n^2/2}" in html
+    assert r"L\geq N+M-1" in html
+    assert r"L-N+1\leq n\leq L-1" in html
     assert "高斯的遗憾" in html
     assert 'src="../assets/source-figures/ch04-dif-fft-n8-flow.png"' in html
     assert '<figure class="source-figure source-figure-flow">' in html
