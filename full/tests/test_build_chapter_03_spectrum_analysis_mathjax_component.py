@@ -13,6 +13,11 @@ def test_spectrum_analysis_component_covers_sampling_leakage_and_picket_fence(tm
     assert "频谱泄漏" in html
     assert "栅栏效应" in html
     assert "零填充" in html
+    assert r"W_R\left(e^{j\omega}\right)" in html
+    assert r"\frac{\sin\left(\frac{N\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}" in html
+    assert r"\cos\left(\frac{\pi}{4}n\right)+0.2\cos\left(\frac{\pi}{5}n\right)" in html
+    assert r"R_{40}(n)" in html
+    assert r"R_{320}(n)" in html
     assert "MATLAB" not in html
     assert "原技术条件" not in html
 
