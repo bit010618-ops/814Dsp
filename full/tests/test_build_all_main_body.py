@@ -96,6 +96,7 @@ def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_en
     assert all(r"\[" in summary and r"\]" in summary for summary in summaries)
     assert "x(n)=x_a(nT)" in summaries[0]
     assert "H(z)" in summaries[1]
+    assert r"L\geq N+M-1" in summaries[3]
 
 
 def test_formula_summary_flows_into_preceding_page_when_space_remains(tmp_path: Path):

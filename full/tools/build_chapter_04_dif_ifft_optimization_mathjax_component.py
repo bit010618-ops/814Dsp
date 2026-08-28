@@ -131,6 +131,9 @@ X(z_k)&=W^{k^2/2}\,[g*h](k).
 \]</div>
 <p><strong>避免循环混叠的补零定义：</strong>使用 FFT 计算这段线性卷积时，取 \(L\geq N+M-1\)，并将两序列扩展为同一长度：</p>
 <div class="formula">\[
+L\geq N+M-1.
+\]</div>
+<div class="formula">\[
 g_L(n)=
 \begin{cases}
 x(n)A^{-n}W^{n^2/2}, & 0\leq n\leq N-1,\\
