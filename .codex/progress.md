@@ -1391,3 +1391,5 @@
 - Added a red-green regression for those exact relations. Targeted component and body-assembly tests pass: `6 passed`.
 - Exported the 30-page body with offline MathJax-SVG plus WeasyPrint and visually checked the revised pages 26--30. All new formulas, including the automatic piecewise brace, are complete, uncropped and non-overlapping. The final component page will be joined by the Chapter 2 formula summary and Chapter 2 training pages in whole-book assembly; it is not a standalone final blank page.
 - Next action: commit this verified Chapter 2 completion unit, attempt the configured push once, then move to the next uncompleted main-body source block.
+
+- Committed as `94360dc` (`Complete chapter two minimum phase content`). The push attempt on 2026-08-28 was rejected before network upload by Windows credential manager: `SEC_E_NO_CREDENTIALS`. The verified local commit remains intact; no pull, rebase, reset, clean or force-push was performed.
