@@ -1429,3 +1429,10 @@
 - Followed red-green testing: the initial component regression failed for both missing diagrams, then `pytest full/tests/test_build_chapter_05_filter_structures_mathjax_component.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch05-full-green` passed with `15 passed`.
 - Rebuilt the main body so the Chapter 5 formula summary includes the transposed-state recursion. Offline MathJax-SVG plus WeasyPrint A4 export was rasterized and inspected: no raw TeX, black fill, clipped figure, stray arrow, or label overlap in the new direct-II / transposed figures.
 - Next action: make the focused local commit, then continue the Chapter 5--8 source-figure audit and remaining whole-book natural-pagination work.
+
+# 2026-08-29 Chapter-six self-contained SVG export repair
+
+- Actual offline-MathJax/WeasyPrint A4 review exposed black-filled Chapter 6 diagrams: the IIR design route, impulse-response-invariance route, and bilinear s/z-plane mapping were relying on outer CSS that the static exporter did not consistently inherit.
+- Added direct paint, stroke, arrowhead, font and fill attributes to every affected SVG primitive. The stable left half-plane and unit disk now have pale fills, the unit circle and axes are visible, and all route modules retain their Chinese labels and arrowed connections in the exported PDF.
+- Added a red-green regression for self-contained SVG paint. Verified with `pytest full/tests/test_build_chapter_06_iir_design_mathjax_component.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch06-final-green` (`15 passed`), rebuilt the main body, and inspected the actual A4 raster pages.
+- Next action: commit this scoped repair, then continue Chapter 6--8 source-figure/body audit before whole-book natural-pagination integration.
