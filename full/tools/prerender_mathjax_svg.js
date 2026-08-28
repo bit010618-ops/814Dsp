@@ -152,7 +152,9 @@ function inlineStylesForStaticSvg(document) {
 }
 
 mathjax
-  .init({ loader: { load: ["input/tex", "output/svg"] } })
+  .init({
+    loader: { load: ["input/tex-full", "output/svg"] },
+  })
   .then((MathJax) => {
     const source = fs.readFileSync(inputPath, "utf8");
     const withDisplay = source.replace(/\\\[([\s\S]*?)\\\]/g, (_, latex) =>

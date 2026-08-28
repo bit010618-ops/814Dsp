@@ -33,3 +33,17 @@ def test_lsi_output_component_preserves_circular_length_and_self_convolution_exa
     assert r"X(0)&=4" in html
     assert r"y(n)=x(n)\circledast_4x(n)=\{5,4,5,2\}" in html
     assert r"Y(k)=X(k)X(k)" in html
+
+
+def test_lsi_output_component_preserves_overlap_add_and_save_example(tmp_path: Path):
+    from full.tools import build_chapter_03_lsi_output_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-lsi.html").read_text(encoding="utf-8")
+
+    assert "例题：重叠相加法验证" in html
+    assert "例题：重叠保留法验证" in html
+    assert r"x(n)=(n+1)R_8(n)" in html
+    assert r"h(n)=R_3(n)" in html
+    assert r"M=4,\qquad N_2=3,\qquad L_0=M+N_2-1=6" in html
+    assert r"\{1,3,6,9,12,15,18,21,15,8\}" in html
+    assert r"\{7,4,\underline{1,3,6,9}\}" in html

@@ -135,3 +135,24 @@ def test_prerender_decodes_html_comparison_entities_inside_latex(tmp_path: Path)
     assert "Misplaced &" not in rendered
     assert '&amp;gt;' not in rendered
     assert 'data-mathjax-static="true"' in rendered
+
+
+def test_prerender_loads_ams_extension_for_standard_bold_math(tmp_path: Path) -> None:
+    source = tmp_path / "source.html"
+    target = tmp_path / "target.html"
+    source.write_text(
+        '<html><body><div class="formula">\\[\\boldsymbol{x}=\\begin{bmatrix}1\\\\2\\end{bmatrix}\\]</div></body></html>',
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [str(NODE), str(SCRIPT), str(source), str(target)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stderr
+    rendered = target.read_text(encoding="utf-8")
+    assert r"\\boldsymbol" not in rendered
+    assert '<svg' in rendered
