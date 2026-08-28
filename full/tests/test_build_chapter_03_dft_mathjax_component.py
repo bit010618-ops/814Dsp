@@ -36,3 +36,14 @@ def test_dft_component_preserves_the_eight_point_circular_shift_example(tmp_path
     assert r"按 \(N\) 周期理解" in html
     assert r"Y(k)=W_4^{3k}X(k)" in html
     assert r"\left\{\frac{3}{4},\frac{2}{4},\frac{1}{4},1\right\}" in html
+
+
+def test_dft_component_preserves_the_six_point_circular_convolution_example(tmp_path: Path):
+    from full.tools import build_chapter_03_dft_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-dft.html").read_text(encoding="utf-8")
+
+    assert r"例题：6 点圆周卷积" in html
+    assert r"x_1(n)=R_5(n)" in html
+    assert r"x_2(n)=n+1" in html
+    assert r"\{4,3,6,6,6,5\}" in html
