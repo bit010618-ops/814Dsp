@@ -97,3 +97,9 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert "真题" not in html
     assert ".table th,.table td{border:.45pt solid #b9c6cf" in html
     assert html.count('<table class="table">') == 3
+    # SVG paints must be present on the primitives themselves: the static PDF
+    # exporter does not reliably inherit the component stylesheet for inline SVG.
+    assert 'class="box" fill="#f4f7f8" stroke="#0d8794"' in html
+    assert 'class="unit" fill="none" stroke="#7f929f"' in html
+    assert 'class="input-spectrum" fill="#5b9bbf"' in html
+    assert 'class="zero" fill="#ffffff" stroke="#0d8794"' in html

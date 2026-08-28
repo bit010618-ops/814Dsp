@@ -308,6 +308,29 @@ E(\omega)&=W(\omega)\left|H_d(\omega)-H_g(\omega)\right|,\\
 <p>解题比较时，窗函数法先由最窄过渡带估算长度，并选择满足阻带衰减的窗；等波纹法则把两个通带和中间阻带分别作为逼近区域，依据通带、阻带容限构造权重。两种方法的频率边界相同，但等波纹法可通过加权误差分配，在相近技术指标下使用更短的滤波器长度。</p>
 </main>
 """.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+    # Keep all SVG paint local to each primitive: the static PDF exporter does
+    # not reliably inherit outer stylesheet rules for inline SVG.
+    for source, rendered in {
+        'class="box"': 'class="box" fill="#f4f7f8" stroke="#0d8794" stroke-width="2"',
+        'class="freq-box"': 'class="freq-box" fill="#f4f7f8" stroke="#0d8794" stroke-width="2"',
+        'class="axis"': 'class="axis" fill="none" stroke="#174b73" stroke-width="2"',
+        'class="arrow"': 'class="arrow" fill="none" stroke="#174b73" stroke-width="2.5"',
+        'class="mirror"': 'class="mirror" fill="none" stroke="#b56b2e" stroke-width="1.8" stroke-dasharray="5 4"',
+        'class="unit"': 'class="unit" fill="none" stroke="#7f929f" stroke-width="1.8"',
+        'class="input-spectrum"': 'class="input-spectrum" fill="#5b9bbf" fill-opacity="0.58" stroke="#174b73" stroke-width="2"',
+        'class="output-spectrum"': 'class="output-spectrum" fill="#5b9bbf" fill-opacity="0.58" stroke="#174b73" stroke-width="2"',
+        'class="filter-response"': 'class="filter-response" fill="#dceef4" stroke="#0d8794" stroke-width="2"',
+        'class="transition"': 'class="transition" fill="#fff1cf" fill-opacity="0.75" stroke="none"',
+        'class="response"': 'class="response" fill="none" stroke="#0d8794" stroke-width="2.5"',
+        'class="ideal"': 'class="ideal" fill="none" stroke="#b56b2e" stroke-width="2" stroke-dasharray="6 4"',
+        'class="stem"': 'class="stem" fill="none" stroke="#0d8794" stroke-width="2"',
+        'class="dot"': 'class="dot" fill="#c97806"',
+        'class="zero"': 'class="zero" fill="#ffffff" stroke="#0d8794" stroke-width="2.4"',
+        'class="pole"': 'class="pole" fill="none" stroke="#b56b2e" stroke-width="2.4"',
+        'class="label"': 'class="label" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="16"',
+        'class="caption"': 'class="caption" fill="#52616b" font-family="Microsoft YaHei, sans-serif" font-size="14"',
+    }.items():
+        content = content.replace(source, rendered)
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output

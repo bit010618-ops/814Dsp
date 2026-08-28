@@ -1436,3 +1436,11 @@
 - Added direct paint, stroke, arrowhead, font and fill attributes to every affected SVG primitive. The stable left half-plane and unit disk now have pale fills, the unit circle and axes are visible, and all route modules retain their Chinese labels and arrowed connections in the exported PDF.
 - Added a red-green regression for self-contained SVG paint. Verified with `pytest full/tests/test_build_chapter_06_iir_design_mathjax_component.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch06-final-green` (`15 passed`), rebuilt the main body, and inspected the actual A4 raster pages.
 - Next action: commit this scoped repair, then continue Chapter 6--8 source-figure/body audit before whole-book natural-pagination integration.
+
+# 2026-08-29 Chapter-seven self-contained SVG export repair
+
+- Static A4 review reproduced the same exporter defect in Chapter 7: its FIR relation flow, spectrum-selection chart and zero-pole diagram depended on outer SVG CSS and therefore rendered as black modules or a black disk in the PDF.
+- The Chapter 7 generator now applies required fill, stroke, arrow, font, response-curve, stem, zero and pole paint attributes directly to the individual SVG primitives. This keeps the existing programmatic data and topology intact while making the offline PDF renderer deterministic.
+- Added regression assertions for the local SVG paint contract. `pytest full/tests/test_build_chapter_07_fir_design_mathjax_component.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch07-final-green` passed with `15 passed`; the complete main-body HTML was rebuilt.
+- Offline MathJax-SVG plus WeasyPrint A4 raster review of the repaired pages confirms visible flow boxes and arrows, readable input/filter/output spectra, a real outlined unit circle, open zero symbols and an origin pole. No black fill, raw TeX, crop or label collision was observed.
+- Next action: make the scoped local commit, then proceed with the remaining Chapter 7--8 body/figure audit before whole-book pagination and appendix integration.
