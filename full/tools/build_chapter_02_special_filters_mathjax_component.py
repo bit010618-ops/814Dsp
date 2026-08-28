@@ -173,18 +173,36 @@ def write_html(output: Path) -> Path:
 <h2>数字谐振器</h2>
 <p>数字谐振器把输入频谱中靠近某一固有频率的成分显著增强。二阶实系数谐振器通常在单位圆内、角度为 [[\pm\omega_0]] 的位置配置一对共轭极点：</p>
 <div class="formula">\[p_{1,2}=re^{\pm j\omega_0},\qquad 0&lt;r&lt;1\]</div>
+<p>二阶谐振器的系统函数用于给出“中心频率由极点角度决定、选择性由极点半径决定”的标准结构：</p>
+<div class="formula">\[H(z)=\frac{A}{(1-re^{j\omega_0}z^{-1})(1-re^{-j\omega_0}z^{-1})}\]</div>
 <p>极点角度决定通带中心频率 [[\omega_0]]；半径 [[r]] 决定选择性。[[r]] 越接近 1，极点越接近单位圆，谐振峰越尖、带宽越窄。若同时要求在直流与最高频率处完全抑制，可在 [[z=1]]、[[z=-1]] 处配置零点，得到一类二阶带通结构：</p>
 <div class="formula">\[H(z)=G\frac{1-z^{-2}}{1-2r\cos\omega_0\,z^{-1}+r^2z^{-2}}\]</div>
 <p>其中 [[G]] 用中心频率处的目标幅度确定；[[r]] 则由给定带宽或指定频率处的幅度条件确定。设计后必须检查极点半径小于 1，才能保证因果稳定。</p>
+<h3>例题</h3>
+<p>设计一个二阶带通滤波器，[[\omega_0=\frac{\pi}{2}]] 是通带中心，在 [[\omega=0,\pi]] 两点频率响应为零，在 [[\omega=\frac{4\pi}{9}]] 处幅度为 [[\frac{1}{\sqrt2}]]。</p>
+<p>由通带中心和两端零响应条件，零点取在 [[z=\pm1]]，极点取在 [[z=\pm jr]]，因此带通滤波器的设计式为：</p>
+<div class="formula">\[H(z)=G\frac{z^2-1}{z^2+r^2}\]</div>
+<p>把指定频率的幅度条件代入后，得到 [[r^2=0.7]]、[[G=0.15]]。故本题的设计结果为：</p>
+<div class="formula">\[H(z)=0.15\frac{z^2-1}{z^2+0.7}\]</div>
 <h2>DTMF 双音多频信号</h2>
 <p>电话按键的 DTMF 信号由一个低频组频率与一个高频组频率叠加而成。低频组为 697、770、852、941 Hz，高频组为 1209、1336、1477、1633 Hz。每个按键对应唯一的一对频率；例如按键 8 对应 852 Hz 和 1336 Hz。</p>
 <div class="formula">\[x(n)=A_1\cos(\omega_1n+\varphi_1)+A_2\cos(\omega_2n+\varphi_2),\qquad \omega_i=2\pi\frac{f_i}{f_s}\]</div>
+<p>以按键 8 为例，取 [[f_s=8000\,\mathrm{Hz}]] 时，两个谐振器中心的数字频率为：</p>
+<div class="formula">\[\omega_1=2\pi\frac{852}{8000}=0.213\pi,\qquad \omega_2=2\pi\frac{1336}{8000}=0.334\pi\]</div>
 <p>生成某个按键信号时，可分别用两个中心频率对应的数字谐振器选择所需频率，再将两路输出相加。判读题目时先由采样频率换算数字频率，再确认两个通带中心分别落在对应低频组和高频组频率上。</p>
 <h2>数字陷波器</h2>
 <p>陷波器用于消除特定窄带干扰。若要抑制数字频率 [[\omega_0]]，必须在单位圆上成对放置共轭零点，才能保证实系数：</p>
 <div class="formula">\[z=e^{\pm j\omega_0},\qquad \omega_0=2\pi\frac{f_0}{f_s}\]</div>
 <p>一个二阶陷波器可写为：</p>
 <div class="formula">\[H(z)=K\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{z^2}\]</div>
+<h3>例题</h3>
+<p>若采样频率 [[f_s=1000\,\mathrm{Hz}]]，需抑制 50 Hz 工频干扰，则陷波中心的数字频率为：</p>
+<div class="formula">\[\omega_0=2\pi\frac{50}{1000}=0.1\pi\]</div>
+<p>本式用于在 [[\omega_0]] 处设置一对单位圆零点；按原例的幅度归一化系数，系统函数为：</p>
+<div class="formula">\[H(z)=\frac{1}{3.9}\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{z^2}\]</div>
+<p>实际实现中，有限字长会使陷波中心偏移。若还要保持较窄的陷波宽度，可把极点置于相同角度、半径 [[r&lt;1]] 的位置：</p>
+<div class="formula">\[H(z)=\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{(z-re^{j\omega_0})(z-re^{-j\omega_0})}\]</div>
+<p>[[r]] 越接近 1，陷波越窄；同时也越要求系数量化足够精确，避免 50 Hz 的抑制中心产生明显偏移。</p>
 <p>频率、采样率与 DFT 索引的换算必须统一使用：</p>
 <div class="formula">\[\frac{k}{N}=\frac{\omega}{2\pi}=\frac{f}{f_s}=\frac{\Omega}{\Omega_s}\]</div>
 <h2>全通滤波器</h2>

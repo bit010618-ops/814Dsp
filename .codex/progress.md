@@ -1375,3 +1375,10 @@
 - Exported the 2025 question and detailed-answer figures through local MathJax pre-rendering and WeasyPrint, then visually checked both A4 pages. The square-wave origin has one lower-right `0`; its axes, amplitude labels and period marks are clear.
 - The three frequency-domain panels have visible coordinate axes, distinct finite-width envelope and ideal-impulse stems, unambiguous labels, no raw LaTeX, no black fill, no crop and no watermark. Queue item `2025-q六-01` is verified.
 - With `2016-qintro-01`, `2019-q二-01`, `2021-qintro-01`, `2022-q七-01` and `2025-q六-01` verified, all first-chapter source-figure queue items are now complete. Next action: audit remaining second-chapter queue figures, then rebuild the whole-book candidate PDF.
+
+# 2026-08-28 Chapter-two special-filter source completion
+
+- Audited source courseware pages 303-360 for Section 2.6 and restored the omitted main-body design conditions without adding any MATLAB or simulation-code material. The chapter now includes the second-order resonator structure, the \(\omega_0=\pi/2\) band-pass design example with \(r^2=0.7\), \(G=0.15\), DTMF key-8 frequency conversion at \(f_s=8000\,\mathrm{Hz}\), the 50 Hz notch design at \(f_s=1000\,\mathrm{Hz}\), and the finite-word-length notch-center warning.
+- Added a red-green regression that requires each of these source-specific conditions and rejects MATLAB wording. Targeted chapter-two component and body-assembly tests pass: `5 passed`.
+- The normal Edge headless path exited without writing a PDF, while local Chromium failed during host GPU initialization. Used the project’s offline MathJax-SVG prerenderer plus WeasyPrint instead. The resulting 29-page A4 chapter-body audit PDF was rasterized and visually inspected on pages 24-29: complete MathJax formulas, no raw formula source, no clipping or overlap, and natural continuation across the resonator, DTMF, notch, all-pass and minimum-phase material.
+- Next action: continue auditing the remaining Chapter 2 source pages, then assemble the chapter formula summary and its chapter-specific past-paper section only after the main body is complete.
