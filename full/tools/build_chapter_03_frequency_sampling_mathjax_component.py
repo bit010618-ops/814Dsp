@@ -18,10 +18,27 @@ def write_html(output: Path) -> Path:
 <p>频域采样研究的问题是：对非周期序列的 DTFT 在单位圆上取 [[N]] 个等间隔样点后，能恢复什么样的时域序列？它与时域采样形成严格对偶：时域离散会使频域周期延拓，频域离散则使时域周期延拓。</p>
 
 <h2>频域等间隔采样</h2>
-<p>设 [[x(n)]] 为绝对可和的非周期序列，故其 DTFT 连续，z 变换的收敛域包含单位圆。令：</p>
+<p>设 [[x(n)]] 为绝对可和的非周期序列，故其 DTFT 连续，z 变换的收敛域包含单位圆。频域抽样值定义如下；它说明 DFT 样值就是 [[z]] 变换在单位圆根上的取值。后文为简洁起见仍将 [[\widetilde{X}(k)]] 记作 [[X(k)]]：</p>
+<div class="formula">\[
+\widetilde{X}(k)=\left.X(z)\right|_{z=W_N^{-k}}
+=\sum_{n=-\infty}^{\infty}x(n)W_N^{nk}
+=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{N}},
+\qquad k=0,1,\ldots,N-1.
+\]</div>
+<p>等价的频率坐标写法为：</p>
 <div class="formula">\[
 X(k)=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{N}},
 \qquad k=0,1,\ldots,N-1.
+\]</div>
+<p>根单位正交关系用于化简 IDFT 中的双重求和，并决定哪些时域样本会折叠到同一个位置：</p>
+<div class="formula">\[
+\frac{1}{N}\sum_{k=0}^{N-1}W_N^{(m-n)k}
+=
+\begin{cases}
+1, & m=n+rN,\\
+0, & \text{其他 }m,
+\end{cases}
+\qquad r\in\mathbb{Z}.
 \]</div>
 <p>对这些频域样值作 [[N]] 点 IDFT，得到：</p>
 <div class="formula">\[

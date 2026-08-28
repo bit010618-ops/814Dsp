@@ -8,6 +8,10 @@ def test_frequency_sampling_component_covers_periodic_summation_and_recovery(tmp
 
     assert "3.4 频域采样定理" in html
     assert r"X(k)=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{N}}" in html
+    assert r"\widetilde{X}(k)=\left.X(z)\right|_{z=W_N^{-k}}" in html
+    assert r"\frac{1}{N}\sum_{k=0}^{N-1}W_N^{(m-n)k}" in html
+    assert r"\begin{cases}" in html
+    assert r"1, & m=n+rN,\\" in html
     assert r"\widetilde{x}(n)" in html
     assert r"\sum_{r=-\infty}^{\infty}x(n-rN)" in html
     assert r"N\geq M" in html
