@@ -1481,3 +1481,8 @@
 - Added a failing regression first, then classified the complete `w_C(n)` piecewise formula as “余弦（Hann）窗系数（用于对理想冲激响应加窗以抑制频谱泄漏）”. The focused full-book, answer-backfill and MathJax suite now passes with `32 passed`.
 - Re-exported `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`: 465 A4 pages. Text checks show zero generic labels, old chapter-style labels, raw LaTeX and answer-page placeholders; the Hann-window label is on page 460. Raster review of page 460 confirms the standard LaTeX cases brace, formula purpose, question layout, header and footer without black fill or clipping.
 - Next action: commit this verified correction. The current Git credential failure still leaves later commits local until credentials are restored.
+
+# 2026-08-29 GitHub sync restored
+
+- Retried the configured remote after the verified formula-purpose commit. `git push origin main` completed successfully: `8f5ec57..46c318b  main -> main`.
+- The PDF candidate and its formula-purpose regression are now on GitHub. This task record is being committed and pushed as the next task-only update; it does not change the candidate PDF itself.
