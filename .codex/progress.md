@@ -1451,3 +1451,10 @@
 - Raster checks of current pages 295, 307, 330 and 358 confirmed the repaired Chapter 5 structure, Chapter 6 IIR text, Chapter 7 FIR diagrams and Chapter 8 decimation spectrum are visible, readable and free from black export artifacts.
 - The audit caught one semantic formula-lead error: the FIR reciprocal-symmetry equation had inherited the generic word “线性” and was labelled as a system-linearity condition. A dedicated formula-name rule now identifies it as “FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）”; a regression locks this reader-facing wording.
 - Next action: render the revised full book again for a final-current candidate, then continue remaining content and pagination QA; do not treat the prior candidate as final after this wording correction.
+
+# 2026-08-29 Current full-book candidate re-export
+
+- Regenerated the complete book from the corrected source rather than reusing an old page map. The fresh first pass was read through locally bundled PyMuPDF, then all chapter-training and Appendix-E references were backfilled from their audited answer anchors before final static export.
+- Current candidate: `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`, 585 A4 pages. PDF text verification reports `placeholder_refs=0`; the corrected FIR reciprocal-symmetry label appears on pages 330, 341 and 430.
+- Raster inspection of page 330 confirms the actual rendered wording is “FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）”, beside the complete MathJax formula and the repaired visible FIR diagrams.
+- Next action: commit/push this verified export-record milestone, then resume the remaining full-book content and pagination audit rather than treating the candidate as final delivery.
