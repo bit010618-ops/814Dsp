@@ -1474,3 +1474,10 @@
 - Current candidate: `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`, 585 A4 pages. PDF text verification reports `placeholder_refs=0`; the corrected FIR reciprocal-symmetry label appears on pages 330, 341 and 430.
 - Raster inspection of page 330 confirms the actual rendered wording is “FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）”, beside the complete MathJax formula and the repaired visible FIR diagrams.
 - Next action: commit/push this verified export-record milestone, then resume the remaining full-book content and pagination audit rather than treating the candidate as final delivery.
+
+# 2026-08-29 Formula-purpose precision review
+
+- A final raster review caught one remaining semantic error: the appendix formula for the cosine (Hann) window `w_C(n)` had inherited “矩形序列定义” from its surrounding text. That PDF was rejected rather than retained as the candidate.
+- Added a failing regression first, then classified the complete `w_C(n)` piecewise formula as “余弦（Hann）窗系数（用于对理想冲激响应加窗以抑制频谱泄漏）”. The focused full-book, answer-backfill and MathJax suite now passes with `32 passed`.
+- Re-exported `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`: 465 A4 pages. Text checks show zero generic labels, old chapter-style labels, raw LaTeX and answer-page placeholders; the Hann-window label is on page 460. Raster review of page 460 confirms the standard LaTeX cases brace, formula purpose, question layout, header and footer without black fill or clipping.
+- Next action: commit this verified correction. The current Git credential failure still leaves later commits local until credentials are restored.

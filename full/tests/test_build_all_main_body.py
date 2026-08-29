@@ -205,6 +205,52 @@ def test_formula_name_does_not_mislabel_fir_factorization_or_difference_equation
     ) == "二阶 FIR 的差分方程（用于按当前与延迟输入计算滤波器输出）"
 
 
+def test_formula_name_identifies_specific_design_and_decomposition_formulae():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"h(n)=3\delta(n)+2\delta(n-1)+\delta(n-2)",
+        "真题整理详解",
+    ) == "有限长单位脉冲响应（用于列出 FIR 系统各延时抽头的权重）"
+    assert _formula_name(
+        r"\operatorname{ROC}:\quad 0<\left|z\right|<\infty",
+        "真题整理详解",
+    ) == "有限长序列的收敛域（用于说明 z 变换在非零有限 z 平面内收敛）"
+    assert _formula_name(
+        r"H_{\mathrm{ap}}(z)=\frac{z-3}{3z-1},\qquad H(z)=H_{\min}(z)H_{\mathrm{ap}}(z)",
+        "真题整理详解",
+    ) == "最小相位与全通分解（用于把系统分解为最小相位部分和全通部分）"
+    assert _formula_name(
+        r"p=\frac{s^2+\Omega_0^2}{Bs}",
+        "真题整理详解",
+    ) == "低通到带通的频率变换（用于由模拟低通原型构造带通滤波器）"
+    assert _formula_name(
+        r"h_d(n)=\begin{cases}\dfrac{\sin[\omega_c(n-\tau)]}{\pi(n-\tau)},&n\ne\tau\\\dfrac{\omega_c}{\pi},&n=\tau\end{cases}\qquad h(n)=h_d(n)w_{\mathrm{Ham}}(n)",
+        "窗函数法设计 FIR 滤波器",
+    ) == "窗函数法 FIR 系数（用于用哈明窗截断理想低通冲激响应）"
+    assert _formula_name(
+        r"w_C(n)=\begin{cases}\dfrac{1}{2}\left[1-\cos\!\left(\dfrac{2\pi n}{N-1}\right)\right],&0\le n\le N-1,\\0,&\text{其他},\end{cases}\qquad h(n)=h_d(n)w_C(n)",
+        "余弦窗",
+    ) == "余弦（Hann）窗系数（用于对理想冲激响应加窗以抑制频谱泄漏）"
+
+
+def test_formula_name_handles_html_escaped_inequalities_and_alignment_markers():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"T[x_1+x_2]\ne T[x_1]+T[x_2]",
+        "反例",
+    ) == "非线性系统的叠加判定（用于通过输出和的不一致证明系统不满足线性）"
+    assert _formula_name(
+        r"0.0628&lt;\omega_c&lt;0.5\pi",
+        "采样与恢复",
+    ) == "低通截止频率选取范围（用于在保留低频分量时抑制高频分量）"
+    assert _formula_name(
+        r"\begin{aligned}\omega_p&=2\pi\frac{f_p}{f_s},&\Delta\omega&=\left|\omega_{st}-\omega_p\right|\end{aligned}",
+        "FIR 设计",
+    ) == "FIR 设计的归一化频率指标（用于确定通带、阻带与过渡带宽度）"
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

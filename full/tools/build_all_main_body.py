@@ -164,6 +164,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "不同采样率下的可保留频率（用于比较采样率降低对信号细节的影响）"
     if "E_x=" in compact and "\\int" in compact:
         return "能量信号的频域能量关系（用于由频谱判定信号能量是否有限）"
+    if "w_C(n)=\\begin{cases}" in compact and "\\cos" in compact and "h(n)=h_d(n)w_C(n)" in compact:
+        return "余弦（Hann）窗系数（用于对理想冲激响应加窗以抑制频谱泄漏）"
     if "X^*(e^{j\\omega})=X(e^{-j\\omega})" in compact:
         return "实序列频谱的共轭对称关系（用于由正频率部分判断负频率部分）"
     if "\\left|z\\right|=1" in compact and "ROC" in compact:
@@ -216,6 +218,10 @@ def _formula_name(formula: str, heading: str) -> str:
         return "非线性系统的叠加检验（用于展开平方运算中的交叉项）"
     if "T[ax_1+bx_2]\\ne" in compact:
         return "非线性系统的判定结论（用于说明输出不等于各输入响应的线性组合）"
+    if "T[x_1]=1" in compact and "T[x_2]=1" in compact and "T[x_1]+T[x_2]=2" in compact:
+        return "非线性反例的输出和（用于比较两个输入响应相加的结果）"
+    if "T[x_1+x_2]\\neT[x_1]+T[x_2]" in compact:
+        return "非线性系统的叠加判定（用于通过输出和的不一致证明系统不满足线性）"
     if "T[ax_1(n)+bx_2(n)]" in compact and "x_1(-n)" in compact:
         return "时反系统的线性检验（用于验证时反运算满足叠加原理）"
     if "\\operatorname{Mid}" in compact:
@@ -254,6 +260,71 @@ def _formula_name(formula: str, heading: str) -> str:
         return "偶对称 FIR 的群延迟关系（用于确定线性相位滤波器的固定延时）"
     if "h(n)=\\pmh(N-1-n)" in compact:
         return "线性相位 FIR 的对称条件（用于判定有限长滤波器能否具有线性相位）"
+    if "h(n)=3\\delta(n)+2\\delta(n-1)+\\delta(n-2)" in compact:
+        return "有限长单位脉冲响应（用于列出 FIR 系统各延时抽头的权重）"
+    if "x(n)=\\delta(n)+2\\delta(n-1)" in compact:
+        return "冲激输入序列（用于给出由若干移位冲激组成的输入信号）"
+    if "h_e(n)=\\delta(n)+\\frac{1}{2}\\delta(n-1)+\\frac{1}{2}\\delta(n+1)" in compact:
+        return "单位脉冲响应的偶分量（用于分解并检查冲激响应的对称性）"
+    if "h(n)=h_e(n)+h_o(n)=\\delta(n)+\\delta(n-1)" in compact:
+        return "偶奇分量重构关系（用于由偶分量和奇分量恢复原序列）"
+    if "h(-1)=\\frac{1}{3}\\ne0" in compact:
+        return "因果性反例判据（用于由负时刻冲激响应非零判定系统非因果）"
+    if "H(z)=\\frac{1}{3}\\left(z+1+z^{-1}\\right)" in compact:
+        return "对称 FIR 的系统函数（用于由抽头系数求 z 域表达式）"
+    if "\\operatorname{ROC}:" in compact and "0<\\left|z\\right|<\\infty" in compact:
+        return "有限长序列的收敛域（用于说明 z 变换在非零有限 z 平面内收敛）"
+    if "H(z)=\\frac{1+z^{-1}}{1+0.2z^{-1}-0.24z^{-2}}" in compact:
+        return "有理系统函数的零极点分解（用于直接读出系统零点和极点位置）"
+    if "h(n)=\\left(\\frac{7}{5}\\,0.4^n-\\frac{2}{5}(-0.6)^n\\right)u(n)" in compact:
+        return "部分分式反变换结果（用于由极点展开得到因果单位脉冲响应）"
+    if "x(t)=\\sin(2\\pi\\cdot10t)+\\sin(2\\pi\\cdot250t)" in compact:
+        return "双频连续时间输入信号（用于确定采样前各正弦分量的频率）"
+    if "\\omega_1=2\\pi\\frac{10}{1000}" in compact and "\\omega_2=2\\pi\\frac{250}{1000}" in compact:
+        return "模拟频率的数字归一化（用于把赫兹频率换算为离散角频率）"
+    if "0.0628" in compact and "\\omega_c" in compact and "0.5\\pi" in compact:
+        return "低通截止频率选取范围（用于在保留低频分量时抑制高频分量）"
+    if "H(z)=G\\frac{z^2-1}{z^2+r^2}" in compact:
+        return "二阶零极点滤波器结构（用于按零点和极点位置构造频率选择性滤波器）"
+    if "H(z)=0.15\\frac{z^2-1}{z^2+0.7}" in compact:
+        return "二阶滤波器的归一化系统函数（用于给出满足幅度约束后的实际增益）"
+    if "\\omega_0=2\\pi\\frac{50}{1000}" in compact:
+        return "干扰频率的数字归一化（用于把干扰的赫兹频率换算为数字角频率）"
+    if "H(z)=\\frac{1}{3.9}\\frac{(z-e^{j\\omega_0})(z-e^{-j\\omega_0})}{z^2}" in compact:
+        return "单位圆共轭零点的陷波器（用于在指定干扰频率及其共轭频率处置零）"
+    if "H(z)=\\frac{(z-e^{j\\omega_0})(z-e^{-j\\omega_0})}{(z-re^{j\\omega_0})(z-re^{-j\\omega_0})}" in compact:
+        return "二阶陷波器的零极点表达式（用于由极点半径控制陷波带宽）"
+    if "\\frac{k}{N}=\\frac{\\omega}{2\\pi}=\\frac{f}{f_s}=\\frac{\\Omega}{\\Omega_s}" in compact:
+        return "频率坐标换算关系（用于在 DFT 索引、数字频率和模拟频率之间换算）"
+    if "H(z)=\\frac{1-3z^{-1}}{1-\\frac{3}{4}z^{-1}}" in compact:
+        return "非最小相位系统函数（用于识别单位圆外零点并开始最小相位分解）"
+    if "H_{\\min}(z)=3\\frac{z-\\frac{1}{3}}{z-\\frac{3}{4}}" in compact:
+        return "最小相位因子（用于把单位圆外零点反射到单位圆内）"
+    if "H_{\\mathrm{ap}}(z)=\\frac{z-3}{3z-1}" in compact and "H(z)=H_{\\min}(z)H_{\\mathrm{ap}}(z)" in compact:
+        return "最小相位与全通分解（用于把系统分解为最小相位部分和全通部分）"
+    if "\\widetilde{X}_8(0)=4" in compact and "\\widetilde{X}_8(7)" in compact:
+        return "8 点 DFT 频谱样值（用于列出补零后各离散频率点的复幅度）"
+    if "X_8(k)=X\\left(e^{j\\omega}\\right)" in compact and "X_{16}(k)=X\\left(e^{j\\omega}\\right)" in compact:
+        return "补零后的频率采样关系（用于说明不同 DFT 长度在 DTFT 上的取样位置）"
+    if "-0.3090\\pmj0.9511" in compact and "-0.8090\\pmj0.5878" in compact:
+        return "单位圆频率采样点（用于标出 DFT 对应的复平面根点坐标）"
+    if "p=\\frac{s^2+\\Omega_0^2}{Bs}" in compact:
+        return "低通到带通的频率变换（用于由模拟低通原型构造带通滤波器）"
+    if "h(n)=Te^{-nT}u(n)" in compact and "H(z)=\\frac{T}{1-e^{-T}z^{-1}}" in compact:
+        return "冲激响应不变法的离散化结果（用于由模拟冲激响应构造数字 IIR 系统）"
+    if "N-1=7" in compact and "\\tau=\\frac{N-1}{2}=3.5" in compact:
+        return "线性相位 FIR 的长度与群延迟（用于由滤波器长度确定固定延时）"
+    if ("\\omega_p=2\\pi\\frac{f_p}{f_s}" in compact or "\\omega_p&=2\\pi\\frac{f_p}{f_s}" in compact) and "\\Delta\\omega" in compact:
+        return "FIR 设计的归一化频率指标（用于确定通带、阻带与过渡带宽度）"
+    if "N=\\frac{6.6\\pi}{\\Delta\\omega}" in compact and "\\tau=\\frac{N-1}{2}" in compact:
+        return "凯泽窗法的长度估计（用于由过渡带宽度确定 FIR 阶数）"
+    if "h_d(n)=\\begin{cases}" in compact and "w_{\\mathrm{Ham}}(n)" in compact:
+        return "窗函数法 FIR 系数（用于用哈明窗截断理想低通冲激响应）"
+    if "\\sin\\!\\left[0.3\\pi(n-16)\\right]" in compact and "R_{33}(n)" in compact:
+        return "33 阶哈明窗 FIR 系数（用于写出指定截止频率的实际滤波器抽头）"
+    if "\\omega_c=\\frac{\\pi}{8}" in compact and "\\left|H_d\\!\\left(e^{j\\omega}\\right)\\right|=\\begin{cases}" in compact:
+        return "理想低通目标响应（用于指定频率采样法设计的通带和阻带）"
+    topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)
     topic = re.sub(r"^\d{4}\s*年真题\s*[：:]\s*", "", topic)
