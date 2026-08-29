@@ -100,12 +100,25 @@ H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right).
 <p>令 \(z=e^{j\omega}\) 后，可把与延时有关的线性相位提出，余下的 \(H_0(\omega)\) 决定幅度响应：</p>
 <div class="formula">\[
 \begin{aligned}
+H(z)
+&=z^{-\frac{N-1}{2}}\sum_{n=0}^{N-1}h(n)
+\frac{z^{\frac{N-1}{2}-n}\pm z^{-\left(\frac{N-1}{2}-n\right)}}{2}.\\[3pt]
 H\!\left(e^{j\omega}\right)&=e^{-j\frac{N-1}{2}\omega}H_0(\omega),\\
 H_0(\omega)&=\sum_{n=0}^{N-1}h(n)\cos\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]
 &&\text{（偶对称）},\\
 H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]
 &&\text{（奇对称）}.
 \end{aligned}
+\]</div>
+<p>把上式代入单位圆后的分段频率响应公式用于直接判断余弦项或正弦项来自哪一种冲激响应对称性：</p>
+<div class="formula">\[
+H\!\left(e^{j\omega}\right)=
+\begin{cases}
+e^{-j\frac{N-1}{2}\omega}\displaystyle\sum_{n=0}^{N-1}h(n)\cos\!\left[\left(\frac{N-1}{2}-n\right)\omega\right],
+& \text{偶对称 } h(n)=h(N-1-n),\\
+je^{-j\frac{N-1}{2}\omega}\displaystyle\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega\right],
+& \text{奇对称 } h(n)=-h(N-1-n).
+\end{cases}
 \]</div>
 <h3>例题</h3>
 <p>设某线性相位 FIR 数字滤波器的 \(h(n)\) 为实序列，它的三个零点是 \(z=-1,\quad z=0.5,\quad z=0.5e^{j\pi/4}\)。试确定该滤波器可能存在的其余零点，并求最低阶数及最小群延迟。</p>

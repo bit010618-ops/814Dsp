@@ -32,6 +32,10 @@ def test_chapter_seven_component_covers_four_source_sections(tmp_path: Path):
     assert r"H\!\left(e^{j\omega}\right)&=e^{-j\frac{N-1}{2}\omega}H_0(\omega)" in html
     assert r"H_0(\omega)&=\sum_{n=0}^{N-1}h(n)\cos\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]" in html
     assert r"H_0(\omega)&=j\sum_{n=0}^{N-1}h(n)\sin\!\left[\left(\frac{N-1}{2}-n\right)\omega\right]" in html
+    assert r"\frac{z^{\frac{N-1}{2}-n}\pm z^{-\left(\frac{N-1}{2}-n\right)}}{2}" in html
+    assert r"\begin{cases}" in html
+    assert r"\text{偶对称 } h(n)=h(N-1-n)" in html
+    assert r"\text{奇对称 } h(n)=-h(N-1-n)" in html
     assert r"H_{\mathrm{I}}(\omega)&=h(M)+2\sum_{m=1}^{M}h(M-m)\cos(m\omega)" in html
     assert r"H_{\mathrm{II}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\cos\!\left[\left(m-\frac{1}{2}\right)\omega\right]" in html
     assert r"H_{\mathrm{III}}(\omega)&=2\sum_{m=1}^{M}h(M-m)\sin(m\omega)" in html

@@ -110,8 +110,8 @@
     },
     {
       "source_page": 886,
-      "text": "",
-      "merge_decision": "retain_pending_review"
+      "text": "线性相位 FIR 的成对抽头系统函数：按对称中心配对后，偶对称对应余弦加权和，奇对称对应正弦加权和；取 z=e^{jω} 后得到两类频率响应。",
+      "merge_decision": "transcribed_as_latex_pairing_and_cases"
     },
     {
       "source_page": 887,
