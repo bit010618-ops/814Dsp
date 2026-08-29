@@ -144,6 +144,26 @@ def _formula_name(formula: str, heading: str) -> str:
         return "插值函数的抽样性质（用于保证每个重构样点只保留对应的插值项）"
     if "y_a(mT)=x_a(mT)" in compact:
         return "重构信号的插值一致性（用于验证恢复信号准确通过全部采样值）"
+    if "f_h\\le\\frac{f_s}{2}" in compact and "\\Omega_h\\le\\frac{\\Omega_s}{2}" in compact:
+        return "带限信号的无混叠采样条件（用于由最高频率确定最低采样率）"
+    if "f_0=f_h-\\frac{\\Deltaf_0}{2}" in compact:
+        return "带通信号的中心频率（用于由最高频率和带宽确定频带位置）"
+    if "T\\downarrow" in compact and "f_s=\\frac{1}{T}\\uparrow" in compact:
+        return "采样间隔与采样率的倒数关系（用于说明缩短采样间隔会提高采样率）"
+    if "T_0=NT" in compact and "F_0=\\frac{1}{T_0}" in compact and "f_s=NF_0" in compact:
+        return "记录长度与频率分辨率关系（用于由样本数和采样周期确定频率间隔）"
+    if "X(k)=X\\left(e^{j\\omega}\\right)" in compact and "\\omega=\\frac{2\\pik}{N}" in compact:
+        return "DFT 的等间隔频率取样关系（用于确定每个 DFT 样值在 DTFT 上的频率位置）"
+    if "\\widetilde{x}(n)=x(n)" in compact and "N\\geM" in compact:
+        return "零填充的无时域混叠条件（用于保证周期延拓副本不重叠）"
+    if "F_s'=\\frac{L}{M}F_s" in compact:
+        return "有理数倍采样率变换关系（用于计算变换后的采样率）"
+    if "H\\!\\left(e^{j\\omega}\\right)=\\begin{cases}L" in compact and "\\omega_c=\\min" in compact:
+        return "有理数倍变换的抗影像抗混叠滤波器（用于同时限制上采样影像和下采样混叠）"
+    if "\\frac{147}{160}=\\frac{7}{8}\\cdot\\frac{7}{5}\\cdot\\frac{3}{4}" in compact:
+        return "多级有理数倍分解（用于把总采样率变换拆为低复杂度级联）"
+    if "44100=294\\cdot50\\cdot3" in compact and "44056=245\\cdot59.94\\cdot3" in compact:
+        return "44.1 kHz 的制式分解（用于说明采样率与 PAL、NTSC 扫描体制的匹配）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

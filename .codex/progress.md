@@ -1498,3 +1498,9 @@
 - The local export limit cleared. Rebuilt the first pass, backfilled answer-page references from actual PDF anchors, prerendered MathJax and generated the final PDF.
 - Final verification: 465 A4 pages; the interpolation-node property and reconstruction-consistency labels appear on pages 41, 60 and 280; raw LaTeX and answer-page placeholders are both zero. Raster review of page 41 shows the two full LaTeX formulas, automatic delimiter placement, readable Chinese purposes and an unclipped interpolation diagram.
 - Replaced `full/outputs/数字信号处理讲义_正文图形修复候选.pdf` with this verified PDF. Next action: stage the PDF together with the already committed label logic, commit the export record and push it to GitHub.
+
+# 2026-08-29 Sampling-formula purpose-label audit
+
+- Identified that remaining “采样参数关系” labels were a heading-keyword fallback, not formula-level descriptions. Added structure-first names for the no-aliasing condition, bandpass center frequency, sample interval/rate inverse relation, record length/resolution relation, DFT frequency sampling, zero-padding condition, rational-rate conversion, anti-imaging/anti-aliasing filter, multistage decomposition and 44.1 kHz system factorization.
+- Added failure coverage for all ten classes and passed the complete assembly/backfill/MathJax suite with `33 passed`.
+- Exported and verified a 465-page A4 PDF: all ten labels are present, raw LaTeX and answer placeholders are zero. Raster review of page 262 confirms the multirate formulas, automatic `cases` brace, Chinese purposes, normal header/footer and no clipping or black fill. Replaced the candidate PDF; next action is commit and push the verified candidate.

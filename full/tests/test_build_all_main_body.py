@@ -259,6 +259,65 @@ def test_formula_name_handles_html_escaped_inequalities_and_alignment_markers():
     ) == "FIR 设计的归一化频率指标（用于确定通带、阻带与过渡带宽度）"
 
 
+def test_formula_name_replaces_generic_sampling_parameter_labels():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (
+            r"f_h\leq\frac{f_s}{2}\qquad\Longleftrightarrow\qquad\Omega_h\leq\frac{\Omega_s}{2}",
+            "采样定理的工程应用",
+            "带限信号的无混叠采样条件（用于由最高频率确定最低采样率）",
+        ),
+        (
+            r"f_0=f_h-\frac{\Delta f_0}{2}",
+            "带通信号采样",
+            "带通信号的中心频率（用于由最高频率和带宽确定频带位置）",
+        ),
+        (
+            r"T\downarrow\quad\Longrightarrow\quad f_s=\frac{1}{T}\uparrow",
+            "采样与保持",
+            "采样间隔与采样率的倒数关系（用于说明缩短采样间隔会提高采样率）",
+        ),
+        (
+            r"T_0=NT,\qquad f_s=\frac{1}{T},\qquad F_0=\frac{1}{T_0},\qquad f_s=NF_0",
+            "采样参数与频率分辨率",
+            "记录长度与频率分辨率关系（用于由样本数和采样周期确定频率间隔）",
+        ),
+        (
+            r"X(k)=X\left(e^{j\omega}\right)\bigg|_{\omega=\frac{2\pi k}{N}},\qquad k=0,1,\ldots,N-1",
+            "频域采样",
+            "DFT 的等间隔频率取样关系（用于确定每个 DFT 样值在 DTFT 上的频率位置）",
+        ),
+        (
+            r"\widetilde{x}(n)=x(n),\quad0\leq n\leq M-1,\qquad N\geq M",
+            "DFT 的周期延拓",
+            "零填充的无时域混叠条件（用于保证周期延拓副本不重叠）",
+        ),
+        (
+            r"F_s'=\frac{L}{M}F_s",
+            "有理数倍采样率变换",
+            "有理数倍采样率变换关系（用于计算变换后的采样率）",
+        ),
+        (
+            r"H\!\left(e^{j\omega}\right)=\begin{cases}L,&0\leq\left|\omega\right|<\omega_c\\0,&\omega_c\leq\left|\omega\right|\leq\pi\end{cases}\qquad\omega_c=\min\!\left(\frac{\pi}{L},\frac{\pi}{M}\right)",
+            "有理数倍采样率变换",
+            "有理数倍变换的抗影像抗混叠滤波器（用于同时限制上采样影像和下采样混叠）",
+        ),
+        (
+            r"\frac{147}{160}=\frac{7}{8}\cdot\frac{7}{5}\cdot\frac{3}{4}",
+            "多级采样率变换",
+            "多级有理数倍分解（用于把总采样率变换拆为低复杂度级联）",
+        ),
+        (
+            r"44100=294\cdot50\cdot3,\qquad44056=245\cdot59.94\cdot3",
+            "44.1 kHz 的由来",
+            "44.1 kHz 的制式分解（用于说明采样率与 PAL、NTSC 扫描体制的匹配）",
+        ),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
