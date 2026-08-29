@@ -39,3 +39,27 @@ def test_overview_explains_that_fs_coefficient_value_needs_frequency_context(
 
     assert r"同一序号 \(k\) 的系数数值可相同" in html
     assert r"物理频率仍由 \(k\Omega_0\) 给出" in html
+
+
+def test_overview_redraws_the_five_stage_fourier_family_map(tmp_path: Path):
+    """The unique source-page-527 relationship graphic must remain editable."""
+    from full.tools import build_chapter_03_overview_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-overview.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert 'id="fourier-family-map"' in html
+    assert "连续、离散、截断与周期延拓的频谱对应关系" in html
+    for transform in ("FT", "DTFT", "DFS", "DFT"):
+        assert transform in html
+    for expression in (
+        r"x_a(t)",
+        r"X_a(j\Omega)",
+        r"x(n)w(n)",
+        r"\widetilde{x}_N(n)",
+        r"X_N(k)",
+    ):
+        assert expression in html
+    assert "MOOC" not in html
+    assert "watermark" not in html

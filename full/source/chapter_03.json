@@ -705,8 +705,8 @@
     },
     {
       "source_page": 527,
-      "text": "",
-      "merge_decision": "retain_pending_review"
+      "text": "连续、离散、截断、周期延拓与有限主值区间的频谱对应关系图：连续信号及其 FT，离散序列及其 DTFT，有限记录的展宽频谱，周期序列的 DFS，以及有限序列的 DFT。",
+      "merge_decision": "redrawn_as_clean_programmatic_figure"
     },
     {
       "source_page": 528,

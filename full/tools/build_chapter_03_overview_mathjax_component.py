@@ -10,8 +10,82 @@ from full.tools.render_mathjax_formula import MATHJAX
 STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}
 body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}
-main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.mapping{border-collapse:collapse;width:100%;margin:10pt 0 12pt}.mapping th,.mapping td{border-bottom:.4pt solid #d6dde2;padding:6pt 7pt;text-align:left}.mapping th{color:#315d7c;font-weight:500;background:#f4f7f8}@media(max-width:560px){body{font-size:10.5pt}.mapping{font-size:9.5pt}.formula{padding:7pt 8pt}}
+main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.mapping{border-collapse:collapse;width:100%;margin:10pt 0 12pt}.mapping th,.mapping td{border-bottom:.4pt solid #d6dde2;padding:6pt 7pt;text-align:left}.mapping th{color:#315d7c;font-weight:500;background:#f4f7f8}.fourier-family-map{break-inside:avoid;margin:12pt 0 13pt}.fourier-family-map svg{display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff}.fourier-family-map figcaption{margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt}@media(max-width:560px){body{font-size:10.5pt}.mapping{font-size:9.5pt}.formula{padding:7pt 8pt}}
 </style>"""
+
+
+def fourier_family_map_svg() -> str:
+    """Return an editable redraw of the unique five-stage map on source page 527."""
+    axis = 'fill="none" stroke="#174b73" stroke-width="1.8" stroke-linecap="round"'
+    signal = 'fill="none" stroke="#0d8794" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'
+    stem = 'stroke="#0d8794" stroke-width="2" stroke-linecap="round"'
+    dot = 'fill="#c77613" stroke="#c77613"'
+    label_style = 'height:100%;display:flex;align-items:center;justify-content:center;color:#172b3a;font-size:13px'
+
+    def math(x: int, y: int, width: int, expression: str) -> str:
+        return (
+            f'<foreignObject x="{x}" y="{y}" width="{width}" height="27">'
+            f'<div xmlns="http://www.w3.org/1999/xhtml" style="{label_style}">\\({expression}\\)</div>'
+            '</foreignObject>'
+        )
+
+    rows: list[str] = []
+    tops = [50, 143, 236, 329, 422]
+    left_labels = [r"x_a(t)", r"x(n)", r"x(n)w(n)", r"\widetilde{x}_N(n)", r"x_N(n)"]
+    right_labels = [r"X_a(j\Omega)", r"X(e^{j\omega})", r"X_w(e^{j\omega})", r"\widetilde{X}_N(k)", r"X_N(k)"]
+    transforms = ["FT", "DTFT", "DTFT", "DFS", "DFT"]
+    for top, left, right, transform in zip(tops, left_labels, right_labels, transforms):
+        baseline = top + 55
+        rows.extend((
+            f'<line x1="48" y1="{baseline}" x2="332" y2="{baseline}" {axis} marker-end="url(#ch3-family-arrow)"/>',
+            f'<line x1="190" y1="{top+12}" x2="190" y2="{baseline+12}" {axis}/>',
+            f'<line x1="643" y1="{baseline}" x2="930" y2="{baseline}" {axis} marker-end="url(#ch3-family-arrow)"/>',
+            f'<line x1="785" y1="{top+12}" x2="785" y2="{baseline+12}" {axis}/>',
+            f'<line x1="392" y1="{baseline}" x2="574" y2="{baseline}" {axis} marker-end="url(#ch3-family-arrow)"/>',
+            f'<text x="476" y="{baseline-9}" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="13">{transform}</text>',
+            math(55, top + 3, 112, left),
+            math(805, top + 3, 120, right),
+        ))
+
+    def stems(points: list[tuple[int, int]], baseline: int) -> str:
+        return ''.join(
+            f'<line x1="{x}" y1="{baseline}" x2="{x}" y2="{y}" {stem}/>'
+            f'<circle cx="{x}" cy="{y}" r="3" {dot}/>'
+            for x, y in points
+        )
+
+    rows.extend((
+        f'<path d="M60 105 C95 104,105 66,132 69 S170 101,190 105 S232 104,272 104 S305 104,325 104" {signal}/>',
+        f'<path d="M652 105 C678 104,690 72,719 70 S753 99,785 105 S824 104,861 104 S905 104,923 104" {signal}/>',
+        stems([(114,181), (151,166), (190,176), (229,157), (266,183)], 198),
+        stems([(678,182), (716,166), (754,178), (785,157), (824,178), (861,166), (900,182)], 198),
+        '<rect x="115" y="251" width="151" height="73" fill="none" stroke="#b56b2e" stroke-width="1.4" stroke-dasharray="4 4"/>',
+        stems([(132,280), (166,262), (199,270), (232,255), (260,284)], 291),
+        f'<path d="M653 291 C686 291,693 257,722 257 S755 288,785 291 S820 291,850 291 S883 257,910 257" {signal}/>',
+        '<line x1="112" y1="344" x2="112" y2="402" stroke="#b56b2e" stroke-width="1.2" stroke-dasharray="3 3"/>',
+        '<line x1="269" y1="344" x2="269" y2="402" stroke="#b56b2e" stroke-width="1.2" stroke-dasharray="3 3"/>',
+        stems([(125,371), (155,356), (190,366), (225,350), (255,374)], 384),
+        stems([(678,371), (716,356), (754,366), (785,350), (824,366), (861,356), (900,371)], 384),
+        '<line x1="112" y1="477" x2="112" y2="495" stroke="#b56b2e" stroke-width="1.2"/>',
+        '<line x1="269" y1="477" x2="269" y2="495" stroke="#b56b2e" stroke-width="1.2"/>',
+        stems([(120,462), (150,448), (190,457), (230,442), (260,466)], 477),
+        stems([(690,462), (730,450), (770,442), (812,457), (852,448), (892,466)], 477),
+        '<text x="53" y="27" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="14">时域描述</text>',
+        '<text x="676" y="27" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="14">频域描述</text>',
+        math(274, 104, 35, "t"), math(873, 104, 44, "\\Omega"),
+        math(274, 197, 35, "n"), math(873, 197, 42, "\\omega"),
+        math(274, 290, 35, "n"), math(873, 290, 42, "\\omega"),
+        math(274, 383, 35, "n"), math(873, 383, 35, "k"),
+        math(274, 476, 35, "n"), math(873, 476, 35, "k"),
+    ))
+    return f'''<figure class="fourier-family-map" id="fourier-family-map">
+<svg viewBox="0 0 980 515" role="img" aria-labelledby="fourier-family-map-title">
+<title id="fourier-family-map-title">连续、离散、截断与周期延拓的频谱对应关系</title>
+<defs><marker id="ch3-family-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs>
+{''.join(rows)}
+</svg>
+<figcaption>图 3-1　连续、离散、截断与周期延拓的频谱对应关系</figcaption>
+</figure>'''
 
 
 def write_html(output: Path) -> Path:
@@ -29,6 +103,9 @@ def write_html(output: Path) -> Path:
 <tr><td>离散时间</td><td>离散频率</td><td>离散傅里叶级数 DFS</td></tr>
 </tbody></table>
 <p>时域周期性会导致频域离散性；频域周期性会导致时域离散性。DFS 恰好位于“离散时间、离散频率”的一格，因此它在两个域内都带有周期结构。</p>
+
+""" + fourier_family_map_svg() + r"""
+<p>上图按“连续、离散、截断、周期延拓与有限主值区间”展示实际频谱分析的链条：连续信号经采样形成序列；有限记录相当于乘窗，会在频域引入展宽；把有限主值区间周期延拓后得到 DFS 的双周期描述；DFT 则只保留一个长度为 [[N]] 的主值区间用于计算。该图用于区分采样、截断和周期延拓各自造成的频域变化。</p>
 
 <h2>从傅里叶级数到傅里叶变换</h2>
 <p>对周期为 [[T_0]] 的连续时间信号，基本角频率为 [[\Omega_0=2\pi/T_0]]。其频谱只出现在谐波频点 [[k\Omega_0]] 上，频点间隔由 [[T_0]] 决定：</p>
