@@ -23,6 +23,10 @@ def test_chapter_eight_component_covers_multirate_main_body(tmp_path: Path):
     assert r"y(n)&=\sum_{k=-\infty}^{\infty}x(k)\delta(n-kL)" in html
     assert r"x_p(n)&=\begin{cases}" in html
     assert r"H_i\!\left(e^{j\omega}\right)&=\begin{cases}" in html
+    assert "8 kHz" in html
+    assert "16 kHz" in html
+    assert r"h_i(n)&=2\frac{\sin(0.5\pi n)}{\pi n}" in html
+    assert r"H_i\!\left(e^{j\omega}\right)&=" in html
     assert r"x_i(n)=\sum_{k=-\infty}^{\infty}x(k)" in html
     assert r"F_s'=\frac{L}{M}F_s" in html
     assert r"\omega_c=\min\!\left(\frac{\pi}{L},\frac{\pi}{M}\right)" in html

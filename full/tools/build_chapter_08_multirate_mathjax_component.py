@@ -161,6 +161,18 @@ h_i(n)&=\frac{\sin(\pi n/L)}{\pi n/L}.
 \end{aligned}
 \]</div>
 <p>随后必须使用插值低通滤波器去除镜像，并补偿增益。理想插值器在 [[|\omega|\leq\pi/L]] 内增益为 [[L]]，其他频段为零；这样可保留原谱并获得较高采样率序列。</p>
+<p>以二倍内插为例，若输入采样率为 8 kHz，则插零后与插值后的采样率均为 16 kHz。插零使频谱在 [[\omega=\pm\pi/2]] 附近出现镜像；抗镜像滤波器只保留基带并将通带增益补为 2：</p>
+<div class="formula">\[
+\begin{aligned}
+L&=2,\qquad f_{s1}=8\text{ kHz},\qquad f_{s2}=16\text{ kHz},\\
+h_i(n)&=2\frac{\sin(0.5\pi n)}{\pi n},\\
+H_i\!\left(e^{j\omega}\right)&=
+\begin{cases}
+2, & \left|\omega\right|\leq0.5\pi,\\
+0, & 0.5\pi<\left|\omega\right|\leq\pi.
+\end{cases}
+\end{aligned}
+\]</div>
 <p>将插零序列通过插值滤波器后，时域关系为卷积：</p>
 <div class="formula">\[
 x_i(n)=\sum_{k=-\infty}^{\infty}x(k)

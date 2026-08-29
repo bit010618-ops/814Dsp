@@ -120,8 +120,8 @@
     },
     {
       "source_page": 1032,
-      "text": "",
-      "merge_decision": "retain_pending_review"
+      "text": "二倍内插示例：输入采样率 8 kHz，经 L=2 插零后提高到 16 kHz；抗镜像滤波器通带增益为 2、截止频率为 0.5π，并给出其单位脉冲响应与插值后频谱。",
+      "merge_decision": "transcribed_as_twofold_interpolation_example"
     },
     {
       "source_page": 1033,
