@@ -1444,3 +1444,10 @@
 - Added regression assertions for the local SVG paint contract. `pytest full/tests/test_build_chapter_07_fir_design_mathjax_component.py full/tests/test_build_all_main_body.py full/tests/test_prerender_mathjax_svg.py -q --basetemp tmp/.codex-test-ch07-final-green` passed with `15 passed`; the complete main-body HTML was rebuilt.
 - Offline MathJax-SVG plus WeasyPrint A4 raster review of the repaired pages confirms visible flow boxes and arrows, readable input/filter/output spectra, a real outlined unit circle, open zero symbols and an origin pole. No black fill, raw TeX, crop or label collision was observed.
 - Next action: make the scoped local commit, then proceed with the remaining Chapter 7--8 body/figure audit before whole-book pagination and appendix integration.
+
+# 2026-08-29 Full-book candidate assembly and formula-lead correction
+
+- Reassembled the eight chapters with their formula summaries, chapter-specific training sections and appendix answers. The assembly/backfill suites passed (`18 passed` for the current formula-lead and full-handout tests); a fresh first-pass PDF contained 585 A4 pages and had all printed answer placeholders and Appendix-E placeholders backfilled through audited answer anchors.
+- Raster checks of current pages 295, 307, 330 and 358 confirmed the repaired Chapter 5 structure, Chapter 6 IIR text, Chapter 7 FIR diagrams and Chapter 8 decimation spectrum are visible, readable and free from black export artifacts.
+- The audit caught one semantic formula-lead error: the FIR reciprocal-symmetry equation had inherited the generic word “线性” and was labelled as a system-linearity condition. A dedicated formula-name rule now identifies it as “FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）”; a regression locks this reader-facing wording.
+- Next action: render the revised full book again for a final-current candidate, then continue remaining content and pagination QA; do not treat the prior candidate as final after this wording correction.

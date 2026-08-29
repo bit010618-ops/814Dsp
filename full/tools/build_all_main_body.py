@@ -174,6 +174,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "系统的频率响应表达式（用于求系统对各频率分量的幅度和相位作用）"
     if "H(z)=\\frac{Y(z)}{X(z)}" in compact or "H(z)=\\mathcal{Z}" in compact:
         return "系统函数的定义（用于在 z 域描述输入与输出的关系）"
+    if "H(z)=\\pmz^{-(N-1)}H\\!\\left(z^{-1}\\right)" in compact:
+        return "FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）"
     if "h(n)=0" in compact and "n<0" in compact:
         return "因果系统的单位脉冲响应条件（用于判断系统是否只依赖当前和过去输入）"
     if "\\sum" in compact and "|h(n)|" in compact and "\\infty" in compact:

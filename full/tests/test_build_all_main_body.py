@@ -154,3 +154,7 @@ def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_sampl
         r"H(k)=\begin{cases}e^{-j\frac{14\pi}{15}k},&k=4,5,\ldots,11\\0,&k=0,1,2,3,12,13,14\end{cases}",
         "15 点频率采样设计",
     ) == "频率采样设计的目标样值（用于指定各离散频率点的幅度和相位）"
+    assert _formula_name(
+        r"H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right)",
+        "线性相位 FIR 数字滤波器的条件和特点",
+    ) == "FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）"
