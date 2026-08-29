@@ -22,7 +22,10 @@ def test_full_handout_attaches_each_training_set_to_its_chapter_then_places_answ
     assert "IIR 滤波器的级联型和并联型结构特点" in html
     assert "<h1>第六章真题整理</h1>" in html
     assert "时间连续的稳定系统经双线性变换后得到的离散系统仍然是稳定系统" in html
-    assert ".exam-page{break-before:page;break-inside:avoid;page-break-inside:avoid;min-height:230mm}" in html
+    assert ".exam-page{break-inside:auto;page-break-inside:auto}" in html
+    assert ".chapter-exam-section{break-before:auto}" in html
+    assert "min-height:230mm" not in html
+    assert ".exam-page{break-before:page" not in html
 
 
 def test_full_handout_places_all_styles_in_an_explicit_head_before_the_printed_body(tmp_path: Path):

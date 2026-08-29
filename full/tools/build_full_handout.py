@@ -66,9 +66,8 @@ CHAPTER_TWO_SUPPLEMENTAL_BATCHES = tuple(
 
 STYLE = build_all_main_body.STYLE + r"""
 <style>
-.chapter-exam-section{break-before:page}
-.exam-page{break-before:page;break-inside:avoid;page-break-inside:avoid;min-height:230mm}
-.exam-page:first-child{break-before:auto}
+.chapter-exam-section{break-before:auto}
+.exam-page{break-inside:auto;page-break-inside:auto}
 .chapter-exam-first{break-before:auto;page-break-before:auto}
 .exam-head{display:flex;justify-content:space-between;gap:18pt;color:#52616b;margin:0 0 10pt;break-after:avoid}
 .writing-space{min-height:0}

@@ -139,6 +139,17 @@ def test_formula_name_explains_the_reader_use_for_a_section_specific_formula():
     assert "用于说明该性质中各变量的对应关系" not in label
 
 
+def test_formula_name_does_not_mislabel_bilinear_transform_as_linearity():
+    from full.tools.build_all_main_body import _formula_name
+
+    label = _formula_name(
+        r"\Omega=\frac{2}{T}\tan\frac{\omega}{2}",
+        "6.4 双线性变换法",
+    )
+
+    assert label == "双线性变换的频率映射关系（用于在模拟和数字频率之间建立非线性对应）"
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
