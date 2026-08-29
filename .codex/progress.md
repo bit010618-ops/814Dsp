@@ -1492,3 +1492,9 @@
 - Raster audit of the current Chapter 1 page 41 found two formulas whose labels were Chinese but too generic: the interpolation-node property and reconstruction consistency were both called “采样参数关系”.
 - Added red-green regression coverage and changed them to “插值函数的抽样性质（用于保证每个重构样点只保留对应的插值项）” and “重构信号的插值一致性（用于验证恢复信号准确通过全部采样值）”. The full focused suite passed with `32 passed`.
 - The post-fix first-pass PDF was generated successfully. The required local PDF backfill/final-export call was then blocked by the Codex usage limit until 18:36, so the published candidate PDF remains the preceding fully verified version. Do not claim this newest wording has reached the PDF or GitHub until the blocked final export, visual review, commit and push complete.
+
+# 2026-08-29 Chapter-one interpolation export completed
+
+- The local export limit cleared. Rebuilt the first pass, backfilled answer-page references from actual PDF anchors, prerendered MathJax and generated the final PDF.
+- Final verification: 465 A4 pages; the interpolation-node property and reconstruction-consistency labels appear on pages 41, 60 and 280; raw LaTeX and answer-page placeholders are both zero. Raster review of page 41 shows the two full LaTeX formulas, automatic delimiter placement, readable Chinese purposes and an unclipped interpolation diagram.
+- Replaced `full/outputs/数字信号处理讲义_正文图形修复候选.pdf` with this verified PDF. Next action: stage the PDF together with the already committed label logic, commit the export record and push it to GitHub.
