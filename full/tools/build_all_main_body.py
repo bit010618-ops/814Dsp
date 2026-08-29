@@ -140,6 +140,10 @@ def _formula_name(formula: str, heading: str) -> str:
     compact = re.sub(r"\s+", "", formula).replace(r"\geq", r"\ge").replace(r"\leq", r"\le")
     if "x(n)=x_a(nT)" in compact:
         return "连续信号的离散采样关系（用于把连续时间信号转为离散序列）"
+    if "g(0)=1" in compact and "g(kT)=0" in compact and "k\\in\\mathbb{Z}" in compact:
+        return "插值函数的抽样性质（用于保证每个重构样点只保留对应的插值项）"
+    if "y_a(mT)=x_a(mT)" in compact:
+        return "重构信号的插值一致性（用于验证恢复信号准确通过全部采样值）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

@@ -1486,3 +1486,9 @@
 
 - Retried the configured remote after the verified formula-purpose commit. `git push origin main` completed successfully: `8f5ec57..46c318b  main -> main`.
 - The PDF candidate and its formula-purpose regression are now on GitHub. This task record is being committed and pushed as the next task-only update; it does not change the candidate PDF itself.
+
+# 2026-08-29 Chapter-one interpolation formula-label repair
+
+- Raster audit of the current Chapter 1 page 41 found two formulas whose labels were Chinese but too generic: the interpolation-node property and reconstruction consistency were both called “采样参数关系”.
+- Added red-green regression coverage and changed them to “插值函数的抽样性质（用于保证每个重构样点只保留对应的插值项）” and “重构信号的插值一致性（用于验证恢复信号准确通过全部采样值）”. The full focused suite passed with `32 passed`.
+- The post-fix first-pass PDF was generated successfully. The required local PDF backfill/final-export call was then blocked by the Codex usage limit until 18:36, so the published candidate PDF remains the preceding fully verified version. Do not claim this newest wording has reached the PDF or GitHub until the blocked final export, visual review, commit and push complete.

@@ -232,6 +232,14 @@ def test_formula_name_identifies_specific_design_and_decomposition_formulae():
         r"w_C(n)=\begin{cases}\dfrac{1}{2}\left[1-\cos\!\left(\dfrac{2\pi n}{N-1}\right)\right],&0\le n\le N-1,\\0,&\text{其他},\end{cases}\qquad h(n)=h_d(n)w_C(n)",
         "余弦窗",
     ) == "余弦（Hann）窗系数（用于对理想冲激响应加窗以抑制频谱泄漏）"
+    assert _formula_name(
+        r"g(0)=1,\qquad g(kT)=0\quad\left(k\in\mathbb{Z},\ k\ne 0\right)",
+        "采样点处的严格插值",
+    ) == "插值函数的抽样性质（用于保证每个重构样点只保留对应的插值项）"
+    assert _formula_name(
+        r"y_a(mT)=x_a(mT)",
+        "采样点处的严格插值",
+    ) == "重构信号的插值一致性（用于验证恢复信号准确通过全部采样值）"
 
 
 def test_formula_name_handles_html_escaped_inequalities_and_alignment_markers():
