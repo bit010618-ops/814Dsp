@@ -210,6 +210,50 @@ def _formula_name(formula: str, heading: str) -> str:
         return "离散卷积和（用于由输入和单位脉冲响应计算输出序列）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
+    if "y(n)=x^2(n)" in compact:
+        return "非线性系统示例（用于说明平方运算不满足叠加原理）"
+    if "T[ax_1+bx_2]" in compact and "x_1x_2" in compact:
+        return "非线性系统的叠加检验（用于展开平方运算中的交叉项）"
+    if "T[ax_1+bx_2]\\ne" in compact:
+        return "非线性系统的判定结论（用于说明输出不等于各输入响应的线性组合）"
+    if "T[ax_1(n)+bx_2(n)]" in compact and "x_1(-n)" in compact:
+        return "时反系统的线性检验（用于验证时反运算满足叠加原理）"
+    if "\\operatorname{Mid}" in compact:
+        return "中值滤波系统表达式（用于说明中值运算通常不满足线性叠加）"
+    if "\\mathcal{Z}\\{x(n-m)\\}" in compact:
+        return "z 变换的时移性质（用于由原序列的 z 变换求时移序列的 z 变换）"
+    if "\\mathcal{Z}\\{\\delta(n)\\}" in compact:
+        return "单位脉冲序列的 z 变换（用于建立冲激及其移位的 z 域基本对）"
+    if ("x(n)=\\cos(\\omega_0n)u(n)" in compact or "x(n)&=\\cos(\\omega_0n)u(n)" in compact) and "X(z)" in compact:
+        return "因果余弦序列的 z 变换（用于求含单位阶跃余弦序列的系统函数）"
+    if "X(z)=1+z^{-1}+z^{-2}" in compact:
+        return "有限长序列的 z 变换（用于给出有限序列及其收敛域）"
+    if "ax_1(n)+bx_2(n)" in compact and "aX_1(k)+bX_2(k)" in compact:
+        return "DFT 的线性性质（用于将时域线性组合直接映射到频域）"
+    if "x\\left((n-n_0)\\right)_N" in compact and "W_N^{kn_0}" in compact:
+        return "DFT 的循环时移性质（用于由循环移位后的序列快速得到频谱相位因子）"
+    if "W_N^{-nk_0}x(n)" in compact and "X\\left((k-k_0)\\right)_N" in compact:
+        return "DFT 的调制性质（用于由时域复指数调制得到频域循环移位）"
+    if "N\\geN_1+N_2-1" in compact:
+        return "线性卷积的零填充长度条件（用于避免 DFT 计算时产生时域混叠）"
+    if "\\operatorname{IDFT}_N\\{X(k)H(k)\\}" in compact:
+        return "循环卷积定理（用于由频域相乘和 IDFT 得到 N 点循环卷积）"
+    if "z_k=A_0W_0^{-k}" in compact and "e^{jk\\varphi_0}" in compact:
+        return "Chirp-Z 变换的取样点参数式（用于在 z 平面指定螺旋或圆弧取样路径）"
+    if "H(z)=\\left(1-ae^{j\\theta}z^{-1}\\right)\\left(1-ae^{-j\\theta}z^{-1}\\right)" in compact:
+        return "二阶 FIR 的零点因式分解（用于由因子直接确定共轭零点位置）"
+    if "y(n)=x(n)-2a\\cos\\theta\\,x(n-1)+a^2x(n-2)" in compact:
+        return "二阶 FIR 的差分方程（用于按当前与延迟输入计算滤波器输出）"
+    if "h(n)=h(N-1-n)" in compact and "h(n)=-h(N-1-n)" in compact:
+        return "线性相位 FIR 的对称类型（用于区分偶对称和奇对称的冲激响应）"
+    if ("h(n)=\\delta(n-\\tau)" in compact or "h(n)&=\\delta(n-\\tau)" in compact) and "\\tau_g" in compact:
+        return "理想延时系统的线性相位关系（用于说明群延迟等于固定延时时间）"
+    if "H\\!\\left(e^{j\\omega}\\right)&=\\pm" in compact and "\\theta(\\omega)" in compact:
+        return "线性相位频率响应形式（用于区分两类线性相位的相位函数）"
+    if "\\tau=\\frac{N-1}{2}" in compact and "h(n)=h(N-1-n)" in compact:
+        return "偶对称 FIR 的群延迟关系（用于确定线性相位滤波器的固定延时）"
+    if "h(n)=\\pmh(N-1-n)" in compact:
+        return "线性相位 FIR 的对称条件（用于判定有限长滤波器能否具有线性相位）"
     topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)
     topic = re.sub(r"^\d{4}\s*年真题\s*[：:]\s*", "", topic)

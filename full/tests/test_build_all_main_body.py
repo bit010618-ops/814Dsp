@@ -150,6 +150,61 @@ def test_formula_name_does_not_mislabel_bilinear_transform_as_linearity():
     assert label == "双线性变换的频率映射关系（用于在模拟和数字频率之间建立非线性对应）"
 
 
+def test_formula_name_uses_formula_specific_labels_before_a_linear_heading():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (
+            r"\mathcal{Z}\{x(n-m)\}=z^{-m}X(z)",
+            "线性与时移性质",
+            "z 变换的时移性质（用于由原序列的 z 变换求时移序列的 z 变换）",
+        ),
+        (
+            r"x\left((n-n_0)\right)_N\longleftrightarrow W_N^{kn_0}X(k)",
+            "DFT 的线性与循环移位",
+            "DFT 的循环时移性质（用于由循环移位后的序列快速得到频谱相位因子）",
+        ),
+        (
+            r"h(n)=\pm h(N-1-n),\qquad 0\leq n\leq N-1",
+            "线性相位 FIR 数字滤波器的条件和特点",
+            "线性相位 FIR 的对称条件（用于判定有限长滤波器能否具有线性相位）",
+        ),
+    )
+
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
+def test_formula_name_handles_alignment_and_spacing_in_linear_topic_formulae():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"T[a x_1+b x_2]=(a x_1+b x_2)^2=a^2x_1^2+b^2x_2^2+2abx_1x_2",
+        "系统线性",
+    ) == "非线性系统的叠加检验（用于展开平方运算中的交叉项）"
+    assert _formula_name(
+        r"\begin{aligned}x(n)&=\cos(\omega_0n)u(n),\\X(z)&=\frac{1-\cos(\omega_0)z^{-1}}{1-2\cos(\omega_0)z^{-1}+z^{-2}}\end{aligned}",
+        "线性系统的 z 变换",
+    ) == "因果余弦序列的 z 变换（用于求含单位阶跃余弦序列的系统函数）"
+    assert _formula_name(
+        r"\begin{aligned}h(n)&=\delta(n-\tau),&y(n)&=x(n-\tau),\\H\!\left(e^{j\omega}\right)&=e^{-j\tau\omega},&\tau_g(\omega)=\tau.\end{aligned}",
+        "线性相位",
+    ) == "理想延时系统的线性相位关系（用于说明群延迟等于固定延时时间）"
+
+
+def test_formula_name_does_not_mislabel_fir_factorization_or_difference_equation():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"H(z)=\left(1-ae^{j\theta}z^{-1}\right)\left(1-ae^{-j\theta}z^{-1}\right)",
+        "2019 年真题：二阶 FIR 的零点与线性相位",
+    ) == "二阶 FIR 的零点因式分解（用于由因子直接确定共轭零点位置）"
+    assert _formula_name(
+        r"y(n)=x(n)-2a\cos\theta\,x(n-1)+a^2x(n-2)",
+        "2019 年真题：二阶 FIR 的零点与线性相位",
+    ) == "二阶 FIR 的差分方程（用于按当前与延迟输入计算滤波器输出）"
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
