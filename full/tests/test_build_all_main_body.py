@@ -588,6 +588,25 @@ def test_formula_name_handles_first_chapter_signal_operations_batch_two():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_first_chapter_system_analysis_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"x(n)=A\cos\left(\frac{13\pi}{4}n\right),\qquad \frac{2\pi}{\omega}=\frac{8}{13},\qquad N=8", "离散时间信号与系统", "离散余弦序列的最小周期计算（用于由整数倍相位条件求 N=8）"),
+        (r"\omega_L=0.01\pi,\quad\omega_H=0.2\pi,\quad N_1=10,\quad N_2=N_3=200", "离散时间信号与系统", "离散调幅信号的频率与周期参数（用于确定包络、载波及各分量的周期）"),
+        (r"x(2n-2k)\ne x(2n-k)", "离散时间信号与系统", "尺度变换系统的时变性反例（用于证明索引缩放不保持时移不变性）"),
+        (r"y(n-1)=x\bigl(2(n-1)\bigr)=x(2\cdot3-2)=x(4)=4,\qquad T[x(n-1)]=x(2n-1)=x(2\cdot3-1)=x(5)=5", "离散时间信号与系统", "尺度变换系统的时移比较（用于由不同输出值判定系统时变）"),
+        (r"x(m)\ne0:\ N_1\leq m\leq N_2,\qquad h(n-m)\ne0:\ n-N_4\leq m\leq n-N_3", "离散时间信号与系统", "有限长卷积的非零支撑条件（用于确定求和变量的有效重叠区间）"),
+        (r"N_1+N_3\leq n\leq N_2+N_4", "离散时间信号与系统", "有限长卷积的输出支撑范围（用于确定卷积结果的起止索引）"),
+        (r"y(n_0)\Longleftarrow x(n),\qquad n\leq n_0", "离散时间信号与系统", "因果系统的输入依赖范围（用于说明当前输出只能使用当前和过去输入）"),
+        (r"\begin{aligned}h(0)&=1,\qquad h(1)=a,\qquad h(2)=a^2,\\h(n)&=a h(n-1)=a^n u(n).\end{aligned}", "离散时间信号与系统", "一阶因果系统的单位冲激响应（用于由递推关系写出几何衰减序列）"),
+        (r"\Omega_h>\frac{\Omega_s}{2}", "离散时间信号与系统", "采样频率不足的混叠条件（用于判定频谱副本将发生重叠）"),
+        (r"\frac{\Omega}{\Omega_s}=\frac{f}{f_s}=\frac{\omega}{2\pi}", "离散时间信号与系统", "频率坐标的归一化换算关系（用于统一模拟角频率、赫兹和数字角频率）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

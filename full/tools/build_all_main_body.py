@@ -293,6 +293,26 @@ def _formula_name(formula: str, heading: str) -> str:
         return "离散正弦序列的周期求解式（用于由角频率搜索整数周期）"
     if "x(n)=A\\cos(0.01\\pin)" in compact and "N=200" in compact:
         return "离散余弦序列的周期计算（用于求角频率为 0.01π 时的基本周期）"
+    if "x(n)=A\\cos\\left(\\frac{13\\pi}{4}n\\right)" in compact and "N=8" in compact:
+        return "离散余弦序列的最小周期计算（用于由整数倍相位条件求 N=8）"
+    if "\\omega_L=0.01\\pi" in compact and "\\omega_H=0.2\\pi" in compact and "N_1=10" in compact:
+        return "离散调幅信号的频率与周期参数（用于确定包络、载波及各分量的周期）"
+    if "x(2n-2k)\\nex(2n-k)" in compact:
+        return "尺度变换系统的时变性反例（用于证明索引缩放不保持时移不变性）"
+    if "y(n-1)=x\\bigl(2(n-1)\\bigr)" in compact and "T[x(n-1)]=x(2n-1)" in compact:
+        return "尺度变换系统的时移比较（用于由不同输出值判定系统时变）"
+    if "x(m)\\ne0:" in compact and "h(n-m)\\ne0:" in compact:
+        return "有限长卷积的非零支撑条件（用于确定求和变量的有效重叠区间）"
+    if "N_1+N_3\\len\\leN_2+N_4" in compact:
+        return "有限长卷积的输出支撑范围（用于确定卷积结果的起止索引）"
+    if "y(n_0)\\Longleftarrowx(n)" in compact and "n\\len_0" in compact:
+        return "因果系统的输入依赖范围（用于说明当前输出只能使用当前和过去输入）"
+    if "h(0)&=1" in compact and "h(n)&=ah(n-1)=a^nu(n)" in compact:
+        return "一阶因果系统的单位冲激响应（用于由递推关系写出几何衰减序列）"
+    if "\\Omega_h>\\frac{\\Omega_s}{2}" in compact:
+        return "采样频率不足的混叠条件（用于判定频谱副本将发生重叠）"
+    if "\\frac{\\Omega}{\\Omega_s}=\\frac{f}{f_s}=\\frac{\\omega}{2\\pi}" in compact:
+        return "频率坐标的归一化换算关系（用于统一模拟角频率、赫兹和数字角频率）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

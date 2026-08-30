@@ -1558,3 +1558,9 @@
 - The assembler also rewrites any component-local `formula-name` or `formula-lead` containing the prohibited generic “计算表达式” before it decides whether to add a new label. This preserves a single label per display formula while routing it through the structure-first formula namer.
 - Added formula-specific labels for Chapter 1 sampling equivalence, impulse z transform/ROC, complex-exponential frequency response, notch structure, circular shift, elementary signal operations, reversal, difference, step, rectangle, exponent, Euler identity and period relations. Test-first regressions passed; full body assembly, answer-reference backfill and MathJax suite passed with `45 passed`.
 - Rebuilding the HTML reduces remaining generic labels from 184 to 154. The candidate PDF is intentionally unchanged pending completion of the residual audit and complete visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 10
+
+- Added structure-specific names for the Chapter 1 noninteger-frequency period example, AM frequency/period parameters, scale-system time-variance comparison, finite-length convolution support, causal input range, first-order causal impulse response, undersampling alias condition and frequency-coordinate normalization.
+- The test-first batch passed after the minimal formula-name rules were added. Full body assembly, answer-reference backfill and MathJax suite passed with `46 passed`.
+- Rebuilding the HTML reduces generic `计算表达式` labels from 154 to 144. Remaining labels are now concentrated in Appendix D and year-specific past-paper solutions; the verified candidate PDF remains unchanged pending the complete audit and visual re-export.
