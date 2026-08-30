@@ -782,6 +782,75 @@ def test_formula_name_handles_fft_and_filter_design_paper_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_uses_structured_fallbacks_before_topic_generic_labels():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (
+            r"H(z)=\prod_{r=1}^{R}H_r(z)",
+            "年真题",
+            "级联滤波器的总系统函数（用于把各子节系统函数相乘得到整体传递关系）",
+        ),
+        (
+            r"M=128-60+1=69",
+            "年真题",
+            "重叠保留法的有效输出长度（用于由 DFT 块长和滤波器长度确定无混叠样本数）",
+        ),
+        (
+            r"H(j\omega)=\frac{1}{\sqrt{1+(\omega/\Omega_c)^{2N}}}",
+            "年真题",
+            "巴特沃斯低通滤波器的幅频响应（用于由截止频率和阶数检验通阻带指标）",
+        ),
+        (
+            r"x(n)=2\cos\left(\frac{\pi}{3}n\right)",
+            "年真题",
+            "离散余弦序列表达式（用于确定指定离散频率下的时域样值）",
+        ),
+        (
+            r"X(0)=0.",
+            "年真题（第七题第 3 小题）",
+            "交替符号序列的直流 DFT 零点（用于说明偶数点序列在直流频点发生相消）",
+        ),
+        (
+            r"\operatorname{Re}\{s\}=\frac{2}{T}\operatorname{Re}\left\{\frac{z-1}{z+1}\right\}",
+            "年真题",
+            "双线性变换的实部映射（用于证明单位圆内外分别对应 s 平面的左右半平面）",
+        ),
+        (
+            r"H_{\mathrm{bl}}(z)=H\!\left(2\frac{z-1}{z+1}\right)",
+            "年真题",
+            "双线性变换的数字系统函数（用于把模拟系统函数代换为数字滤波器传递函数）",
+        ),
+        (
+            r"s_1=\frac{\ln0.5}{2},\qquad C_1=1",
+            "年真题（第十二题）",
+            "脉冲响应不变法的极点与留数映射（用于由数字极点反推对应模拟系统的部分分式项）",
+        ),
+        (
+            r"H_{\mathrm{bl}}(s)=\frac{1}{1-0.5\frac{1-s}{1+s}}",
+            "年真题（第十二题）",
+            "双线性变换的反代换系统函数（用于把数字系统函数还原为模拟 s 域表达式）",
+        ),
+        (
+            r"h_c(t)=h_{c1}(t)*h_{c2}(t)",
+            "年真题",
+            "连续系统串联的冲激响应卷积（用于由两个子系统响应求级联系统的总响应）",
+        ),
+        (
+            r"N_{\min}=7,\qquad\tau_{\min}=\frac{7}{2}",
+            "年真题",
+            "线性相位 FIR 的最小阶数与群延迟（用于由零点总数确定可实现结构的最低延时）",
+        ),
+        (
+            r"a=1,\qquad\theta=\frac{\pi}{3}",
+            "年真题：窄带干扰抑制",
+            "窄带陷波器的零点参数（用于把共轭零点准确放置在干扰频率）",
+        ),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

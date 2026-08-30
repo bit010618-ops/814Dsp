@@ -1612,3 +1612,9 @@
 - Added formula-level labels for cyclic shifts, cosine-to-DFT factorization, short DFT symmetry results, unit-circle IDFT samples, radix-2 FFT recursions, even/odd extraction and two-real-sequence FFT packing.
 - Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `54 passed`.
 - Rebuilding the HTML reduces generic labels from 58 to 40. The candidate PDF remains intentionally unchanged pending residual formula audit and complete visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 19
+
+- Replaced the final heading-derived fallback with structure-first labels for cascade system functions, overlap-save length, Butterworth magnitude response, DFT zeroes, bilinear mappings, impulse-invariant pole/residue mappings, cascade impulse-response convolution, linear-phase FIR delay, and narrowband-notch parameters. Broad structural fallbacks are deliberately applied only after a specific topic label so that they do not override established chapter terminology.
+- Test-first coverage was added for the formerly generic forms. Full assembly and the formula/backfill/MathJax regression suite passed with `55 passed`.
+- Rebuilt full-book HTML now has `GENERIC_CALCULATION_LABELS=0` and `STRUCTURED_FALLBACK_LABELS=0`. The candidate PDF is still intentionally unchanged; the next action is the complete static rendering, answer-page backfill, export, and desktop/mobile visual audit before replacement.

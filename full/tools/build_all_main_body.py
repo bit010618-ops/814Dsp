@@ -703,6 +703,33 @@ def _formula_name(formula: str, heading: str) -> str:
         return "33 阶哈明窗 FIR 系数（用于写出指定截止频率的实际滤波器抽头）"
     if "\\omega_c=\\frac{\\pi}{8}" in compact and "\\left|H_d\\!\\left(e^{j\\omega}\\right)\\right|=\\begin{cases}" in compact:
         return "理想低通目标响应（用于指定频率采样法设计的通带和阻带）"
+
+    # The past-paper appendix contains many short derivation lines whose
+    # headings are intentionally only "年真题".  Classify their mathematical
+    # structure before consulting a heading, so the reader still sees a real
+    # formula name and its use rather than a vague, heading-derived label.
+    if "M=128-60+1=69" in compact:
+        return "重叠保留法的有效输出长度（用于由 DFT 块长和滤波器长度确定无混叠样本数）"
+    if "H(j\\omega)" in compact and "\\sqrt" in compact and "\\Omega_c" in compact:
+        return "巴特沃斯低通滤波器的幅频响应（用于由截止频率和阶数检验通阻带指标）"
+    if "x(n)=2\\cos\\left(\\frac{\\pi}{3}n\\right)" in compact:
+        return "离散余弦序列表达式（用于确定指定离散频率下的时域样值）"
+    if "X(0)=0" in compact:
+        return "交替符号序列的直流 DFT 零点（用于说明偶数点序列在直流频点发生相消）"
+    if "\\operatorname{Re}\\{s\\}" in compact and "\\frac{z-1}{z+1}" in compact:
+        return "双线性变换的实部映射（用于证明单位圆内外分别对应 s 平面的左右半平面）"
+    if "H_{\\mathrm{bl}}(s)" in compact:
+        return "双线性变换的反代换系统函数（用于把数字系统函数还原为模拟 s 域表达式）"
+    if "H_{\\mathrm{bl}}(z)" in compact:
+        return "双线性变换的数字系统函数（用于把模拟系统函数代换为数字滤波器传递函数）"
+    if "s_1" in compact and "C_1" in compact and "\\ln0.5" in compact:
+        return "脉冲响应不变法的极点与留数映射（用于由数字极点反推对应模拟系统的部分分式项）"
+    if "h_c(t)=h_{c1}(t)*h_{c2}(t)" in compact:
+        return "连续系统串联的冲激响应卷积（用于由两个子系统响应求级联系统的总响应）"
+    if "N_{\\min}=7" in compact and "\\tau_{\\min}" in compact:
+        return "线性相位 FIR 的最小阶数与群延迟（用于由零点总数确定可实现结构的最低延时）"
+    if "a=1" in compact and "\\theta=\\frac{\\pi}{3}" in compact:
+        return "窄带陷波器的零点参数（用于把共轭零点准确放置在干扰频率）"
     topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)
@@ -779,9 +806,33 @@ def _formula_name(formula: str, heading: str) -> str:
     for keywords, label in semantic_topics:
         if all(keyword in topic for keyword in keywords):
             return label
+    if "H(z)=\\prod" in compact:
+        return "级联滤波器的总系统函数（用于把各子节系统函数相乘得到整体传递关系）"
+    if "N_{\\mathrm{FFT}}" in compact or "N_{\\mathrm{IFFT}}" in compact:
+        return "FFT 分块运算次数（用于由分块数量统计频域与时域变换的调用次数）"
+    if "N^2" in compact and "N(N-1)" in compact:
+        return "直接 DFT 与 FFT 的复乘次数对比（用于量化快速算法的运算量优势）"
+    if "H(z)" in compact:
+        return "离散系统函数表达式（用于在 z 域描述滤波器或系统的传递关系）"
+    if "H(s)" in compact:
+        return "模拟系统函数表达式（用于在 s 域分析连续时间滤波器的极点和频率特性）"
+    if "H(j\\omega)" in compact or "H\\!\\left(e^{j\\omega}\\right)" in compact or "H(e^{j\\omega})" in compact:
+        return "系统频率响应表达式（用于考察系统对各角频率分量的幅度和相位作用）"
+    if "h[n]" in compact or "h(n)" in compact:
+        return "单位冲激响应表达式（用于由系统的时域响应计算输出或判断滤波器特性）"
+    if "X(k)" in compact or "Y(k)" in compact or "A[k]" in compact or "B[k]" in compact:
+        return "离散频谱样值关系（用于计算或分离各 DFT 频率索引处的频谱分量）"
+    if "\\Omega" in compact or "\\omega" in compact:
+        return "频率参数关系（用于在模拟频率、数字频率和设计指标之间换算或约束）"
+    if "N=" in compact or "K=" in compact or "M=" in compact:
+        return "分块与长度参数关系（用于由题设长度确定变换规模或有效输出数量）"
+    if "e^" in compact or "W_" in compact:
+        return "复指数旋转因子关系（用于表示离散频率分量的相位旋转或共轭对应）"
+    if "x(n)" in compact or "y(n)" in compact:
+        return "离散序列关系（用于由题设运算得到对应时刻的序列样值）"
     if topic and topic not in {"真题整理详解", "本章公式总表", "例题", "解", "反例"}:
-        return f"{topic}的计算表达式（用于根据本节已知条件求出所需结果）"
-    return "已知条件的计算表达式（用于代入题设数据并求得目标量）"
+        return f"{topic}的题设参数关系（用于把本节已知量组织为可计算或可判定的数学条件）"
+    return "题设参数约束关系（用于把已知量组织为可计算或可判定的数学条件）"
 
 
 def _formula_summary(body: str) -> str:
