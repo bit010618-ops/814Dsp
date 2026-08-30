@@ -469,6 +469,21 @@ def test_formula_name_handles_transform_and_block_processing_topics():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_filter_design_named_topics():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"H(z)=\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{(z-re^{j\omega_0})(z-re^{-j\omega_0})}", "数字陷波器", "二阶陷波器的零极点表达式（用于由极点半径控制陷波带宽）"),
+        (r"H(z)=\frac{1}{1-2r\cos\omega_0z^{-1}+r^2z^{-2}}", "数字谐振器", "二阶数字谐振器的系统函数（用于在指定频率附近形成窄带共振）"),
+        (r"|H_a(j\Omega)|^2=\frac{1}{1+(\Omega/\Omega_c)^{2N}}", "巴特沃斯低通原型", "巴特沃斯低通原型的幅度平方响应（用于由截止频率和阶数确定平坦通带特性）"),
+        (r"h(n)=Th_a(nT)", "脉冲响应不变法", "脉冲响应不变法的离散化关系（用于由模拟冲激响应构造数字 IIR 滤波器）"),
+        (r"H(z)=\prod_{i=1}^L H_i(z)", "递归分解与运算量", "IIR 滤波器的级联分解（用于把高阶递归滤波器实现为多个低阶节）"),
+        (r"H(k)=H(e^{j2\pi k/N})", "频率采样法", "频率采样设计的目标样值（用于指定各离散频率点的滤波器响应）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

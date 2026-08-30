@@ -1525,3 +1525,8 @@
 
 - Added concrete formula identities and purposes for DFT/IDFT, DFS, overlap-save block convolution, system-function context, frequency-coordinate conversion, rational inverse z-transform and DTMF. Full assembly, answer-backfill and MathJax regression suite passed with `37 passed`.
 - Rebuilt HTML reduces generic formula labels from 276 to 255. The verified candidate PDF remains unchanged until the residual labels are cleared and a complete replacement export has passed visual QA.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 4
+
+- Added named labels for digital resonators, Butterworth prototypes, impulse-invariant discretization, IIR cascade decomposition and frequency-sampling design. The complete assembly/backfill/MathJax regression suite passed with `38 passed`.
+- Rebuilt HTML reduces generic formula labels from 255 to 240. The candidate PDF remains the last visually verified version; no incomplete export is published.
