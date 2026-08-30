@@ -463,6 +463,30 @@ def _formula_name(formula: str, heading: str) -> str:
         return "实偶序列的 DFS 系数补全（用于按周期和偶对称确定负索引系数）"
     if "X(k)=X(z)\\left|_{z=e^{j2\\pik/N}}\\right." in compact:
         return "z 变换在单位圆上的 DFT 取样关系（用于由 z 域表达式求 N 点频谱）"
+    if "a_{-3}=a_3=\\frac{1}{6}" in compact and "a_0=\\frac{1}{3}" in compact:
+        return "实偶序列的 DFS 系数列（用于由偶对称性列出完整频域系数）"
+    if "y(n)=x(n)+x(n+3)" in compact and "n=0,1,2" in compact:
+        return "周期序列的延时相加（用于逐样点构造两个周期移位分量之和）"
+    if "y(0)=2" in compact and "y(1)=1" in compact and "y(2)=1" in compact:
+        return "周期序列延时相加的样值结果（用于列出一个周期内的输出）"
+    if "x(n)=2+e^{j2\\pin/N}+e^{-j2\\pin/N}" in compact:
+        return "三谱线周期序列的指数表示（用于直接读出 DFT 非零频点）"
+    if "X(0)=2N" in compact and "X(1)=N" in compact and "X(N-1)=N" in compact:
+        return "三谱线周期序列的 DFT 样值（用于给出直流和共轭频点幅度）"
+    if "x(n)=x_1(n)+jx_2(n)" in compact:
+        return "复序列的实虚部分解（用于分别处理实部和虚部序列）"
+    if "X_1(k)=\\frac{1}{2}\\left[X(k)+X^*\\left((N-k)\\right)_N\\right]" in compact and "X_2(k)=\\frac{1}{2j}" in compact:
+        return "复序列实虚分量的 DFT 分解（用于由总频谱恢复两个实序列频谱）"
+    if "y(n)=x\\left((n-2)\\right)_{10}=\\delta(n-2)+2\\delta(n-7)" in compact:
+        return "十点循环时移的冲激表示（用于写出循环移位后非零样值位置）"
+    if "m(n)=5\\delta(n-2)+4\\delta(n-7)" in compact:
+        return "加权冲激序列（用于表示两个指定位置的离散样值）"
+    if "T_0=NT=102.4\\,\\mathrm{ms}" in compact and "F_0=\\frac{1}{NT}=9.765625" in compact:
+        return "采样记录的周期、带宽与分辨率（用于由采样率和点数确定频域参数）"
+    if "y(n)=x(n)+x(n+2)+x(n+4)" in compact and "n=0,1" in compact:
+        return "周期序列的多重延时相加（用于计算指定索引处的叠加输出）"
+    if "y(0)=4+3+2=9" in compact and "y(1)=7+1=8" in compact:
+        return "多重延时相加的样值结果（用于列出指定输出时刻的计算值）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

@@ -736,6 +736,27 @@ def test_formula_name_handles_remaining_dft_paper_short_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_dft_symmetry_and_short_sequence_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"a_{-3}=a_3=\frac{1}{6},\qquad a_{-2}=a_2=2,\qquad a_{-1}=a_1=1,\qquad a_0=\frac{1}{3}", "年真题（填空题第 7 小题）", "实偶序列的 DFS 系数列（用于由偶对称性列出完整频域系数）"),
+        (r"y(n)=x(n)+x(n+3),\qquad n=0,1,2", "年真题（DSP 第 3 小题）", "周期序列的延时相加（用于逐样点构造两个周期移位分量之和）"),
+        (r"y(0)=2,\qquad y(1)=1,\qquad y(2)=1", "年真题（DSP 第 3 小题）", "周期序列延时相加的样值结果（用于列出一个周期内的输出）"),
+        (r"x(n)=2+e^{j2\pi n/N}+e^{-j2\pi n/N}", "年真题（DSP 第 4 小题）", "三谱线周期序列的指数表示（用于直接读出 DFT 非零频点）"),
+        (r"X(0)=2N,\qquad X(1)=N,\qquad X(N-1)=N", "年真题（DSP 第 4 小题）", "三谱线周期序列的 DFT 样值（用于给出直流和共轭频点幅度）"),
+        (r"x(n)=x_1(n)+jx_2(n)", "年真题（第八题）", "复序列的实虚部分解（用于分别处理实部和虚部序列）"),
+        (r"X_1(k)=\frac{1}{2}\left[X(k)+X^*\left((N-k)\right)_N\right],\qquad X_2(k)=\frac{1}{2j}\left[X(k)-X^*\left((N-k)\right)_N\right]", "年真题（第八题）", "复序列实虚分量的 DFT 分解（用于由总频谱恢复两个实序列频谱）"),
+        (r"y(n)=x\left((n-2)\right)_{10}=\delta(n-2)+2\delta(n-7)", "年真题（第六题第 1 小题）", "十点循环时移的冲激表示（用于写出循环移位后非零样值位置）"),
+        (r"m(n)=5\delta(n-2)+4\delta(n-7)", "年真题（第六题第 1 小题）", "加权冲激序列（用于表示两个指定位置的离散样值）"),
+        (r"T_0=NT=102.4\,\mathrm{ms},\qquad f_{\max}=\frac{f_s}{2}=5\,\mathrm{kHz},\qquad F_0=\frac{1}{NT}=9.765625\,\mathrm{Hz}", "年真题（第六题第 3 小题）", "采样记录的周期、带宽与分辨率（用于由采样率和点数确定频域参数）"),
+        (r"y(n)=x(n)+x(n+2)+x(n+4),\qquad n=0,1", "年真题（第三题）", "周期序列的多重延时相加（用于计算指定索引处的叠加输出）"),
+        (r"y(0)=4+3+2=9,\qquad y(1)=7+1=8", "年真题（第三题）", "多重延时相加的样值结果（用于列出指定输出时刻的计算值）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
