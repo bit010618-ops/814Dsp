@@ -547,6 +547,47 @@ def test_formula_name_handles_first_chapter_signal_properties():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_first_chapter_signal_operations():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"\left.\sin(100\pi t)\right|_{t=nT}=\sin(0.1\pi n)", "两个给出相同样值的连续信号", "连续正弦信号的采样等效关系（用于说明不同连续频率可给出相同离散样值）"),
+        (r"x(n)=\delta(n)\quad\Longrightarrow\quad X(z)=1,\qquad \text{ROC：全 z 平面}", "例题：同一代数式与不同收敛域", "单位冲激序列的 z 变换与收敛域（用于说明有限长冲激在全 z 平面收敛）"),
+        (r"y(n)=H(e^{j\omega_0})e^{j\omega_0n}", "归一化角频率的换算", "复指数输入的频率响应特性（用于由系统频响直接得到稳态输出）"),
+        (r"H(z)=K\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{z^2}", "数字陷波器", "单位圆共轭零点的陷波器结构（用于在指定频率处抑制窄带干扰）"),
+        (r"y(n)=x\left((n-3)\right)_4R_4(n)", "例题：由频域相位因子恢复圆周移位序列", "四点循环时移序列（用于写出频域相位因子对应的时域输出）"),
+        (r"\begin{aligned}y(n)&=x\left((n-3)\right)_4R_4(n)\\&=x\left((n+1)\right)_4R_4(n)\end{aligned}", "例题：由频域相位因子恢复圆周移位序列", "四点循环时移序列（用于写出频域相位因子对应的时域输出）"),
+        (r"x_4(n)=A\sin(\omega n+\varphi),\quad n\in(-\infty,\infty)", "离散时间信号与系统", "离散正弦序列的通式（用于表示幅度、角频率和初相位可调的振荡信号）"),
+        (r"y(n)=x_1(n)+x_2(n),\qquad y(n)=x_1(n)x_2(n)", "离散时间信号与系统", "离散序列的相加与相乘运算（用于逐时刻构造组合序列）"),
+        (r"y(n)=x(n)+\alpha x(n-R),\qquad 0<\alpha<1", "离散时间信号与系统", "单回声延时叠加模型（用于表示原信号与延迟衰减副本的叠加）"),
+        (r"y(n)=x(-n)", "离散时间信号与系统", "离散序列的时反变换（用于按原点镜像翻转序列）"),
+        (r"\nabla x(n)=x(n+1)-x(n),\qquad \Delta x(n)=x(n)-x(n-1)", "离散时间信号与系统", "离散序列的前向与后向差分（用于描述相邻样值的变化）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
+def test_formula_name_handles_first_chapter_signal_operations_batch_two():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"x(-n+1),\qquad x(-n-1)", "离散时间信号与系统", "离散序列的时反与时移结果（用于确定不同反褶原点对应的样值位置）"),
+        (r"\Delta R_{10}(n)=R_{10}(n)-R_{10}(n-1)=\{1,0,0,0,0,0,0,0,0,0,-1\}", "离散时间信号与系统", "矩形序列的后向差分（用于由相邻样值之差标出起止边缘）"),
+        (r"u(n)=\begin{cases}1,&n\geq0,\\0,&n<0.\end{cases}", "离散时间信号与系统", "单位阶跃序列的定义（用于表示从零时刻开始的离散信号）"),
+        (r"R_N(n)=\begin{cases}1,&0\leq n\leq N-1,\\0,&n\notin[0,N-1].\end{cases}", "离散时间信号与系统", "长度 N 的矩形序列定义（用于表示有限个连续非零样值）"),
+        (r"x(n)=a^n u(n)", "离散时间信号与系统", "右边实指数序列（用于表示从零时刻开始按等比变化的信号）"),
+        (r"x(n)=A\sin(n\omega+\varphi),\qquad x(n)=A\cos(n\omega+\varphi)", "离散时间信号与系统", "离散正弦与余弦序列通式（用于表示可调幅度、频率和初相位的振荡信号）"),
+        (r"\omega=\Omega T=2\pi\frac{f_0}{f_s}", "离散时间信号与系统", "模拟频率到数字角频率的换算（用于由赫兹频率和采样率确定离散频率）"),
+        (r"x(n)=e^{(\sigma+j\omega)n}=e^{\sigma n}\left[\cos(\omega n)+j\sin(\omega n)\right]", "离散时间信号与系统", "离散复指数序列的欧拉展开（用于分离指数包络和正余弦振荡分量）"),
+        (r"e^{\pm jx}=\cos x\pm j\sin x", "离散时间信号与系统", "欧拉公式（用于在复指数与正余弦形式之间换算）"),
+        (r"x(n+N)=x(n),\quad n\in\mathbb{Z},\quad N\in\mathbb{Z}_{+}", "离散时间信号与系统", "离散序列的周期定义（用于判定序列是否每隔 N 个样值重复）"),
+        (r"N=\frac{2\pi k}{\omega},\qquad k\in\mathbb{Z}_{+}", "离散时间信号与系统", "离散正弦序列的周期求解式（用于由角频率搜索整数周期）"),
+        (r"x(n)=A\cos(0.01\pi n),\qquad \frac{2\pi}{\omega}=\frac{2\pi}{0.01\pi}=200,\qquad N=200", "离散时间信号与系统", "离散余弦序列的周期计算（用于求角频率为 0.01π 时的基本周期）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

@@ -1551,3 +1551,10 @@
 - Added precise names and purposes for the discrete-sinusoid period condition, nonperiodic complex-exponential criterion, discrete AM model, index-two time scaling, finite-length convolution output length, causal impulse-response condition, BIBO definition and Nyquist no-aliasing condition. The causal-condition terminology is now consistently “单位冲激响应”.
 - The test-first regression failed against the previous generic fallback, then passed after the structure-first labels were added. Full body assembly, answer-reference backfill and MathJax suite passed with `42 passed`.
 - Rebuilding the HTML reduces remaining `计算表达式` labels from 190 to 184. This remains source-only progress: do not replace the verified candidate PDF until the residual labels are cleared and a complete visual re-export passes.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 9
+
+- Root-cause audit found that the full-book formula-lead extractor was stripping display-formula text with an HTML-tag regex. Mathematical `<` signs (for example `0<\\alpha<1`) were therefore mistaken for tags and truncated before purpose classification. The extractor now reads the formula container payload directly, preserving complete LaTeX inequalities.
+- The assembler also rewrites any component-local `formula-name` or `formula-lead` containing the prohibited generic “计算表达式” before it decides whether to add a new label. This preserves a single label per display formula while routing it through the structure-first formula namer.
+- Added formula-specific labels for Chapter 1 sampling equivalence, impulse z transform/ROC, complex-exponential frequency response, notch structure, circular shift, elementary signal operations, reversal, difference, step, rectangle, exponent, Euler identity and period relations. Test-first regressions passed; full body assembly, answer-reference backfill and MathJax suite passed with `45 passed`.
+- Rebuilding the HTML reduces remaining generic labels from 184 to 154. The candidate PDF is intentionally unchanged pending completion of the residual audit and complete visual re-export.

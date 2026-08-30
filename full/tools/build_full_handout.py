@@ -231,7 +231,12 @@ def _formula_lead(formula: str, heading: str) -> str:
     """Describe a display formula in Chinese when nearby prose does not name it."""
     title = re.sub(r"<[^>]+>", "", heading)
     title = html.unescape(title).strip()
-    latex = re.sub(r"<[^>]+>", "", formula)
+    container = re.fullmatch(
+        r'<div class="formula(?:\s[^"]*)?">(?P<latex>.*)</div>', formula, flags=re.DOTALL,
+    )
+    # Do not strip the display-formula payload as generic HTML: inequalities such
+    # as `0<\\alpha<1` would otherwise be mistaken for tags and truncated.
+    latex = container.group("latex") if container is not None else re.sub(r"<[^>]+>", "", formula)
     label = build_all_main_body._formula_name(latex, title or "本节")
     return f"{label}："
 
@@ -244,10 +249,27 @@ def _has_formula_context(rendered: str) -> bool:
     return bool(re.search(r"(?:为|如下|满足|得到|写成|可表示为|条件是|关系是)[：:]?\s*$", text))
 
 
-def _has_explicit_formula_name(rendered: str) -> bool:
-    """A chapter formula table already supplies its own reader-facing name."""
+_GENERIC_FORMULA_LABEL = re.compile(
+    r'(?P<prefix><p class="formula-(?:name|lead)">)[^<]*?计算表达式[^<]*?(?P<suffix></p>\s*)$',
+    flags=re.DOTALL,
+)
+
+
+def _replace_generic_formula_label(rendered: str, formula: str, heading: str) -> str:
+    """Replace a component's generic label with the formula-level purpose."""
+    return _GENERIC_FORMULA_LABEL.sub(
+        lambda match: (
+            f'{match.group("prefix")}{html.escape(_formula_lead(formula, heading))}'
+            f'{match.group("suffix")}'
+        ),
+        rendered,
+    )
+
+
+def _has_explicit_formula_label(rendered: str) -> bool:
+    """A component-local formula name or lead already identifies this formula."""
     return bool(
-        re.search(r'<p class="formula-name">.*?</p>\s*$', rendered, flags=re.DOTALL)
+        re.search(r'<p class="formula-(?:name|lead)">.*?</p>\s*$', rendered, flags=re.DOTALL)
     )
 
 
@@ -258,15 +280,19 @@ def _with_formula_leads(fragment: str) -> str:
     heading = ""
     for match in _FORMULA_OR_HEADING.finditer(fragment):
         between = fragment[cursor:match.start()]
-        output.append(between)
         if match.group("heading") is not None:
+            output.append(between)
             heading = match.group("heading")
             output.append(match.group(0))
         else:
+            between = _replace_generic_formula_label(
+                between, match.group("formula"), heading,
+            )
+            output.append(between)
             # Only the immediately preceding paragraph can introduce this formula;
             # rebuilding the complete 600-page fragment here would be quadratic.
             rendered = "".join(output[-6:])
-            if not _has_explicit_formula_name(between) and not _has_formula_context(rendered):
+            if not _has_explicit_formula_label(between) and not _has_formula_context(rendered):
                 output.append(
                     f'<p class="formula-lead">{html.escape(_formula_lead(match.group("formula"), heading))}</p>'
                 )

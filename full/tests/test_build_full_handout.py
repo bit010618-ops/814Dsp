@@ -55,6 +55,23 @@ def test_full_handout_never_uses_an_anonymous_formula_result_label(tmp_path: Pat
     assert not re.search(r'class="formula-(?:lead|name)">[^<]*(?:计算关系|核心关系)', html)
 
 
+def test_formula_leads_replace_an_existing_generic_formula_label_with_the_formula_purpose():
+    from full.tools.build_full_handout import _with_formula_leads
+
+    fragment = (
+        "<h3>离散时间信号与系统</h3>"
+        '<p class="formula-name">离散时间信号与系统的计算表达式（用于根据本节已知条件求出所需结果）：</p>'
+        r'<div class="formula">\[y(n)=x(n)+\alpha x(n-R),\qquad 0<\alpha<1\]</div>'
+    )
+
+    rendered = _with_formula_leads(fragment)
+
+    assert "离散时间信号与系统的计算表达式" not in rendered
+    assert "单回声延时叠加模型（用于表示原信号与延迟衰减副本的叠加）" in rendered
+    assert rendered.count('class="formula-name"') == 1
+    assert 'class="formula-lead"' not in rendered
+
+
 def test_full_handout_uses_only_pending_page_references(tmp_path: Path):
     from full.tools import build_full_handout
 

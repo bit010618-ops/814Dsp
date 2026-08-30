@@ -246,6 +246,53 @@ def _formula_name(formula: str, heading: str) -> str:
         return "BIBO 稳定性的定义（用于判断有界输入是否产生有界输出）"
     if "\\Omega_h\\le\\frac{\\Omega_s}{2}" in compact:
         return "奈奎斯特无混叠采样条件（用于由信号最高角频率限制采样频率）"
+    if "\\left.\\sin(100\\pit)\\right|_{t=nT}=\\sin(0.1\\pin)" in compact:
+        return "连续正弦信号的采样等效关系（用于说明不同连续频率可给出相同离散样值）"
+    if "x(n)=\\delta(n)" in compact and "X(z)=1" in compact and "ROC：全z平面" in compact:
+        return "单位冲激序列的 z 变换与收敛域（用于说明有限长冲激在全 z 平面收敛）"
+    if "y(n)=H(e^{j\\omega_0})e^{j\\omega_0n}" in compact:
+        return "复指数输入的频率响应特性（用于由系统频响直接得到稳态输出）"
+    if "H(z)=K\\frac{(z-e^{j\\omega_0})(z-e^{-j\\omega_0})}{z^2}" in compact:
+        return "单位圆共轭零点的陷波器结构（用于在指定频率处抑制窄带干扰）"
+    if (
+        "y(n)=x\\left((n-3)\\right)_4R_4(n)" in compact
+        or "y(n)&=x\\left((n-3)\\right)_4R_4(n)" in compact
+    ):
+        return "四点循环时移序列（用于写出频域相位因子对应的时域输出）"
+    if "x_4(n)=A\\sin(\\omegan+\\varphi)" in compact:
+        return "离散正弦序列的通式（用于表示幅度、角频率和初相位可调的振荡信号）"
+    if "y(n)=x_1(n)+x_2(n)" in compact and "y(n)=x_1(n)x_2(n)" in compact:
+        return "离散序列的相加与相乘运算（用于逐时刻构造组合序列）"
+    if "y(n)=x(n)+\\alphax(n-R)" in compact and "0<\\alpha<1" in compact:
+        return "单回声延时叠加模型（用于表示原信号与延迟衰减副本的叠加）"
+    if "y(n)=x(-n)" in compact:
+        return "离散序列的时反变换（用于按原点镜像翻转序列）"
+    if "\\nablax(n)=x(n+1)-x(n)" in compact and "\\Deltax(n)=x(n)-x(n-1)" in compact:
+        return "离散序列的前向与后向差分（用于描述相邻样值的变化）"
+    if "x(-n+1)" in compact and "x(-n-1)" in compact:
+        return "离散序列的时反与时移结果（用于确定不同反褶原点对应的样值位置）"
+    if "\\DeltaR_{10}(n)=R_{10}(n)-R_{10}(n-1)" in compact:
+        return "矩形序列的后向差分（用于由相邻样值之差标出起止边缘）"
+    if "u(n)=\\begin{cases}" in compact and "n\\ge0" in compact and "n<0" in compact:
+        return "单位阶跃序列的定义（用于表示从零时刻开始的离散信号）"
+    if "R_N(n)=\\begin{cases}" in compact and "0\\len\\leN-1" in compact:
+        return "长度 N 的矩形序列定义（用于表示有限个连续非零样值）"
+    if "x(n)=a^nu(n)" in compact:
+        return "右边实指数序列（用于表示从零时刻开始按等比变化的信号）"
+    if "x(n)=A\\sin(n\\omega+\\varphi)" in compact and "x(n)=A\\cos(n\\omega+\\varphi)" in compact:
+        return "离散正弦与余弦序列通式（用于表示可调幅度、频率和初相位的振荡信号）"
+    if "\\omega=\\OmegaT=2\\pi\\frac{f_0}{f_s}" in compact:
+        return "模拟频率到数字角频率的换算（用于由赫兹频率和采样率确定离散频率）"
+    if "x(n)=e^{(\\sigma+j\\omega)n}" in compact and "e^{\\sigman}" in compact:
+        return "离散复指数序列的欧拉展开（用于分离指数包络和正余弦振荡分量）"
+    if "e^{\\pmjx}=\\cosx\\pmj\\sinx" in compact:
+        return "欧拉公式（用于在复指数与正余弦形式之间换算）"
+    if "x(n+N)=x(n)" in compact and "N\\in\\mathbb{Z}_{+}" in compact:
+        return "离散序列的周期定义（用于判定序列是否每隔 N 个样值重复）"
+    if "N=\\frac{2\\pik}{\\omega}" in compact and "k\\in\\mathbb{Z}_{+}" in compact:
+        return "离散正弦序列的周期求解式（用于由角频率搜索整数周期）"
+    if "x(n)=A\\cos(0.01\\pin)" in compact and "N=200" in compact:
+        return "离散余弦序列的周期计算（用于求角频率为 0.01π 时的基本周期）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
