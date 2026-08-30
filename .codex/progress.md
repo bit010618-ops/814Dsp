@@ -1576,3 +1576,9 @@
 - Added formula-level names and purposes for the A/D–digital-low-pass–D/A spectrum chain, FIR inverse, coherent demodulation product/gain/passband condition, FIR frequency and magnitude responses, alternating modulation, and ROC-specific inverse z transforms.
 - Test-first coverage passed; full body assembly, answer-reference backfill and MathJax suite passed with `48 passed`.
 - Rebuilding the HTML reduces generic labels from 132 to 121. The residual queue is now dominated by IIR/ROC and feedback-structure past-paper derivations; the candidate PDF remains intentionally unchanged pending complete audit and visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 13
+
+- Added formula-level names and purposes for FIR frequency-response alignment, IIR state recursions, annular ROCs, partial fractions, specified-ROC inverse z transforms, two-delay feedback systems and bilateral sequence decompositions.
+- Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `49 passed`.
+- Rebuilding the HTML reduces generic labels from 121 to 111. The candidate PDF remains intentionally unchanged pending the residual audit and complete visual re-export.

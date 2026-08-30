@@ -649,6 +649,25 @@ def test_formula_name_handles_sampling_modulation_and_roc_paper_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_iir_and_feedback_paper_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"\begin{aligned}H_1(e^{j\omega})&=\frac14\left(1-e^{-j\omega}+e^{j2\omega}-e^{-j3\omega}\right)\\&=j e^{-j\omega/2}\sin\!\left(\frac{3\omega}{2}\right)\cos\omega.\end{aligned}", "2020 年真题：频响、幅相特性与频移", "四抽头 FIR 的频率响应分解（用于识别幅度因子和线性相位项）"),
+        (r"w[n]=x[n]-w[n-1]+\frac{3}{4}w[n-2],\qquad y[n]=w[n]-w[n-1]", "2022 年真题：离散系统结构", "二阶内部状态递推式（用于按输入和历史状态计算系统输出）"),
+        (r"\frac{1}{2}<|z|<\frac{3}{2}", "2022 年真题：离散系统结构", "离散系统的收敛域（用于确定双边序列对应的 z 平面环域）"),
+        (r"H(z)=-\frac{1}{4}\frac{1}{1-\frac{1}{2}z^{-1}}+\frac{5}{4}\frac{1}{1+\frac{3}{2}z^{-1}}", "2022 年真题：离散系统结构", "系统函数的部分分式展开（用于由一阶极点项求单位冲激响应）"),
+        (r"F(z)=\frac{1}{(1-3z^{-1})(1+z^{-1})}=\frac{3}{4}\frac{1}{1-3z^{-1}}+\frac{1}{4}\frac{1}{1+z^{-1}}", "2023 年真题：指定收敛域的反 z 变换", "指定 ROC 反 z 变换的部分分式展开（用于按不同极点项选择左右边序列）"),
+        (r"f[n]=\frac{1}{4}(-1)^n u[n]-\frac{3}{4}3^n u[-n-1]", "2023 年真题：指定收敛域的反 z 变换", "指定 ROC 下的双边时域序列（用于组合因果和反因果分量）"),
+        (r"y[n]=x[n]+\frac{5}{2}y[n-1]-y[n-2]", "2015 年真题：两延时反馈系统", "两延时反馈系统的差分方程（用于由当前输入和两项历史输出递推求解）"),
+        (r"H(z)=\frac{4}{3}\frac{1}{1-2z^{-1}}-\frac{1}{3}\frac{1}{1-\frac12z^{-1}}", "2015 年真题：两延时反馈系统", "两延时反馈系统的部分分式系统函数（用于确定各极点分量的响应）"),
+        (r"h_{\mathrm{s}}[n]=-\frac{4}{3}2^n u[-n-1]-\frac{1}{3}\left(\frac12\right)^n u[n]", "2015 年真题：两延时反馈系统", "两延时反馈系统的稳定冲激响应（用于按 ROC 写出稳定的双边序列）"),
+        (r"x[n]=x_1[n]+x_2[n],\qquad x_1[n]=\left(\frac13\right)^n u[n],\qquad x_2[n]=\left(\frac12\right)^n u[-n-1]", "年真题·第二组第 5 小题：双边序列的 z 变换", "双边序列的左右分解（用于分别确定因果与反因果分量的 z 变换和 ROC）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

@@ -361,6 +361,26 @@ def _formula_name(formula: str, heading: str) -> str:
         return "有理 z 函数的部分分式展开（用于按各极点项和 ROC 求反变换）"
     if "f(n)=-8u(-n-1)-4\\left(\\frac12\\right)^nu(n)" in compact:
         return "指定 ROC 下的反 z 变换结果（用于组合左边和右边序列恢复时域信号）"
+    if "H_1(e^{j\\omega})&=\\frac14\\left(1-e^{-j\\omega}+e^{j2\\omega}-e^{-j3\\omega}\\right)" in compact:
+        return "四抽头 FIR 的频率响应分解（用于识别幅度因子和线性相位项）"
+    if "w[n]=x[n]-w[n-1]+\\frac{3}{4}w[n-2]" in compact and "y[n]=w[n]-w[n-1]" in compact:
+        return "二阶内部状态递推式（用于按输入和历史状态计算系统输出）"
+    if "\\frac{1}{2}<|z|<\\frac{3}{2}" in compact:
+        return "离散系统的收敛域（用于确定双边序列对应的 z 平面环域）"
+    if "H(z)=-\\frac{1}{4}\\frac{1}{1-\\frac{1}{2}z^{-1}}+\\frac{5}{4}" in compact:
+        return "系统函数的部分分式展开（用于由一阶极点项求单位冲激响应）"
+    if "F(z)=\\frac{1}{(1-3z^{-1})(1+z^{-1})}" in compact and "\\frac{3}{4}\\frac{1}{1-3z^{-1}}" in compact:
+        return "指定 ROC 反 z 变换的部分分式展开（用于按不同极点项选择左右边序列）"
+    if "f[n]=\\frac{1}{4}(-1)^nu[n]-\\frac{3}{4}3^nu[-n-1]" in compact:
+        return "指定 ROC 下的双边时域序列（用于组合因果和反因果分量）"
+    if "y[n]=x[n]+\\frac{5}{2}y[n-1]-y[n-2]" in compact:
+        return "两延时反馈系统的差分方程（用于由当前输入和两项历史输出递推求解）"
+    if "H(z)=\\frac{4}{3}\\frac{1}{1-2z^{-1}}-\\frac{1}{3}" in compact:
+        return "两延时反馈系统的部分分式系统函数（用于确定各极点分量的响应）"
+    if "h_{\\mathrm{s}}[n]=-\\frac{4}{3}2^nu[-n-1]" in compact:
+        return "两延时反馈系统的稳定冲激响应（用于按 ROC 写出稳定的双边序列）"
+    if "x[n]=x_1[n]+x_2[n]" in compact and "x_1[n]=\\left(\\frac13\\right)^nu[n]" in compact and "x_2[n]=\\left(\\frac12\\right)^nu[-n-1]" in compact:
+        return "双边序列的左右分解（用于分别确定因果与反因果分量的 z 变换和 ROC）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
