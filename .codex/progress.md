@@ -1520,3 +1520,8 @@
 
 - Added structure/topic-specific labels for the z-inverse contour definition, partial-fraction residue coefficient, conjugate-symmetry split, real-spectrum conjugate symmetry, four-tap-average zero locations and single-pole ROC relation. The complete regression suite passed with `36 passed`.
 - Rebuilt HTML reduces generic formula labels from 296 to 276. This remains source-only progress; do not replace the verified PDF until all generic labels are eliminated and the resulting PDF has passed visual review.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 3
+
+- Added concrete formula identities and purposes for DFT/IDFT, DFS, overlap-save block convolution, system-function context, frequency-coordinate conversion, rational inverse z-transform and DTMF. Full assembly, answer-backfill and MathJax regression suite passed with `37 passed`.
+- Rebuilt HTML reduces generic formula labels from 276 to 255. The verified candidate PDF remains unchanged until the residual labels are cleared and a complete replacement export has passed visual QA.

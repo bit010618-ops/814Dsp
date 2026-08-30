@@ -204,6 +204,16 @@ def _formula_name(formula: str, heading: str) -> str:
         return "模拟信号的数字处理链（用于表示采样、数字处理和重构的先后顺序）"
     if "\\Omega_s\\ge2\\Omega_c" in compact and "f_s=\\frac{1}{T}" in compact:
         return "抗混叠采样条件与采样率定义（用于设置模数转换前的滤波和采样参数）"
+    if "DFT" in heading and "IDFT" in heading and "x(n)=" in compact and "X(k)" in compact and "\\sum" in compact:
+        return "离散傅里叶反变换定义（用于由离散频谱重建周期序列）"
+    if "DFS" in heading and "变换对" in heading and "x(n)=" in compact and "a_k" in compact:
+        return "离散傅里叶级数综合式（用于由周期序列的频域系数恢复时域波形）"
+    if "DFS" in heading and "基本性质" in heading and "a_k=" in compact and "\\sum" in compact:
+        return "离散傅里叶级数分析式（用于计算周期序列的频域系数）"
+    if "重叠保留法" in heading and "\\operatorname{IDFT}" in compact:
+        return "重叠保留法的块卷积输出（用于用 DFT 分块实现长序列线性卷积）"
+    if "DTMF" in heading and "\\cos" in compact:
+        return "双音多频信号的合成表达式（用于由两个标准音频分量构造按键音）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
@@ -394,6 +404,14 @@ def _formula_name(formula: str, heading: str) -> str:
     topic = re.sub(r"^\d{4}\s*年真题\s*[：:]\s*", "", topic)
     topic = topic.replace("（续）", "").replace("(续)", "").strip(" ：:")
     semantic_topics = (
+        (("DFT 与 IDFT",), "离散傅里叶反变换定义（用于由离散频谱重建周期序列）"),
+        (("DFS 的变换对",), "离散傅里叶级数综合式（用于由周期序列的频域系数恢复时域波形）"),
+        (("DFS 的基本性质",), "离散傅里叶级数分析式（用于计算周期序列的频域系数）"),
+        (("重叠保留法",), "重叠保留法的块卷积输出（用于用 DFT 分块实现长序列线性卷积）"),
+        (("系统函数及其与系统性质的关系",), "离散系统函数定义（用于在 z 域表示输入与输出的传递关系）"),
+        (("折叠频率与三种频率",), "模拟、数字与归一化频率换算（用于统一采样系统中的频率坐标）"),
+        (("有理函数的标准反变换对",), "有理 z 函数的部分分式展开（用于按 ROC 选择相应的时域反变换）"),
+        (("DTMF 双音多频信号",), "双音多频信号的合成表达式（用于由两个标准音频分量构造按键音）"),
         (("z 反变换",), "z 反变换的围线积分定义（用于由 z 域函数恢复时域序列）"),
         (("部分分式展开法",), "部分分式展开的留数系数（用于把有理 z 函数拆成可直接反变换的简单项）"),
         (("共轭对称与分解",), "共轭对称分量分解（用于把任意序列拆为共轭对称与共轭反对称部分）"),

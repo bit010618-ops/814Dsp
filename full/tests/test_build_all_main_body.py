@@ -452,6 +452,23 @@ def test_formula_name_uses_specific_named_topic_before_generic_fallback():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_transform_and_block_processing_topics():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"x(n)=\frac1N\sum_{k=0}^{N-1}X(k)e^{j2\pi kn/N}", "DFT 与 IDFT", "离散傅里叶反变换定义（用于由离散频谱重建周期序列）"),
+        (r"x(n)=\sum_{k=0}^{N-1}a_ke^{jk\omega_0n}", "DFS 的变换对", "离散傅里叶级数综合式（用于由周期序列的频域系数恢复时域波形）"),
+        (r"a_k=\frac1N\sum_{n=0}^{N-1}x(n)e^{-jk\omega_0n}", "DFS 的基本性质", "离散傅里叶级数分析式（用于计算周期序列的频域系数）"),
+        (r"y_i(n)=\operatorname{IDFT}\{X_i(k)H(k)\}", "重叠保留法", "重叠保留法的块卷积输出（用于用 DFT 分块实现长序列线性卷积）"),
+        (r"H(z)=\frac{Y(z)}{X(z)}", "系统函数及其与系统性质的关系", "系统函数的定义（用于在 z 域描述输入与输出的关系）"),
+        (r"\omega=\Omega T=2\pi\frac{f}{f_s}", "折叠频率与三种频率", "模拟频率与数字频率的换算关系（用于把赫兹或模拟角频率换算为数字角频率）"),
+        (r"X(z)=\frac{4}{3}\frac{z}{z-2}-\frac{1}{3}\frac{z}{z-0.5}", "有理函数的标准反变换对", "有理 z 函数的部分分式展开（用于按 ROC 选择相应的时域反变换）"),
+        (r"x(n)=\cos(\omega_1n)+\cos(\omega_2n)", "DTMF 双音多频信号", "双音多频信号的合成表达式（用于由两个标准音频分量构造按键音）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
