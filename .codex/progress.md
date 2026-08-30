@@ -1545,3 +1545,9 @@
 
 - Added actual-formula labels for sampling equivalence, ROC classification, power-series inversion, normalized frequency, notch zeros, DFT circular shift and multi-echo delay. Full regression suite passed with `41 passed`.
 - Continue the residual audit before generating a new complete candidate PDF.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 8
+
+- Added precise names and purposes for the discrete-sinusoid period condition, nonperiodic complex-exponential criterion, discrete AM model, index-two time scaling, finite-length convolution output length, causal impulse-response condition, BIBO definition and Nyquist no-aliasing condition. The causal-condition terminology is now consistently “单位冲激响应”.
+- The test-first regression failed against the previous generic fallback, then passed after the structure-first labels were added. Full body assembly, answer-reference backfill and MathJax suite passed with `42 passed`.
+- Rebuilding the HTML reduces remaining `计算表达式` labels from 190 to 184. This remains source-only progress: do not replace the verified candidate PDF until the residual labels are cleared and a complete visual re-export passes.

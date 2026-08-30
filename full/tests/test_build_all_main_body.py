@@ -530,6 +530,23 @@ def test_formula_name_handles_remaining_actual_z_and_frequency_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_first_chapter_signal_properties():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"x(n)=A\sin(n\omega+\varphi),\qquad N\omega=2k\pi", "离散时间信号与系统", "离散正弦序列的周期条件（用于由角频率求整数基本周期）"),
+        (r"x(n)=e^{j(\frac{n}{6}-\pi)},\qquad \frac{2\pi}{\omega}=12\pi\notin\mathbb{Q}", "离散时间信号与系统", "无周期复指数序列的判据（用于说明角频率无理比时不存在整数周期）"),
+        (r"x(n)=A[1+m\cos(\omega_Ln)]\cos(\omega_Hn)", "离散时间信号与系统", "离散调幅信号模型（用于表示低频包络调制高频载波）"),
+        (r"y(n)=x(2n)", "离散时间信号与系统", "离散时间尺度变换（用于表示按两倍索引抽取的序列）"),
+        (r"L_y=L_x+L_h-1", "离散时间信号与系统", "有限长序列卷积的长度关系（用于由输入和冲激响应长度确定输出长度）"),
+        (r"h(n)=0\quad(n<0)", "离散时间信号与系统", "因果系统的单位冲激响应条件（用于判断输出是否只依赖当前和过去输入）"),
+        (r"|x(n)|\leq M<\infty\Longrightarrow |y(n)|\leq P<\infty", "离散时间信号与系统", "BIBO 稳定性的定义（用于判断有界输入是否产生有界输出）"),
+        (r"\Omega_h\leq\frac{\Omega_s}{2}", "离散时间信号与系统", "奈奎斯特无混叠采样条件（用于由信号最高角频率限制采样频率）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

@@ -232,6 +232,20 @@ def _formula_name(formula: str, heading: str) -> str:
         return "DFT 循环时移的相位因子（用于由频域相位直接恢复时域循环移位）"
     if "y(n)=x(n)+\\alphax(n-R)+\\alpha^2x(n-2R)" in compact:
         return "多回声延时叠加模型（用于表示多次衰减回声的输出序列）"
+    if "x(n)=A\\sin(n\\omega+\\varphi)" in compact and "N\\omega=2k\\pi" in compact:
+        return "离散正弦序列的周期条件（用于由角频率求整数基本周期）"
+    if "x(n)=e^{j(\\frac{n}{6}-\\pi)}" in compact and "12\\pi\\notin\\mathbb{Q}" in compact:
+        return "无周期复指数序列的判据（用于说明角频率无理比时不存在整数周期）"
+    if "x(n)=A[1+m\\cos(\\omega_Ln)]\\cos(\\omega_Hn)" in compact:
+        return "离散调幅信号模型（用于表示低频包络调制高频载波）"
+    if "y(n)=x(2n)" in compact:
+        return "离散时间尺度变换（用于表示按两倍索引抽取的序列）"
+    if "L_y=L_x+L_h-1" in compact:
+        return "有限长序列卷积的长度关系（用于由输入和冲激响应长度确定输出长度）"
+    if "|x(n)|\\leM<\\infty\\Longrightarrow|y(n)|\\leP<\\infty" in compact:
+        return "BIBO 稳定性的定义（用于判断有界输入是否产生有界输出）"
+    if "\\Omega_h\\le\\frac{\\Omega_s}{2}" in compact:
+        return "奈奎斯特无混叠采样条件（用于由信号最高角频率限制采样频率）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
@@ -271,7 +285,7 @@ def _formula_name(formula: str, heading: str) -> str:
     if "H(z)=\\pmz^{-(N-1)}H\\!\\left(z^{-1}\\right)" in compact:
         return "FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）"
     if "h(n)=0" in compact and "n<0" in compact:
-        return "因果系统的单位脉冲响应条件（用于判断系统是否只依赖当前和过去输入）"
+        return "因果系统的单位冲激响应条件（用于判断输出是否只依赖当前和过去输入）"
     if "\\sum" in compact and "|h(n)|" in compact and "\\infty" in compact:
         return "BIBO 稳定性判据（用于判断有界输入是否产生有界输出）"
     if "y(n)" in compact and ("y(n-1)" in compact or "y(n-2)" in compact):
