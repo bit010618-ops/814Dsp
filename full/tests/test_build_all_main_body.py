@@ -514,6 +514,22 @@ def test_formula_name_handles_remaining_named_body_topics():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_remaining_actual_z_and_frequency_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"x(n)=\sin(0.1\pi n),\qquad T=\frac{1}{f_s}=1\,\mathrm{ms}", "同一组样值未必对应唯一连续信号", "离散样值与采样周期关系（用于说明仅凭样值不能唯一确定连续信号）"),
+        (r"\text{右边序列：}\;|z|>|p_{\max}|", "四种典型序列的 ROC 形状", "典型序列的收敛域分类（用于按时间支持范围选择正确 ROC）"),
+        (r"\frac{3z^{-1}}{(1-3z^{-1})^2}=3z^{-1}+18z^{-2}+\cdots", "幂级数展开法", "z 反变换的幂级数展开（用于由 z 的级数系数读取时域序列）"),
+        (r"\omega=\Omega T=\frac{2\pi}{T_0}T=\frac{2\pi}{N_0}", "归一化角频率的换算", "归一化角频率换算关系（用于由连续周期和采样周期确定离散角频率）"),
+        (r"z=e^{\pm j\omega_0},\qquad \omega_0=2\pi\frac{f_0}{f_s}", "数字陷波器", "陷波器零点的单位圆位置（用于将指定赫兹干扰频率映射为共轭零点）"),
+        (r"Y(k)=W_4^{3k}X(k)", "例题：由频域相位因子恢复圆周移位序列", "DFT 循环时移的相位因子（用于由频域相位直接恢复时域循环移位）"),
+        (r"y(n)=x(n)+\alpha x(n-R)+\alpha^2x(n-2R)", "离散时间信号与系统", "多回声延时叠加模型（用于表示多次衰减回声的输出序列）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

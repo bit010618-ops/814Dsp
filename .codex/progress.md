@@ -1540,3 +1540,8 @@
 
 - Added concrete labels for rational-function ROC cases, window spectral leakage, first-order filters, overlap-add reconstruction, DFT duality and z-transform context. Full regression suite passed with `40 passed`.
 - Rebuilt HTML reduces generic formula labels from 230 to 204. Candidate PDF remains unchanged pending the remaining formula-label audit and full visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 7
+
+- Added actual-formula labels for sampling equivalence, ROC classification, power-series inversion, normalized frequency, notch zeros, DFT circular shift and multi-echo delay. Full regression suite passed with `41 passed`.
+- Continue the residual audit before generating a new complete candidate PDF.

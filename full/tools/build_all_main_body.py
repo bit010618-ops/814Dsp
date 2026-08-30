@@ -218,6 +218,20 @@ def _formula_name(formula: str, heading: str) -> str:
         return "频分复用信号的叠加表达式（用于表示多个频带信号在同一通道中的合成）"
     if "重叠相加法" in heading and "y(n)=" in compact and "\\sum" in compact:
         return "重叠相加法的输出合成式（用于把分块卷积的重叠样本相加为连续输出）"
+    if "x(n)=\\sin(0.1\\pin)" in compact and "T=\\frac{1}{f_s}" in compact:
+        return "离散样值与采样周期关系（用于说明仅凭样值不能唯一确定连续信号）"
+    if "\\text{右边序列：}" in compact and "p_{\\max}" in compact:
+        return "典型序列的收敛域分类（用于按时间支持范围选择正确 ROC）"
+    if "\\frac{3z^{-1}}{(1-3z^{-1})^2}" in compact and "18z^{-2}" in compact:
+        return "z 反变换的幂级数展开（用于由 z 的级数系数读取时域序列）"
+    if "\\omega=\\OmegaT=\\frac{2\\pi}{T_0}T=\\frac{2\\pi}{N_0}" in compact:
+        return "归一化角频率换算关系（用于由连续周期和采样周期确定离散角频率）"
+    if "z=e^{\\pmj\\omega_0}" in compact and "\\omega_0=2\\pi\\frac{f_0}{f_s}" in compact:
+        return "陷波器零点的单位圆位置（用于将指定赫兹干扰频率映射为共轭零点）"
+    if "Y(k)=W_4^{3k}X(k)" in compact:
+        return "DFT 循环时移的相位因子（用于由频域相位直接恢复时域循环移位）"
+    if "y(n)=x(n)+\\alphax(n-R)+\\alpha^2x(n-2R)" in compact:
+        return "多回声延时叠加模型（用于表示多次衰减回声的输出序列）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
