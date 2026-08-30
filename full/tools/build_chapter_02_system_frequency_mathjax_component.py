@@ -20,7 +20,7 @@ from full.tools.render_mathjax_formula import EDGE, MATHJAX
 
 STYLE = r"""<style>
 @page{size:A4;margin:20mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}
-h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}figure{margin:12pt auto;text-align:center}.diagram-plot{width:min(100%,470pt);height:auto}figcaption{color:#315d7c;font-size:9.5pt;margin-top:4pt}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
+h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}figure{margin:12pt auto;text-align:center}.diagram-plot{width:min(100%,470pt);height:auto}.structure-diagram{display:block;width:100%;height:auto;max-width:168mm;margin:auto;background:#fbfcfd;border:1px solid #d8e0e5;border-radius:5pt}.structure-diagram .wire{fill:none;stroke:#174b73;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.structure-diagram .block{fill:#f4f7f8;stroke:#0d8794;stroke-width:2}.structure-diagram .sum{fill:#fff;stroke:#174b73;stroke-width:2.4}.structure-diagram .branch{fill:#174b73}.structure-diagram .caption{fill:#486d8b;font:15px "Microsoft YaHei",sans-serif}.structure-diagram .math-label div{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#172b3a;font-size:18px;white-space:nowrap}.structure-diagram .sum-sign{fill:#174b73;font:24px "Times New Roman",serif}figcaption{color:#315d7c;font-size:9.5pt;margin-top:4pt}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
 </style>"""
 
 
@@ -69,6 +69,31 @@ def z_plane_plot() -> str:
     return f'<figure><img class="diagram-plot" src="data:image/png;base64,{encoded}" alt="单位圆上的频率点与零、极点的距离决定幅度的峰谷"><figcaption>单位圆上的频率点与零、极点的距离决定幅度的峰谷</figcaption></figure>'
 
 
+def three_tap_realization_svg(*, causal: bool) -> str:
+    """Render the exact signal-flow topology of the before/after causal example."""
+    if causal:
+        title = "延时一拍后的因果稳定三抽头平均器"
+        diagram_id = "three-tap-causal-realization"
+        aria = "因果稳定三抽头平均器的标准结构图"
+        stages = r'''<path class="wire" d="M178 178V254H272" marker-end="url(#three-tap-arrow)"/><rect class="block" x="272" y="225" width="106" height="58" rx="6"/><path class="wire" d="M378 254H416V202" marker-end="url(#three-tap-arrow)"/><foreignObject class="math-label" x="285" y="237" width="80" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(z^{-1}\)</div></foreignObject><foreignObject class="math-label" x="380" y="225" width="120" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n-1)\)</div></foreignObject><path class="wire" d="M178 178V318H272" marker-end="url(#three-tap-arrow)"/><rect class="block" x="272" y="289" width="106" height="58" rx="6"/><path class="wire" d="M378 318H406V202" marker-end="url(#three-tap-arrow)"/><foreignObject class="math-label" x="285" y="301" width="80" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(z^{-2}\)</div></foreignObject><foreignObject class="math-label" x="380" y="288" width="120" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n-2)\)</div></foreignObject>'''
+    else:
+        title = "原三抽头平均器：含超前项，故非因果"
+        diagram_id = "three-tap-noncausal-realization"
+        aria = "非因果三抽头平均器的标准结构图"
+        stages = r'''<path class="wire" d="M178 178V103H272" marker-end="url(#three-tap-arrow)"/><rect class="block" x="272" y="74" width="106" height="58" rx="6"/><path class="wire" d="M378 103H416V154" marker-end="url(#three-tap-arrow)"/><foreignObject class="math-label" x="292" y="86" width="66" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(z\)</div></foreignObject><foreignObject class="math-label" x="380" y="84" width="120" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n+1)\)</div></foreignObject><path class="wire" d="M178 178V254H272" marker-end="url(#three-tap-arrow)"/><rect class="block" x="272" y="225" width="106" height="58" rx="6"/><path class="wire" d="M378 254H416V202" marker-end="url(#three-tap-arrow)"/><foreignObject class="math-label" x="285" y="237" width="80" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(z^{-1}\)</div></foreignObject><foreignObject class="math-label" x="380" y="245" width="120" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n-1)\)</div></foreignObject>'''
+    marker_id = f"{diagram_id}-arrow"
+    diagram = rf'''<figure><svg class="structure-diagram" data-diagram="{diagram_id}" viewBox="0 0 960 360" role="img" aria-label="{aria}"><defs><marker id="three-tap-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="caption" x="480" y="31" text-anchor="middle">{title}</text><path class="wire" d="M58 178H178" marker-end="url(#three-tap-arrow)"/><circle class="branch" cx="178" cy="178" r="4"/><path class="wire" d="M178 178H444" marker-end="url(#three-tap-arrow)"/>{stages}<circle class="sum" cx="474" cy="178" r="30"/><text class="sum-sign" x="464" y="185">+</text><path class="wire" d="M504 178H590" marker-end="url(#three-tap-arrow)"/><rect class="block" x="590" y="149" width="88" height="58" rx="6"/><path class="wire" d="M678 178H874" marker-end="url(#three-tap-arrow)"/><foreignObject class="math-label" x="30" y="130" width="82" height="36"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n)\)</div></foreignObject><foreignObject class="math-label" x="185" y="188" width="100" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n)\)</div></foreignObject><foreignObject class="math-label" x="599" y="161" width="70" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(1/3\)</div></foreignObject><foreignObject class="math-label" x="842" y="130" width="82" height="36"><div xmlns="http://www.w3.org/1999/xhtml">\(y(n)\)</div></foreignObject></svg><figcaption>{title}</figcaption></figure>'''
+    return (
+        diagram.replace("three-tap-arrow", marker_id)
+        .replace('class="wire"', 'class="wire" fill="none" stroke="#174b73" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"')
+        .replace('class="block"', 'class="block" fill="#f4f7f8" stroke="#0d8794" stroke-width="2"')
+        .replace('class="sum"', 'class="sum" fill="#ffffff" stroke="#174b73" stroke-width="2.4"')
+        .replace('class="branch"', 'class="branch" fill="#174b73"')
+        .replace('class="caption"', 'class="caption" fill="#486d8b" font-family="Microsoft YaHei, sans-serif" font-size="15"')
+        .replace('class="sum-sign"', 'class="sum-sign" fill="#174b73" font-family="Times New Roman, serif" font-size="24"')
+    )
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r'''
@@ -93,6 +118,8 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[\sum_{n=-\infty}^{\infty}\left|h(n)\right|=\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=1<\infty\]</div>
 <p>所以系统稳定。对应的系统函数（用于从极点和收敛域再核对该结论）为：</p>
 <div class="formula">\[H(z)=\frac{1}{3}\left(z+1+z^{-1}\right)=\frac{z^2+z+1}{3z}\]</div>
+<p>下图把当前项、超前项和延时项汇入标准求和器。由于上支路含 [[x(n+1)]]，这一实现不能由当前和过去输入独立完成：</p>
+__NONCAUSAL_THREE_TAP__
 <p>该序列是有限长双边序列，故其收敛域为：</p>
 <div class="formula">\[\operatorname{ROC}:\quad 0<\left|z\right|<\infty\]</div>
 <p>单位圆在此收敛域中，与“系统稳定”的时域结论一致；同时收敛域不是最外极点之外的右边区域，与“系统非因果”的结论一致。</p>
@@ -101,6 +128,8 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[h'(n)=\frac{1}{3}\left[\delta(n)+\delta(n-1)+\delta(n-2)\right]\]</div>
 <p>时移对应的系统函数关系（用于由原系统函数直接得到延时后的系统函数）为：</p>
 <div class="formula">\[H'(z)=H(z)z^{-1}=\frac{1}{3}\left(1+z^{-1}+z^{-2}\right)=\frac{z^2+z+1}{3z^2}\]</div>
+<p>延时后，三条支路只含当前输入与两个历史输入；下图中的两个延时器与系数块直接对应上述 \(h'(n)\)：</p>
+__CAUSAL_THREE_TAP__
 <p>因 [[h'(n)]] 在 [[n<0]] 时为零且仍绝对可和，改造后的系统因果且稳定；它的收敛域为：</p>
 <div class="formula">\[\operatorname{ROC}:\quad \left|z\right|>0\]</div>
 <h2>例题：由差分方程求系统函数</h2>
@@ -192,7 +221,7 @@ __Z_PLANE__
 <p>分母说明原点有四重极点，只影响相位；分子零点满足 \(z^4+1=0\)，即：</p>
 <div class="formula">\[z_k=e^{j\left(\frac{2\pi k}{4}+\frac{\pi}{4}\right)},\qquad k=0,1,2,3\]</div>
 <p>四个零点等角度分布在单位圆上，故对应频率处幅度为零；幅频响应可写为 \(\left|H(e^{j\omega})\right|=\left|\cos(2\omega)\right|\)。这给出了等间隔零点与等间隔衰减槽的一组具体对应。</p>
-</main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_plot())
+</main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_plot()).replace("__NONCAUSAL_THREE_TAP__", three_tap_realization_svg(causal=False)).replace("__CAUSAL_THREE_TAP__", three_tap_realization_svg(causal=True))
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

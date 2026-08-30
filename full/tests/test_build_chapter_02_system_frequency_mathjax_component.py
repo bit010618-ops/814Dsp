@@ -16,6 +16,12 @@ def test_system_frequency_and_geometry_are_reflowed_with_coordinate_plot(tmp_pat
     assert r"h'(n)=\frac{1}{3}\left[\delta(n)+\delta(n-1)+\delta(n-2)\right]" in html
     assert r"H'(z)=H(z)z^{-1}=\frac{1}{3}\left(1+z^{-1}+z^{-2}\right)" in html
     assert r"\operatorname{ROC}:\quad \left|z\right|>0" in html
+    assert 'data-diagram="three-tap-noncausal-realization"' in html
+    assert 'data-diagram="three-tap-causal-realization"' in html
+    assert 'aria-label="非因果三抽头平均器的标准结构图"' in html
+    assert 'aria-label="因果稳定三抽头平均器的标准结构图"' in html
+    assert r"\(z^{-1}\)" in html
+    assert r"\(z^{-2}\)" in html
     assert ".diagram-plot{width:min(100%,470pt);height:auto}" in html
     assert '<img class="diagram-plot"' in html
     assert "data:image/png;base64," in html
@@ -44,6 +50,6 @@ def test_system_frequency_and_geometry_are_reflowed_with_coordinate_plot(tmp_pat
     assert r"e^{j(N-M)\omega}" in html
     assert r"\left|H(e^{j\omega})\right|=\left|A\right|" in html
     assert "data:image/svg+xml" not in html
-    assert '<figure><svg' not in html
+    assert html.count('<figure><svg') == 2
     assert "drawImage" not in html
     assert "<image" not in html
