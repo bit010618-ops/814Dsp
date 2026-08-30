@@ -692,6 +692,27 @@ def test_formula_name_handles_delay_transform_and_bilateral_paper_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_dft_resolution_and_circular_convolution_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"z_k=e^{s_kT}", "年真题：拉氏变换与 z 变换的映射", "连续系统极点到 z 平面极点的映射（用于由采样周期定位离散极点）"),
+        (r"X^*(e^{j\omega})\quad\Longleftrightarrow\quad x^*[-n]", "年真题：频谱实部对应的序列", "DTFT 的共轭时反性质（用于由频谱共轭得到时域共轭反折序列）"),
+        (r"\begin{aligned}\left(\frac{1}{3}\right)^nu[n]&\Longleftrightarrow\frac{1}{1-\frac{1}{3}z^{-1}},\quad\left|z\right|>\frac{1}{3},\\\left(\frac{1}{2}\right)^nu[-n-1]&\Longleftrightarrow-\frac{1}{1-\frac{1}{2}z^{-1}},\quad\left|z\right|<\frac{1}{2}.\end{aligned}", "年真题：双边序列的 z 变换", "双边指数序列的分量 z 变换对（用于分别给出左右边分量及其 ROC）"),
+        (r"f_s=2\times200=400\,\mathrm{Hz}", "2019 年真题", "奈奎斯特采样率计算（用于由最高频率 200 Hz 得到最低采样率）"),
+        (r"N=\frac{f_s}{F_0}=40", "2019 年真题", "DFT 点数与频率分辨率关系（用于由采样率和频率间隔确定 N）"),
+        (r"\omega_k=\frac{2\pi k}{N}=\frac{2\pi k}{40}=\frac{\pi k}{20}\ \mathrm{rad}", "2019 年真题", "DFT 频率栅格的数字角频率（用于标出第 k 个频率样点的位置）"),
+        (r"f_k=kF_0=10k\,\mathrm{Hz}", "2019 年真题", "DFT 频率栅格的赫兹坐标（用于标出第 k 个频率样点的实际频率）"),
+        (r"x_3(n)=x_1(n)\mathbin{\circledast}_N x_2(n)", "2019 年真题", "N 点循环卷积定义（用于表示周期序列在一个周期内的卷积）"),
+        (r"N\geq5+3-1=7", "2019 年真题", "DFT 实现线性卷积的最小长度条件（用于避免循环卷积折回）"),
+        (r"\Delta\Omega=\frac{2\pi}{NT}", "2019 年真题（第十题）", "DFT 的角频率分辨率（用于由采样时长和点数确定频率间隔）"),
+        (r"\frac{2\pi}{N\times0.15}<2\quad\Longrightarrow\quad N>\frac{2\pi}{2\times0.15}\approx20.94", "2019 年真题（第十题）", "满足频率分辨率指标的点数下限（用于按最大允许间隔选择 N）"),
+        (r"y(n)=x_5(n)\mathbin{\circledast}_5h_5(n)", "2019 年真题", "五点循环卷积（用于计算给定周期序列和滤波器的周期输出）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

@@ -1588,3 +1588,9 @@
 - Added formula-level labels for single-delay feedback, delayed-zero finite impulse responses, FT/LT/ZT restriction and mapping relations, ROC-specific partial fractions/inverse transforms, and bilateral sequence z-transform decompositions.
 - Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `50 passed`.
 - Rebuilding the HTML reduces generic labels from 111 to 96. Remaining entries are primarily compact DFT/circular-convolution and frequency-resolution past-paper formulas; the candidate PDF remains intentionally unchanged pending complete audit and visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 15
+
+- Added formula-level labels for continuous-to-discrete pole mapping, DTFT conjugate time reversal, bilateral z-transform components, Nyquist sample-rate calculation, DFT bins/resolution, and circular-convolution length and output relations.
+- Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `51 passed`.
+- Rebuilding the HTML reduces generic labels from 96 to 84. The candidate PDF remains intentionally unchanged pending residual formula audit and complete visual re-export.

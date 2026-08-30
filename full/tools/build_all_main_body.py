@@ -411,6 +411,30 @@ def _formula_name(formula: str, heading: str) -> str:
         return "左右边指数序列的 z 变换对（用于分别确定双边序列各分量的 ROC）"
     if "X(z)=\\frac{1}{1-\\frac{1}{3}z^{-1}}-\\frac{1}{1-\\frac{1}{2}z^{-1}}" in compact and "\\frac{1}{3}<\\left|z\\right|<\\frac{1}{2}" in compact:
         return "双边指数序列的 z 变换与 ROC（用于给出两个收敛域的交集）"
+    if "z_k=e^{s_kT}" in compact:
+        return "连续系统极点到 z 平面极点的映射（用于由采样周期定位离散极点）"
+    if "X^*(e^{j\\omega})" in compact and "x^*[-n]" in compact:
+        return "DTFT 的共轭时反性质（用于由频谱共轭得到时域共轭反折序列）"
+    if "\\left(\\frac{1}{3}\\right)^nu[n]&\\Longleftrightarrow" in compact and "\\left(\\frac{1}{2}\\right)^nu[-n-1]&\\Longleftrightarrow" in compact:
+        return "双边指数序列的分量 z 变换对（用于分别给出左右边分量及其 ROC）"
+    if "f_s=2\\times200=400\\,\\mathrm{Hz}" in compact:
+        return "奈奎斯特采样率计算（用于由最高频率 200 Hz 得到最低采样率）"
+    if "N=\\frac{f_s}{F_0}=40" in compact:
+        return "DFT 点数与频率分辨率关系（用于由采样率和频率间隔确定 N）"
+    if "\\omega_k=\\frac{2\\pik}{N}=\\frac{2\\pik}{40}" in compact:
+        return "DFT 频率栅格的数字角频率（用于标出第 k 个频率样点的位置）"
+    if "f_k=kF_0=10k\\,\\mathrm{Hz}" in compact:
+        return "DFT 频率栅格的赫兹坐标（用于标出第 k 个频率样点的实际频率）"
+    if "x_3(n)=x_1(n)\\mathbin{\\circledast}_Nx_2(n)" in compact:
+        return "N 点循环卷积定义（用于表示周期序列在一个周期内的卷积）"
+    if "N\\ge5+3-1=7" in compact:
+        return "DFT 实现线性卷积的最小长度条件（用于避免循环卷积折回）"
+    if "\\Delta\\Omega=\\frac{2\\pi}{NT}" in compact:
+        return "DFT 的角频率分辨率（用于由采样时长和点数确定频率间隔）"
+    if "\\frac{2\\pi}{N\\times0.15}<2" in compact and "20.94" in compact:
+        return "满足频率分辨率指标的点数下限（用于按最大允许间隔选择 N）"
+    if "y(n)=x_5(n)\\mathbin{\\circledast}_5h_5(n)" in compact:
+        return "五点循环卷积（用于计算给定周期序列和滤波器的周期输出）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
