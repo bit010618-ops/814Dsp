@@ -757,6 +757,31 @@ def test_formula_name_handles_dft_symmetry_and_short_sequence_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_fft_and_filter_design_paper_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"y(n)=x\left((n-4)\right)_6=2\delta(n)+\delta(n-1)+4\delta(n-4)+3\delta(n-5)", "年真题（第五题）", "六点循环时移的冲激表示（用于列出循环右移后的非零样值位置）"),
+        (r"\cos\left(\frac{2\pi}{5}k\right)=\frac{1}{2}\left(W_{10}^{2k}+W_{10}^{-2k}\right)", "年真题（DSP 第 3 小题）", "余弦序列的 DFT 旋转因子表示（用于将实余弦分解为两条共轭频谱）"),
+        (r"y(n)=\frac{1}{2}\left[x\left((n-2)\right)_{10}+x\left((n+2)\right)_{10}\right]", "年真题（DSP 第 3 小题）", "十点循环双向时移平均（用于构造两个对称移位分量的组合序列）"),
+        (r"y(n)=\left\{1,\frac{3}{2},2,3,1,\frac{3}{2},2,\frac{5}{2},0,\frac{1}{2}\right\}", "年真题（DSP 第 3 小题）", "十点循环双向时移平均的样值结果（用于列出完整一个周期的输出）"),
+        (r"(-1)^{N-1-n}=-(-1)^n", "年真题（DSP 第 3 小题）", "偶数点 DFT 的交替符号关系（用于判定半采样频率处的抵消）"),
+        (r"X\left(\frac{N}{2}\right)=0", "年真题（DSP 第 3 小题）", "半采样频率 DFT 零点（用于给出交替符号相消后的频谱值）"),
+        (r"X(k)=4+e^{-j\frac{\pi}{2}k}+e^{-j\pi k}+e^{-j\frac{3\pi}{2}k}", "年真题（第七题第 1 小题）", "四点序列的 DFT 计算式（用于由时域样值求四个频谱点）"),
+        (r"X(0)=7,\qquad X(1)=X(2)=X(3)=3", "年真题（第七题第 1 小题）", "四点序列的 DFT 样值（用于列出直流和其余频率点幅度）"),
+        (r"X_{\mathrm{ep}}(0)=7,\qquad X_{\mathrm{ep}}(1)=X_{\mathrm{ep}}(2)=X_{\mathrm{ep}}(3)=3", "年真题（第七题第 1 小题）", "四点序列偶分量的 DFT（用于说明原序列频谱的偶对称部分）"),
+        (r"X_{\mathrm{op}}(k)=0,\qquad k=0,1,2,3", "年真题（第七题第 1 小题）", "四点序列奇分量的零频谱（用于说明该序列不含奇对称分量）"),
+        (r"k_0=\frac{800}{16}=50", "年真题（第十三题第 1 问）", "DFT 频率索引计算（用于把 800 Hz 映射到 16 Hz 栅格的频点编号）"),
+        (r"X_{\mathrm{ep}}(k)=X(k)=\{4,0,4,0\}", "年真题（第七题第 1 问）", "四点实偶序列的 DFT（用于列出偶序列的离散频谱样值）"),
+        (r"\widetilde{x}(n)=\{1+a^6,\ a+a^7,\ a^2,\ a^3,\ a^4,\ a^5\}", "第 3 问：单位圆六点取样后的 IDFT", "六点单位圆取样的 IDFT 序列（用于写出频率取样后恢复的周期时域样值）"),
+        (r"\begin{aligned}X(k)&=X_1(k)+W_8^kX_2(k),\\X\left(k+4\right)&=X_1(k)-W_8^kX_2(k),\\W_8&=e^{-j\frac{2\pi}{8}}.\end{aligned}", "年真题", "八点基 2 FFT 蝶形递推（用于由两个四点子 DFT 合成八点频谱）"),
+        (r"\begin{aligned}a[n]&=x[2n],&b[n]&=x[2n+1],&0\leq n\leq L-1.\end{aligned}", "年真题", "实序列 FFT 的偶奇抽取（用于把输入拆为偶索引和奇索引两路）"),
+        (r"\begin{aligned}c[n]&=a[n]+jb[n],\\C[k]&=\operatorname{FFT}_L\{c[n]\}=A[k]+jB[k].\end{aligned}", "年真题", "双实序列合成 FFT（用于用一次复 FFT 同时计算两路实序列频谱）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

@@ -487,6 +487,38 @@ def _formula_name(formula: str, heading: str) -> str:
         return "周期序列的多重延时相加（用于计算指定索引处的叠加输出）"
     if "y(0)=4+3+2=9" in compact and "y(1)=7+1=8" in compact:
         return "多重延时相加的样值结果（用于列出指定输出时刻的计算值）"
+    if "y(n)=x\\left((n-4)\\right)_6=2\\delta(n)+\\delta(n-1)+4\\delta(n-4)+3\\delta(n-5)" in compact:
+        return "六点循环时移的冲激表示（用于列出循环右移后的非零样值位置）"
+    if "\\cos\\left(\\frac{2\\pi}{5}k\\right)=\\frac{1}{2}\\left(W_{10}^{2k}+W_{10}^{-2k}\\right)" in compact:
+        return "余弦序列的 DFT 旋转因子表示（用于将实余弦分解为两条共轭频谱）"
+    if "y(n)=\\frac{1}{2}\\left[x\\left((n-2)\\right)_{10}+x\\left((n+2)\\right)_{10}\\right]" in compact:
+        return "十点循环双向时移平均（用于构造两个对称移位分量的组合序列）"
+    if "y(n)=\\left\\{1,\\frac{3}{2},2,3,1,\\frac{3}{2},2,\\frac{5}{2},0,\\frac{1}{2}\\right\\}" in compact:
+        return "十点循环双向时移平均的样值结果（用于列出完整一个周期的输出）"
+    if "(-1)^{N-1-n}=-(-1)^n" in compact:
+        return "偶数点 DFT 的交替符号关系（用于判定半采样频率处的抵消）"
+    if "X\\left(\\frac{N}{2}\\right)=0" in compact:
+        return "半采样频率 DFT 零点（用于给出交替符号相消后的频谱值）"
+    if "X(k)=4+e^{-j\\frac{\\pi}{2}k}+e^{-j\\pik}+e^{-j\\frac{3\\pi}{2}k}" in compact:
+        return "四点序列的 DFT 计算式（用于由时域样值求四个频谱点）"
+    if "X(0)=7" in compact and "X(1)=X(2)=X(3)=3" in compact:
+        return "四点序列的 DFT 样值（用于列出直流和其余频率点幅度）"
+    if "X_{\\mathrm{ep}}(0)=7" in compact and "X_{\\mathrm{ep}}(1)=X_{\\mathrm{ep}}(2)=X_{\\mathrm{ep}}(3)=3" in compact:
+        return "四点序列偶分量的 DFT（用于说明原序列频谱的偶对称部分）"
+    if "X_{\\mathrm{op}}(k)=0" in compact and "k=0,1,2,3" in compact:
+        return "四点序列奇分量的零频谱（用于说明该序列不含奇对称分量）"
+    if "k_0=\\frac{800}{16}=50" in compact:
+        return "DFT 频率索引计算（用于把 800 Hz 映射到 16 Hz 栅格的频点编号）"
+    if "X_{\\mathrm{ep}}(k)=X(k)=\\{4,0,4,0\\}" in compact:
+        return "四点实偶序列的 DFT（用于列出偶序列的离散频谱样值）"
+    if "\\widetilde{x}(n)=\\{1+a^6" in compact and "a^5\\}" in compact:
+        return "六点单位圆取样的 IDFT 序列（用于写出频率取样后恢复的周期时域样值）"
+    if "X(k)&=X_1(k)+W_8^kX_2(k)" in compact and "X\\left(k+4\\right)&=X_1(k)-W_8^kX_2(k)" in compact:
+        return "八点基 2 FFT 蝶形递推（用于由两个四点子 DFT 合成八点频谱）"
+    if "a[n]&=x[2n]" in compact and "b[n]&=x[2n+1]" in compact:
+        return "实序列 FFT 的偶奇抽取（用于把输入拆为偶索引和奇索引两路）"
+    if "c[n]&=a[n]+jb[n]" in compact and "C[k]&=\\operatorname{FFT}_L\\{c[n]\\}=A[k]+jB[k]" in compact:
+        return "双实序列合成 FFT（用于用一次复 FFT 同时计算两路实序列频谱）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

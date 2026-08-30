@@ -1606,3 +1606,9 @@
 - Added formula-level labels for DFS symmetry, short periodic-sequence additions, complex-sequence real/imaginary decomposition, circular shifts, sampling-record parameters and short DFT result tables.
 - Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `53 passed`.
 - Rebuilding the HTML reduces generic labels from 70 to 58. The candidate PDF remains intentionally unchanged pending residual formula audit and complete visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 18
+
+- Added formula-level labels for cyclic shifts, cosine-to-DFT factorization, short DFT symmetry results, unit-circle IDFT samples, radix-2 FFT recursions, even/odd extraction and two-real-sequence FFT packing.
+- Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `54 passed`.
+- Rebuilding the HTML reduces generic labels from 58 to 40. The candidate PDF remains intentionally unchanged pending residual formula audit and complete visual re-export.
