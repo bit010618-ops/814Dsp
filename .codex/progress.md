@@ -1530,3 +1530,8 @@
 
 - Added named labels for digital resonators, Butterworth prototypes, impulse-invariant discretization, IIR cascade decomposition and frequency-sampling design. The complete assembly/backfill/MathJax regression suite passed with `38 passed`.
 - Rebuilt HTML reduces generic formula labels from 255 to 240. The candidate PDF remains the last visually verified version; no incomplete export is published.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 5
+
+- Added named labels for minimum-phase/all-pass decomposition, zero-padded DFT context, ideal high-pass FIR, direct-DFT complexity, frequency-division multiplexing and DFT rotation factors. The full regression suite passed with `39 passed`.
+- Continue with the remaining labels before replacing the PDF; the existing candidate is still the latest visually verified artifact.

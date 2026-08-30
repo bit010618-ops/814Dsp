@@ -484,6 +484,21 @@ def test_formula_name_handles_filter_design_named_topics():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_remaining_design_and_efficiency_topics():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"H(z)=H_{\min}(z)H_{\mathrm{ap}}(z)", "逆系统与最小相位条件", "最小相位与全通因子的分解（用于把系统分离为可逆最小相位部分和全通部分）"),
+        (r"X_N(k)=\sum_{n=0}^{N-1}x(n)W_N^{nk}", "零填充的作用", "DFT 旋转因子关系（用于统一表示 DFT 中的复指数基函数）"),
+        (r"h_{\mathrm{HP}}(n)=\delta(n)-h_{\mathrm{LP}}(n)", "高通、带通与带阻的理想单位抽样响应", "理想高通 FIR 的单位抽样响应（用于由低通原型构造高通滤波器）"),
+        (r"C_{\mathrm{DFT}}=N^2", "规模为何会成为问题", "直接 DFT 的计算量（用于说明长序列频谱计算的复杂度增长）"),
+        (r"x(n)=\sum_{m=1}^{M}x_m(n)", "频分复用", "频分复用信号的叠加表达式（用于表示多个频带信号在同一通道中的合成）"),
+        (r"W_N=e^{-j2\pi/N}", "例题：512 点 DFT 的计算时间", "DFT 旋转因子关系（用于统一表示 DFT 中的复指数基函数）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
