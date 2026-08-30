@@ -1535,3 +1535,8 @@
 
 - Added named labels for minimum-phase/all-pass decomposition, zero-padded DFT context, ideal high-pass FIR, direct-DFT complexity, frequency-division multiplexing and DFT rotation factors. The full regression suite passed with `39 passed`.
 - Continue with the remaining labels before replacing the PDF; the existing candidate is still the latest visually verified artifact.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 6
+
+- Added concrete labels for rational-function ROC cases, window spectral leakage, first-order filters, overlap-add reconstruction, DFT duality and z-transform context. Full regression suite passed with `40 passed`.
+- Rebuilt HTML reduces generic formula labels from 230 to 204. Candidate PDF remains unchanged pending the remaining formula-label audit and full visual re-export.

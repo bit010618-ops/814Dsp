@@ -499,6 +499,21 @@ def test_formula_name_handles_remaining_design_and_efficiency_topics():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_remaining_named_body_topics():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"|z|<|p_1|,\quad |p_1|<|z|<|p_2|", "给定极点时 ROC 的可能性", "有理 z 函数的候选收敛域（用于由极点模值判断左边、双边或右边序列）"),
+        (r"W(e^{j\omega})=\sum_{n=0}^{N-1}w(n)e^{-j\omega n}", "观察实例：窗口长度与泄漏", "离散时间傅里叶变换定义（用于把离散序列变换到连续频率域）"),
+        (r"H(z)=\frac{1-a}{1-az^{-1}}", "简单一阶低通与高通", "一阶低通滤波器的系统函数（用于通过极点位置控制低通平滑程度）"),
+        (r"y(n)=\sum_i y_i(n-iM)", "例题：重叠相加法验证", "重叠相加法的输出合成式（用于把分块卷积的重叠样本相加为连续输出）"),
+        (r"x(n)\longleftrightarrow X(k),\qquad X(n)\longleftrightarrow Nx((-k)_N)", "对偶性", "DFT 的对偶性质（用于交换时域序列和频域序列的角色）"),
+        (r"X(z)=\sum_nx(n)z^{-n}", "其他常用性质", "z 变换定义（用于把离散序列表示为 z 域函数）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 
