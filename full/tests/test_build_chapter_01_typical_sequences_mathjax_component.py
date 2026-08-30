@@ -6,7 +6,7 @@ def test_typical_sequences_component_uses_mathjax_and_real_svg(tmp_path: Path):
 
     page = write_html(tmp_path / "typical.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in page
+    assert "tex-mml-chtml.js" in page
     assert r"\begin{cases}" in page
     assert r"R_N(n)=u(n)-u(n-N)" in page
     assert r"x(n)=a^n u(n)" in page

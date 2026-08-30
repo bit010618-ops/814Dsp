@@ -6,7 +6,7 @@ def test_sampling_engineering_uses_mathjax_and_vector_signal_figures(tmp_path: P
 
     html = write_html(tmp_path / "sampling-engineering.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert r"f_h\leq\frac{f_s}{2}" in html
     assert r"f_0=f_h-\frac{\Delta f_0}{2}" in html
     assert r"f_s=2\Delta f_0" in html

@@ -5,7 +5,7 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     from full.tools import build_chapter_02_mathjax_handout as handout
 
     html = handout.write_html(tmp_path / "chapter-two.html").read_text(encoding="utf-8")
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert "page-break-after:always" not in html
     assert "z 变换的基本概念" in html
     assert "离散时间信号傅里叶变换" in html
@@ -80,7 +80,7 @@ def test_chapter_two_mathjax_handout_uses_one_continuous_document(tmp_path: Path
     assert r"x[n]=u[n]-u[n-7]" in html
     assert r"\left|X(e^{j\omega})\right|=\left|\frac{\sin\left(\frac{7\omega}{2}\right)}{\sin\left(\frac{\omega}{2}\right)}\right|" in html
     assert 'aria-label="2025 年第四题的 DTFT 幅度谱"' in html
-    assert "八、已知某因果稳定的 LSI 系统" in html
+    assert r"八、已知某因果稳定的 \(LSI\) 系统" in html
     assert r"h_2[n]=(-1)^nh_1[n]" in html
     assert "七、离散因果 LTI 系统的系统函数" in html
     assert r"H(z)=\frac{2}{1-2z^{-1}}=\frac{2z}{z-2}" in html

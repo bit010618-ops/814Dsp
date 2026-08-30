@@ -7,7 +7,7 @@ def test_selected_training_answers_use_one_mathjax_document(tmp_path: Path):
     from full.tools.build_chapter_01_training_answers_mathjax_component import write_html
 
     html = write_html(tmp_path / "answers.html").read_text(encoding="utf-8")
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert "page-break-after:always" in html
     assert r"\frac{Y(z)}{X(z)}" in html
     assert r"\frac{0.35+0.175z^{-1}-0.03z^{-2}}{1-0.4z^{-2}}" in html

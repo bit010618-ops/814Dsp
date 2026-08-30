@@ -14,7 +14,7 @@ def test_difference_equation_component_uses_mathjax_and_a_real_svg_structure_dia
     ).read_text(encoding="utf-8")
 
     html = write_html(tmp_path / "difference-equation.html").read_text(encoding="utf-8")
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert r"\sum_{k=0}^{N}a_k y(n-k)" in html
     assert r"h(n)&=a h(n-1)=a^n u(n)" in html
     assert r"h(n)&=-a^n u(-n-1)" in html

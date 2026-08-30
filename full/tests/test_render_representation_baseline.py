@@ -9,7 +9,7 @@ def test_baseline_page_uses_one_mathjax_cases_formula_and_data_driven_stem_svg(t
     output = write_html(tmp_path / "representation.html")
     page = output.read_text(encoding="utf-8")
 
-    assert "mathjax@3" in page
+    assert "tex-mml-chtml.js" in page
     assert r"\begin{cases}" in page
     assert r"\end{cases}" in page
     assert "data-index=\"0\"" in page

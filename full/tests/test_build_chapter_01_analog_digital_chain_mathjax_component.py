@@ -6,7 +6,7 @@ def test_analog_digital_chain_uses_mathjax_and_structured_vector_diagrams(tmp_pa
 
     html = write_html(tmp_path / "analog-digital-chain.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert r"x(n)=x_a(nT)" in html
     assert r"q(n)=Q\!\left[x(n)\right]" in html
     assert r"f_s=\frac{1}{T}" in html

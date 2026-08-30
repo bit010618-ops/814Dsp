@@ -6,7 +6,7 @@ def test_operations_component_uses_mathjax_and_data_driven_svg(tmp_path: Path):
 
     page = write_html(tmp_path / "operations.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in page
+    assert "tex-mml-chtml.js" in page
     assert r"y(n)=x_1(n)+x_2(n)" in page
     assert r"y(n)=x(-n)" in page
     assert r"\sum_{k=-\infty}^{n}x(k)" in page

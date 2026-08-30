@@ -6,7 +6,7 @@ def test_training_component_uses_mathjax_and_standard_svg_diagrams(tmp_path: Pat
 
     html = write_html(tmp_path / "training.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert "page-break-after:always" in html
     assert r"T_{\max}" in html
     assert "training_system_svg" in html

@@ -26,6 +26,14 @@ def test_formula_names_state_the_formula_name_and_its_reader_facing_use():
     assert _formula_name(r"\[X^*(e^{j\omega})=X(e^{-j\omega})\]", "实序列性") == (
         "实序列频谱的共轭对称关系（用于由正频率部分判断负频率部分）"
     )
+    assert _formula_name(
+        r"\begin{aligned} y(n)&=x(n)*h(n),\\ Y(e^{j\omega})&=H(e^{j\omega})X(e^{j\omega}). \end{aligned}",
+        "IIR 数字滤波器的基本结构",
+    ) == "离散 LSI 系统的卷积与频域乘积关系（用于由单位脉冲响应或频率响应求输出）"
+    assert _formula_name(
+        r"\alpha_p=-20\log_{10}|H(e^{j\omega_p})|,\qquad \alpha_s=-20\log_{10}|H(e^{j\omega_s})|.",
+        "模拟低通滤波器设计",
+    ) == "通带最大衰减与阻带最小衰减定义（用于把幅度设计指标转换为分贝约束）"
 
 
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
@@ -84,6 +92,7 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
 
 def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_end(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
+    from full.tools.build_full_handout import write_html as write_full_handout
 
     html = write_html(tmp_path / "dsp-main-body.html").read_text(encoding="utf-8")
 
@@ -97,6 +106,11 @@ def test_full_main_body_places_a_deduplicated_formula_summary_at_each_chapter_en
     assert "x(n)=x_a(nT)" in summaries[0]
     assert "H(z)" in summaries[1]
     assert r"L\geq N+M-1" in summaries[3]
+    assert "离散 LSI 系统的卷积与频域乘积关系" in summaries[4]
+    assert "通带最大衰减与阻带最小衰减定义" in summaries[5]
+    assert "滤波器设计关系（用于由设计指标求滤波器参数或响应）" not in html
+    full_html = write_full_handout(tmp_path / "dsp-full-handout.html").read_text(encoding="utf-8")
+    assert "滤波器设计关系（用于由设计指标求滤波器参数或响应）" not in full_html
 
 
 def test_formula_summary_flows_into_preceding_page_when_space_remains(tmp_path: Path):

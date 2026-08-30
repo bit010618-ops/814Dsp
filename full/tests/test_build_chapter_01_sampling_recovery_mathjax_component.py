@@ -6,7 +6,7 @@ def test_sampling_recovery_uses_mathjax_and_data_driven_figures(tmp_path: Path):
 
     html = write_html(tmp_path / "sampling-recovery.html").read_text(encoding="utf-8")
 
-    assert "mathjax@3" in html
+    assert "tex-mml-chtml.js" in html
     assert r"H_r(j\Omega)=" in html
     assert r"T, & \left|\Omega\right|\leq\frac{\Omega_s}{2}" in html
     assert r"h_r(t)=\frac{T\sin" in html

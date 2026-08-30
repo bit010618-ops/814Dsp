@@ -138,6 +138,60 @@ def _with_chapter_title(title: str, body: str) -> str:
 def _formula_name(formula: str, heading: str) -> str:
     """Return a reader-facing name that says what a core formula is used for."""
     compact = re.sub(r"\s+", "", formula).replace(r"\geq", r"\ge").replace(r"\leq", r"\le")
+    if ("y(n)=x(n)*h(n)" in compact or "y(n)&=x(n)*h(n)" in compact) and "Y" in compact and "X" in compact and "H" in compact:
+        return "离散 LSI 系统的卷积与频域乘积关系（用于由单位脉冲响应或频率响应求输出）"
+    if "\\alpha_p=-20\\log_{10}" in compact and "\\alpha_s=-20\\log_{10}" in compact:
+        return "通带最大衰减与阻带最小衰减定义（用于把幅度设计指标转换为分贝约束）"
+    if "\\left|H_{\\mathrm{ap}}" in compact:
+        return "全通滤波器的恒幅条件（用于说明全通系统只改变相位和群延迟）"
+    if "H_{\\mathrm{ap}}(z)=A" in compact:
+        return "稳定全通滤波器的系统函数（用于由极点构造具有共轭倒易零点的相位校正器）"
+    if "H(z)=A\\prod_{r=1}^{R}" in compact:
+        return "IIR 滤波器的二阶节级联形式（用于把高阶递归滤波器实现为多个二阶节）"
+    if "v_1(n)" in compact and "v_2(n)" in compact and "b_0x(n)" in compact:
+        return "二阶直接型 II 的状态递推（用于以共享延时链实现 IIR 滤波器）"
+    if "H(z)=H_1(z)+H_2(z)" in compact and "0.6203" in compact:
+        return "双音并联谐振器的系统函数（用于把两组目标频率的二阶节并联求和）"
+    if "L=M+N-1" in compact:
+        return "线性卷积的输出长度（用于确定有限长输入与滤波器卷积后的样本数）"
+    if "\\left|H_a(j\\Omega)\\right|^2" in compact:
+        return "巴特沃斯低通原型的幅度平方响应（用于由截止频率和阶数确定平坦通带特性）"
+    if ("H_a(s)H_a(-s)" in compact or "H_a(s)H_a(-s)&=" in compact) and ("s_k=" in compact or "s_k&=" in compact):
+        return "巴特沃斯低通原型的极点与系统函数（用于由阶数和截止频率构造稳定模拟滤波器）"
+    if ("p=\\frac{s}{\\Omega_c}" in compact or "p&=\\frac{s}{\\Omega_c}" in compact) and ("H(p)=" in compact or "H(p)&=" in compact):
+        return "归一化巴特沃斯低通原型（用于把截止频率缩放为单位截止频率）"
+    if "N\\ge" in compact and "10^{\\alpha_s/10}" in compact:
+        return "巴特沃斯滤波器的最小阶数（用于由通带和阻带指标确定所需阶数）"
+    if "h(n)=Th_a(nT)" in compact and "H_a(s)=H(z)" in compact:
+        return "脉冲响应不变法的离散化关系（用于由模拟冲激响应构造数字 IIR 滤波器）"
+    if "\\omega=\\OmegaT." in compact:
+        return "脉冲响应不变法的频率对应（用于把模拟频率按采样周期换算为数字频率）"
+    if "s=\\frac{2}{T}\\frac{1-z^{-1}}{1+z^{-1}}" in compact:
+        return "双线性变换的 s-z 映射（用于把稳定模拟系统映射为无混叠数字系统）"
+    if "\\Omega=\\frac{2}{T}\\tan\\frac{\\omega}{2}" in compact:
+        return "双线性变换的频率映射关系（用于在模拟和数字频率之间建立非线性对应）"
+    if "s=C\\frac{1-z^{-1}}{1+z^{-1}}" in compact:
+        return "带比例常数的双线性变换（用于按指定频率缩放模拟原型）"
+    if "C=\\frac{\\Omega_0}{\\tan(\\omega_0/2)}" in compact:
+        return "双线性变换的预畸变常数（用于使关键数字频率精确对应模拟频率）"
+    if "h(n)=h_d(n)w(n)" in compact:
+        return "窗函数法 FIR 系数（用于以有限长度窗截断理想冲激响应）"
+    if "w_{\\mathrm{tri}}(n)" in compact:
+        return "三角窗函数定义（用于对有限长冲激响应加权以降低旁瓣）"
+    if "w_{\\mathrm{Han}}(n)" in compact and "w_{\\mathrm{Ham}}(n)" in compact and "w_{\\mathrm{Blk}}(n)" in compact:
+        return "汉宁、海明和布莱克曼窗定义（用于比较不同窗函数的主瓣和旁瓣特性）"
+    if "\\omega_c-\\frac{2\\pi}{N}" in compact and "\\omega_c+\\frac{2\\pi}{N}" in compact:
+        return "矩形窗法的过渡带范围（用于估计截断长度对截止频率附近响应的影响）"
+    if "E(\\omega)=W(\\omega)" in compact or "E(\\omega)&=W(\\omega)" in compact:
+        return "等波纹逼近误差准则（用于在指定频带内最小化最大加权误差）"
+    if ("\\delta_p=" in compact or "\\delta_p&=" in compact) and ("\\delta_s=" in compact or "\\delta_s&=" in compact):
+        return "通带纹波与阻带衰减换算（用于把分贝指标转换为线性幅度误差）"
+    if "h_{\\mathrm{hp}}(n)" in compact and "h_{\\mathrm{bp}}(n)" in compact and "h_{\\mathrm{bs}}(n)" in compact:
+        return "理想高通、带通和带阻冲激响应（用于由截止频率构造对应 FIR 目标响应）"
+    if "z_k=e^{j(2k+1)\\pi/4}" in compact and "p_k=0.3" in compact:
+        return "四阶陷波器的零极点位置（用于把零点置于干扰频率并以极点半径控制带宽）"
+    if "H_{\\mathrm{BP}}" in compact and "H_{\\mathrm{BS}}" in compact:
+        return "理想带通与带阻滤波器的幅频响应（用于明确目标通带和抑制频带）"
     if "x(n)=x_a(nT)" in compact:
         return "连续信号的离散采样关系（用于把连续时间信号转为离散序列）"
     if "g(0)=1" in compact and "g(kT)=0" in compact and "k\\in\\mathbb{Z}" in compact:
