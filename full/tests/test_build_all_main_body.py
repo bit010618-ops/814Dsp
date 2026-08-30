@@ -607,6 +607,27 @@ def test_formula_name_handles_first_chapter_system_analysis_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_appendix_and_past_paper_formula_purposes():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"f_s=\frac{1}{T},\qquad \Omega_s=\frac{2\pi}{T}", "附录 D：考前高频公式与检查表", "采样率与采样角频率定义（用于由采样周期换算频率参数）"),
+        (r"Y(z)=H(z)X(z),\qquad H\left(e^{j\omega}\right)=H(z)\big|_{z=e^{j\omega}", "附录 D：考前高频公式与检查表", "LSI 系统的 z 域输入输出关系（用于由系统函数求输出及单位圆频率响应）"),
+        (r"\begin{aligned}a[n]&=0.25x[n]+0.4b[n],\\c[n]&=a[n-1]+0.5x[n],\\b[n]&=c[n-1],\\y[n]&=0.2x[n]+0.3c[n]+0.2b[n].\end{aligned}", "2019 年真题：离散系统结构分析", "离散系统的状态递推方程（用于由输入逐样本计算内部状态和输出）"),
+        (r"y[n]-0.4y[n-2]=0.35x[n]+0.175x[n-1]-0.03x[n-2]", "2019 年真题：离散系统结构分析", "离散系统的等效差分方程（用于由结构消去状态变量后计算输出）"),
+        (r"s[n]=\left[\frac{33}{40}-\frac{19+6\sqrt{10}}{80}\left(\frac{\sqrt{10}}{5}\right)^n", "2019 年真题：离散系统结构分析", "离散系统的单位冲激响应（用于写出由极点展开得到的因果响应）"),
+        (r"f_{s,\min}=2f_2", "2020 年真题：组合带限信号的抽样频率", "组合带限信号的最低采样率（用于按最高频率确定无混叠采样下限）"),
+        (r"X(j\Omega)=\frac{1}{2}\left[G\bigl(j(\Omega-1000\pi)\bigr)+G\bigl(j(\Omega+1000\pi)\bigr)\right]", "2021 年真题：带通信号的时域抽样", "余弦调制后的频谱平移关系（用于确定带通信号的正负频带位置）"),
+        (r"\Omega_s\geq2\left(1000\pi+400\right),\qquad f_s\geq1000+\frac{400}{\pi}\ \mathrm{Hz}", "2021 年真题：带通信号的时域抽样", "带通信号的奈奎斯特采样下限（用于按最高边带频率避免混叠）"),
+        (r"\max\left(a_1+b_1,a_2+b_2\right)\ne\max\left(a_1,a_2\right)+\max\left(b_1,b_2\right)", "2022 年真题：系统性质判定", "最大值系统的非线性反例（用于证明最大值运算不满足可加性）"),
+        (r"\begin{aligned}\mathcal{T}\{x[n-n_0]\}&=n x[n-n_0-1]+x[n-n_0-2],\\y[n-n_0]&=(n-n_0)x[n-n_0-1]+x[n-n_0-2].\end{aligned}", "2023 年真题：离散系统性质判定", "时变系统的时移比较（用于证明输出时移不等于输入时移后的响应）"),
+        (r"\begin{aligned}x_e[n]&=\frac{1}{2}\left(x[n]+x[-n]\right)=\frac{1}{2}\left(R_6[n]+R_6[-n]\right),\\x_o[n]&=\frac{1}{2}\left(x[n]-x[-n]\right)=\frac{1}{2}\left(R_6[n]-R_6[-n]\right).\end{aligned}", "2024 年真题：有限序列的偶、奇分解", "有限序列的偶奇分解（用于把序列拆为偶对称和奇对称分量）"),
+        (r"x_o[n]R_8[n]=\begin{cases}\dfrac{1}{2},&1\leq n\leq5,\\0,&\text{其他 }n.\end{cases}", "2024 年真题：有限序列的偶、奇分解", "奇分量的有限支撑表达（用于给出截取后各非零样值范围）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

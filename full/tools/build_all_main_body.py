@@ -313,6 +313,30 @@ def _formula_name(formula: str, heading: str) -> str:
         return "采样频率不足的混叠条件（用于判定频谱副本将发生重叠）"
     if "\\frac{\\Omega}{\\Omega_s}=\\frac{f}{f_s}=\\frac{\\omega}{2\\pi}" in compact:
         return "频率坐标的归一化换算关系（用于统一模拟角频率、赫兹和数字角频率）"
+    if "f_s=\\frac{1}{T}" in compact and "\\Omega_s=\\frac{2\\pi}{T}" in compact:
+        return "采样率与采样角频率定义（用于由采样周期换算频率参数）"
+    if "Y(z)=H(z)X(z)" in compact and "H\\left(e^{j\\omega}\\right)=H(z)" in compact:
+        return "LSI 系统的 z 域输入输出关系（用于由系统函数求输出及单位圆频率响应）"
+    if "a[n]&=0.25x[n]+0.4b[n]" in compact and "y[n]&=0.2x[n]+0.3c[n]+0.2b[n]" in compact:
+        return "离散系统的状态递推方程（用于由输入逐样本计算内部状态和输出）"
+    if "y[n]-0.4y[n-2]=0.35x[n]+0.175x[n-1]-0.03x[n-2]" in compact:
+        return "离散系统的等效差分方程（用于由结构消去状态变量后计算输出）"
+    if "s[n]=\\left[\\frac{33}{40}" in compact and "\\frac{\\sqrt{10}}{5}" in compact:
+        return "离散系统的单位冲激响应（用于写出由极点展开得到的因果响应）"
+    if "f_{s,\\min}=2f_2" in compact:
+        return "组合带限信号的最低采样率（用于按最高频率确定无混叠采样下限）"
+    if "X(j\\Omega)=\\frac{1}{2}\\left[G\\bigl(j(\\Omega-1000\\pi)\\bigr)" in compact:
+        return "余弦调制后的频谱平移关系（用于确定带通信号的正负频带位置）"
+    if "\\Omega_s\\ge2\\left(1000\\pi+400\\right)" in compact and "f_s\\ge1000+\\frac{400}{\\pi}" in compact:
+        return "带通信号的奈奎斯特采样下限（用于按最高边带频率避免混叠）"
+    if "\\max\\left(a_1+b_1,a_2+b_2\\right)" in compact and "\\max\\left(a_1,a_2\\right)+\\max\\left(b_1,b_2\\right)" in compact:
+        return "最大值系统的非线性反例（用于证明最大值运算不满足可加性）"
+    if "\\mathcal{T}\\{x[n-n_0]\\}" in compact and "y[n-n_0]&=(n-n_0)x[n-n_0-1]" in compact:
+        return "时变系统的时移比较（用于证明输出时移不等于输入时移后的响应）"
+    if "x_e[n]&=\\frac{1}{2}\\left(x[n]+x[-n]\\right)" in compact and "x_o[n]&=\\frac{1}{2}\\left(x[n]-x[-n]\\right)" in compact:
+        return "有限序列的偶奇分解（用于把序列拆为偶对称和奇对称分量）"
+    if "x_o[n]R_8[n]=\\begin{cases}" in compact and "1\\len\\le5" in compact:
+        return "奇分量的有限支撑表达（用于给出截取后各非零样值范围）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

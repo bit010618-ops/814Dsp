@@ -1564,3 +1564,9 @@
 - Added structure-specific names for the Chapter 1 noninteger-frequency period example, AM frequency/period parameters, scale-system time-variance comparison, finite-length convolution support, causal input range, first-order causal impulse response, undersampling alias condition and frequency-coordinate normalization.
 - The test-first batch passed after the minimal formula-name rules were added. Full body assembly, answer-reference backfill and MathJax suite passed with `46 passed`.
 - Rebuilding the HTML reduces generic `计算表达式` labels from 154 to 144. Remaining labels are now concentrated in Appendix D and year-specific past-paper solutions; the verified candidate PDF remains unchanged pending the complete audit and visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 11
+
+- Added actual names and purposes for Appendix D sampling/system-function identities, the state-space and difference-equation steps of the discrete-system paper, composite-signal sampling, modulation spectral shifts, system-property counterexamples and finite-sequence even/odd decomposition.
+- The new cases were added test-first; full body assembly, answer-reference backfill and MathJax suite passed with `47 passed`.
+- Rebuilding the HTML reduces generic labels from 144 to 132. The residual queue now consists of more specific past-paper derivations; the candidate PDF remains intentionally unchanged pending a complete source audit and full visual re-export.
