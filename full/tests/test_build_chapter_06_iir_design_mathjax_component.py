@@ -26,6 +26,12 @@ def test_chapter_six_component_covers_the_five_source_sections(tmp_path: Path):
     assert r"C=\frac{\Omega_0}{\tan(\omega_0/2)}" in html
     assert r"s=\frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}}" in html
     assert "IIR 数字滤波器的设计路线" in html
+    assert "维纳与卡尔曼：从历史观测到递推估计" in html
+    assert "1935—1936 年" in html
+    assert "维纳滤波需要利用完整的历史观测数据" in html
+    assert "卡尔曼递推滤波" in html
+    assert "可控性与可观性" in html
+    assert "1963 年" in html
     assert 'class="iir-route-svg"' in html
     assert "脉冲响应不变法的时域采样路线" in html
     assert "双线性变换的平面映射" in html
