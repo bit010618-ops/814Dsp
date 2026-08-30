@@ -1511,3 +1511,7 @@
 - Root cause: the formula-name function was reaching its final heading-based fallback for genuine formula blocks. Added test-first coverage for actual Chapter 1 formula strings and replaced six such fallbacks with concrete formula names and purposes: discrete-sinusoid period solution, time-invariance shift test, convolution output sequence, two-tap echo relation, D/A zero-order-hold flow, and sampling-alias equivalence.
 - Full assembly, answer-reference backfill and MathJax regression suite passed with `35 passed`. Rebuilding the HTML reduced generic formula labels from 314 to 296. This is source-level progress only: the candidate PDF remains the last verified version until every remaining generic label is audited, exported and visually checked.
 - Next action: continue the structure-first formula-label audit in batches, then rebuild, backfill, render and inspect the complete candidate PDF before replacing it.
+
+## 2026-08-30 GitHub sync
+
+- Source-level fallback-audit milestone committed as `8d26dba` and successfully pushed to `origin/main` (`7be0e02..8d26dba`). The current candidate PDF was intentionally not changed because the remaining 296 generic labels still require audit.
