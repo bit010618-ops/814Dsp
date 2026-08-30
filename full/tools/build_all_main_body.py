@@ -242,8 +242,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "离散时间尺度变换（用于表示按两倍索引抽取的序列）"
     if "L_y=L_x+L_h-1" in compact:
         return "有限长序列卷积的长度关系（用于由输入和冲激响应长度确定输出长度）"
-    if "|x(n)|\\leM<\\infty\\Longrightarrow|y(n)|\\leP<\\infty" in compact:
-        return "BIBO 稳定性的定义（用于判断有界输入是否产生有界输出）"
+    if ("|x(n)|" in compact or "\\left|x(n)\\right|" in compact) and "\\Longrightarrow" in compact and ("|y(n)|" in compact or "\\left|y(n)\\right|" in compact):
+        return "BIBO 稳定性定义（用于检验任意有界输入是否始终产生有界输出）"
     if "\\Omega_h\\le\\frac{\\Omega_s}{2}" in compact:
         return "奈奎斯特无混叠采样条件（用于由信号最高角频率限制采样频率）"
     if "\\left.\\sin(100\\pit)\\right|_{t=nT}=\\sin(0.1\\pin)" in compact:
@@ -559,8 +559,11 @@ def _formula_name(formula: str, heading: str) -> str:
         return "FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）"
     if "h(n)=0" in compact and "n<0" in compact:
         return "因果系统的单位冲激响应条件（用于判断输出是否只依赖当前和过去输入）"
-    if "\\sum" in compact and "|h(n)|" in compact and "\\infty" in compact:
-        return "BIBO 稳定性判据（用于判断有界输入是否产生有界输出）"
+    has_abs_impulse = "|h(n)|" in compact or "\\left|h(n)\\right|" in compact
+    if "\\sum" in compact and has_abs_impulse and "=1<\\infty" in compact:
+        return "绝对可和的稳定性验证（用于以冲激响应求和结果证明系统 BIBO 稳定）"
+    if "\\sum" in compact and has_abs_impulse and "\\infty" in compact:
+        return "离散 LSI 系统的绝对可和条件（用于由单位冲激响应判定 BIBO 稳定性）"
     if "y(n)" in compact and ("y(n-1)" in compact or "y(n-2)" in compact):
         return "线性常系数差分方程（用于由输入和历史输出递推计算当前输出）"
     if "X[k]=" in compact and "W_N" in compact and "\\sum" in compact:

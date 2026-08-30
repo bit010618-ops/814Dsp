@@ -1618,3 +1618,9 @@
 - Replaced the final heading-derived fallback with structure-first labels for cascade system functions, overlap-save length, Butterworth magnitude response, DFT zeroes, bilinear mappings, impulse-invariant pole/residue mappings, cascade impulse-response convolution, linear-phase FIR delay, and narrowband-notch parameters. Broad structural fallbacks are deliberately applied only after a specific topic label so that they do not override established chapter terminology.
 - Test-first coverage was added for the formerly generic forms. Full assembly and the formula/backfill/MathJax regression suite passed with `55 passed`.
 - Rebuilt full-book HTML now has `GENERIC_CALCULATION_LABELS=0` and `STRUCTURED_FALLBACK_LABELS=0`. The candidate PDF is still intentionally unchanged; the next action is the complete static rendering, answer-page backfill, export, and desktop/mobile visual audit before replacement.
+
+# 2026-08-30 Formula-label export and visual audit
+
+- A visual review of the first complete formula-audited PDF caught three incorrectly heading-derived BIBO labels on page 120. They were corrected to the BIBO definition, the discrete-LSI absolute-summability condition, and the summability proof; full regression passed with `56 passed`.
+- Rebuilt the complete static MathJax PDF through a first pass, answer-page backfill, and final pass. The final file is A4, 464 pages, unencrypted; HTML audit remains `GENERIC_CALCULATION_LABELS=0` and `STRUCTURED_FALLBACK_LABELS=0`.
+- Rendered visual checks of opening content, sampling recovery, the corrected BIBO page, IIR structure page, answer-navigation tables, and final appendix found no formula clipping, black blocks, page-number loss, or table overflow. The verified export replaced `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`.
