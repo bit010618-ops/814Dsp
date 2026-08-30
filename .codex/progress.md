@@ -1570,3 +1570,9 @@
 - Added actual names and purposes for Appendix D sampling/system-function identities, the state-space and difference-equation steps of the discrete-system paper, composite-signal sampling, modulation spectral shifts, system-property counterexamples and finite-sequence even/odd decomposition.
 - The new cases were added test-first; full body assembly, answer-reference backfill and MathJax suite passed with `47 passed`.
 - Rebuilding the HTML reduces generic labels from 144 to 132. The residual queue now consists of more specific past-paper derivations; the candidate PDF remains intentionally unchanged pending a complete source audit and full visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 12
+
+- Added formula-level names and purposes for the A/D–digital-low-pass–D/A spectrum chain, FIR inverse, coherent demodulation product/gain/passband condition, FIR frequency and magnitude responses, alternating modulation, and ROC-specific inverse z transforms.
+- Test-first coverage passed; full body assembly, answer-reference backfill and MathJax suite passed with `48 passed`.
+- Rebuilding the HTML reduces generic labels from 132 to 121. The residual queue is now dominated by IIR/ROC and feedback-structure past-paper derivations; the candidate PDF remains intentionally unchanged pending complete audit and visual re-export.

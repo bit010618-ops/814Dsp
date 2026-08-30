@@ -628,6 +628,27 @@ def test_formula_name_handles_appendix_and_past_paper_formula_purposes():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_sampling_modulation_and_roc_paper_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"X(jf)=\begin{cases}1-\left|f\right|/(1\,\mathrm{kHz}),&\left|f\right|\leq1\,\mathrm{kHz},\\0,&\text{其他 }f.\end{cases}", "2018 年真题：A/D、数字低通与 D/A 串联", "输入连续信号的三角形频谱（用于给出模数转换前的带限频谱）"),
+        (r"Y_a(jf)=\begin{cases}1-\left|f\right|/(1\,\mathrm{kHz}),&\left|f\right|\leq0.5\,\mathrm{kHz},\\0,&\text{其他 }f.\end{cases}", "2018 年真题：A/D、数字低通与 D/A 串联", "A/D—低通—D/A 链的重构频谱（用于给出低通后保留的基带范围）"),
+        (r"x_0[n]=\delta[n]-a\delta[n-1]", "2018 年真题：离散系统可逆性", "一阶 FIR 系统的逆系统冲激响应（用于构造消除相邻样值反馈的逆滤波器）"),
+        (r"y(n)\cos(\omega_cn+\theta_c)=\frac{\cos\theta_c}{2}x(n)+\frac12x(n)\cos(2\omega_cn+\theta_c)", "2019 年真题：调制、解调与恢复条件", "相干解调后的乘积展开（用于分离基带项和两倍载波高频项）"),
+        (r"G=\frac{2}{\cos\theta_c}", "2019 年真题：调制、解调与恢复条件", "相干解调的增益补偿（用于抵消相位失配造成的基带幅度缩放）"),
+        (r"\omega_0<\omega_{cp}<\min\!\left\{2\omega_c-\omega_0,\;2\pi-2\omega_c-\omega_0\right\}", "2019 年真题：调制、解调与恢复条件", "相干解调低通截止频率条件（用于保留基带并抑制高频调制项）"),
+        (r"h_1(n)=\frac14[\delta(n)-\delta(n-1)+\delta(n+2)-\delta(n-3)]", "2020 年真题：频响、幅相特性与频移", "四抽头 FIR 的单位冲激响应（用于由抽头系数求频率响应）"),
+        (r"H_1(e^{j\omega})=\frac14\left(1-e^{-j\omega}+e^{j2\omega}-e^{-j3\omega}\right)", "2020 年真题：频响、幅相特性与频移", "四抽头 FIR 的频率响应分解（用于识别幅度因子和线性相位项）"),
+        (r"|H_1(e^{j\omega})|=\left|\sin\!\left(\frac{3\omega}{2}\right)\cos\omega\right|", "2020 年真题：频响、幅相特性与频移", "四抽头 FIR 的幅频响应（用于确定零点频率和通阻带变化）"),
+        (r"h_2(n)=(-1)^nh_1(n)=\frac14[\delta(n)+\delta(n-1)+\delta(n+2)+\delta(n-3)]", "2020 年真题：频响、幅相特性与频移", "FIR 冲激响应的交替调制（用于由时域变号得到频域 π 平移）"),
+        (r"F(z)=\frac{8}{1-z^{-1}}-\frac{4}{1-\frac12z^{-1}}-\frac{4}{\left(1-\frac12z^{-1}\right)^2}", "2021 年真题：指定 ROC 的反 z 变换", "有理 z 函数的部分分式展开（用于按各极点项和 ROC 求反变换）"),
+        (r"f(n)=-8u(-n-1)-4\left(\frac12\right)^nu(n)-4(n+1)\left(\frac12\right)^nu(n)", "2021 年真题：指定 ROC 的反 z 变换", "指定 ROC 下的反 z 变换结果（用于组合左边和右边序列恢复时域信号）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

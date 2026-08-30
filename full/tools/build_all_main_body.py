@@ -337,6 +337,30 @@ def _formula_name(formula: str, heading: str) -> str:
         return "有限序列的偶奇分解（用于把序列拆为偶对称和奇对称分量）"
     if "x_o[n]R_8[n]=\\begin{cases}" in compact and "1\\len\\le5" in compact:
         return "奇分量的有限支撑表达（用于给出截取后各非零样值范围）"
+    if "X(jf)=\\begin{cases}" in compact and "1-\\left|f\\right|/(1\\,\\mathrm{kHz})" in compact:
+        return "输入连续信号的三角形频谱（用于给出模数转换前的带限频谱）"
+    if "Y_a(jf)=\\begin{cases}" in compact and "0.5\\,\\mathrm{kHz}" in compact:
+        return "A/D—低通—D/A 链的重构频谱（用于给出低通后保留的基带范围）"
+    if "x_0[n]=\\delta[n]-a\\delta[n-1]" in compact:
+        return "一阶 FIR 系统的逆系统冲激响应（用于构造消除相邻样值反馈的逆滤波器）"
+    if "y(n)\\cos(\\omega_cn+\\theta_c)" in compact and "\\frac{\\cos\\theta_c}{2}x(n)" in compact:
+        return "相干解调后的乘积展开（用于分离基带项和两倍载波高频项）"
+    if "G=\\frac{2}{\\cos\\theta_c}" in compact:
+        return "相干解调的增益补偿（用于抵消相位失配造成的基带幅度缩放）"
+    if "\\omega_0<\\omega_{cp}<\\min" in compact and "2\\omega_c-\\omega_0" in compact:
+        return "相干解调低通截止频率条件（用于保留基带并抑制高频调制项）"
+    if "h_1(n)=\\frac14[\\delta(n)-\\delta(n-1)+\\delta(n+2)-\\delta(n-3)]" in compact:
+        return "四抽头 FIR 的单位冲激响应（用于由抽头系数求频率响应）"
+    if "H_1(e^{j\\omega})=\\frac14\\left(1-e^{-j\\omega}+e^{j2\\omega}-e^{-j3\\omega}\\right)" in compact:
+        return "四抽头 FIR 的频率响应分解（用于识别幅度因子和线性相位项）"
+    if "|H_1(e^{j\\omega})|=\\left|\\sin\\!\\left(\\frac{3\\omega}{2}\\right)\\cos\\omega\\right|" in compact:
+        return "四抽头 FIR 的幅频响应（用于确定零点频率和通阻带变化）"
+    if "h_2(n)=(-1)^nh_1(n)" in compact and "\\delta(n)+\\delta(n-1)+\\delta(n+2)+\\delta(n-3)" in compact:
+        return "FIR 冲激响应的交替调制（用于由时域变号得到频域 π 平移）"
+    if "F(z)=\\frac{8}{1-z^{-1}}-\\frac{4}{1-\\frac12z^{-1}}" in compact:
+        return "有理 z 函数的部分分式展开（用于按各极点项和 ROC 求反变换）"
+    if "f(n)=-8u(-n-1)-4\\left(\\frac12\\right)^nu(n)" in compact:
+        return "指定 ROC 下的反 z 变换结果（用于组合左边和右边序列恢复时域信号）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
