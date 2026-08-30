@@ -20,6 +20,7 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert positions == sorted(positions)
     assert r"H(z)=\frac{\sum_{m=0}^{M}b_m z^{-m}}{1+\sum_{n=1}^{N}a_n z^{-n}}" in html
     assert r"y(n)=\sum_{m=0}^{M}b_m x(n-m)-\sum_{r=1}^{N}a_r y(n-r)" in html
+    assert r"y(n)=a_1y(n-1)+a_2y(n-2)+b_0x(n)" in html
     assert r"w(n)&=x(n)-\sum_{r=1}^{N}a_r w(n-r)" in html
     assert r"y(n)&=\sum_{m=0}^{M}b_m w(n-m)" in html
     assert r"H(z)=\left(1-z^{-N}\right)\frac{1}{N}" in html
@@ -46,6 +47,8 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
         assert f'data-diagram="{diagram}"' in html
     assert "M420 98H555V145H562" in html
     assert "M420 232H555V185H562" in html
+    assert r"\frac{0.6203z^{-1}}{1-1.5685z^{-1}+0.9998z^{-2}}" in html
+    assert r"\frac{0.8671z^{-1}}{1-0.9963z^{-1}+0.9998z^{-2}}" in html
     assert "figure{break-inside:avoid" in html
     # A direct-I diagram must include its undelayed b_0 path, delayed b_m
     # tap paths, and separate feedback paths.  It must be traceable back to
