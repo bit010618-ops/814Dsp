@@ -144,6 +144,18 @@ def _formula_name(formula: str, heading: str) -> str:
         return "插值函数的抽样性质（用于保证每个重构样点只保留对应的插值项）"
     if "y_a(mT)=x_a(mT)" in compact:
         return "重构信号的插值一致性（用于验证恢复信号准确通过全部采样值）"
+    if "x(n)=A\\cos\\left(\\frac{3\\pi}{7}n\\right)" in compact and "N=14" in compact:
+        return "离散正弦序列的周期求解（用于由角频率的有理比确定基本周期）"
+    if "T[x(n-k)]=y(n-k)" in compact and "y(n)=T[x(n)]" not in compact:
+        return "时不变系统的时移检验式（用于比较输入时移前后的输出是否同步平移）"
+    if "y(n)=3\\delta(n)+8\\delta(n-1)+5\\delta(n-2)+2\\delta(n-3)" in compact:
+        return "离散卷积的输出序列（用于列出各输出时刻的卷积结果）"
+    if "x(n)*[\\delta(n)+\\alpha\\delta(n-R)]" in compact and "x(n)+\\alphax(n-R)" in compact:
+        return "双抽头回声系统的输入输出关系（用于表示原信号与延迟衰减副本的叠加）"
+    if "y(n)\\longrightarrowy_0(t)\\longrightarrowy_a(t)" in compact:
+        return "数模转换与零阶保持流程（用于说明离散输出经保持和重构得到连续信号）"
+    if "\\sin(2100\\pit)" in compact and "\\sin(2.1\\pin)=\\sin(0.1\\pin)" in compact:
+        return "采样混叠的等效离散正弦关系（用于说明高频连续信号可产生相同离散样值）"
     if "f_h\\le\\frac{f_s}{2}" in compact and "\\Omega_h\\le\\frac{\\Omega_s}{2}" in compact:
         return "带限信号的无混叠采样条件（用于由最高频率确定最低采样率）"
     if "f_0=f_h-\\frac{\\Deltaf_0}{2}" in compact:
@@ -164,6 +176,34 @@ def _formula_name(formula: str, heading: str) -> str:
         return "多级有理数倍分解（用于把总采样率变换拆为低复杂度级联）"
     if "44100=294\\cdot50\\cdot3" in compact and "44056=245\\cdot59.94\\cdot3" in compact:
         return "44.1 kHz 的制式分解（用于说明采样率与 PAL、NTSC 扫描体制的匹配）"
+    if "\\frac{2\\pi}{\\omega}=\\frac{N}{k}" in compact and "\\gcd(N,k)=1" in compact:
+        return "离散正弦序列的周期判定条件（用于求最小整数周期）"
+    if "T[x_1(n)+x_2(n)]=T[x_1(n)]+T[x_2(n)]" in compact:
+        return "系统线性的可加性条件（用于检验两个输入之和的输出）"
+    if "T[ax_1(n)]=aT[x_1(n)]" in compact:
+        return "系统线性的齐次性条件（用于检验输入缩放后的输出）"
+    if "T[ax_1(n)+bx_2(n)]=ay_1(n)+by_2(n)" in compact:
+        return "系统线性的叠加原理（用于同时检验可加性和齐次性）"
+    if "y(n)=T[x(n)]" in compact and "T[x(n-k)]=y(n-k)" in compact and "\\forallk" in compact:
+        return "时不变系统的时移关系（用于检验输入时移是否引起同样的输出时移）"
+    if "x(n)*\\delta(n-n_0)=x(n-n_0)" in compact:
+        return "单位脉冲卷积的时移性质（用于快速得到序列与移位冲激的卷积结果）"
+    if "x(n)*h(n)=h(n)*x(n)" in compact:
+        return "卷积的交换律（用于交换两个卷积序列的计算次序）"
+    if "x(n)*h_1(n)" in compact and "*h_2(n)=x(n)*" in compact and "h_1(n)*h_2(n)" in compact:
+        return "卷积的结合律（用于改变多级系统的级联分组）"
+    if "x(n)*[h_1(n)+h_2(n)]=x(n)*h_1(n)+x(n)*h_2(n)" in compact:
+        return "卷积的分配律（用于展开并联支路的总输出）"
+    if "r_{xy}(n)=x(n)*y(-n)" in compact and "r_{yx}(n)=y(n)*x(-n)" in compact:
+        return "互相关的卷积表示（用于计算两个序列不同移位下的相似度）"
+    if "r_{xx}(n)=x(n)*x(-n)" in compact:
+        return "自相关的卷积表示（用于衡量序列与其时移副本的相似度）"
+    if "\\omega=\\OmegaT=2\\pi\\frac{f}{f_s}" in compact:
+        return "模拟频率与数字频率的换算关系（用于把赫兹或模拟角频率换算为数字角频率）"
+    if "x_a(t)\\longrightarrowx(n)\\longrightarrowy(n)\\longrightarrowy_a(t)" in compact:
+        return "模拟信号的数字处理链（用于表示采样、数字处理和重构的先后顺序）"
+    if "\\Omega_s\\ge2\\Omega_c" in compact and "f_s=\\frac{1}{T}" in compact:
+        return "抗混叠采样条件与采样率定义（用于设置模数转换前的滤波和采样参数）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:

@@ -318,6 +318,125 @@ def test_formula_name_replaces_generic_sampling_parameter_labels():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_replaces_generic_foundation_formula_labels():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (
+            r"\frac{2\pi}{\omega}=\frac{N}{k},\qquad N,k\in\mathbb{Z}_{+},\qquad\gcd(N,k)=1",
+            "离散序列的周期性",
+            "离散正弦序列的周期判定条件（用于求最小整数周期）",
+        ),
+        (
+            r"T[x_1(n)+x_2(n)]=T[x_1(n)]+T[x_2(n)]",
+            "系统的线性",
+            "系统线性的可加性条件（用于检验两个输入之和的输出）",
+        ),
+        (
+            r"T[a x_1(n)]=aT[x_1(n)]",
+            "系统的线性",
+            "系统线性的齐次性条件（用于检验输入缩放后的输出）",
+        ),
+        (
+            r"T[a x_1(n)+b x_2(n)]=a y_1(n)+b y_2(n)",
+            "叠加原理",
+            "系统线性的叠加原理（用于同时检验可加性和齐次性）",
+        ),
+        (
+            r"y(n)=T[x(n)]\quad\Longrightarrow\quad T[x(n-k)]=y(n-k),\qquad\forall k\in\mathbb{Z}",
+            "时不变系统",
+            "时不变系统的时移关系（用于检验输入时移是否引起同样的输出时移）",
+        ),
+        (
+            r"x(n)*\delta(n-n_0)=x(n-n_0)",
+            "图解卷积步骤",
+            "单位脉冲卷积的时移性质（用于快速得到序列与移位冲激的卷积结果）",
+        ),
+        (
+            r"x(n)*h(n)=h(n)*x(n)",
+            "卷积的运算规律",
+            "卷积的交换律（用于交换两个卷积序列的计算次序）",
+        ),
+        (
+            r"\bigl[x(n)*h_1(n)\bigr]*h_2(n)=x(n)*\bigl[h_1(n)*h_2(n)\bigr)",
+            "卷积的运算规律",
+            "卷积的结合律（用于改变多级系统的级联分组）",
+        ),
+        (
+            r"x(n)*[h_1(n)+h_2(n)]=x(n)*h_1(n)+x(n)*h_2(n)",
+            "卷积的运算规律",
+            "卷积的分配律（用于展开并联支路的总输出）",
+        ),
+        (
+            r"r_{xy}(n)=x(n)*y(-n),\qquad r_{yx}(n)=y(n)*x(-n)",
+            "相关",
+            "互相关的卷积表示（用于计算两个序列不同移位下的相似度）",
+        ),
+        (
+            r"r_{xx}(n)=x(n)*x(-n)",
+            "相关",
+            "自相关的卷积表示（用于衡量序列与其时移副本的相似度）",
+        ),
+        (
+            r"\omega=\Omega T=2\pi\frac{f}{f_s}",
+            "频率换算",
+            "模拟频率与数字频率的换算关系（用于把赫兹或模拟角频率换算为数字角频率）",
+        ),
+        (
+            r"x_a(t)\longrightarrow x(n)\longrightarrow y(n)\longrightarrow y_a(t)",
+            "模拟信号的数字处理方法",
+            "模拟信号的数字处理链（用于表示采样、数字处理和重构的先后顺序）",
+        ),
+        (
+            r"\Omega_s\geq2\Omega_c,\qquad f_s=\frac{1}{T}",
+            "模拟到数字",
+            "抗混叠采样条件与采样率定义（用于设置模数转换前的滤波和采样参数）",
+        ),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
+def test_formula_name_replaces_actual_first_chapter_generic_fallbacks():
+    """Real formulas from the generated first chapter must not hit the generic fallback."""
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (
+            r"x(n)=A\cos\left(\frac{3\pi}{7}n\right),\qquad \frac{2\pi}{\omega}=\frac{2\pi}{3\pi/7}=\frac{14}{3},\qquad N=14",
+            "有理性判据",
+            "离散正弦序列的周期求解（用于由角频率的有理比确定基本周期）",
+        ),
+        (
+            r"T[x(n-k)]=y(n-k)",
+            "判别步骤",
+            "时不变系统的时移检验式（用于比较输入时移前后的输出是否同步平移）",
+        ),
+        (
+            r"y(n)=3\delta(n)+8\delta(n-1)+5\delta(n-2)+2\delta(n-3)",
+            "例题详解",
+            "离散卷积的输出序列（用于列出各输出时刻的卷积结果）",
+        ),
+        (
+            r"\begin{aligned}y(n)&=x(n)*[\delta(n)+\alpha\delta(n-R)]\\&=x(n)+\alpha x(n-R).\end{aligned}",
+            "应用例：延时叠加系统",
+            "双抽头回声系统的输入输出关系（用于表示原信号与延迟衰减副本的叠加）",
+        ),
+        (
+            r"y(n)\longrightarrow y_0(t)\longrightarrow y_a(t)",
+            "数模转换与零阶保持",
+            "数模转换与零阶保持流程（用于说明离散输出经保持和重构得到连续信号）",
+        ),
+        (
+            r"\left.\sin(2100\pi t)\right|_{t=nT}=\sin(2.1\pi n)=\sin(0.1\pi n)",
+            "两个给出相同样值的连续信号",
+            "采样混叠的等效离散正弦关系（用于说明高频连续信号可产生相同离散样值）",
+        ),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

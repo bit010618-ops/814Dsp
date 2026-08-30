@@ -1504,3 +1504,10 @@
 - Identified that remaining “采样参数关系” labels were a heading-keyword fallback, not formula-level descriptions. Added structure-first names for the no-aliasing condition, bandpass center frequency, sample interval/rate inverse relation, record length/resolution relation, DFT frequency sampling, zero-padding condition, rational-rate conversion, anti-imaging/anti-aliasing filter, multistage decomposition and 44.1 kHz system factorization.
 - Added failure coverage for all ten classes and passed the complete assembly/backfill/MathJax suite with `33 passed`.
 - Exported and verified a 465-page A4 PDF: all ten labels are present, raw LaTeX and answer placeholders are zero. Raster review of page 262 confirms the multirate formulas, automatic `cases` brace, Chinese purposes, normal header/footer and no clipping or black fill. Replaced the candidate PDF; next action is commit and push the verified candidate.
+
+# 2026-08-30 Formula-purpose fallback audit
+
+- A fresh PDF text audit found that 314 standalone formulas were still using the invalid generic label “计算表达式”; the current PDF was therefore rejected as a replacement candidate rather than silently published.
+- Root cause: the formula-name function was reaching its final heading-based fallback for genuine formula blocks. Added test-first coverage for actual Chapter 1 formula strings and replaced six such fallbacks with concrete formula names and purposes: discrete-sinusoid period solution, time-invariance shift test, convolution output sequence, two-tap echo relation, D/A zero-order-hold flow, and sampling-alias equivalence.
+- Full assembly, answer-reference backfill and MathJax regression suite passed with `35 passed`. Rebuilding the HTML reduced generic formula labels from 314 to 296. This is source-level progress only: the candidate PDF remains the last verified version until every remaining generic label is audited, exported and visually checked.
+- Next action: continue the structure-first formula-label audit in batches, then rebuild, backfill, render and inspect the complete candidate PDF before replacing it.
