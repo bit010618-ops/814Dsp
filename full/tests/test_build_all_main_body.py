@@ -437,6 +437,21 @@ def test_formula_name_replaces_actual_first_chapter_generic_fallbacks():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_uses_specific_named_topic_before_generic_fallback():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"x(n)=\frac{1}{2\pi j}\oint_C X(z)z^{n-1}\,\mathrm{d}z", "z 反变换", "z 反变换的围线积分定义（用于由 z 域函数恢复时域序列）"),
+        (r"A_k=\left.(1-p_kz^{-1})X(z)\right|_{z=p_k}", "部分分式展开法", "部分分式展开的留数系数（用于把有理 z 函数拆成可直接反变换的简单项）"),
+        (r"x_e(n)=\frac12[x(n)+x^*(-n)]", "共轭对称与分解", "共轭对称分量分解（用于把任意序列拆为共轭对称与共轭反对称部分）"),
+        (r"X(e^{j\omega})=X^*(e^{-j\omega})", "实序列的频谱对称性", "实序列频谱的共轭对称关系（用于由正频率谱确定负频率谱）"),
+        (r"z_k=e^{j(2\pi k/4+\pi/4)}", "例题：四抽头平均的零点分布", "四抽头平均滤波器的零点位置（用于在 z 平面定位频率响应的零点）"),
+        (r"H(z)=\frac{1}{1-az^{-1}}", "收敛域与典型序列", "单极点 z 变换与收敛域关系（用于说明同一代数式在不同 ROC 下对应不同序列）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

@@ -1515,3 +1515,8 @@
 ## 2026-08-30 GitHub sync
 
 - Source-level fallback-audit milestone committed as `8d26dba` and successfully pushed to `origin/main` (`7be0e02..8d26dba`). The current candidate PDF was intentionally not changed because the remaining 296 generic labels still require audit.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 2
+
+- Added structure/topic-specific labels for the z-inverse contour definition, partial-fraction residue coefficient, conjugate-symmetry split, real-spectrum conjugate symmetry, four-tap-average zero locations and single-pole ROC relation. The complete regression suite passed with `36 passed`.
+- Rebuilt HTML reduces generic formula labels from 296 to 276. This remains source-only progress; do not replace the verified PDF until all generic labels are eliminated and the resulting PDF has passed visual review.
