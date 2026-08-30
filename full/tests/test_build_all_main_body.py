@@ -713,6 +713,29 @@ def test_formula_name_handles_dft_resolution_and_circular_convolution_formulas()
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_remaining_dft_paper_short_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"\Delta\Omega=\frac{2\pi}{32\times0.15}\approx1.309\,\mathrm{rad/s}<2\,\mathrm{rad/s}", "2019 年真题（第十题）", "32 点 DFT 的实际角频率分辨率（用于验证分辨率满足题设上限）"),
+        (r"\begin{aligned}y(0)&=3+3=6,&y(1)&=3+3=6,\\y(2)&=3+3+3=9,&y(3)&=3+3+3=9,\\y(4)&=3+3=6.\end{aligned}", "2019 年真题", "五点循环卷积的逐点计算结果（用于列出一个周期内的全部输出样值）"),
+        (r"F_0=\frac{f_s}{N}=\frac{100}{256}=0.390625\,\mathrm{Hz}", "2019 年真题", "256 点 DFT 的频率分辨率（用于计算相邻频率栅格的赫兹间隔）"),
+        (r"\left|f_3-f_1\right|=0.07\,\mathrm{Hz}&lt;F_0", "2019 年真题", "频率分量不可分辨判据（用于比较频率差与 DFT 分辨率）"),
+        (r"Y(k)=e^{j2\pi k\cdot5/8}X(k)", "2019 年真题（判断题第 1 小题）", "DFT 循环时移的相位因子（用于由频域相位确定时域循环移位）"),
+        (r"\left|Y(k)\right|=\left|X(k)\right|,\qquad k=0,1,\ldots,7", "2019 年真题（判断题第 1 小题）", "循环时移的幅度谱不变性（用于说明时移只改变频谱相位）"),
+        (r"X(k)=1+2e^{-j2\pi k\cdot5/10}=1+2e^{-j\pi k}=1+2(-1)^k", "2019 年真题（第九题）", "两冲激周期序列的 DFT（用于把时域延时冲激写成频域相位和）"),
+        (r"y(n)=x\left((n+2)\right)_{10}", "2019 年真题（第九题）", "十点循环时移序列（用于表示向左循环移动两个样点）"),
+        (r"y(n)=x(n)\mathbin{\circledast}_{10}w(n)=w(n)+2w\left((n-5)\right)_{10}", "2019 年真题（第九题）", "十点循环卷积的移位叠加式（用于利用冲激分解快速计算输出）"),
+        (r"y(n)=\left\{3,3,1,1,1,3,3,2,2,2\right\},\qquad 0\leq n\leq9", "2019 年真题（第九题）", "十点循环卷积的样值结果（用于列出一个周期内的输出序列）"),
+        (r"N\geq100", "2019 年真题（填空题第 2 小题）", "DFT 点数下限（用于满足题设频率采样数量要求）"),
+        (r"a_{k+N}=a_k,\qquad a_{-k}=a_k", "2019 年真题（填空题第 5 小题）", "实偶序列的 DFS 系数对称性（用于由已知系数扩展周期和偶对称位置）"),
+        (r"a_{-3}=5,\qquad a_{-2}=a_2=3,\qquad a_{-1}=a_1=5", "2019 年真题（填空题第 5 小题）", "实偶序列的 DFS 系数补全（用于按周期和偶对称确定负索引系数）"),
+        (r"X(k)=X(z)\left|_{z=e^{j2\pi k/N}}\right.", "2019 年真题（填空题第 3 小题）", "z 变换在单位圆上的 DFT 取样关系（用于由 z 域表达式求 N 点频谱）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

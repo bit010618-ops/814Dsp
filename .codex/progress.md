@@ -1594,3 +1594,9 @@
 - Added formula-level labels for continuous-to-discrete pole mapping, DTFT conjugate time reversal, bilateral z-transform components, Nyquist sample-rate calculation, DFT bins/resolution, and circular-convolution length and output relations.
 - Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `51 passed`.
 - Rebuilding the HTML reduces generic labels from 96 to 84. The candidate PDF remains intentionally unchanged pending residual formula audit and complete visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 16
+
+- Added formula-level labels for compact DFT resolution checks, circular-convolution sample results, cyclic shifts, DFS coefficient symmetry, and unit-circle DFT sampling.
+- Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `52 passed`.
+- Rebuilding the HTML reduces generic labels from 84 to 70. The candidate PDF remains intentionally unchanged pending residual formula audit and complete visual re-export.

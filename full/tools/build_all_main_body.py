@@ -435,6 +435,34 @@ def _formula_name(formula: str, heading: str) -> str:
         return "满足频率分辨率指标的点数下限（用于按最大允许间隔选择 N）"
     if "y(n)=x_5(n)\\mathbin{\\circledast}_5h_5(n)" in compact:
         return "五点循环卷积（用于计算给定周期序列和滤波器的周期输出）"
+    if "\\Delta\\Omega=\\frac{2\\pi}{32\\times0.15}" in compact and "1.309" in compact:
+        return "32 点 DFT 的实际角频率分辨率（用于验证分辨率满足题设上限）"
+    if "y(0)&=3+3=6" in compact and "y(4)&=3+3=6" in compact:
+        return "五点循环卷积的逐点计算结果（用于列出一个周期内的全部输出样值）"
+    if "F_0=\\frac{f_s}{N}=\\frac{100}{256}" in compact:
+        return "256 点 DFT 的频率分辨率（用于计算相邻频率栅格的赫兹间隔）"
+    if "\\left|f_3-f_1\\right|=0.07\\,\\mathrm{Hz}" in compact and "F_0" in compact:
+        return "频率分量不可分辨判据（用于比较频率差与 DFT 分辨率）"
+    if "Y(k)=e^{j2\\pik\\cdot5/8}X(k)" in compact:
+        return "DFT 循环时移的相位因子（用于由频域相位确定时域循环移位）"
+    if "\\left|Y(k)\\right|=\\left|X(k)\\right|" in compact and "0,1,\\ldots,7" in compact:
+        return "循环时移的幅度谱不变性（用于说明时移只改变频谱相位）"
+    if "X(k)=1+2e^{-j2\\pik\\cdot5/10}" in compact and "1+2(-1)^k" in compact:
+        return "两冲激周期序列的 DFT（用于把时域延时冲激写成频域相位和）"
+    if "y(n)=x\\left((n+2)\\right)_{10}" in compact:
+        return "十点循环时移序列（用于表示向左循环移动两个样点）"
+    if "y(n)=x(n)\\mathbin{\\circledast}_{10}w(n)" in compact and "w\\left((n-5)\\right)_{10}" in compact:
+        return "十点循环卷积的移位叠加式（用于利用冲激分解快速计算输出）"
+    if "y(n)=\\left\\{3,3,1,1,1,3,3,2,2,2\\right\\}" in compact:
+        return "十点循环卷积的样值结果（用于列出一个周期内的输出序列）"
+    if "N\\ge100" in compact:
+        return "DFT 点数下限（用于满足题设频率采样数量要求）"
+    if "a_{k+N}=a_k" in compact and "a_{-k}=a_k" in compact:
+        return "实偶序列的 DFS 系数对称性（用于由已知系数扩展周期和偶对称位置）"
+    if "a_{-3}=5" in compact and "a_{-2}=a_2=3" in compact:
+        return "实偶序列的 DFS 系数补全（用于按周期和偶对称确定负索引系数）"
+    if "X(k)=X(z)\\left|_{z=e^{j2\\pik/N}}\\right." in compact:
+        return "z 变换在单位圆上的 DFT 取样关系（用于由 z 域表达式求 N 点频谱）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
