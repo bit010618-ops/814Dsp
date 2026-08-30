@@ -894,3 +894,16 @@ def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_sampl
         r"H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right)",
         "线性相位 FIR 数字滤波器的条件和特点",
     ) == "FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）"
+
+
+def test_formula_name_prioritizes_zero_pole_geometry_over_stability_heading():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"H(z)=A\frac{\prod_r(z-c_r)}{\prod_r(z-d_r)}",
+        "从累加器到稳定低通系统",
+    ) == "系统函数的零极点分解（用于由零点、极点和增益分析频率响应）"
+    assert _formula_name(
+        r"\overrightarrow{c_rB}=e^{j\omega}-c_r,\qquad\overrightarrow{d_rB}=e^{j\omega}-d_r",
+        "从累加器到稳定低通系统",
+    ) == "零极点到单位圆频率点的向量关系（用于用几何距离解释幅频响应）"

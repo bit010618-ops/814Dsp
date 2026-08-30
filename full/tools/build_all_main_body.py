@@ -733,6 +733,10 @@ def _formula_name(formula: str, heading: str) -> str:
         return "线性相位 FIR 的最小阶数与群延迟（用于由零点总数确定可实现结构的最低延时）"
     if "a=1" in compact and "\\theta=\\frac{\\pi}{3}" in compact:
         return "窄带陷波器的零点参数（用于把共轭零点准确放置在干扰频率）"
+    if "H(z)=A\\frac{\\prod_r(z-c_r)}{\\prod_r(z-d_r)}" in compact:
+        return "系统函数的零极点分解（用于由零点、极点和增益分析频率响应）"
+    if "\\overrightarrow{c_rB}=e^{j\\omega}-c_r" in compact and "\\overrightarrow{d_rB}=e^{j\\omega}-d_r" in compact:
+        return "零极点到单位圆频率点的向量关系（用于用几何距离解释幅频响应）"
     topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^第[一二三四五六七八九十0-9]+章\s*", "", heading)
     topic = re.sub(r"^\d+(?:\.\d+)*\s*", "", topic)

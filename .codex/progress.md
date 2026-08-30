@@ -1624,3 +1624,9 @@
 - A visual review of the first complete formula-audited PDF caught three incorrectly heading-derived BIBO labels on page 120. They were corrected to the BIBO definition, the discrete-LSI absolute-summability condition, and the summability proof; full regression passed with `56 passed`.
 - Rebuilt the complete static MathJax PDF through a first pass, answer-page backfill, and final pass. The final file is A4, 464 pages, unencrypted; HTML audit remains `GENERIC_CALCULATION_LABELS=0` and `STRUCTURED_FALLBACK_LABELS=0`.
 - Rendered visual checks of opening content, sampling recovery, the corrected BIBO page, IIR structure page, answer-navigation tables, and final appendix found no formula clipping, black blocks, page-number loss, or table overflow. The verified export replaced `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`.
+
+# 2026-08-30 Source coverage audit and zero-pole label correction
+
+- Source p.194 was compared with candidate PDF p.80: all four finite-/right-/left-/two-sided ROC panels are present as a native vector diagram with complete domain inequalities and no clipping or black blocks. Source pp.253 and 255 are transition covers, and p.282 is blank; none is a missing body item.
+- Source p.235's conjugate-symmetry conclusion and proof were traced to the existing DTFT section, and source p.285's accumulator/geometric frequency-response derivation was also retained. Source p.248's causal-stable construction remains mathematically retained but its pair of illustrative block diagrams is a concrete later visual-completeness candidate.
+- Corrected two heading-derived formula labels in the zero-pole geometry section. The labels now name the zero-pole factorization and the zero-pole-to-unit-circle vector relation, with their actual frequency-response purpose. Test-first regression: `38 passed`; rebuilt main-body and full-book HTML. Candidate PDF intentionally remains the previous fully visual-verified export until this audit batch is complete.
