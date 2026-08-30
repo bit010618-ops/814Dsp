@@ -71,7 +71,15 @@ H_a(s)&=\frac{\Omega_c^N}{\prod_{k=0}^{N-1}(s-s_k)},
 \qquad \operatorname{Re}(s_k)<0.
 \end{aligned}
 \]</div>
-<p>以 [[p=s/\Omega_c]] 作频率归一化后，先由通带 [[\Omega_p,\alpha_p]] 与阻带 [[\Omega_s,\alpha_s]] 求阶数：</p>
+<p>以 [[p=s/\Omega_c]] 作频率归一化后，实际截止频率被缩放为单位截止频率；归一化极点和传输函数为：</p>
+<p class="formula-lead">巴特沃斯低通原型的频率归一化（用于将不同截止频率统一到单位截止频率下设计）：</p>
+<div class="formula">\[
+\begin{aligned}
+p&=\frac{s}{\Omega_c},\qquad p_k=\frac{s_k}{\Omega_c},\\
+H(p)&=\frac{1}{\prod_{k=0}^{N-1}(p-p_k)}.
+\end{aligned}
+\]</div>
+<p>随后由通带 [[\Omega_p,\alpha_p]] 与阻带 [[\Omega_s,\alpha_s]] 求阶数：</p>
 <div class="formula">\[
 N\geq
 \frac{\log_{10}\!\left(\dfrac{10^{\alpha_s/10}-1}{10^{\alpha_p/10}-1}\right)}

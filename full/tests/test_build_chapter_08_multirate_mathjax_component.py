@@ -33,6 +33,11 @@ def test_chapter_eight_component_covers_multirate_main_body(tmp_path: Path):
     assert r"\frac{147}{160}=\frac{7}{8}\cdot\frac{7}{5}\cdot\frac{3}{4}" in html
     assert r"y(n)&=\left\{\ldots,x_1(0),x_2(0),x_3(0)" in html
     assert "频分复用" in html
+    assert "CD 音频兼容的采样率转换" in html
+    assert "44.1 kHz" in html
+    assert "16 bit" in html
+    assert "24 bit" in html
+    assert "非整数倍采样率转换" in html
     assert r"y(n)&=y_1(n)+y_2(n)+y_3(n)" in html
     assert r"X_i\!\left(e^{j3\omega}\right)" in html
     assert r"G_1(z),\ G_2(z),\ G_3(z)" in html
