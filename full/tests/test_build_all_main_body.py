@@ -668,6 +668,30 @@ def test_formula_name_handles_iir_and_feedback_paper_formulas():
         assert _formula_name(formula, heading) == expected
 
 
+def test_formula_name_handles_delay_transform_and_bilateral_paper_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    cases = (
+        (r"y[n]=x[n]+\frac{1}{2}y[n-1]", "年真题：单延时反馈离散 LTI 系统", "单延时反馈 LTI 系统的差分方程（用于由输入和前一输出递推当前输出）"),
+        (r"\begin{aligned}Y(z)&=X(z)+\frac{1}{2}z^{-1}Y(z),\\H(z)&=\frac{Y(z)}{X(z)}=\frac{1}{1-\frac{1}{2}z^{-1}}=\frac{z}{z-\frac{1}{2}}.\end{aligned}", "年真题：单延时反馈离散 LTI 系统", "单延时反馈 LTI 系统的系统函数（用于由差分方程求极点和频率响应）"),
+        (r"\operatorname{ROC}:\left|z\right|>\frac{1}{2}", "年真题：单延时反馈离散 LTI 系统", "单延时反馈系统的因果 ROC（用于选择稳定因果的单位冲激响应）"),
+        (r"h[n]=\left(\frac{1}{2}\right)^n u[n]", "年真题：单延时反馈离散 LTI 系统", "单延时反馈系统的单位冲激响应（用于写出极点为 1/2 的因果衰减序列）"),
+        (r"Y(z)=\left(az^{-1}Y(z)+X(z)-a^Nz^{-N}X(z)\right),\qquad H(z)=\frac{1-a^Nz^{-N}}{1-az^{-1}}", "（2）含延时消零项的单位脉冲响应", "含延时消零项系统的系统函数（用于构造长度 N 的截断指数冲激响应）"),
+        (r"\begin{aligned}h[n]&=a^nu[n]-a^N a^{n-N}u[n-N]\\&=a^n\left(u[n]-u[n-N]\right).\end{aligned}", "（2）含延时消零项的单位脉冲响应", "截断指数的单位冲激响应（用于显示延时消零项使响应在 N 后终止）"),
+        (r"X(j\Omega)=X(s)\big|_{s=j\Omega}=\mathcal{F}\{x(t)\}", "年真题：FT、LT 与 ZT 的关系", "拉普拉斯变换到傅里叶变换的限制关系（用于在虚轴收敛时得到连续时间频谱）"),
+        (r"X\!\left(e^{j\omega}\right)=X(z)\big|_{z=e^{j\omega}}=\mathcal{F}_{\mathrm{DT}}\{x[n]\}", "年真题：FT、LT 与 ZT 的关系", "z 变换到 DTFT 的单位圆取值关系（用于由 z 域函数得到离散时间频谱）"),
+        (r"z=e^{sT}=e^{(\sigma+j\Omega)T}=e^{\sigma T}e^{j\Omega T},\qquad s=\sigma+j\Omega", "年真题：拉氏变换与 z 变换的映射", "拉普拉斯平面到 z 平面的指数映射（用于把连续系统极点映射为离散系统极点）"),
+        (r"\operatorname{Re}\{s\}<0\quad\Longleftrightarrow\quad\left|z\right|<1", "年真题：拉氏变换与 z 变换的映射", "s 平面稳定半平面与 z 平面单位圆的对应（用于判断连续和离散系统稳定性）"),
+        (r"\begin{aligned}F(z)&=\frac{z^2}{(z-3)(z+1)}\\&=\frac{1}{2}\frac{z}{z-3}+\frac{1}{2}\frac{z}{z+1}.\end{aligned}", "年真题：指定 ROC 的反 z 变换", "指定 ROC 反 z 变换的部分分式分解（用于分别处理极点 3 和 −1）"),
+        (r"\frac{z}{z-3},\quad \left|z\right|<3\quad\Longleftrightarrow\quad-3^n u[-n-1]", "年真题：指定 ROC 的反 z 变换", "极点项与 ROC 对应的反 z 变换对（用于按 ROC 选择左边或右边序列）"),
+        (r"f[n]=\frac{1}{2}(-1)^n u[n]-\frac{1}{2}3^n u[-n-1]", "年真题：指定 ROC 的反 z 变换", "指定 ROC 下的双边反 z 变换结果（用于合成两个极点项的时域序列）"),
+        (r"\left(\frac{1}{3}\right)^nu[n]\Longleftrightarrow\frac{1}{1-\frac{1}{3}z^{-1}},\quad\left|z\right|>\frac{1}{3}", "年真题：双边序列的 z 变换", "左右边指数序列的 z 变换对（用于分别确定双边序列各分量的 ROC）"),
+        (r"X(z)=\frac{1}{1-\frac{1}{3}z^{-1}}-\frac{1}{1-\frac{1}{2}z^{-1}},\qquad\frac{1}{3}<\left|z\right|<\frac{1}{2}", "年真题：双边序列的 z 变换", "双边指数序列的 z 变换与 ROC（用于给出两个收敛域的交集）"),
+    )
+    for formula, heading, expected in cases:
+        assert _formula_name(formula, heading) == expected
+
+
 def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_samples():
     from full.tools.build_all_main_body import _formula_name
 

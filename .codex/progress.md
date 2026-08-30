@@ -1582,3 +1582,9 @@
 - Added formula-level names and purposes for FIR frequency-response alignment, IIR state recursions, annular ROCs, partial fractions, specified-ROC inverse z transforms, two-delay feedback systems and bilateral sequence decompositions.
 - Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `49 passed`.
 - Rebuilding the HTML reduces generic labels from 121 to 111. The candidate PDF remains intentionally unchanged pending the residual audit and complete visual re-export.
+
+# 2026-08-30 Formula-purpose fallback audit, batch 14
+
+- Added formula-level labels for single-delay feedback, delayed-zero finite impulse responses, FT/LT/ZT restriction and mapping relations, ROC-specific partial fractions/inverse transforms, and bilateral sequence z-transform decompositions.
+- Test-first coverage and full body assembly, answer-reference backfill and MathJax suite passed with `50 passed`.
+- Rebuilding the HTML reduces generic labels from 111 to 96. Remaining entries are primarily compact DFT/circular-convolution and frequency-resolution past-paper formulas; the candidate PDF remains intentionally unchanged pending complete audit and visual re-export.

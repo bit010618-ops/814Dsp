@@ -381,6 +381,36 @@ def _formula_name(formula: str, heading: str) -> str:
         return "两延时反馈系统的稳定冲激响应（用于按 ROC 写出稳定的双边序列）"
     if "x[n]=x_1[n]+x_2[n]" in compact and "x_1[n]=\\left(\\frac13\\right)^nu[n]" in compact and "x_2[n]=\\left(\\frac12\\right)^nu[-n-1]" in compact:
         return "双边序列的左右分解（用于分别确定因果与反因果分量的 z 变换和 ROC）"
+    if "y[n]=x[n]+\\frac{1}{2}y[n-1]" in compact:
+        return "单延时反馈 LTI 系统的差分方程（用于由输入和前一输出递推当前输出）"
+    if "Y(z)&=X(z)+\\frac{1}{2}z^{-1}Y(z)" in compact and "H(z)&=\\frac{Y(z)}{X(z)}" in compact:
+        return "单延时反馈 LTI 系统的系统函数（用于由差分方程求极点和频率响应）"
+    if "\\operatorname{ROC}:\\left|z\\right|>\\frac{1}{2}" in compact:
+        return "单延时反馈系统的因果 ROC（用于选择稳定因果的单位冲激响应）"
+    if "h[n]=\\left(\\frac{1}{2}\\right)^nu[n]" in compact:
+        return "单延时反馈系统的单位冲激响应（用于写出极点为 1/2 的因果衰减序列）"
+    if "Y(z)=\\left(az^{-1}Y(z)+X(z)-a^Nz^{-N}X(z)\\right)" in compact and "H(z)=\\frac{1-a^Nz^{-N}}{1-az^{-1}}" in compact:
+        return "含延时消零项系统的系统函数（用于构造长度 N 的截断指数冲激响应）"
+    if "h[n]&=a^nu[n]-a^Na^{n-N}u[n-N]" in compact:
+        return "截断指数的单位冲激响应（用于显示延时消零项使响应在 N 后终止）"
+    if "X(j\\Omega)=X(s)\\big|_{s=j\\Omega}=\\mathcal{F}\\{x(t)\\}" in compact:
+        return "拉普拉斯变换到傅里叶变换的限制关系（用于在虚轴收敛时得到连续时间频谱）"
+    if "X\\!\\left(e^{j\\omega}\\right)=X(z)\\big|_{z=e^{j\\omega}}" in compact:
+        return "z 变换到 DTFT 的单位圆取值关系（用于由 z 域函数得到离散时间频谱）"
+    if "z=e^{sT}=e^{(\\sigma+j\\Omega)T}" in compact and "s=\\sigma+j\\Omega" in compact:
+        return "拉普拉斯平面到 z 平面的指数映射（用于把连续系统极点映射为离散系统极点）"
+    if "\\operatorname{Re}\\{s\\}<0" in compact and "\\left|z\\right|<1" in compact:
+        return "s 平面稳定半平面与 z 平面单位圆的对应（用于判断连续和离散系统稳定性）"
+    if "F(z)&=\\frac{z^2}{(z-3)(z+1)}" in compact and "\\frac{1}{2}\\frac{z}{z-3}" in compact:
+        return "指定 ROC 反 z 变换的部分分式分解（用于分别处理极点 3 和 −1）"
+    if "\\frac{z}{z-3}" in compact and "-3^nu[-n-1]" in compact:
+        return "极点项与 ROC 对应的反 z 变换对（用于按 ROC 选择左边或右边序列）"
+    if "f[n]=\\frac{1}{2}(-1)^nu[n]-\\frac{1}{2}3^nu[-n-1]" in compact:
+        return "指定 ROC 下的双边反 z 变换结果（用于合成两个极点项的时域序列）"
+    if "\\left(\\frac{1}{3}\\right)^nu[n]\\Longleftrightarrow" in compact and "\\left|z\\right|>\\frac{1}{3}" in compact:
+        return "左右边指数序列的 z 变换对（用于分别确定双边序列各分量的 ROC）"
+    if "X(z)=\\frac{1}{1-\\frac{1}{3}z^{-1}}-\\frac{1}{1-\\frac{1}{2}z^{-1}}" in compact and "\\frac{1}{3}<\\left|z\\right|<\\frac{1}{2}" in compact:
+        return "双边指数序列的 z 变换与 ROC（用于给出两个收敛域的交集）"
     if "f_s\\ge2f_h" in compact:
         return "奈奎斯特采样条件（用于确定避免频谱混叠的最低采样频率）"
     if "X_s(j\\Omega)" in compact and "\\sum" in compact:
