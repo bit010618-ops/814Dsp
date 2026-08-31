@@ -1727,3 +1727,8 @@
 
 - Source pp.209--220 retain the partial-fraction result, long-division inverse-z example, method comparison, causal-cosine example, time-shift property, finite-length ROC example, convolution property, and zero-pole cancellation example. All are already represented in the editable Chapter 2 body.
 - The linearity property had only stated the ROC-intersection principle. Restored the source’s explicit annular-intersection boundary \(\max(R_x^-,R_y^-)<|z|<\min(R_x^+,R_y^+)\) in one complete LaTeX aligned formula, while keeping the cancellation caveat. Test-first component coverage and relevant assembly tests pass `69 passed`; rebuilt HTML verifies the same relation in the body, formula summary, and appendix.
+
+# 2026-08-31 Chapter 2 source-page audit: DTFT opening and conjugate symmetry
+
+- Source pp.221--232 retain the z-transform property table, DTFT definition/inverse derivation, absolute-summability condition, \(2\pi\)-periodicity, and the beginning of the conjugate-symmetry decomposition. Duplicate animated section-cover pages are represented once rather than copied as decorated slides.
+- The appendix had again exposed heading-dependent generic formula labels for three distinct conjugate-symmetry relations. Formula-level classifications now distinguish time-domain conjugate-symmetric decomposition, the real/imaginary parity conditions, and the corresponding frequency-domain decomposition. Tests first failed on the appendix output; they pass `24 passed` after the minimal classifier repair, and rebuilt HTML confirms all three locations carry their distinct reader-facing names.

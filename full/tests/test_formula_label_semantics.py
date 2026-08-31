@@ -123,3 +123,24 @@ def test_inverse_z_partial_fraction_formulae_keep_specific_names_outside_their_s
         r"\qquad r=1,\ldots,q_\ell\]",
         "公式汇总",
     ) == "重极点系数的导数公式（用于求有理 z 函数高阶极点项的部分分式系数）"
+
+
+def test_conjugate_symmetric_decomposition_formulae_keep_distinct_names_in_the_appendix():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[x_e(n)=\frac{1}{2}\left[x(n)+x^*(-n)\right],\qquad"
+        r"x_o(n)=\frac{1}{2}\left[x(n)-x^*(-n)\right]\]",
+        "公式汇总",
+    ) == "共轭对称与共轭反对称分量分解（用于将任意复序列按共轭对称性拆分）"
+    assert _formula_name(
+        r"\[\begin{aligned}x_e(n)&=x_{er}(n)+jx_{ei}(n), & x_{er}(n)&=x_{er}(-n),"
+        r" & x_{ei}(n)&=-x_{ei}(-n),\\x_o(n)&=x_{or}(n)+jx_{oi}(n),"
+        r" & x_{or}(n)&=-x_{or}(-n), & x_{oi}(n)&=x_{oi}(-n).\end{aligned}\]",
+        "公式汇总",
+    ) == "共轭对称分量的实虚部奇偶性（用于由实部和虚部判断序列的共轭对称类型）"
+    assert _formula_name(
+        r"\[X_e(e^{j\omega})=\frac{1}{2}\left[X(e^{j\omega})+X^*(e^{-j\omega})\right],"
+        r"\quad X_o(e^{j\omega})=\frac{1}{2}\left[X(e^{j\omega})-X^*(e^{-j\omega})\right]\]",
+        "公式汇总",
+    ) == "频谱的共轭对称分量分解（用于由完整频谱构造共轭对称和共轭反对称频谱）"

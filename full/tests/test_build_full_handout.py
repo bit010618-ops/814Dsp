@@ -68,6 +68,19 @@ def test_full_handout_uses_the_same_inverse_z_formula_names_in_the_appendix(tmp_
     )
 
 
+def test_full_handout_names_dtft_conjugate_decompositions_by_their_actual_purpose(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+    appendix = html[html.index('class="appendix-formula-group"'):]
+
+    assert re.search(
+        r'频谱的共轭对称分量分解（用于由完整频谱构造共轭对称和共轭反对称频谱）：</p>'
+        r'<div class="formula">\\\[\s*X_e\(e\^\{j\\omega\}\)',
+        appendix,
+    )
+
+
 def test_full_handout_limits_unclassified_sum_formula_labels(tmp_path: Path):
     from full.tools import build_full_handout
 

@@ -177,6 +177,12 @@ def _formula_name(formula: str, heading: str) -> str:
         return "部分分式展开的留数系数（用于把有理 z 函数拆成可直接反变换的简单项）"
     if "C_{\\ell,r}=\\frac{1}{(q_\\ell-r)!}" in compact and "(z-p_\\ell)^{q_\\ell}X(z)" in compact:
         return "重极点系数的导数公式（用于求有理 z 函数高阶极点项的部分分式系数）"
+    if "x_e(n)=\\frac{1}{2}\\left[x(n)+x^*(-n)\\right]" in compact and "x_o(n)=\\frac{1}{2}\\left[x(n)-x^*(-n)\\right]" in compact:
+        return "共轭对称与共轭反对称分量分解（用于将任意复序列按共轭对称性拆分）"
+    if "x_{er}(n)&=x_{er}(-n)" in compact and "x_{ei}(n)&=-x_{ei}(-n)" in compact and "x_{oi}(n)&=x_{oi}(-n)" in compact:
+        return "共轭对称分量的实虚部奇偶性（用于由实部和虚部判断序列的共轭对称类型）"
+    if "X_e(e^{j\\omega})=\\frac{1}{2}\\left[X(e^{j\\omega})+X^*(e^{-j\\omega})\\right]" in compact and "X_o(e^{j\\omega})=\\frac{1}{2}\\left[X(e^{j\\omega})-X^*(e^{-j\\omega})\\right]" in compact:
+        return "频谱的共轭对称分量分解（用于由完整频谱构造共轭对称和共轭反对称频谱）"
     if (
         "\\sum_k\\frac{A_k}{1-p_kz^{-1}}" in compact
         and "C_{\\ell,r}" in compact
