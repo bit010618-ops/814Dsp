@@ -1732,3 +1732,8 @@
 
 - Source pp.221--232 retain the z-transform property table, DTFT definition/inverse derivation, absolute-summability condition, \(2\pi\)-periodicity, and the beginning of the conjugate-symmetry decomposition. Duplicate animated section-cover pages are represented once rather than copied as decorated slides.
 - The appendix had again exposed heading-dependent generic formula labels for three distinct conjugate-symmetry relations. Formula-level classifications now distinguish time-domain conjugate-symmetric decomposition, the real/imaginary parity conditions, and the corresponding frequency-domain decomposition. Tests first failed on the appendix output; they pass `24 passed` after the minimal classifier repair, and rebuilt HTML confirms all three locations carry their distinct reader-facing names.
+
+# 2026-08-31 Chapter 2 source-page audit: DTFT example and system-function transition
+
+- Source pp.233--244 retain the DTFT conjugate-symmetry proof, the real-sequence spectral conclusion, the worked “recover a causal real sequence from its real spectrum” example, and the system-function transition to LSI causality/stability. The current editable body contains the exact worked result \(h(n)=\delta(n)+\delta(n-1)\), its frequency response, the causal impulse-response condition, and absolute-summability BIBO condition.
+- Pages 239--240 are repeated section-transition covers; no decorative source slides are copied. No missing unique technical content or required diagram was found in this interval.
