@@ -1737,3 +1737,9 @@
 
 - Source pp.233--244 retain the DTFT conjugate-symmetry proof, the real-sequence spectral conclusion, the worked “recover a causal real sequence from its real spectrum” example, and the system-function transition to LSI causality/stability. The current editable body contains the exact worked result \(h(n)=\delta(n)+\delta(n-1)\), its frequency response, the causal impulse-response condition, and absolute-summability BIBO condition.
 - Pages 239--240 are repeated section-transition covers; no decorative source slides are copied. No missing unique technical content or required diagram was found in this interval.
+
+## 2026-08-31 Chapter 2 source-page audit: causality, stability and frequency-response transition
+
+- Source pp.245--256 were rendered and compared. The unit-circle ROC stability criterion, causal-system pole constraint, the noncausal three-tap average example, its one-sample causal/stable delay conversion, the causal difference-equation example, and the transition to frequency-response meaning are all retained in the editable body.
+- The two three-tap realization diagrams are native SVG standard block diagrams rather than source screenshots: the original version explicitly retains the advance branch and the delayed version has two \(z^{-1}\) branches, so the causality contrast is visible without importing source watermarks or slide decoration. The difference-equation example retains its exact \(H(z)\), causal ROC \(|z|>0.6\), stability result, and partial-fraction impulse response.
+- Source pp.252--256 are repeated section covers and outline pages; they add no standalone mathematical or diagram content. No additional implementation change is required for this interval.
