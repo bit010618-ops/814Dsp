@@ -7,8 +7,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+import numpy as np
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
+from matplotlib.font_manager import FontProperties
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -16,6 +18,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from full.tools.render_mathjax_formula import EDGE, MATHJAX
+
+
+CHINESE_FONT = FontProperties(fname=r"C:\Windows\Fonts\msyh.ttc")
 
 
 STYLE = r"""<style>
@@ -52,7 +57,7 @@ def z_plane_plot() -> str:
     ax.plot(*c, marker="o", mfc="#fbfcfd", mec=zero_colour, mew=2.0, ms=10)
     ax.plot(*d, marker="x", color=pole_colour, mew=2.5, ms=11)
 
-    font = {"fontname": "Microsoft YaHei"}
+    font = {"fontproperties": CHINESE_FONT}
     ax.text(1.33, -0.10, "实轴", color=axis_colour, fontsize=11, ha="left", va="top", **font)
     ax.text(0.06, 1.10, "虚轴", color=axis_colour, fontsize=11, ha="left", va="bottom", **font)
     ax.text(0.06, -0.10, "0", color=axis_colour, fontsize=10, ha="left", va="top", **font)
@@ -67,6 +72,123 @@ def z_plane_plot() -> str:
     fig.savefig(payload, format="png", dpi=240, facecolor=fig.get_facecolor(), bbox_inches="tight", pad_inches=0.04)
     encoded = base64.b64encode(payload.getvalue()).decode("ascii")
     return f'<figure><img class="diagram-plot" src="data:image/png;base64,{encoded}" alt="单位圆上的频率点与零、极点的距离决定幅度的峰谷"><figcaption>单位圆上的频率点与零、极点的距离决定幅度的峰谷</figcaption></figure>'
+
+
+def _plot_html(fig: Figure, *, plot_id: str, alt: str, caption: str) -> str:
+    """Embed a calculated Matplotlib plot, retaining the semantic figure identity."""
+    payload = BytesIO()
+    fig.savefig(payload, format="png", dpi=240, facecolor=fig.get_facecolor(), bbox_inches="tight", pad_inches=0.06)
+    encoded = base64.b64encode(payload.getvalue()).decode("ascii")
+    return (
+        f'<figure data-plot="{plot_id}"><img class="diagram-plot" '
+        f'src="data:image/png;base64,{encoded}" alt="{alt}"><figcaption>{caption}</figcaption></figure>'
+    )
+
+
+def _textbook_axes(ax, *, xlabel: str, ylabel: str) -> None:
+    """Apply quiet textbook axes with unambiguous arrow direction and Chinese labels."""
+    ax.grid(True, color="#dce5eb", linewidth=0.65, zorder=0)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_color("#234b6e")
+    ax.spines["bottom"].set_color("#234b6e")
+    ax.tick_params(colors="#405565", labelsize=8.8)
+    ax.set_xlabel(xlabel, fontsize=9.5, color="#234b6e", labelpad=5, fontproperties=CHINESE_FONT)
+    ax.set_ylabel(ylabel, fontsize=9.5, color="#234b6e", labelpad=6, fontproperties=CHINESE_FONT)
+    arrow = {"arrowstyle": "-|>", "color": "#234b6e", "lw": 0.95}
+    ax.annotate("", xy=(1.02, 0), xytext=(0, 0), xycoords="axes fraction", clip_on=False, arrowprops=arrow)
+    ax.annotate("", xy=(0, 1.03), xytext=(0, 0), xycoords="axes fraction", clip_on=False, arrowprops=arrow)
+
+
+def first_order_frequency_response_plot() -> str:
+    """Plot the exact response of 0.05(1+z^-1)/(1-0.9z^-1), without source-slide annotations."""
+    w = np.linspace(0.0, 0.995 * np.pi, 960)
+    h = 0.05 * (1.0 + np.exp(-1j * w)) / (1.0 - 0.9 * np.exp(-1j * w))
+    phase = np.unwrap(np.angle(h))
+    delay = -np.gradient(phase, w)
+    fig = Figure(figsize=(7.15, 6.1), dpi=240, facecolor="#fbfcfd")
+    FigureCanvasAgg(fig)
+    axes = [fig.add_subplot(3, 1, row + 1) for row in range(3)]
+    labels = ("幅度", "相位 / rad", "群延迟 / 样本")
+    series = (np.abs(h), phase, delay)
+    titles = ("幅频响应", "相频响应", "群延迟")
+    for ax, values, label, title in zip(axes, series, labels, titles):
+        ax.plot(w / np.pi, values, color="#007f86", linewidth=1.7, zorder=2)
+        _textbook_axes(ax, xlabel="归一化角频率  ω/π", ylabel=label)
+        ax.set_title(title, fontsize=10.2, color="#315d7c", pad=5, fontproperties=CHINESE_FONT)
+        ax.set_xlim(0, 1)
+        ax.set_xticks((0, 0.25, 0.5, 0.75, 1.0), ("0", "π/4", "π/2", "3π/4", "π"))
+    w0 = 0.01 * np.pi
+    h0 = 0.05 * (1.0 + np.exp(-1j * w0)) / (1.0 - 0.9 * np.exp(-1j * w0))
+    axes[0].scatter((0.01,), (abs(h0),), color="#bc6b16", s=20, zorder=3)
+    axes[0].annotate("ω0=0.01π", xy=(0.01, abs(h0)), xytext=(0.18, 0.8), textcoords="axes fraction",
+                     fontsize=8.7, color="#8d4b0b", fontproperties=CHINESE_FONT,
+                     arrowprops={"arrowstyle": "->", "color": "#8d4b0b", "lw": 0.9})
+    fig.subplots_adjust(left=0.14, right=0.97, bottom=0.08, top=0.94, hspace=0.66)
+    return _plot_html(
+        fig,
+        plot_id="first-order-frequency-response",
+        alt="一阶 LSI 系统的幅频、相频与群延迟",
+        caption="一阶 LSI 系统的幅频、相频与群延迟：曲线由本例给定的系统函数直接计算。",
+    )
+
+
+def three_tap_frequency_response_plot() -> str:
+    """Plot magnitude and principal phase for the actual three-tap averaging filter."""
+    w = np.linspace(0.0, np.pi, 960)
+    h = (1.0 + np.exp(-1j * w) + np.exp(-2j * w)) / 3.0
+    phase = np.where(w < 2 * np.pi / 3, -w, np.pi - w)
+    phase[np.abs(w - 2 * np.pi / 3) < 0.008] = np.nan
+    fig = Figure(figsize=(7.15, 4.45), dpi=240, facecolor="#fbfcfd")
+    FigureCanvasAgg(fig)
+    magnitude_ax = fig.add_subplot(2, 1, 1)
+    phase_ax = fig.add_subplot(2, 1, 2, sharex=magnitude_ax)
+    magnitude_ax.plot(w / np.pi, np.abs(h), color="#007f86", linewidth=1.8)
+    phase_ax.plot(w / np.pi, phase, color="#007f86", linewidth=1.8)
+    for ax, ylabel, title in ((magnitude_ax, "幅度", "幅频响应"), (phase_ax, "相位 / rad", "主值相频响应")):
+        _textbook_axes(ax, xlabel="归一化角频率  ω/π", ylabel=ylabel)
+        ax.set_xlim(0, 1)
+        ax.set_xticks((0, 1 / 3, 2 / 3, 1), ("0", "π/3", "2π/3", "π"))
+        ax.axvline(2 / 3, color="#bc6b16", linewidth=1.0, linestyle="--")
+        ax.set_title(title, fontsize=10.2, color="#315d7c", pad=4, fontproperties=CHINESE_FONT)
+    magnitude_ax.annotate("零点 2π/3", xy=(2 / 3, 0), xytext=(0.73, 0.52), fontsize=8.7, color="#8d4b0b",
+                          fontproperties=CHINESE_FONT,
+                          arrowprops={"arrowstyle": "->", "color": "#8d4b0b", "lw": 0.9})
+    fig.subplots_adjust(left=0.14, right=0.97, bottom=0.12, top=0.92, hspace=0.72)
+    return _plot_html(
+        fig,
+        plot_id="three-tap-frequency-response",
+        alt="三点均值滤波器的幅频与相频",
+        caption="三点均值滤波器的幅频与相频：首个零点对应的频率分量被完全抑制。",
+    )
+
+
+def three_tone_frequency_selection_plot() -> str:
+    """Use stem plots to show the three discrete input frequency components and their filtered amplitudes."""
+    normalized = np.array((0.25, 0.50, 0.85))
+    response = np.abs((1.0 + np.exp(-1j * np.pi * normalized) + np.exp(-2j * np.pi * normalized)) / 3.0)
+    fig = Figure(figsize=(7.15, 3.45), dpi=240, facecolor="#fbfcfd")
+    FigureCanvasAgg(fig)
+    ax = fig.add_axes((0.12, 0.18, 0.84, 0.70), facecolor="#fbfcfd")
+    markers, stems, baseline = ax.stem(normalized, response, linefmt="#007f86", markerfmt="o", basefmt="#234b6e")
+    markers.set_markerfacecolor("#bc6b16")
+    markers.set_markeredgecolor("#bc6b16")
+    stems.set_linewidth(1.8)
+    baseline.set_linewidth(1.1)
+    _textbook_axes(ax, xlabel="归一化角频率  ω/π", ylabel="输出幅度")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1.08)
+    ax.set_xticks(normalized, ("0.25π", "0.5π", "0.85π"))
+    for frequency, amplitude in zip(normalized, response):
+        ax.annotate(f"{amplitude:.2f}", (frequency, amplitude), xytext=(0, 7), textcoords="offset points",
+                    ha="center", fontsize=8.5, color="#8d4b0b")
+    ax.set_title("三点均值滤波对三种离散频率分量的选择作用", fontsize=10.5, color="#315d7c", pad=6, fontproperties=CHINESE_FONT)
+    return _plot_html(
+        fig,
+        plot_id="three-tone-frequency-selection",
+        alt="三频率分量经过三点均值滤波器前后的幅度",
+        caption="三频率分量经过三点均值滤波器后的幅度：最高频的指定分量最受抑制，图中使用离散 stem 表示三个指定频率。",
+    )
 
 
 def three_tap_realization_svg(*, causal: bool) -> str:
@@ -170,6 +292,7 @@ __CAUSAL_THREE_TAP__
 <p>该系统的等价差分方程（用于说明输出由当前输入、前一输入和前一输出共同决定）为：</p>
 <div class="formula">\[y(n)=0.9y(n-1)+0.05x(n)+0.05x(n-1)\]</div>
 <p>在 \(\omega_0=0.01\pi\) 处，有 \(\left|H(e^{j\omega_0})\right|\approx0.958\)、\(\angle H(e^{j\omega_0})\approx-0.290\,\mathrm{rad}\)。因此输出仍为同频率正弦，幅度仅略微减小且向后移相；在低频附近群延迟约为 9--10 个样本，符合该系统低通且带明显低频延时的特征。</p>
+__FIRST_ORDER_RESPONSE__
 <h2>例题：分析 3 点均值滤波系统的频率响应</h2>
 <p><strong>例题</strong>：分析 3 点均值滤波系统的频率响应。</p>
 <p>该系统的单位脉冲响应和等价时域表达式（用于说明它对相邻三个样本作算术平均）分别为：</p>
@@ -183,7 +306,9 @@ __CAUSAL_THREE_TAP__
 -\omega, & 0\le\omega<\frac{2\pi}{3},\\
 \pi-\omega, & \frac{2\pi}{3}\le\omega\le\pi.
 \end{cases}\]</div>
+__THREE_TAP_RESPONSE__
 <p>若输入同时含有 \(0.25\pi\)、\(0.5\pi\) 与 \(0.85\pi\) 三个频率分量，则输出中靠近 \(0.85\pi\) 的分量会被显著抑制；这正是根据幅频响应判断“哪些频率通过、哪些频率衰减”的方法。</p>
+__THREE_TONE_SELECTION__
 <h1>几何法画频率响应</h1>
 <h2>从累加器到稳定低通系统</h2>
 <p>先以累加器为例。累加器的差分方程（用于把当前输出与前一时刻输出相减）为：</p>
@@ -221,7 +346,7 @@ __Z_PLANE__
 <p>分母说明原点有四重极点，只影响相位；分子零点满足 \(z^4+1=0\)，即：</p>
 <div class="formula">\[z_k=e^{j\left(\frac{2\pi k}{4}+\frac{\pi}{4}\right)},\qquad k=0,1,2,3\]</div>
 <p>四个零点等角度分布在单位圆上，故对应频率处幅度为零；幅频响应可写为 \(\left|H(e^{j\omega})\right|=\left|\cos(2\omega)\right|\)。这给出了等间隔零点与等间隔衰减槽的一组具体对应。</p>
-</main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_plot()).replace("__NONCAUSAL_THREE_TAP__", three_tap_realization_svg(causal=False)).replace("__CAUSAL_THREE_TAP__", three_tap_realization_svg(causal=True))
+</main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")").replace("__Z_PLANE__", z_plane_plot()).replace("__NONCAUSAL_THREE_TAP__", three_tap_realization_svg(causal=False)).replace("__CAUSAL_THREE_TAP__", three_tap_realization_svg(causal=True)).replace("__FIRST_ORDER_RESPONSE__", first_order_frequency_response_plot()).replace("__THREE_TAP_RESPONSE__", three_tap_frequency_response_plot()).replace("__THREE_TONE_SELECTION__", three_tone_frequency_selection_plot())
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

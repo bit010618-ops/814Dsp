@@ -1,4 +1,5 @@
 from pathlib import Path
+import warnings
 
 
 def test_system_frequency_and_geometry_are_reflowed_with_coordinate_plot(tmp_path: Path):
@@ -49,7 +50,23 @@ def test_system_frequency_and_geometry_are_reflowed_with_coordinate_plot(tmp_pat
     assert r"z_k=e^{j\left(\frac{2\pi k}{4}+\frac{\pi}{4}\right)},\qquad k=0,1,2,3" in html
     assert r"e^{j(N-M)\omega}" in html
     assert r"\left|H(e^{j\omega})\right|=\left|A\right|" in html
+    assert 'data-plot="first-order-frequency-response"' in html
+    assert 'data-plot="three-tap-frequency-response"' in html
+    assert 'data-plot="three-tone-frequency-selection"' in html
+    assert "一阶 LSI 系统的幅频、相频与群延迟" in html
+    assert "三点均值滤波器的幅频与相频" in html
+    assert "三频率分量经过三点均值滤波器前后的幅度" in html
     assert "data:image/svg+xml" not in html
     assert html.count('<figure><svg') == 2
     assert "drawImage" not in html
     assert "<image" not in html
+
+
+def test_calculated_frequency_plots_render_chinese_labels_without_missing_glyph_warnings(tmp_path: Path):
+    from full.tools.build_chapter_02_system_frequency_mathjax_component import write_html
+
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        write_html(tmp_path / "system-frequency.html")
+
+    assert not any("Glyph" in str(item.message) for item in caught)
