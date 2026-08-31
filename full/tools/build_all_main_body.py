@@ -713,6 +713,28 @@ def _formula_name(formula: str, heading: str) -> str:
         or "X_d(e^{j\\omega})=\\frac{1}{M}\\sum_{r=0}^{M-1}X" in compact
     ):
         return "抽取后数字频谱关系（用于表示频率轴压缩与混叠副本）"
+    if "T[x(n-k)]=\\sum_{m'=-k}^{n-k}x(m')\\ne\\sum_{m=0}^{n-k}x(m')=y(n-k)" in compact:
+        return "固定起点累加器的时变性比较（用于证明累加下限固定时系统不满足时不变性）"
+    if (
+        "y_a(t)=x_s(t)\\asth_r(t)=\\sum_{m=-\\infty}^{\\infty}x_a(mT)" in compact
+        or "y_a(t)=x_s(t)*h_r(t)=\\sum_{m=-\\infty}^{\\infty}x_a(mT)" in compact
+    ):
+        return "抽样信号的重构叠加式（用于由各采样值及重构核恢复连续信号）"
+    if "\\widetilde{x}(t)=X(j0)+\\sum_{k=1}^{\\infty}2X(jk\\Omega_0)\\cos(k\\Omega_0t)" in compact:
+        return "实周期信号的傅里叶级数合成式（用于由谐波系数重构时域信号）"
+    if "\\widetilde{y}(n)=\\sum_{m=0}^{N-1}\\widetilde{x}_1(m)\\widetilde{x}_2(n-m)" in compact:
+        return "周期序列的循环卷积和（用于计算一个周期内的卷积输出）"
+    if "\\widetilde{X}_8(k)" in compact and "\\sum_{n=0}^{7}\\widetilde{x}_8(n)W_8^{nk}" in compact:
+        return "八点序列的 DFT 计算式（用于由有限样值求八个频谱点）"
+    if "X(k)=\\sum_{n=0}^{3}x(n)W_4^{nk}=1+2W_4^{2k}+W_4^{3k}" in compact:
+        return "四点序列的 DFT 计算式（用于由时域样值求四个频谱点）"
+    if "\\sum_{n=-\\infty}^{\\infty}|h[n]|" in compact and "=26<\\infty" in compact:
+        return "单位冲激响应绝对可和验证（用于以有限和证明系统 BIBO 稳定）"
+    if (
+        "(x\\circledast_5h)(n)=\\sum_{m=0}^{4}x(m)h\\left((n-m)\\right)_5" in compact
+        or "(x\\circledast_5h)(n)=\\sum_{m=0}^{4}x(m)h((n-m))_5" in compact
+    ):
+        return "五点循环卷积定义（用于按模 5 索引计算周期卷积）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
     if "y(n)=x^2(n)" in compact:

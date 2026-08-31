@@ -121,6 +121,43 @@ def test_formula_name_names_frequency_sampling_and_multirate_sum_relations():
     ) == "抽取后数字频谱关系（用于表示频率轴压缩与混叠副本）"
 
 
+def test_formula_name_names_remaining_common_sum_formula_families():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[T[x(n-k)]=\sum_{m'=-k}^{n-k}x(m')\ne\sum_{m=0}^{n-k}x(m')=y(n-k)\]",
+        "时不变性",
+    ) == "固定起点累加器的时变性比较（用于证明累加下限固定时系统不满足时不变性）"
+    assert _formula_name(
+        r"\[y_a(t)=x_s(t)*h_r(t)=\sum_{m=-\infty}^{\infty}x_a(mT)g(t-mT)\]",
+        "连续信号重构",
+    ) == "抽样信号的重构叠加式（用于由各采样值及重构核恢复连续信号）"
+    assert _formula_name(
+        r"\[\widetilde{x}(t)=X(j0)+\sum_{k=1}^{\infty}2X(jk\Omega_0)\cos(k\Omega_0t)\]",
+        "傅里叶级数",
+    ) == "实周期信号的傅里叶级数合成式（用于由谐波系数重构时域信号）"
+    assert _formula_name(
+        r"\[\widetilde{y}(n)=\sum_{m=0}^{N-1}\widetilde{x}_1(m)\widetilde{x}_2(n-m)\]",
+        "循环卷积",
+    ) == "周期序列的循环卷积和（用于计算一个周期内的卷积输出）"
+    assert _formula_name(
+        r"\[\widetilde{X}_8(k)=\sum_{n=0}^{7}\widetilde{x}_8(n)W_8^{nk}=1+W_8^k+W_8^{2k}+W_8^{3k}\]",
+        "DFT 例题",
+    ) == "八点序列的 DFT 计算式（用于由有限样值求八个频谱点）"
+    assert _formula_name(
+        r"\[X(k)=\sum_{n=0}^{3}x(n)W_4^{nk}=1+2W_4^{2k}+W_4^{3k}\]",
+        "DFT 例题",
+    ) == "四点序列的 DFT 计算式（用于由时域样值求四个频谱点）"
+    assert _formula_name(
+        r"\[\sum_{n=-\infty}^{\infty}|h[n]|\leq1+4\sum_{n=1}^{\infty}(\frac12)^n+7\sum_{n=1}^{\infty}(\frac34)^n=26<\infty\]",
+        "稳定性验证",
+    ) == "单位冲激响应绝对可和验证（用于以有限和证明系统 BIBO 稳定）"
+    assert _formula_name(
+        r"\[(x\circledast_5h)(n)=\sum_{m=0}^{4}x(m)h((n-m))_5\]",
+        "循环卷积",
+    ) == "五点循环卷积定义（用于按模 5 索引计算周期卷积）"
+
+
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
 
