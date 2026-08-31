@@ -1711,3 +1711,8 @@
 - Corrected formula leads that still described the display form rather than the mathematical content: real/imaginary DTFT components, conjugate-symmetric component reconstruction, complex-exponential components, z-transform linearity/ROC, time reversal/exponential weighting, the time-domain multiplication-by-\(n\) property, and the median-filter definition.
 - Added focused regression coverage for all seven semantic labels. The target failure reproduced first; after the minimum classifier additions, the relevant suite passes `73 passed` and regenerated full-book HTML confirms the corrected labels in the body and chapter summaries.
 - The verified 462-page candidate PDF deliberately remains unchanged for now: it predates this semantic batch. These HTML changes are queued for the next complete static-MathJax export, two answer-page backfills, and raster visual review.
+
+# 2026-08-31 Chapter 2 source-page audit: z-transform foundations
+
+- Rendered and compared source pp.189--200 with the regenerated body. The z-transform motivation, Laplace-to-z derivation, s-to-z geometry, periodic-frequency implication, ROC definition, one-pole left/right expansions, two-sided annular ROC, and three-pole ROC choices are all retained in editable prose, LaTeX, tables, and native SVG diagrams.
+- The original presentation's repeated color-annotated animation frames are intentionally represented once as the final mathematical relation and a clean vector ROC diagram; this preserves the unique teaching content without importing source watermarks or redundant slide decoration. No missing technical content was found in this source interval.
