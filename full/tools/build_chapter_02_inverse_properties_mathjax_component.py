@@ -59,8 +59,8 @@ def write_html(output: Path) -> Path:
 <tr><th scope="row">时域卷积</th><td>\(x(n)*h(n)\)</td><td>\(X(z)H(z)\)</td><td>\(\operatorname{ROC}\supseteq R_x\cap R_h\)</td></tr>
 </tbody></table>
 <h2>线性与移位</h2>
-<p>线性公式用于把加权和拆成已知变换；在没有零极点相消时，其 ROC 正好是原 ROC 的交集。</p>
-<div class="formula">\[\begin{aligned}\mathcal{Z}\{ax(n)+by(n)\}&=aX(z)+bY(z),\\\operatorname{ROC}\{ax(n)+by(n)\}&\supseteq R_x\cap R_y\end{aligned}\]</div>
+<p>线性公式用于把加权和拆成已知变换；在没有零极点相消时，其 ROC 正好是原 ROC 的交集。若两项均为环形 ROC，可把该交集的上下边界直接写出：</p>
+<div class="formula">\[\begin{aligned}\mathcal{Z}\{ax(n)+by(n)\}&=aX(z)+bY(z),\\\operatorname{ROC}\{ax(n)+by(n)\}&\supseteq R_x\cap R_y,\\R_x\cap R_y&=\left\{z:\max\!\left(R_x^-,R_y^-\right)<\left|z\right|<\min\!\left(R_x^+,R_y^+\right)\right\}.\end{aligned}\]</div>
 <p>移位公式用于把时域延迟换成 z 域的幂因子；有限移位不改变原有非零极点，因此 ROC 保持为 \(R_x\)，但可能增删原点或无穷远点。</p>
 <div class="formula">\[\mathcal{Z}\{x(n-m)\}=z^{-m}X(z),\qquad \operatorname{ROC}\{x(n-m)\}=R_x\]</div>
 <p>冲激的移位变换是移位公式的基本检验：有限长冲激序列在除原点外的整个 z 平面收敛。</p>

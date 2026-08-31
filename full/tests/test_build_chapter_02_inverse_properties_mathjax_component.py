@@ -22,6 +22,7 @@ def test_inverse_and_properties_component_is_one_mathjax_flow(tmp_path: Path):
     assert r"\mathcal{Z}\{\delta(n-1)\}=z^{-1}" in html
     assert r"\mathcal{Z}\{a^nx(n)\}=X(a^{-1}z)" in html
     assert r"\operatorname{ROC}\{ax(n)+by(n)\}&\supseteq R_x\cap R_y" in html
+    assert r"\max\!\left(R_x^-,R_y^-\right)<\left|z\right|<\min\!\left(R_x^+,R_y^+\right)" in html
     assert r"\operatorname{ROC}\{x(n-m)\}=R_x" in html
     assert "drawImage" not in html
     assert "<image" not in html

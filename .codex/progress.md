@@ -1722,3 +1722,8 @@
 - Source pp.201--208 exposed one missing editable relation: the repeated-pole partial-fraction coefficient derivative. It is now present as a complete MathJax formula with a Chinese name and actual purpose.
 - A separate label-pipeline defect made formula names fall back to a generic z-transform relation inside the appendix formula groups: those groups use the heading “公式汇总”, so heading-dependent naming discarded the formula’s identity. Added position-independent classifiers for the inverse-z contour integral, simple-pole residue coefficient, and repeated-pole derivative coefficient.
 - Tests were written first and failed against the generic appendix labels. The focused formula and complete-handout suite now passes `22 passed`; regenerated HTML verifies that the body, chapter formula summary, and appendix all use the same three formula-specific labels. Candidate PDF remains unchanged until the current source audit batch is completely exported and visually checked.
+
+# 2026-08-31 Chapter 2 source-page audit: inverse-z examples and properties
+
+- Source pp.209--220 retain the partial-fraction result, long-division inverse-z example, method comparison, causal-cosine example, time-shift property, finite-length ROC example, convolution property, and zero-pole cancellation example. All are already represented in the editable Chapter 2 body.
+- The linearity property had only stated the ROC-intersection principle. Restored the source’s explicit annular-intersection boundary \(\max(R_x^-,R_y^-)<|z|<\min(R_x^+,R_y^+)\) in one complete LaTeX aligned formula, while keeping the cancellation caveat. Test-first component coverage and relevant assembly tests pass `69 passed`; rebuilt HTML verifies the same relation in the body, formula summary, and appendix.
