@@ -1692,3 +1692,9 @@
 - Finished the residual audit for the remaining nine occurrences of the generic sum-formula lead. They now identify the four-point DFT spectrum values, continuous-time impulse-sampling spectrum replicas, sampled exponential Laplace geometric series, two-tone continuous-time spectrum, alternating-sequence and constant-sequence DTFT impulse spectra, and the discrete-LSI absolute-summability condition.
 - The test was first kept at the required zero-generic-label target and failed with exactly nine occurrences. After the minimum classifier additions, it passes; regenerated complete-handout HTML reports `GENERIC_SUM_LABELS=0`.
 - Full assembly, formula, answer-reference and local-MathJax regression now pass `66 passed`. The candidate PDF remains intentionally unchanged until this complete HTML revision undergoes the two-pass page-reference export and visual audit.
+
+# 2026-08-31 Coordinate-axis direction audit
+
+- The first complete candidate export exposed a genuine visual defect in the Chapter 1 continuous-time-to-discrete-sequence figure: both vertical-axis arrow paths ran from the top to the baseline, making their arrows point downward. Root-cause tracing isolated both paths in `_continuous_discrete_mapping_svg`; comparable coordinate figures correctly run from the baseline upward.
+- Added a focused regression test, observed it fail, then reversed only those two path directions. The vertical arrows now terminate at the top as standard textbook axes require. Relevant full regression passes `67 passed`.
+- This code correction requires one more complete static export and visual review before the candidate PDF can be replaced.

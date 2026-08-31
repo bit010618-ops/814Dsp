@@ -155,10 +155,10 @@ def _continuous_discrete_mapping_svg() -> str:
         '<defs><marker id="mapping-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
         '<path fill="#174b73" d="M0,0 L8,4 L0,8 z"/></marker></defs>',
         f'<path fill="none" stroke="#174b73" stroke-width="1.35" d="M{left} {continuous_base}H{right}" marker-end="url(#mapping-arrow)"/>',
-        f'<path fill="none" stroke="#174b73" stroke-width="1.35" d="M{left+22} 36V{continuous_base+14}" marker-end="url(#mapping-arrow)"/>',
+        f'<path fill="none" stroke="#174b73" stroke-width="1.35" d="M{left+22} {continuous_base+14}V36" marker-end="url(#mapping-arrow)"/>',
         f'<polyline fill="none" stroke="#0d8794" stroke-width="2" data-role="continuous-signal" points="{continuous_points}"/>',
         f'<path fill="none" stroke="#174b73" stroke-width="1.35" d="M{left} {discrete_base}H{right}" marker-end="url(#mapping-arrow)"/>',
-        f'<path fill="none" stroke="#174b73" stroke-width="1.35" d="M{left+22} 166V{discrete_base+14}" marker-end="url(#mapping-arrow)"/>',
+        f'<path fill="none" stroke="#174b73" stroke-width="1.35" d="M{left+22} {discrete_base+14}V166" marker-end="url(#mapping-arrow)"/>',
     ]
     for index in range(10):
         point = index / 9
