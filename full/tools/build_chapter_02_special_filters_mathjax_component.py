@@ -135,9 +135,97 @@ def _render_first_order_lowpass_figures() -> dict[str, str]:
     return figures
 
 
+def _render_resonator_figures() -> dict[str, str]:
+    """Render the resonator examples from their poles and transfer functions."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib.font_manager import FontProperties
+
+    chinese_font = FontProperties(fname=r"C:\Windows\Fonts\msyh.ttc")
+    plt.rcParams.update({"axes.unicode_minus": False, "mathtext.fontset": "stix"})
+    axis_color = "#244f72"
+    pole_color = "#bd6d0a"
+    curve_colors = ("#008e98", "#b56b2e")
+    figures: dict[str, str] = {}
+
+    figure, axes = plt.subplots(1, 2, figsize=(7.1, 3.15), constrained_layout=True)
+    geometry, response = axes
+    for spine in geometry.spines.values():
+        spine.set_visible(False)
+    theta = np.linspace(0, 2 * np.pi, 720)
+    radius = 0.9
+    centre = np.pi / 2
+    geometry.plot(np.cos(theta), np.sin(theta), color="#8094a4", lw=1.1, ls="--")
+    geometry.axhline(0, color=axis_color, lw=1.05)
+    geometry.axvline(0, color=axis_color, lw=1.05)
+    geometry.annotate("", xy=(1.30, 0), xytext=(1.15, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    geometry.annotate("", xy=(0, 1.30), xytext=(0, 1.15), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    poles = radius * np.exp(1j * np.array((centre, -centre)))
+    geometry.scatter(poles.real, poles.imag, marker="x", s=68, lw=2.0, color=pole_color, zorder=4)
+    geometry.plot([0, poles[0].real], [0, poles[0].imag], color="#aab8c2", lw=0.9, ls=":")
+    geometry.text(0.08, 0.92, "共轭极点", transform=geometry.transAxes, fontproperties=chinese_font, color=pole_color, fontsize=9, va="top")
+    geometry.text(0.95, 0.46, r"$\mathrm{Re}(z)$", transform=geometry.transAxes, fontsize=9, ha="right")
+    geometry.text(0.53, 0.96, r"$\mathrm{Im}(z)$", transform=geometry.transAxes, fontsize=9, va="top")
+    geometry.text(0.53, 0.75, r"$r=0.9$", fontsize=9, color=pole_color)
+    geometry.set(xlim=(-1.34, 1.34), ylim=(-1.34, 1.34), aspect="equal")
+    geometry.set_xticks([])
+    geometry.set_yticks([])
+    geometry.set_title("谐振器的极点位置", fontproperties=chinese_font, color="#1e4f79", fontsize=10.5, pad=6)
+
+    omega = np.linspace(0, np.pi, 1600)
+    for radius, color, label in ((0.70, curve_colors[0], r"$r=0.70$"), (0.93, curve_colors[1], r"$r=0.93$")):
+        response_value = 1 / ((1 - radius * np.exp(1j * centre) * np.exp(-1j * omega)) * (1 - radius * np.exp(-1j * centre) * np.exp(-1j * omega)))
+        magnitude = np.abs(response_value)
+        response.plot(omega / np.pi, magnitude / magnitude.max(), color=color, lw=1.65, label=label)
+    response.axvline(0.5, color="#8094a4", ls=":", lw=0.9)
+    for spine in response.spines.values():
+        spine.set_visible(False)
+    response.axhline(0, color=axis_color, lw=1.05, zorder=0)
+    response.axvline(0, color=axis_color, lw=1.05, zorder=0)
+    response.annotate("", xy=(1.10, 0), xytext=(1.02, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    response.annotate("", xy=(0, 1.12), xytext=(0, 1.03), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    response.set(xlim=(0, 1.10), ylim=(0, 1.12), xticks=(0, 0.5, 1), xticklabels=("0", r"$1/2$", "1"), yticks=(0, 0.5, 1))
+    response.grid(axis="y", color="#d9e1e6", lw=0.6)
+    response.set_xlabel(r"$\omega/\pi$", fontsize=9)
+    response.text(0.035, 0.92, "归一化幅度", transform=response.transAxes, fontproperties=chinese_font, fontsize=8.5, color=axis_color, va="top")
+    response.set_title("极点半径控制谐振峰宽度", fontproperties=chinese_font, color="#1e4f79", fontsize=10.5, pad=6)
+    response.legend(prop=chinese_font, frameon=False, fontsize=8, loc="upper left")
+    figures["pole_zero_response"] = _png_uri(figure)
+    plt.close(figure)
+
+    figure, axis = plt.subplots(figsize=(6.8, 3.0), constrained_layout=True)
+    radius_squared = 0.7
+    gain = 0.15
+    omega = np.linspace(0, np.pi, 1600)
+    response_value = gain * (1 - np.exp(-2j * omega)) / (1 + radius_squared * np.exp(-2j * omega))
+    axis.plot(omega / np.pi, np.abs(response_value), color="#008e98", lw=1.85)
+    axis.axvline(0.5, color="#b56b2e", ls=":", lw=1.0)
+    axis.scatter((0, 0.5, 1), (0, np.abs(response_value[len(omega)//2]), 0), color="#bd6d0a", zorder=3, s=22)
+    for spine in axis.spines.values():
+        spine.set_visible(False)
+    axis.axhline(0, color=axis_color, lw=1.05, zorder=0)
+    axis.axvline(0, color=axis_color, lw=1.05, zorder=0)
+    axis.annotate("", xy=(1.10, 0), xytext=(1.02, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    axis.annotate("", xy=(0, 1.12), xytext=(0, 1.03), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    axis.set(xlim=(0, 1.10), ylim=(-0.02, 1.12), xticks=(0, 0.5, 1), xticklabels=("0", r"$1/2$", "1"), yticks=(0, 0.5, 1))
+    axis.grid(axis="y", color="#d9e1e6", lw=0.6)
+    axis.set_xlabel(r"$\omega/\pi$", fontsize=9)
+    axis.text(0.035, 0.92, "幅度", transform=axis.transAxes, fontproperties=chinese_font, fontsize=8.5, color=axis_color, va="top")
+    axis.set_title("二阶带通谐振器的实际幅频响应", fontproperties=chinese_font, color="#1e4f79", fontsize=10.8, pad=7)
+    axis.annotate("中心频率", xy=(0.5, np.abs(response_value[len(omega)//2])), xytext=(0.61, 0.84), fontproperties=chinese_font, fontsize=8.5, color="#7c4a16", arrowprops={"arrowstyle": "->", "color": "#7c4a16", "lw": 0.8})
+    axis.text(0.02, 0.08, "直流零点", fontproperties=chinese_font, fontsize=8.5, color="#596b78")
+    axis.text(0.82, 0.08, "最高频零点", fontproperties=chinese_font, fontsize=8.5, color="#596b78")
+    figures["bandpass_response"] = _png_uri(figure)
+    plt.close(figure)
+    return figures
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     figures = _render_first_order_lowpass_figures()
+    figures.update(_render_resonator_figures())
     content = r'''
 <main>
 <h1>特殊滤波器的设计</h1>
@@ -176,6 +264,7 @@ def write_html(output: Path) -> Path:
 <p>二阶谐振器的系统函数用于给出“中心频率由极点角度决定、选择性由极点半径决定”的标准结构：</p>
 <div class="formula">\[H(z)=\frac{A}{(1-re^{j\omega_0}z^{-1})(1-re^{-j\omega_0}z^{-1})}\]</div>
 <p>极点角度决定通带中心频率 [[\omega_0]]；半径 [[r]] 决定选择性。[[r]] 越接近 1，极点越接近单位圆，谐振峰越尖、带宽越窄。若同时要求在直流与最高频率处完全抑制，可在 [[z=1]]、[[z=-1]] 处配置零点，得到一类二阶带通结构：</p>
+<figure class="figure" data-plot="resonator-pole-zero-response"><img src="{{RESONATOR_POLE_ZERO_RESPONSE}}" alt="谐振器极点半径与频率选择性"><figcaption>谐振器的极点—频率选择性关系：极点角度设定中心频率；极点半径越接近单位圆，谐振峰越尖、带宽越窄。</figcaption></figure>
 <div class="formula">\[H(z)=G\frac{1-z^{-2}}{1-2r\cos\omega_0\,z^{-1}+r^2z^{-2}}\]</div>
 <p>其中 [[G]] 用中心频率处的目标幅度确定；[[r]] 则由给定带宽或指定频率处的幅度条件确定。设计后必须检查极点半径小于 1，才能保证因果稳定。</p>
 <h3>例题</h3>
@@ -184,6 +273,7 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H(z)=G\frac{z^2-1}{z^2+r^2}\]</div>
 <p>把指定频率的幅度条件代入后，得到 [[r^2=0.7]]、[[G=0.15]]。故本题的设计结果为：</p>
 <div class="formula">\[H(z)=0.15\frac{z^2-1}{z^2+0.7}\]</div>
+<figure class="figure" data-plot="bandpass-resonator-response"><img src="{{BANDPASS_RESPONSE}}" alt="二阶带通谐振器的幅频响应"><figcaption>二阶带通谐振器的幅频响应：由本例的实际系统函数计算，直流与最高频率处为零，中心频率处形成通带峰值。</figcaption></figure>
 <h2>DTMF 双音多频信号</h2>
 <p>电话按键的 DTMF 信号由一个低频组频率与一个高频组频率叠加而成。低频组为 697、770、852、941 Hz，高频组为 1209、1336、1477、1633 Hz。每个按键对应唯一的一对频率；例如按键 8 对应 852 Hz 和 1336 Hz。</p>
 <div class="formula">\[x(n)=A_1\cos(\omega_1n+\varphi_1)+A_2\cos(\omega_2n+\varphi_2),\qquad \omega_i=2\pi\frac{f_i}{f_s}\]</div>
@@ -246,7 +336,9 @@ def write_html(output: Path) -> Path:
     content = (content
                .replace("{{LOWPASS_POLE_ZERO}}", figures["pole_zero"])
                .replace("{{LOWPASS_TIME}}", figures["time"])
-               .replace("{{LOWPASS_SPECTRUM}}", figures["spectrum"]))
+               .replace("{{LOWPASS_SPECTRUM}}", figures["spectrum"])
+               .replace("{{RESONATOR_POLE_ZERO_RESPONSE}}", figures["pole_zero_response"])
+               .replace("{{BANDPASS_RESPONSE}}", figures["bandpass_response"]))
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

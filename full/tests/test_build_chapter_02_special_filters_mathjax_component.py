@@ -46,6 +46,18 @@ def test_special_filters_keep_resonator_dtmf_and_engineering_filtering_body(tmp_
     assert "滑动平均" in html
 
 
+def test_special_filters_render_resonator_geometry_and_bandpass_response_from_real_data(tmp_path: Path):
+    from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
+
+    html = write_html(tmp_path / "special-filters.html").read_text(encoding="utf-8")
+
+    assert 'data-plot="resonator-pole-zero-response"' in html
+    assert 'data-plot="bandpass-resonator-response"' in html
+    assert 'alt="谐振器极点半径与频率选择性"' in html
+    assert 'alt="二阶带通谐振器的幅频响应"' in html
+    assert "极点半径越接近单位圆，谐振峰越尖" in html
+
+
 def test_special_filters_keep_source_design_conditions_and_notch_example(tmp_path: Path):
     from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
 
