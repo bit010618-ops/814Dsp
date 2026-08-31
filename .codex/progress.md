@@ -1686,3 +1686,9 @@
 
 - Added labels for finite impulse expansion, absolute summability, even/odd DFT-bin decomposition, Chirp-z convolutionization, anti-alias filtering plus M-fold decimation, windowed FIR decimation, periodic frequency-sampling impulse response and radix-2 FFT decomposition.
 - The full-handout HTML has 45 remaining generic sum labels, down from 53. The remainder is now concentrated in individual spectrum examples, sampled-system mappings and isolated DFT identities.
+
+# 2026-08-31 Formula-purpose audit: residual spectrum and stability labels
+
+- Finished the residual audit for the remaining nine occurrences of the generic sum-formula lead. They now identify the four-point DFT spectrum values, continuous-time impulse-sampling spectrum replicas, sampled exponential Laplace geometric series, two-tone continuous-time spectrum, alternating-sequence and constant-sequence DTFT impulse spectra, and the discrete-LSI absolute-summability condition.
+- The test was first kept at the required zero-generic-label target and failed with exactly nine occurrences. After the minimum classifier additions, it passes; regenerated complete-handout HTML reports `GENERIC_SUM_LABELS=0`.
+- Full assembly, formula, answer-reference and local-MathJax regression now pass `66 passed`. The candidate PDF remains intentionally unchanged until this complete HTML revision undergoes the two-pass page-reference export and visual audit.

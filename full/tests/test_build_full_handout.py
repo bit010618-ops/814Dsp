@@ -55,6 +55,14 @@ def test_full_handout_never_uses_an_anonymous_formula_result_label(tmp_path: Pat
     assert not re.search(r'class="formula-(?:lead|name)">[^<]*(?:计算关系|核心关系)', html)
 
 
+def test_full_handout_limits_unclassified_sum_formula_labels(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+
+    assert html.count("离散时间求和关系") == 0
+
+
 def test_formula_leads_replace_an_existing_generic_formula_label_with_the_formula_purpose():
     from full.tools.build_full_handout import _with_formula_leads
 

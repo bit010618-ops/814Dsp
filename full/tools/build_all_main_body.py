@@ -659,6 +659,8 @@ def _formula_name(formula: str, heading: str) -> str:
         return "双线性变换的频率映射关系（用于把模拟角频率映射到数字角频率）"
     if "\\int" in compact and "e^{-j\\omega" in compact:
         return "连续时间傅里叶变换定义（用于把时域连续信号变换到频域）"
+    if "X(e^{j\\omega})" in compact and "1+2\\cos\\omega+2\\cos(2\\omega)" in compact:
+        return "五点矩形序列的 DTFT（用于由有限长时域样值得到狄利克雷核频谱）"
     if "\\sum" in compact and "e^{-j\\omega" in compact:
         return "离散时间傅里叶变换定义（用于把离散序列变换到连续频率域）"
     if "\\sum" in compact and "z^{-" in compact:
@@ -735,9 +737,64 @@ def _formula_name(formula: str, heading: str) -> str:
         or "(x\\circledast_5h)(n)=\\sum_{m=0}^{4}x(m)h((n-m))_5" in compact
     ):
         return "五点循环卷积定义（用于按模 5 索引计算周期卷积）"
+    if "F_s(j\\omega)=\\frac{1}{T_s}\\sum_{k=-\\infty}^{\\infty}F(j(\\omega-k\\omega_s))" in compact:
+        return "连续时间冲激采样的频谱复制（用于确定采样后频谱副本的间隔和幅度）"
+    if "F_s(s)=\\sum_{n=0}^{\\infty}" in compact and (
+        "\\frac{1}{1-\\mathrm{e}^{-(s+5)T}}" in compact
+        or "\\frac{1}{1-e^{-(s+5)T}}" in compact
+    ):
+        return "指数冲激响应采样的拉普拉斯级数（用于由采样序列求离散系统函数）"
+    if "X\\left(\\mathrm{e}^{j\\omega}\\right)" in compact and "1+2\\cos\\omega+2\\cos(2\\omega)" in compact:
+        return "五点矩形序列的 DTFT（用于由有限长时域样值得到狄利克雷核频谱）"
+    if "\\sum_{n=-\\infty}^{\\infty}|h[n]|=\\sum_{n=0}^{\\infty}|a|^n<\\infty" in compact:
+        return "一阶系统的稳定性条件（用于由几何级数收敛得到极点模小于 1）"
+    if "H(z)=\\sum_{r=1}^{R}H_r(z)" in compact:
+        return "并联型滤波器的系统函数（用于将各子滤波器响应相加）"
+    if "X(k)" in compact and "1+2W_4^{2k}+W_4^{3k}" in compact and "X(0)=4" in compact:
+        return "四点序列的 DFT 计算与样值（用于列出四个离散频谱点）"
+    if "X(2r)" in compact and "X(2r+1)" in compact and "W_{N/2}^{nr}" in compact:
+        return "时域抽取后的偶奇频点 DFT（用于把两个子序列频谱映射到原频谱）"
+    if "w(n)" in compact and "R_{41}(n)" in compact and "x_d(n)" in compact and "x(8n-k)" in compact:
+        return "窗函数 FIR 抽取器（用于以有限长低通滤波后实现八倍降采样）"
+    if "T[x(n-k)]=\\sum_{m'=-\\infty}^{n-k}x(m')=y(n-k)" in compact:
+        return "累加器的时不变性验证（用于说明全时域累加的输出会随输入等量时移）"
+    if "X(z_k)=\\sum_{n=0}^{N-1}x(n)z_k^{-n}" in compact and "A^{-n}W^{nk}" in compact:
+        return "Chirp-z 变换的频点取样式（用于把 z 平面等角取样写成旋转因子求和）"
+    if "h[n]" in compact and "=26<\\infty" in compact:
+        return "单位冲激响应绝对可和验证（用于以有限和证明系统 BIBO 稳定）"
+    if "h[n]" in compact and "\\sum_{n=0}^{\\infty}\\left|a\\right|^n" in compact:
+        return "一阶系统的绝对可和级数（用于将稳定性判断化为几何级数收敛）"
+    if "T_s=\\frac{2\\pi}{\\omega_s}=\\frac{\\pi}{6}" in compact and "\\operatorname{Sa}" in compact:
+        return "带限 Sa 信号的冲激采样结果（用于列出给定采样周期下的样值冲激串）"
+    if "F_s(\\omega)=\\frac{1}{T}\\sum_{k=-\\infty}^{\\infty}F(\\omega-k\\omega_s)" in compact:
+        return "连续频谱的周期复制公式（用于写出指定采样角频率下的频谱副本）"
+    if "X_p(\\omega)=\\frac{1}{T}\\sum_{k=-\\infty}^{\\infty}X(\\omega-k\\omega_s)" in compact:
+        return "理想冲激采样的频谱复制（用于确定抽样后频谱的周期平移）"
+    if "X_s(\\omega)=\\frac{\\tau}{T_s}\\sum_{k=-\\infty}^{\\infty}" in compact and "\\operatorname{Sa}" in compact:
+        return "自然采样的频谱复制（用于说明脉冲宽度对各频谱副本的加权）"
+    if "S_\\delta(\\omega)=\\frac{2\\pi}{T_s}\\sum" in compact and "X_{s,\\delta}(\\omega)" in compact:
+        return "冲激采样器频谱与输出频谱（用于分别给出抽样器和被抽样信号的频域表达）"
+    if "X(e^{j\\omega})=2\\pi" in compact and "\\delta(\\omega-\\pi-2k\\pi)" in compact:
+        return "交替序列的 DTFT 冲激谱（用于说明 (-1)^n 的频谱位于 π）"
+    if "X\\left(\\mathrm{e}^{j\\omega}\\right)=\\pi\\sum" in compact and "\\frac{2\\pi}{3}" in compact:
+        return "余弦序列的 DTFT 冲激谱（用于标出正负角频率处的两条谱线）"
+    if "X\\left(\\frac{N}{2}\\right)=\\sum_{n=0}^{N-1}x(n)(-1)^n" in compact:
+        return "DFT 半采样频率点（用于以交替加权和计算 k=N/2 的谱值）"
+    if "X(0)=\\sum_{n=0}^{N-1}x(n)" in compact:
+        return "DFT 直流分量（用于由全部时域样值之和计算 k=0 频点）"
+    if "X(k)=\\sum_{n=0}^{3}x(n)W_4^{nk}=2+2W_4^{2k}" in compact:
+        return "双冲激序列的四点 DFT（用于由两个时移样值求离散频谱）"
+    if "X(k)=\\sum_{n=0}^{5}(n+1)W_6^{nk}" in compact and "\\frac{6}{1-W_6^k}" in compact:
+        return "加权六点序列的 DFT（用于给出直流项和非零频点的闭式结果）"
+    if "\\widetilde{x}(n)=\\sum_{r=-\\infty}^{\\infty}x(n-6r)" in compact:
+        return "有限序列的六点周期延拓（用于由一段样值构造周期序列）"
+    if "H'(s)=\\frac{1}{T}\\sum_{k=-\\infty}^{\\infty}H\\left(s-jk\\Omega_s\\right)" in compact:
+        return "脉冲响应不变法的周期系统函数（用于说明模拟极点响应在 s 域的周期复制）"
+    if "Y(e^{j\\omega})=\\frac{1}{3}\\sum_{r=0}^{2}V" in compact:
+        return "三倍抽取的频谱折叠（用于由滤波后频谱计算三倍降采样输出）"
     if "x(n)=\\delta(n)+2\\delta(n-1)+3\\delta(n-2)=\\sum_{m=0}^{2}x(m)\\delta(n-m)" in compact:
         return "有限序列的单位冲激展开（用于由各非零样值构造序列）"
-    if "\\sum_{n=-\\infty}^{\\infty}|x(n)|<\\infty" in compact:
+    if "\\sum_{n=-\\infty}^{\\infty}|x(n)|<\\infty" in compact or "\\left|x(n)\\right|&lt;\\infty" in compact:
         return "离散序列的绝对可和条件（用于判定卷积与频域变换的收敛性）"
     if "X(2r)=\\sum_{n=0}^{N/2-1}x_1(n)W_{N/2}^{nr}" in compact and "X(2r+1)=\\sum_{n=0}^{N/2-1}x_2(n)W_{N/2}^{nr}" in compact:
         return "时域抽取后的偶奇频点 DFT（用于把两个子序列频谱映射到原频谱）"
@@ -746,17 +803,31 @@ def _formula_name(formula: str, heading: str) -> str:
     if (
         "H_d\\!\\left(e^{j\\omega}\\right)" in compact
         or "H_d(e^{j\\omega})" in compact
-    ) and "x_d(n)=w(Mn)" in compact:
+    ) and "x_d(n)" in compact and "w(Mn)" in compact:
         return "抗混叠低通与 M 倍抽取（用于先限带再降采样以避免频谱折叠）"
     if (
         "w(n)=\\frac{1}{2}\\left[1-\\cos" in compact
         or "w(n)=\\frac12[1-\\cos" in compact
-    ) and "x_d(n)=\\sum_{k=0}^{40}h(k)x(8n-k)" in compact:
+    ) and "x_d(n)" in compact and "\\sum_{k=0}^{40}h(k)x(8n-k)" in compact:
         return "窗函数 FIR 抽取器（用于以有限长低通滤波后实现八倍降采样）"
     if "h_N(n)=\\sum_{r=-\\infty}^{\\infty}h(n-rN)" in compact:
         return "频率采样 FIR 的周期冲激响应（用于说明 IDFT 系数在时域按 N 周期延拓）"
     if "X[k]=\\sum_{n=0}^3x[2n]W_4^{kn}+W_8^k\\sum_{n=0}^3x[2n+1]W_4^{kn}" in compact:
         return "基 2 FFT 的偶奇分解公式（用于由两个四点 DFT 合成八点 DFT）"
+    if "X(k)" in compact and "1+2W_4^{2k}+W_4^{3k}" in compact and "X(0)" in compact:
+        return "四点序列的 DFT 计算与样值（用于列出四个离散频谱点）"
+    if "F_s(j\\omega)" in compact and "\\frac{1}{T_s}" in compact and "\\omega_s" in compact:
+        return "连续时间冲激采样的频谱复制（用于确定采样后频谱副本的间隔和幅度）"
+    if "F_s(s)" in compact and "\\mathrm{e}^{-(s+5)T}" in compact and "\\frac{1}{1-" in compact:
+        return "指数冲激响应采样的拉普拉斯级数（用于由采样序列求离散系统函数）"
+    if "5\\cos(220\\pi" in compact and "5\\cos(180\\pi" in compact and "X(j\\Omega)" in compact:
+        return "双余弦信号的连续时间频谱（用于标出两组正负角频率冲激）"
+    if "\\delta\\left(\\omega-\\pi-2k\\pi\\right)" in compact:
+        return "交替序列的 DTFT 冲激谱（用于说明 (-1)^n 的频谱位于 π）"
+    if "2\\pi" in compact and "\\delta(\\omega-2\\pi" in compact and "X(e^{j\\omega})" in compact:
+        return "常数序列的 DTFT 冲激谱（用于说明直流序列的频谱按 2π 周期重复）"
+    if "h[n]" in compact and "&lt;\\infty" in compact:
+        return "离散 LSI 系统的绝对可和条件（用于由单位冲激响应判定 BIBO 稳定性）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
     if "y(n)=x^2(n)" in compact:
