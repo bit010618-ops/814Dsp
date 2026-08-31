@@ -1670,3 +1670,9 @@
 - Added exact names and purposes for six foundational sum formulas (unit-sample expansion, energy, average power, periodic average power, impulse/step relation and rectangular-sequence representation). The remaining generic sum labels fell from 124 to 105 in the regenerated HTML.
 - Next action: continue the residual generic-formula audit, then run the stable two-pass export procedure on the final regenerated HTML and replace the candidate only after visual checks.
 - Task commit `86ec3ca` contains the reflow and formula-purpose changes. A same-day `git push origin main` retry again failed with `SEC_E_NO_CREDENTIALS`; this commit remains local until GitHub credentials are restored.
+
+# 2026-08-31 Formula-purpose audit: standard system, FIR and multirate sums
+
+- Added explicit reader-facing names and uses for the linear-system superposition law, sliding average, LSI convolution representation, general constant-coefficient difference equation, ideal impulse sampling, impulse-train spectrum, bandlimited interpolation and the absolute-summability stability condition.
+- Added formula-specific labels for the frequency-sampling IDFT, linear-phase FIR amplitude/phase decomposition, four FIR linear-phase types, and the two downsampling frequency-domain relations.
+- Each batch was test-first. The first batch reduced generic “离散时间求和关系” labels from 105 to 84; the second reduced them to 69 after rebuilding the full-handout HTML. The next audit must classify the remaining 48 unique formula shapes before a final candidate replacement.

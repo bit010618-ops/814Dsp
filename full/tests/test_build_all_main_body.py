@@ -59,6 +59,68 @@ def test_formula_name_names_foundational_sum_relations_instead_of_generic_sum_la
     )
 
 
+def test_formula_name_names_standard_sum_based_system_relations():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[T\left[\sum_{i=1}^{N}a_i x_i(n)\right]=\sum_{i=1}^{N}a_i y_i(n)\]",
+        "线性系统",
+    ) == "线性系统的叠加原理（用于检验多个输入线性组合的输出）"
+    assert _formula_name(
+        r"\[T[x(n)]=\frac{1}{M_2-M_1+1}\sum_{k=M_1}^{M_2}x(n-k)\]",
+        "移动平均滤波器",
+    ) == "滑动平均系统（用于以有限窗口内样值的均值平滑序列）"
+    assert _formula_name(
+        r"\[T[x(n)]=\sum_{m=-\infty}^{\infty}x(m)h(n-m)\]",
+        "离散 LSI 系统",
+    ) == "离散 LSI 系统的卷积表示（用于由输入和单位冲激响应计算输出）"
+    assert _formula_name(
+        r"\[\sum_{k=0}^{N}a_k y(n-k)=\sum_{m=0}^{M}b_m x(n-m),\qquad a_0\ne0\]",
+        "差分方程",
+    ) == "线性常系数差分方程的一般形式（用于定义离散系统的输入输出递推关系）"
+    assert _formula_name(
+        r"\[\delta_T(t)=\sum_{n=-\infty}^{\infty}\delta(t-nT),\qquad x_s(t)=x_a(t)\delta_T(t)\]",
+        "理想时域采样",
+    ) == "理想冲激采样模型（用于以周期冲激串从连续信号抽取样值）"
+    assert _formula_name(
+        r"\[\delta_T(t)=\frac{1}{T}\sum_{k=-\infty}^{\infty}e^{jk\Omega_s t},\qquad \Delta_T(j\Omega)=\Omega_s\sum_{k=-\infty}^{\infty}\delta(\Omega-k\Omega_s)\]",
+        "冲激串频谱",
+    ) == "周期冲激串的傅里叶级数与频谱（用于确定采样冲激串的频域间隔）"
+    assert _formula_name(
+        r"\[x_i(n)=\sum_{k=-\infty}^{\infty}x(k)\frac{\sin[\pi(n-kL)/L]}{\pi(n-kL)/L}\]",
+        "插值",
+    ) == "理想带限插值公式（用于由上采样样值恢复插值后的离散序列）"
+    assert _formula_name(
+        r"\[\sum_{n=-\infty}^{\infty}|h[n]|<\infty\]",
+        "BIBO 稳定性",
+    ) == "离散 LSI 系统的绝对可和条件（用于由单位冲激响应判定 BIBO 稳定性）"
+
+
+def test_formula_name_names_frequency_sampling_and_multirate_sum_relations():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[h(n)=\frac{1}{N}\sum_{k=0}^{N-1}H(k)e^{j2\pi kn/N}\]",
+        "频率采样法",
+    ) == "频率采样法的冲激响应 IDFT（用于由指定频率样值构造 FIR 系数）"
+    assert _formula_name(
+        r"\[H(e^{j\omega})=\begin{cases}e^{-j\frac{N-1}{2}\omega}\sum_{n=0}^{N-1}h(n)\cos\left[\left(\frac{N-1}{2}-n\right)\omega\right],&h(n)=h(N-1-n)\\je^{-j\frac{N-1}{2}\omega}\sum_{n=0}^{N-1}h(n)\sin\left[\left(\frac{N-1}{2}-n\right)\omega\right],&h(n)=-h(N-1-n)\end{cases}\]",
+        "线性相位 FIR",
+    ) == "线性相位 FIR 的幅相分解（用于由冲激响应对称性写出频率响应）"
+    assert _formula_name(
+        r"\[N=2M+1:\quad H_{\mathrm{I}}(\omega)=h(M)+2\sum_{m=1}^{M}h(M-m)\cos(m\omega)\]",
+        "线性相位类型",
+    ) == "四类线性相位 FIR 的幅度函数（用于按长度奇偶和对称性选择可实现响应）"
+    assert _formula_name(
+        r"\[Y(e^{j\omega})=\frac{1}{M}\sum_{r=0}^{M-1}X(e^{j(\omega-2\pi r)/M})\]",
+        "抽取",
+    ) == "M 倍抽取的频谱折叠公式（用于判断降采样后各频谱副本的叠加）"
+    assert _formula_name(
+        r"\[X_d(e^{j\omega})=\frac{1}{M}\sum_{r=0}^{M-1}X(e^{j(\omega/M-2\pi r/M)})\]",
+        "抽取频谱",
+    ) == "抽取后数字频谱关系（用于表示频率轴压缩与混叠副本）"
+
+
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
 

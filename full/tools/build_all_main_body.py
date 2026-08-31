@@ -622,6 +622,12 @@ def _formula_name(formula: str, heading: str) -> str:
         return "BIBO 稳定性的 ROC 条件（用于判断收敛域是否包含单位圆）"
     if "\\left|a\\right|\\ne1" in compact and "\\left|b\\right|\\ne1" in compact:
         return "极点避开单位圆的条件（用于排除单位圆上的极点）"
+    if (
+        ("H(e^{j\\omega})=\\begin{cases}" in compact or "H\\!\\left(e^{j\\omega}\\right)=\\begin{cases}" in compact)
+        and "h(n)=h(N-1-n)" in compact
+        and "h(n)=-h(N-1-n)" in compact
+    ):
+        return "线性相位 FIR 的幅相分解（用于由冲激响应对称性写出频率响应）"
     if "H(e^{j\\omega})" in compact:
         return "系统的频率响应表达式（用于求系统对各频率分量的幅度和相位作用）"
     if "H(z)=\\frac{Y(z)}{X(z)}" in compact or "H(z)=\\mathcal{Z}" in compact:
@@ -675,6 +681,38 @@ def _formula_name(formula: str, heading: str) -> str:
         return "单位冲激与单位阶跃的关系（用于在差分和累加表示之间换算）"
     if "R_N(n)=u(n)-u(n-N)" in compact and "R_N(n)=\\sum_{m=0}^{N-1}\\delta(n-m)" in compact:
         return "矩形序列的等价表示（用于由阶跃差或有限个冲激构造长度 N 的矩形序列）"
+    if "T\\left[\\sum_{i=1}^{N}a_ix_i(n)\\right]=\\sum_{i=1}^{N}a_iy_i(n)" in compact:
+        return "线性系统的叠加原理（用于检验多个输入线性组合的输出）"
+    if "T[x(n)]=\\frac{1}{M_2-M_1+1}\\sum_{k=M_1}^{M_2}x(n-k)" in compact:
+        return "滑动平均系统（用于以有限窗口内样值的均值平滑序列）"
+    if "T[x(n)]=\\sum_{m=-\\infty}^{\\infty}x(m)h(n-m)" in compact:
+        return "离散 LSI 系统的卷积表示（用于由输入和单位冲激响应计算输出）"
+    if "\\sum_{k=0}^{N}a_ky(n-k)=\\sum_{m=0}^{M}b_mx(n-m)" in compact:
+        return "线性常系数差分方程的一般形式（用于定义离散系统的输入输出递推关系）"
+    if "\\delta_T(t)=\\sum_{n=-\\infty}^{\\infty}\\delta(t-nT)" in compact and "x_s(t)=x_a(t)\\delta_T(t)" in compact:
+        return "理想冲激采样模型（用于以周期冲激串从连续信号抽取样值）"
+    if "\\delta_T(t)=\\frac{1}{T}\\sum_{k=-\\infty}^{\\infty}e^{jk\\Omega_st}" in compact and "\\Delta_T(j\\Omega)=\\Omega_s\\sum" in compact:
+        return "周期冲激串的傅里叶级数与频谱（用于确定采样冲激串的频域间隔）"
+    if "x_i(n)=\\sum_{k=-\\infty}^{\\infty}x(k)" in compact and "\\pi(n-kL)/L" in compact:
+        return "理想带限插值公式（用于由上采样样值恢复插值后的离散序列）"
+    if "\\sum_{n=-\\infty}^{\\infty}|h[n]|<\\infty" in compact:
+        return "离散 LSI 系统的绝对可和条件（用于由单位冲激响应判定 BIBO 稳定性）"
+    if "h(n)=\\frac{1}{N}\\sum_{k=0}^{N-1}H(k)e^{j2\\pikn/N}" in compact:
+        return "频率采样法的冲激响应 IDFT（用于由指定频率样值构造 FIR 系数）"
+    if "H\\!\\left(e^{j\\omega}\\right)=\\begin{cases}" in compact and "h(n)=h(N-1-n)" in compact and "h(n)=-h(N-1-n)" in compact:
+        return "线性相位 FIR 的幅相分解（用于由冲激响应对称性写出频率响应）"
+    if "N=2M+1:" in compact and "H_{\\mathrm{I}}(\\omega)" in compact:
+        return "四类线性相位 FIR 的幅度函数（用于按长度奇偶和对称性选择可实现响应）"
+    if (
+        "Y\\!\\left(e^{j\\omega}\\right)=\\frac{1}{M}\\sum_{r=0}^{M-1}X" in compact
+        or "Y(e^{j\\omega})=\\frac{1}{M}\\sum_{r=0}^{M-1}X" in compact
+    ):
+        return "M 倍抽取的频谱折叠公式（用于判断降采样后各频谱副本的叠加）"
+    if (
+        "X_d\\!\\left(e^{j\\omega}\\right)=\\frac{1}{M}\\sum_{r=0}^{M-1}X" in compact
+        or "X_d(e^{j\\omega})=\\frac{1}{M}\\sum_{r=0}^{M-1}X" in compact
+    ):
+        return "抽取后数字频谱关系（用于表示频率轴压缩与混叠副本）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
     if "y(n)=x^2(n)" in compact:
