@@ -36,6 +36,29 @@ def test_formula_names_state_the_formula_name_and_its_reader_facing_use():
     ) == "通带最大衰减与阻带最小衰减定义（用于把幅度设计指标转换为分贝约束）"
 
 
+def test_formula_name_names_foundational_sum_relations_instead_of_generic_sum_labels():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(r"\[x(n)=\sum_{m=-\infty}^{\infty}x(m)\delta(n-m)\]", "单位抽样序列") == (
+        "离散序列的单位抽样展开（用于由移位冲激的加权和表示任意序列）"
+    )
+    assert _formula_name(r"\[E_x=\sum_{n=-\infty}^{\infty}|x(n)|^2\]", "序列能量") == (
+        "离散序列的能量定义（用于判定全部样值平方和是否有限）"
+    )
+    assert _formula_name(r"\[P_x=\lim_{N\to\infty}\frac{1}{2N+1}\sum_{n=-N}^{N}|x(n)|^2\]", "序列功率") == (
+        "离散序列的平均功率定义（用于判定无限长序列的平均功率）"
+    )
+    assert _formula_name(r"\[P_x=\frac{1}{N}\sum_{n=0}^{N-1}|x(n)|^2\]", "周期序列功率") == (
+        "周期序列的平均功率计算式（用于在一个周期内求平均功率）"
+    )
+    assert _formula_name(r"\[\delta(n)=u(n)-u(n-1),\qquad u(n)=\sum_{k=-\infty}^{n}\delta(k)\]", "单位阶跃序列") == (
+        "单位冲激与单位阶跃的关系（用于在差分和累加表示之间换算）"
+    )
+    assert _formula_name(r"\[R_N(n)=u(n)-u(n-N),\qquad R_N(n)=\sum_{m=0}^{N-1}\delta(n-m)\]", "矩形序列") == (
+        "矩形序列的等价表示（用于由阶跃差或有限个冲激构造长度 N 的矩形序列）"
+    )
+
+
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
 
@@ -60,6 +83,9 @@ def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_pa
     assert "真题" not in html
     assert "MATLAB" not in html
     assert "page-break-after:always" not in html
+    # 章节应随前一章真题自然续排；不得仅为换章留出大块空白页尾。
+    assert ".chapter-start+.chapter-start{break-before:auto}" in html
+    assert ".chapter-start+.chapter-start{break-before:page}" not in html
     assert ".chart-grid{display:grid" in html
     assert "grid-template-columns:repeat(2,minmax(0,1fr))" in html
     assert ".grid{display:grid" in html
@@ -908,6 +934,23 @@ def test_formula_name_distinguishes_sampling_spectrum_filter_and_frequency_sampl
         r"H(z)=\pm z^{-(N-1)}H\!\left(z^{-1}\right)",
         "线性相位 FIR 数字滤波器的条件和特点",
     ) == "FIR 系统函数的倒数对称关系（用于由零点镜像结构判断线性相位特性）"
+
+
+def test_formula_name_names_linear_phase_fir_symmetry_derivations():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\begin{aligned}H(\omega)\cos(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\cos(\omega n),\\H(\omega)\sin(\omega\tau)&=\sum_{n=0}^{N-1}h(n)\sin(\omega n).\end{aligned}",
+        "线性相位 FIR 数字滤波器的条件和特点",
+    ) == "第一类线性相位 FIR 的实虚部比较关系（用于推导冲激响应的中心对称性）"
+    assert _formula_name(
+        r"\sum_{n=0}^{N-1}h(n)\sin\!\left[(n-\tau)\omega\right]=0.",
+        "线性相位 FIR 数字滤波器的条件和特点",
+    ) == "第一类线性相位 FIR 的中心对称判据（用于由正弦和为零确定偶对称条件）"
+    assert _formula_name(
+        r"\sum_{n=0}^{N-1}h(n)\sin\!\left[\beta_0+(n-\tau)\omega\right]=0,\qquad h(n)=-h(N-1-n).",
+        "线性相位 FIR 数字滤波器的条件和特点",
+    ) == "第二类线性相位 FIR 的中心反对称判据（用于由正弦和为零确定奇对称条件）"
 
 
 def test_formula_name_prioritizes_zero_pole_geometry_over_stability_heading():

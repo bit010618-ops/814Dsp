@@ -36,7 +36,7 @@ STYLE = r"""
 @page{size:A4;margin:24mm 18mm 20mm;@top-left{content:"数字信号处理讲义";color:#486d8b;font:9pt "Microsoft YaHei",serif;border-bottom:.45pt solid #c59d6e;padding-bottom:3pt}@top-right{content:string(running-title,first);color:#52616b;font:9pt "Microsoft YaHei",serif;border-bottom:.45pt solid #c59d6e;padding-bottom:3pt}@bottom-center{content:counter(page);color:#52616b;font:9pt "Times New Roman",serif}}
 body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}
 main{max-width:174mm;margin:auto}
-.chapter-start+.chapter-start{break-before:page}
+.chapter-start+.chapter-start{break-before:auto}
 h1{string-set:running-title content(text);break-after:avoid;color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}
 h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}
 h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}
@@ -192,6 +192,23 @@ def _formula_name(formula: str, heading: str) -> str:
         return "四阶陷波器的零极点位置（用于把零点置于干扰频率并以极点半径控制带宽）"
     if "H_{\\mathrm{BP}}" in compact and "H_{\\mathrm{BS}}" in compact:
         return "理想带通与带阻滤波器的幅频响应（用于明确目标通带和抑制频带）"
+    if (
+        "H(\\omega)\\cos(\\omega\\tau)" in compact
+        and "H(\\omega)\\sin(\\omega\\tau)" in compact
+        and "\\sum_{n=0}^{N-1}h(n)" in compact
+    ):
+        return "第一类线性相位 FIR 的实虚部比较关系（用于推导冲激响应的中心对称性）"
+    if (
+        "\\sum_{n=0}^{N-1}h(n)\\sin\\!\\left[(n-\\tau)\\omega\\right]=0"
+        in compact
+    ):
+        return "第一类线性相位 FIR 的中心对称判据（用于由正弦和为零确定偶对称条件）"
+    if (
+        "\\sum_{n=0}^{N-1}h(n)\\sin\\!\\left[\\beta_0+(n-\\tau)\\omega\\right]=0"
+        in compact
+        and "h(n)=-h(N-1-n)" in compact
+    ):
+        return "第二类线性相位 FIR 的中心反对称判据（用于由正弦和为零确定奇对称条件）"
     if "x(n)=x_a(nT)" in compact:
         return "连续信号的离散采样关系（用于把连续时间信号转为离散序列）"
     if "g(0)=1" in compact and "g(kT)=0" in compact and "k\\in\\mathbb{Z}" in compact:
@@ -646,6 +663,18 @@ def _formula_name(formula: str, heading: str) -> str:
         return "连续时间积分关系（用于按连续变量累计各部分贡献）"
     if "y(n)" in compact and "\\sum" in compact:
         return "离散卷积和（用于由输入和单位脉冲响应计算输出序列）"
+    if "x(n)=\\sum_{m=-\\infty}^{\\infty}x(m)\\delta(n-m)" in compact:
+        return "离散序列的单位抽样展开（用于由移位冲激的加权和表示任意序列）"
+    if "E_x=\\sum" in compact and ("|x(n)|^2" in compact or "\\left|x(n)\\right|^2" in compact):
+        return "离散序列的能量定义（用于判定全部样值平方和是否有限）"
+    if "P_x=\\lim_{N\\to\\infty}" in compact and "\\sum_{n=-N}^{N}" in compact:
+        return "离散序列的平均功率定义（用于判定无限长序列的平均功率）"
+    if "P_x=\\frac{1}{N}\\sum_{n=0}^{N-1}" in compact:
+        return "周期序列的平均功率计算式（用于在一个周期内求平均功率）"
+    if "\\delta(n)=u(n)-u(n-1)" in compact and "u(n)=\\sum_{k=-\\infty}^{n}\\delta(k)" in compact:
+        return "单位冲激与单位阶跃的关系（用于在差分和累加表示之间换算）"
+    if "R_N(n)=u(n)-u(n-N)" in compact and "R_N(n)=\\sum_{m=0}^{N-1}\\delta(n-m)" in compact:
+        return "矩形序列的等价表示（用于由阶跃差或有限个冲激构造长度 N 的矩形序列）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
     if "y(n)=x^2(n)" in compact:
