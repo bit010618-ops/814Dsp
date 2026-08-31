@@ -158,6 +158,42 @@ def test_formula_name_names_remaining_common_sum_formula_families():
     ) == "五点循环卷积定义（用于按模 5 索引计算周期卷积）"
 
 
+def test_formula_name_names_remaining_fft_sampling_and_decimation_relations():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[x(n)=\delta(n)+2\delta(n-1)+3\delta(n-2)=\sum_{m=0}^{2}x(m)\delta(n-m)\]",
+        "单位抽样表示",
+    ) == "有限序列的单位冲激展开（用于由各非零样值构造序列）"
+    assert _formula_name(r"\[\sum_{n=-\infty}^{\infty}|x(n)|<\infty\]", "绝对可和") == (
+        "离散序列的绝对可和条件（用于判定卷积与频域变换的收敛性）"
+    )
+    assert _formula_name(
+        r"\[X(2r)=\sum_{n=0}^{N/2-1}x_1(n)W_{N/2}^{nr},\quad X(2r+1)=\sum_{n=0}^{N/2-1}x_2(n)W_{N/2}^{nr}\]",
+        "偶奇分解 DFT",
+    ) == "时域抽取后的偶奇频点 DFT（用于把两个子序列频谱映射到原频谱）"
+    assert _formula_name(
+        r"\[X(z_k)=W^{k^2/2}\sum_{n=0}^{N-1}[x(n)A^{-n}W^{n^2/2}]W^{-(k-n)^2/2}\]",
+        "Chirp-z 变换",
+    ) == "Chirp-z 变换的卷积化表达（用于将等角频率取样转为快速卷积计算）"
+    assert _formula_name(
+        r"\[H_d(e^{j\omega})=\begin{cases}1,&0\leq|\omega|<\pi/M\\0,&\pi/M\leq|\omega|\leq\pi\end{cases},\quad w(n)=\sum_{k=-\infty}^{\infty}h_d(k)x(n-k),\quad x_d(n)=w(Mn)\]",
+        "抗混叠抽取",
+    ) == "抗混叠低通与 M 倍抽取（用于先限带再降采样以避免频谱折叠）"
+    assert _formula_name(
+        r"\[w(n)=\frac12[1-\cos(\frac{\pi n}{20})]R_{41}(n),\quad x_d(n)=\sum_{k=0}^{40}h(k)x(8n-k)\]",
+        "窗函数抽取器",
+    ) == "窗函数 FIR 抽取器（用于以有限长低通滤波后实现八倍降采样）"
+    assert _formula_name(
+        r"\[h_N(n)=\sum_{r=-\infty}^{\infty}h(n-rN)\]",
+        "频率采样法",
+    ) == "频率采样 FIR 的周期冲激响应（用于说明 IDFT 系数在时域按 N 周期延拓）"
+    assert _formula_name(
+        r"\[X[k]=\sum_{n=0}^3x[2n]W_4^{kn}+W_8^k\sum_{n=0}^3x[2n+1]W_4^{kn}\]",
+        "基 2 FFT",
+    ) == "基 2 FFT 的偶奇分解公式（用于由两个四点 DFT 合成八点 DFT）"
+
+
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
 

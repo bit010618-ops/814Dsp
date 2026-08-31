@@ -735,6 +735,28 @@ def _formula_name(formula: str, heading: str) -> str:
         or "(x\\circledast_5h)(n)=\\sum_{m=0}^{4}x(m)h((n-m))_5" in compact
     ):
         return "五点循环卷积定义（用于按模 5 索引计算周期卷积）"
+    if "x(n)=\\delta(n)+2\\delta(n-1)+3\\delta(n-2)=\\sum_{m=0}^{2}x(m)\\delta(n-m)" in compact:
+        return "有限序列的单位冲激展开（用于由各非零样值构造序列）"
+    if "\\sum_{n=-\\infty}^{\\infty}|x(n)|<\\infty" in compact:
+        return "离散序列的绝对可和条件（用于判定卷积与频域变换的收敛性）"
+    if "X(2r)=\\sum_{n=0}^{N/2-1}x_1(n)W_{N/2}^{nr}" in compact and "X(2r+1)=\\sum_{n=0}^{N/2-1}x_2(n)W_{N/2}^{nr}" in compact:
+        return "时域抽取后的偶奇频点 DFT（用于把两个子序列频谱映射到原频谱）"
+    if "X(z_k)=W^{k^2/2}\\sum_{n=0}^{N-1}" in compact and "W^{-(k-n)^2/2}" in compact:
+        return "Chirp-z 变换的卷积化表达（用于将等角频率取样转为快速卷积计算）"
+    if (
+        "H_d\\!\\left(e^{j\\omega}\\right)" in compact
+        or "H_d(e^{j\\omega})" in compact
+    ) and "x_d(n)=w(Mn)" in compact:
+        return "抗混叠低通与 M 倍抽取（用于先限带再降采样以避免频谱折叠）"
+    if (
+        "w(n)=\\frac{1}{2}\\left[1-\\cos" in compact
+        or "w(n)=\\frac12[1-\\cos" in compact
+    ) and "x_d(n)=\\sum_{k=0}^{40}h(k)x(8n-k)" in compact:
+        return "窗函数 FIR 抽取器（用于以有限长低通滤波后实现八倍降采样）"
+    if "h_N(n)=\\sum_{r=-\\infty}^{\\infty}h(n-rN)" in compact:
+        return "频率采样 FIR 的周期冲激响应（用于说明 IDFT 系数在时域按 N 周期延拓）"
+    if "X[k]=\\sum_{n=0}^3x[2n]W_4^{kn}+W_8^k\\sum_{n=0}^3x[2n+1]W_4^{kn}" in compact:
+        return "基 2 FFT 的偶奇分解公式（用于由两个四点 DFT 合成八点 DFT）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
     if "y(n)=x^2(n)" in compact:

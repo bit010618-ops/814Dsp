@@ -1681,3 +1681,8 @@
 
 - Replaced a further group of generic sum labels with specific explanations: fixed-origin accumulator time-variance comparison, sample-and-hold reconstruction superposition, real Fourier-series synthesis, periodic and five-point circular convolution, eight-/four-point DFT calculations, and absolute-summability BIBO proof.
 - The regenerated full handout now contains 53 generic sum labels (down from 69). The remaining group is dominated by example-specific spectra, FFT identities and sampled-system derivations; each must continue to receive a formula-specific label before the next final PDF replacement.
+
+# 2026-08-31 Formula-purpose audit: FFT and decimation identities
+
+- Added labels for finite impulse expansion, absolute summability, even/odd DFT-bin decomposition, Chirp-z convolutionization, anti-alias filtering plus M-fold decimation, windowed FIR decimation, periodic frequency-sampling impulse response and radix-2 FFT decomposition.
+- The full-handout HTML has 45 remaining generic sum labels, down from 53. The remainder is now concentrated in individual spectrum examples, sampled-system mappings and isolated DFT identities.
