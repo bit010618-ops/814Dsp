@@ -25,6 +25,9 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[X(z)=\sum_k\frac{A_k}{1-p_kz^{-1}}+\sum_{\ell}\sum_{r=1}^{q_\ell}\frac{C_{\ell,r}}{\left(1-p_\ell z^{-1}\right)^r}+\sum_{m=0}^{M}B_mz^{-m}\]</div>
 <p>对单极点 \(p_k\)，相应简单分式的系数由留数直接给出：</p>
 <div class="formula">\[A_k=\left.\left(1-p_kz^{-1}\right)X(z)\right|_{z=p_k}\]</div>
+<p>若 \(p_\ell\) 是 \(q_\ell\) 重极点，则各高阶分式系数可由导数计算：</p>
+<p class="formula-lead">重极点系数的导数公式（用于求有理 z 函数高阶极点项的部分分式系数）：</p>
+<div class="formula">\[C_{\ell,r}=\frac{1}{(q_\ell-r)!}\left.\frac{\mathrm{d}^{q_\ell-r}}{\mathrm{d}z^{q_\ell-r}}\left[(z-p_\ell)^{q_\ell}X(z)\right]\right|_{z=p_\ell},\qquad r=1,\ldots,q_\ell\]</div>
 <h2>有理函数的标准反变换对</h2>
 <p>下表给出部分分式法中最常用的右边／左边序列对应关系；它用于由每一项的 ROC 选定正确时域序列。</p>
 <table class="property-table"><thead><tr><th>z 域分式</th><th>时域序列</th><th>收敛域</th></tr></thead><tbody>

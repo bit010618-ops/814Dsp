@@ -1716,3 +1716,9 @@
 
 - Rendered and compared source pp.189--200 with the regenerated body. The z-transform motivation, Laplace-to-z derivation, s-to-z geometry, periodic-frequency implication, ROC definition, one-pole left/right expansions, two-sided annular ROC, and three-pole ROC choices are all retained in editable prose, LaTeX, tables, and native SVG diagrams.
 - The original presentation's repeated color-annotated animation frames are intentionally represented once as the final mathematical relation and a clean vector ROC diagram; this preserves the unique teaching content without importing source watermarks or redundant slide decoration. No missing technical content was found in this source interval.
+
+# 2026-08-31 Inverse z-transform formula-label pipeline repair
+
+- Source pp.201--208 exposed one missing editable relation: the repeated-pole partial-fraction coefficient derivative. It is now present as a complete MathJax formula with a Chinese name and actual purpose.
+- A separate label-pipeline defect made formula names fall back to a generic z-transform relation inside the appendix formula groups: those groups use the heading “公式汇总”, so heading-dependent naming discarded the formula’s identity. Added position-independent classifiers for the inverse-z contour integral, simple-pole residue coefficient, and repeated-pole derivative coefficient.
+- Tests were written first and failed against the generic appendix labels. The focused formula and complete-handout suite now passes `22 passed`; regenerated HTML verifies that the body, chapter formula summary, and appendix all use the same three formula-specific labels. Candidate PDF remains unchanged until the current source audit batch is completely exported and visually checked.

@@ -55,6 +55,19 @@ def test_full_handout_never_uses_an_anonymous_formula_result_label(tmp_path: Pat
     assert not re.search(r'class="formula-(?:lead|name)">[^<]*(?:计算关系|核心关系)', html)
 
 
+def test_full_handout_uses_the_same_inverse_z_formula_names_in_the_appendix(tmp_path: Path):
+    from full.tools import build_full_handout
+
+    html = build_full_handout.write_html(tmp_path / "full-handout.html").read_text(encoding="utf-8")
+    appendix = html[html.index('class="appendix-formula-group"'):]
+
+    assert re.search(
+        r'重极点系数的导数公式（用于求有理 z 函数高阶极点项的部分分式系数）：</p>'
+        r'<div class="formula">\\\[\s*C_\{\\ell,r\}',
+        appendix,
+    )
+
+
 def test_full_handout_limits_unclassified_sum_formula_labels(tmp_path: Path):
     from full.tools import build_full_handout
 

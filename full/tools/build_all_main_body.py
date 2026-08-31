@@ -171,6 +171,18 @@ def _formula_name(formula: str, heading: str) -> str:
         return "z 变换的时域乘 n 性质（用于把时域加权转为 z 域微分）"
     if "y(n)=\\operatorname{med}\\left\\{x(n-M),\\ldots,x(n),\\ldots,x(n+M)\\right\\}" in compact:
         return "中值滤波器的输出定义（用于抑制孤立脉冲干扰）"
+    if "x(n)=\\frac{1}{2" in compact and "\\oint_CX(z)z^{n-1}" in compact:
+        return "z 反变换的围线积分定义（用于由 z 域函数恢复时域序列）"
+    if "A_k=\\left.\\left(1-p_kz^{-1}\\right)X(z)\\right|_{z=p_k}" in compact:
+        return "部分分式展开的留数系数（用于把有理 z 函数拆成可直接反变换的简单项）"
+    if "C_{\\ell,r}=\\frac{1}{(q_\\ell-r)!}" in compact and "(z-p_\\ell)^{q_\\ell}X(z)" in compact:
+        return "重极点系数的导数公式（用于求有理 z 函数高阶极点项的部分分式系数）"
+    if (
+        "\\sum_k\\frac{A_k}{1-p_kz^{-1}}" in compact
+        and "C_{\\ell,r}" in compact
+        and "\\sum_{m=0}^{M}B_mz^{-m}" in compact
+    ):
+        return "有理 z 函数的部分分式通式（用于按单极点、重极点和多项式项分别反变换）"
     if ("y(n)=x(n)*h(n)" in compact or "y(n)&=x(n)*h(n)" in compact) and "Y" in compact and "X" in compact and "H" in compact:
         return "离散 LSI 系统的卷积与频域乘积关系（用于由单位脉冲响应或频率响应求输出）"
     if "\\alpha_p=-20\\log_{10}" in compact and "\\alpha_s=-20\\log_{10}" in compact:

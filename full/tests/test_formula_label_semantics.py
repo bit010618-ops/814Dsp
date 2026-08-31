@@ -91,3 +91,35 @@ def test_median_filter_formula_has_a_specific_formula_lead():
     )
 
     assert label == "中值滤波器的输出定义（用于抑制孤立脉冲干扰）"
+
+
+def test_partial_fraction_general_form_has_a_specific_formula_lead():
+    from full.tools.build_all_main_body import _formula_name
+
+    label = _formula_name(
+        r"\[X(z)=\sum_k\frac{A_k}{1-p_kz^{-1}}+"
+        r"\sum_{\ell}\sum_{r=1}^{q_\ell}\frac{C_{\ell,r}}{\left(1-p_\ell z^{-1}\right)^r}"
+        r"+\sum_{m=0}^{M}B_mz^{-m}\]",
+        "部分分式展开法",
+    )
+
+    assert label == "有理 z 函数的部分分式通式（用于按单极点、重极点和多项式项分别反变换）"
+
+
+def test_inverse_z_partial_fraction_formulae_keep_specific_names_outside_their_section():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[x(n)=\frac{1}{2\pi j}\oint_C X(z)z^{n-1}\,\mathrm{d}z\]",
+        "公式汇总",
+    ) == "z 反变换的围线积分定义（用于由 z 域函数恢复时域序列）"
+    assert _formula_name(
+        r"\[A_k=\left.\left(1-p_kz^{-1}\right)X(z)\right|_{z=p_k}\]",
+        "公式汇总",
+    ) == "部分分式展开的留数系数（用于把有理 z 函数拆成可直接反变换的简单项）"
+    assert _formula_name(
+        r"\[C_{\ell,r}=\frac{1}{(q_\ell-r)!}\left.\frac{\mathrm{d}^{q_\ell-r}}"
+        r"{\mathrm{d}z^{q_\ell-r}}\left[(z-p_\ell)^{q_\ell}X(z)\right]\right|_{z=p_\ell},"
+        r"\qquad r=1,\ldots,q_\ell\]",
+        "公式汇总",
+    ) == "重极点系数的导数公式（用于求有理 z 函数高阶极点项的部分分式系数）"

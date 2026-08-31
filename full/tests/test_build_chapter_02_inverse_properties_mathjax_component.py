@@ -13,6 +13,9 @@ def test_inverse_and_properties_component_is_one_mathjax_flow(tmp_path: Path):
     assert r"Y(z)=X(z)H(z)" in html
     assert r"\mathcal{Z}\{nx(n)\}=-z\frac{\mathrm{d}X(z)}{\mathrm{d}z}" in html
     assert r"A_k=\left.\left(1-p_kz^{-1}\right)X(z)\right|_{z=p_k}" in html
+    assert r"C_{\ell,r}=\frac{1}{(q_\ell-r)!}" in html
+    assert r"\left.\frac{\mathrm{d}^{q_\ell-r}}{\mathrm{d}z^{q_\ell-r}}" in html
+    assert "重极点系数的导数公式" in html
     assert r"x(n)&=\cos(\omega_0n)u(n)" in html
     assert r"\mathcal{Z}\{x^*(n)\}=X^*(z^*)" in html
     assert "性质、时域序列、z 域表达式与收敛域的对照表" in html
