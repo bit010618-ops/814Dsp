@@ -1705,3 +1705,9 @@
 - The second and third answer maps each contain 150 references; target-page changes are zero and the backfilled HTML has zero `P.____` / `P.待回填` placeholders.
 - Rendered 144-dpi review pages cover the repaired opening figure, Chapter 2 ROC diagrams, a formula-dense Chapter 2 page, Chapter 7 transition pages, the FIR response illustration, the appendix navigation tables, and the final self-check. The repaired vertical arrows point upward; no clipping, black blocks, table overflow, broken page numbers, or forced blank chapter transition was found.
 - The verified third-pass file (SHA-256 `D2FE7F953132E671A2FB23445E403681402CB0B55DE22DFD0A9D77EE274EE0D4`) replaced `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`; byte hash match confirmed. Full relevant regression passes `67 passed`.
+
+# 2026-08-31 Formula-purpose semantic correction batch
+
+- Corrected formula leads that still described the display form rather than the mathematical content: real/imaginary DTFT components, conjugate-symmetric component reconstruction, complex-exponential components, z-transform linearity/ROC, time reversal/exponential weighting, the time-domain multiplication-by-\(n\) property, and the median-filter definition.
+- Added focused regression coverage for all seven semantic labels. The target failure reproduced first; after the minimum classifier additions, the relevant suite passes `73 passed` and regenerated full-book HTML confirms the corrected labels in the body and chapter summaries.
+- The verified 462-page candidate PDF deliberately remains unchanged for now: it predates this semantic batch. These HTML changes are queued for the next complete static-MathJax export, two answer-page backfills, and raster visual review.

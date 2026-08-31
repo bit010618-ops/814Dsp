@@ -138,6 +138,39 @@ def _with_chapter_title(title: str, body: str) -> str:
 def _formula_name(formula: str, heading: str) -> str:
     """Return a reader-facing name that says what a core formula is used for."""
     compact = re.sub(r"\s+", "", formula).replace(r"\geq", r"\ge").replace(r"\leq", r"\le")
+    if (
+        "\\mathcal{F}\\{\\operatorname{Re}\\{x(n)\\}\\}=X_e" in compact
+        or "\\mathcal{F}\\{\\operatorname{Re}[x(n)]\\}=X_e" in compact
+    ) and "\\mathcal{F}\\{j\\operatorname{Im}" in compact and "\\}=X_o" in compact:
+        return "实序列实部与虚部的 DTFT 分量关系（用于分别分析共轭对称频谱的偶分量和奇分量）"
+    if (
+        "\\mathcal{F}\\{x_e(n)\\}=\\operatorname{Re}\\{X(e^{j\\omega})\\}" in compact
+        and "\\mathcal{F}\\{x_o(n)\\}=j\\operatorname{Im}\\{X(e^{j\\omega})\\}" in compact
+    ):
+        return "共轭对称时域分量的 DTFT 关系（用于由完整频谱分离对应的实部和虚部）"
+    if (
+        "\\mathcal{F}\\{x_e(n)\\}&=\\frac{1}{2}" in compact
+        and "X^*(e^{j\\omega})" in compact
+        and "\\operatorname{Re}\\{X(e^{j\\omega})\\}" in compact
+    ):
+        return "共轭对称分量的频谱重构推导（用于验证时域分量与频谱实部的对应）"
+    if (
+        "\\operatorname{Re}\\{x(n)\\}=e^{\\sigman}\\cos(\\omegan)" in compact
+        and "\\operatorname{Im}\\{x(n)\\}=e^{\\sigman}\\sin(\\omegan)" in compact
+        and "\\left|x(n)\\right|=e^{\\sigman}" in compact
+    ):
+        return "复指数序列的实部、虚部与模（用于分解指数包络和正弦振荡）"
+    if (
+        ("\\mathcal{Z}\\{ax(n)+by(n)\\}=aX(z)+bY(z)" in compact or "\\mathcal{Z}\\{ax(n)+by(n)\\}&=aX(z)+bY(z)" in compact)
+        and "R_x\\capR_y" in compact
+    ):
+        return "z 变换的线性性与 ROC 关系（用于把加权序列拆成已知变换）"
+    if "\\mathcal{Z}\\{x(-n)\\}=X(z^{-1})" in compact and "\\mathcal{Z}\\{a^nx(n)\\}=X(a^{-1}z)" in compact:
+        return "z 变换的时间反转与指数加权性质（用于处理反折序列和改变指数衰减率）"
+    if "\\mathcal{Z}\\{nx(n)\\}=-z\\frac{\\mathrm{d}X(z)}{\\mathrm{d}z}" in compact:
+        return "z 变换的时域乘 n 性质（用于把时域加权转为 z 域微分）"
+    if "y(n)=\\operatorname{med}\\left\\{x(n-M),\\ldots,x(n),\\ldots,x(n+M)\\right\\}" in compact:
+        return "中值滤波器的输出定义（用于抑制孤立脉冲干扰）"
     if ("y(n)=x(n)*h(n)" in compact or "y(n)&=x(n)*h(n)" in compact) and "Y" in compact and "X" in compact and "H" in compact:
         return "离散 LSI 系统的卷积与频域乘积关系（用于由单位脉冲响应或频率响应求输出）"
     if "\\alpha_p=-20\\log_{10}" in compact and "\\alpha_s=-20\\log_{10}" in compact:
