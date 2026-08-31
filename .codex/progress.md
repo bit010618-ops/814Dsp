@@ -1698,3 +1698,10 @@
 - The first complete candidate export exposed a genuine visual defect in the Chapter 1 continuous-time-to-discrete-sequence figure: both vertical-axis arrow paths ran from the top to the baseline, making their arrows point downward. Root-cause tracing isolated both paths in `_continuous_discrete_mapping_svg`; comparable coordinate figures correctly run from the baseline upward.
 - Added a focused regression test, observed it fail, then reversed only those two path directions. The vertical arrows now terminate at the top as standard textbook axes require. Relevant full regression passes `67 passed`.
 - This code correction requires one more complete static export and visual review before the candidate PDF can be replaced.
+
+# 2026-08-31 Axis-corrected full-book candidate export
+
+- Rebuilt the complete book after the Chapter 1 upward-axis correction: static MathJax first pass, real-PDF answer-page backfill, second static pass, and final third PDF pass. The final PDF is A4, unencrypted, 462 pages.
+- The second and third answer maps each contain 150 references; target-page changes are zero and the backfilled HTML has zero `P.____` / `P.待回填` placeholders.
+- Rendered 144-dpi review pages cover the repaired opening figure, Chapter 2 ROC diagrams, a formula-dense Chapter 2 page, Chapter 7 transition pages, the FIR response illustration, the appendix navigation tables, and the final self-check. The repaired vertical arrows point upward; no clipping, black blocks, table overflow, broken page numbers, or forced blank chapter transition was found.
+- The verified third-pass file (SHA-256 `D2FE7F953132E671A2FB23445E403681402CB0B55DE22DFD0A9D77EE274EE0D4`) replaced `full/outputs/数字信号处理讲义_正文图形修复候选.pdf`; byte hash match confirmed. Full relevant regression passes `67 passed`.
