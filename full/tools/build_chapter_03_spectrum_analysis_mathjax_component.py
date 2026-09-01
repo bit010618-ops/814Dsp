@@ -142,6 +142,23 @@ x(n),&0\leq n\leq N-1,\\
 <p>有一频谱分析用的 FFT 处理器，其抽样点数必须是 2 的整数幂，假设没有采用任何数据处理的措施，已给条件为：（a）对频率分辨率的要求是 [[F_0\leq10\text{ Hz}]]；（b）信号频率不超过 [[4\text{ kHz}]]。试确定以下参量：（A）最小记录长度 [[T_0]]；（B）抽样点间的最大时间间隔 [[T]]（即最小抽样频率）；（C）在一个记录中最少点数 [[N]]。</p>
 <p>解：[[T_0\geq1/F_0=0.1\text{ s}]]；为满足采样定理，[[f_s\geq2\times4\text{ kHz}=8\text{ kHz}]]，所以 [[T\leq0.125\text{ ms}]]。由 [[N\geq T_0f_s=800]] 且 [[N]] 必须为 2 的整数幂，取 [[N=1024]]。此时 [[T_0=1024\times0.125\text{ ms}=0.128\text{ s}]]，实际频率分辨率为 [[F_0=1/T_0=7.8125\text{ Hz}]]，满足要求。</p>
 
+<h2>多音信号的谱线组成</h2>
+<p><strong>两音信号展开式：</strong>这个公式把带相位的两个余弦分量写成四个复指数项，用于确定 DFT 频谱中正、负频率谱线的位置和相位：</p>
+<div class="formula">\[
+\begin{aligned}
+x(n)&=A_0\cos(\omega_0 n+\theta_0)+A_1\cos(\omega_1 n+\theta_1)\\
+&=\frac{A_0}{2}e^{j\theta_0}e^{j\omega_0n}+\frac{A_0}{2}e^{-j\theta_0}e^{-j\omega_0n}\\
+&\quad+\frac{A_1}{2}e^{j\theta_1}e^{j\omega_1n}+\frac{A_1}{2}e^{-j\theta_1}e^{-j\omega_1n}.
+\end{aligned}
+\]</div>
+<p><strong>对应的 DTFT 冲激谱：</strong>每个余弦分量在 [[\omega=\pm\omega_i]] 处各产生一条冲激谱线；相位由复权重 [[e^{\pm j\theta_i}]] 给出：</p>
+<div class="formula">\[
+X(e^{j\omega})=\pi\sum_{i=0}^{1}A_i\bigl[
+e^{j\theta_i}\delta(\omega-\omega_i)
++e^{-j\theta_i}\delta(\omega+\omega_i)
+\bigr].
+\]</div>
+
 <h2>傅里叶的故事</h2>
 <p>傅里叶分析得名于法国数学家让·巴普蒂斯·约瑟夫·傅里叶（1768—1830）。在他之前，人们已经知道可用三角函数描述周期现象；欧拉研究声波传播时进一步使用正弦分解，拉格朗日也将相关思想用于天体轨道的观察与预测。</p>
 <p>1807 年，傅里叶提交有关热传播的论文，主张周期信号可以由适当的正弦分量组合表示。这一观点当时引起争议，特别是对于不连续信号能否分解的问题。后来他在《热的解析理论》（1822）中系统阐述了这些思想；狄利克雷等数学家给出了相应的严格条件，通常称为狄利克雷条件。</p>

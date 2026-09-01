@@ -25,6 +25,7 @@ def test_spectrum_analysis_component_covers_sampling_leakage_and_picket_fence(tm
     assert 'data-diagram="anti-aliasing-sampling"' in html
     assert 'data-diagram="window-leakage-and-padding"' in html
     assert r"\widehat{X}_a(j\Omega)" in html
+    assert r"A_0\cos(\omega_0 n+\theta_0)" in html
 
 
 def test_spectrum_analysis_component_keeps_the_fourier_history_reading(tmp_path: Path):

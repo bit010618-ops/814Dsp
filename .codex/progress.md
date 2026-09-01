@@ -1852,3 +1852,9 @@
 - Source pp.536--544 adds the periodic sampled-spectrum identity, anti-alias filtering, leakage caused by finite windowing, the window mainlobe/sidelobe tradeoff, and the fact that zero padding only densifies DFT observation bins. These items were described in prose but lacked their essential reader-facing figures.
 - Added the complete sampled-spectrum replica formula with a purpose statement; a data-driven two-row anti-alias plot (overlapping copies versus guarded copies); and a second data-driven figure comparing calculated rectangular/triangular window responses with original and zero-padded DFT stem grids. All mathematical labels in SVG are MathJax formulas; axes, arrows, stems and computed curves are native vector elements.
 - The new test failed before implementation, then the spectrum component, main body, formula-semantic, and static-MathJax suite passes `64 passed`. Static A4 raster inspection shows clean Chinese text, formulas, arrows and axes with no black region, clipping, overlap, raw formula source, redundant zero axis, or artificial blank area.
+
+# 2026-09-01 Chapter 3 source-page audit: multitone spectrum relation
+
+- Source p.550 contributes the general two-tone, phase-bearing signal expansion and its DTFT impulse-line form. Neither expression was present in the reader-facing body.
+- Added both complete MathJax displays with Chinese purpose statements: the first maps two cosines to four complex exponentials; the second maps each component to the paired positive/negative frequency impulses and their phase weights.
+- The source-first assertion failed before the addition and the component test then passes. Static A4 inspection confirms aligned rows, fractions, exponents, delta terms and display boundaries are intact without clipping or raw formula source.
