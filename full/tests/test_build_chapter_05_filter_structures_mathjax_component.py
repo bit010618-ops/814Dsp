@@ -43,6 +43,7 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
         "fir-cascade-form",
         "frequency-sampling-form",
         "fast-convolution-form",
+        "linear-phase-folded-form",
     ):
         assert f'data-diagram="{diagram}"' in html
     assert "M420 98H555V145H562" in html
@@ -64,6 +65,14 @@ def test_chapter_five_component_covers_filter_structure_body_without_training(tm
     assert r"v_1(n)&=b_1x(n)-a_1y(n)+v_2(n-1)" in html
     assert 'x="0" y="130" width="120"' in html
     assert "h(N-2)" in html and "h(N-1)" in html
+    # The source's folded linear-phase implementation must remain a real
+    # signal-flow diagram: symmetric samples combine before one shared gain.
+    assert 'data-diagram="linear-phase-folded-form"' in html
+    assert "偶对称：成对样本先相加" in html
+    assert "奇对称：成对样本先相减" in html
+    assert "一对抽头的加法贡献" in html
+    assert "一对抽头的减法贡献" in html
+    assert r"h(m)" in html
     for asset in (
         "ch05-cascade-form.png",
         "ch05-direct-form-i.png",

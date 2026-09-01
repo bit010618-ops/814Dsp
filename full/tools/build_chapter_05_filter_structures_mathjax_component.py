@@ -72,6 +72,11 @@ def fast_convolution_svg() -> str:
     return f'''<svg class="structure-svg" data-diagram="fast-convolution-form" viewBox="0 0 900 310" role="img" aria-label="快速卷积型 FIR 结构框图"><defs><marker id="d5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="30" text-anchor="middle">FFT 快速卷积结构</text><path class="wire" marker-end="url(#d5)" d="M58 98H135"/><rect class="block" x="135" y="65" width="130" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M265 98H350"/><rect class="block" x="350" y="65" width="120" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M470 98H565V132H615"/><path class="wire" marker-end="url(#d5)" d="M58 214H135"/><rect class="block" x="135" y="181" width="130" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M265 214H350"/><rect class="block" x="350" y="181" width="120" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M470 214H565V158H615"/><circle class="sum" cx="650" cy="145" r="28"/><text class="label" x="650" y="152" text-anchor="middle">×</text><path class="wire" marker-end="url(#d5)" d="M678 145H730"/><rect class="block" x="730" y="112" width="105" height="66" rx="5"/><path class="wire" marker-end="url(#d5)" d="M835 145H880"/><text class="label" x="200" y="104" text-anchor="middle">补零至 L 点</text><text class="label" x="410" y="104" text-anchor="middle">L 点 FFT</text><text class="label" x="200" y="220" text-anchor="middle">补零至 L 点</text><text class="label" x="410" y="220" text-anchor="middle">L 点 FFT</text><text class="label" x="782" y="151" text-anchor="middle">L 点 IFFT</text>{_math(15,63,70,'x(n)')}{_math(15,180,70,'h(n)')}{_math(848,110,52,'y(n)')}</svg>'''
 
 
+def linear_phase_folded_svg() -> str:
+    """Folded FIR realization: pair symmetric samples before one shared gain."""
+    return f'''<svg class="structure-svg" data-diagram="linear-phase-folded-form" viewBox="0 0 900 360" role="img" aria-label="线性相位 FIR 的对称抽头折叠结构图"><defs><marker id="lpf-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#174b73"/></marker></defs><text class="label" x="450" y="32" text-anchor="middle">线性相位 FIR：对称抽头先合并，再使用一个共享系数</text><text class="label" x="112" y="84" text-anchor="middle">偶对称：成对样本先相加</text><text class="label" x="680" y="118" text-anchor="middle">一对抽头的加法贡献</text><path class="wire" marker-end="url(#lpf-arrow)" d="M72 118H250"/><path class="wire" marker-end="url(#lpf-arrow)" d="M72 168H250"/><circle class="sum" cx="286" cy="143" r="31"/><path class="wire" marker-end="url(#lpf-arrow)" d="M317 143H400"/><rect class="block" x="400" y="116" width="108" height="54" rx="5"/><path class="wire" marker-end="url(#lpf-arrow)" d="M508 143H835"/><text class="label" x="112" y="244" text-anchor="middle">奇对称：成对样本先相减</text><text class="label" x="680" y="278" text-anchor="middle">一对抽头的减法贡献</text><path class="wire" marker-end="url(#lpf-arrow)" d="M72 278H250"/><path class="wire" marker-end="url(#lpf-arrow)" d="M72 328H250"/><circle class="sum" cx="286" cy="303" r="31"/><path class="wire" marker-end="url(#lpf-arrow)" d="M317 303H400"/><rect class="block" x="400" y="276" width="108" height="54" rx="5"/><path class="wire" marker-end="url(#lpf-arrow)" d="M508 303H835"/>{_math(35,93,176,'x(n-m)')}{_math(15,143,238,'x(n-N+1+m)')}{_math(260,126,52,'+')}{_math(410,126,88,'h(m)')}{_math(35,253,176,'x(n-m)')}{_math(15,303,238,'x(n-N+1+m)')}{_math(260,286,52,'-')}{_math(410,286,88,'h(m)')}</svg>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -256,6 +261,11 @@ h(n)=-h(N-1-n), & \text{奇对称},
 \qquad 0\leq n\leq N-1.
 \]</div>
 <p>对称性允许将关于中心成对的抽头先相加或相减，再乘共同系数，从而减少乘法次数。[[N]] 为奇数和偶数时中心抽头的处理不同；偶对称对应加法组合，奇对称对应减法组合。线性相位（及广义线性相位）系统具有常数群延迟，能在不过度扭曲波形形状的前提下完成频率选择。</p>
+<p><strong>对称抽头折叠结构：</strong>下图说明每一对关于中心对称的输入样本，先按对称类型相加或相减，再共用同一系数 [[h(m)]]；这正是减少独立乘法器的原因。</p>
+<figure>
+__LINEAR_PHASE_FOLDED__
+<figcaption>图 5-10 线性相位 FIR 的对称抽头折叠实现</figcaption>
+</figure>
 <p>令 [[N=2L+1]]。除中心抽头外，成对样本的实现可统一为：</p>
 <div class="formula">\[
 \begin{aligned}
@@ -279,7 +289,8 @@ y(n)=\sum_{m=0}^{L-1}h(m)\left[x(n-m)\pm x(n-2L+1+m)\right].
         .replace("__DTMF_PARALLEL__", dtmf_parallel_svg())
         .replace("__FIR_CASCADE__", fir_cascade_svg())
         .replace("__FREQUENCY_SAMPLING__", frequency_sampling_svg())
-        .replace("__FAST_CONVOLUTION__", fast_convolution_svg()))
+        .replace("__FAST_CONVOLUTION__", fast_convolution_svg())
+        .replace("__LINEAR_PHASE_FOLDED__", linear_phase_folded_svg()))
     document = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(document, encoding="utf-8")
     return output
