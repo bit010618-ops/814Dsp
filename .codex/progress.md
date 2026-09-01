@@ -1877,3 +1877,9 @@
 - The source's linear-phase folded implementation was the one unique technical visual absent from the body. Restored it as an editable two-row SVG: the even-symmetric pair feeds a standard plus summer, the odd-symmetric pair feeds a standard minus summer, and each then uses one shared `h(m)` gain. Its complete formulas remain independent MathJax displays, so no long formula is laid over a signal wire.
 - A first A4 preview caught output-formula labels colliding with the signal wires. The final drawing uses concise Chinese contribution labels and a clear line path; the preceding/following LaTeX displays carry the exact relationships. The standalone component ends naturally after the final formula, while full assembly continues with its chapter formula summary and later material.
 - Test-first regression failed when the diagram was absent, then passed. Static MathJax/A4 inspection confirms no black region, clipping, overlap, raw formula source, or ambiguous arrows. Chapter 5/body/formula/static-MathJax suite: `65 passed in 16.14s`.
+
+# 2026-09-01 Chapter 6 source-page audit closeout
+
+- Compared source pp.742--857: analog-filter prototypes and technical specifications; Butterworth and Chebyshev order, poles, normalization and low-pass/high-pass/band transformations; impulse-invariance mapping and aliasing limitation; and the bilinear transform, frequency warping and prewarping relation.
+- Existing reader-facing content already preserves each unique teaching relationship as complete MathJax and editable response/mapping graphics. Source coefficient tables, code listings, slide annotations and nontechnical sound/noise pages add no independent handout content and were not copied as screenshots.
+- Chapter 6 component, training, full-body, formula-purpose, and static-MathJax checks pass: `74 passed in 15.71s`. Source p.867 begins Chapter 7.
