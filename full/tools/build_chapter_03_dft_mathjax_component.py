@@ -159,6 +159,15 @@ x_{\mathrm{op}}(n)&=\frac{1}{2}\left[x(n)-x^*\left((N-n)\right)_N\right].
 <div class="formula">\[
 X(k)=X^*\left((N-k)\right)_N,\qquad 0\leq k\leq N-1.
 \]</div>
+<p>下面的关系把任意复序列分解为实部和虚部后对应到频域，用于由一个频谱恢复各自的频域分量：</p>
+<div class="formula">\[
+\begin{aligned}
+\operatorname{DFT}\left\{\operatorname{Re}\{x(n)\}\right\}
+&=\frac{1}{2}\left[X(k)+X^*\left((N-k)\right)_N\right],\\
+\operatorname{DFT}\left\{\operatorname{Im}\{x(n)\}\right\}
+&=\frac{1}{2j}\left[X(k)-X^*\left((N-k)\right)_N\right].
+\end{aligned}
+\]</div>
 <p>计算实序列 DFT 时，只需直接计算约半数频点，其余频点可由该关系复核。</p>
 <p>两个 [[N]] 点序列的循环卷积定义为：</p>
 <div class="formula">\[
@@ -198,6 +207,20 @@ R_N(n)\quad\longleftrightarrow\quad N\delta(k)R_N(k),\qquad
 e^{j\frac{2\pi}{N}mn}R_N(n)\quad\longleftrightarrow\quad N\delta(k-m)R_N(k).
 \]</div>
 <p>其中第一组用于定位时域冲激在频域中的相位因子，第二组用于识别直流和单一 DFT 栅栏频点；它们也可作为更复杂 DFT 运算的代入检查。</p>
+
+<h3>例题：三角函数乘积的 10 点 DFT</h3>
+<p>将三角函数乘积改写为 10 点 DFT 栅栏上的复指数，可直接定位非零谱线。对下式，先用欧拉公式展开，再按复指数的基本 DFT 对读取各项：</p>
+<div class="formula">\[
+\begin{aligned}
+x(n)&=\cos\left(\frac{3\pi}{5}n\right)\sin\left(\frac{4\pi}{5}n\right)\\
+&=\frac{1}{4j}\left(e^{j\frac{2\pi}{10}7n}+e^{j\frac{2\pi}{10}n}-e^{-j\frac{2\pi}{10}n}-e^{-j\frac{2\pi}{10}7n}\right).
+\end{aligned}
+\]</div>
+<p>因此其 10 点 DFT 只有四个非零频点；该结果用于检验“时域相乘会产生和频与差频栅栏”的位置和符号：</p>
+<div class="formula">\[
+X(k)=\frac{5}{2j}\left[\delta(k-1)-\delta(k-3)+\delta(k-7)-\delta(k-9)\right],
+\qquad 0\leq k\leq9.
+\]</div>
 
   <h2>例题：序列 R_4(n) 的 DTFT、8 点 DFT 与 16 点 DFT</h2>
 <p>已知 [[x(n)=R_4(n)]]，求 [[x(n)]] 的 DTFT，以及其 8 点和 16 点 DFT。</p>

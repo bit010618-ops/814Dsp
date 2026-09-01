@@ -59,3 +59,14 @@ def test_dft_component_keeps_circular_shift_visual_and_basic_sequence_pairs(tmp_
     assert r"\delta(n-m)R_N(n)" in html
     assert r"R_N(n)\quad\longleftrightarrow\quad N\delta(k)R_N(k)" in html
     assert r"e^{j\frac{2\pi}{N}mn}R_N(n)" in html
+
+
+def test_dft_component_keeps_spectral_line_example_and_real_imaginary_pair(tmp_path: Path):
+    from full.tools import build_chapter_03_dft_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-dft.html").read_text(encoding="utf-8")
+
+    assert r"x(n)&=\cos\left(\frac{3\pi}{5}n\right)\sin\left(\frac{4\pi}{5}n\right)" in html
+    assert r"\frac{5}{2j}\left[\delta(k-1)-\delta(k-3)+\delta(k-7)-\delta(k-9)\right]" in html
+    assert r"\operatorname{DFT}\left\{\operatorname{Re}\{x(n)\}\right\}" in html
+    assert r"\operatorname{DFT}\left\{\operatorname{Im}\{x(n)\}\right\}" in html
