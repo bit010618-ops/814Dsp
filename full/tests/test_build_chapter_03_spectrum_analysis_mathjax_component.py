@@ -20,7 +20,8 @@ def test_spectrum_analysis_component_covers_sampling_leakage_and_picket_fence(tm
     assert r"R_{320}(n)" in html
     assert "MATLAB" not in html
     assert "原技术条件" not in html
-    assert 'data-diagram="analog-dft-spectrum-chain"' in html
+    assert 'data-diagram="analog-dft-spectrum-correspondence"' in html
+    assert "有限记录的频域展宽" in html
 
 
 def test_spectrum_analysis_component_keeps_the_fourier_history_reading(tmp_path: Path):

@@ -1840,3 +1840,9 @@
 - Source pp.521--526 introduce the signal-processing chain from the analog waveform through sampling and finite-record windowing to the DFT samples. The text and formulas existed, but the reader-facing chain itself was absent.
 - Added a clean, editable native SVG: `x_a(t)` → sampled `x(n)` → finite record `x(n)w(n)` → DFT samples `X(k)`. Its captions state the purpose of sampling, truncation/windowing, and the N-point DFT; it deliberately omits slide watermark, template chrome, and nontechnical decoration.
 - Static MathJax plus two-page A4 raster inspection confirms the processing chain, arrows, Chinese explanatory labels, formula displays, and surrounding text are intact without black region, clipping, overlap, raw source, or artificial blank area. The full targeted regression is included in the `64 passed` result above.
+
+# 2026-09-01 Chapter 3 source-page audit: five-layer DFT spectrum correspondence
+
+- Source p.527 contains a full correspondence figure, not merely a four-block process flow. It contrasts the analog waveform, sampled sequence, finite windowed record, periodic extension, and finite DFT data with their continuous/periodic/broadened/discrete frequency-domain counterparts.
+- Replaced the redundant short flow in reader-facing output with one editable native SVG that draws those five time/frequency rows from generated curves and numeric stem samples. Math labels inside the SVG are standalone MathJax inline expressions; each axis has an arrow, the finite-record window is visibly dashed, and the two frequency stem rows distinguish periodic from finite DFT sampling.
+- Test-first coverage failed before the correspondence existed; the targeted component/body/formula/static-MathJax regression now passes `64 passed`. A fresh A4 raster confirms the single compact figure, labels, arrows, formula rendering and adjacent displays are legible, without clipping, black region, overlap, duplicate zero axes, or artificial blank space.

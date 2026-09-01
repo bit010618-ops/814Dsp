@@ -1,6 +1,7 @@
 """Chapter-three §3.5 analog-signal spectrum analysis with DFT."""
 from __future__ import annotations
 
+import math
 from pathlib import Path
 
 from full.tools.render_mathjax_formula import MATHJAX
@@ -15,13 +16,51 @@ def analog_dft_spectrum_chain_svg() -> str:
     return '''<figure data-diagram="analog-dft-spectrum-chain" style="break-inside:avoid;margin:12pt 0 13pt"><svg viewBox="0 0 980 180" role="img" aria-labelledby="analog-dft-spectrum-chain-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff"><title id="analog-dft-spectrum-chain-title">模拟信号经采样、截断和 DFT 的频谱分析流程</title><defs><marker id="analog-dft-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs><text x="35" y="35" fill="#174b73" font-family="Microsoft YaHei, sans-serif" font-size="18" font-weight="700">模拟信号的 DFT 频谱分析链路</text><rect x="55" y="72" width="150" height="55" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.5"/><rect x="300" y="72" width="150" height="55" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.5"/><rect x="545" y="72" width="150" height="55" rx="6" fill="#fff8e8" stroke="#b56b2e" stroke-width="1.5"/><rect x="790" y="72" width="150" height="55" rx="6" fill="#eef7f1" stroke="#16866d" stroke-width="1.5"/><text x="130" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">模拟信号 xₐ(t)</text><text x="375" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">采样序列 x(n)</text><text x="620" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">有限记录 x(n)w(n)</text><text x="865" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">DFT 样值 X(k)</text><line x1="205" y1="99" x2="300" y2="99" stroke="#174b73" stroke-width="2" marker-end="url(#analog-dft-arrow)"/><line x1="450" y1="99" x2="545" y2="99" stroke="#174b73" stroke-width="2" marker-end="url(#analog-dft-arrow)"/><line x1="695" y1="99" x2="790" y2="99" stroke="#174b73" stroke-width="2" marker-end="url(#analog-dft-arrow)"/><text x="235" y="70" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">采样</text><text x="475" y="70" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">截断／加窗</text><text x="725" y="70" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">N 点 DFT</text><text x="58" y="160" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">采样率决定混叠；记录与窗函数决定泄漏和分辨率；零填充仅加密观察频点。</text></svg><figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-8　模拟信号作 DFT 频谱分析的处理链。</figcaption></figure>'''
 
 
+def _stems(values: list[float], *, x0: float, width: float, baseline: float, height: float, color: str) -> str:
+    """Generate a stem row from samples instead of manually placing graphic rods."""
+    step = width / max(1, len(values) - 1)
+    parts: list[str] = []
+    for index, value in enumerate(values):
+        x = x0 + index * step
+        y = baseline - value * height
+        parts.append(f'<line x1="{x:.1f}" y1="{baseline:.1f}" x2="{x:.1f}" y2="{y:.1f}" stroke="{color}" stroke-width="1.8"/><circle cx="{x:.1f}" cy="{y:.1f}" r="3.0" fill="{color}"/>')
+    return "".join(parts)
+
+
+def _curve(*, x0: float, width: float, baseline: float, height: float, fn) -> str:
+    """Generate a continuous curve from its analytical sample function."""
+    points = []
+    for index in range(81):
+        u = index / 80
+        points.append(f'{x0 + u * width:.1f},{baseline - fn(u) * height:.1f}')
+    return "M" + " L".join(points)
+
+
+def analog_dft_spectrum_correspondence_svg() -> str:
+    """Show the five data-driven time/frequency views used by DFT analysis."""
+    samples = [1.0, 0.82, 0.67, 0.55, 0.45, 0.37, 0.30, 0.25, 0.20, 0.16]
+    finite = samples[:7]
+    periodic = samples[:5] + samples + samples[:5]
+    spectrum = [0.25, 0.45, 0.68, 0.47, 0.31, 0.24, 0.31, 0.47, 0.68, 0.45, 0.25]
+    axes = []
+    for baseline in (83, 163, 243, 323, 403):
+        axes.append(f'<line x1="40" y1="{baseline}" x2="420" y2="{baseline}" stroke="#174b73" stroke-width="1.4" marker-end="url(#spectrum-correspondence-arrow)"/><line x1="105" y1="{baseline + 24}" x2="105" y2="{baseline - 56}" stroke="#174b73" stroke-width="1.4" marker-end="url(#spectrum-correspondence-arrow)"/>')
+        axes.append(f'<line x1="555" y1="{baseline}" x2="935" y2="{baseline}" stroke="#174b73" stroke-width="1.4" marker-end="url(#spectrum-correspondence-arrow)"/><line x1="620" y1="{baseline + 24}" x2="620" y2="{baseline - 56}" stroke="#174b73" stroke-width="1.4" marker-end="url(#spectrum-correspondence-arrow)"/>')
+    analog_time = _curve(x0=105, width=190, baseline=83, height=46, fn=lambda u: math.exp(-3.0 * u))
+    analog_freq = _curve(x0=620, width=190, baseline=83, height=46, fn=lambda u: math.exp(-7.5 * abs(2 * u - 1)))
+    dtft = _curve(x0=620, width=190, baseline=163, height=43, fn=lambda u: 0.18 + 0.72 * abs(math.cos(2 * math.pi * u)) ** 7)
+    broadened = _curve(x0=620, width=190, baseline=243, height=43, fn=lambda u: 0.22 + 0.50 * abs(math.cos(2 * math.pi * u)) ** 3 + 0.06 * abs(math.sin(18 * math.pi * u)))
+    return f'''<figure data-diagram="analog-dft-spectrum-correspondence" style="break-inside:avoid;margin:10pt 0 13pt"><svg viewBox="0 0 980 455" role="img" aria-labelledby="analog-dft-spectrum-correspondence-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff"><title id="analog-dft-spectrum-correspondence-title">模拟信号作 DFT 频谱分析的五层时频对应关系</title><defs><marker id="spectrum-correspondence-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs><text x="32" y="28" fill="#174b73" font-family="Microsoft YaHei, sans-serif" font-size="18" font-weight="700">有限记录的频域展宽与 DFT 栅栏取样</text>{''.join(axes)}<path d="{analog_time}" fill="none" stroke="#d44c45" stroke-width="2.2"/><path d="{analog_freq}" fill="none" stroke="#d44c45" stroke-width="2.2"/>{_stems(samples, x0=105, width=190, baseline=163, height=42, color='#0d8794')}<path d="{dtft}" fill="none" stroke="#315fbd" stroke-width="2.2"/>{_stems(finite, x0=115, width=130, baseline=243, height=42, color='#0d8794')}<rect x="105" y="188" width="165" height="55" fill="none" stroke="#315fbd" stroke-dasharray="5 4" stroke-width="1.3"/><path d="{broadened}" fill="none" stroke="#0d8794" stroke-width="2.2"/>{_stems(periodic, x0=48, width=330, baseline=323, height=40, color='#0d8794')}{_stems(spectrum + spectrum[:4], x0=548, width=335, baseline=323, height=40, color='#7e168d')}{_stems(finite, x0=115, width=130, baseline=403, height=42, color='#0d8794')}{_stems(spectrum, x0=620, width=190, baseline=403, height=42, color='#7e168d')}<line x1="438" y1="83" x2="535" y2="83" stroke="#b56b2e" stroke-width="1.8" marker-end="url(#spectrum-correspondence-arrow)"/><line x1="438" y1="163" x2="535" y2="163" stroke="#b56b2e" stroke-width="1.8" marker-end="url(#spectrum-correspondence-arrow)"/><line x1="438" y1="243" x2="535" y2="243" stroke="#b56b2e" stroke-width="1.8" marker-end="url(#spectrum-correspondence-arrow)"/><line x1="438" y1="323" x2="535" y2="323" stroke="#b56b2e" stroke-width="1.8" marker-end="url(#spectrum-correspondence-arrow)"/><line x1="438" y1="403" x2="535" y2="403" stroke="#b56b2e" stroke-width="1.8" marker-end="url(#spectrum-correspondence-arrow)"/><text x="474" y="73" fill="#b56b2e" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700">FT</text><text x="462" y="153" fill="#b56b2e" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700">DTFT</text><text x="462" y="233" fill="#b56b2e" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700">DTFT</text><text x="468" y="313" fill="#b56b2e" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700">DFS</text><text x="470" y="393" fill="#b56b2e" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700">DFT</text><foreignObject x="116" y="34" width="115" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(x_a(t)\\)</div></foreignObject><foreignObject x="632" y="34" width="140" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(X_a(j\\Omega)\\)</div></foreignObject><foreignObject x="116" y="114" width="105" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(x(n)\\)</div></foreignObject><foreignObject x="632" y="114" width="145" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(X(e^{{j\\omega}})\\)</div></foreignObject><foreignObject x="116" y="194" width="150" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(x(n)w(n)\\)</div></foreignObject><foreignObject x="632" y="194" width="190" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(X(e^{{j\\omega}})*W(e^{{j\\omega}})\\)</div></foreignObject><foreignObject x="116" y="274" width="135" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(\\widetilde{{x}}_N(n)\\)</div></foreignObject><foreignObject x="632" y="274" width="135" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(\\widetilde{{X}}_N(k)\\)</div></foreignObject><foreignObject x="116" y="354" width="110" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(x_N(n)\\)</div></foreignObject><foreignObject x="632" y="354" width="115" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(X_N(k)\\)</div></foreignObject><text x="300" y="97" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">连续时间</text><text x="300" y="177" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">时域采样</text><text x="300" y="257" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">有限记录</text><text x="300" y="337" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">周期延拓</text><text x="300" y="417" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">有限样点</text><text x="875" y="97" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">连续频谱</text><text x="875" y="177" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">周期频谱</text><text x="875" y="257" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">展宽频谱</text><text x="875" y="337" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">周期谱样点</text><text x="875" y="417" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="13">有限谱样点</text></svg><figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-9　模拟信号的有限记录、频域展宽与 DFT 栅栏取样之间的对应关系。</figcaption></figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
 <main>
 <h1>3.5 用 DFT 对模拟信号作频谱分析</h1>
 <p>将模拟信号的有限时段记录采样后作 DFT，得到的是连续频谱的离散观察。分析结果同时受时域采样、记录长度、截断和频域取样影响，因此必须区分采样频率与频率分辨率。</p>
-""" + analog_dft_spectrum_chain_svg() + r"""
+<p><strong>时频对应图：</strong>下图把连续时间信号、采样序列、有限记录、周期延拓和有限 DFT 样点并列，用于辨认截断导致的频域展宽，以及 DFT 只在离散栅栏上观察频谱这一事实。</p>
+""" + analog_dft_spectrum_correspondence_svg() + r"""
 <h2>采样参数与频率分辨率</h2>
 <div class="formula">\[
 T_0=NT,\qquad f_s=\frac{1}{T},\qquad F_0=\frac{1}{T_0},\qquad f_s=NF_0.
