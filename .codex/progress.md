@@ -1864,3 +1864,9 @@
 - Source pp.551--559 were rendered and compared. They expand the already-covered finite-window relation with rectangular-window length comparisons, triangular-window leakage/resolution tradeoffs, and DFT samples lying on the continuous finite-record spectrum.
 - No new reader-facing source fact was absent: the body already states the 32/64 and 40/320 record-length comparisons, the rectangular/triangular mainlobe-sidelobe tradeoff, the DFT sampling relation, and the zero-padding limitation. The calculated window/zero-padding figure already presents the same concepts without importing template, code, watermark, or nontechnical slide decoration.
 - Page 560 begins Chapter 4. This closes the Chapter 3 pp.545--559 source audit; the next source-page pass moves to Chapter 4 only after the current Chapter 3 changes have been committed and verified.
+
+# 2026-09-01 Chapter 4 source-page audit closeout
+
+- Compared source pp.560--655 against the reader-facing Chapter 4 components: direct-DFT cost and the audio-length example; DIT splitting, butterflies, in-place indexing and bit reversal; DIF flow and IFFT conjugation; four-class twiddle reductions, lookup and real-sequence FFT; and CZT spiral sampling plus its Bluestein FFT-convolution implementation.
+- The existing body already contains every reader-facing unique relation, worked quantity, table, and required complex technical diagram. The two retained FFT/CZT source figures are tightly cropped technical figures only, with no slide chrome, watermark, or neighboring prose; no redundant source screenshots were inserted.
+- The Chapter 4 components, full main-body assembly, formula-purpose checks, and static MathJax checks pass: `72 passed in 15.06s`. Source p.656 begins Chapter 5.
