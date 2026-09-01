@@ -1822,3 +1822,9 @@
 - Source pp.497--508 were compared. The equations and two worked examples were already present, but the source's essential block-boundary explanations were missing as reader-facing diagrams.
 - Added one editable SVG timeline that shows non-overlapping input blocks and overlapping output contributions for overlap-add, then retained historical input samples, discarded corrupted leading output values, and retained M valid output values for overlap-save.
 - The new behavior was covered test-first. A static MathJax A4 render confirms clear Chinese labels, correct mathematical labels, non-ambiguous timeline arrows, no black region, clipping, overlap, or artificial large whitespace. Targeted suite: `68 passed`.
+
+# 2026-09-01 Chapter 3 source-page audit: frequency-sampling duality
+
+- Source pp.509--520 were compared. The periodic-summation, orthogonality, interpolation, and no-alias conditions were already present as editable formulas; the missing reader-facing bridge was the sampling-to-periodic-extension map.
+- Added the editable `x(n) → X(k) → IDFT → x-tilde(n)` relationship diagram, including the distinct `N>=M` recovery and `N<M` time-alias outcomes. A shared inline-placeholder conversion after assembled HTML eliminates the reintroduced literal-placeholder rendering fault.
+- Targeted component/body regression passes `48 passed`; static A4 review located the placeholder fault and verified the repaired diagram layout before the local commit.
