@@ -1,6 +1,7 @@
 """Chapter-three conceptual bridge from FS and FT to DTFT and DFS."""
 from __future__ import annotations
 
+import math
 from pathlib import Path
 
 from full.tools.normalize_mathjax_inline import normalize_legacy_inline_math
@@ -88,6 +89,61 @@ def fourier_family_map_svg() -> str:
 </figure>'''
 
 
+def fourier_series_partial_sum_svg() -> str:
+    """Render calculated rectangular-pulse Fourier partial sums from their coefficients."""
+
+    width, height = 980, 360
+    panels = ((42, 4.0, 11), (515, 8.0, 21))
+
+    def partial_sum(t: float, period: float, terms: int) -> float:
+        omega0 = 2.0 * math.pi / period
+        pulse_width = 2.0
+        value = pulse_width / period
+        for k in range(1, terms + 1):
+            argument = k * omega0 * pulse_width / 2.0
+            coefficient = pulse_width / period * math.sin(argument) / argument
+            value += 2.0 * coefficient * math.cos(k * omega0 * t)
+        return value
+
+    def path_for(values: list[tuple[float, float]], x0: int, x1: int, y0: int, y1: int) -> str:
+        x_min, x_max, y_min, y_max = -8.0, 8.0, -0.35, 1.35
+        coords = []
+        for x, y in values:
+            px = x0 + (x - x_min) / (x_max - x_min) * (x1 - x0)
+            py = y1 - (y - y_min) / (y_max - y_min) * (y1 - y0)
+            coords.append(f"{px:.2f},{py:.2f}")
+        return "M" + " L".join(coords)
+
+    fragments: list[str] = []
+    for index, (left, period, terms) in enumerate(panels):
+        x0, x1, y0, y1 = left + 24, left + 421, 82, 286
+        x_axis = y1 - (0.0 + 0.35) / 1.7 * (y1 - y0)
+        y_axis = x0 + 0.5 * (x1 - x0)
+        samples = [(-8.0 + 16.0 * i / 800.0, partial_sum(-8.0 + 16.0 * i / 800.0, period, terms)) for i in range(801)]
+        exact = [(-8.0 + 16.0 * i / 800.0, 1.0 if abs(((-8.0 + 16.0 * i / 800.0 + period / 2.0) % period) - period / 2.0) <= 1.0 else 0.0) for i in range(801)]
+        fragments.extend((
+            f'<rect x="{left}" y="36" width="445" height="282" rx="8" fill="#ffffff" stroke="#d6dde2"/>',
+            f'<line x1="{x0}" y1="{x_axis:.2f}" x2="{x1}" y2="{x_axis:.2f}" fill="none" stroke="#174b73" stroke-width="1.7" marker-end="url(#ch3-fs-arrow)"/>',
+            f'<line x1="{y_axis:.2f}" y1="{y1}" x2="{y_axis:.2f}" y2="{y0}" fill="none" stroke="#174b73" stroke-width="1.7" marker-end="url(#ch3-fs-arrow)"/>',
+            f'<path d="{path_for(exact, x0, x1, y0, y1)}" fill="none" stroke="#7e8d99" stroke-width="1.5" stroke-dasharray="5 4"/>',
+            f'<path d="{path_for(samples, x0, x1, y0, y1)}" fill="none" stroke="#0d8794" stroke-width="2.2" stroke-linejoin="round"/>',
+            f'<text x="{left+222}" y="61" text-anchor="middle" fill="#315d7c" font-family="Microsoft YaHei, sans-serif" font-size="14">矩形脉冲列的有限谐波逼近</text>',
+            f'<text x="{left+222}" y="307" text-anchor="middle" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="12">周期 T₀ = {period:g}，保留 {terms} 个正谐波</text>',
+            f'<foreignObject x="{x1-8}" y="{x_axis+6:.2f}" width="30" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:13px">\\(t\\)</div></foreignObject>',
+            f'<foreignObject x="{y_axis+7:.2f}" y="{y0-4}" width="38" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:13px">\\(x(t)\\)</div></foreignObject>',
+        ))
+        if index == 0:
+            fragments.append(f'<text x="{left+58}" y="73" fill="#7e8d99" font-family="Microsoft YaHei, sans-serif" font-size="11">虚线：原矩形脉冲列</text>')
+    return f'''<figure class="fourier-family-map" data-plot="fourier-series-partial-sums">
+<svg viewBox="0 0 {width} {height}" role="img" aria-labelledby="fourier-series-partial-sums-title">
+<title id="fourier-series-partial-sums-title">有限谐波数逼近的实际效果</title>
+<defs><marker id="ch3-fs-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs>
+{''.join(fragments)}
+</svg>
+<figcaption>图 3-2　有限谐波数逼近的实际效果：实线由傅里叶级数系数直接计算，虚线为原矩形脉冲列。</figcaption>
+</figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -114,6 +170,13 @@ T_0\uparrow\quad\Longrightarrow\quad\Omega_0=\frac{2\pi}{T_0}\downarrow.
 \]</div>
 <p>当 (T_0) 无限增大时，频谱取样间隔趋于零，离散的傅里叶级数频谱过渡为连续的傅里叶变换频谱。同一序号 [[k]] 的系数数值可相同，但在不同记录周期下，物理频率仍由 [[k\Omega_0]] 给出；不能只比较系数数值而忽略频率坐标。</p>
 
+<h3>连续时间傅里叶级数变换对</h3>
+<p>以下变换对用于从一个周期内的连续时间波形计算各次谐波系数，并以直流项和所有正、负谐波重新构造原周期信号：</p>
+<div class="formula">\[
+\widetilde{x}(t)=\sum_{k=-\infty}^{\infty}X(jk\Omega_0)e^{jk\Omega_0t},\qquad
+X(jk\Omega_0)=\frac{1}{T_0}\int_{-T_0/2}^{T_0/2}\widetilde{x}(t)e^{-jk\Omega_0t}\,\mathrm{d}t.
+\]</div>
+
 <h3>矩形脉冲列的谐波系数</h3>
 <p>对幅度为 1、宽度为 [[\tau]]、周期为 [[T_0]] 的实偶矩形脉冲列，下式给出每一个谐波频点的傅里叶级数系数；它说明脉冲宽度与周期之比决定直流分量和谱线包络：</p>
 <div class="formula">\[
@@ -125,6 +188,8 @@ X(jk\Omega_0)=\frac{1}{T_0}\int_{-\tau/2}^{\tau/2}e^{-jk\Omega_0t}\,\mathrm{d}t
 <div class="formula">\[
 \widetilde{x}(t)=X(j0)+\sum_{k=1}^{\infty}2X(jk\Omega_0)\cos(k\Omega_0t).
 \]</div>
+<p>有限谐波和用于近似实际波形。增加保留的谐波数会改善跳变附近以外的逼近，但在跳变点附近仍会出现局部振铃；下图的曲线由上述系数逐项相加得到。</p>
+""" + fourier_series_partial_sum_svg() + r"""
 
 <h2>从连续时间频谱到 DTFT</h2>
 <p>连续信号以采样间隔 [[T]] 变为序列后，模拟角频率 [[\Omega]] 与数字角频率 [[\omega]] 的关系为：</p>
