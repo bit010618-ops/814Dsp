@@ -10,12 +10,18 @@ STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.steps{padding-left:1.5em;margin:5pt 0 8pt}.steps li{margin:3pt 0}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}</style>"""
 
 
+def analog_dft_spectrum_chain_svg() -> str:
+    """Render the actual analog-to-DFT spectrum-analysis chain."""
+    return '''<figure data-diagram="analog-dft-spectrum-chain" style="break-inside:avoid;margin:12pt 0 13pt"><svg viewBox="0 0 980 180" role="img" aria-labelledby="analog-dft-spectrum-chain-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff"><title id="analog-dft-spectrum-chain-title">模拟信号经采样、截断和 DFT 的频谱分析流程</title><defs><marker id="analog-dft-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs><text x="35" y="35" fill="#174b73" font-family="Microsoft YaHei, sans-serif" font-size="18" font-weight="700">模拟信号的 DFT 频谱分析链路</text><rect x="55" y="72" width="150" height="55" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.5"/><rect x="300" y="72" width="150" height="55" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.5"/><rect x="545" y="72" width="150" height="55" rx="6" fill="#fff8e8" stroke="#b56b2e" stroke-width="1.5"/><rect x="790" y="72" width="150" height="55" rx="6" fill="#eef7f1" stroke="#16866d" stroke-width="1.5"/><text x="130" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">模拟信号 xₐ(t)</text><text x="375" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">采样序列 x(n)</text><text x="620" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">有限记录 x(n)w(n)</text><text x="865" y="105" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="17">DFT 样值 X(k)</text><line x1="205" y1="99" x2="300" y2="99" stroke="#174b73" stroke-width="2" marker-end="url(#analog-dft-arrow)"/><line x1="450" y1="99" x2="545" y2="99" stroke="#174b73" stroke-width="2" marker-end="url(#analog-dft-arrow)"/><line x1="695" y1="99" x2="790" y2="99" stroke="#174b73" stroke-width="2" marker-end="url(#analog-dft-arrow)"/><text x="235" y="70" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">采样</text><text x="475" y="70" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">截断／加窗</text><text x="725" y="70" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">N 点 DFT</text><text x="58" y="160" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">采样率决定混叠；记录与窗函数决定泄漏和分辨率；零填充仅加密观察频点。</text></svg><figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-8　模拟信号作 DFT 频谱分析的处理链。</figcaption></figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
 <main>
 <h1>3.5 用 DFT 对模拟信号作频谱分析</h1>
 <p>将模拟信号的有限时段记录采样后作 DFT，得到的是连续频谱的离散观察。分析结果同时受时域采样、记录长度、截断和频域取样影响，因此必须区分采样频率与频率分辨率。</p>
+""" + analog_dft_spectrum_chain_svg() + r"""
 <h2>采样参数与频率分辨率</h2>
 <div class="formula">\[
 T_0=NT,\qquad f_s=\frac{1}{T},\qquad F_0=\frac{1}{T_0},\qquad f_s=NF_0.
@@ -74,7 +80,8 @@ x(n),&0\leq n\leq N-1,\\
 <p>1807 年，傅里叶提交有关热传播的论文，主张周期信号可以由适当的正弦分量组合表示。这一观点当时引起争议，特别是对于不连续信号能否分解的问题。后来他在《热的解析理论》（1822）中系统阐述了这些思想；狄利克雷等数学家给出了相应的严格条件，通常称为狄利克雷条件。</p>
 <p>这一历史提醒我们：频谱图不是只为“看见峰值”，还要结合采样、截断、加窗和变换条件解释峰值为什么出现、为什么展宽，以及所得结论的适用范围。</p>
 </main>
-""".replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+"""
+    content = content.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     html = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(html, encoding="utf-8")
     return output
