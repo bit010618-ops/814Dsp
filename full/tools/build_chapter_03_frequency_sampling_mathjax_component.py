@@ -10,12 +10,27 @@ STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.steps{padding-left:1.5em;margin:5pt 0 8pt}.steps li{margin:3pt 0}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}</style>"""
 
 
+def frequency_sampling_duality_svg() -> str:
+    """Draw the frequency-sampling/periodic-extension correspondence."""
+    return '''<figure data-diagram="frequency-sampling-duality" style="break-inside:avoid;margin:12pt 0 13pt">
+<svg viewBox="0 0 980 260" role="img" aria-labelledby="frequency-sampling-duality-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff">
+<title id="frequency-sampling-duality-title">频域采样与时域周期延拓的对应关系</title>
+<defs><marker id="frequency-sampling-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs>
+<text x="46" y="37" fill="#174b73" font-family="Microsoft YaHei, sans-serif" font-size="18" font-weight="700">频域等间隔采样与时域周期延拓</text>
+<rect x="82" y="76" width="185" height="62" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.5"/><rect x="704" y="76" width="190" height="62" rx="6" fill="#fff8e8" stroke="#b56b2e" stroke-width="1.5"/><rect x="704" y="175" width="190" height="62" rx="6" fill="#eef7f1" stroke="#16866d" stroke-width="1.5"/>
+<foreignObject x="94" y="88" width="160" height="35"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:16px;text-align:center">\\(x(n)\\)</div></foreignObject><foreignObject x="712" y="88" width="174" height="35"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:15px;text-align:center">\\(X(k)\\)</div></foreignObject><foreignObject x="712" y="186" width="174" height="35"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px;text-align:center">\\(\\widetilde{x}(n)=\\sum_r x(n-rN)\\)</div></foreignObject>
+<line x1="267" y1="107" x2="704" y2="107" stroke="#174b73" stroke-width="2" marker-end="url(#frequency-sampling-arrow)"/><line x1="799" y1="138" x2="799" y2="175" stroke="#174b73" stroke-width="2" marker-end="url(#frequency-sampling-arrow)"/>
+<text x="367" y="93" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="15">DTFT 后在单位圆取 N 个等间隔样点</text><text x="818" y="161" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">N 点 IDFT</text><text x="82" y="170" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="15">N≥M：副本不重叠，可恢复有限长序列。</text><text x="82" y="205" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="15">N&lt;M：相隔 N 的样本相加，产生时域混叠。</text>
+</svg><figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-7　频域采样与时域周期延拓的对应关系。</figcaption></figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
 <main>
 <h1>3.4 频域采样定理</h1>
 <p>频域采样研究的问题是：对非周期序列的 DTFT 在单位圆上取 [[N]] 个等间隔样点后，能恢复什么样的时域序列？它与时域采样形成严格对偶：时域离散会使频域周期延拓，频域离散则使时域周期延拓。</p>
+""" + frequency_sampling_duality_svg() + r"""
 
 <h2>频域等间隔采样</h2>
 <p>设 [[x(n)]] 为绝对可和的非周期序列，故其 DTFT 连续，z 变换的收敛域包含单位圆。频域抽样值定义如下；它说明 DFT 样值就是 [[z]] 变换在单位圆根上的取值。后文为简洁起见仍将 [[\widetilde{X}(k)]] 记作 [[X(k)]]：</p>
@@ -91,7 +106,8 @@ X\left(e^{j\omega}\right)=\sum_{n=0}^{M-1}x(n)e^{-j\omega n}.
 <h2>例题：频域抽样的时域结果</h2>
 <p>若一个有限长序列的有效长度为 [[M=6]]，在单位圆上取 [[N=4]] 个等间隔频率样值并作 4 点 IDFT，则恢复序列为 [[\widetilde{x}(n)=\sum_r x(n-4r)]]。其中原序列相隔 4 的样本将叠加，因此不能无失真恢复。若改取 [[N=6]] 或更多频率样点，便满足 [[N\geq M]]，可以恢复原序列。</p>
 </main>
-""".replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+"""
+    content = content.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     html = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(html, encoding="utf-8")
     return output

@@ -20,3 +20,13 @@ def test_frequency_sampling_component_covers_periodic_summation_and_recovery(tmp
     assert r"\Phi_k(z)=\frac{1}{N}\frac{1-z^{-N}}{1-W_N^{-k}z^{-1}}" in html
     assert "时域混叠" in html
     assert "MATLAB" not in html
+    assert "[[" not in html
+
+
+def test_frequency_sampling_component_draws_the_sampling_duality_map(tmp_path: Path):
+    from full.tools import build_chapter_03_frequency_sampling_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-frequency-sampling.html").read_text(encoding="utf-8")
+
+    assert 'data-diagram="frequency-sampling-duality"' in html
+    assert "频域采样与时域周期延拓的对应关系" in html
