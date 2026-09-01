@@ -1828,3 +1828,15 @@
 - Source pp.509--520 were compared. The periodic-summation, orthogonality, interpolation, and no-alias conditions were already present as editable formulas; the missing reader-facing bridge was the sampling-to-periodic-extension map.
 - Added the editable `x(n) → X(k) → IDFT → x-tilde(n)` relationship diagram, including the distinct `N>=M` recovery and `N<M` time-alias outcomes. A shared inline-placeholder conversion after assembled HTML eliminates the reintroduced literal-placeholder rendering fault.
 - Targeted component/body regression passes `48 passed`; static A4 review located the placeholder fault and verified the repaired diagram layout before the local commit.
+
+# 2026-09-01 Chapter 3 source-page audit: frequency-sampling final math-label QA
+
+- The earlier first-page review was repeated after the assembled-HTML placeholder repair. It now contains no literal `[[...]]` placeholder and the complete sampling/IDFT relationship remains clear in the A4 raster output.
+- The review also found two inequalities in the diagram's explanatory text rendered as ordinary SVG glyphs. They are now standalone inline MathJax expressions (`\(N\geq M\)` and `\(N<M\)`) inside SVG foreign objects, keeping graphic math on the same standard LaTeX rendering path as the rest of the document.
+- The new expectation failed before that correction and the targeted component/body/formula/static-MathJax suite now passes `64 passed`. A fresh static A4 raster confirms no raw formula source, black region, clipping, overlap, or artificial whitespace.
+
+# 2026-09-01 Chapter 3 source-page audit: analog-to-DFT spectrum analysis chain
+
+- Source pp.521--526 introduce the signal-processing chain from the analog waveform through sampling and finite-record windowing to the DFT samples. The text and formulas existed, but the reader-facing chain itself was absent.
+- Added a clean, editable native SVG: `x_a(t)` → sampled `x(n)` → finite record `x(n)w(n)` → DFT samples `X(k)`. Its captions state the purpose of sampling, truncation/windowing, and the N-point DFT; it deliberately omits slide watermark, template chrome, and nontechnical decoration.
+- Static MathJax plus two-page A4 raster inspection confirms the processing chain, arrows, Chinese explanatory labels, formula displays, and surrounding text are intact without black region, clipping, overlap, raw source, or artificial blank area. The full targeted regression is included in the `64 passed` result above.

@@ -30,3 +30,5 @@ def test_frequency_sampling_component_draws_the_sampling_duality_map(tmp_path: P
 
     assert 'data-diagram="frequency-sampling-duality"' in html
     assert "频域采样与时域周期延拓的对应关系" in html
+    assert '<foreignObject x="82" y="148" width="95" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(N\\geq M\\)</div></foreignObject>' in html
+    assert '<foreignObject x="82" y="183" width="95" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\(N&lt;M\\)</div></foreignObject>' in html
