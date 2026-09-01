@@ -316,10 +316,54 @@ def _minimum_phase_compensation_diagram() -> str:
 </svg><figcaption>最小相位补偿结构：补偿器只抵消失真系统的最小相位部分，级联后的剩余系统为全通部分，因此幅度保持而相位可被校正。</figcaption></figure>'''
 
 
+def _render_engineering_filter_comparison() -> str:
+    """Compute the three source methods on one sampled signal for comparison."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib.font_manager import FontProperties
+
+    chinese_font = FontProperties(fname=r"C:\Windows\Fonts\msyh.ttc")
+    axis_color, stem_color, marker_color = "#244f72", "#008e98", "#bd6d0a"
+    n = np.arange(0, 49)
+    signal = 0.8 * np.sin(0.34 * n) + 0.35 * np.sin(1.31 * n)
+    signal[[9, 24, 37]] += np.array([2.2, -2.7, 2.5])
+    limit = np.empty_like(signal)
+    limit[0] = signal[0]
+    threshold = 0.8
+    for index in range(1, len(signal)):
+        limit[index] = signal[index] if abs(signal[index] - limit[index - 1]) <= threshold else limit[index - 1]
+    median = np.array([np.median(signal[max(0, index - 1):min(len(signal), index + 2)]) for index in range(len(signal))])
+    average = np.convolve(np.pad(signal, (3, 0), mode="edge"), np.ones(4) / 4, mode="valid")
+
+    figure, axes = plt.subplots(4, 1, figsize=(7.0, 6.0), sharex=True, constrained_layout=True)
+    rows = ((signal, "含脉冲干扰的输入序列"), (limit, "阈值限幅（E=0.8）"), (median, "三点中值滤波"), (average, "四点滑动平均"))
+    for axis, (values, label) in zip(axes, rows):
+        for spine in axis.spines.values():
+            spine.set_visible(False)
+        axis.axhline(0, color=axis_color, lw=1.0, zorder=0)
+        axis.axvline(-1, color=axis_color, lw=1.0, zorder=0)
+        axis.vlines(n, 0, values, color=stem_color, lw=1.1, zorder=2)
+        axis.scatter(n, values, s=13, color=marker_color, zorder=3)
+        axis.annotate("", xy=(50.3, 0), xytext=(48.6, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.0})
+        axis.annotate("", xy=(-1, 3.0), xytext=(-1, 2.5), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.0})
+        axis.set(xlim=(-2, 50.5), ylim=(-3.2, 3.15), yticks=(-2, 0, 2))
+        axis.grid(axis="y", color="#d9e1e6", lw=0.6)
+        axis.text(0.02, 0.89, label, transform=axis.transAxes, fontproperties=chinese_font, fontsize=8.5, color=axis_color, va="top")
+    axes[-1].set_xticks((0, 10, 20, 30, 40, 48))
+    axes[-1].set_xlabel(r"$n$", fontsize=9)
+    figure.suptitle("阈值限幅、中值和滑动平均三种方法", fontproperties=chinese_font, fontsize=10.7, color="#1e4f79")
+    result = _png_uri(figure)
+    plt.close(figure)
+    return result
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     figures = _render_first_order_lowpass_figures()
     figures.update(_render_resonator_figures())
+    figures["engineering_filters"] = _render_engineering_filter_comparison()
     content = r'''
 <main>
 <h1>特殊滤波器的设计</h1>
@@ -432,6 +476,8 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[H_{\mathrm{ap}}(z)=\frac{z-3}{3z-1},\qquad H(z)=H_{\min}(z)H_{\mathrm{ap}}(z)\]</div>
 <h2>工程中常用的滤波方法</h2>
 <p>下列方法用于离散采样数据的预处理，重点在于理解适用的干扰类型与参数选择，而非程序实现。</p>
+<p>下图在同一含脉冲干扰的离散序列上实际计算并比较三种方法：限幅抑制突变但可能保留平台，中值最适合孤立异常点，滑动平均最平滑但会减弱瞬态：</p>
+<figure class="figure" data-plot="engineering-filter-comparison"><img src="{{ENGINEERING_FILTERS}}" alt="限幅、中值与滑动平均滤波的实际效果对比"><figcaption>阈值限幅、中值和滑动平均三种方法对同一离散数据的实际输出。每个面板均采用标准 stem 图：限幅的阈值为 (E=0.8)，中值窗口为 3 点，滑动平均窗口为 4 点。</figcaption></figure>
 <h3>限幅滤波</h3>
 <p>设 [[E]] 为两次采样允许的最大偏差。若新样值与上一次有效输出相差过大，则以旧输出代替新样值，因而可抑制偶发脉冲干扰：</p>
 <div class="formula">\[y(n)=\begin{cases}x(n),&\left|x(n)-y(n-1)\right|\le E,\\y(n-1),&\left|x(n)-y(n-1)\right|&gt;E.\end{cases}\]</div>
@@ -452,7 +498,8 @@ def write_html(output: Path) -> Path:
                .replace("{{RESONATOR_POLE_ZERO_RESPONSE}}", figures["pole_zero_response"])
                .replace("{{BANDPASS_RESPONSE}}", figures["bandpass_response"])
                .replace("{{NOTCH_RESPONSE}}", figures["notch_response"])
-               .replace("{{ALLPASS_RESPONSE}}", figures["allpass_response"]))
+               .replace("{{ALLPASS_RESPONSE}}", figures["allpass_response"])
+               .replace("{{ENGINEERING_FILTERS}}", figures["engineering_filters"]))
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

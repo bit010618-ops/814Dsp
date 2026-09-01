@@ -117,3 +117,13 @@ def test_special_filters_restore_minimum_phase_compensation_topology(tmp_path: P
     assert r"H_d(z)=H_{d\min}(z)H_{\mathrm{ap}}(z)" in html
     assert r"H_c(z)=\frac{1}{H_{d\min}(z)}" in html
     assert r"G(z)=H_d(z)H_c(z)=H_{\mathrm{ap}}(z)" in html
+
+
+def test_special_filters_compare_engineering_filter_algorithms_with_real_data(tmp_path: Path):
+    from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
+
+    html = write_html(tmp_path / "special-filters.html").read_text(encoding="utf-8")
+
+    assert 'data-plot="engineering-filter-comparison"' in html
+    assert 'alt="限幅、中值与滑动平均滤波的实际效果对比"' in html
+    assert "阈值限幅、中值和滑动平均三种方法" in html
