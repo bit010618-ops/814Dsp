@@ -20,6 +20,49 @@ p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:
 </style>"""
 
 
+def circular_shift_cycle_svg() -> str:
+    """Draw the circular-shift construction from real eight-point sample values."""
+
+    rows = (
+        (r"x(n)", (1, 2, 3, 4, 0, 0, 0, 0), "先在一个主值区间内补零"),
+        (r"x\left((n+2)\right)_8", (3, 4, 0, 0, 0, 0, 1, 2), "按 8 周期向左循环移位 2 点"),
+        (r"x\left((n+2)\right)_8R_8(n)", (3, 4, 0, 0, 0, 0, 1, 2), "在主值区间截取输出"),
+    )
+    fragments: list[str] = []
+    for row, (label, sequence, explanation) in enumerate(rows):
+        top = 44 + row * 126
+        axis_y = top + 68
+        x_axis_start, x_axis_end, y_axis = 70, 900, 118
+        x_step = 74
+        fragments.extend((
+            f'<line x1="{x_axis_start}" y1="{axis_y}" x2="{x_axis_end}" y2="{axis_y}" stroke="#174b73" stroke-width="1.7" marker-end="url(#ch3-shift-arrow)"/>',
+            f'<line x1="{y_axis}" y1="{axis_y+28}" x2="{y_axis}" y2="{top+18}" stroke="#174b73" stroke-width="1.5" marker-end="url(#ch3-shift-arrow)"/>',
+            f'<line x1="{y_axis+8}" y1="{top+12}" x2="{y_axis+8*x_step+18}" y2="{top+12}" stroke="#b56b2e" stroke-width="1.2" stroke-dasharray="4 3"/>',
+            f'<line x1="{y_axis+8}" y1="{top+12}" x2="{y_axis+8}" y2="{axis_y+15}" stroke="#b56b2e" stroke-width="1.2" stroke-dasharray="4 3"/>',
+            f'<line x1="{y_axis+8*x_step+18}" y1="{top+12}" x2="{y_axis+8*x_step+18}" y2="{axis_y+15}" stroke="#b56b2e" stroke-width="1.2" stroke-dasharray="4 3"/>',
+            f'<foreignObject x="130" y="{top-26}" width="220" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\({label}\\)</div></foreignObject>',
+            f'<text x="390" y="{top-12}" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="12">{explanation}</text>',
+            f'<foreignObject x="{x_axis_end-2}" y="{axis_y+3}" width="26" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:13px">\\(n\\)</div></foreignObject>',
+            f'<text x="{y_axis+4}" y="{axis_y+22}" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="11">0</text>',
+            f'<text x="{y_axis+8*x_step+5}" y="{axis_y+22}" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="11">7</text>',
+        ))
+        for n, value in enumerate(sequence):
+            x = y_axis + 20 + n * x_step
+            y = axis_y - value * 12
+            fragments.append(f'<line x1="{x}" y1="{axis_y}" x2="{x}" y2="{y}" stroke="#0d8794" stroke-width="2"/>')
+            fragments.append(f'<circle cx="{x}" cy="{y}" r="3.8" fill="#c77613"/>')
+            if value:
+                fragments.append(f'<text x="{x}" y="{y-8}" text-anchor="middle" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="11">{value}</text>')
+    return f'''<figure data-plot="circular-shift-cycle" style="break-inside:avoid;margin:12pt 0 13pt">
+<svg viewBox="0 0 980 430" role="img" aria-labelledby="circular-shift-cycle-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff">
+<title id="circular-shift-cycle-title">周期延拓、移位与主值区间截取</title>
+<defs><marker id="ch3-shift-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs>
+{''.join(fragments)}
+</svg>
+<figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-3　周期延拓、移位与主值区间截取：圆周移位的折回来自周期性，而非在区间端点补零。</figcaption>
+</figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -71,6 +114,8 @@ W_N^{-n k_0}x(n)
 \quad\longleftrightarrow\quad
 X\left((k-k_0)\right)_N.
 \]</div>
+<p>下图用一个真实 8 点序列展示“周期延拓—移位—截取”的顺序；它用于避免把圆周移位误画成区间端点的普通补零移位。</p>
+""" + circular_shift_cycle_svg() + r"""
 <h3>例题：8 点圆周移位与反褶</h3>
 <p>已知序列 (x(n)=\{1,2,3,4\})，其中第一个样值对应 (n=0)。将它补零为 8 点主值序列后，分别求下列圆周运算的主值序列。</p>
 <div class="formula">\[
@@ -140,7 +185,19 @@ y(n)=\operatorname{IDFT}\left\{X_1(k)X_2(k)\right\}.
       &=\{4,3,6,6,6,5\},\qquad 0\leq n\leq5.
   \end{aligned}
   \]</div>
-  <p>这里的首尾折回正是圆周卷积与线性卷积不同的地方；[[N=6]] 固定后，每个下标都按 6 周期取值。</p>
+<p>这里的首尾折回正是圆周卷积与线性卷积不同的地方；[[N=6]] 固定后，每个下标都按 6 周期取值。</p>
+
+<h2>基本序列的 DFT 对</h2>
+<p>下列基本变换对用于快速核对冲激、常数序列和旋转因子序列的 DFT；所有式子都在同一个 [[N]] 点主值区间内理解：</p>
+<div class="formula">\[
+\delta(n)R_N(n)\quad\longleftrightarrow\quad 1,\qquad
+\delta(n-m)R_N(n)\quad\longleftrightarrow\quad W_N^{mk}.
+\]</div>
+<div class="formula">\[
+R_N(n)\quad\longleftrightarrow\quad N\delta(k)R_N(k),\qquad
+e^{j\frac{2\pi}{N}mn}R_N(n)\quad\longleftrightarrow\quad N\delta(k-m)R_N(k).
+\]</div>
+<p>其中第一组用于定位时域冲激在频域中的相位因子，第二组用于识别直流和单一 DFT 栅栏频点；它们也可作为更复杂 DFT 运算的代入检查。</p>
 
   <h2>例题：序列 R_4(n) 的 DTFT、8 点 DFT 与 16 点 DFT</h2>
 <p>已知 [[x(n)=R_4(n)]]，求 [[x(n)]] 的 DTFT，以及其 8 点和 16 点 DFT。</p>

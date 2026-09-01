@@ -47,3 +47,15 @@ def test_dft_component_preserves_the_six_point_circular_convolution_example(tmp_
     assert r"x_1(n)=R_5(n)" in html
     assert r"x_2(n)=n+1" in html
     assert r"\{4,3,6,6,6,5\}" in html
+
+
+def test_dft_component_keeps_circular_shift_visual_and_basic_sequence_pairs(tmp_path: Path):
+    from full.tools import build_chapter_03_dft_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-dft.html").read_text(encoding="utf-8")
+
+    assert 'data-plot="circular-shift-cycle"' in html
+    assert "周期延拓、移位与主值区间截取" in html
+    assert r"\delta(n-m)R_N(n)" in html
+    assert r"R_N(n)\quad\longleftrightarrow\quad N\delta(k)R_N(k)" in html
+    assert r"e^{j\frac{2\pi}{N}mn}R_N(n)" in html
