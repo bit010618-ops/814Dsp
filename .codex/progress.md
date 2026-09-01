@@ -1889,3 +1889,9 @@
 - Compared source pp.867--1003: linear-phase FIR symmetry classes, endpoint constraints and zero properties; window-method design and its calculated transition/sidelobe tradeoff; frequency-sampling construction, interpolation error and transition-band correction; and weighted equiripple/Remez design.
 - The reader body already contains the four-type comparison table, source-order formulas, window comparison table, frequency-sampling recovery and correction logic, and the equiripple error/weight explanation. Source code listings, audio demonstration slides, decorative chapter repeats and slide callouts do not add unique reader-facing course content and were not copied.
 - Chapter 7 main/supplemental training, full-body, formula-purpose and static-MathJax checks pass: `66 passed in 15.01s`. Source p.1010 begins Chapter 8.
+
+# 2026-09-01 Chapter 8 source-page audit closeout and body pass completion
+
+- Compared source pp.1010--1056: integer decimation and interpolation; anti-aliasing and anti-imaging filters; arbitrary rational sampling-rate conversion; multistage/polyphase, time-division and frequency-division multiplexing; and audio sampling-rate applications.
+- Existing reader components already contain the substantive formulas, real signal-flow diagrams and applications in source order. Source repeat-title slides, code fragments, speaker/audio demos and nontechnical closing slides were intentionally excluded from reader-facing content rather than copied as screenshots.
+- Chapter 8 component/training, full-body, formula-purpose and static-MathJax checks pass: `64 passed in 15.06s`. All source pp.1--1056 have now been audited chapter-by-chapter for main-body coverage. Next stage is whole-book assembly: formula summaries, per-chapter question placement with Appendix F detailed solutions, unified pagination/headers/footers and final visual verification.
