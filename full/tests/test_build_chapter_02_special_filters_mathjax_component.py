@@ -94,3 +94,26 @@ def test_special_filters_keep_inverse_system_and_minimum_phase_factorization(tmp
     assert r"H(z)=\frac{1-3z^{-1}}{1-\frac{3}{4}z^{-1}}" in html
     assert r"H_{\min}(z)=3\frac{z-\frac{1}{3}}{z-\frac{3}{4}}" in html
     assert r"H_{\mathrm{ap}}(z)=\frac{z-3}{3z-1}" in html
+
+
+def test_special_filters_keep_allpass_section_phase_and_group_delay_relationships(tmp_path: Path):
+    from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
+
+    html = write_html(tmp_path / "special-filters.html").read_text(encoding="utf-8")
+
+    assert r"\theta_i(\omega)=-\omega-2\arctan" in html
+    assert r"\operatorname{grd}_i(\omega)" in html
+    assert r"\frac{1-r^2}{1+r^2-2r\cos(\omega-\theta)}" in html
+    assert 'data-plot="allpass-phase-group-delay"' in html
+    assert 'alt="一阶全通节的幅度、相位与群延迟"' in html
+
+
+def test_special_filters_restore_minimum_phase_compensation_topology(tmp_path: Path):
+    from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
+
+    html = write_html(tmp_path / "special-filters.html").read_text(encoding="utf-8")
+
+    assert 'data-diagram="minimum-phase-compensation"' in html
+    assert r"H_d(z)=H_{d\min}(z)H_{\mathrm{ap}}(z)" in html
+    assert r"H_c(z)=\frac{1}{H_{d\min}(z)}" in html
+    assert r"G(z)=H_d(z)H_c(z)=H_{\mathrm{ap}}(z)" in html

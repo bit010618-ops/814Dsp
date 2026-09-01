@@ -16,7 +16,7 @@ from full.tools.render_mathjax_formula import EDGE, MATHJAX
 
 
 STYLE = r"""<style>
-@page{size:A4;margin:20mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.figure{margin:11pt auto 13pt;text-align:center;break-inside:avoid}.figure img{display:block;width:100%;max-width:148mm;margin:auto;border:0}.figure figcaption{color:#536b7d;font-size:9.5pt;line-height:1.55;margin-top:4pt}table{border-collapse:collapse;width:100%;margin:9pt 0 12pt;font-size:10pt;break-inside:avoid}th,td{border:.55pt solid #8299aa;padding:4pt 6pt;text-align:center}th{background:#eaf1f4;color:#1e4f79;font-weight:600}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
+@page{size:A4;margin:20mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.figure{margin:11pt auto 13pt;text-align:center;break-inside:avoid}.figure img{display:block;width:100%;max-width:148mm;margin:auto;border:0}.figure figcaption{color:#536b7d;font-size:9.5pt;line-height:1.55;margin-top:4pt}.compensation-svg{display:block;width:100%;height:auto;background:#fbfcfd;border:1px solid #d8e0e5;border-radius:5pt}.compensation-svg .wire{fill:none;stroke:#174b73;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}.compensation-svg .system-block{fill:#f4f7f8;stroke:#0d8794;stroke-width:2}.compensation-svg .overall{fill:none;stroke:#b56b2e;stroke-width:1.7;stroke-dasharray:7 5}.compensation-svg .diagram-label{fill:#315d7c;font:17px "Microsoft YaHei",sans-serif}.compensation-svg .math-label div{height:100%;display:flex;justify-content:center;align-items:center;color:#172b3a;font-size:18px;white-space:nowrap}table{border-collapse:collapse;width:100%;margin:9pt 0 12pt;font-size:10pt;break-inside:avoid}th,td{border:.55pt solid #8299aa;padding:4pt 6pt;text-align:center}th{background:#eaf1f4;color:#1e4f79;font-weight:600}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}
 </style>"""
 
 
@@ -264,7 +264,56 @@ def _render_resonator_figures() -> dict[str, str]:
     response.annotate("50 Hz", xy=(0.1, 0), xytext=(0.20, 0.30), fontproperties=chinese_font, fontsize=8.5, color="#7c4a16", arrowprops={"arrowstyle": "->", "color": "#7c4a16", "lw": 0.8})
     figures["notch_response"] = _png_uri(figure)
     plt.close(figure)
+
+    allpass_radius = 0.9
+    omega = np.linspace(0, np.pi, 1600)
+    allpass_response = (np.exp(-1j * omega) - allpass_radius) / (1 - allpass_radius * np.exp(-1j * omega))
+    allpass_phase = np.unwrap(np.angle(allpass_response))
+    allpass_delay = (1 - allpass_radius ** 2) / (1 + allpass_radius ** 2 - 2 * allpass_radius * np.cos(omega))
+    figure, axes = plt.subplots(3, 1, figsize=(6.8, 4.7), sharex=True, constrained_layout=True)
+    responses = (
+        (np.abs(allpass_response), "幅度", (-0.06, 1.18)),
+        (allpass_phase, "相位（rad）", (allpass_phase.min() - 0.18, 0.22)),
+        (allpass_delay, "群延迟（样本）", (-0.5, allpass_delay.max() * 1.08)),
+    )
+    for axis, (values, label, limits) in zip(axes, responses):
+        for spine in axis.spines.values():
+            spine.set_visible(False)
+        axis.plot(omega / np.pi, values, color="#008e98", lw=1.55)
+        axis.axhline(0, color=axis_color, lw=1.0, zorder=0)
+        axis.axvline(0, color=axis_color, lw=1.0, zorder=0)
+        axis.annotate("", xy=(1.10, 0), xytext=(1.02, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.0})
+        axis.annotate("", xy=(0, limits[1]), xytext=(0, limits[1] - (limits[1] - limits[0]) * 0.10), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.0})
+        axis.set(xlim=(0, 1.10), ylim=limits, xticks=(0, 0.5, 1), xticklabels=("0", r"$1/2$", "1"))
+        axis.grid(axis="y", color="#d9e1e6", lw=0.6)
+        axis.text(0.035, 0.90, label, transform=axis.transAxes, fontproperties=chinese_font, fontsize=8.2, color=axis_color, va="top")
+    axes[0].set_title("一阶全通节的幅度、相位与群延迟", fontproperties=chinese_font, color="#1e4f79", fontsize=10.5, pad=6)
+    axes[-1].set_xlabel(r"$\omega/\pi$", fontsize=9)
+    figures["allpass_response"] = _png_uri(figure)
+    plt.close(figure)
     return figures
+
+
+def _minimum_phase_compensation_diagram() -> str:
+    """Return the source-equivalent loss-compensation topology as editable SVG."""
+    return r'''<figure class="figure" data-diagram="minimum-phase-compensation">
+<svg class="compensation-svg" viewBox="0 0 940 284" role="img" aria-label="最小相位补偿系统结构图" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="minimum-phase-compensation-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#174b73"/></marker></defs>
+  <rect class="overall" x="178" y="56" width="590" height="142" rx="7"/>
+  <foreignObject class="math-label" x="438" y="22" width="80" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(G(z)\)</div></foreignObject>
+  <path class="wire" d="M54 127H238" marker-end="url(#minimum-phase-compensation-arrow)"/>
+  <rect class="system-block" x="238" y="82" width="188" height="90" rx="8"/>
+  <text class="diagram-label" x="332" y="116" text-anchor="middle">失真系统</text>
+  <foreignObject class="math-label" x="286" y="123" width="92" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(H_d(z)\)</div></foreignObject>
+  <path class="wire" d="M426 127H514" marker-end="url(#minimum-phase-compensation-arrow)"/>
+  <rect class="system-block" x="514" y="82" width="188" height="90" rx="8"/>
+  <text class="diagram-label" x="608" y="116" text-anchor="middle">补偿系统</text>
+  <foreignObject class="math-label" x="562" y="123" width="92" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(H_c(z)\)</div></foreignObject>
+  <path class="wire" d="M702 127H880" marker-end="url(#minimum-phase-compensation-arrow)"/>
+  <foreignObject class="math-label" x="38" y="80" width="88" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(x(n)\)</div></foreignObject>
+  <foreignObject class="math-label" x="814" y="80" width="88" height="34"><div xmlns="http://www.w3.org/1999/xhtml">\(y(n)\)</div></foreignObject>
+  <text class="diagram-label" x="470" y="236" text-anchor="middle">先保留失真系统的最小相位部分，再用其稳定逆系统补偿</text>
+</svg><figcaption>最小相位补偿结构：补偿器只抵消失真系统的最小相位部分，级联后的剩余系统为全通部分，因此幅度保持而相位可被校正。</figcaption></figure>'''
 
 
 def write_html(output: Path) -> Path:
@@ -346,6 +395,15 @@ def write_html(output: Path) -> Path:
 <h2>全通滤波器</h2>
 <p>全通滤波器的幅度在整个频带内恒为一；它不改变幅度，只校正相位或群延迟：</p>
 <div class="formula">\[\left|H_{\mathrm{ap}}(e^{j\omega})\right|=1,\qquad 0\leq\omega&lt;2\pi\]</div>
+<p>一阶全通节的系统函数用于把一个稳定极点与其共轭倒易零点配对，从而只改变相位而不改变幅度：</p>
+<div class="formula">\[H_i(z)=\frac{z^{-1}-re^{-j\theta}}{1-re^{j\theta}z^{-1}},\qquad 0&lt;r&lt;1\]</div>
+<p>一阶全通节在单位圆上的频率响应用于证明分子与分母互为共轭因子，因此其幅度恒为一：</p>
+<div class="formula">\[H_i(e^{j\omega})=e^{-j\omega}\frac{1-r\cos(\omega-\theta)-jr\sin(\omega-\theta)}{1-r\cos(\omega-\theta)+jr\sin(\omega-\theta)}\]</div>
+<p>一阶全通节的相位公式用于量化极点位置对相位校正量的影响：</p>
+<div class="formula">\[\theta_i(\omega)=-\omega-2\arctan\frac{r\sin(\omega-\theta)}{1-r\cos(\omega-\theta)}\]</div>
+<p>一阶全通节的群延迟公式用于说明因果稳定全通节在所有频率处的群延迟都为正：</p>
+<div class="formula">\[\operatorname{grd}_i(\omega)=-\frac{\mathrm{d}\theta_i(\omega)}{\mathrm{d}\omega}=\frac{1-r^2}{1+r^2-2r\cos(\omega-\theta)}\]</div>
+<figure class="figure" data-plot="allpass-phase-group-delay"><img src="{{ALLPASS_RESPONSE}}" alt="一阶全通节的幅度、相位与群延迟"><figcaption>一阶全通节的实际频率响应：幅度恒为一；相位随频率单调减小；群延迟为正，且极点靠近单位圆时在相应频段更显著。</figcaption></figure>
 <p>若 [[D(z)]] 的极点都在单位圆内，则实系数稳定全通滤波器可表示为：</p>
 <div class="formula">\[H_{\mathrm{ap}}(z)=A\frac{z^{-N}D(z^{-1})}{D(z)}=A\prod_{i=1}^{N}\frac{z^{-1}-p_i^*}{1-p_i z^{-1}}\]</div>
 <p>其零极点具有共轭倒易关系：每个极点 [[p_i]] 对应零点 [[1/p_i^*]]。稳定实系数全通滤波器在 [[0,\pi]] 内相位单调减小，群延迟为正。</p>
@@ -354,6 +412,11 @@ def write_html(output: Path) -> Path:
 <p>逆系统用于抵消已知系统的传递作用：原系统与其逆系统级联后，整体输出应恢复为输入。其系统函数关系为：</p>
 <div class="formula">\[H_i(z)=\frac{1}{H(z)},\qquad H(z)H_i(z)=1\]</div>
 <p>若一个因果稳定系统及其逆系统都要求因果稳定，则原系统的全部零点和极点都必须位于单位圆内。这类系统称为最小相位系统。</p>
+<p>最小相位补偿分解用于从一个一般因果稳定的失真系统中分离出可稳定求逆的部分：</p>
+<div class="formula">\[H_d(z)=H_{d\min}(z)H_{\mathrm{ap}}(z),\qquad H_c(z)=\frac{1}{H_{d\min}(z)}\]</div>
+<p>补偿后的整体系统函数用于说明：最小相位部分被抵消后，残留的只有恒幅全通部分：</p>
+<div class="formula">\[G(z)=H_d(z)H_c(z)=H_{\mathrm{ap}}(z)\]</div>
+{{MINIMUM_PHASE_COMPENSATION}}
 <p>任何适当的因果稳定系统可分解为最小相位部分和全通部分：</p>
 <div class="formula">\[H(z)=H_{\min}(z)H_{\mathrm{ap}}(z)\]</div>
 <p>相位与群延迟满足可加关系：</p>
@@ -382,12 +445,14 @@ def write_html(output: Path) -> Path:
 <p>先把目标频率换成数字频率，再按“零点抑制、极点增强”的规则确定位置；随后检查共轭对称以保证实系数、检查全部极点位于单位圆内以保证稳定；最后根据是否保幅判断是否属于全通，并根据零极点位置判断是否最小相位。</p>
 </main>'''.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     content = (content
+               .replace("{{MINIMUM_PHASE_COMPENSATION}}", _minimum_phase_compensation_diagram())
                .replace("{{LOWPASS_POLE_ZERO}}", figures["pole_zero"])
                .replace("{{LOWPASS_TIME}}", figures["time"])
                .replace("{{LOWPASS_SPECTRUM}}", figures["spectrum"])
                .replace("{{RESONATOR_POLE_ZERO_RESPONSE}}", figures["pole_zero_response"])
                .replace("{{BANDPASS_RESPONSE}}", figures["bandpass_response"])
-               .replace("{{NOTCH_RESPONSE}}", figures["notch_response"]))
+               .replace("{{NOTCH_RESPONSE}}", figures["notch_response"])
+               .replace("{{ALLPASS_RESPONSE}}", figures["allpass_response"]))
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

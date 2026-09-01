@@ -195,6 +195,18 @@ def _formula_name(formula: str, heading: str) -> str:
         return "通带最大衰减与阻带最小衰减定义（用于把幅度设计指标转换为分贝约束）"
     if "\\left|H_{\\mathrm{ap}}" in compact:
         return "全通滤波器的恒幅条件（用于说明全通系统只改变相位和群延迟）"
+    if "H_i(z)=\\frac{z^{-1}-re^{-j\\theta}}{1-re^{j\\theta}z^{-1}}" in compact:
+        return "一阶全通节的系统函数（用于把稳定极点与共轭倒易零点配对以校正相位）"
+    if "H_i(e^{j\\omega})=e^{-j\\omega}" in compact and "1-r\\cos(\\omega-\\theta)" in compact:
+        return "一阶全通节的单位圆频率响应（用于验证幅度恒为一并分析相位）"
+    if "\\theta_i(\\omega)=-\\omega-2\\arctan" in compact:
+        return "一阶全通节的相位响应（用于量化极点位置带来的相位校正量）"
+    if "\\operatorname{grd}_i(\\omega)" in compact and "\\frac{1-r^2}{1+r^2-2r\\cos(\\omega-\\theta)}" in compact:
+        return "一阶全通节的群延迟（用于说明稳定全通节在各频率处的延迟分布）"
+    if "H_d(z)=H_{d\\min}(z)H_{\\mathrm{ap}}(z)" in compact and "H_c(z)=\\frac{1}{H_{d\\min}(z)}" in compact:
+        return "最小相位补偿分解（用于从失真系统中分离可稳定求逆的最小相位部分）"
+    if "G(z)=H_d(z)H_c(z)=H_{\\mathrm{ap}}(z)" in compact:
+        return "补偿后的整体系统函数（用于说明最小相位补偿后仅保留全通相位部分）"
     if "H_{\\mathrm{ap}}(z)=A" in compact:
         return "稳定全通滤波器的系统函数（用于由极点构造具有共轭倒易零点的相位校正器）"
     if "H(z)=A\\prod_{r=1}^{R}" in compact:
