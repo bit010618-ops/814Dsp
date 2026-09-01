@@ -1883,3 +1883,9 @@
 - Compared source pp.742--857: analog-filter prototypes and technical specifications; Butterworth and Chebyshev order, poles, normalization and low-pass/high-pass/band transformations; impulse-invariance mapping and aliasing limitation; and the bilinear transform, frequency warping and prewarping relation.
 - Existing reader-facing content already preserves each unique teaching relationship as complete MathJax and editable response/mapping graphics. Source coefficient tables, code listings, slide annotations and nontechnical sound/noise pages add no independent handout content and were not copied as screenshots.
 - Chapter 6 component, training, full-body, formula-purpose, and static-MathJax checks pass: `74 passed in 15.71s`. Source p.867 begins Chapter 7.
+
+# 2026-09-01 Chapter 7 source-page audit closeout
+
+- Compared source pp.867--1003: linear-phase FIR symmetry classes, endpoint constraints and zero properties; window-method design and its calculated transition/sidelobe tradeoff; frequency-sampling construction, interpolation error and transition-band correction; and weighted equiripple/Remez design.
+- The reader body already contains the four-type comparison table, source-order formulas, window comparison table, frequency-sampling recovery and correction logic, and the equiripple error/weight explanation. Source code listings, audio demonstration slides, decorative chapter repeats and slide callouts do not add unique reader-facing course content and were not copied.
+- Chapter 7 main/supplemental training, full-body, formula-purpose and static-MathJax checks pass: `66 passed in 15.01s`. Source p.1010 begins Chapter 8.
