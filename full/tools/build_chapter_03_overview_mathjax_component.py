@@ -191,6 +191,22 @@ X(jk\Omega_0)=\frac{1}{T_0}\int_{-\tau/2}^{\tau/2}e^{-jk\Omega_0t}\,\mathrm{d}t
 <p>有限谐波和用于近似实际波形。增加保留的谐波数会改善跳变附近以外的逼近，但在跳变点附近仍会出现局部振铃；下图的曲线由上述系数逐项相加得到。</p>
 """ + fourier_series_partial_sum_svg() + r"""
 
+<h3>级数到变换的极限关系</h3>
+<p>当周期趋于无穷大时，谐波间隔趋于零。下式把离散谐波系数换算为连续频谱并把级数和写成积分，用于说明傅里叶级数如何过渡为傅里叶变换：</p>
+<div class="formula">\[
+\Omega=k\Omega_0,\qquad X(j\Omega)=T_0X(jk\Omega_0),\qquad \frac{\Omega_0}{2\pi}=\frac{1}{T_0}.
+\]</div>
+<div class="formula">\[
+\widetilde{x}(t)
+=\sum_{k=-\infty}^{\infty}\frac{\Omega_0}{2\pi}X(jk\Omega_0)e^{jk\Omega_0t}
+\xrightarrow[T_0\to\infty]{}
+x(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}X(j\Omega)e^{j\Omega t}\,\mathrm{d}\Omega.
+\]</div>
+<p>对应的连续时间傅里叶变换正变换用于由非周期信号计算连续频谱：</p>
+<div class="formula">\[
+X(j\Omega)=\int_{-\infty}^{\infty}x(t)e^{-j\Omega t}\,\mathrm{d}t.
+\]</div>
+
 <h2>从连续时间频谱到 DTFT</h2>
 <p>连续信号以采样间隔 [[T]] 变为序列后，模拟角频率 [[\Omega]] 与数字角频率 [[\omega]] 的关系为：</p>
 <div class="formula">\[

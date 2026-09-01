@@ -44,6 +44,18 @@ def test_overview_includes_general_fs_pair_and_calculated_partial_sum_comparison
     assert "有限谐波数逼近的实际效果" in html
 
 
+def test_overview_keeps_the_fs_to_ft_limit_bridge(tmp_path: Path):
+    from full.tools import build_chapter_03_overview_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-overview.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert r"X(j\Omega)=T_0X(jk\Omega_0)" in html
+    assert r"\sum_{k=-\infty}^{\infty}\frac{\Omega_0}{2\pi}" in html
+    assert r"x(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}X(j\Omega)e^{j\Omega t}\,\mathrm{d}\Omega" in html
+
+
 def test_overview_explains_that_fs_coefficient_value_needs_frequency_context(
     tmp_path: Path,
 ):
