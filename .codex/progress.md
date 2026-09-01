@@ -1810,3 +1810,9 @@
 - Source pp.473--484 contains an important stepwise visualization of six-point circular convolution. Equations and result vectors already existed, but the reader-facing body lacked the corresponding visual trace.
 - Added a data-driven four-row stem diagram for the padded \(x_1(n)\), padded \(x_2(n)\), the actual six-period reflection, and all six circular-convolution output samples. The figure's values are directly the worked example values and its caption explains what each row contributes; it is a native editable SVG, not a cropped slide.
 - A regression failed before the figure existed and then passed. Static MathJax A4 review confirms axes and arrows, discrete stems, labels, data margins, single origin geometry, no clipping, no black region, and no artificial whitespace. Targeted Chapter 3/body/formula/static-MathJax regression passes `66 passed`.
+
+# 2026-09-01 Chapter 3 source-page audit: DFT-domain LSI pipeline and inline-formula repair
+
+- Source pp.485--496 were compared. Restored an editable left-to-right DFT-domain LSI pipeline: the two N-point DFT branches feed the pointwise product (Y(k)=X(k)H(k)), whose output enters the N-point IDFT. Every arrow terminates on the intended block.
+- A static A4 review exposed literal `[[...]]` inline-math placeholders in the old component. The conversion to MathJax inline delimiters now happens after all HTML fragments are assembled, fixing the inconsistent rendering path.
+- Targeted source-first and placeholder regressions pass; the static MathJax A4 page shows readable inline formulas, a correct pipeline, no black region, clipping, overlap, or ambiguous arrows. Targeted suite: `67 passed`.

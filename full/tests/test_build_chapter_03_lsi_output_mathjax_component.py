@@ -13,6 +13,8 @@ def test_lsi_output_component_covers_zero_padding_and_overlap_methods(tmp_path: 
     assert "重叠保留法" in html
     assert r"L_0=M+N_2-1" in html
     assert "MATLAB" not in html
+    assert "[[" not in html
+    assert r"\(x(n)\)" in html
 
 
 def test_lsi_output_component_preserves_circular_length_and_self_convolution_examples(
@@ -43,6 +45,15 @@ def test_lsi_output_component_draws_the_circular_convolution_steps(tmp_path: Pat
     assert 'data-plot="six-point-circular-convolution"' in html
     assert "补零、周期延拓、反褶与循环移位" in html
     assert "图 3-4" in html
+
+
+def test_lsi_output_component_draws_the_dft_lsi_pipeline(tmp_path: Path):
+    from full.tools import build_chapter_03_lsi_output_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-lsi.html").read_text(encoding="utf-8")
+
+    assert 'data-diagram="dft-lsi-pipeline"' in html
+    assert "DFT 域求 LSI 输出的计算流程" in html
 
 
 def test_lsi_output_component_preserves_overlap_add_and_save_example(tmp_path: Path):

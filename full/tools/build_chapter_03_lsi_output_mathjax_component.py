@@ -48,6 +48,44 @@ def six_point_circular_convolution_svg() -> str:
 </figure>'''
 
 
+def dft_lsi_pipeline_svg() -> str:
+    """Render the exact DFT-domain LSI computation topology as editable SVG."""
+    math_style = "height:100%;display:flex;align-items:center;justify-content:center;font-size:14px"
+
+    def formula(x: int, y: int, width: int, expr: str) -> str:
+        return f'<foreignObject x="{x}" y="{y}" width="{width}" height="30"><div xmlns="http://www.w3.org/1999/xhtml" style="{math_style}">\\({expr}\\)</div></foreignObject>'
+
+    blocks = (
+        '<rect x="210" y="51" width="122" height="52" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.6"/>',
+        '<rect x="210" y="160" width="122" height="52" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.6"/>',
+        '<rect x="480" y="100" width="118" height="62" rx="6" fill="#fff8e8" stroke="#b56b2e" stroke-width="1.6"/>',
+        '<rect x="690" y="105" width="122" height="52" rx="6" fill="#f4f7f8" stroke="#0d8794" stroke-width="1.6"/>',
+    )
+    arrows = (
+        '<line x1="70" y1="77" x2="210" y2="77" stroke="#174b73" stroke-width="1.8" marker-end="url(#ch3-lsi-arrow)"/>',
+        '<line x1="70" y1="186" x2="210" y2="186" stroke="#174b73" stroke-width="1.8" marker-end="url(#ch3-lsi-arrow)"/>',
+        '<path d="M332 77 H402 V121 H480" fill="none" stroke="#174b73" stroke-width="1.8" marker-end="url(#ch3-lsi-arrow)"/>',
+        '<path d="M332 186 H402 V141 H480" fill="none" stroke="#174b73" stroke-width="1.8" marker-end="url(#ch3-lsi-arrow)"/>',
+        '<line x1="598" y1="131" x2="690" y2="131" stroke="#174b73" stroke-width="1.8" marker-end="url(#ch3-lsi-arrow)"/>',
+        '<line x1="812" y1="131" x2="912" y2="131" stroke="#174b73" stroke-width="1.8" marker-end="url(#ch3-lsi-arrow)"/>',
+    )
+    labels = (
+        formula(84, 57, 90, "x(n)"), formula(84, 166, 90, "h(n)"),
+        formula(218, 62, 105, "N\\text{ 点 DFT}"), formula(218, 171, 105, "N\\text{ 点 DFT}"),
+        formula(344, 52, 92, "X(k)"), formula(344, 190, 92, "H(k)"),
+        formula(487, 112, 104, "Y(k)=X(k)H(k)"), formula(698, 116, 105, "N\\text{ 点 IDFT}"),
+        formula(840, 112, 90, "y(n)"),
+    )
+    return f'''<figure data-diagram="dft-lsi-pipeline" style="break-inside:avoid;margin:12pt 0 13pt">
+<svg viewBox="0 0 980 260" role="img" aria-labelledby="dft-lsi-pipeline-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff">
+<title id="dft-lsi-pipeline-title">DFT 域求 LSI 输出的计算流程</title>
+<defs><marker id="ch3-lsi-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs>
+{''.join(blocks)}{''.join(arrows)}{''.join(labels)}
+</svg>
+<figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-5　DFT 域求 LSI 输出的计算流程：两路 DFT 后逐点相乘，再作 IDFT。</figcaption>
+</figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -67,6 +105,8 @@ N\geq N_1+N_2-1
 <div class="formula">\[
 y(n)=\operatorname{IDFT}_N\{X(k)H(k)\}=y_l\left((n)\right)_N.
 \]</div>
+<p>下图给出 DFT 域求 LSI 输出的计算流程，用于明确每个变换长度相同、频域相乘对应时域圆周卷积，以及最后由 IDFT 回到时域：</p>
+""" + dft_lsi_pipeline_svg() + r"""
 
 <h2>例题：不同长度的圆周卷积</h2>
 <p>求下面两序列的线性卷积和 4 点、5 点、6 点、7 点圆周卷积。</p>
@@ -180,7 +220,8 @@ y(n)=\{1,3,6,9,12,15,18,21,15,8\}.
 <p>（A）[[19\leq n\leq48]]　（B）[[19\leq n\leq49]]　（C）[[20\leq n\leq49]]　（D）[[20\leq n\leq68]]。</p>
 <p>解：线性卷积长度为 [[50+20-1=69]]，而 50 点圆周卷积把末尾的 19 个样本折回主值区间前端。因此前 [[19]] 个样本发生时域混叠，[[19\leq n\leq49]] 的 31 个样本未受折回项影响，故选择（B）。</p>
 </main>
-""".replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
+"""
+    content = content.replace("[[", chr(92) + "(").replace("]]", chr(92) + ")")
     html = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]":["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'''
     output.write_text(html, encoding="utf-8")
     return output
