@@ -35,6 +35,16 @@ def test_lsi_output_component_preserves_circular_length_and_self_convolution_exa
     assert r"Y(k)=X(k)X(k)" in html
 
 
+def test_lsi_output_component_draws_the_circular_convolution_steps(tmp_path: Path):
+    from full.tools import build_chapter_03_lsi_output_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-lsi.html").read_text(encoding="utf-8")
+
+    assert 'data-plot="six-point-circular-convolution"' in html
+    assert "补零、周期延拓、反褶与循环移位" in html
+    assert "图 3-4" in html
+
+
 def test_lsi_output_component_preserves_overlap_add_and_save_example(tmp_path: Path):
     from full.tools import build_chapter_03_lsi_output_mathjax_component as component
 

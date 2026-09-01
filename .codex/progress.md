@@ -1804,3 +1804,9 @@
 - Source pp.461--472 added a concrete 10-point trigonometric-product DFT and explicitly derives the real/imaginary component relations. The existing component had circular conjugate symmetry but not these two reader-facing results.
 - Restored the real/imaginary DFT pair with its stated purpose, then the full product-to-exponential derivation for \(\cos(3\pi n/5)\sin(4\pi n/5)\) and its four nonzero 10-point DFT lines at \(k=1,3,7,9\). This is rendered as standard aligned LaTeX, not as a source crop or manually positioned formula.
 - Tests first failed and then passed. Static MathJax A4 raster review confirms full delimiters, fraction bars, exponents, Chinese purpose text, no clipping, no raw formula source, and no black region. Targeted Chapter 3/body/formula/static-MathJax regression passes `67 passed`.
+
+# 2026-09-01 Chapter 3 source-page audit: circular-convolution construction
+
+- Source pp.473--484 contains an important stepwise visualization of six-point circular convolution. Equations and result vectors already existed, but the reader-facing body lacked the corresponding visual trace.
+- Added a data-driven four-row stem diagram for the padded \(x_1(n)\), padded \(x_2(n)\), the actual six-period reflection, and all six circular-convolution output samples. The figure's values are directly the worked example values and its caption explains what each row contributes; it is a native editable SVG, not a cropped slide.
+- A regression failed before the figure existed and then passed. Static MathJax A4 review confirms axes and arrows, discrete stems, labels, data margins, single origin geometry, no clipping, no black region, and no artificial whitespace. Targeted Chapter 3/body/formula/static-MathJax regression passes `66 passed`.

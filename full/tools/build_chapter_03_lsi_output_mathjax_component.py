@@ -10,6 +10,44 @@ STYLE = r"""<style>
 @page{size:A4;margin:21mm 18mm 22mm}body{margin:0;color:#1f2933;font:11pt/1.75 "Microsoft YaHei",serif}main{max-width:174mm;margin:auto}h1{color:#1e4f79;font-size:22pt;font-weight:400;border-bottom:1.4pt solid #b56b2e;padding-bottom:8pt;margin:0 0 16pt}h2{break-after:avoid;color:#1e4f79;font-size:15pt;font-weight:400;border-bottom:.8pt solid #c59d6e;padding-bottom:2pt;margin:15pt 0 7pt}h3{break-after:avoid;color:#315d7c;font-size:12.5pt;font-weight:400;margin:12pt 0 4pt}p{margin:5pt 0 8pt}.formula{break-inside:avoid;background:#f4f7f8;border-radius:5pt;padding:9pt 14pt;margin:10pt 0;text-align:center;overflow-x:auto}.steps{padding-left:1.5em;margin:5pt 0 8pt}.steps li{margin:3pt 0}@media(max-width:560px){body{font-size:10.5pt}.formula{padding:7pt 8pt}}</style>"""
 
 
+def six_point_circular_convolution_svg() -> str:
+    """Show real six-point samples through the circular-convolution construction."""
+
+    panels = (
+        (44, r"x_1(n)=R_5(n)", (1, 1, 1, 1, 1, 0), "补零到 6 点主值区间"),
+        (164, r"x_2(n)", (1, 2, 3, 0, 0, 0), "第二个序列补零"),
+        (284, r"x_2\left((-n)\right)_6", (1, 0, 0, 0, 3, 2), "反褶后按 6 周期折回"),
+        (404, r"y(n)", (4, 3, 6, 6, 6, 5), "逐次循环移位、相乘求和的输出"),
+    )
+
+    def panel(top: int, label: str, values: tuple[int, ...], note: str, output: bool) -> str:
+        y_axis, baseline, step = 115, top + 72, 100
+        parts = [
+            f'<line x1="70" y1="{baseline}" x2="870" y2="{baseline}" stroke="#174b73" stroke-width="1.7" marker-end="url(#ch3-conv-arrow)"/>',
+            f'<line x1="{y_axis}" y1="{baseline+25}" x2="{y_axis}" y2="{top+22}" stroke="#174b73" stroke-width="1.5" marker-end="url(#ch3-conv-arrow)"/>',
+            f'<foreignObject x="132" y="{top-8}" width="170" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:14px">\\({label}\\)</div></foreignObject>',
+            f'<text x="360" y="{top+7}" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="12">{note}</text>',
+            f'<foreignObject x="878" y="{baseline+2}" width="24" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="font-size:13px">\\(n\\)</div></foreignObject>',
+        ]
+        for n, value in enumerate(values):
+            x = y_axis + 24 + n * step
+            y = baseline - value * (8 if output else 13)
+            parts.append(f'<line x1="{x}" y1="{baseline}" x2="{x}" y2="{y}" stroke="#0d8794" stroke-width="2"/>')
+            parts.append(f'<circle cx="{x}" cy="{y}" r="3.8" fill="#c77613"/>')
+            if value:
+                parts.append(f'<text x="{x}" y="{y-8}" text-anchor="middle" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="11">{value}</text>')
+        return ''.join(parts)
+
+    return f'''<figure data-plot="six-point-circular-convolution" style="break-inside:avoid;margin:12pt 0 13pt">
+<svg viewBox="0 0 980 515" role="img" aria-labelledby="six-point-circular-convolution-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff">
+<title id="six-point-circular-convolution-title">补零、周期延拓、反褶与循环移位</title>
+<defs><marker id="ch3-conv-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#174b73"/></marker></defs>
+{panel(*panels[0], False)}{panel(*panels[1], False)}{panel(*panels[2], False)}{panel(*panels[3], True)}
+</svg>
+<figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-4　补零、周期延拓、反褶与循环移位：最后一行给出六个循环卷积输出样本。</figcaption>
+</figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -48,6 +86,8 @@ y_6(n)&=\{4,3,6,6,6,5\}, &&0\leq n\leq5,\\
 y_7(n)&=\{1,3,6,6,6,5,3\}, &&0\leq n\leq6.
 \end{aligned}
 \]</div>
+<p>下图将补零、反褶和循环移位的关键样本放在同一坐标体系中；它用于解释首尾为何按周期折回并得到各个输出样值。</p>
+""" + six_point_circular_convolution_svg() + r"""
 <p>前 3 种长度均小于线性卷积长度 [[7]]，末尾样本会折回并造成时域混叠；当 [[N=7=N_1+N_2-1]] 时，7 点圆周卷积恰与线性卷积一致。</p>
 
 <h2>例题：4 点 DFT 的自卷积</h2>
