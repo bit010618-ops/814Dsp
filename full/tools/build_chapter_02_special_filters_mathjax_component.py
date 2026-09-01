@@ -219,6 +219,51 @@ def _render_resonator_figures() -> dict[str, str]:
     axis.text(0.82, 0.08, "最高频零点", fontproperties=chinese_font, fontsize=8.5, color="#596b78")
     figures["bandpass_response"] = _png_uri(figure)
     plt.close(figure)
+
+    figure, axes = plt.subplots(1, 2, figsize=(7.1, 3.15), constrained_layout=True)
+    geometry, response = axes
+    notch_frequency = 0.1 * np.pi
+    notch_radius = 0.95
+    for spine in geometry.spines.values():
+        spine.set_visible(False)
+    geometry.plot(np.cos(theta), np.sin(theta), color="#8094a4", lw=1.1, ls="--")
+    geometry.axhline(0, color=axis_color, lw=1.05)
+    geometry.axvline(0, color=axis_color, lw=1.05)
+    geometry.annotate("", xy=(1.30, 0), xytext=(1.15, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    geometry.annotate("", xy=(0, 1.30), xytext=(0, 1.15), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    zeros = np.exp(1j * np.array((notch_frequency, -notch_frequency)))
+    poles = notch_radius * np.exp(1j * np.array((notch_frequency, -notch_frequency)))
+    geometry.scatter(zeros.real, zeros.imag, marker="o", s=52, lw=1.8, facecolors="white", edgecolors="#008e98", zorder=4)
+    geometry.scatter(poles.real, poles.imag, marker="x", s=62, lw=1.9, color=pole_color, zorder=4)
+    geometry.plot([0, zeros[0].real], [0, zeros[0].imag], color="#aab8c2", lw=0.9, ls=":")
+    geometry.text(0.58, 0.74, "单位圆零点", transform=geometry.transAxes, fontproperties=chinese_font, color="#008e98", fontsize=8.6)
+    geometry.text(0.56, 0.60, "内侧极点", transform=geometry.transAxes, fontproperties=chinese_font, color=pole_color, fontsize=8.6)
+    geometry.text(0.95, 0.46, r"$\mathrm{Re}(z)$", transform=geometry.transAxes, fontsize=9, ha="right")
+    geometry.text(0.53, 0.96, r"$\mathrm{Im}(z)$", transform=geometry.transAxes, fontsize=9, va="top")
+    geometry.set(xlim=(-1.34, 1.34), ylim=(-1.34, 1.34), aspect="equal")
+    geometry.set_xticks([])
+    geometry.set_yticks([])
+    geometry.set_title("50 Hz 陷波器的零极点配置", fontproperties=chinese_font, color="#1e4f79", fontsize=10.5, pad=6)
+
+    omega = np.linspace(0, np.pi, 1600)
+    response_value = (1 - 2 * np.cos(notch_frequency) * np.exp(-1j * omega) + np.exp(-2j * omega)) / (1 - 2 * notch_radius * np.cos(notch_frequency) * np.exp(-1j * omega) + notch_radius ** 2 * np.exp(-2j * omega))
+    response.plot(omega / np.pi, np.abs(response_value), color="#008e98", lw=1.7)
+    response.axvline(0.1, color="#b56b2e", ls=":", lw=1.0)
+    response.scatter((0.1,), (0,), color=pole_color, zorder=3, s=22)
+    for spine in response.spines.values():
+        spine.set_visible(False)
+    response.axhline(0, color=axis_color, lw=1.05, zorder=0)
+    response.axvline(0, color=axis_color, lw=1.05, zorder=0)
+    response.annotate("", xy=(1.10, 0), xytext=(1.02, 0), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    response.annotate("", xy=(0, 1.12), xytext=(0, 1.03), arrowprops={"arrowstyle": "-|>", "color": axis_color, "lw": 1.05})
+    response.set(xlim=(0, 1.10), ylim=(0, 1.12), xticks=(0, 0.1, 0.5, 1), xticklabels=("0", r"$0.1$", r"$1/2$", "1"), yticks=(0, 0.5, 1))
+    response.grid(axis="y", color="#d9e1e6", lw=0.6)
+    response.set_xlabel(r"$\omega/\pi$", fontsize=9)
+    response.text(0.035, 0.92, "幅度", transform=response.transAxes, fontproperties=chinese_font, fontsize=8.5, color=axis_color, va="top")
+    response.set_title("50 Hz 对应的陷波频率", fontproperties=chinese_font, color="#1e4f79", fontsize=10.5, pad=6)
+    response.annotate("50 Hz", xy=(0.1, 0), xytext=(0.20, 0.30), fontproperties=chinese_font, fontsize=8.5, color="#7c4a16", arrowprops={"arrowstyle": "->", "color": "#7c4a16", "lw": 0.8})
+    figures["notch_response"] = _png_uri(figure)
+    plt.close(figure)
     return figures
 
 
@@ -276,6 +321,8 @@ def write_html(output: Path) -> Path:
 <figure class="figure" data-plot="bandpass-resonator-response"><img src="{{BANDPASS_RESPONSE}}" alt="二阶带通谐振器的幅频响应"><figcaption>二阶带通谐振器的幅频响应：由本例的实际系统函数计算，直流与最高频率处为零，中心频率处形成通带峰值。</figcaption></figure>
 <h2>DTMF 双音多频信号</h2>
 <p>电话按键的 DTMF 信号由一个低频组频率与一个高频组频率叠加而成。低频组为 697、770、852、941 Hz，高频组为 1209、1336、1477、1633 Hz。每个按键对应唯一的一对频率；例如按键 8 对应 852 Hz 和 1336 Hz。</p>
+<table data-table="dtmf-keypad"><thead><tr><th>低频组／高频组</th><th>1209 Hz</th><th>1336 Hz</th><th>1477 Hz</th><th>1633 Hz</th></tr></thead><tbody><tr><th>697 Hz</th><td>1</td><td>2</td><td>3</td><td>A</td></tr><tr><th>770 Hz</th><td>4</td><td>5</td><td>6</td><td>B</td></tr><tr><th>852 Hz</th><td>7</td><td>8</td><td>9</td><td>C</td></tr><tr><th>941 Hz</th><td>*</td><td>0</td><td>#</td><td>D</td></tr></tbody></table>
+<p>这张按键—双频对应表用于由按键位置直接确定需要叠加或检测的两条目标频率；普通电话键盘通常只使用前三列。</p>
 <div class="formula">\[x(n)=A_1\cos(\omega_1n+\varphi_1)+A_2\cos(\omega_2n+\varphi_2),\qquad \omega_i=2\pi\frac{f_i}{f_s}\]</div>
 <p>以按键 8 为例，取 [[f_s=8000\,\mathrm{Hz}]] 时，两个谐振器中心的数字频率为：</p>
 <div class="formula">\[\omega_1=2\pi\frac{852}{8000}=0.213\pi,\qquad \omega_2=2\pi\frac{1336}{8000}=0.334\pi\]</div>
@@ -285,6 +332,7 @@ def write_html(output: Path) -> Path:
 <div class="formula">\[z=e^{\pm j\omega_0},\qquad \omega_0=2\pi\frac{f_0}{f_s}\]</div>
 <p>一个二阶陷波器可写为：</p>
 <div class="formula">\[H(z)=K\frac{(z-e^{j\omega_0})(z-e^{-j\omega_0})}{z^2}\]</div>
+<figure class="figure" data-plot="notch-zero-pole-response"><img src="{{NOTCH_RESPONSE}}" alt="50 Hz 陷波器的零极点与幅频响应"><figcaption>50 Hz 陷波器的零极点与幅频响应：单位圆上一对零点给出精确阻零，内侧同角度极点控制陷波宽度并保持因果稳定。</figcaption></figure>
 <h3>例题</h3>
 <p>若采样频率 [[f_s=1000\,\mathrm{Hz}]]，需抑制 50 Hz 工频干扰，则陷波中心的数字频率为：</p>
 <div class="formula">\[\omega_0=2\pi\frac{50}{1000}=0.1\pi\]</div>
@@ -338,7 +386,8 @@ def write_html(output: Path) -> Path:
                .replace("{{LOWPASS_TIME}}", figures["time"])
                .replace("{{LOWPASS_SPECTRUM}}", figures["spectrum"])
                .replace("{{RESONATOR_POLE_ZERO_RESPONSE}}", figures["pole_zero_response"])
-               .replace("{{BANDPASS_RESPONSE}}", figures["bandpass_response"]))
+               .replace("{{BANDPASS_RESPONSE}}", figures["bandpass_response"])
+               .replace("{{NOTCH_RESPONSE}}", figures["notch_response"]))
     document = f'<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>window.MathJax={{tex:{{packages:{{"[+]": ["ams"]}}}}}};</script><script defer src="{MATHJAX}"></script>{STYLE}{content}</html>'
     output.write_text(document, encoding="utf-8")
     return output

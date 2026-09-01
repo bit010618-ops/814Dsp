@@ -46,6 +46,17 @@ def test_special_filters_keep_resonator_dtmf_and_engineering_filtering_body(tmp_
     assert "滑动平均" in html
 
 
+def test_special_filters_restore_dtmf_keypad_table_and_notch_zero_pole_response(tmp_path: Path):
+    from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
+
+    html = write_html(tmp_path / "special-filters.html").read_text(encoding="utf-8")
+
+    assert 'data-table="dtmf-keypad"' in html
+    assert "941 Hz" in html and "1633 Hz" in html
+    assert 'data-plot="notch-zero-pole-response"' in html
+    assert 'alt="50 Hz 陷波器的零极点与幅频响应"' in html
+
+
 def test_special_filters_render_resonator_geometry_and_bandpass_response_from_real_data(tmp_path: Path):
     from full.tools.build_chapter_02_special_filters_mathjax_component import write_html
 
