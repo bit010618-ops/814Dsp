@@ -1858,3 +1858,9 @@
 - Source p.550 contributes the general two-tone, phase-bearing signal expansion and its DTFT impulse-line form. Neither expression was present in the reader-facing body.
 - Added both complete MathJax displays with Chinese purpose statements: the first maps two cosines to four complex exponentials; the second maps each component to the paired positive/negative frequency impulses and their phase weights.
 - The source-first assertion failed before the addition and the component test then passes. Static A4 inspection confirms aligned rows, fractions, exponents, delta terms and display boundaries are intact without clipping or raw formula source.
+
+# 2026-09-01 Chapter 3 source-page audit: window selection and DFT picket sampling closeout
+
+- Source pp.551--559 were rendered and compared. They expand the already-covered finite-window relation with rectangular-window length comparisons, triangular-window leakage/resolution tradeoffs, and DFT samples lying on the continuous finite-record spectrum.
+- No new reader-facing source fact was absent: the body already states the 32/64 and 40/320 record-length comparisons, the rectangular/triangular mainlobe-sidelobe tradeoff, the DFT sampling relation, and the zero-padding limitation. The calculated window/zero-padding figure already presents the same concepts without importing template, code, watermark, or nontechnical slide decoration.
+- Page 560 begins Chapter 4. This closes the Chapter 3 pp.545--559 source audit; the next source-page pass moves to Chapter 4 only after the current Chapter 3 changes have been committed and verified.
