@@ -1816,3 +1816,9 @@
 - Source pp.485--496 were compared. Restored an editable left-to-right DFT-domain LSI pipeline: the two N-point DFT branches feed the pointwise product (Y(k)=X(k)H(k)), whose output enters the N-point IDFT. Every arrow terminates on the intended block.
 - A static A4 review exposed literal `[[...]]` inline-math placeholders in the old component. The conversion to MathJax inline delimiters now happens after all HTML fragments are assembled, fixing the inconsistent rendering path.
 - Targeted source-first and placeholder regressions pass; the static MathJax A4 page shows readable inline formulas, a correct pipeline, no black region, clipping, overlap, or ambiguous arrows. Targeted suite: `67 passed`.
+
+# 2026-09-01 Chapter 3 source-page audit: overlap-add and overlap-save timelines
+
+- Source pp.497--508 were compared. The equations and two worked examples were already present, but the source's essential block-boundary explanations were missing as reader-facing diagrams.
+- Added one editable SVG timeline that shows non-overlapping input blocks and overlapping output contributions for overlap-add, then retained historical input samples, discarded corrupted leading output values, and retained M valid output values for overlap-save.
+- The new behavior was covered test-first. A static MathJax A4 render confirms clear Chinese labels, correct mathematical labels, non-ambiguous timeline arrows, no black region, clipping, overlap, or artificial large whitespace. Targeted suite: `68 passed`.

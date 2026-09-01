@@ -86,6 +86,55 @@ def dft_lsi_pipeline_svg() -> str:
 </figure>'''
 
 
+def overlap_method_timeline_svg() -> str:
+    """Render the block boundaries used by overlap-add and overlap-save."""
+    math_style = "height:100%;display:flex;align-items:center;justify-content:center;font-size:13px"
+
+    def formula(x: int, y: int, width: int, expr: str) -> str:
+        return f'<foreignObject x="{x}" y="{y}" width="{width}" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="{math_style}">\\({expr}\\)</div></foreignObject>'
+
+    arrow = "url(#overlap-method-arrow)"
+    top = (
+        '<text x="48" y="40" fill="#174b73" font-family="Microsoft YaHei, sans-serif" font-size="18" font-weight="700">重叠相加：输入块不重叠，输出的重叠区相加</text>',
+        '<line x1="150" y1="92" x2="890" y2="92" stroke="#6d7d87" stroke-width="1.3" marker-end="' + arrow + '"/>',
+        '<rect x="180" y="72" width="250" height="38" fill="#d8eef0" stroke="#0d8794" stroke-width="1.5"/>',
+        '<rect x="430" y="72" width="250" height="38" fill="#d8eef0" stroke="#0d8794" stroke-width="1.5"/>',
+        formula(70, 77, 80, "x(n)"), formula(185, 76, 240, "x_0(n),\\;0\\leq n\\leq M-1"), formula(435, 76, 240, "x_1(n),\\;M\\leq n\\leq2M-1"),
+        '<line x1="150" y1="154" x2="890" y2="154" stroke="#6d7d87" stroke-width="1.3" marker-end="' + arrow + '"/>',
+        '<rect x="180" y="134" width="370" height="38" fill="#fbe4c9" stroke="#b56b2e" stroke-width="1.5"/>',
+        '<rect x="430" y="134" width="370" height="38" fill="#f5d7e5" stroke="#a2436d" stroke-width="1.5"/>',
+        formula(70, 139, 80, "y_i(n)"), formula(190, 138, 345, "y_0(n)=x_0(n)*h(n)"), formula(445, 138, 345, "y_1(n-M)=x_1(n-M)*h(n)"),
+        '<rect x="430" y="184" width="120" height="28" fill="#fff5c9" stroke="#b08d57" stroke-width="1.1"/>',
+        '<text x="440" y="204" fill="#735a17" font-family="Microsoft YaHei, sans-serif" font-size="15">重叠区相加</text>',
+        formula(680, 184, 160, "L\\geq M+N_2-1"),
+    )
+    bottom = (
+        '<line x1="38" y1="245" x2="942" y2="245" stroke="#b08d57" stroke-width="1"/>',
+        '<text x="48" y="277" fill="#174b73" font-family="Microsoft YaHei, sans-serif" font-size="18" font-weight="700">重叠保留：输入块保留历史样本，舍去输出开头的混叠项</text>',
+        '<line x1="150" y1="330" x2="890" y2="330" stroke="#6d7d87" stroke-width="1.3" marker-end="' + arrow + '"/>',
+        '<rect x="180" y="310" width="370" height="38" fill="#d8eef0" stroke="#0d8794" stroke-width="1.5"/>',
+        '<rect x="430" y="310" width="370" height="38" fill="#d8eef0" stroke="#0d8794" stroke-width="1.5"/>',
+        '<rect x="180" y="310" width="120" height="38" fill="#eed7de" stroke="#a2436d" stroke-width="1.2"/>',
+        '<rect x="430" y="310" width="120" height="38" fill="#eed7de" stroke="#a2436d" stroke-width="1.2"/>',
+        formula(62, 315, 88, "x_i(n)"), formula(310, 315, 230, "L_0=M+N_2-1"), formula(152, 350, 160, "N_2-1\\text{ 个重叠样本}"), formula(565, 350, 205, "M\\text{ 个新输入样本}"),
+        '<line x1="150" y1="410" x2="890" y2="410" stroke="#6d7d87" stroke-width="1.3" marker-end="' + arrow + '"/>',
+        '<rect x="180" y="390" width="120" height="38" fill="#f5d7e5" stroke="#a2436d" stroke-width="1.5" stroke-dasharray="4 3"/>',
+        '<rect x="300" y="390" width="250" height="38" fill="#cfeede" stroke="#16866d" stroke-width="1.5"/>',
+        '<rect x="430" y="390" width="120" height="38" fill="#f5d7e5" stroke="#a2436d" stroke-width="1.5" stroke-dasharray="4 3"/>',
+        '<rect x="550" y="390" width="250" height="38" fill="#cfeede" stroke="#16866d" stroke-width="1.5"/>',
+        formula(64, 395, 82, "y_i(n)"), formula(187, 395, 105, "\\text{舍去}"), formula(305, 395, 235, "M\\text{ 个保留输出}"), formula(437, 395, 105, "\\text{舍去}"), formula(555, 395, 235, "M\\text{ 个保留输出}"),
+        '<text x="180" y="466" fill="#52616d" font-family="Microsoft YaHei, sans-serif" font-size="14">相邻块在输入端重叠 N₂−1 点；每块 IDFT 后仅拼接中间连续的 M 个有效输出。</text>',
+    )
+    return f'''<figure data-diagram="overlap-method-timeline" style="break-inside:avoid;margin:12pt 0 13pt">
+<svg viewBox="0 0 980 490" role="img" aria-labelledby="overlap-method-timeline-title" style="display:block;width:100%;height:auto;border:1px solid #d6dde2;border-radius:5pt;background:#fff">
+<title id="overlap-method-timeline-title">重叠相加与重叠保留的分段关系</title>
+<defs><marker id="overlap-method-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#52616d"/></marker></defs>
+{''.join(top)}{''.join(bottom)}
+</svg>
+<figcaption style="margin-top:4pt;color:#52616d;text-align:center;font-size:9.5pt">图 3-6　重叠相加与重叠保留的分段关系：前者相加输出重叠区，后者舍弃每段开头的混叠项。</figcaption>
+</figure>'''
+
+
 def write_html(output: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     content = r"""
@@ -163,6 +212,7 @@ Y(k)=X(k)X(k),\qquad y(n)=\operatorname{IDFT}_4\{Y(k)\}.
 y(n)=\sum_i y_i(n-iM),\qquad L\geq M+N_2-1.
 \]</div>
 <p>重叠相加法中没有丢弃样本；重叠区的各段贡献必须相加。</p>
+""" + overlap_method_timeline_svg() + r"""
 
 <h3>例题：重叠相加法验证</h3>
 <p>求下面两序列的线性卷积，并用重叠相加法验证。</p>

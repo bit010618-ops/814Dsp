@@ -56,6 +56,15 @@ def test_lsi_output_component_draws_the_dft_lsi_pipeline(tmp_path: Path):
     assert "DFT 域求 LSI 输出的计算流程" in html
 
 
+def test_lsi_output_component_draws_overlap_method_timeline(tmp_path: Path):
+    from full.tools import build_chapter_03_lsi_output_mathjax_component as component
+
+    html = component.write_html(tmp_path / "chapter-03-lsi.html").read_text(encoding="utf-8")
+
+    assert 'data-diagram="overlap-method-timeline"' in html
+    assert "重叠相加与重叠保留的分段关系" in html
+
+
 def test_lsi_output_component_preserves_overlap_add_and_save_example(tmp_path: Path):
     from full.tools import build_chapter_03_lsi_output_mathjax_component as component
 
