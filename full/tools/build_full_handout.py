@@ -206,8 +206,8 @@ def _group_by_chapter(fragments: list[str]) -> list[list[str]]:
 
 
 def _remove_training_banner(fragment: str) -> str:
-    """Use one reader-facing chapter title instead of batch-specific H1 banners."""
-    return re.sub(r"<h1(?:\s[^>]*)?>.*?</h1>", "", fragment, count=1, flags=re.DOTALL)
+    """Use one reader-facing chapter title instead of component-local H1 banners."""
+    return re.sub(r"<h1(?:\s[^>]*)?>.*?</h1>", "", fragment, flags=re.DOTALL)
 
 
 def _remove_answer_banner(fragment: str) -> str:

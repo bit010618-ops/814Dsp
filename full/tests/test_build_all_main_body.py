@@ -194,6 +194,47 @@ def test_formula_name_names_remaining_fft_sampling_and_decimation_relations():
     ) == "基 2 FFT 的偶奇分解公式（用于由两个四点 DFT 合成八点 DFT）"
 
 
+def test_formula_name_handles_aligned_variants_of_named_sum_formulas():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[\begin{aligned}H_d(e^{j\omega})&=\begin{cases}1,&|\omega|<\pi/M\\0,&\text{其他}\end{cases}\\w(n)&=\sum_kh_d(k)x(n-k),\\x_d(n)&=w(Mn).\end{aligned}\]",
+        "抽取",
+    ) == "抗混叠低通与 M 倍抽取（用于先限带再降采样以避免频谱折叠）"
+
+
+def test_formula_name_names_sampled_spectra_and_frequency_domain_examples():
+    from full.tools.build_all_main_body import _formula_name
+
+    assert _formula_name(
+        r"\[\widehat{X}_a(j\Omega)=\frac{1}{T}\sum_{m=-\infty}^{\infty}X_a\left(j(\Omega-m\Omega_s)\right),\qquad\Omega_s=\frac{2\pi}{T}\]",
+        "频谱分析与采样定理",
+    ) == "连续时间冲激采样的频谱复制（用于确定采样后频谱副本的间隔和幅度）"
+    assert _formula_name(
+        r"\[X(e^{j\omega})=\pi\sum_{i=0}^{1}A_i\bigl[e^{j\theta_i}\delta(\omega-\omega_i)+e^{-j\theta_i}\delta(\omega+\omega_i)\bigr]\]",
+        "双频信号的频谱分析",
+    ) == "双频离散正弦序列的 DTFT 冲激谱（用于标出各正负频率分量的幅度和相位）"
+    assert _formula_name(
+        r"\[F_s(j\omega)=\frac{1}{T_s}\sum_{k=-\infty}^{\infty}F(j(\omega-k\omega_s))\]",
+        "连续时间采样",
+    ) == "连续时间冲激采样的频谱复制（用于确定采样后频谱副本的间隔和幅度）"
+    assert _formula_name(
+        r"\[F_s(s)=\sum_{n=0}^{\infty}e^{-5nT}e^{-snT}=\frac{1}{1-e^{-(s+5)T}}\]",
+        "脉冲响应不变法",
+    ) == "指数冲激响应采样的拉普拉斯级数（用于由采样序列求离散系统函数）"
+    assert _formula_name(
+        r"\[X(e^{j\omega})=\sum_{n=-2}^{2}e^{-j\omega n}=1+2\cos\omega+2\cos(2\omega)=\frac{\sin(5\omega/2)}{\sin(\omega/2)}\]",
+        "DTFT",
+    ) == "五点矩形序列的 DTFT（用于由有限长时域样值得到狄利克雷核频谱）"
+    assert _formula_name(
+        r"\[\sum_{n=-\infty}^{\infty}|h[n]|=\sum_{n=0}^{\infty}|a|^n<\infty\Longleftrightarrow|a|<1\]",
+        "一阶系统稳定性",
+    ) == "一阶系统的稳定性条件（用于由几何级数收敛得到极点模小于 1）"
+    assert _formula_name(r"\[H(z)=\sum_{r=1}^{R}H_r(z)\]", "并联型") == (
+        "并联型滤波器的系统函数（用于将各子滤波器响应相加）"
+    )
+
+
 def test_full_main_body_assembly_contains_eight_chapters_without_training(tmp_path: Path):
     from full.tools.build_all_main_body import write_html
 

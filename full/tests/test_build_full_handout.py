@@ -13,6 +13,10 @@ def test_full_handout_attaches_each_training_set_to_its_chapter_then_places_answ
     assert html.index("<h1>第一章真题整理</h1>") < html.index('<section class="chapter-start"><h1>第二章')
     assert html.index("<h1>第四章真题整理</h1>") < html.index("<h1>第五章")
     assert html.index("<h1>第八章真题整理</h1>") < answers
+    # 章末训练只保留一次统一的章节标题；批次组件的旧横幅不能泄漏到成品。
+    assert "第一章 分章强化训练" not in html
+    assert "第二章 补充真题" not in html
+    assert "第三章补充真题" not in html
     assert '<section class="training-section">' not in html
     assert "<h1>第四章真题整理</h1>" in html
     assert "2017 年真题" in html

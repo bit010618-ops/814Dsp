@@ -891,6 +891,17 @@ def _formula_name(formula: str, heading: str) -> str:
         return "常数序列的 DTFT 冲激谱（用于说明直流序列的频谱按 2π 周期重复）"
     if "h[n]" in compact and "&lt;\\infty" in compact:
         return "离散 LSI 系统的绝对可和条件（用于由单位冲激响应判定 BIBO 稳定性）"
+    if (
+        "\\widehat{X}_a(j\\Omega)=\\frac{1}{T}\\sum" in compact
+        and "X_a\\left(j(\\Omega-m\\Omega_s)\\right)" in compact
+    ):
+        return "连续时间冲激采样的频谱复制（用于确定采样后频谱副本的间隔和幅度）"
+    if (
+        "X(e^{j\\omega})=\\pi\\sum_{i=0}^{1}A_i" in compact
+        and "\\delta(\\omega-\\omega_i)" in compact
+        and "\\delta(\\omega+\\omega_i)" in compact
+    ):
+        return "双频离散正弦序列的 DTFT 冲激谱（用于标出各正负频率分量的幅度和相位）"
     if "\\sum" in compact:
         return "离散时间求和关系（用于把各离散分量累加为所需结果）"
     if "y(n)=x^2(n)" in compact:

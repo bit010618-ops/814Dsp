@@ -1895,3 +1895,11 @@
 - Compared source pp.1010--1056: integer decimation and interpolation; anti-aliasing and anti-imaging filters; arbitrary rational sampling-rate conversion; multistage/polyphase, time-division and frequency-division multiplexing; and audio sampling-rate applications.
 - Existing reader components already contain the substantive formulas, real signal-flow diagrams and applications in source order. Source repeat-title slides, code fragments, speaker/audio demos and nontechnical closing slides were intentionally excluded from reader-facing content rather than copied as screenshots.
 - Chapter 8 component/training, full-body, formula-purpose and static-MathJax checks pass: `64 passed in 15.06s`. All source pp.1--1056 have now been audited chapter-by-chapter for main-body coverage. Next stage is whole-book assembly: formula summaries, per-chapter question placement with Appendix F detailed solutions, unified pagination/headers/footers and final visual verification.
+
+# 2026-09-02 Whole-book assembly and final candidate verification
+
+- Removed every component-level H1 banner from attached training fragments. The full-book assembler now supplies the sole reader-facing `第 X 章真题整理` title, so no legacy “分章强化训练” or “补充真题” banner remains.
+- Added specific Chinese name-and-purpose labels for the continuous-time impulse-sampling spectral-replica relation and the two-tone DTFT impulse spectrum, replacing the overly generic summation label.
+- Whole-book regression: `68 passed in 42.48s`. The stable final three-pass export has 485 A4 pages, is unencrypted, has 150 answer-page anchors with zero changes in the second-to-third backfill, and its final HTML has no pending page references, navigation items, or legacy training banners.
+- Actually raster-reviewed the title/body, eight chapter formula-summary/training boundaries, question navigation, Appendix F explanations, and last page. MathJax displays, cases braces, tables, block/spectrum diagrams, headers/footers, and Chinese labels are readable; no black region, clipping, or visible collision was found in the reviewed representative pages.
+- Published candidate: `full/outputs/数字信号处理讲义_2026-09-02_全书重排验收候选.pdf`; SHA-256 `3AAD59A7A57E3F6E23C8F1C37E39E13A5BACF6D2FF273CAC8F3F6C7BA559549B`. Next: focused commit and verified push.
